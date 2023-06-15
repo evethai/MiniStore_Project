@@ -59,7 +59,7 @@ namespace MiniStoreWinF.ManageEmployees
                 }
             }
         }
-
+        //Chuyển sang form để create employee
         private void btAddEmployee_Click(object sender, EventArgs e)
         {
             Form form = new CreateEmployees();
