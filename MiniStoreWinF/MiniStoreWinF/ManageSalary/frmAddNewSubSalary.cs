@@ -22,6 +22,7 @@ namespace MiniStoreWinF.ManageSalary
 
         }
 
+        //button click to add new 
         private void btOKEdit_Click(object sender, EventArgs e)
         {
             _detailSubSalaryService = new DetailSubSalaryService();

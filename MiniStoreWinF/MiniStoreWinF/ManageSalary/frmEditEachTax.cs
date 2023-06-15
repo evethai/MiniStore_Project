@@ -1,4 +1,5 @@
-﻿using Repository.Service;
+﻿using Repository.Models;
+using Repository.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZXing;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace MiniStoreWinF.ManageSalary
 {

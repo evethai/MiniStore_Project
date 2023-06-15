@@ -20,6 +20,7 @@ namespace MiniStoreWinF.ManageSalary
         SalaryService _salaryService;
         Utinity u = new Utinity();
 
+        //tìm salary theo giờ của mỗi loại nhân viên
         public double HourSalary(string id)
         {
 
@@ -43,14 +44,20 @@ namespace MiniStoreWinF.ManageSalary
                 return 0;
             }
         }
-        public double Tax(string id)
+
+        //tính thuế thu nhập cá nhân đối với mỗi nhân viên theo lũy tuyến 
+        public double Tax(string id, DateTime time, double basicsalary)
         {
             _employeeService = new EmployeeService();
             _permissionService = new PermissionService();
 
+            double tax=0;
+            double tax_total = 0;
+
             var listEmp = _employeeService.GetAll().Where(p => p.IsActive == true).ToList();
             var listPer = _permissionService.GetAll().ToList();
 
+            
             var result = (from emp in listEmp
                           join perm in listPer
                          on emp.Roles equals perm.Roles
@@ -58,14 +65,24 @@ namespace MiniStoreWinF.ManageSalary
                           select perm.Tax).FirstOrDefault();
             if (result.HasValue)
             {
-                return result.Value / 100;
+                tax=basicsalary-result.Value;
+                if(tax>0 &&tax <= 5000000) {
+                    tax_total = 5 / 100.0;
+                }else if (tax > 5000000 && tax <= 10000000) {
+                    tax_total = 10 / 100.0;
+                }else if (tax > 10000000 && tax <= 18000000)
+                {
+                    tax_total = 15 / 100.0;
+                }
+                return tax_total;
             }
             else
             {
-                return 0;
+                return tax_total;
             }
         }
 
+        //tính lương cơ bản của mỗi nhân viên theo giờ làm việc và hệ số cộng thêm 
         public double BasicSalary(string id, DateTime time, double h_salary)
         {
             double result = 0;
@@ -90,6 +107,7 @@ namespace MiniStoreWinF.ManageSalary
             return result;
         }
 
+        //tính tổng số sub salary của mỗi nhân viên
         public double SubSalary(string id, DateTime time)
         {
             double total = 0;
@@ -109,6 +127,8 @@ namespace MiniStoreWinF.ManageSalary
             }
             return total;
         }
+
+        //tổng số tiền lương ứng trong tháng của nhân viên
         public double AdvSalary(string id, DateTime time)
         {
             Double? total = 0;
@@ -121,6 +141,8 @@ namespace MiniStoreWinF.ManageSalary
             }
             return (double)total;
         }
+
+        //kết quả lương của mỗi nhân viên khi chưa tính thuế thu nhập cá nhân 
         public double totalSalry(string id, DateTime time)
         {
             double total = 0;
@@ -130,13 +152,16 @@ namespace MiniStoreWinF.ManageSalary
             return total;
         }
 
+        //số tiền lương cuối cùng sau khi đã trừ thuế
         public double sumaryResultTotalSalary(string id, DateTime time)
         {
             double result = 0;
-            result = totalSalry(id, time) - (BasicSalary(id, time, HourSalary(id)) * Tax(id));
+            result = totalSalry(id, time) - (BasicSalary(id, time, HourSalary(id)) * Tax(id,time,BasicSalary(id, time, HourSalary(id))));
             return result;
         }
 
+
+        //tính toàn bộ và add vào database
         public void CalculatorSalary(DateTime time)
         {
             _employeeService = new EmployeeService();
@@ -162,12 +187,11 @@ namespace MiniStoreWinF.ManageSalary
                     salary.SumSubSalary = SubSalary(employee.IdEmp, time);
                     salary.SumAdvanceSalary = AdvSalary(employee.IdEmp, time);
                     salary.TotalSalary = totalSalry(employee.IdEmp, time);
-                    salary.Tax = Tax(employee.IdEmp);
+                    salary.Tax = Tax(employee.IdEmp,time, BasicSalary(employee.IdEmp, time, HourSalary(employee.IdEmp)));
                     salary.SalaryAfterTax = sumaryResultTotalSalary(employee.IdEmp, time);
                     salary.DateImonth = u.GetFirstDayofMonth(time);
                     salary.DateOmonth = time;
                     _salaryService.Create(salary);
-
                 }
             }
         }

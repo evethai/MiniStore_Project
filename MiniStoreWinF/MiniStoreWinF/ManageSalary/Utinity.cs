@@ -60,7 +60,7 @@ namespace MiniStoreWinF.ManageSalary
                 e.Handled = true;
             }
             string text1 = text + e.KeyChar.ToString();
-            if (text1.Length > 2)
+            if (text1.Length > 8)
             {
                 e.Handled = true;
             }

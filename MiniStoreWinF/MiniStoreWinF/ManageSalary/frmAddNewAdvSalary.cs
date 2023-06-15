@@ -23,6 +23,7 @@ namespace MiniStoreWinF.ManageSalary
 
         }
 
+        //nhấn button để lưu kết quả add new 
         private void BtOK_Click(object sender, EventArgs e)
         {
             
@@ -36,12 +37,12 @@ namespace MiniStoreWinF.ManageSalary
                 _detailAdvanceSalaryService = new DetailAdvanceSalaryService();
                 DetailAdvanceSalary detailAdvanceSalary = new DetailAdvanceSalary();
                 int n = _detailAdvanceSalaryService.GetAll().Count();
-                detailAdvanceSalary.IdAdvanceSalary = u.GenerateAutoId(n,"ADV");
+                detailAdvanceSalary.IdAdvanceSalary = u.GenerateAutoId(n,"ADV");//auto tạo ID
                 //
                 var adv = _detailAdvanceSalaryService.GetAll().Count(p => p.IdAdvanceSalary.Equals(detailAdvanceSalary.IdAdvanceSalary));
                 if(adv > 0 )
                 {
-                    n = n + 1;
+                    n = n + 1;//check id đã tồn tại
                 }
                 else
                 {
@@ -49,10 +50,10 @@ namespace MiniStoreWinF.ManageSalary
                     detailAdvanceSalary.DescriptionA = txtDis.Text;
                     detailAdvanceSalary.AdvanceSalary = salary;
                     detailAdvanceSalary.DateAs = dtpDate.Value;
-                    _detailAdvanceSalaryService.Create(detailAdvanceSalary);
+                    _detailAdvanceSalaryService.Create(detailAdvanceSalary);//add to data base
                     MessageBox.Show("Add Susseccful.", "Message", MessageBoxButtons.OK);
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    this.DialogResult = DialogResult.OK;//xác nhận form  
+                    this.Close();//đống form 
                 }
                 //
 
