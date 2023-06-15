@@ -15,6 +15,8 @@ namespace MiniStoreWinF.ManageSalary
         Utinity u = new Utinity();
         CalculationAuto ca = new CalculationAuto();
         List<SubSalary> _list =null;
+        int pageNumber = 1;
+        int numberRecord = 3;
 
         public frmSubSalary()
         {
@@ -94,30 +96,38 @@ namespace MiniStoreWinF.ManageSalary
             DateTime time = dtpList.Value;
             _subSalaryService = new SubSalaryService();
             var list = _subSalaryService.GetAll().Where(p => p.Time.Value.Month.Equals(time.Month)).ToList();
-            dgvTotalSub.DataSource = list;
+            dgvTotalSub.DataSource = LoadRecord(pageNumber,numberRecord,list);
+
             _list=list;
         }
 
         private void btTotal_Click(object sender, EventArgs e)
         {
+            _subSalaryService = new SubSalaryService();
             DateTime time = dtpList.Value;
             string id = cbName.SelectedValue.ToString();
             double total = ca.SubSalary(id, time);
-            txtTotal.Text = total.ToString();
-            
+            txtTotal.Text = total.ToString();  
+            var list = _subSalaryService.GetAll().Where(p=>p.IdEmp.Equals(id) && p.Time.Value.Month.Equals(time.Month)).ToList();
+            dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
+            _list = list;
+
         }
 
         private void nmPaging_ValueChanged(object sender, EventArgs e)
         {
-            NumericUpDown num = sender as NumericUpDown;
-            List<SubSalary> list = _list;
-            int total = list.Count();
-            num.Maximum = total / numberRecord + 1;
-            pageNumber = (int)num.Value;
-            dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
+            if (_list != null)
+            {
+                NumericUpDown num = sender as NumericUpDown;
+                List<SubSalary> list = _list;
+                int total = list.Count();
+                num.Maximum = total / numberRecord + 1;
+                pageNumber = (int)num.Value;
+                dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
+            }
+            
         }
-        int pageNumber = 1;
-        int numberRecord = 3;
+
         List<SubSalary> LoadRecord(int page, int numberRe,List<SubSalary>list)
         {
             _subSalaryService = new SubSalaryService();
