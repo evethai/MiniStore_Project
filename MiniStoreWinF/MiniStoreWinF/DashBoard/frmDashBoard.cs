@@ -1,0 +1,27 @@
+﻿
+using Repository.Service;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+
+
+namespace MiniStoreWinF.DashBoard
+{
+    public partial class frmDashBoard : Form
+    {
+        ProductService _productService;
+        public frmDashBoard()
+        {
+            InitializeComponent();
+
+        }
+
+    }
+}
