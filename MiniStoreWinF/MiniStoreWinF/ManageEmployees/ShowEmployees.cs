@@ -91,14 +91,6 @@ namespace MiniStoreWinF.ManageEmployees
 
         }
 
-        private void btManage_Click(object sender, EventArgs e)
-        {
-            Form form = new UpdateRemoveEmployees();
-            form.ShowDialog();
-        }
-
-
-
         private void dgvEmployee_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
