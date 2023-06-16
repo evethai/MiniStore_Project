@@ -13,15 +13,16 @@ using System.Windows.Forms;
 
 namespace MiniStoreWinF.ManageEmployees
 {
-    public partial class ShowEmployees : Form
+    public partial class frmShowEmployee : Form
     {
+        //New test run
         Validation _employeeService = new Validation();
         Employee Employee { get; set; }
         public string url = "";
 
 
         private int rowIndex { get; set; }
-        public ShowEmployees()
+        public frmShowEmployee()
         {
             var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true); ;
             InitializeComponent();
@@ -62,7 +63,7 @@ namespace MiniStoreWinF.ManageEmployees
         //Chuyển sang form để create employee
         private void btAddEmployee_Click(object sender, EventArgs e)
         {
-            Form form = new CreateEmployees();
+            Form form = new frmCreateEmployees();
             form.ShowDialog();
             var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true); ;
 

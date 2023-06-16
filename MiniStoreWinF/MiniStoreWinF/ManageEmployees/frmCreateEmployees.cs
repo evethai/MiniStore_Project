@@ -14,12 +14,12 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace MiniStoreWinF.ManageEmployees
 {
-    public partial class CreateEmployees : Form
+    public partial class frmCreateEmployees : Form
     {
         public EmployeeService employeeService = new EmployeeService();
         public string url = "";
 
-        public CreateEmployees()
+        public frmCreateEmployees()
         {
             InitializeComponent();
 

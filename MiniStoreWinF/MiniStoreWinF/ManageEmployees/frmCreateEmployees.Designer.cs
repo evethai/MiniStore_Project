@@ -1,6 +1,6 @@
 ﻿namespace MiniStoreWinF.ManageEmployees
 {
-    partial class CreateEmployees
+    partial class frmCreateEmployees
     {
         /// <summary>
         /// Required designer variable.
