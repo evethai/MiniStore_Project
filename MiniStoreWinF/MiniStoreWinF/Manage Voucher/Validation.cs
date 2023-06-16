@@ -25,23 +25,23 @@ namespace MiniStoreWinF.Manage_Voucher
             return records;
         }
 
-        public void Add(Voucher voucher)
-        {
-            var lastRecord = _voucher.OrderByDescending(record => record.IdVoucher).FirstOrDefault();
-            if (lastRecord != null)
-            {
-                voucher.IdVoucher = autoID(lastRecord.IdVoucher);
-            }
-            else
-            {
-                voucher.IdVoucher = autoID("VO000");
+        //public void Add(Voucher voucher)
+        //{
+        //    var lastRecord = _voucher.OrderByDescending(record => record.IdVoucher).FirstOrDefault();
+        //    if (lastRecord != null)
+        //    {
+        //        voucher.IdVoucher = autoID(lastRecord.IdVoucher);
+        //    }
+        //    else
+        //    {
+        //        voucher.IdVoucher = autoID("VO000");
 
 
 
-            }
-            _voucher.Add(voucher);
-            _context.SaveChanges();
-        }
+        //    }
+        //    _voucher.Add(voucher);
+        //    _context.SaveChanges();
+        //}
         public string autoID(string id)
         {
             //VOXXX
