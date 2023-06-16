@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace MiniStoreWinF.ManageEmployees
 {
-    public partial class ShowEmployees : Form
+    public partial class frmShowEmployees : Form
     {
         Validation _employeeService = new Validation();
         Employee Employee { get; set; }
@@ -21,7 +21,7 @@ namespace MiniStoreWinF.ManageEmployees
 
 
         private int rowIndex { get; set; }
-        public ShowEmployees()
+        public frmShowEmployees()
         {
             var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true); ;
             InitializeComponent();
@@ -31,11 +31,7 @@ namespace MiniStoreWinF.ManageEmployees
 
 
         }
-
-
-
-
-
+        //Chuyển hình ảnh đang từ mã Base 64 ở Database sang Hình ảnh
         public Image Base64ToImage(string base64String)
         {
             byte[] imageBytes = Convert.FromBase64String(base64String);
@@ -44,7 +40,7 @@ namespace MiniStoreWinF.ManageEmployees
             System.Drawing.Image image = System.Drawing.Image.FromStream(ms, true);
             return image;
         }
-
+        //Chuyển hình ảnh ở App sang dạng Base64 để lưu vào Database
         public string ImageToBase64(string path)
         {
 
@@ -59,54 +55,16 @@ namespace MiniStoreWinF.ManageEmployees
                 }
             }
         }
-        //Chuyển sang form để create employee
-        private void btAddEmployee_Click(object sender, EventArgs e)
-        {
-            Form form = new CreateEmployees();
-            form.ShowDialog();
-            var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true); ;
-
-            dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
-
-
-        }
-        private void btImport_Click_1(object sender, EventArgs e)
-        {
-            using (OpenFileDialog dlg = new OpenFileDialog())
-            {
-                dlg.Title = "Open Image";
-                dlg.Filter = "jpg files (*.jpg)|*.jpg";
-
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    txtUrl.Text = dlg.FileName;
-                    pBEmp.Image = new Bitmap(dlg.FileName);
-                    url = dlg.FileName;
-                }
-            }
-        }
-
-        private void ShowEmployees_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btManage_Click(object sender, EventArgs e)
-        {
-            Form form = new UpdateRemoveEmployees();
-            form.ShowDialog();
-        }
-
-
-
+        //DouleClick vào datagridview để lấy thông tin nhân viên 
         private void dgvEmployee_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
             try
             {
 
-                
+
                 var id = dgvEmployee[0, e.RowIndex].Value;
-                
+
                 var RoleType = _employeeService.GetAll().Where(entity => entity.FullNameEmp.Equals(id)).FirstOrDefault();
                 rowIndex = e.RowIndex;
                 if (RoleType != null)
@@ -147,7 +105,7 @@ namespace MiniStoreWinF.ManageEmployees
                 MessageBox.Show("Please choose in the grid!");
             }
         }
-
+        //Hiện thị password và ngược lại
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
@@ -161,85 +119,73 @@ namespace MiniStoreWinF.ManageEmployees
                 txtPassword.PasswordChar = '*';
             }
         }
-
+        //Lấy các thông tin hiện tại trên các textbox của cụ thể 1 nhân viên cụ thể đã lấy bằng cellDoubleClick ở trên, update thông tin đó và lưu xuống database đó
 
         private void btUpdate_Click(object sender, EventArgs e)
         {
-
-
-            bool valid;
             var employeeService = _employeeService.GetAll().Where(e => e.IdEmp == txtId.Text).FirstOrDefault();
             if (txtName.Text == "" ||
                 txtPhone.Text == "" ||
                 txtAddress.Text == "" ||
                 txtPassword.Text == ""
-
-
-                )
+                 )
             {
                 MessageBox.Show("Please input all information!");
 
             }
             else
             {
-                
-                
+                if (employeeService.PictureEmp == txtUrl.Text)
+                {
+                    employeeService.FullNameEmp = txtName.Text;
+                    employeeService.PhoneEmp = txtPhone.Text;
+                    employeeService.AddressEmp = txtAddress.Text;
+                    employeeService.Password = txtPassword.Text;
+                    employeeService.Username = txtUsername.Text;
+                    employeeService.Cccd = txtCccd.Text;
 
-
-                    if (employeeService.PictureEmp == txtUrl.Text)
+                    if (cbGender.SelectedItem.Equals("Man"))
                     {
-                    
-                    
-                        employeeService.FullNameEmp = txtName.Text;
-                        employeeService.PhoneEmp = txtPhone.Text;
-                        employeeService.AddressEmp = txtAddress.Text;
-                        employeeService.Password = txtPassword.Text;
-                        employeeService.Username = txtUsername.Text;
-                        employeeService.Cccd = txtCccd.Text;
-                        //employeeService.PictureEmp = (txtUrl.Text = ImageToBase64(url));
-
-                        if (cbGender.SelectedItem.Equals("Man"))
-                        {
-                            employeeService.Sex = true;
-                        }
-                        else if (cbGender.SelectedItem.Equals("Woman"))
-                        {
-                            employeeService.Sex = false;
-                        }
-                        if (cbRole.SelectedItem.Equals("Admin"))
-                        {
-                            employeeService.Roles = "Admin";
-                        }
-                        else if (cbRole.SelectedItem.Equals("Employee"))
-                        {
-                            employeeService.Roles = "Employee";
-                        }
-                        else if (cbRole.SelectedItem.Equals("Guard"))
-                        {
-                            employeeService.Roles = "Guard";
-                        }
-                        var Update = employeeService;
-                        if (txtPhone.Text.Length != 10 && !txtPhone.Text.StartsWith("0")|| txtCccd.Text.Length != 12)
-                        {
-                            MessageBox.Show("INVALID INFORMATION!", "INVALID", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            txtPhone.Focus();
-                            txtPhone.SelectAll();
-                        
-                        }
-                        else if(txtPhone.Text.Length == 10 && txtPhone.Text.StartsWith("0") || txtCccd.Text.Length == 12)
-                        {
-                            _employeeService.Update(Update);
-                            valid = true;
-                            
-                            MessageBox.Show("UPDATE SUCCESSFULLY!");
-
-                        }
-                    
-
-                       
+                        employeeService.Sex = true;
                     }
-                
-            
+                    else if (cbGender.SelectedItem.Equals("Woman"))
+                    {
+                        employeeService.Sex = false;
+                    }
+                    if (cbRole.SelectedItem.Equals("Admin"))
+                    {
+                        employeeService.Roles = "Admin";
+                    }
+                    else if (cbRole.SelectedItem.Equals("Employee"))
+                    {
+                        employeeService.Roles = "Employee";
+                    }
+                    else if (cbRole.SelectedItem.Equals("Guard"))
+                    {
+                        employeeService.Roles = "Guard";
+                    }
+                    var Update = employeeService;
+                    if (txtPhone.Text.Length != 10 && !txtPhone.Text.StartsWith("0") || txtCccd.Text.Length != 12)
+                    {
+                        MessageBox.Show("INVALID INFORMATION!", "INVALID", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtPhone.Focus();
+                        txtPhone.SelectAll();
+
+                    }
+                    else if (txtPhone.Text.Length == 10 && txtPhone.Text.StartsWith("0") || txtCccd.Text.Length == 12)
+                    {
+                        _employeeService.Update(Update);
+
+
+                        MessageBox.Show("UPDATE SUCCESSFULLY!");
+
+                    }
+
+
+
+                }
+
+
                 else
                 {
                     txtUrl.Text = ImageToBase64(url);
@@ -270,22 +216,22 @@ namespace MiniStoreWinF.ManageEmployees
             dgvEmployee.DataSource = new BindingSource() { DataSource = employeeServiceU };
         }
 
-       
 
 
+        //Format true/false giới tính dưới database thành man/woman
         private void dgvEmployee_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 1)
+            if (e.ColumnIndex == 2)
             {
                 if (e.Value != null && e.Value is bool)
                 {
                     bool value = (bool)e.Value;
-                    e.Value = value ? "Woman" : "Man";
+                    e.Value = value ? "Man" : "Woman";
                     e.FormattingApplied = true;
                 }
             }
         }
-
+        //Chuyển datagridvew sang list nhân viên Disable
         private void rd2_CheckedChanged(object sender, EventArgs e)
         {
             if (rd2.Checked)
@@ -295,6 +241,7 @@ namespace MiniStoreWinF.ManageEmployees
                 dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
             }
         }
+        //Chuyển datagridvew sang list nhân viên Active
 
         private void rd1_CheckedChanged(object sender, EventArgs e)
         {
@@ -306,9 +253,10 @@ namespace MiniStoreWinF.ManageEmployees
         }
 
 
-
+        //Search nhân viên bằng name
         private void btSearch_Click(object sender, EventArgs e)
         {
+
             string searchName = txtSearch.Text;
             if (searchName.Length > 0 && rd1.Checked)
             {
@@ -328,15 +276,22 @@ namespace MiniStoreWinF.ManageEmployees
                 dgvEmployee.DataSource = new BindingSource() { DataSource = listSearchName };
             }
         }
-
-        private void btChange_Click(object sender, EventArgs e)
+        //Chuyển sang form để create employee
+        private void btAddEmployee_Click_1(object sender, EventArgs e)
         {
+            Form form = new frmCreateEmployees();
+            form.ShowDialog();
+            var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true); ;
 
-
+            dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
+        }
+        //Đổi trạng thái nhân viên
+        private void btChange_Click_1(object sender, EventArgs e)
+        {
 
             if (cBStatus.SelectedItem.Equals("Active"))
             {
-                var employeeService = _employeeService.GetAll().Where(e => e.IsActive == false).FirstOrDefault();
+                var employeeService = _employeeService.GetAll().Where(e => e.IsActive == false && e.IdEmp == txtId.Text).FirstOrDefault();
                 employeeService.IsActive = true;
                 rd1.Checked = true;
                 MessageBox.Show("ACTIVE SUCCESSFULLY!");
@@ -345,7 +300,7 @@ namespace MiniStoreWinF.ManageEmployees
             }
             else if ((cBStatus.SelectedItem.Equals("Disable")))
             {
-                var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true).FirstOrDefault();
+                var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true && e.IdEmp == txtId.Text).FirstOrDefault();
                 employeeService.IsActive = false;
                 rd1.Checked = true;
                 MessageBox.Show("DISABLE SUCCESSFULLY!");
@@ -357,12 +312,22 @@ namespace MiniStoreWinF.ManageEmployees
             var listSearchName = _employeeService.GetAll().Where(e => e.IsActive == true);
 
             dgvEmployee.DataSource = new BindingSource() { DataSource = listSearchName };
-
         }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
+        //Import ảnh
+        private void btImport_Click(object sender, EventArgs e)
         {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Title = "Open Image";
+                dlg.Filter = "jpg files (*.jpg)|*.jpg";
 
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    txtUrl.Text = dlg.FileName;
+                    pBEmp.Image = new Bitmap(dlg.FileName);
+                    url = dlg.FileName;
+                }
+            }
         }
     }
 }

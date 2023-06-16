@@ -14,12 +14,12 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace MiniStoreWinF.ManageEmployees
 {
-    public partial class CreateEmployees : Form
+    public partial class frmCreateEmployees : Form
     {
         public EmployeeService employeeService = new EmployeeService();
         public string url = "";
 
-        public CreateEmployees()
+        public frmCreateEmployees()
         {
             InitializeComponent();
 
@@ -28,20 +28,11 @@ namespace MiniStoreWinF.ManageEmployees
             cbRole.DisplayMember = "Roles";
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void label9_Click(object sender, EventArgs e)
-        {
 
-        }
         private void CreateEmployees_Load(object sender, EventArgs e)
         {
             pnAccount.Visible = false;
@@ -74,6 +65,8 @@ namespace MiniStoreWinF.ManageEmployees
 
         private void btAddNew_Click(object sender, EventArgs e)
         {
+            Validation duplicated = new Validation();
+            duplicated.Duplicated(txtUsername.Text);
             if (txtAddName.Text == "" ||
                 txtAddPhone.Text == "" ||
                 txtAddAddress.Text == "" ||
@@ -86,6 +79,16 @@ namespace MiniStoreWinF.ManageEmployees
                 MessageBox.Show("Please input all requires information!");
 
             }
+            else if (txtPassword.Text != txtConfirm.Text)
+            {
+                MessageBox.Show("Confirm password is not match!");
+            }
+            //else if (duplicated != null)
+            //{
+            //    MessageBox.Show("Duplicated username!");
+            //}
+
+
             else
             {
                 var employee = new Employee();
@@ -114,43 +117,21 @@ namespace MiniStoreWinF.ManageEmployees
                 DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
-                    EmployeeService employeeService = new EmployeeService();
-                    employeeService.Create(employee);
+                    Validation employeeService = new Validation();
+                    employeeService.Add(employee);
                     this.Close();
                 }
                 else
                 {
 
                 }
-
-
-
-
-
             }
 
         }
 
         private void btImport_Click(object sender, EventArgs e)
         {
-            //String imgLocation;
-            //try
-            //{
 
-
-            //    OpenFileDialog openFileDialog = new OpenFileDialog();
-            //    openFileDialog.Filter = "Image Files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png";
-
-            //    if (openFileDialog.ShowDialog() == DialogResult.OK)
-            //    {
-            //        pbEmployee.Image = new Bitmap(openFileDialog.FileName);
-            //    }
-
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("ERROR");
-            //}
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
                 dlg.Title = "Open Image";
@@ -178,6 +159,28 @@ namespace MiniStoreWinF.ManageEmployees
         }
 
         private void cbGender_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtConfirm_TextChanged(object sender, EventArgs e)
+        {
+            string confirm = txtConfirm.Text;
+            if (confirm == txtPassword.Text)
+            {
+                pbValid.Visible = true;
+                pbInvalid.Visible = false;
+
+            }
+            else
+            {
+                pbValid.Visible = false;
+                pbInvalid.Visible = true;
+
+            }
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
         {
 
         }

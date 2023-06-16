@@ -32,10 +32,6 @@
             panel1 = new Panel();
             btManageEmployees = new Button();
             lbManagaEmployees = new Label();
-            menuStrip1 = new MenuStrip();
-            adminToolStripMenuItem = new ToolStripMenuItem();
-            informationToolStripMenuItem = new ToolStripMenuItem();
-            logoutToolStripMenuItem = new ToolStripMenuItem();
             panel2 = new Panel();
             btManageProducts = new Button();
             label1 = new Label();
@@ -48,8 +44,8 @@
             panel5 = new Panel();
             btManageVenrune = new Button();
             label4 = new Label();
+            panel6 = new Panel();
             panel1.SuspendLayout();
-            menuStrip1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             panel4.SuspendLayout();
@@ -60,7 +56,7 @@
             // 
             panel1.Controls.Add(btManageEmployees);
             panel1.Controls.Add(lbManagaEmployees);
-            panel1.Location = new Point(71, 158);
+            panel1.Location = new Point(12, 144);
             panel1.Name = "panel1";
             panel1.Size = new Size(216, 182);
             panel1.TabIndex = 0;
@@ -85,44 +81,15 @@
             lbManagaEmployees.Name = "lbManagaEmployees";
             lbManagaEmployees.Size = new Size(210, 42);
             lbManagaEmployees.TabIndex = 0;
-            lbManagaEmployees.Text = "Manage Employees";
+            lbManagaEmployees.Text = "Employee";
             lbManagaEmployees.TextAlign = ContentAlignment.MiddleCenter;
             lbManagaEmployees.Click += btManageEmployees_Click;
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { adminToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(920, 28);
-            menuStrip1.TabIndex = 1;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // adminToolStripMenuItem
-            // 
-            adminToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { informationToolStripMenuItem, logoutToolStripMenuItem });
-            adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            adminToolStripMenuItem.Size = new Size(67, 24);
-            adminToolStripMenuItem.Text = "Admin";
-            // 
-            // informationToolStripMenuItem
-            // 
-            informationToolStripMenuItem.Name = "informationToolStripMenuItem";
-            informationToolStripMenuItem.Size = new Size(170, 26);
-            informationToolStripMenuItem.Text = "Information";
-            // 
-            // logoutToolStripMenuItem
-            // 
-            logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(170, 26);
-            logoutToolStripMenuItem.Text = "Logout";
             // 
             // panel2
             // 
             panel2.Controls.Add(btManageProducts);
             panel2.Controls.Add(label1);
-            panel2.Location = new Point(363, 158);
+            panel2.Location = new Point(304, 144);
             panel2.Name = "panel2";
             panel2.Size = new Size(216, 182);
             panel2.TabIndex = 2;
@@ -146,7 +113,7 @@
             label1.Name = "label1";
             label1.Size = new Size(210, 42);
             label1.TabIndex = 0;
-            label1.Text = "Manage Products";
+            label1.Text = "Product";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             label1.Click += btManageProducts_Click;
             // 
@@ -154,7 +121,7 @@
             // 
             panel3.Controls.Add(btManageSalary);
             panel3.Controls.Add(label2);
-            panel3.Location = new Point(653, 158);
+            panel3.Location = new Point(594, 144);
             panel3.Name = "panel3";
             panel3.Size = new Size(216, 182);
             panel3.TabIndex = 3;
@@ -178,7 +145,7 @@
             label2.Name = "label2";
             label2.Size = new Size(210, 42);
             label2.TabIndex = 0;
-            label2.Text = "Manage Salary";
+            label2.Text = "Salary";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             label2.Click += btManageSalary_Click;
             // 
@@ -186,7 +153,7 @@
             // 
             panel4.Controls.Add(btManageTimekeeping);
             panel4.Controls.Add(label3);
-            panel4.Location = new Point(200, 379);
+            panel4.Location = new Point(9, 363);
             panel4.Name = "panel4";
             panel4.Size = new Size(216, 182);
             panel4.TabIndex = 4;
@@ -195,7 +162,7 @@
             // 
             btManageTimekeeping.BackgroundImage = (Image)resources.GetObject("btManageTimekeeping.BackgroundImage");
             btManageTimekeeping.BackgroundImageLayout = ImageLayout.Zoom;
-            btManageTimekeeping.Location = new Point(3, 45);
+            btManageTimekeeping.Location = new Point(3, 48);
             btManageTimekeeping.Name = "btManageTimekeeping";
             btManageTimekeeping.Size = new Size(210, 134);
             btManageTimekeeping.TabIndex = 1;
@@ -210,7 +177,7 @@
             label3.Name = "label3";
             label3.Size = new Size(210, 42);
             label3.TabIndex = 0;
-            label3.Text = "Manage Timekeeping";
+            label3.Text = "Timekeeping";
             label3.TextAlign = ContentAlignment.MiddleCenter;
             label3.Click += btManageTimekeeping_Click;
             // 
@@ -218,7 +185,7 @@
             // 
             panel5.Controls.Add(btManageVenrune);
             panel5.Controls.Add(label4);
-            panel5.Location = new Point(524, 379);
+            panel5.Location = new Point(304, 363);
             panel5.Name = "panel5";
             panel5.Size = new Size(216, 182);
             panel5.TabIndex = 4;
@@ -242,33 +209,38 @@
             label4.Name = "label4";
             label4.Size = new Size(210, 42);
             label4.TabIndex = 0;
-            label4.Text = "Manage Venrune";
+            label4.Text = "Revenue";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             label4.Click += btManageVenrune_Click;
+            // 
+            // panel6
+            // 
+            panel6.BackColor = Color.White;
+            panel6.Location = new Point(1, -2);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(822, 140);
+            panel6.TabIndex = 5;
             // 
             // AdminPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(920, 608);
+            ClientSize = new Size(824, 629);
+            Controls.Add(panel6);
             Controls.Add(panel5);
             Controls.Add(panel4);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Controls.Add(menuStrip1);
-            MainMenuStrip = menuStrip1;
             Name = "AdminPage";
             Text = "AdminPage";
+            Load += AdminPage_Load;
             panel1.ResumeLayout(false);
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
             panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -276,10 +248,6 @@
         private Panel panel1;
         private Button btManageEmployees;
         private Label lbManagaEmployees;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem adminToolStripMenuItem;
-        private ToolStripMenuItem informationToolStripMenuItem;
-        private ToolStripMenuItem logoutToolStripMenuItem;
         private Panel panel2;
         private Button btManageProducts;
         private Label label1;
@@ -292,5 +260,6 @@
         private Panel panel5;
         private Button btManageVenrune;
         private Label label4;
+        private Panel panel6;
     }
 }

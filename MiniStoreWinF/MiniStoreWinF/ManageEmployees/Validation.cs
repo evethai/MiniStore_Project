@@ -56,5 +56,11 @@ namespace MiniStoreWinF.ManageEmployees
 
             return records;
         }
+        public List<Employee> Duplicated(string name)
+        {
+            var records = _employees.Where(entity => entity.Username.Equals(name)).ToList();
+
+            return records;
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace MiniStoreWinF.ManageEmployees
 {
-    partial class CreateEmployees
+    partial class frmCreateEmployees
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreateEmployees));
             panel1 = new Panel();
             txtImport = new TextBox();
             btImport = new Button();
@@ -49,6 +50,8 @@
             panel2 = new Panel();
             label1 = new Label();
             pnAccount = new Panel();
+            pbInvalid = new PictureBox();
+            pbValid = new PictureBox();
             cbRole = new ComboBox();
             txtPassword = new TextBox();
             txtConfirm = new TextBox();
@@ -65,6 +68,8 @@
             ((System.ComponentModel.ISupportInitialize)pbEmployee).BeginInit();
             panel2.SuspendLayout();
             pnAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbInvalid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbValid).BeginInit();
             pnAccount2.SuspendLayout();
             SuspendLayout();
             // 
@@ -92,7 +97,6 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(405, 538);
             panel1.TabIndex = 0;
-            panel1.Paint += panel1_Paint;
             // 
             // txtImport
             // 
@@ -193,7 +197,6 @@
             label8.TabIndex = 7;
             label8.Text = "Name";
             label8.TextAlign = ContentAlignment.MiddleCenter;
-            label8.Click += label8_Click;
             // 
             // label7
             // 
@@ -276,6 +279,8 @@
             // pnAccount
             // 
             pnAccount.BorderStyle = BorderStyle.FixedSingle;
+            pnAccount.Controls.Add(pbInvalid);
+            pnAccount.Controls.Add(pbValid);
             pnAccount.Controls.Add(cbRole);
             pnAccount.Controls.Add(txtPassword);
             pnAccount.Controls.Add(txtConfirm);
@@ -290,6 +295,28 @@
             pnAccount.TabIndex = 2;
             pnAccount.Visible = false;
             // 
+            // pbInvalid
+            // 
+            pbInvalid.Image = (Image)resources.GetObject("pbInvalid.Image");
+            pbInvalid.Location = new Point(357, 110);
+            pbInvalid.Name = "pbInvalid";
+            pbInvalid.Size = new Size(27, 27);
+            pbInvalid.SizeMode = PictureBoxSizeMode.Zoom;
+            pbInvalid.TabIndex = 11;
+            pbInvalid.TabStop = false;
+            pbInvalid.Visible = false;
+            // 
+            // pbValid
+            // 
+            pbValid.Image = (Image)resources.GetObject("pbValid.Image");
+            pbValid.Location = new Point(357, 110);
+            pbValid.Name = "pbValid";
+            pbValid.Size = new Size(27, 27);
+            pbValid.SizeMode = PictureBoxSizeMode.Zoom;
+            pbValid.TabIndex = 9;
+            pbValid.TabStop = false;
+            pbValid.Visible = false;
+            // 
             // cbRole
             // 
             cbRole.FormattingEnabled = true;
@@ -302,6 +329,7 @@
             // 
             txtPassword.Location = new Point(186, 71);
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(165, 27);
             txtPassword.TabIndex = 7;
             // 
@@ -309,8 +337,10 @@
             // 
             txtConfirm.Location = new Point(186, 110);
             txtConfirm.Name = "txtConfirm";
+            txtConfirm.PasswordChar = '*';
             txtConfirm.Size = new Size(165, 27);
             txtConfirm.TabIndex = 6;
+            txtConfirm.TextChanged += txtConfirm_TextChanged;
             // 
             // txtUsername
             // 
@@ -318,6 +348,7 @@
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(165, 27);
             txtUsername.TabIndex = 4;
+            txtUsername.TextChanged += txtUsername_TextChanged;
             // 
             // label13
             // 
@@ -378,7 +409,6 @@
             pnAccount1.TabIndex = 0;
             pnAccount1.Text = "Account Information";
             pnAccount1.Visible = false;
-            pnAccount1.Click += label9_Click;
             // 
             // btAddNew
             // 
@@ -400,7 +430,7 @@
             btClose.UseVisualStyleBackColor = true;
             btClose.Click += btClose_Click;
             // 
-            // CreateEmployees
+            // frmCreateEmployees
             // 
             AutoScaleDimensions = new SizeF(120F, 120F);
             AutoScaleMode = AutoScaleMode.Dpi;
@@ -411,7 +441,7 @@
             Controls.Add(pnAccount);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Name = "CreateEmployees";
+            Name = "frmCreateEmployees";
             Text = "CreateEmployees";
             Load += CreateEmployees_Load;
             panel1.ResumeLayout(false);
@@ -421,6 +451,8 @@
             panel2.PerformLayout();
             pnAccount.ResumeLayout(false);
             pnAccount.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbInvalid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbValid).EndInit();
             pnAccount2.ResumeLayout(false);
             pnAccount2.PerformLayout();
             ResumeLayout(false);
@@ -461,5 +493,7 @@
         private PictureBox pbEmployee;
         private Button btClose;
         private TextBox txtImport;
+        private PictureBox pbValid;
+        private PictureBox pbInvalid;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace MiniStoreWinF.ManageEmployees
 {
-    partial class ShowEmployees
+    partial class frmShowEmployees
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmShowEmployees));
             employeeBindingSource = new BindingSource(components);
-            btAddEmployee = new Button();
-            groupBox1 = new GroupBox();
+            gbEmployeeInformation = new GroupBox();
+            btChange = new Button();
             label9 = new Label();
             cbGender = new ComboBox();
-            btChange = new Button();
             Status = new Label();
             cBStatus = new ComboBox();
             lb = new Label();
@@ -60,13 +60,12 @@
             txtId = new TextBox();
             label1 = new Label();
             dgvEmployee = new DataGridView();
-            fullNameEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            sexDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            cccdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            doBDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            addressEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            phoneEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            dateJoinDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            PhoneEmp = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            employeeBindingSource2 = new BindingSource(components);
             employeeBindingSource1 = new BindingSource(components);
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             txtUrl = new TextBox();
@@ -75,63 +74,64 @@
             rd1 = new RadioButton();
             rd2 = new RadioButton();
             btSearch = new Button();
+            pictureBox1 = new PictureBox();
+            btAddEmployee = new Button();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
-            groupBox1.SuspendLayout();
+            gbEmployeeInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pBEmp).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvEmployee).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // employeeBindingSource
+            // gbEmployeeInformation
             // 
-            employeeBindingSource.DataSource = typeof(Repository.Models.Employee);
+            gbEmployeeInformation.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            gbEmployeeInformation.AutoSize = true;
+            gbEmployeeInformation.BackColor = Color.Transparent;
+            gbEmployeeInformation.Controls.Add(btChange);
+            gbEmployeeInformation.Controls.Add(label9);
+            gbEmployeeInformation.Controls.Add(cbGender);
+            gbEmployeeInformation.Controls.Add(Status);
+            gbEmployeeInformation.Controls.Add(cBStatus);
+            gbEmployeeInformation.Controls.Add(lb);
+            gbEmployeeInformation.Controls.Add(txtCccd);
+            gbEmployeeInformation.Controls.Add(checkBox1);
+            gbEmployeeInformation.Controls.Add(label10);
+            gbEmployeeInformation.Controls.Add(cbRole);
+            gbEmployeeInformation.Controls.Add(label8);
+            gbEmployeeInformation.Controls.Add(label7);
+            gbEmployeeInformation.Controls.Add(label6);
+            gbEmployeeInformation.Controls.Add(label5);
+            gbEmployeeInformation.Controls.Add(label4);
+            gbEmployeeInformation.Controls.Add(label3);
+            gbEmployeeInformation.Controls.Add(label2);
+            gbEmployeeInformation.Controls.Add(btImport);
+            gbEmployeeInformation.Controls.Add(pBEmp);
+            gbEmployeeInformation.Controls.Add(txtDoB);
+            gbEmployeeInformation.Controls.Add(txtPassword);
+            gbEmployeeInformation.Controls.Add(txtUsername);
+            gbEmployeeInformation.Controls.Add(txtAddress);
+            gbEmployeeInformation.Controls.Add(txtPhone);
+            gbEmployeeInformation.Controls.Add(txtName);
+            gbEmployeeInformation.Controls.Add(txtId);
+            gbEmployeeInformation.Location = new Point(11, 66);
+            gbEmployeeInformation.Name = "gbEmployeeInformation";
+            gbEmployeeInformation.Size = new Size(944, 225);
+            gbEmployeeInformation.TabIndex = 3;
+            gbEmployeeInformation.TabStop = false;
+            gbEmployeeInformation.Text = "Employee information";
             // 
-            // btAddEmployee
+            // btChange
             // 
-            btAddEmployee.Location = new Point(10, 289);
-            btAddEmployee.Name = "btAddEmployee";
-            btAddEmployee.Size = new Size(94, 29);
-            btAddEmployee.TabIndex = 1;
-            btAddEmployee.Text = "Add new";
-            btAddEmployee.UseVisualStyleBackColor = true;
-            btAddEmployee.Click += btAddEmployee_Click;
-            // 
-            // groupBox1
-            // 
-            groupBox1.BackColor = Color.Transparent;
-            groupBox1.Controls.Add(label9);
-            groupBox1.Controls.Add(cbGender);
-            groupBox1.Controls.Add(btChange);
-            groupBox1.Controls.Add(Status);
-            groupBox1.Controls.Add(cBStatus);
-            groupBox1.Controls.Add(lb);
-            groupBox1.Controls.Add(txtCccd);
-            groupBox1.Controls.Add(checkBox1);
-            groupBox1.Controls.Add(label10);
-            groupBox1.Controls.Add(cbRole);
-            groupBox1.Controls.Add(label8);
-            groupBox1.Controls.Add(label7);
-            groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(btImport);
-            groupBox1.Controls.Add(pBEmp);
-            groupBox1.Controls.Add(txtDoB);
-            groupBox1.Controls.Add(txtPassword);
-            groupBox1.Controls.Add(txtUsername);
-            groupBox1.Controls.Add(txtAddress);
-            groupBox1.Controls.Add(txtPhone);
-            groupBox1.Controls.Add(txtName);
-            groupBox1.Controls.Add(txtId);
-            groupBox1.Location = new Point(11, 66);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(897, 208);
-            groupBox1.TabIndex = 3;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Employee information";
-            groupBox1.Enter += groupBox1_Enter;
+            btChange.Location = new Point(587, 149);
+            btChange.Name = "btChange";
+            btChange.Size = new Size(94, 29);
+            btChange.TabIndex = 33;
+            btChange.Text = "Change";
+            btChange.UseVisualStyleBackColor = true;
+            btChange.Click += btChange_Click_1;
             // 
             // label9
             // 
@@ -150,16 +150,6 @@
             cbGender.Name = "cbGender";
             cbGender.Size = new Size(143, 28);
             cbGender.TabIndex = 31;
-            // 
-            // btChange
-            // 
-            btChange.Location = new Point(616, 149);
-            btChange.Name = "btChange";
-            btChange.Size = new Size(94, 29);
-            btChange.TabIndex = 30;
-            btChange.Text = "Change";
-            btChange.UseVisualStyleBackColor = true;
-            btChange.Click += btChange_Click;
             // 
             // Status
             // 
@@ -290,20 +280,21 @@
             // 
             // btImport
             // 
-            btImport.Location = new Point(768, 179);
+            btImport.Image = (Image)resources.GetObject("btImport.Image");
+            btImport.Location = new Point(766, 149);
             btImport.Name = "btImport";
-            btImport.Size = new Size(94, 29);
+            btImport.Size = new Size(58, 50);
             btImport.TabIndex = 8;
-            btImport.Text = "Import";
             btImport.UseVisualStyleBackColor = true;
-            btImport.Click += btImport_Click_1;
+            btImport.Click += btImport_Click;
             // 
             // pBEmp
             // 
-            pBEmp.Location = new Point(743, 26);
+            pBEmp.Image = (Image)resources.GetObject("pBEmp.Image");
+            pBEmp.Location = new Point(742, 26);
             pBEmp.Name = "pBEmp";
-            pBEmp.Size = new Size(154, 147);
-            pBEmp.SizeMode = PictureBoxSizeMode.Zoom;
+            pBEmp.Size = new Size(118, 117);
+            pBEmp.SizeMode = PictureBoxSizeMode.StretchImage;
             pBEmp.TabIndex = 7;
             pBEmp.TabStop = false;
             // 
@@ -371,78 +362,60 @@
             // 
             // dgvEmployee
             // 
+            dgvEmployee.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dgvEmployee.AutoGenerateColumns = false;
-            dgvEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmployee.Columns.AddRange(new DataGridViewColumn[] { fullNameEmpDataGridViewTextBoxColumn, sexDataGridViewTextBoxColumn, cccdDataGridViewTextBoxColumn, doBDataGridViewTextBoxColumn, addressEmpDataGridViewTextBoxColumn, phoneEmpDataGridViewTextBoxColumn, dateJoinDataGridViewTextBoxColumn });
-            dgvEmployee.DataSource = employeeBindingSource1;
-            dgvEmployee.Location = new Point(12, 357);
+            dgvEmployee.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvEmployee.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvEmployee.ColumnHeadersHeight = 29;
+            dgvEmployee.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, PhoneEmp, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4 });
+            dgvEmployee.DataSource = employeeBindingSource2;
+            dgvEmployee.Location = new Point(10, 373);
             dgvEmployee.Name = "dgvEmployee";
             dgvEmployee.RowHeadersWidth = 51;
             dgvEmployee.RowTemplate.Height = 29;
-            dgvEmployee.Size = new Size(896, 188);
+            dgvEmployee.Size = new Size(682, 200);
             dgvEmployee.TabIndex = 5;
             dgvEmployee.CellDoubleClick += dgvEmployee_CellDoubleClick;
             dgvEmployee.CellFormatting += dgvEmployee_CellFormatting;
             // 
-            // fullNameEmpDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn1
             // 
-            fullNameEmpDataGridViewTextBoxColumn.DataPropertyName = "FullNameEmp";
-            fullNameEmpDataGridViewTextBoxColumn.HeaderText = "FullNameEmp";
-            fullNameEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
-            fullNameEmpDataGridViewTextBoxColumn.Name = "fullNameEmpDataGridViewTextBoxColumn";
-            fullNameEmpDataGridViewTextBoxColumn.Width = 125;
+            dataGridViewTextBoxColumn1.DataPropertyName = "FullNameEmp";
+            dataGridViewTextBoxColumn1.HeaderText = "FullNameEmp";
+            dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
-            // sexDataGridViewTextBoxColumn
+            // PhoneEmp
             // 
-            sexDataGridViewTextBoxColumn.DataPropertyName = "Sex";
-            sexDataGridViewTextBoxColumn.HeaderText = "Sex";
-            sexDataGridViewTextBoxColumn.MinimumWidth = 6;
-            sexDataGridViewTextBoxColumn.Name = "sexDataGridViewTextBoxColumn";
-            sexDataGridViewTextBoxColumn.Width = 125;
+            PhoneEmp.DataPropertyName = "PhoneEmp";
+            PhoneEmp.HeaderText = "PhoneEmp";
+            PhoneEmp.MinimumWidth = 6;
+            PhoneEmp.Name = "PhoneEmp";
             // 
-            // cccdDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn2
             // 
-            cccdDataGridViewTextBoxColumn.DataPropertyName = "Cccd";
-            cccdDataGridViewTextBoxColumn.HeaderText = "Cccd";
-            cccdDataGridViewTextBoxColumn.MinimumWidth = 6;
-            cccdDataGridViewTextBoxColumn.Name = "cccdDataGridViewTextBoxColumn";
-            cccdDataGridViewTextBoxColumn.Width = 125;
+            dataGridViewTextBoxColumn2.DataPropertyName = "Sex";
+            dataGridViewTextBoxColumn2.HeaderText = "Sex";
+            dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
-            // doBDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn3
             // 
-            doBDataGridViewTextBoxColumn.DataPropertyName = "DoB";
-            doBDataGridViewTextBoxColumn.HeaderText = "DoB";
-            doBDataGridViewTextBoxColumn.MinimumWidth = 6;
-            doBDataGridViewTextBoxColumn.Name = "doBDataGridViewTextBoxColumn";
-            doBDataGridViewTextBoxColumn.Width = 125;
+            dataGridViewTextBoxColumn3.DataPropertyName = "Cccd";
+            dataGridViewTextBoxColumn3.HeaderText = "Cccd";
+            dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
-            // addressEmpDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn4
             // 
-            addressEmpDataGridViewTextBoxColumn.DataPropertyName = "AddressEmp";
-            addressEmpDataGridViewTextBoxColumn.HeaderText = "AddressEmp";
-            addressEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
-            addressEmpDataGridViewTextBoxColumn.Name = "addressEmpDataGridViewTextBoxColumn";
-            addressEmpDataGridViewTextBoxColumn.Width = 125;
+            dataGridViewTextBoxColumn4.DataPropertyName = "DoB";
+            dataGridViewTextBoxColumn4.HeaderText = "DoB";
+            dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
-            // phoneEmpDataGridViewTextBoxColumn
+            // employeeBindingSource2
             // 
-            phoneEmpDataGridViewTextBoxColumn.DataPropertyName = "PhoneEmp";
-            phoneEmpDataGridViewTextBoxColumn.HeaderText = "PhoneEmp";
-            phoneEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
-            phoneEmpDataGridViewTextBoxColumn.Name = "phoneEmpDataGridViewTextBoxColumn";
-            phoneEmpDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // dateJoinDataGridViewTextBoxColumn
-            // 
-            dateJoinDataGridViewTextBoxColumn.DataPropertyName = "DateJoin";
-            dateJoinDataGridViewTextBoxColumn.HeaderText = "DateJoin";
-            dateJoinDataGridViewTextBoxColumn.MinimumWidth = 6;
-            dateJoinDataGridViewTextBoxColumn.Name = "dateJoinDataGridViewTextBoxColumn";
-            dateJoinDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // employeeBindingSource1
-            // 
-            employeeBindingSource1.DataSource = typeof(Repository.Models.Employee);
+            employeeBindingSource2.DataSource = typeof(Repository.Models.Employee);
             // 
             // sqlCommand1
             // 
@@ -453,15 +426,15 @@
             // 
             // txtUrl
             // 
-            txtUrl.Location = new Point(679, 12);
+            txtUrl.Location = new Point(1557, 9);
             txtUrl.Name = "txtUrl";
-            txtUrl.Size = new Size(238, 27);
+            txtUrl.Size = new Size(61, 27);
             txtUrl.TabIndex = 19;
             txtUrl.Visible = false;
             // 
             // btUpdate
             // 
-            btUpdate.Location = new Point(110, 289);
+            btUpdate.Location = new Point(110, 292);
             btUpdate.Name = "btUpdate";
             btUpdate.Size = new Size(94, 29);
             btUpdate.TabIndex = 20;
@@ -471,9 +444,10 @@
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(210, 289);
+            txtSearch.Location = new Point(210, 292);
+            txtSearch.Multiline = true;
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(168, 27);
+            txtSearch.Size = new Size(168, 28);
             txtSearch.TabIndex = 21;
             // 
             // rd1
@@ -502,19 +476,44 @@
             // 
             // btSearch
             // 
-            btSearch.Location = new Point(384, 288);
+            btSearch.Image = (Image)resources.GetObject("btSearch.Image");
+            btSearch.Location = new Point(384, 297);
             btSearch.Name = "btSearch";
-            btSearch.Size = new Size(94, 29);
+            btSearch.Size = new Size(92, 24);
             btSearch.TabIndex = 25;
-            btSearch.Text = "Search";
             btSearch.UseVisualStyleBackColor = true;
             btSearch.Click += btSearch_Click;
             // 
-            // ShowEmployees
+            // pictureBox1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(920, 608);
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BorderStyle = BorderStyle.Fixed3D;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(384, 297);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(24, 23);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 26;
+            pictureBox1.TabStop = false;
+            // 
+            // btAddEmployee
+            // 
+            btAddEmployee.Location = new Point(12, 291);
+            btAddEmployee.Name = "btAddEmployee";
+            btAddEmployee.Size = new Size(94, 29);
+            btAddEmployee.TabIndex = 27;
+            btAddEmployee.Text = "Create";
+            btAddEmployee.UseVisualStyleBackColor = true;
+            btAddEmployee.Click += btAddEmployee_Click_1;
+            // 
+            // frmShowEmployees
+            // 
+            AutoScaleDimensions = new SizeF(120F, 120F);
+            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            ClientSize = new Size(967, 614);
+            Controls.Add(btAddEmployee);
+            Controls.Add(pictureBox1);
             Controls.Add(btSearch);
             Controls.Add(rd2);
             Controls.Add(rd1);
@@ -523,25 +522,25 @@
             Controls.Add(txtUrl);
             Controls.Add(dgvEmployee);
             Controls.Add(label1);
-            Controls.Add(groupBox1);
-            Controls.Add(btAddEmployee);
-            Name = "ShowEmployees";
-            Text = "ShowEmployees";
-            Load += ShowEmployees_Load;
+            Controls.Add(gbEmployeeInformation);
+            Name = "frmShowEmployees";
+            SizeGripStyle = SizeGripStyle.Show;
+            Text = "Show Employees";
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).EndInit();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            gbEmployeeInformation.ResumeLayout(false);
+            gbEmployeeInformation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pBEmp).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvEmployee).EndInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource2).EndInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
         private BindingSource employeeBindingSource;
-        private Button btAddEmployee;
-        private GroupBox groupBox1;
+        private GroupBox gbEmployeeInformation;
         private Label label1;
         private DataGridView dgvEmployee;
         private BindingSource employeeBindingSource1;
@@ -580,10 +579,18 @@
         private DataGridViewTextBoxColumn addressEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn phoneEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dateJoinDataGridViewTextBoxColumn;
-        private Button btChange;
         private Label Status;
         private ComboBox cBStatus;
         private Label label9;
         private ComboBox cbGender;
+        private BindingSource employeeBindingSource2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn PhoneEmp;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private PictureBox pictureBox1;
+        private Button btAddEmployee;
+        private Button btChange;
     }
 }

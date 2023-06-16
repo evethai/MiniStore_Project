@@ -16,16 +16,20 @@ namespace MiniStoreWinF.Manage_Voucher
     {
         VoucherService _voucherService = new VoucherService();
         private int rowIndex { get; set; }
-        Validation valid = new Validation();
+        Validation voucherService = new Validation();
         public frmShowVoucher()
         {
             InitializeComponent();
-            var voucher = _voucherService.GetAll();
-            dgvVoucher.DataSource = new BindingSource() { DataSource = voucher };
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
+            if (rdExpired.Checked == false)
+            {
+                var voucher = _voucherService.GetAll().Where(e => e.Exp > DateTime.Now);
+                dgvVoucher.DataSource = new BindingSource() { DataSource = voucher };
+            }
+            else if (rdExpired.Checked == true)
+            {
+                var voucher = _voucherService.GetAll().Where(e => e.Exp < DateTime.Now);
+                dgvVoucher.DataSource = new BindingSource() { DataSource = voucher };
+            }
 
         }
 
@@ -47,8 +51,6 @@ namespace MiniStoreWinF.Manage_Voucher
                     txtQuantity.Text = voucher.Quantity.ToString();
                     txtType.Text = voucher.Type.ToString();
                     dpkEXP.Text = voucher.Exp.ToString();
-
-
                 }
             }
             catch (Exception)
@@ -56,22 +58,17 @@ namespace MiniStoreWinF.Manage_Voucher
 
             }
         }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void frmShowVoucher_Load(object sender, EventArgs e)
         {
             pnShow.Visible = false;
+            rdCanUse.Checked = true;
 
         }
 
         private void btUpdate_Click(object sender, EventArgs e)
         {
-            var data = _voucherService.GetAll();
-            var voucher = _voucherService.GetAll().Where(e => e.IdVoucher.Equals(int.Parse(txtID.Text))).FirstOrDefault();
+            var data = _voucherService.GetAll().Where(e => e.Exp > DateTime.Now);
+            var voucher = _voucherService.GetAll().Where(e => e.IdVoucher.Equals(txtID.Text)).FirstOrDefault();
             if (txtName.Text == "" ||
                 txtPrice.Text == "" ||
                 txtQuantity.Text == "" ||
@@ -86,12 +83,17 @@ namespace MiniStoreWinF.Manage_Voucher
                 voucher.Quantity = int.Parse(txtQuantity.Text);
                 voucher.Exp = dpkEXP.Value;
                 var update = voucher;
+                DialogResult result = MessageBox.Show("Have you check all information?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    _voucherService.Update(update);
+                    dgvVoucher.DataSource = new BindingSource() { DataSource = data };
+                    MessageBox.Show("Update Successfully");
+                }
+                else
+                {
 
-
-                _voucherService.Update(update);
-                dgvVoucher.DataSource = new BindingSource() { DataSource = data };
-
-
+                }
             }
         }
 
@@ -99,11 +101,6 @@ namespace MiniStoreWinF.Manage_Voucher
         {
 
             pnAdd.Visible = true;
-
-        }
-
-        private void dgvVoucher_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
         }
 
@@ -128,10 +125,12 @@ namespace MiniStoreWinF.Manage_Voucher
                 DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
-                    VoucherService voucherService = new VoucherService();
-                    voucherService.Create(voucher);
+                    voucherService.Add(voucher);
                     MessageBox.Show("Create voucher successfully!");
-
+                    txtAddName.Text = "";
+                    txtAddType.Text = "";
+                    txtNewQuantity.Text = "";
+                    txtNewPrice.Text = "";
                 }
                 else
                 {
@@ -146,12 +145,41 @@ namespace MiniStoreWinF.Manage_Voucher
         private void btSearch_Click(object sender, EventArgs e)
         {
             string searchName = txtSearch.Text;
-            if(searchName != null )
+            if (searchName != null)
             {
-                var listSearchName = valid.GetName(searchName).Where(e => e.Quantity > 0);
+                var listSearchName = voucherService.GetName(searchName).Where(e => e.Quantity > 0);
                 dgvVoucher.DataSource = new BindingSource() { DataSource = listSearchName };
-            } 
+            }
 
+        }
+
+        private void rdExpired_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdExpired.Checked == false)
+            {
+                var voucher = _voucherService.GetAll().Where(e => e.Exp > DateTime.Now);
+                dgvVoucher.DataSource = new BindingSource() { DataSource = voucher };
+            }
+            else if (rdExpired.Checked == true)
+            {
+                var voucher = _voucherService.GetAll().Where(e => e.Exp < DateTime.Now);
+                dgvVoucher.DataSource = new BindingSource() { DataSource = voucher };
+            }
+        }
+
+
+        private void rdCanUse_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdCanUse.Checked == true)
+            {
+                var voucher = _voucherService.GetAll().Where(e => e.Exp > DateTime.Now);
+                dgvVoucher.DataSource = new BindingSource() { DataSource = voucher };
+            }
+            else if (rdCanUse.Checked == false)
+            {
+                var voucher = _voucherService.GetAll().Where(e => e.Exp < DateTime.Now);
+                dgvVoucher.DataSource = new BindingSource() { DataSource = voucher };
+            }
         }
     }
 }

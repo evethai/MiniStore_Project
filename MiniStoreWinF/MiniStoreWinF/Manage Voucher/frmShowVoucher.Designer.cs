@@ -49,7 +49,6 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            btDetail = new Button();
             pnAdd = new Panel();
             dpkNewDate = new DateTimePicker();
             btAdd = new Button();
@@ -57,15 +56,15 @@
             txtNewPrice = new TextBox();
             txtAddType = new TextBox();
             txtAddName = new TextBox();
-            txtIDADD = new TextBox();
             label7 = new Label();
             label8 = new Label();
             label9 = new Label();
             label10 = new Label();
             label11 = new Label();
-            label12 = new Label();
             txtSearch = new TextBox();
             btSearch = new Button();
+            rdExpired = new RadioButton();
+            rdCanUse = new RadioButton();
             ((System.ComponentModel.ISupportInitialize)dgvVoucher).BeginInit();
             ((System.ComponentModel.ISupportInitialize)voucherBindingSource2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)voucherBindingSource1).BeginInit();
@@ -80,13 +79,12 @@
             dgvVoucher.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvVoucher.Columns.AddRange(new DataGridViewColumn[] { nameDataGridViewTextBoxColumn });
             dgvVoucher.DataSource = voucherBindingSource2;
-            dgvVoucher.Location = new Point(12, 79);
+            dgvVoucher.Location = new Point(12, 132);
             dgvVoucher.Name = "dgvVoucher";
             dgvVoucher.RowHeadersWidth = 51;
             dgvVoucher.RowTemplate.Height = 29;
-            dgvVoucher.Size = new Size(238, 279);
+            dgvVoucher.Size = new Size(178, 279);
             dgvVoucher.TabIndex = 0;
-            dgvVoucher.CellContentClick += dgvVoucher_CellContentClick;
             dgvVoucher.CellDoubleClick += dgvVoucher_CellDoubleClick;
             // 
             // nameDataGridViewTextBoxColumn
@@ -111,7 +109,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(256, 79);
+            button1.Location = new Point(198, 98);
             button1.Name = "button1";
             button1.Size = new Size(110, 29);
             button1.TabIndex = 1;
@@ -135,7 +133,7 @@
             pnShow.Controls.Add(label3);
             pnShow.Controls.Add(label2);
             pnShow.Controls.Add(label1);
-            pnShow.Location = new Point(372, 37);
+            pnShow.Location = new Point(325, 32);
             pnShow.Name = "pnShow";
             pnShow.Size = new Size(595, 279);
             pnShow.TabIndex = 2;
@@ -247,15 +245,6 @@
             label1.TabIndex = 0;
             label1.Text = "ID Voucher";
             // 
-            // btDetail
-            // 
-            btDetail.Location = new Point(256, 37);
-            btDetail.Name = "btDetail";
-            btDetail.Size = new Size(110, 29);
-            btDetail.TabIndex = 3;
-            btDetail.Text = "Detail";
-            btDetail.UseVisualStyleBackColor = true;
-            // 
             // pnAdd
             // 
             pnAdd.BorderStyle = BorderStyle.Fixed3D;
@@ -265,14 +254,12 @@
             pnAdd.Controls.Add(txtNewPrice);
             pnAdd.Controls.Add(txtAddType);
             pnAdd.Controls.Add(txtAddName);
-            pnAdd.Controls.Add(txtIDADD);
             pnAdd.Controls.Add(label7);
             pnAdd.Controls.Add(label8);
             pnAdd.Controls.Add(label9);
             pnAdd.Controls.Add(label10);
             pnAdd.Controls.Add(label11);
-            pnAdd.Controls.Add(label12);
-            pnAdd.Location = new Point(372, 317);
+            pnAdd.Location = new Point(325, 312);
             pnAdd.Name = "pnAdd";
             pnAdd.Size = new Size(595, 279);
             pnAdd.TabIndex = 14;
@@ -280,7 +267,7 @@
             // 
             // dpkNewDate
             // 
-            dpkNewDate.Location = new Point(375, 88);
+            dpkNewDate.Location = new Point(375, 35);
             dpkNewDate.Name = "dpkNewDate";
             dpkNewDate.Size = new Size(203, 27);
             dpkNewDate.TabIndex = 13;
@@ -297,44 +284,36 @@
             // 
             // txtNewQuantity
             // 
-            txtNewQuantity.Location = new Point(375, 33);
+            txtNewQuantity.Location = new Point(111, 190);
             txtNewQuantity.Name = "txtNewQuantity";
-            txtNewQuantity.Size = new Size(86, 27);
+            txtNewQuantity.Size = new Size(125, 27);
             txtNewQuantity.TabIndex = 10;
             // 
             // txtNewPrice
             // 
-            txtNewPrice.Location = new Point(120, 195);
+            txtNewPrice.Location = new Point(111, 140);
             txtNewPrice.Name = "txtNewPrice";
             txtNewPrice.Size = new Size(125, 27);
             txtNewPrice.TabIndex = 9;
             // 
             // txtAddType
             // 
-            txtAddType.Location = new Point(120, 134);
+            txtAddType.Location = new Point(111, 88);
             txtAddType.Name = "txtAddType";
             txtAddType.Size = new Size(125, 27);
             txtAddType.TabIndex = 8;
             // 
             // txtAddName
             // 
-            txtAddName.Location = new Point(120, 88);
+            txtAddName.Location = new Point(111, 33);
             txtAddName.Name = "txtAddName";
             txtAddName.Size = new Size(125, 27);
             txtAddName.TabIndex = 7;
             // 
-            // txtIDADD
-            // 
-            txtIDADD.Location = new Point(120, 33);
-            txtIDADD.Name = "txtIDADD";
-            txtIDADD.ReadOnly = true;
-            txtIDADD.Size = new Size(125, 27);
-            txtIDADD.TabIndex = 6;
-            // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(287, 91);
+            label7.Location = new Point(287, 38);
             label7.Name = "label7";
             label7.Size = new Size(70, 20);
             label7.TabIndex = 5;
@@ -343,7 +322,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(292, 33);
+            label8.Location = new Point(40, 193);
             label8.Name = "label8";
             label8.Size = new Size(65, 20);
             label8.TabIndex = 4;
@@ -352,7 +331,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(73, 198);
+            label9.Location = new Point(64, 143);
             label9.Name = "label9";
             label9.Size = new Size(41, 20);
             label9.TabIndex = 3;
@@ -361,7 +340,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(73, 137);
+            label10.Location = new Point(65, 95);
             label10.Name = "label10";
             label10.Size = new Size(40, 20);
             label10.TabIndex = 2;
@@ -370,47 +349,63 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(65, 95);
+            label11.Location = new Point(56, 40);
             label11.Name = "label11";
             label11.Size = new Size(49, 20);
             label11.TabIndex = 1;
             label11.Text = "Name";
             // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Location = new Point(33, 40);
-            label12.Name = "label12";
-            label12.Size = new Size(81, 20);
-            label12.TabIndex = 0;
-            label12.Text = "ID Voucher";
-            // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(12, 39);
+            txtSearch.Location = new Point(12, 65);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(138, 27);
+            txtSearch.Size = new Size(178, 27);
             txtSearch.TabIndex = 15;
             // 
             // btSearch
             // 
-            btSearch.Location = new Point(156, 37);
+            btSearch.Location = new Point(198, 65);
             btSearch.Name = "btSearch";
-            btSearch.Size = new Size(94, 29);
+            btSearch.Size = new Size(110, 29);
             btSearch.TabIndex = 16;
             btSearch.Text = "Search";
             btSearch.UseVisualStyleBackColor = true;
             btSearch.Click += btSearch_Click;
             // 
+            // rdExpired
+            // 
+            rdExpired.AutoSize = true;
+            rdExpired.Location = new Point(110, 102);
+            rdExpired.Name = "rdExpired";
+            rdExpired.Size = new Size(80, 24);
+            rdExpired.TabIndex = 17;
+            rdExpired.TabStop = true;
+            rdExpired.Text = "Expired";
+            rdExpired.UseVisualStyleBackColor = true;
+            rdExpired.CheckedChanged += rdExpired_CheckedChanged;
+            // 
+            // rdCanUse
+            // 
+            rdCanUse.AutoSize = true;
+            rdCanUse.Location = new Point(12, 102);
+            rdCanUse.Name = "rdCanUse";
+            rdCanUse.Size = new Size(83, 24);
+            rdCanUse.TabIndex = 18;
+            rdCanUse.TabStop = true;
+            rdCanUse.Text = "Can Use";
+            rdCanUse.UseVisualStyleBackColor = true;
+            rdCanUse.CheckedChanged += rdCanUse_CheckedChanged;
+            // 
             // frmShowVoucher
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(979, 609);
+            ClientSize = new Size(929, 609);
+            Controls.Add(rdCanUse);
+            Controls.Add(rdExpired);
             Controls.Add(btSearch);
             Controls.Add(txtSearch);
             Controls.Add(pnAdd);
-            Controls.Add(btDetail);
             Controls.Add(pnShow);
             Controls.Add(button1);
             Controls.Add(dgvVoucher);
@@ -455,7 +450,6 @@
         private TextBox txtType;
         private TextBox txtName;
         private DateTimePicker dpkEXP;
-        private Button btDetail;
         private Panel pnAdd;
         private DateTimePicker dpkNewDate;
         private Button btAdd;
@@ -463,14 +457,14 @@
         private TextBox txtNewPrice;
         private TextBox txtAddType;
         private TextBox txtAddName;
-        private TextBox txtIDADD;
         private Label label7;
         private Label label8;
         private Label label9;
         private Label label10;
         private Label label11;
-        private Label label12;
         private TextBox txtSearch;
         private Button btSearch;
+        private RadioButton rdExpired;
+        private RadioButton rdCanUse;
     }
 }
