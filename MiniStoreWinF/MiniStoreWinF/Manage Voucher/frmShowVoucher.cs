@@ -101,7 +101,7 @@ namespace MiniStoreWinF.Manage_Voucher
         {
 
             pnAdd.Visible = true;
-
+             
         }
 
         private void btAdd_Click(object sender, EventArgs e)
