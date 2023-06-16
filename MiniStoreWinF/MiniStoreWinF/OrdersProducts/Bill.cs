@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MiniStoreWinF.ManageEmployees
+namespace MiniStoreWinF.OrdersProducts
 {
-    public partial class UpdateRemoveEmployees : Form
+    public partial class Bill : Form
     {
-        public UpdateRemoveEmployees()
+        public Bill()
         {
             InitializeComponent();
         }

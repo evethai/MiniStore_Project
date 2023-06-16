@@ -31,11 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             panel1 = new Panel();
             panel2 = new Panel();
+            txtUserName = new TextBox();
             txtPassword = new TextBox();
             btLogin = new Button();
             panel4 = new Panel();
             panel3 = new Panel();
-            txtUserName = new TextBox();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -60,6 +60,15 @@
             panel2.Size = new Size(476, 249);
             panel2.TabIndex = 1;
             // 
+            // txtUserName
+            // 
+            txtUserName.Location = new Point(144, 31);
+            txtUserName.Multiline = true;
+            txtUserName.Name = "txtUserName";
+            txtUserName.Size = new Size(222, 44);
+            txtUserName.TabIndex = 6;
+            txtUserName.TextAlign = HorizontalAlignment.Center;
+            // 
             // txtPassword
             // 
             txtPassword.Location = new Point(144, 122);
@@ -67,6 +76,7 @@
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(222, 44);
             txtPassword.TabIndex = 5;
+            txtPassword.TextAlign = HorizontalAlignment.Center;
             // 
             // btLogin
             // 
@@ -96,14 +106,6 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(72, 64);
             panel3.TabIndex = 2;
-            // 
-            // txtUserName
-            // 
-            txtUserName.Location = new Point(144, 31);
-            txtUserName.Multiline = true;
-            txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(222, 44);
-            txtUserName.TabIndex = 6;
             // 
             // Login
             // 
