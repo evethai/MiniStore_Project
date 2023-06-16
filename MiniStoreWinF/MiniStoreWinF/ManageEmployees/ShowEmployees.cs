@@ -91,6 +91,13 @@ namespace MiniStoreWinF.ManageEmployees
 
         }
 
+
+
+      
+
+
+
+
         private void dgvEmployee_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -188,7 +195,7 @@ namespace MiniStoreWinF.ManageEmployees
                         employeeService.Password = txtPassword.Text;
                         employeeService.Username = txtUsername.Text;
                         employeeService.Cccd = txtCccd.Text;
-                        //employeeService.PictureEmp = (txtUrl.Text = ImageToBase64(url));
+                      
 
                         if (cbGender.SelectedItem.Equals("Man"))
                         {
