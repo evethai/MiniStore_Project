@@ -19,7 +19,7 @@ namespace Repository.Models
         public double? PriceProduct { get; set; }
         public DateTime? Nxx { get; set; }
         public DateTime? Hsd { get; set; }
-        public bool? StatusP { get; set; }
+        public bool StatusP { get; set; }
         public string PictureProduct { get; set; }
 
         public virtual Catalogy ProductTypeNavigation { get; set; }

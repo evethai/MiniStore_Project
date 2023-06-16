@@ -17,6 +17,7 @@ namespace Repository.Models
         public string Name { get; set; }
         public string Gender { get; set; }
         public DateTime? DoB { get; set; }
+        public DateTime? Time { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
     }
