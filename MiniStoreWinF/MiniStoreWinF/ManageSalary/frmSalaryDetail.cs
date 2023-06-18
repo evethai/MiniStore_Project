@@ -150,5 +150,10 @@ namespace MiniStoreWinF.ManageSalary
                 return;
             }
         }
+
+        private void dgvSalary_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

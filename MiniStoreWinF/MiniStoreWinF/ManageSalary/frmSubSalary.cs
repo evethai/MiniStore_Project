@@ -14,7 +14,7 @@ namespace MiniStoreWinF.ManageSalary
         SubSalaryService _subSalaryService;
         Utinity u = new Utinity();
         CalculationAuto ca = new CalculationAuto();
-        List<SubSalary> _list =null;
+        List<SubSalary> _list = null;
         int pageNumber = 1;
         int numberRecord = 3;
 
@@ -96,9 +96,9 @@ namespace MiniStoreWinF.ManageSalary
             DateTime time = dtpList.Value;
             _subSalaryService = new SubSalaryService();
             var list = _subSalaryService.GetAll().Where(p => p.Time.Value.Month.Equals(time.Month)).ToList();
-            dgvTotalSub.DataSource = LoadRecord(pageNumber,numberRecord,list);
+            dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
 
-            _list=list;
+            _list = list;
         }
 
         private void btTotal_Click(object sender, EventArgs e)
@@ -107,8 +107,8 @@ namespace MiniStoreWinF.ManageSalary
             DateTime time = dtpList.Value;
             string id = cbName.SelectedValue.ToString();
             double total = ca.SubSalary(id, time);
-            txtTotal.Text = total.ToString();  
-            var list = _subSalaryService.GetAll().Where(p=>p.IdEmp.Equals(id) && p.Time.Value.Month.Equals(time.Month)).ToList();
+            txtTotal.Text = total.ToString();
+            var list = _subSalaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.Time.Value.Month.Equals(time.Month)).ToList();
             dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
             _list = list;
 
@@ -125,10 +125,10 @@ namespace MiniStoreWinF.ManageSalary
                 pageNumber = (int)num.Value;
                 dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
             }
-            
+
         }
 
-        List<SubSalary> LoadRecord(int page, int numberRe,List<SubSalary>list)
+        List<SubSalary> LoadRecord(int page, int numberRe, List<SubSalary> list)
         {
             _subSalaryService = new SubSalaryService();
             List<SubSalary> result = new List<SubSalary>();

@@ -17,6 +17,7 @@ using OxyPlot.Axes;
 using OxyPlot.Annotations;
 using System.Globalization;
 using Repository.Models;
+using MiniStoreWinF.ManageSalary;
 
 namespace MiniStoreWinF.DashBoard
 {
@@ -27,6 +28,7 @@ namespace MiniStoreWinF.DashBoard
         CatalogyService _catalogyService;
         MemberService _memberService;
         RevenueService _revenueService;
+        Utinity u = new Utinity();
         public frmDashBoard()
         {
             InitializeComponent();
@@ -37,7 +39,7 @@ namespace MiniStoreWinF.DashBoard
         {
             ChartMember(pbMember);
             ChartProduct(pbProduct);
-            ChartRevenue(pbRevenus);
+            ChartRevenue(pbRevenues);
         }
 
         public void ChartProduct(PictureBox p)
@@ -152,7 +154,7 @@ namespace MiniStoreWinF.DashBoard
 
             {
                 _revenueService = new RevenueService();
-                var listRevenues = _revenueService.GetAll().Where(p => p.DateRevenue > DateTime.Now.AddDays(-7)).ToList();//7 ngày gần nhất
+                var listRevenues = _revenueService.GetAll().OrderByDescending(p => p.DateRevenue).Take(7).ToList();//7 ngày gần nhất 
 
                 // Tạo danh sách dataPoints cho biểu đồ
                 var dataPoints = new List<DataPoint>();
@@ -174,11 +176,11 @@ namespace MiniStoreWinF.DashBoard
                 {
                     double value = dataPoint.Y;
                     string formattedValue = FormatValue(value); // Hàm để định dạng giá trị
-                    string label = $"{formattedValue}M";
+                    string label = $"{formattedValue}";
                     var annotation = new OxyPlot.Annotations.TextAnnotation
                     {
                         Text = label,
-                        TextPosition = new DataPoint(dataPoint.X , dataPoint.Y+300),
+                        TextPosition = new DataPoint(dataPoint.X, dataPoint.Y + 300),
                         StrokeThickness = 0
                     };
                     plotModel.Annotations.Add(annotation);
@@ -234,15 +236,26 @@ namespace MiniStoreWinF.DashBoard
 
         string FormatValue(double value)
         {
-            if (value >= 1000000)
+            if (value < 1000000)
             {
-                double formattedValue = value / 1000000;
-                return $"{formattedValue:#,#.##}";
+
+                return value.ToString("#,#");
             }
             else
             {
-                return value.ToString("#,#");
+                double formattedValue = value / 1000000;
+                return formattedValue.ToString("#,#.##" + "M");
             }
+        }
+
+        private void btSalary_Paint(object sender, PaintEventArgs e)
+        {
+            u.openChildForm(new frmSalary(), pMain);
+        }
+
+        private void btSalary_Click(object sender, EventArgs e)
+        {
+            u.openChildForm(new frmSalary(), pMain);
         }
     }
 }

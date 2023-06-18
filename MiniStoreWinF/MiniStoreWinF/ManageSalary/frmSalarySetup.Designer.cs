@@ -220,18 +220,18 @@
             label6.AutoSize = true;
             label6.Location = new Point(12, 78);
             label6.Name = "label6";
-            label6.Size = new Size(111, 17);
+            label6.Size = new Size(92, 17);
             label6.TabIndex = 0;
-            label6.Text = "Tax for Guard (%)";
+            label6.Text = "Tax for Guard ";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Location = new Point(12, 29);
             label5.Name = "label5";
-            label5.Size = new Size(132, 17);
+            label5.Size = new Size(113, 17);
             label5.TabIndex = 0;
-            label5.Text = "Tax for Employee (%)";
+            label5.Text = "Tax for Employee ";
             // 
             // frmSalarySetup
             // 

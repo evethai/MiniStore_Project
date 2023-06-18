@@ -30,6 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             groupBox1 = new GroupBox();
+            nmPaging = new NumericUpDown();
             dgvTotalSub = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             idEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -51,14 +52,13 @@
             conditionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             detailSubSalaryBindingSource = new BindingSource(components);
             btAdd = new Button();
-            nmPaging = new NumericUpDown();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nmPaging).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvTotalSub).BeginInit();
             ((System.ComponentModel.ISupportInitialize)subSalaryBindingSource).BeginInit();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSub).BeginInit();
             ((System.ComponentModel.ISupportInitialize)detailSubSalaryBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nmPaging).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -73,10 +73,20 @@
             groupBox1.Dock = DockStyle.Top;
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(811, 281);
+            groupBox1.Size = new Size(1034, 281);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Information about employees salary allowance";
+            // 
+            // nmPaging
+            // 
+            nmPaging.Location = new Point(359, 217);
+            nmPaging.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            nmPaging.Name = "nmPaging";
+            nmPaging.Size = new Size(91, 25);
+            nmPaging.TabIndex = 14;
+            nmPaging.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            nmPaging.ValueChanged += nmPaging_ValueChanged;
             // 
             // dgvTotalSub
             // 
@@ -175,7 +185,7 @@
             groupBox2.Dock = DockStyle.Top;
             groupBox2.Location = new Point(0, 281);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(811, 236);
+            groupBox2.Size = new Size(1034, 236);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Information salary allowance";
@@ -250,21 +260,11 @@
             btAdd.UseVisualStyleBackColor = true;
             btAdd.Click += btAdd_Click;
             // 
-            // nmPaging
-            // 
-            nmPaging.Location = new Point(359, 217);
-            nmPaging.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            nmPaging.Name = "nmPaging";
-            nmPaging.Size = new Size(91, 25);
-            nmPaging.TabIndex = 14;
-            nmPaging.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            nmPaging.ValueChanged += nmPaging_ValueChanged;
-            // 
             // frmSubSalary
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(811, 525);
+            ClientSize = new Size(1034, 525);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "frmSubSalary";
@@ -272,13 +272,13 @@
             Load += frmSubSalary_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nmPaging).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvTotalSub).EndInit();
             ((System.ComponentModel.ISupportInitialize)subSalaryBindingSource).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSub).EndInit();
             ((System.ComponentModel.ISupportInitialize)detailSubSalaryBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nmPaging).EndInit();
             ResumeLayout(false);
         }
 
