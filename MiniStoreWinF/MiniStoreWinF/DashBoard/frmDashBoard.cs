@@ -90,7 +90,7 @@ namespace MiniStoreWinF.DashBoard
 
             var series = new BarSeries();
             var listMember = _memberService.GetAll().ToList();//2 tháng gần nhất 
-            var lastCount = listMember.Count(p => p.Time.Value.Month < (DateTime.Now.Month));//số lượng memeber 1 tháng trước
+            var lastCount = listMember.Count(p => p.TimeCreate.Value.Month < (DateTime.Now.Month));//số lượng memeber 1 tháng trước
             var currentCount = listMember.Count();//số lượng member ở hiện tại 
 
             //trục hoành
@@ -136,13 +136,13 @@ namespace MiniStoreWinF.DashBoard
         public void ChartRevenue(PictureBox p)
         {
             _revenueService = new RevenueService();
-            var listRevenues = _revenueService.GetAll().Where(p => p.DateOrders > DateTime.Now.AddDays(-7)).ToList();//7 ngày gần nhất
+            var listRevenues = _revenueService.GetAll().Where(p => p.DateRevenue > DateTime.Now.AddDays(-7)).ToList();//7 ngày gần nhất
 
             // Tạo danh sách dataPoints cho biểu đồ
             var dataPoints = new List<DataPoint>();
             foreach (var revenue in listRevenues)
             {
-                var dataPoint = new DataPoint(revenue.DateOrders.Date.Day, (double)revenue.TotalRevenueOfDay);
+                var dataPoint = new DataPoint(revenue.DateRevenue.Date.Day, (double)revenue.TotalRevenueOfDay);
                 dataPoints.Add(dataPoint);
             }
             // Tạo đối tượng LineSeries
