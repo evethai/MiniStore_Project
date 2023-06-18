@@ -1,4 +1,5 @@
 using MiniStoreWinF.DashBoard;
+using MiniStoreWinF.Manage_Voucher;
 using MiniStoreWinF.ManageEmployees;
 using MiniStoreWinF.ManageProducts;
 using MiniStoreWinF.ManageSalary;
@@ -17,8 +18,6 @@ namespace MiniStoreWinF
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new frmMain());
-
-
         }
     }
 }
