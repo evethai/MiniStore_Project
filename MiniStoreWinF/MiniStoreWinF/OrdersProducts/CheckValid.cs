@@ -33,11 +33,11 @@ namespace MiniStoreWinF.OrdersProducts
         public void AddBill(BillOrder id) {
             var lastRecord = _bill.OrderByDescending(record => record.IdBill).FirstOrDefault();
             if (lastRecord != null) {
-            id.IdBill =autoId(lastRecord.IdBill);
+            id.IdBillOrder =autoId(lastRecord.IdBill);
             }
             else
             {
-                id.IdBill=autoId("Bi0001");
+                id.IdBillOrder=autoId("Bi0001");
             }
             _bill.Add(id);
             _context.SaveChanges();         

@@ -9,12 +9,12 @@ namespace Repository.Models
     {
         public Revenue()
         {
-            Orders = new HashSet<Order>();
+            BillOrders = new HashSet<BillOrder>();
         }
 
-        public DateTime DateOrders { get; set; }
+        public DateTime DateRevenue { get; set; }
         public double? TotalRevenueOfDay { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<BillOrder> BillOrders { get; set; }
     }
 }

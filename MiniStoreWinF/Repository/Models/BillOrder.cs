@@ -12,9 +12,11 @@ namespace Repository.Models
             Orders = new HashSet<Order>();
         }
 
-        public string IdBill { get; set; }
-        public double? Total { get; set; }
+        public string IdBillOrder { get; set; }
+        public double? TotalBill { get; set; }
+        public DateTime? DateOfBill { get; set; }
 
+        public virtual Revenue DateOfBillNavigation { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
     }
 }
