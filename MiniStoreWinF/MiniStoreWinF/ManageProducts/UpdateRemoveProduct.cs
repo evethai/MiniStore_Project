@@ -33,8 +33,8 @@ namespace MiniStoreWinF.ManageProducts
                 p.NameProduct,
                 p.QuantityProduct,
                 p.PriceProduct,
-                p.Nxx,
-                p.Hsd,
+                p.Mfg,
+                p.Exp,
                 p.StatusP,
                 Image = Base64ToImage(p.PictureProduct)
 
