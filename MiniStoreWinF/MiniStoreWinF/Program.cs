@@ -18,6 +18,7 @@ namespace MiniStoreWinF
             ApplicationConfiguration.Initialize();
             Application.Run(new frmCreateEmployees());
 
+
         }
     }
 }
