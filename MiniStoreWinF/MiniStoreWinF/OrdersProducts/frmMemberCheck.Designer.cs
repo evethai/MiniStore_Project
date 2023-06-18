@@ -1,6 +1,6 @@
 ﻿namespace MiniStoreWinF.OrdersProducts
 {
-    partial class MemberCheck
+    partial class frmMemberCheck
     {
         /// <summary>
         /// Required designer variable.
@@ -29,9 +29,15 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MemberCheck));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMemberCheck));
             pnlCheckMember = new Panel();
             dgvListMember = new DataGridView();
+            phoneMemberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            pointDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            genderDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            doBDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            memberBindingSource = new BindingSource(components);
             btCloseMemberCheck = new Button();
             btCreateMember = new Button();
             lbPhoneMember = new Label();
@@ -47,16 +53,10 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
-            memberBindingSource = new BindingSource(components);
-            phoneMemberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            pointDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            genderDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            doBDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             pnlCheckMember.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvListMember).BeginInit();
-            pnlCreateMember.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)memberBindingSource).BeginInit();
+            pnlCreateMember.SuspendLayout();
             SuspendLayout();
             // 
             // pnlCheckMember
@@ -87,6 +87,50 @@
             dgvListMember.TabIndex = 6;
             dgvListMember.Visible = false;
             // 
+            // phoneMemberDataGridViewTextBoxColumn
+            // 
+            phoneMemberDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            phoneMemberDataGridViewTextBoxColumn.DataPropertyName = "PhoneMember";
+            phoneMemberDataGridViewTextBoxColumn.HeaderText = "PhoneMember";
+            phoneMemberDataGridViewTextBoxColumn.MinimumWidth = 6;
+            phoneMemberDataGridViewTextBoxColumn.Name = "phoneMemberDataGridViewTextBoxColumn";
+            // 
+            // pointDataGridViewTextBoxColumn
+            // 
+            pointDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            pointDataGridViewTextBoxColumn.DataPropertyName = "Point";
+            pointDataGridViewTextBoxColumn.HeaderText = "Point";
+            pointDataGridViewTextBoxColumn.MinimumWidth = 6;
+            pointDataGridViewTextBoxColumn.Name = "pointDataGridViewTextBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            nameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            nameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // genderDataGridViewTextBoxColumn
+            // 
+            genderDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            genderDataGridViewTextBoxColumn.DataPropertyName = "Gender";
+            genderDataGridViewTextBoxColumn.HeaderText = "Gender";
+            genderDataGridViewTextBoxColumn.MinimumWidth = 6;
+            genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
+            // 
+            // doBDataGridViewTextBoxColumn
+            // 
+            doBDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            doBDataGridViewTextBoxColumn.DataPropertyName = "DoB";
+            doBDataGridViewTextBoxColumn.HeaderText = "DoB";
+            doBDataGridViewTextBoxColumn.MinimumWidth = 6;
+            doBDataGridViewTextBoxColumn.Name = "doBDataGridViewTextBoxColumn";
+            // 
+            // memberBindingSource
+            // 
+            memberBindingSource.DataSource = typeof(Repository.Models.Member);
+            // 
             // btCloseMemberCheck
             // 
             btCloseMemberCheck.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -105,7 +149,7 @@
             btCreateMember.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btCreateMember.Image = (Image)resources.GetObject("btCreateMember.Image");
             btCreateMember.ImageAlign = ContentAlignment.TopCenter;
-            btCreateMember.Location = new Point(475, 31);
+            btCreateMember.Location = new Point(479, 31);
             btCreateMember.Name = "btCreateMember";
             btCreateMember.Size = new Size(98, 76);
             btCreateMember.TabIndex = 3;
@@ -247,65 +291,21 @@
             label2.Text = "Name: ";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // memberBindingSource
-            // 
-            memberBindingSource.DataSource = typeof(Repository.Models.Member);
-            // 
-            // phoneMemberDataGridViewTextBoxColumn
-            // 
-            phoneMemberDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            phoneMemberDataGridViewTextBoxColumn.DataPropertyName = "PhoneMember";
-            phoneMemberDataGridViewTextBoxColumn.HeaderText = "PhoneMember";
-            phoneMemberDataGridViewTextBoxColumn.MinimumWidth = 6;
-            phoneMemberDataGridViewTextBoxColumn.Name = "phoneMemberDataGridViewTextBoxColumn";
-            // 
-            // pointDataGridViewTextBoxColumn
-            // 
-            pointDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            pointDataGridViewTextBoxColumn.DataPropertyName = "Point";
-            pointDataGridViewTextBoxColumn.HeaderText = "Point";
-            pointDataGridViewTextBoxColumn.MinimumWidth = 6;
-            pointDataGridViewTextBoxColumn.Name = "pointDataGridViewTextBoxColumn";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            nameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            nameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // genderDataGridViewTextBoxColumn
-            // 
-            genderDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            genderDataGridViewTextBoxColumn.DataPropertyName = "Gender";
-            genderDataGridViewTextBoxColumn.HeaderText = "Gender";
-            genderDataGridViewTextBoxColumn.MinimumWidth = 6;
-            genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
-            // 
-            // doBDataGridViewTextBoxColumn
-            // 
-            doBDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            doBDataGridViewTextBoxColumn.DataPropertyName = "DoB";
-            doBDataGridViewTextBoxColumn.HeaderText = "DoB";
-            doBDataGridViewTextBoxColumn.MinimumWidth = 6;
-            doBDataGridViewTextBoxColumn.Name = "doBDataGridViewTextBoxColumn";
-            // 
-            // MemberCheckcs
+            // frmMemberCheck
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(705, 462);
             Controls.Add(pnlCreateMember);
             Controls.Add(pnlCheckMember);
-            Name = "MemberCheckcs";
-            Text = "MemberCheckcs";
+            Name = "frmMemberCheck";
+            Text = "Member Check";
             pnlCheckMember.ResumeLayout(false);
             pnlCheckMember.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvListMember).EndInit();
+            ((System.ComponentModel.ISupportInitialize)memberBindingSource).EndInit();
             pnlCreateMember.ResumeLayout(false);
             pnlCreateMember.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)memberBindingSource).EndInit();
             ResumeLayout(false);
         }
 

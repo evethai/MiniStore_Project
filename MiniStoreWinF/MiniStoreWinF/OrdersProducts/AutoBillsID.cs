@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace MiniStoreWinF.OrdersProducts
 {
-    public class CheckValid : ServiceMiniStore<BillOrder>
+    public class AutoBillsID : ServiceMiniStore<BillOrder>
     {
         MiniStoreContext _context;
         DbSet<BillOrder> _bill;
-        public CheckValid()
+        public AutoBillsID()
         {
             _context = new MiniStoreContext();
             _bill = _context.Set<BillOrder>();
@@ -31,13 +31,13 @@ namespace MiniStoreWinF.OrdersProducts
             return result;
         }
         public void AddBill(BillOrder id) {
-            var lastRecord = _bill.OrderByDescending(record => record.IdBill).FirstOrDefault();
+            var lastRecord = _bill.OrderByDescending(record => record.IdBillOrder).FirstOrDefault();
             if (lastRecord != null) {
-            id.IdBill =autoId(lastRecord.IdBill);
+            id.IdBillOrder =autoId(lastRecord.IdBillOrder);
             }
             else
             {
-                id.IdBill=autoId("Bi0001");
+                id.IdBillOrder=autoId("Bi0001");
             }
             _bill.Add(id);
             _context.SaveChanges();         

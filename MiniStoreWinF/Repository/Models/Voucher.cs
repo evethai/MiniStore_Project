@@ -12,7 +12,7 @@ namespace Repository.Models
             Orders = new HashSet<Order>();
         }
 
-        public int IdVoucher { get; set; }
+        public string IdVoucher { get; set; }
         public string Name { get; set; }
         public string Type { get; set; }
         public double? Price { get; set; }

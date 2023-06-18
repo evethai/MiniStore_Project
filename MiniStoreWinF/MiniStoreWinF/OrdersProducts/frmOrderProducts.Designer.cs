@@ -30,14 +30,12 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderProducts));
-            panel3 = new Panel();
             dgvShowListProducts = new DataGridView();
             skuDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nameProductDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            quantityProductDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             priceProductDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            nxxDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            hsdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            mfgDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            expDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             productBindingSource = new BindingSource(components);
             panel4 = new Panel();
             label3 = new Label();
@@ -48,23 +46,22 @@
             panel2 = new Panel();
             panel8 = new Panel();
             panel1 = new Panel();
-            panel5 = new Panel();
-            btUsingVoucher = new Button();
-            label8 = new Label();
-            cbPointUsing = new ComboBox();
-            cbVourcherOrder = new ComboBox();
-            label7 = new Label();
-            label6 = new Label();
-            txtTotalAllOrders = new TextBox();
-            btCheckMember = new Button();
-            btShowBill = new Button();
-            panel7 = new Panel();
             listViewOrders = new ListView();
             clmSKU = new ColumnHeader();
             clmName = new ColumnHeader();
             clmQuantity = new ColumnHeader();
             clmPrice = new ColumnHeader();
             clmTotal = new ColumnHeader();
+            panel5 = new Panel();
+            btUsingVoucher = new Button();
+            btCheckMember = new Button();
+            label8 = new Label();
+            btShowBill = new Button();
+            cbPointUsing = new ComboBox();
+            cbVourcherOrder = new ComboBox();
+            label7 = new Label();
+            label6 = new Label();
+            txtTotalAllOrders = new TextBox();
             panel6 = new Panel();
             label9 = new Label();
             panel10 = new Panel();
@@ -80,8 +77,6 @@
             txtEmployee = new ToolStripTextBox();
             Information = new ToolStripMenuItem();
             checkOutToolStripMenuItem = new ToolStripMenuItem();
-            panel9 = new Panel();
-            panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvShowListProducts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productBindingSource).BeginInit();
             panel4.SuspendLayout();
@@ -89,34 +84,24 @@
             panel8.SuspendLayout();
             panel1.SuspendLayout();
             panel5.SuspendLayout();
-            panel7.SuspendLayout();
             panel6.SuspendLayout();
             panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pcPictureOrders).BeginInit();
             ((System.ComponentModel.ISupportInitialize)txtQuantityOrder).BeginInit();
             menuStrip1.SuspendLayout();
-            panel9.SuspendLayout();
             SuspendLayout();
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(dgvShowListProducts);
-            panel3.Location = new Point(0, 115);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(662, 500);
-            panel3.TabIndex = 3;
             // 
             // dgvShowListProducts
             // 
             dgvShowListProducts.AutoGenerateColumns = false;
             dgvShowListProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvShowListProducts.Columns.AddRange(new DataGridViewColumn[] { skuDataGridViewTextBoxColumn, nameProductDataGridViewTextBoxColumn, quantityProductDataGridViewTextBoxColumn, priceProductDataGridViewTextBoxColumn, nxxDataGridViewTextBoxColumn, hsdDataGridViewTextBoxColumn });
+            dgvShowListProducts.Columns.AddRange(new DataGridViewColumn[] { skuDataGridViewTextBoxColumn, nameProductDataGridViewTextBoxColumn, priceProductDataGridViewTextBoxColumn, mfgDataGridViewTextBoxColumn, expDataGridViewTextBoxColumn });
             dgvShowListProducts.DataSource = productBindingSource;
-            dgvShowListProducts.Location = new Point(0, 0);
+            dgvShowListProducts.Location = new Point(7, 85);
             dgvShowListProducts.Name = "dgvShowListProducts";
             dgvShowListProducts.RowHeadersWidth = 51;
             dgvShowListProducts.RowTemplate.Height = 29;
-            dgvShowListProducts.Size = new Size(662, 454);
+            dgvShowListProducts.Size = new Size(655, 513);
             dgvShowListProducts.TabIndex = 2;
             dgvShowListProducts.CellDoubleClick += dgvShowListProducts_CellDoubleClick;
             // 
@@ -136,14 +121,6 @@
             nameProductDataGridViewTextBoxColumn.MinimumWidth = 6;
             nameProductDataGridViewTextBoxColumn.Name = "nameProductDataGridViewTextBoxColumn";
             // 
-            // quantityProductDataGridViewTextBoxColumn
-            // 
-            quantityProductDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            quantityProductDataGridViewTextBoxColumn.DataPropertyName = "QuantityProduct";
-            quantityProductDataGridViewTextBoxColumn.HeaderText = "Quantity";
-            quantityProductDataGridViewTextBoxColumn.MinimumWidth = 6;
-            quantityProductDataGridViewTextBoxColumn.Name = "quantityProductDataGridViewTextBoxColumn";
-            // 
             // priceProductDataGridViewTextBoxColumn
             // 
             priceProductDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -152,21 +129,21 @@
             priceProductDataGridViewTextBoxColumn.MinimumWidth = 6;
             priceProductDataGridViewTextBoxColumn.Name = "priceProductDataGridViewTextBoxColumn";
             // 
-            // nxxDataGridViewTextBoxColumn
+            // mfgDataGridViewTextBoxColumn
             // 
-            nxxDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            nxxDataGridViewTextBoxColumn.DataPropertyName = "Nxx";
-            nxxDataGridViewTextBoxColumn.HeaderText = "MFG";
-            nxxDataGridViewTextBoxColumn.MinimumWidth = 6;
-            nxxDataGridViewTextBoxColumn.Name = "nxxDataGridViewTextBoxColumn";
+            mfgDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            mfgDataGridViewTextBoxColumn.DataPropertyName = "Mfg";
+            mfgDataGridViewTextBoxColumn.HeaderText = "MFG";
+            mfgDataGridViewTextBoxColumn.MinimumWidth = 6;
+            mfgDataGridViewTextBoxColumn.Name = "mfgDataGridViewTextBoxColumn";
             // 
-            // hsdDataGridViewTextBoxColumn
+            // expDataGridViewTextBoxColumn
             // 
-            hsdDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            hsdDataGridViewTextBoxColumn.DataPropertyName = "Hsd";
-            hsdDataGridViewTextBoxColumn.HeaderText = "EXP";
-            hsdDataGridViewTextBoxColumn.MinimumWidth = 6;
-            hsdDataGridViewTextBoxColumn.Name = "hsdDataGridViewTextBoxColumn";
+            expDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            expDataGridViewTextBoxColumn.DataPropertyName = "Exp";
+            expDataGridViewTextBoxColumn.HeaderText = "EXP";
+            expDataGridViewTextBoxColumn.MinimumWidth = 6;
+            expDataGridViewTextBoxColumn.Name = "expDataGridViewTextBoxColumn";
             // 
             // productBindingSource
             // 
@@ -177,10 +154,9 @@
             panel4.Controls.Add(label3);
             panel4.Controls.Add(btSearch);
             panel4.Controls.Add(txtSearchName);
-            panel4.Dock = DockStyle.Left;
             panel4.Location = new Point(0, 0);
             panel4.Name = "panel4";
-            panel4.Size = new Size(346, 541);
+            panel4.Size = new Size(346, 82);
             panel4.TabIndex = 3;
             // 
             // label3
@@ -228,7 +204,7 @@
             // 
             cbTypeProducts.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cbTypeProducts.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            cbTypeProducts.Location = new Point(95, 30);
+            cbTypeProducts.Location = new Point(70, 29);
             cbTypeProducts.Name = "cbTypeProducts";
             cbTypeProducts.Size = new Size(171, 28);
             cbTypeProducts.TabIndex = 11;
@@ -236,47 +212,83 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(dgvShowListProducts);
             panel2.Controls.Add(panel8);
             panel2.Controls.Add(panel4);
-            panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(0, 31);
             panel2.Name = "panel2";
-            panel2.Size = new Size(662, 541);
+            panel2.Size = new Size(662, 604);
             panel2.TabIndex = 2;
             // 
             // panel8
             // 
             panel8.Controls.Add(cbTypeProducts);
             panel8.Controls.Add(label1);
-            panel8.Dock = DockStyle.Top;
             panel8.Location = new Point(346, 0);
             panel8.Name = "panel8";
-            panel8.Size = new Size(316, 93);
+            panel8.Size = new Size(316, 82);
             panel8.TabIndex = 13;
             // 
             // panel1
             // 
-            panel1.Controls.Add(panel5);
-            panel1.Controls.Add(btCheckMember);
-            panel1.Controls.Add(btShowBill);
+            panel1.Controls.Add(listViewOrders);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(1113, 31);
+            panel1.Location = new Point(1110, 31);
             panel1.Name = "panel1";
-            panel1.Size = new Size(397, 541);
+            panel1.Size = new Size(502, 589);
             panel1.TabIndex = 1;
+            // 
+            // listViewOrders
+            // 
+            listViewOrders.Columns.AddRange(new ColumnHeader[] { clmSKU, clmName, clmQuantity, clmPrice, clmTotal });
+            listViewOrders.FullRowSelect = true;
+            listViewOrders.GridLines = true;
+            listViewOrders.Location = new Point(3, 3);
+            listViewOrders.Name = "listViewOrders";
+            listViewOrders.Size = new Size(499, 593);
+            listViewOrders.TabIndex = 9;
+            listViewOrders.UseCompatibleStateImageBehavior = false;
+            listViewOrders.View = View.Details;
+            listViewOrders.MouseDoubleClick += listViewOrders_MouseDoubleClick;
+            // 
+            // clmSKU
+            // 
+            clmSKU.Text = "SKU";
+            // 
+            // clmName
+            // 
+            clmName.Text = "Name";
+            clmName.Width = 110;
+            // 
+            // clmQuantity
+            // 
+            clmQuantity.Text = "Quantity";
+            clmQuantity.Width = 110;
+            // 
+            // clmPrice
+            // 
+            clmPrice.Text = "Price";
+            clmPrice.Width = 110;
+            // 
+            // clmTotal
+            // 
+            clmTotal.Text = "Total";
+            clmTotal.Width = 110;
             // 
             // panel5
             // 
             panel5.Controls.Add(btUsingVoucher);
+            panel5.Controls.Add(btCheckMember);
             panel5.Controls.Add(label8);
+            panel5.Controls.Add(btShowBill);
             panel5.Controls.Add(cbPointUsing);
             panel5.Controls.Add(cbVourcherOrder);
             panel5.Controls.Add(label7);
             panel5.Controls.Add(label6);
             panel5.Controls.Add(txtTotalAllOrders);
-            panel5.Location = new Point(3, 3);
+            panel5.Location = new Point(664, 368);
             panel5.Name = "panel5";
-            panel5.Size = new Size(382, 196);
+            panel5.Size = new Size(445, 261);
             panel5.TabIndex = 16;
             // 
             // btUsingVoucher
@@ -289,6 +301,20 @@
             btUsingVoucher.UseVisualStyleBackColor = true;
             btUsingVoucher.Click += btUsingVoucher_Click;
             // 
+            // btCheckMember
+            // 
+            btCheckMember.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btCheckMember.Image = (Image)resources.GetObject("btCheckMember.Image");
+            btCheckMember.ImageAlign = ContentAlignment.TopCenter;
+            btCheckMember.Location = new Point(152, 164);
+            btCheckMember.Name = "btCheckMember";
+            btCheckMember.Size = new Size(98, 69);
+            btCheckMember.TabIndex = 6;
+            btCheckMember.Text = "Member";
+            btCheckMember.TextAlign = ContentAlignment.BottomCenter;
+            btCheckMember.UseVisualStyleBackColor = true;
+            btCheckMember.Click += btCheckMember_Click;
+            // 
             // label8
             // 
             label8.AutoSize = true;
@@ -298,6 +324,20 @@
             label8.Size = new Size(52, 20);
             label8.TabIndex = 18;
             label8.Text = "Point :";
+            // 
+            // btShowBill
+            // 
+            btShowBill.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btShowBill.Image = (Image)resources.GetObject("btShowBill.Image");
+            btShowBill.ImageAlign = ContentAlignment.TopCenter;
+            btShowBill.Location = new Point(21, 164);
+            btShowBill.Name = "btShowBill";
+            btShowBill.Size = new Size(98, 69);
+            btShowBill.TabIndex = 11;
+            btShowBill.Text = "Bill";
+            btShowBill.TextAlign = ContentAlignment.BottomCenter;
+            btShowBill.UseVisualStyleBackColor = true;
+            btShowBill.Click += btShowBill_Click;
             // 
             // cbPointUsing
             // 
@@ -347,81 +387,6 @@
             txtTotalAllOrders.Size = new Size(187, 27);
             txtTotalAllOrders.TabIndex = 14;
             // 
-            // btCheckMember
-            // 
-            btCheckMember.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btCheckMember.Image = (Image)resources.GetObject("btCheckMember.Image");
-            btCheckMember.ImageAlign = ContentAlignment.TopCenter;
-            btCheckMember.Location = new Point(273, 205);
-            btCheckMember.Name = "btCheckMember";
-            btCheckMember.Size = new Size(98, 69);
-            btCheckMember.TabIndex = 6;
-            btCheckMember.Text = "Member";
-            btCheckMember.TextAlign = ContentAlignment.BottomCenter;
-            btCheckMember.UseVisualStyleBackColor = true;
-            btCheckMember.Click += btCheckMember_Click;
-            // 
-            // btShowBill
-            // 
-            btShowBill.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btShowBill.Image = (Image)resources.GetObject("btShowBill.Image");
-            btShowBill.ImageAlign = ContentAlignment.TopCenter;
-            btShowBill.Location = new Point(23, 205);
-            btShowBill.Name = "btShowBill";
-            btShowBill.Size = new Size(98, 69);
-            btShowBill.TabIndex = 11;
-            btShowBill.Text = "Bill";
-            btShowBill.TextAlign = ContentAlignment.BottomCenter;
-            btShowBill.UseVisualStyleBackColor = true;
-            btShowBill.Click += btShowBill_Click;
-            // 
-            // panel7
-            // 
-            panel7.Controls.Add(listViewOrders);
-            panel7.Dock = DockStyle.Bottom;
-            panel7.Location = new Point(0, 288);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(445, 253);
-            panel7.TabIndex = 18;
-            // 
-            // listViewOrders
-            // 
-            listViewOrders.Columns.AddRange(new ColumnHeader[] { clmSKU, clmName, clmQuantity, clmPrice, clmTotal });
-            listViewOrders.Dock = DockStyle.Bottom;
-            listViewOrders.FullRowSelect = true;
-            listViewOrders.GridLines = true;
-            listViewOrders.Location = new Point(0, 51);
-            listViewOrders.Name = "listViewOrders";
-            listViewOrders.Size = new Size(445, 202);
-            listViewOrders.TabIndex = 9;
-            listViewOrders.UseCompatibleStateImageBehavior = false;
-            listViewOrders.View = View.Details;
-            listViewOrders.MouseDoubleClick += listViewOrders_MouseDoubleClick;
-            // 
-            // clmSKU
-            // 
-            clmSKU.Text = "SKU";
-            // 
-            // clmName
-            // 
-            clmName.Text = "Name";
-            clmName.Width = 110;
-            // 
-            // clmQuantity
-            // 
-            clmQuantity.Text = "Quantity";
-            clmQuantity.Width = 110;
-            // 
-            // clmPrice
-            // 
-            clmPrice.Text = "Price";
-            clmPrice.Width = 110;
-            // 
-            // clmTotal
-            // 
-            clmTotal.Text = "Total";
-            clmTotal.Width = 110;
-            // 
             // panel6
             // 
             panel6.Controls.Add(label9);
@@ -433,10 +398,9 @@
             panel6.Controls.Add(txtPriceOrder);
             panel6.Controls.Add(label4);
             panel6.Controls.Add(label5);
-            panel6.Dock = DockStyle.Top;
-            panel6.Location = new Point(0, 0);
+            panel6.Location = new Point(664, 31);
             panel6.Name = "panel6";
-            panel6.Size = new Size(445, 333);
+            panel6.Size = new Size(445, 334);
             panel6.TabIndex = 17;
             // 
             // label9
@@ -539,7 +503,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { txtEmployee, Information });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1510, 31);
+            menuStrip1.Size = new Size(1612, 31);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -564,24 +528,15 @@
             checkOutToolStripMenuItem.Name = "checkOutToolStripMenuItem";
             checkOutToolStripMenuItem.Size = new Size(161, 26);
             checkOutToolStripMenuItem.Text = "Check-Out";
-            // 
-            // panel9
-            // 
-            panel9.Controls.Add(panel6);
-            panel9.Controls.Add(panel7);
-            panel9.Dock = DockStyle.Left;
-            panel9.Location = new Point(662, 31);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(445, 541);
-            panel9.TabIndex = 4;
+            checkOutToolStripMenuItem.Click += checkOutToolStripMenuItem_Click;
             // 
             // OrderProducts
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1510, 572);
-            Controls.Add(panel9);
-            Controls.Add(panel3);
+            ClientSize = new Size(1612, 620);
+            Controls.Add(panel6);
+            Controls.Add(panel5);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(menuStrip1);
@@ -589,7 +544,6 @@
             Name = "OrderProducts";
             Text = "OrderProducts";
             Load += OrderProducts_Load;
-            panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvShowListProducts).EndInit();
             ((System.ComponentModel.ISupportInitialize)productBindingSource).EndInit();
             panel4.ResumeLayout(false);
@@ -600,7 +554,6 @@
             panel1.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
-            panel7.ResumeLayout(false);
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panel10.ResumeLayout(false);
@@ -608,13 +561,11 @@
             ((System.ComponentModel.ISupportInitialize)txtQuantityOrder).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            panel9.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Panel panel3;
         private DataGridView dgvShowListProducts;
         private Panel panel4;
         private Label label3;
@@ -644,26 +595,25 @@
         private TextBox txtNameOrder;
         private NumericUpDown txtQuantityOrder;
         private TextBox txtPriceOrder;
-        private BindingSource productBindingSource;
-        private Panel panel7;
         private Panel panel6;
         private Label label8;
         private ComboBox cbPointUsing;
-        private DataGridViewTextBoxColumn skuDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nameProductDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn quantityProductDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn priceProductDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nxxDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn hsdDataGridViewTextBoxColumn;
         private Panel panel8;
         private Label label9;
         private Panel panel10;
-        private Panel panel9;
         private PictureBox pcPictureOrders;
         private ToolStripTextBox txtEmployee;
         private ToolStripMenuItem Information;
         private ToolStripMenuItem checkOutToolStripMenuItem;
         private ColumnHeader clmSKU;
         private Button btUsingVoucher;
+        private BindingSource productBindingSource;
+        private DataGridViewTextBoxColumn skuDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nameProductDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn priceProductDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn mfgDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn expDataGridViewTextBoxColumn;
     }
 }

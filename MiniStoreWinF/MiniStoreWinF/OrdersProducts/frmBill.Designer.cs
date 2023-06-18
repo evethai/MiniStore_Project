@@ -1,6 +1,6 @@
 ﻿namespace MiniStoreWinF.OrdersProducts
 {
-    partial class Bill
+    partial class frmBill
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Bill));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBill));
             Logo = new Panel();
             panel1 = new Panel();
             btLogo = new Button();
+            button1 = new Button();
             Logo.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -42,7 +43,7 @@
             Logo.Dock = DockStyle.Top;
             Logo.Location = new Point(0, 0);
             Logo.Name = "Logo";
-            Logo.Size = new Size(494, 125);
+            Logo.Size = new Size(479, 125);
             Logo.TabIndex = 0;
             // 
             // panel1
@@ -65,14 +66,26 @@
             btLogo.TabIndex = 0;
             btLogo.UseVisualStyleBackColor = false;
             // 
-            // Bill
+            // button1
+            // 
+            button1.Location = new Point(182, 641);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 1;
+            button1.Text = "Lose";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // frmBill
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(494, 682);
+            ClientSize = new Size(479, 682);
+            Controls.Add(button1);
             Controls.Add(Logo);
-            Name = "Bill";
+            Name = "frmBill";
             Text = "Bill";
+            FormClosed += frmBill_FormClosed;
             Logo.ResumeLayout(false);
             panel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -83,5 +96,6 @@
         private Panel Logo;
         private Panel panel1;
         private Button btLogo;
+        private Button button1;
     }
 }
