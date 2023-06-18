@@ -3,6 +3,7 @@ using Repository.Models;
 using Repository.Service;
 using System;
 using System.Collections.Generic;
+using System.DirectoryServices.ActiveDirectory;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -93,5 +94,21 @@ namespace MiniStoreWinF.ManageSalary
             return lastDayOfMonth;
         }
 
+        public Form currentFormChild;
+        public void openChildForm(Form childForm,Panel p)
+        {
+            if (currentFormChild != null)
+            {
+                currentFormChild.Close();
+            }
+            currentFormChild = childForm;
+            childForm.TopLevel = false;//đặt thuộc tính cho form con không được hiển thị độc lập
+            childForm.FormBorderStyle = FormBorderStyle.None;//tắt đường viền tắt các nút thu nhỏ mở rộng hay đóng form con
+            childForm.Dock = DockStyle.Fill;//form con lấp đầy panel body
+            p.Controls.Add(childForm);//thêm form con vào panel body
+            p.Tag = childForm;//gán form con cho thuộc tính tag của panel để lưu trử thông tin form con
+            childForm.BringToFront();//ĐƯA form con ra trước trong các điều khiển panel
+            childForm.Show();//hiện thị nó 
+        }
     }
 }

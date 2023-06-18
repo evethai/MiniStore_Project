@@ -50,9 +50,9 @@
             label6.AutoSize = true;
             label6.Location = new Point(13, 59);
             label6.Name = "label6";
-            label6.Size = new Size(141, 17);
+            label6.Size = new Size(122, 17);
             label6.TabIndex = 3;
-            label6.Text = "New Tax for Guard (%)";
+            label6.Text = "New Tax for Guard ";
             // 
             // txtNewGuard
             // 
@@ -75,9 +75,9 @@
             label5.AutoSize = true;
             label5.Location = new Point(13, 19);
             label5.Name = "label5";
-            label5.Size = new Size(162, 17);
+            label5.Size = new Size(139, 17);
             label5.TabIndex = 4;
-            label5.Text = "New Tax for Employee (%)";
+            label5.Text = "New Tax for Employee";
             // 
             // frmEditEachTax
             // 
