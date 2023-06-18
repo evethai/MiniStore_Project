@@ -16,7 +16,6 @@ namespace MiniStoreWinF.ManageSalary
     {
         DetailAdvanceSalaryService _detailAdvanceSalaryService;
         Utinity u= new Utinity();
-
         public frmAddNewAdvSalary()
         {
             InitializeComponent();

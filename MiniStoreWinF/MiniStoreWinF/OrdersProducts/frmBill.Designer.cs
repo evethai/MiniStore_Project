@@ -85,7 +85,6 @@
             Controls.Add(Logo);
             Name = "frmBill";
             Text = "Bill";
-            FormClosed += frmBill_FormClosed;
             Logo.ResumeLayout(false);
             panel1.ResumeLayout(false);
             ResumeLayout(false);

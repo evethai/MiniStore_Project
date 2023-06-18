@@ -281,7 +281,11 @@ namespace MiniStoreWinF.ManageProducts
                     _addProduct.NameProduct = txtNameProduct.Text;
                     _addProduct.PriceProduct = float.Parse(txtPriceProduct.Text);
                     _addProduct.QuantityProduct = Int32.Parse(NumberQuantityProduct.Text);
+
+                    _addProduct.Mfg = Convert.ToDateTime(dateTimeNXSProduct.Text);
+
                     _addProduct.Exp = Convert.ToDateTime(dateTimeNXSProduct.Text);
+
                     _addProduct.Exp = Convert.ToDateTime(dateTimeHSDProduct.Text);
                     _addProduct.ProductType = txtTypeProductList.Text;
                     //_addProduct.StatusP = txtStatusProduct.Text;
