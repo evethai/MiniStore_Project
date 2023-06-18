@@ -39,7 +39,7 @@ namespace MiniStoreWinF.ManageSalary
                 txtTaxGua.Text = SaGuard.Tax.ToString();
             }
             //
-            var nEmp = employeeService.GetAll().Count(p => p.Roles.Equals("Employee")&& p.IsActive==true);
+            var nEmp = employeeService.GetAll().Count(p => p.Roles.Equals("Employee") && p.IsActive == true);
             var nGuard = employeeService.GetAll().Count(p => p.Roles.Equals("Guard") && p.IsActive == true);
             txtEmp.Text = nEmp.ToString();
             txtGuard.Text = nGuard.ToString();

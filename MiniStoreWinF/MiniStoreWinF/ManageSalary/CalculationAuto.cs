@@ -46,7 +46,7 @@ namespace MiniStoreWinF.ManageSalary
         }
 
         //tính thuế thu nhập cá nhân đối với mỗi nhân viên theo lũy tuyến 
-        public double Tax(string id, DateTime time, double basicsalary)
+        public double Tax(string id, DateTime time, double salary)
         {
             _employeeService = new EmployeeService();
             _permissionService = new PermissionService();
@@ -65,7 +65,7 @@ namespace MiniStoreWinF.ManageSalary
                           select perm.Tax).FirstOrDefault();
             if (result.HasValue)
             {
-                tax=basicsalary-result.Value;
+                tax=salary-result.Value;
                 if(tax>0 &&tax <= 5000000) {
                     tax_total = 5 / 100.0;
                 }else if (tax > 5000000 && tax <= 10000000) {
@@ -187,7 +187,8 @@ namespace MiniStoreWinF.ManageSalary
                     salary.SumSubSalary = SubSalary(employee.IdEmp, time);
                     salary.SumAdvanceSalary = AdvSalary(employee.IdEmp, time);
                     salary.TotalSalary = totalSalry(employee.IdEmp, time);
-                    salary.Tax = Tax(employee.IdEmp,time, BasicSalary(employee.IdEmp, time, HourSalary(employee.IdEmp)));
+                    //salary.Tax = Tax(employee.IdEmp,time, BasicSalary(employee.IdEmp, time, HourSalary(employee.IdEmp)));
+                    salary.Tax = Tax(employee.IdEmp,time, totalSalry(employee.IdEmp, time));
                     salary.SalaryAfterTax = sumaryResultTotalSalary(employee.IdEmp, time);
                     salary.DateImonth = u.GetFirstDayofMonth(time);
                     salary.DateOmonth = time;
