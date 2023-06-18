@@ -147,89 +147,68 @@ namespace MiniStoreWinF.DashBoard
             }
             // Tạo đối tượng LineSeries
             var revenueSeries = new LineSeries
-
-            try
-
             {
-                _revenueService = new RevenueService();
-                var listRevenues = _revenueService.GetAll().Where(p => p.DateRevenue > DateTime.Now.AddDays(-7)).ToList();//7 ngày gần nhất
+                ItemsSource = dataPoints,
+                StrokeThickness = 4
+            };
 
-                // Tạo danh sách dataPoints cho biểu đồ
-                var dataPoints = new List<DataPoint>();
-                foreach (var revenue in listRevenues)
-                {
-                    var dataPoint = new DataPoint(revenue.DateRevenue.Date.Day, (double)revenue.TotalRevenueOfDay);
-                    dataPoints.Add(dataPoint);
-                }
-                // Tạo đối tượng LineSeries
-                var revenueSeries = new LineSeries
-                {
-                    ItemsSource = dataPoints,
-                    StrokeThickness = 4
-                };
-
-                // Tạo đối tượng PlotModel cho biểu đồ
-                var plotModel = new PlotModel { Title = "Revenue fluctuations in the past 7 days" };
-                foreach (var dataPoint in dataPoints)
-                {
-                    double value = dataPoint.Y;
-                    string formattedValue = FormatValue(value); // Hàm để định dạng giá trị
-                    string label = $"{formattedValue}M";
-                    var annotation = new OxyPlot.Annotations.TextAnnotation
-                    {
-                        Text = label,
-                        TextPosition = new DataPoint(dataPoint.X , dataPoint.Y+300),
-                        StrokeThickness = 0
-                    };
-                    plotModel.Annotations.Add(annotation);
-                }
-
-                // Cấu hình trục x
-                double maxXValue = dataPoints.Max(dp => dp.X);//điểm cao nhất
-                double minXValue = dataPoints.Min(dp => dp.X);//điểm cao nhất
-                double maxXWithMargin = maxXValue + 0.2;//tăng thêm khoản cách
-                double minXWithMargin = minXValue - 0.3;//tăng thêm khoản cách
-                var xAxis = new OxyPlot.Axes.LinearAxis
-                {
-                    Position = OxyPlot.Axes.AxisPosition.Bottom,
-                    Maximum = maxXWithMargin,
-                    Minimum = minXWithMargin,
-                    Title = "Day",
-                    MajorStep = 1 // Khoảng cách giữa các đánh dấu chính trên trục x
-                };
-
-                //cấu hình trục Y
-                double maxYValue = dataPoints.Max(dp => dp.Y);//điểm cao nhất
-                double maxYWithMargin = maxYValue * 1.1;//tăng thêm khoản cách
-                var yAxis = new OxyPlot.Axes.LinearAxis
-                {
-                    Position = OxyPlot.Axes.AxisPosition.Left,
-                    Title = "Revenues",
-                    Maximum = maxYWithMargin,
-                    MajorStep = 1000000,
-                    StringFormat = "#,#.##M"
-                };
-
-                //add trục x và y vào
-                plotModel.Axes.Add(xAxis);
-                plotModel.Axes.Add(yAxis);
-
-                // Thêm chuỗi dữ liệu vào Model.Series
-                plotModel.Series.Add(revenueSeries);
-
-                // Tạo đối tượng PlotView và thêm vào pictureBox3
-                var plotView = new PlotView
-                {
-                    Dock = DockStyle.Fill,
-                    Model = plotModel
-                };
-
-                p.Controls.Add(plotView);
-            }
-            catch (Exception ex)
+            // Tạo đối tượng PlotModel cho biểu đồ
+            var plotModel = new PlotModel { Title = "Revenue fluctuations in the past 7 days" };
+            foreach (var dataPoint in dataPoints)
             {
-                MessageBox.Show(ex + " not have data revenues", "Messages", MessageBoxButtons.OK);
+                double value = dataPoint.Y;
+                string formattedValue = FormatValue(value); // Hàm để định dạng giá trị
+                string label = $"{formattedValue}M";
+                var annotation = new OxyPlot.Annotations.TextAnnotation
+                {
+                    Text = label,
+                    TextPosition = new DataPoint(dataPoint.X + 0.5, dataPoint.Y),
+                    StrokeThickness = 0
+                };
+                plotModel.Annotations.Add(annotation);
             }
+
+            // Cấu hình trục x
+            double maxXValue = dataPoints.Max(dp => dp.X);//điểm cao nhất
+            double minXValue = dataPoints.Min(dp => dp.X);//điểm cao nhất
+            double maxXWithMargin = maxXValue + 0.2;//tăng thêm khoản cách
+            double minXWithMargin = minXValue - 0.3;//tăng thêm khoản cách
+            var xAxis = new OxyPlot.Axes.LinearAxis
+            {
+                Position = OxyPlot.Axes.AxisPosition.Bottom,
+                Maximum = maxXWithMargin,
+                Minimum = minXWithMargin,
+                Title = "Day",
+                MajorStep = 1 // Khoảng cách giữa các đánh dấu chính trên trục x
+            };
+
+            //cấu hình trục Y
+            double maxYValue = dataPoints.Max(dp => dp.Y);//điểm cao nhất
+            double maxYWithMargin = maxYValue * 1.1;//tăng thêm khoản cách
+            var yAxis = new OxyPlot.Axes.LinearAxis
+            {
+                Position = OxyPlot.Axes.AxisPosition.Left,
+                Title = "Revenues",
+                Maximum = maxYWithMargin,
+                MajorStep = 1000000,
+                StringFormat = "#,#.##M"
+            };
+
+            //add trục x và y vào
+            plotModel.Axes.Add(xAxis);
+            plotModel.Axes.Add(yAxis);
+
+            // Thêm chuỗi dữ liệu vào Model.Series
+            plotModel.Series.Add(revenueSeries);
+
+            // Tạo đối tượng PlotView và thêm vào pictureBox3
+            var plotView = new PlotView
+            {
+                Dock = DockStyle.Fill,
+                Model = plotModel
+            };
+
+            p.Controls.Add(plotView);
         }
 
         string FormatValue(double value)

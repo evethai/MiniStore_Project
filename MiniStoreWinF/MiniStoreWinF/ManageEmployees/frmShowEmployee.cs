@@ -15,9 +15,9 @@ namespace MiniStoreWinF.ManageEmployees
 {
     public partial class frmShowEmployee : Form
     {
-        //New test run
+       
         Validation _employeeService = new Validation();
-        Employee Employee { get; set; }
+      
         public string url = "";
 
 
@@ -33,10 +33,7 @@ namespace MiniStoreWinF.ManageEmployees
 
         }
 
-
-
-
-
+        //Trasfer Base 64 code to Img
         public Image Base64ToImage(string base64String)
         {
             byte[] imageBytes = Convert.FromBase64String(base64String);
@@ -45,7 +42,7 @@ namespace MiniStoreWinF.ManageEmployees
             System.Drawing.Image image = System.Drawing.Image.FromStream(ms, true);
             return image;
         }
-
+        //Transfer Img to base 64 
         public string ImageToBase64(string path)
         {
 
@@ -60,7 +57,7 @@ namespace MiniStoreWinF.ManageEmployees
                 }
             }
         }
-        //Chuyển sang form để create employee
+        //Move to frmCreateEmployee to create new employee
         private void btAddEmployee_Click(object sender, EventArgs e)
         {
             Form form = new frmCreateEmployees();
@@ -71,6 +68,7 @@ namespace MiniStoreWinF.ManageEmployees
 
 
         }
+        //Import to update employee's picture
         private void btImport_Click_1(object sender, EventArgs e)
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
@@ -91,22 +89,13 @@ namespace MiniStoreWinF.ManageEmployees
         {
 
         }
-
-
-
-      
-
-
-
-
+        //Double click to get specific employee's information
         private void dgvEmployee_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-
-                
                 var id = dgvEmployee[0, e.RowIndex].Value;
-                
+
                 var RoleType = _employeeService.GetAll().Where(entity => entity.FullNameEmp.Equals(id)).FirstOrDefault();
                 rowIndex = e.RowIndex;
                 if (RoleType != null)
@@ -117,7 +106,7 @@ namespace MiniStoreWinF.ManageEmployees
                     txtPhone.Text = RoleType.PhoneEmp.ToString();
                     txtUsername.Text = RoleType.Username.ToString();
                     txtPassword.Text = RoleType.Password.ToString();
-                    txtDoB.Text = RoleType.DoB.ToString();
+                    dtDoB.Value = RoleType.DoB.Value;
                     txtCccd.Text = RoleType.Cccd.ToString();
                     pBEmp.Image = Base64ToImage(RoleType.PictureEmp);
                     txtUrl.Text = RoleType.PictureEmp.ToString();
@@ -147,7 +136,7 @@ namespace MiniStoreWinF.ManageEmployees
                 MessageBox.Show("Please choose in the grid!");
             }
         }
-
+        //Show or hide password
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
@@ -162,7 +151,7 @@ namespace MiniStoreWinF.ManageEmployees
             }
         }
 
-
+        //Update employee's information
         private void btUpdate_Click(object sender, EventArgs e)
         {
 
@@ -173,73 +162,60 @@ namespace MiniStoreWinF.ManageEmployees
                 txtPhone.Text == "" ||
                 txtAddress.Text == "" ||
                 txtPassword.Text == ""
-
-
                 )
             {
                 MessageBox.Show("Please input all information!");
 
             }
+            //Check age > 18
+            else if (DateTime.Now.Year - dtDoB.Value.Year < 18)
+            {
+                MessageBox.Show("Employee's age must higher than 18!");
+                dtDoB.Focus();
+
+            }
+
             else
             {
-                
-                
-
-
-                    if (employeeService.PictureEmp == txtUrl.Text)
+                if (employeeService.PictureEmp == txtUrl.Text)
+                {
+                    employeeService.FullNameEmp = txtName.Text;
+                    employeeService.PhoneEmp = txtPhone.Text;
+                    employeeService.AddressEmp = txtAddress.Text;
+                    employeeService.Password = txtPassword.Text;
+                    employeeService.Username = txtUsername.Text;
+                    employeeService.Cccd = txtCccd.Text;
+                    if (cbGender.SelectedItem.Equals("Man"))
                     {
-                    
-                    
-                        employeeService.FullNameEmp = txtName.Text;
-                        employeeService.PhoneEmp = txtPhone.Text;
-                        employeeService.AddressEmp = txtAddress.Text;
-                        employeeService.Password = txtPassword.Text;
-                        employeeService.Username = txtUsername.Text;
-                        employeeService.Cccd = txtCccd.Text;
-                      
-
-                        if (cbGender.SelectedItem.Equals("Man"))
-                        {
-                            employeeService.Sex = true;
-                        }
-                        else if (cbGender.SelectedItem.Equals("Woman"))
-                        {
-                            employeeService.Sex = false;
-                        }
-                        if (cbRole.SelectedItem.Equals("Admin"))
-                        {
-                            employeeService.Roles = "Admin";
-                        }
-                        else if (cbRole.SelectedItem.Equals("Employee"))
-                        {
-                            employeeService.Roles = "Employee";
-                        }
-                        else if (cbRole.SelectedItem.Equals("Guard"))
-                        {
-                            employeeService.Roles = "Guard";
-                        }
-                        var Update = employeeService;
-                        if (txtPhone.Text.Length != 10 && !txtPhone.Text.StartsWith("0")|| txtCccd.Text.Length != 12)
-                        {
-                            MessageBox.Show("INVALID INFORMATION!", "INVALID", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            txtPhone.Focus();
-                            txtPhone.SelectAll();
-                        
-                        }
-                        else if(txtPhone.Text.Length == 10 && txtPhone.Text.StartsWith("0") || txtCccd.Text.Length == 12)
-                        {
-                            _employeeService.Update(Update);
-                            valid = true;
-                            
-                            MessageBox.Show("UPDATE SUCCESSFULLY!");
-
-                        }
-                    
-
-                       
+                        employeeService.Sex = true;
                     }
-                
-            
+                    else if (cbGender.SelectedItem.Equals("Woman"))
+                    {
+                        employeeService.Sex = false;
+                    }
+                    if (cbRole.SelectedItem.Equals("Admin"))
+                    {
+                        employeeService.Roles = "Admin";
+                    }
+                    else if (cbRole.SelectedItem.Equals("Employee"))
+                    {
+                        employeeService.Roles = "Employee";
+                    }
+                    else if (cbRole.SelectedItem.Equals("Guard"))
+                    {
+                        employeeService.Roles = "Guard";
+                    }
+                    if (cBStatus.SelectedItem.Equals("Active"))
+                    {
+                        employeeService.IsActive = true;
+                    }
+                    else if (cBStatus.SelectedItem.Equals("Disable"))
+                    {
+                        employeeService.IsActive = false;
+                    }
+                    var Update = employeeService;
+                    MessageBox.Show("UPDATE SUCCESSFULLY!");
+                }
                 else
                 {
                     txtUrl.Text = ImageToBase64(url);
@@ -249,6 +225,7 @@ namespace MiniStoreWinF.ManageEmployees
                     employeeService.Password = txtPassword.Text;
                     employeeService.Username = txtUsername.Text;
                     employeeService.PictureEmp = txtUrl.Text;
+                    employeeService.DoB = dtDoB.Value;
                     if (cbGender.SelectedIndex.Equals("Man"))
                     {
                         employeeService.Sex = true;
@@ -270,9 +247,9 @@ namespace MiniStoreWinF.ManageEmployees
             dgvEmployee.DataSource = new BindingSource() { DataSource = employeeServiceU };
         }
 
-       
 
 
+        //Format true/false gender to man/woman
         private void dgvEmployee_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.ColumnIndex == 1)
@@ -285,7 +262,7 @@ namespace MiniStoreWinF.ManageEmployees
                 }
             }
         }
-
+        //Show disable employee's list
         private void rd2_CheckedChanged(object sender, EventArgs e)
         {
             if (rd2.Checked)
@@ -295,7 +272,7 @@ namespace MiniStoreWinF.ManageEmployees
                 dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
             }
         }
-
+        //Show active employee's list
         private void rd1_CheckedChanged(object sender, EventArgs e)
         {
             if (rd1.Checked)
@@ -306,7 +283,7 @@ namespace MiniStoreWinF.ManageEmployees
         }
 
 
-
+        //Search Employee's name base on name and status check
         private void btSearch_Click(object sender, EventArgs e)
         {
             string searchName = txtSearch.Text;
@@ -328,41 +305,26 @@ namespace MiniStoreWinF.ManageEmployees
                 dgvEmployee.DataSource = new BindingSource() { DataSource = listSearchName };
             }
         }
+        
 
-        private void btChange_Click(object sender, EventArgs e)
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
-
-
-
-            if (cBStatus.SelectedItem.Equals("Active"))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                var employeeService = _employeeService.GetAll().Where(e => e.IsActive == false).FirstOrDefault();
-                employeeService.IsActive = true;
-                rd1.Checked = true;
-                MessageBox.Show("ACTIVE SUCCESSFULLY!");
-                var update = employeeService;
-                _employeeService.Update(update);
-            }
-            else if ((cBStatus.SelectedItem.Equals("Disable")))
-            {
-                var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true).FirstOrDefault();
-                employeeService.IsActive = false;
-                rd1.Checked = true;
-                MessageBox.Show("DISABLE SUCCESSFULLY!");
-                var update = employeeService;
-                _employeeService.Update(update);
+                e.Handled = true; // Cannot continue input
             }
 
+            // Check length limit
+            if (txtPhone.Text.Length >= 10 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Cannot continue input
+            }
 
-            var listSearchName = _employeeService.GetAll().Where(e => e.IsActive == true);
-
-            dgvEmployee.DataSource = new BindingSource() { DataSource = listSearchName };
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
+            // Check start with 0
+            if (txtPhone.Text.Length == 0 && e.KeyChar != '0')
+            {
+                e.Handled = true; // Cannot continue input
+            }
         }
     }
 }

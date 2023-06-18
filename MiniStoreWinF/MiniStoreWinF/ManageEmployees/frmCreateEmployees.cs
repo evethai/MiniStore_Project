@@ -1,4 +1,5 @@
-﻿using Repository.Models;
+﻿using Microsoft.Office.Interop.Excel;
+using Repository.Models;
 using Repository.Service;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace MiniStoreWinF.ManageEmployees
@@ -18,7 +20,7 @@ namespace MiniStoreWinF.ManageEmployees
     {
         public EmployeeService employeeService = new EmployeeService();
         public string url = "";
-
+        Validation validation = new Validation();
         public frmCreateEmployees()
         {
             InitializeComponent();
@@ -26,21 +28,6 @@ namespace MiniStoreWinF.ManageEmployees
             var role = new PermissionService().GetAll();
             cbRole.DataSource = role;
             cbRole.DisplayMember = "Roles";
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
         }
         private void CreateEmployees_Load(object sender, EventArgs e)
         {
@@ -59,7 +46,6 @@ namespace MiniStoreWinF.ManageEmployees
         }
         public string ImageToBase64(string path)
         {
-            // string path = "D:\SampleImage.jpg";
             using (System.Drawing.Image image = System.Drawing.Image.FromFile(path))
             {
                 using (MemoryStream m = new MemoryStream())
@@ -73,7 +59,9 @@ namespace MiniStoreWinF.ManageEmployees
         }
 
         private void btAddNew_Click(object sender, EventArgs e)
-        {
+        {   
+            //Check existed username
+            var duplicated = employeeService.GetAll().Where(entity => entity.Username.Equals(txtUsername.Text)).FirstOrDefault();
             if (txtAddName.Text == "" ||
                 txtAddPhone.Text == "" ||
                 txtAddAddress.Text == "" ||
@@ -86,6 +74,35 @@ namespace MiniStoreWinF.ManageEmployees
                 MessageBox.Show("Please input all requires information!");
 
             }
+            //Check confirm password is match or not
+            else if (txtPassword.Text != txtConfirm.Text)
+            {
+                pbInvalid.Visible = true;
+                pbValid.Visible = false;
+                MessageBox.Show("Confirm password is not match!");
+                txtConfirm.Focus();
+                txtConfirm.SelectAll();
+                txtConfirm.Text = "";
+
+            }
+            
+
+            else if (duplicated != null)
+            {
+                MessageBox.Show("Username already exist!");
+                txtUsername.Focus();
+                txtUsername.SelectAll();
+                txtUsername.Text = "";
+            }
+            
+            //Check age > 18
+            else if (DateTime.Now.Year - dtDoB.Value.Year < 18)
+            {
+                MessageBox.Show("Employee's age must higher than 18!");
+                dtDoB.Focus();
+
+            }
+
             else
             {
                 var employee = new Employee();
@@ -122,35 +139,14 @@ namespace MiniStoreWinF.ManageEmployees
                 {
 
                 }
-
-
-
-
-
             }
 
         }
 
         private void btImport_Click(object sender, EventArgs e)
         {
-            //String imgLocation;
-            //try
-            //{
 
 
-            //    OpenFileDialog openFileDialog = new OpenFileDialog();
-            //    openFileDialog.Filter = "Image Files (*.jpg, *.jpeg, *.png)|*.jpg;*.jpeg;*.png";
-
-            //    if (openFileDialog.ShowDialog() == DialogResult.OK)
-            //    {
-            //        pbEmployee.Image = new Bitmap(openFileDialog.FileName);
-            //    }
-
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("ERROR");
-            //}
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
                 dlg.Title = "Open Image";
@@ -165,21 +161,93 @@ namespace MiniStoreWinF.ManageEmployees
             }
 
         }
-
-
-        private void pbEmployee_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void cbGender_SelectedIndexChanged(object sender, EventArgs e)
+        private void txtPassword_TextChanged(object sender, EventArgs e)
         {
+            if (txtPassword.Text != txtConfirm.Text)
+            {
+                pbInvalid.Visible = true;
+                pbValid.Visible = false;
+
+
+            }
+            else if (txtConfirm.Text == txtPassword.Text)
+            {
+                pbValid.Visible = true;
+                pbInvalid.Visible = false;
+            }
+        }
+
+        private void txtConfirm_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPassword.Text != txtConfirm.Text)
+            {
+                pbInvalid.Visible = true;
+                pbValid.Visible = false;
+
+
+            }
+            else if (txtConfirm.Text == txtPassword.Text)
+            {
+                pbValid.Visible = true;
+                pbInvalid.Visible = false;
+            }
+        }
+
+        private void cbShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbShowPassword.Checked)
+            {
+                // Hiển thị mật khẩu
+                txtPassword.PasswordChar = '\0'; // '\0' là ký tự null
+            }
+            else
+            {
+                // Ẩn mật khẩu
+                txtPassword.PasswordChar = '*';
+            }
+        }
+        //Check phone valid - 10 numbers, number only, start with '0'
+        private void txtAddPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cannot continue input
+            }
+
+            // Kiểm tra giới hạn độ dài của chuỗi
+            if (txtAddPhone.Text.Length >= 10 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Cannot continue input
+            }
+
+            // Kiểm tra việc bắt đầu với số 0
+            if (txtAddPhone.Text.Length == 0 && e.KeyChar != '0')
+            {
+                e.Handled = true; // Cannot continue input
+            }
+        }
+
+        private void txtAddCCCD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cannot continue input
+            }
+
+            // Check length input
+            if (txtAddCCCD.Text.Length >= 12 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Cannot continue input
+            }
+
 
         }
+
+        
     }
 }
