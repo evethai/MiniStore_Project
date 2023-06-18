@@ -28,191 +28,274 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            label8 = new Label();
-            txtAddNameProducts = new TextBox();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
+            txtStatusPro = new ComboBox();
+            label7 = new Label();
             label6 = new Label();
-            txtAddPriceProducts = new TextBox();
-            txtAddSKUProducts = new TextBox();
-            txtAddQuantityProducts = new TextBox();
-            txtAddTypeProducts = new TextBox();
-            pictureBox1 = new PictureBox();
+            label5 = new Label();
+            txtHSD = new DateTimePicker();
+            txtNXX = new DateTimePicker();
+            txtPic = new TextBox();
+            txtPicturePro = new Button();
+            txtAddTypeProducts = new ComboBox();
             btAddProducts = new Button();
-            panel1.SuspendLayout();
+            pictureBox1 = new PictureBox();
+            txtAddQuantityProducts = new TextBox();
+            txtAddSKUProducts = new TextBox();
+            txtAddPriceProducts = new TextBox();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            txtAddNameProducts = new TextBox();
+            label8 = new Label();
+            txtBackM = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // panel1
+            // txtStatusPro
             // 
-            panel1.Controls.Add(btAddProducts);
-            panel1.Controls.Add(pictureBox1);
-            panel1.Controls.Add(txtAddTypeProducts);
-            panel1.Controls.Add(txtAddQuantityProducts);
-            panel1.Controls.Add(txtAddSKUProducts);
-            panel1.Controls.Add(txtAddPriceProducts);
-            panel1.Controls.Add(label6);
-            panel1.Controls.Add(label4);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(txtAddNameProducts);
-            panel1.Controls.Add(label8);
-            panel1.Location = new Point(26, 67);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(865, 520);
-            panel1.TabIndex = 0;
+            txtStatusPro.FormattingEnabled = true;
+            txtStatusPro.Items.AddRange(new object[] { "SoldOut", "Availability" });
+            txtStatusPro.Location = new Point(145, 468);
+            txtStatusPro.Name = "txtStatusPro";
+            txtStatusPro.Size = new Size(135, 28);
+            txtStatusPro.TabIndex = 30;
             // 
-            // label8
+            // label7
             // 
-            label8.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(24, 119);
-            label8.Name = "label8";
-            label8.Size = new Size(111, 38);
-            label8.TabIndex = 8;
-            label8.Text = "Name";
-            label8.TextAlign = ContentAlignment.MiddleCenter;
+            label7.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Location = new Point(12, 461);
+            label7.Name = "label7";
+            label7.Size = new Size(111, 38);
+            label7.TabIndex = 29;
+            label7.Text = "Status";
+            label7.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // txtAddNameProducts
+            // label6
             // 
-            txtAddNameProducts.Location = new Point(141, 126);
-            txtAddNameProducts.Multiline = true;
-            txtAddNameProducts.Name = "txtAddNameProducts";
-            txtAddNameProducts.Size = new Size(262, 34);
-            txtAddNameProducts.TabIndex = 9;
+            label6.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Location = new Point(12, 351);
+            label6.Name = "label6";
+            label6.Size = new Size(111, 38);
+            label6.TabIndex = 28;
+            label6.Text = "HSD";
+            label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // label5
             // 
-            label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(24, 35);
-            label1.Name = "label1";
-            label1.Size = new Size(111, 38);
-            label1.TabIndex = 10;
-            label1.Text = "SKU";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            label5.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(12, 296);
+            label5.Name = "label5";
+            label5.Size = new Size(111, 38);
+            label5.TabIndex = 27;
+            label5.Text = "NXX";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // txtHSD
             // 
-            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(24, 203);
-            label2.Name = "label2";
-            label2.Size = new Size(111, 38);
-            label2.TabIndex = 11;
-            label2.Text = "Price";
-            label2.TextAlign = ContentAlignment.MiddleCenter;
+            txtHSD.Location = new Point(145, 356);
+            txtHSD.Name = "txtHSD";
+            txtHSD.Size = new Size(250, 27);
+            txtHSD.TabIndex = 26;
             // 
-            // label3
+            // txtNXX
             // 
-            label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(24, 287);
-            label3.Name = "label3";
-            label3.Size = new Size(111, 38);
-            label3.TabIndex = 12;
-            label3.Text = "Quantity";
-            label3.TextAlign = ContentAlignment.MiddleCenter;
+            txtNXX.Location = new Point(145, 301);
+            txtNXX.Name = "txtNXX";
+            txtNXX.Size = new Size(250, 27);
+            txtNXX.TabIndex = 25;
+            // 
+            // txtPic
+            // 
+            txtPic.Location = new Point(605, 56);
+            txtPic.Name = "txtPic";
+            txtPic.Size = new Size(280, 27);
+            txtPic.TabIndex = 24;
+            // 
+            // txtPicturePro
+            // 
+            txtPicturePro.Location = new Point(477, 52);
+            txtPicturePro.Name = "txtPicturePro";
+            txtPicturePro.Size = new Size(108, 34);
+            txtPicturePro.TabIndex = 23;
+            txtPicturePro.Text = "Picture";
+            txtPicturePro.UseVisualStyleBackColor = true;
+            txtPicturePro.Click += txtPicturePro_Click;
+            // 
+            // txtAddTypeProducts
+            // 
+            txtAddTypeProducts.FormattingEnabled = true;
+            txtAddTypeProducts.Location = new Point(145, 405);
+            txtAddTypeProducts.Name = "txtAddTypeProducts";
+            txtAddTypeProducts.Size = new Size(135, 28);
+            txtAddTypeProducts.TabIndex = 22;
+            // 
+            // btAddProducts
+            // 
+            btAddProducts.BackColor = SystemColors.ActiveCaption;
+            btAddProducts.Location = new Point(791, 450);
+            btAddProducts.Name = "btAddProducts";
+            btAddProducts.Size = new Size(94, 49);
+            btAddProducts.TabIndex = 21;
+            btAddProducts.Text = "ADD";
+            btAddProducts.UseVisualStyleBackColor = false;
+            btAddProducts.Click += btAddProducts_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(605, 104);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(280, 224);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 20;
+            pictureBox1.TabStop = false;
+            // 
+            // txtAddQuantityProducts
+            // 
+            txtAddQuantityProducts.Location = new Point(145, 186);
+            txtAddQuantityProducts.Multiline = true;
+            txtAddQuantityProducts.Name = "txtAddQuantityProducts";
+            txtAddQuantityProducts.Size = new Size(262, 34);
+            txtAddQuantityProducts.TabIndex = 18;
+            // 
+            // txtAddSKUProducts
+            // 
+            txtAddSKUProducts.Location = new Point(145, 79);
+            txtAddSKUProducts.Multiline = true;
+            txtAddSKUProducts.Name = "txtAddSKUProducts";
+            txtAddSKUProducts.Size = new Size(262, 34);
+            txtAddSKUProducts.TabIndex = 17;
+            // 
+            // txtAddPriceProducts
+            // 
+            txtAddPriceProducts.Location = new Point(145, 238);
+            txtAddPriceProducts.Multiline = true;
+            txtAddPriceProducts.Name = "txtAddPriceProducts";
+            txtAddPriceProducts.Size = new Size(262, 34);
+            txtAddPriceProducts.TabIndex = 16;
             // 
             // label4
             // 
             label4.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(24, 371);
+            label4.Location = new Point(12, 405);
             label4.Name = "label4";
             label4.Size = new Size(111, 38);
             label4.TabIndex = 13;
             label4.Text = "Type";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label6
+            // label3
             // 
-            label6.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(459, 42);
-            label6.Name = "label6";
-            label6.Size = new Size(111, 38);
-            label6.TabIndex = 15;
-            label6.Text = "Price";
-            label6.TextAlign = ContentAlignment.MiddleCenter;
+            label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(12, 186);
+            label3.Name = "label3";
+            label3.Size = new Size(111, 38);
+            label3.TabIndex = 12;
+            label3.Text = "Quantity";
+            label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // txtAddPriceProducts
+            // label2
             // 
-            txtAddPriceProducts.Location = new Point(141, 210);
-            txtAddPriceProducts.Multiline = true;
-            txtAddPriceProducts.Name = "txtAddPriceProducts";
-            txtAddPriceProducts.Size = new Size(262, 34);
-            txtAddPriceProducts.TabIndex = 16;
+            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(12, 238);
+            label2.Name = "label2";
+            label2.Size = new Size(111, 38);
+            label2.TabIndex = 11;
+            label2.Text = "Price";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // txtAddSKUProducts
+            // label1
             // 
-            txtAddSKUProducts.Location = new Point(141, 42);
-            txtAddSKUProducts.Multiline = true;
-            txtAddSKUProducts.Name = "txtAddSKUProducts";
-            txtAddSKUProducts.Size = new Size(262, 34);
-            txtAddSKUProducts.TabIndex = 17;
+            label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(12, 79);
+            label1.Name = "label1";
+            label1.Size = new Size(111, 38);
+            label1.TabIndex = 10;
+            label1.Text = "SKU";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // txtAddQuantityProducts
+            // txtAddNameProducts
             // 
-            txtAddQuantityProducts.Location = new Point(141, 287);
-            txtAddQuantityProducts.Multiline = true;
-            txtAddQuantityProducts.Name = "txtAddQuantityProducts";
-            txtAddQuantityProducts.Size = new Size(262, 34);
-            txtAddQuantityProducts.TabIndex = 18;
+            txtAddNameProducts.Location = new Point(145, 132);
+            txtAddNameProducts.Multiline = true;
+            txtAddNameProducts.Name = "txtAddNameProducts";
+            txtAddNameProducts.Size = new Size(262, 34);
+            txtAddNameProducts.TabIndex = 9;
             // 
-            // txtAddTypeProducts
+            // label8
             // 
-            txtAddTypeProducts.Location = new Point(141, 378);
-            txtAddTypeProducts.Multiline = true;
-            txtAddTypeProducts.Name = "txtAddTypeProducts";
-            txtAddTypeProducts.Size = new Size(262, 34);
-            txtAddTypeProducts.TabIndex = 19;
+            label8.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Location = new Point(12, 132);
+            label8.Name = "label8";
+            label8.Size = new Size(111, 38);
+            label8.TabIndex = 8;
+            label8.Text = "Name";
+            label8.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
+            // txtBackM
             // 
-            pictureBox1.Location = new Point(554, 42);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(280, 224);
-            pictureBox1.TabIndex = 20;
-            pictureBox1.TabStop = false;
-            // 
-            // btAddProducts
-            // 
-            btAddProducts.BackColor = SystemColors.ActiveCaption;
-            btAddProducts.Location = new Point(740, 412);
-            btAddProducts.Name = "btAddProducts";
-            btAddProducts.Size = new Size(94, 49);
-            btAddProducts.TabIndex = 21;
-            btAddProducts.Text = "ADD";
-            btAddProducts.UseVisualStyleBackColor = false;
+            txtBackM.Location = new Point(26, 12);
+            txtBackM.Name = "txtBackM";
+            txtBackM.Size = new Size(94, 38);
+            txtBackM.TabIndex = 1;
+            txtBackM.Text = "Back";
+            txtBackM.UseVisualStyleBackColor = true;
+            txtBackM.Click += txtBackM_Click;
             // 
             // CreateProducts
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(920, 608);
-            Controls.Add(panel1);
+            Controls.Add(txtStatusPro);
+            Controls.Add(txtBackM);
+            Controls.Add(txtAddTypeProducts);
+            Controls.Add(txtHSD);
+            Controls.Add(label7);
+            Controls.Add(txtNXX);
+            Controls.Add(label6);
+            Controls.Add(txtAddSKUProducts);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label1);
+            Controls.Add(label8);
+            Controls.Add(txtAddNameProducts);
+            Controls.Add(txtPic);
+            Controls.Add(btAddProducts);
+            Controls.Add(txtPicturePro);
+            Controls.Add(pictureBox1);
+            Controls.Add(txtAddPriceProducts);
+            Controls.Add(txtAddQuantityProducts);
+            Controls.Add(label3);
+            Controls.Add(label2);
             Name = "CreateProducts";
             Text = "CreateProducts";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private Panel panel1;
         private Label label8;
         private TextBox txtAddNameProducts;
         private PictureBox pictureBox1;
-        private TextBox txtAddTypeProducts;
         private TextBox txtAddQuantityProducts;
         private TextBox txtAddSKUProducts;
         private TextBox txtAddPriceProducts;
-        private Label label6;
         private Label label4;
         private Label label3;
         private Label label2;
         private Label label1;
         private Button btAddProducts;
+        private Button txtBackM;
+        private ComboBox txtAddTypeProducts;
+        private Button txtPicturePro;
+        private TextBox txtPic;
+        private DateTimePicker txtNXX;
+        private DateTimePicker txtHSD;
+        private ComboBox txtStatusPro;
+        private Label label7;
+        private Label label6;
+        private Label label5;
     }
 }

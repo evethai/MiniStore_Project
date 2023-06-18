@@ -23,16 +23,23 @@ namespace MiniStoreWinF.ManageProducts
 
         private void btShowProducts_Click(object sender, EventArgs e) //Show Products
         {
+            this.Hide();
+            ShowProducts showProducts = new ShowProducts();
+            showProducts.Show();
         }
 
         private void btCreateProducts_Click(object sender, EventArgs e)//Create Products
         {
-
+            this.Hide();
+            CreateProducts createProducts = new CreateProducts();
+            createProducts.Show();
         }
 
         private void btUpdateRemoveEmployees_Click(object sender, EventArgs e) //Update-Remove Products
         {
-
+            this.Hide();
+            UpdateRemoveProduct updateRemoveProduct = new UpdateRemoveProduct();
+            updateRemoveProduct.Show();
         }
     }
 }

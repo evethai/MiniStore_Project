@@ -38,7 +38,7 @@ namespace Repository.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=(local);uid=sa;pwd=12345;database=MiniStore;TrustServerCertificate=True");
+                optionsBuilder.UseSqlServer("Server=MSI;uid=sa;pwd=12345;database=MiniStore;TrustServerCertificate=True");
             }
         }
 
@@ -172,6 +172,8 @@ namespace Repository.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.TimeCreate).HasColumnType("datetime");
+
+
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -272,6 +274,7 @@ namespace Repository.Models
                 entity.Property(e => e.NameProduct).HasMaxLength(50);
 
                 entity.Property(e => e.ProductType).HasMaxLength(10);
+
 
                 entity.HasOne(d => d.ProductTypeNavigation)
                     .WithMany(p => p.Products)

@@ -146,11 +146,11 @@ namespace MiniStoreWinF.Manage_Voucher
         private void btSearch_Click(object sender, EventArgs e)
         {
             string searchName = txtSearch.Text;
-            if(searchName != null )
+            if (searchName != null)
             {
                 var listSearchName = valid.GetName(searchName).Where(e => e.Quantity > 0);
                 dgvVoucher.DataSource = new BindingSource() { DataSource = listSearchName };
-            } 
+            }
 
         }
     }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.ministorewebmoblie.Utils;
 
 import com.google.zxing.BarcodeFormat;
@@ -9,6 +5,9 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import jakarta.servlet.ServletException;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -18,12 +17,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Base64;
+import java.util.Date;
 import org.json.JSONObject;
 
-/**
- *
- * @author nanat
- */
 public class MyUtils {
 
     // Gửi yêu cầu GET và trả về phản hồi dạng chuỗi JSON
@@ -116,4 +112,32 @@ public class MyUtils {
             return false;
         }
     }
+
+    private static final String SECRET_KEY = "1Y8NuQTyiWqqXCPiwJeCENE23bJE77ydN92cacjb";
+
+    public static String generateJWT(String idEmp, String roles, boolean isActive) {
+        Date now = new Date();
+        Date expiryDate = new Date(now.getTime() + 3600000); // Thời gian hết hạn của JWT: 1 giờ
+
+        String jwt = Jwts.builder()
+                .claim("IdEmp", idEmp)
+                .claim("Roles", roles)
+                .claim("IsActive", isActive)
+                .setIssuedAt(now)
+                .setExpiration(expiryDate)
+                .signWith(SignatureAlgorithm.HS256, SECRET_KEY.getBytes())
+                .compact();
+
+        return jwt;
+    }
+
+    public static Claims parseJWT(String jwt) {
+        Claims claims = Jwts.parser()
+                .setSigningKey(SECRET_KEY.getBytes())
+                .parseClaimsJws(jwt)
+                .getBody();
+
+        return claims;
+    }
+
 }

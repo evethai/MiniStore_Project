@@ -20,6 +20,11 @@
                 padding: 0 20px;
                 margin: 3px 0;
             }
+            html {
+                background: url('../background/background6.jpg')no-repeat;
+                background-position: center;
+                background-size: cover;
+            }
         </style>
     </head>
     <body>
