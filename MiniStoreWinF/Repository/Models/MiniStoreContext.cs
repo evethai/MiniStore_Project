@@ -48,10 +48,19 @@ namespace Repository.Models
 
             modelBuilder.Entity<BillOrder>(entity =>
             {
-                entity.HasKey(e => e.IdBill)
-                    .HasName("PK__BillOrde__24A2D64D62EF031F");
+                entity.HasKey(e => e.IdBillOrder)
+                    .HasName("PK__BillOrde__58724C24EAFBF7B8");
 
-                entity.Property(e => e.IdBill).HasMaxLength(255);
+                entity.Property(e => e.IdBillOrder)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.DateOfBill).HasColumnType("date");
+
+                entity.HasOne(d => d.DateOfBillNavigation)
+                    .WithMany(p => p.BillOrders)
+                    .HasForeignKey(d => d.DateOfBill)
+                    .HasConstraintName("FK__BillOrder__DateO__0C85DE4D");
             });
 
             modelBuilder.Entity<Catalogy>(entity =>
@@ -161,22 +170,30 @@ namespace Repository.Models
                 entity.Property(e => e.Name)
                     .HasMaxLength(255)
                     .IsUnicode(false);
+
+                entity.Property(e => e.TimeCreate).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<Order>(entity =>
             {
                 entity.HasKey(e => e.IdOrder)
-                    .HasName("PK__Orders__C38F3009410C3610");
+                    .HasName("PK__Orders__C38F30099CFC81C4");
 
                 entity.Property(e => e.IdOrder).HasMaxLength(20);
 
                 entity.Property(e => e.DateOrders)
-                    .HasColumnType("date")
+                    .HasColumnType("datetime")
                     .HasColumnName("dateOrders");
 
-                entity.Property(e => e.IdBill).HasMaxLength(255);
+                entity.Property(e => e.IdBillOrder)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.IdEmp).HasMaxLength(20);
+
+                entity.Property(e => e.IdVoucher)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.NameProduct).HasMaxLength(50);
 
@@ -188,35 +205,30 @@ namespace Repository.Models
 
                 entity.Property(e => e.Total).HasColumnName("total");
 
-                entity.HasOne(d => d.DateOrdersNavigation)
+                entity.HasOne(d => d.IdBillOrderNavigation)
                     .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.DateOrders)
-                    .HasConstraintName("FK__Orders__dateOrde__66603565");
-
-                entity.HasOne(d => d.IdBillNavigation)
-                    .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.IdBill)
-                    .HasConstraintName("FK__Orders__IdBill__76969D2E");
+                    .HasForeignKey(d => d.IdBillOrder)
+                    .HasConstraintName("FK__Orders__IdBillOr__1AD3FDA4");
 
                 entity.HasOne(d => d.IdEmpNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.IdEmp)
-                    .HasConstraintName("FK__Orders__IdEmp__6754599E");
+                    .HasConstraintName("FK__Orders__IdEmp__18EBB532");
 
                 entity.HasOne(d => d.IdVoucherNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.IdVoucher)
-                    .HasConstraintName("FK__Orders__IdVouche__778AC167");
+                    .HasConstraintName("FK__Orders__IdVouche__19DFD96B");
 
                 entity.HasOne(d => d.PhoneMemberNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.PhoneMember)
-                    .HasConstraintName("FK__Orders__PhoneMem__68487DD7");
+                    .HasConstraintName("FK__Orders__PhoneMem__17F790F9");
 
                 entity.HasOne(d => d.SkuNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.Sku)
-                    .HasConstraintName("FK__Orders__SKU__3E52440B");
+                    .HasConstraintName("FK__Orders__SKU__17036CC0");
             });
 
             modelBuilder.Entity<Permission>(entity =>
@@ -249,21 +261,17 @@ namespace Repository.Models
                     .HasMaxLength(20)
                     .HasColumnName("SKU");
 
-                entity.Property(e => e.Hsd)
+                entity.Property(e => e.Exp)
                     .HasColumnType("date")
-                    .HasColumnName("HSD");
+                    .HasColumnName("EXP");
+
+                entity.Property(e => e.Mfg)
+                    .HasColumnType("date")
+                    .HasColumnName("MFG");
 
                 entity.Property(e => e.NameProduct).HasMaxLength(50);
 
-                entity.Property(e => e.Nxx)
-                    .HasColumnType("date")
-                    .HasColumnName("NXX");
-
                 entity.Property(e => e.ProductType).HasMaxLength(10);
-
-                entity.Property(e => e.StatusP)
-                    .IsRequired()
-                    .HasMaxLength(20);
 
                 entity.HasOne(d => d.ProductTypeNavigation)
                     .WithMany(p => p.Products)
@@ -273,14 +281,12 @@ namespace Repository.Models
 
             modelBuilder.Entity<Revenue>(entity =>
             {
-                entity.HasKey(e => e.DateOrders)
-                    .HasName("PK__Revenue__C59AB538B74FE7E2");
+                entity.HasKey(e => e.DateRevenue)
+                    .HasName("PK__Revenue__C59AB538DDF3088B");
 
                 entity.ToTable("Revenue");
 
-                entity.Property(e => e.DateOrders)
-                    .HasColumnType("date")
-                    .HasColumnName("dateOrders");
+                entity.Property(e => e.DateRevenue).HasColumnType("date");
             });
 
             modelBuilder.Entity<Salary>(entity =>
@@ -352,11 +358,13 @@ namespace Repository.Models
             modelBuilder.Entity<Voucher>(entity =>
             {
                 entity.HasKey(e => e.IdVoucher)
-                    .HasName("PK__Voucher__329D557EF412AC2A");
+                    .HasName("PK__Voucher__329D557E28015C47");
 
                 entity.ToTable("Voucher");
 
-                entity.Property(e => e.IdVoucher).ValueGeneratedNever();
+                entity.Property(e => e.IdVoucher)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Exp)
                     .HasColumnType("date")

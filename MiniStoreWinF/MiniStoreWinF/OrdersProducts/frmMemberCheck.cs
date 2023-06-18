@@ -13,12 +13,12 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MiniStoreWinF.OrdersProducts
 {
-    public partial class MemberCheck : Form
+    public partial class frmMemberCheck : Form
     {
-        
+
         MemberService _memberService = new MemberService();
 
-        public MemberCheck()
+        public frmMemberCheck()
         {
             InitializeComponent();
             cbGenderNewMember.Items.Add("Male");
