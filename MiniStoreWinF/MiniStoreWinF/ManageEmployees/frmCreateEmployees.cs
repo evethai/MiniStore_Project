@@ -16,7 +16,7 @@ namespace MiniStoreWinF.ManageEmployees
 {
     public partial class frmCreateEmployees : Form
     {
-        public EmployeeService employeeService = new EmployeeService();
+        public Validation employeeService = new Validation();
         public string url = "";
 
         public frmCreateEmployees()
@@ -114,8 +114,8 @@ namespace MiniStoreWinF.ManageEmployees
                 DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
-                    EmployeeService employeeService = new EmployeeService();
-                    employeeService.Create(employee);
+                    Validation employeeService = new Validation();
+                    employeeService.Add(employee);
                     this.Close();
                 }
                 else

@@ -37,8 +37,9 @@ namespace MiniStoreWinF.ManageProducts
                 p.NameProduct,
                 p.QuantityProduct,
                 p.PriceProduct,
-                p.Nxx,
-                p.Hsd,
+                p.Mfg,
+                p.Exp,
+
                 p.StatusP,
 
 
@@ -153,8 +154,8 @@ namespace MiniStoreWinF.ManageProducts
                         p.NameProduct,
                         p.QuantityProduct,
                         p.PriceProduct,
-                        p.Nxx,
-                        p.Hsd,
+                        p.Mfg,
+                        p.Exp,
                         p.StatusP,
                     });
                 this.dgvProduct.DataSource = new BindingSource() { DataSource = AscendingPro };
@@ -169,8 +170,8 @@ namespace MiniStoreWinF.ManageProducts
                         p.NameProduct,
                         p.QuantityProduct,
                         p.PriceProduct,
-                        p.Nxx,
-                        p.Hsd,
+                        p.Mfg,
+                        p.Exp,
                         p.StatusP,
                     });
                 this.dgvProduct.DataSource = new BindingSource() { DataSource = AscendingPro };
