@@ -48,10 +48,19 @@ namespace Repository.Models
 
             modelBuilder.Entity<BillOrder>(entity =>
             {
-                entity.HasKey(e => e.IdBill)
-                    .HasName("PK__BillOrde__24A2D64D62EF031F");
+                entity.HasKey(e => e.IdBillOrder)
+                    .HasName("PK__BillOrde__58724C248EC3B8FC");
 
-                entity.Property(e => e.IdBill).HasMaxLength(255);
+                entity.Property(e => e.IdBillOrder)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.DateOfBill).HasColumnType("date");
+
+                entity.HasOne(d => d.DateOfBillNavigation)
+                    .WithMany(p => p.BillOrders)
+                    .HasForeignKey(d => d.DateOfBill)
+                    .HasConstraintName("FK__BillOrder__DateO__412EB0B6");
             });
 
             modelBuilder.Entity<Catalogy>(entity =>
@@ -67,7 +76,7 @@ namespace Repository.Models
             modelBuilder.Entity<DetailAdvanceSalary>(entity =>
             {
                 entity.HasKey(e => e.IdAdvanceSalary)
-                    .HasName("PK__DetailAd__8FF8B63605EF35BE");
+                    .HasName("PK__DetailAd__8FF8B636E696FEA2");
 
                 entity.ToTable("DetailAdvanceSalary");
 
@@ -87,13 +96,13 @@ namespace Repository.Models
                     .WithMany(p => p.DetailAdvanceSalaries)
                     .HasForeignKey(d => d.IdEmp)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__DetailAdv__IdEmp__6477ECF3");
+                    .HasConstraintName("FK__DetailAdv__IdEmp__4222D4EF");
             });
 
             modelBuilder.Entity<DetailSubSalary>(entity =>
             {
                 entity.HasKey(e => e.IdDetailSubSalary)
-                    .HasName("PK__DetailSu__38029D0F1D8F360F");
+                    .HasName("PK__DetailSu__38029D0FBDF28511");
 
                 entity.ToTable("DetailSubSalary");
 
@@ -105,7 +114,7 @@ namespace Repository.Models
             modelBuilder.Entity<Employee>(entity =>
             {
                 entity.HasKey(e => e.IdEmp)
-                    .HasName("PK__Employee__0F23D647B86D53E4");
+                    .HasName("PK__Employee__0F23D647C2AF9B64");
 
                 entity.ToTable("Employee");
 
@@ -146,7 +155,7 @@ namespace Repository.Models
             modelBuilder.Entity<Member>(entity =>
             {
                 entity.HasKey(e => e.PhoneMember)
-                    .HasName("PK__Member__57790E25F64CB7AA");
+                    .HasName("PK__Member__57790E25B7B9053E");
 
                 entity.ToTable("Member");
 
@@ -162,23 +171,29 @@ namespace Repository.Models
                     .HasMaxLength(255)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Time).HasColumnType("datetime");
+                entity.Property(e => e.TimeCreate).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<Order>(entity =>
             {
                 entity.HasKey(e => e.IdOrder)
-                    .HasName("PK__Orders__C38F3009410C3610");
+                    .HasName("PK__Orders__C38F30098F580E5B");
 
                 entity.Property(e => e.IdOrder).HasMaxLength(20);
 
                 entity.Property(e => e.DateOrders)
-                    .HasColumnType("date")
+                    .HasColumnType("datetime")
                     .HasColumnName("dateOrders");
 
-                entity.Property(e => e.IdBill).HasMaxLength(255);
+                entity.Property(e => e.IdBillOrder)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.IdEmp).HasMaxLength(20);
+
+                entity.Property(e => e.IdVoucher)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.NameProduct).HasMaxLength(50);
 
@@ -190,35 +205,30 @@ namespace Repository.Models
 
                 entity.Property(e => e.Total).HasColumnName("total");
 
-                entity.HasOne(d => d.DateOrdersNavigation)
+                entity.HasOne(d => d.IdBillOrderNavigation)
                     .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.DateOrders)
-                    .HasConstraintName("FK__Orders__dateOrde__66603565");
-
-                entity.HasOne(d => d.IdBillNavigation)
-                    .WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.IdBill)
-                    .HasConstraintName("FK__Orders__IdBill__76969D2E");
+                    .HasForeignKey(d => d.IdBillOrder)
+                    .HasConstraintName("FK__Orders__IdBillOr__440B1D61");
 
                 entity.HasOne(d => d.IdEmpNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.IdEmp)
-                    .HasConstraintName("FK__Orders__IdEmp__6754599E");
+                    .HasConstraintName("FK__Orders__IdEmp__44FF419A");
 
                 entity.HasOne(d => d.IdVoucherNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.IdVoucher)
-                    .HasConstraintName("FK__Orders__IdVouche__778AC167");
+                    .HasConstraintName("FK__Orders__IdVouche__45F365D3");
 
                 entity.HasOne(d => d.PhoneMemberNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.PhoneMember)
-                    .HasConstraintName("FK__Orders__PhoneMem__68487DD7");
+                    .HasConstraintName("FK__Orders__PhoneMem__46E78A0C");
 
                 entity.HasOne(d => d.SkuNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.Sku)
-                    .HasConstraintName("FK__Orders__SKU__3E52440B");
+                    .HasConstraintName("FK__Orders__SKU__47DBAE45");
             });
 
             modelBuilder.Entity<Permission>(entity =>
@@ -251,15 +261,15 @@ namespace Repository.Models
                     .HasMaxLength(20)
                     .HasColumnName("SKU");
 
-                entity.Property(e => e.Hsd)
+                entity.Property(e => e.Exp)
                     .HasColumnType("date")
-                    .HasColumnName("HSD");
+                    .HasColumnName("EXP");
+
+                entity.Property(e => e.Mfg)
+                    .HasColumnType("date")
+                    .HasColumnName("MFG");
 
                 entity.Property(e => e.NameProduct).HasMaxLength(50);
-
-                entity.Property(e => e.Nxx)
-                    .HasColumnType("date")
-                    .HasColumnName("NXX");
 
                 entity.Property(e => e.ProductType).HasMaxLength(10);
 
@@ -271,20 +281,18 @@ namespace Repository.Models
 
             modelBuilder.Entity<Revenue>(entity =>
             {
-                entity.HasKey(e => e.DateOrders)
-                    .HasName("PK__Revenue__C59AB538B74FE7E2");
+                entity.HasKey(e => e.DateRevenue)
+                    .HasName("PK__Revenue__D0CEC0D9B0352459");
 
                 entity.ToTable("Revenue");
 
-                entity.Property(e => e.DateOrders)
-                    .HasColumnType("date")
-                    .HasColumnName("dateOrders");
+                entity.Property(e => e.DateRevenue).HasColumnType("date");
             });
 
             modelBuilder.Entity<Salary>(entity =>
             {
                 entity.HasKey(e => e.IdSalary)
-                    .HasName("PK__Salary__4304AC9C6BCA28A5");
+                    .HasName("PK__Salary__4304AC9CD7614873");
 
                 entity.ToTable("Salary");
 
@@ -302,7 +310,7 @@ namespace Repository.Models
                     .WithMany(p => p.Salaries)
                     .HasForeignKey(d => d.IdEmp)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Salary__IdEmp__6B24EA82");
+                    .HasConstraintName("FK__Salary__IdEmp__49C3F6B7");
             });
 
             modelBuilder.Entity<SheetDetail>(entity =>
@@ -324,7 +332,7 @@ namespace Repository.Models
             modelBuilder.Entity<SubSalary>(entity =>
             {
                 entity.HasKey(e => e.IdSubSalary)
-                    .HasName("PK__SubSalar__4D7A054D7BEF8CF5");
+                    .HasName("PK__SubSalar__4D7A054D4316DC84");
 
                 entity.ToTable("SubSalary");
 
@@ -339,22 +347,24 @@ namespace Repository.Models
                 entity.HasOne(d => d.IdDetailSubSalaryNavigation)
                     .WithMany(p => p.SubSalaries)
                     .HasForeignKey(d => d.IdDetailSubSalary)
-                    .HasConstraintName("FK__SubSalary__IdDet__6C190EBB");
+                    .HasConstraintName("FK__SubSalary__IdDet__4AB81AF0");
 
                 entity.HasOne(d => d.IdEmpNavigation)
                     .WithMany(p => p.SubSalaries)
                     .HasForeignKey(d => d.IdEmp)
-                    .HasConstraintName("FK__SubSalary__IdEmp__6D0D32F4");
+                    .HasConstraintName("FK__SubSalary__IdEmp__4BAC3F29");
             });
 
             modelBuilder.Entity<Voucher>(entity =>
             {
                 entity.HasKey(e => e.IdVoucher)
-                    .HasName("PK__Voucher__329D557EF412AC2A");
+                    .HasName("PK__Voucher__329D557E0ED6D25F");
 
                 entity.ToTable("Voucher");
 
-                entity.Property(e => e.IdVoucher).ValueGeneratedNever();
+                entity.Property(e => e.IdVoucher)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Exp)
                     .HasColumnType("date")
@@ -372,7 +382,7 @@ namespace Repository.Models
             modelBuilder.Entity<WorkSheet>(entity =>
             {
                 entity.HasKey(e => e.IdWorkSheet)
-                    .HasName("PK__WorkShee__AB7595E89EA042BC");
+                    .HasName("PK__WorkShee__AB7595E8AD1F8122");
 
                 entity.ToTable("WorkSheet");
 
@@ -389,7 +399,7 @@ namespace Repository.Models
                 entity.HasOne(d => d.IdEmpNavigation)
                     .WithMany(p => p.WorkSheets)
                     .HasForeignKey(d => d.IdEmp)
-                    .HasConstraintName("FK__WorkSheet__IdEmp__6EF57B66");
+                    .HasConstraintName("FK__WorkSheet__IdEmp__4CA06362");
 
                 entity.HasOne(d => d.SheetNavigation)
                     .WithMany(p => p.WorkSheets)

@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MiniStoreWinF.OrdersProducts
+namespace MiniStoreWinF.DashBoard
 {
-    public partial class Bill : Form
+    public partial class frmMain : Form
     {
-        public Bill()
+        public frmMain()
         {
             InitializeComponent();
         }

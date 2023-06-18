@@ -48,8 +48,8 @@ namespace MiniStoreWinF.ManageProducts
                 txtUpDeNameProducts.Text = showPro.NameProduct.ToString();
                 txtUpDeQuantityProducts.Text = showPro.QuantityProduct.ToString();
                 txtUpDePriceProducts.Text = showPro.PriceProduct.ToString();
-                txtUpDeNXXProducts.Value = showPro.Nxx.Value;
-                txtUpDeHSDProducts.Value = showPro.Hsd.Value;
+                txtUpDeNXXProducts.Value = showPro.Mfg.Value;
+                txtUpDeHSDProducts.Value = showPro.Exp.Value;
                 txtUDTypeProducts.Text = showPro.ProductType.ToString();
                 txtSatusUD.Text = showPro.StatusP.ToString();
                 txtTextPic.Text = showPro.PictureProduct;
@@ -131,8 +131,8 @@ namespace MiniStoreWinF.ManageProducts
                     _UpdatePro[rowindex].Sku = txtUpDeSKUProducts.Text;
                     _UpdatePro[rowindex].QuantityProduct = Int32.Parse(txtUpDeQuantityProducts.Text);
                     _UpdatePro[rowindex].PriceProduct = float.Parse(txtUpDePriceProducts.Text);
-                    _UpdatePro[rowindex].Nxx = Convert.ToDateTime(txtUpDeNXXProducts.Text);
-                    _UpdatePro[rowindex].Hsd = Convert.ToDateTime(txtUpDeHSDProducts.Text);
+                    _UpdatePro[rowindex].Exp = Convert.ToDateTime(txtUpDeNXXProducts.Text);
+                    _UpdatePro[rowindex].Mfg = Convert.ToDateTime(txtUpDeHSDProducts.Text);
                     //_UpdatePro[rowindex].StatusP = txtSatusUD.Text;
                     _UpdatePro[rowindex].ProductType = txtUDTypeProducts.Text;
 
@@ -146,8 +146,8 @@ namespace MiniStoreWinF.ManageProducts
                     _UpdatePro[rowindex].Sku = txtUpDeSKUProducts.Text;
                     _UpdatePro[rowindex].QuantityProduct = Int32.Parse(txtUpDeQuantityProducts.Text);
                     _UpdatePro[rowindex].PriceProduct = float.Parse(txtUpDePriceProducts.Text);
-                    _UpdatePro[rowindex].Nxx = Convert.ToDateTime(txtUpDeNXXProducts.Text);
-                    _UpdatePro[rowindex].Hsd = Convert.ToDateTime(txtUpDeHSDProducts.Text);
+                    _UpdatePro[rowindex].Mfg = Convert.ToDateTime(txtUpDeNXXProducts.Text);
+                    _UpdatePro[rowindex].Exp = Convert.ToDateTime(txtUpDeHSDProducts.Text);
                     //_UpdatePro[rowindex].StatusP = txtSatusUD.Text;
                     _UpdatePro[rowindex].ProductType = txtUDTypeProducts.Text;
                     _UpdatePro[rowindex].PictureProduct = (txtTextPic.Text = ImageToBase64(url));

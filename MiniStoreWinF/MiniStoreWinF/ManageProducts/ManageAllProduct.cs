@@ -38,8 +38,8 @@ namespace MiniStoreWinF.ManageProducts
                 p.NameProduct,
                 p.QuantityProduct,
                 p.PriceProduct,
-                p.Nxx,
-                p.Hsd,
+                p.Exp,
+                p.Mfg,
                 p.StatusP,
             }).Where(p => p.StatusP == true);
             DgvListProduct.DataSource = new BindingSource() { DataSource = listProduct };
@@ -81,8 +81,8 @@ namespace MiniStoreWinF.ManageProducts
                 txtNameProduct.Text = showPro.NameProduct.ToString();
                 NumberQuantityProduct.Text = showPro.QuantityProduct.ToString();
                 txtPriceProduct.Text = showPro.PriceProduct.ToString();
-                dateTimeNXSProduct.Value = showPro.Nxx.Value;
-                dateTimeHSDProduct.Value = showPro.Hsd.Value;
+                dateTimeNXSProduct.Value = showPro.Mfg.Value;
+                dateTimeHSDProduct.Value = showPro.Exp.Value;
                 txtTypeProductList.Text = showPro.ProductType.ToString();
                 //txtStatusProduct.Text = showPro.StatusP.ToString();
                 if(showPro.StatusP == true)
@@ -223,8 +223,8 @@ namespace MiniStoreWinF.ManageProducts
                         p.NameProduct,
                         p.QuantityProduct,
                         p.PriceProduct,
-                        p.Nxx,
-                        p.Hsd,
+                        p.Exp,
+                        p.Mfg,
                         p.StatusP,
                     }).Where(p => p.StatusP == true);
                 this.DgvListProduct.DataSource = new BindingSource() { DataSource = AscendingPro };
@@ -239,8 +239,8 @@ namespace MiniStoreWinF.ManageProducts
                         p.NameProduct,
                         p.QuantityProduct,
                         p.PriceProduct,
-                        p.Nxx,
-                        p.Hsd,
+                        p.Exp,
+                        p.Mfg,
                         p.StatusP,
                     }).Where(p => p.StatusP == true);
                 this.DgvListProduct.DataSource = new BindingSource() { DataSource = AscendingPro };
@@ -281,8 +281,8 @@ namespace MiniStoreWinF.ManageProducts
                     _addProduct.NameProduct = txtNameProduct.Text;
                     _addProduct.PriceProduct = float.Parse(txtPriceProduct.Text);
                     _addProduct.QuantityProduct = Int32.Parse(NumberQuantityProduct.Text);
-                    _addProduct.Nxx = Convert.ToDateTime(dateTimeNXSProduct.Text);
-                    _addProduct.Hsd = Convert.ToDateTime(dateTimeHSDProduct.Text);
+                    _addProduct.Exp = Convert.ToDateTime(dateTimeNXSProduct.Text);
+                    _addProduct.Mfg = Convert.ToDateTime(dateTimeHSDProduct.Text);
                     _addProduct.ProductType = txtTypeProductList.Text;
                     //_addProduct.StatusP = txtStatusProduct.Text;
                     if(txtStatusProduct.Text == "Availability")
@@ -339,8 +339,8 @@ namespace MiniStoreWinF.ManageProducts
                     _UpdatePro.Sku = txtIDProduct.Text;
                     _UpdatePro.QuantityProduct = Int32.Parse(NumberQuantityProduct.Text);
                     _UpdatePro.PriceProduct = float.Parse(txtPriceProduct.Text);
-                    _UpdatePro.Nxx = Convert.ToDateTime(dateTimeNXSProduct.Text);
-                    _UpdatePro.Hsd = Convert.ToDateTime(dateTimeHSDProduct.Text);
+                    _UpdatePro.Exp = Convert.ToDateTime(dateTimeNXSProduct.Text);
+                    _UpdatePro.Mfg = Convert.ToDateTime(dateTimeHSDProduct.Text);
                     //_UpdatePro.StatusP = txtStatusProduct.Text;
                     if(txtStatusProduct.Text== "Availability")
                     {
@@ -362,8 +362,8 @@ namespace MiniStoreWinF.ManageProducts
                     _UpdatePro.Sku = txtIDProduct.Text;
                     _UpdatePro.QuantityProduct = Int32.Parse(NumberQuantityProduct.Text);
                     _UpdatePro.PriceProduct = float.Parse(txtPriceProduct.Text);
-                    _UpdatePro.Nxx = Convert.ToDateTime(dateTimeNXSProduct.Text);
-                    _UpdatePro.Hsd = Convert.ToDateTime(dateTimeHSDProduct.Text);
+                    _UpdatePro.Exp = Convert.ToDateTime(dateTimeNXSProduct.Text);
+                    _UpdatePro.Mfg = Convert.ToDateTime(dateTimeHSDProduct.Text);
                     //_UpdatePro.StatusP = txtStatusProduct.Text;
                     if (txtStatusProduct.Text == "Availability")
                     {
