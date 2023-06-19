@@ -18,6 +18,7 @@ using OxyPlot.Annotations;
 using System.Globalization;
 using Repository.Models;
 using MiniStoreWinF.ManageSalary;
+using MiniStoreWinF.ManageEmployees;
 
 namespace MiniStoreWinF.DashBoard
 {
@@ -154,39 +155,39 @@ namespace MiniStoreWinF.DashBoard
                 ItemsSource = dataPoints,
                 StrokeThickness = 4
             };
-=======
-                _revenueService = new RevenueService();
-                var listRevenues = _revenueService.GetAll().OrderByDescending(p => p.DateRevenue).Take(7).ToList();//7 ngày gần nhất 
 
-                // Tạo danh sách dataPoints cho biểu đồ
-                var dataPoints = new List<DataPoint>();
-                foreach (var revenue in listRevenues)
-                {
-                    var dataPoint = new DataPoint(revenue.DateRevenue.Date.Day, (double)revenue.TotalRevenueOfDay);
-                    dataPoints.Add(dataPoint);
-                }
-                // Tạo đối tượng LineSeries
-                var revenueSeries = new LineSeries
-                {
-                    ItemsSource = dataPoints,
-                    StrokeThickness = 4
-                };
+            //_revenueService = new RevenueService();
+            //var listRevenues = _revenueService.GetAll().OrderByDescending(p => p.DateRevenue).Take(7).ToList();//7 ngày gần nhất 
 
-                // Tạo đối tượng PlotModel cho biểu đồ
-                var plotModel = new PlotModel { Title = "Revenue fluctuations in the past 7 days" };
-                foreach (var dataPoint in dataPoints)
-                {
-                    double value = dataPoint.Y;
-                    string formattedValue = FormatValue(value); // Hàm để định dạng giá trị
-                    string label = $"{formattedValue}";
-                    var annotation = new OxyPlot.Annotations.TextAnnotation
-                    {
-                        Text = label,
-                        TextPosition = new DataPoint(dataPoint.X, dataPoint.Y + 300),
-                        StrokeThickness = 0
-                    };
-                    plotModel.Annotations.Add(annotation);
-                }
+            //// Tạo danh sách dataPoints cho biểu đồ
+            //var dataPoints = new List<DataPoint>();
+            //foreach (var revenue in listRevenues)
+            //{
+            //    var dataPoint = new DataPoint(revenue.DateRevenue.Date.Day, (double)revenue.TotalRevenueOfDay);
+            //    dataPoints.Add(dataPoint);
+            //}
+            //// Tạo đối tượng LineSeries
+            //var revenueSeries = new LineSeries
+            //{
+            //    ItemsSource = dataPoints,
+            //    StrokeThickness = 4
+            //};
+
+            //// Tạo đối tượng PlotModel cho biểu đồ
+            //var plotModel = new PlotModel { Title = "Revenue fluctuations in the past 7 days" };
+            //foreach (var dataPoint in dataPoints)
+            //{
+            //    double value = dataPoint.Y;
+            //    string formattedValue = FormatValue(value); // Hàm để định dạng giá trị
+            //    string label = $"{formattedValue}";
+            //    var annotation = new OxyPlot.Annotations.TextAnnotation
+            //    {
+            //        Text = label,
+            //        TextPosition = new DataPoint(dataPoint.X, dataPoint.Y + 300),
+            //        StrokeThickness = 0
+            //    };
+            //    plotModel.Annotations.Add(annotation);
+            //}
 
             // Tạo đối tượng PlotModel cho biểu đồ
             var plotModel = new PlotModel { Title = "Revenue fluctuations in the past 7 days" };
@@ -269,6 +270,11 @@ namespace MiniStoreWinF.DashBoard
         private void btSalary_Click(object sender, EventArgs e)
         {
             u.openChildForm(new frmSalary(), pMain);
+        }
+
+        private void panel3_Click(object sender, EventArgs e)
+        {
+            u.openChildForm(new frmShowEmployee(), pMain);
         }
     }
 }
