@@ -45,7 +45,7 @@ namespace MiniStoreWinF.Manage_Voucher
                     txtName.Text = voucher.Name;
                     txtPrice.Text = voucher.Price.ToString();
                     txtQuantity.Text = voucher.Quantity.ToString();
-                    txtType.Text = voucher.Type.ToString();
+                    //txtType.Text = voucher.Type.ToString();
                     dpkEXP.Text = voucher.Exp.ToString();
 
 
@@ -121,7 +121,7 @@ namespace MiniStoreWinF.Manage_Voucher
                 var voucher = new Voucher();
 
                 voucher.Name = txtAddName.Text;
-                voucher.Type = txtAddType.Text;
+                //voucher.Type = txtAddType.Text;
                 voucher.Exp = dpkNewDate.Value;
                 voucher.Price = float.Parse(txtNewPrice.Text);
                 voucher.Quantity = int.Parse(txtNewQuantity.Text);

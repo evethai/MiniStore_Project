@@ -53,12 +53,12 @@
             clmPrice = new ColumnHeader();
             clmTotal = new ColumnHeader();
             panel5 = new Panel();
+            txtScanVoucher = new TextBox();
             btUsingVoucher = new Button();
             btCheckMember = new Button();
             label8 = new Label();
             btShowBill = new Button();
             cbPointUsing = new ComboBox();
-            cbVourcherOrder = new ComboBox();
             label7 = new Label();
             label6 = new Label();
             txtTotalAllOrders = new TextBox();
@@ -277,12 +277,12 @@
             // 
             // panel5
             // 
+            panel5.Controls.Add(txtScanVoucher);
             panel5.Controls.Add(btUsingVoucher);
             panel5.Controls.Add(btCheckMember);
             panel5.Controls.Add(label8);
             panel5.Controls.Add(btShowBill);
             panel5.Controls.Add(cbPointUsing);
-            panel5.Controls.Add(cbVourcherOrder);
             panel5.Controls.Add(label7);
             panel5.Controls.Add(label6);
             panel5.Controls.Add(txtTotalAllOrders);
@@ -290,6 +290,13 @@
             panel5.Name = "panel5";
             panel5.Size = new Size(445, 261);
             panel5.TabIndex = 16;
+            // 
+            // txtScanVoucher
+            // 
+            txtScanVoucher.Location = new Point(93, 18);
+            txtScanVoucher.Name = "txtScanVoucher";
+            txtScanVoucher.Size = new Size(187, 27);
+            txtScanVoucher.TabIndex = 20;
             // 
             // btUsingVoucher
             // 
@@ -348,16 +355,6 @@
             cbPointUsing.Size = new Size(187, 28);
             cbPointUsing.TabIndex = 17;
             cbPointUsing.SelectedIndexChanged += cbPointUsing_SelectedIndexChanged;
-            // 
-            // cbVourcherOrder
-            // 
-            cbVourcherOrder.Enabled = false;
-            cbVourcherOrder.FormattingEnabled = true;
-            cbVourcherOrder.Location = new Point(93, 16);
-            cbVourcherOrder.Name = "cbVourcherOrder";
-            cbVourcherOrder.Size = new Size(187, 28);
-            cbVourcherOrder.TabIndex = 16;
-            cbVourcherOrder.SelectedIndexChanged += cbVourcherOrder_SelectedIndexChanged;
             // 
             // label7
             // 
@@ -590,7 +587,6 @@
         private Label label7;
         private Label label6;
         private TextBox txtTotalAllOrders;
-        private ComboBox cbVourcherOrder;
         private MenuStrip menuStrip1;
         private TextBox txtNameOrder;
         private NumericUpDown txtQuantityOrder;
@@ -615,5 +611,6 @@
         private DataGridViewTextBoxColumn priceProductDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn mfgDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn expDataGridViewTextBoxColumn;
+        private TextBox txtScanVoucher;
     }
 }
