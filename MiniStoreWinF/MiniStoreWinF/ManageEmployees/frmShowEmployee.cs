@@ -15,9 +15,9 @@ namespace MiniStoreWinF.ManageEmployees
 {
     public partial class frmShowEmployee : Form
     {
-       
+
         Validation _employeeService = new Validation();
-      
+
         public string url = "";
 
 
@@ -305,7 +305,7 @@ namespace MiniStoreWinF.ManageEmployees
                 dgvEmployee.DataSource = new BindingSource() { DataSource = listSearchName };
             }
         }
-        
+
 
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
