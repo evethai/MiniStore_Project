@@ -40,37 +40,35 @@
             btUpdate = new Button();
             txtQuantity = new TextBox();
             txtPrice = new TextBox();
-            txtType = new TextBox();
             txtName = new TextBox();
             txtID = new TextBox();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
-            label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            btDetail = new Button();
+            numAddCondition = new NumericUpDown();
+            label3 = new Label();
             pnAdd = new Panel();
             dpkNewDate = new DateTimePicker();
             btAdd = new Button();
             txtNewQuantity = new TextBox();
             txtNewPrice = new TextBox();
-            txtAddType = new TextBox();
             txtAddName = new TextBox();
-            txtIDADD = new TextBox();
             label7 = new Label();
             label8 = new Label();
             label9 = new Label();
-            label10 = new Label();
             label11 = new Label();
-            label12 = new Label();
             txtSearch = new TextBox();
             btSearch = new Button();
+            rdExpired = new RadioButton();
+            rdInUse = new RadioButton();
             ((System.ComponentModel.ISupportInitialize)dgvVoucher).BeginInit();
             ((System.ComponentModel.ISupportInitialize)voucherBindingSource2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)voucherBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)voucherBindingSource).BeginInit();
             pnShow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numAddCondition).BeginInit();
             pnAdd.SuspendLayout();
             SuspendLayout();
             // 
@@ -80,22 +78,21 @@
             dgvVoucher.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvVoucher.Columns.AddRange(new DataGridViewColumn[] { nameDataGridViewTextBoxColumn });
             dgvVoucher.DataSource = voucherBindingSource2;
-            dgvVoucher.Location = new Point(12, 79);
+            dgvVoucher.Location = new Point(12, 130);
             dgvVoucher.Name = "dgvVoucher";
             dgvVoucher.RowHeadersWidth = 51;
             dgvVoucher.RowTemplate.Height = 29;
-            dgvVoucher.Size = new Size(238, 279);
+            dgvVoucher.Size = new Size(212, 283);
             dgvVoucher.TabIndex = 0;
-            dgvVoucher.CellContentClick += dgvVoucher_CellContentClick;
             dgvVoucher.CellDoubleClick += dgvVoucher_CellDoubleClick;
             // 
             // nameDataGridViewTextBoxColumn
             // 
+            nameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             nameDataGridViewTextBoxColumn.HeaderText = "Name";
             nameDataGridViewTextBoxColumn.MinimumWidth = 6;
             nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            nameDataGridViewTextBoxColumn.Width = 125;
             // 
             // voucherBindingSource2
             // 
@@ -111,7 +108,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(256, 101);
+            button1.Location = new Point(256, 197);
             button1.Name = "button1";
             button1.Size = new Size(110, 29);
             button1.TabIndex = 1;
@@ -126,18 +123,16 @@
             pnShow.Controls.Add(btUpdate);
             pnShow.Controls.Add(txtQuantity);
             pnShow.Controls.Add(txtPrice);
-            pnShow.Controls.Add(txtType);
             pnShow.Controls.Add(txtName);
             pnShow.Controls.Add(txtID);
             pnShow.Controls.Add(label6);
             pnShow.Controls.Add(label5);
             pnShow.Controls.Add(label4);
-            pnShow.Controls.Add(label3);
             pnShow.Controls.Add(label2);
             pnShow.Controls.Add(label1);
             pnShow.Location = new Point(372, 37);
             pnShow.Name = "pnShow";
-            pnShow.Size = new Size(595, 279);
+            pnShow.Size = new Size(595, 214);
             pnShow.TabIndex = 2;
             // 
             // dpkEXP
@@ -149,7 +144,7 @@
             // 
             // btUpdate
             // 
-            btUpdate.Location = new Point(494, 243);
+            btUpdate.Location = new Point(494, 178);
             btUpdate.Name = "btUpdate";
             btUpdate.Size = new Size(94, 29);
             btUpdate.TabIndex = 12;
@@ -163,20 +158,15 @@
             txtQuantity.Name = "txtQuantity";
             txtQuantity.Size = new Size(86, 27);
             txtQuantity.TabIndex = 10;
+            txtQuantity.KeyPress += txtQuantity_KeyPress;
             // 
             // txtPrice
             // 
-            txtPrice.Location = new Point(120, 195);
+            txtPrice.Location = new Point(120, 144);
             txtPrice.Name = "txtPrice";
             txtPrice.Size = new Size(125, 27);
             txtPrice.TabIndex = 9;
-            // 
-            // txtType
-            // 
-            txtType.Location = new Point(120, 134);
-            txtType.Name = "txtType";
-            txtType.Size = new Size(125, 27);
-            txtType.TabIndex = 8;
+            txtPrice.KeyPress += txtPrice_KeyPress;
             // 
             // txtName
             // 
@@ -214,20 +204,11 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(73, 198);
+            label4.Location = new Point(74, 147);
             label4.Name = "label4";
             label4.Size = new Size(41, 20);
             label4.TabIndex = 3;
             label4.Text = "Price";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(74, 141);
-            label3.Name = "label3";
-            label3.Size = new Size(40, 20);
-            label3.TabIndex = 2;
-            label3.Text = "Type";
             // 
             // label2
             // 
@@ -247,34 +228,39 @@
             label1.TabIndex = 0;
             label1.Text = "ID Voucher";
             // 
-            // btDetail
+            // numAddCondition
             // 
-            btDetail.Location = new Point(256, 66);
-            btDetail.Name = "btDetail";
-            btDetail.Size = new Size(110, 29);
-            btDetail.TabIndex = 3;
-            btDetail.Text = "Detail";
-            btDetail.UseVisualStyleBackColor = true;
+            numAddCondition.Location = new Point(108, 143);
+            numAddCondition.Name = "numAddCondition";
+            numAddCondition.Size = new Size(103, 27);
+            numAddCondition.TabIndex = 15;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(20, 145);
+            label3.Name = "label3";
+            label3.Size = new Size(74, 20);
+            label3.TabIndex = 14;
+            label3.Text = "Condition";
             // 
             // pnAdd
             // 
             pnAdd.BorderStyle = BorderStyle.Fixed3D;
+            pnAdd.Controls.Add(numAddCondition);
+            pnAdd.Controls.Add(label3);
             pnAdd.Controls.Add(dpkNewDate);
             pnAdd.Controls.Add(btAdd);
             pnAdd.Controls.Add(txtNewQuantity);
             pnAdd.Controls.Add(txtNewPrice);
-            pnAdd.Controls.Add(txtAddType);
             pnAdd.Controls.Add(txtAddName);
-            pnAdd.Controls.Add(txtIDADD);
             pnAdd.Controls.Add(label7);
             pnAdd.Controls.Add(label8);
             pnAdd.Controls.Add(label9);
-            pnAdd.Controls.Add(label10);
             pnAdd.Controls.Add(label11);
-            pnAdd.Controls.Add(label12);
-            pnAdd.Location = new Point(372, 317);
+            pnAdd.Location = new Point(372, 281);
             pnAdd.Name = "pnAdd";
-            pnAdd.Size = new Size(595, 279);
+            pnAdd.Size = new Size(595, 195);
             pnAdd.TabIndex = 14;
             pnAdd.Visible = false;
             // 
@@ -287,7 +273,7 @@
             // 
             // btAdd
             // 
-            btAdd.Location = new Point(494, 243);
+            btAdd.Location = new Point(494, 159);
             btAdd.Name = "btAdd";
             btAdd.Size = new Size(94, 29);
             btAdd.TabIndex = 12;
@@ -301,35 +287,22 @@
             txtNewQuantity.Name = "txtNewQuantity";
             txtNewQuantity.Size = new Size(86, 27);
             txtNewQuantity.TabIndex = 10;
+            txtNewQuantity.KeyPress += txtNewQuantity_KeyPress;
             // 
             // txtNewPrice
             // 
-            txtNewPrice.Location = new Point(120, 195);
+            txtNewPrice.Location = new Point(108, 91);
             txtNewPrice.Name = "txtNewPrice";
             txtNewPrice.Size = new Size(125, 27);
             txtNewPrice.TabIndex = 9;
-            // 
-            // txtAddType
-            // 
-            txtAddType.Location = new Point(120, 134);
-            txtAddType.Name = "txtAddType";
-            txtAddType.Size = new Size(125, 27);
-            txtAddType.TabIndex = 8;
+            txtNewPrice.KeyPress += txtNewPrice_KeyPress;
             // 
             // txtAddName
             // 
-            txtAddName.Location = new Point(120, 88);
+            txtAddName.Location = new Point(108, 33);
             txtAddName.Name = "txtAddName";
             txtAddName.Size = new Size(125, 27);
             txtAddName.TabIndex = 7;
-            // 
-            // txtIDADD
-            // 
-            txtIDADD.Location = new Point(120, 33);
-            txtIDADD.Name = "txtIDADD";
-            txtIDADD.ReadOnly = true;
-            txtIDADD.Size = new Size(125, 27);
-            txtIDADD.TabIndex = 6;
             // 
             // label7
             // 
@@ -352,65 +325,72 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(73, 198);
+            label9.Location = new Point(60, 91);
             label9.Name = "label9";
             label9.Size = new Size(41, 20);
             label9.TabIndex = 3;
             label9.Text = "Price";
             // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(73, 137);
-            label10.Name = "label10";
-            label10.Size = new Size(40, 20);
-            label10.TabIndex = 2;
-            label10.Text = "Type";
-            // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(65, 95);
+            label11.Location = new Point(53, 40);
             label11.Name = "label11";
             label11.Size = new Size(49, 20);
             label11.TabIndex = 1;
             label11.Text = "Name";
             // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Location = new Point(33, 40);
-            label12.Name = "label12";
-            label12.Size = new Size(81, 20);
-            label12.TabIndex = 0;
-            label12.Text = "ID Voucher";
-            // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(12, 39);
+            txtSearch.Location = new Point(230, 129);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(138, 27);
+            txtSearch.Size = new Size(136, 27);
             txtSearch.TabIndex = 15;
             // 
             // btSearch
             // 
-            btSearch.Location = new Point(156, 37);
+            btSearch.Location = new Point(256, 162);
             btSearch.Name = "btSearch";
-            btSearch.Size = new Size(94, 29);
+            btSearch.Size = new Size(110, 29);
             btSearch.TabIndex = 16;
             btSearch.Text = "Search";
             btSearch.UseVisualStyleBackColor = true;
             btSearch.Click += btSearch_Click;
             // 
+            // rdExpired
+            // 
+            rdExpired.AutoSize = true;
+            rdExpired.Location = new Point(110, 100);
+            rdExpired.Name = "rdExpired";
+            rdExpired.Size = new Size(80, 24);
+            rdExpired.TabIndex = 17;
+            rdExpired.TabStop = true;
+            rdExpired.Text = "Expired";
+            rdExpired.UseVisualStyleBackColor = true;
+            rdExpired.CheckedChanged += rdExpired_CheckedChanged;
+            // 
+            // rdInUse
+            // 
+            rdInUse.AutoSize = true;
+            rdInUse.Location = new Point(12, 100);
+            rdInUse.Name = "rdInUse";
+            rdInUse.Size = new Size(70, 24);
+            rdInUse.TabIndex = 18;
+            rdInUse.TabStop = true;
+            rdInUse.Text = "In Use";
+            rdInUse.UseVisualStyleBackColor = true;
+            rdInUse.CheckedChanged += rdInUse_CheckedChanged;
+            // 
             // frmShowVoucher
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(979, 609);
+            ClientSize = new Size(979, 527);
+            Controls.Add(rdInUse);
+            Controls.Add(rdExpired);
             Controls.Add(btSearch);
             Controls.Add(txtSearch);
             Controls.Add(pnAdd);
-            Controls.Add(btDetail);
             Controls.Add(pnShow);
             Controls.Add(button1);
             Controls.Add(dgvVoucher);
@@ -423,6 +403,7 @@
             ((System.ComponentModel.ISupportInitialize)voucherBindingSource).EndInit();
             pnShow.ResumeLayout(false);
             pnShow.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numAddCondition).EndInit();
             pnAdd.ResumeLayout(false);
             pnAdd.PerformLayout();
             ResumeLayout(false);
@@ -432,7 +413,6 @@
         #endregion
 
         private DataGridView dgvVoucher;
-        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private BindingSource voucherBindingSource;
         private Button button1;
         private TextBox textBox7;
@@ -445,32 +425,30 @@
         private Label label1;
         private Label label5;
         private Label label4;
-        private Label label3;
         private Label label2;
         private TextBox txtID;
         private Label label6;
         private Button btUpdate;
         private TextBox txtQuantity;
         private TextBox txtPrice;
-        private TextBox txtType;
         private TextBox txtName;
         private DateTimePicker dpkEXP;
-        private Button btDetail;
         private Panel pnAdd;
         private DateTimePicker dpkNewDate;
         private Button btAdd;
         private TextBox txtNewQuantity;
         private TextBox txtNewPrice;
-        private TextBox txtAddType;
         private TextBox txtAddName;
-        private TextBox txtIDADD;
         private Label label7;
         private Label label8;
         private Label label9;
-        private Label label10;
         private Label label11;
-        private Label label12;
         private TextBox txtSearch;
         private Button btSearch;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private RadioButton rdExpired;
+        private RadioButton rdInUse;
+        private NumericUpDown numAddCondition;
+        private Label label3;
     }
 }

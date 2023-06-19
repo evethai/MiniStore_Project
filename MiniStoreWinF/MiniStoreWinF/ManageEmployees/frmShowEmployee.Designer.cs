@@ -32,9 +32,9 @@
             employeeBindingSource = new BindingSource(components);
             btAddEmployee = new Button();
             groupBox1 = new GroupBox();
+            dtDoB = new DateTimePicker();
             label9 = new Label();
             cbGender = new ComboBox();
-            btChange = new Button();
             Status = new Label();
             cBStatus = new ComboBox();
             lb = new Label();
@@ -51,7 +51,6 @@
             label2 = new Label();
             btImport = new Button();
             pBEmp = new PictureBox();
-            txtDoB = new TextBox();
             txtPassword = new TextBox();
             txtUsername = new TextBox();
             txtAddress = new TextBox();
@@ -99,9 +98,9 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.Transparent;
+            groupBox1.Controls.Add(dtDoB);
             groupBox1.Controls.Add(label9);
             groupBox1.Controls.Add(cbGender);
-            groupBox1.Controls.Add(btChange);
             groupBox1.Controls.Add(Status);
             groupBox1.Controls.Add(cBStatus);
             groupBox1.Controls.Add(lb);
@@ -118,7 +117,6 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(btImport);
             groupBox1.Controls.Add(pBEmp);
-            groupBox1.Controls.Add(txtDoB);
             groupBox1.Controls.Add(txtPassword);
             groupBox1.Controls.Add(txtUsername);
             groupBox1.Controls.Add(txtAddress);
@@ -131,7 +129,13 @@
             groupBox1.TabIndex = 3;
             groupBox1.TabStop = false;
             groupBox1.Text = "Employee information";
-            groupBox1.Enter += groupBox1_Enter;
+            // 
+            // dtDoB
+            // 
+            dtDoB.Location = new Point(343, 173);
+            dtDoB.Name = "dtDoB";
+            dtDoB.Size = new Size(215, 27);
+            dtDoB.TabIndex = 26;
             // 
             // label9
             // 
@@ -144,22 +148,13 @@
             // 
             // cbGender
             // 
+            cbGender.DropDownStyle = ComboBoxStyle.DropDownList;
             cbGender.FormattingEnabled = true;
             cbGender.Items.AddRange(new object[] { "Man", "Woman" });
             cbGender.Location = new Point(343, 26);
             cbGender.Name = "cbGender";
             cbGender.Size = new Size(143, 28);
             cbGender.TabIndex = 31;
-            // 
-            // btChange
-            // 
-            btChange.Location = new Point(616, 149);
-            btChange.Name = "btChange";
-            btChange.Size = new Size(94, 29);
-            btChange.TabIndex = 30;
-            btChange.Text = "Change";
-            btChange.UseVisualStyleBackColor = true;
-            btChange.Click += btChange_Click;
             // 
             // Status
             // 
@@ -217,6 +212,7 @@
             // 
             // cbRole
             // 
+            cbRole.DropDownStyle = ComboBoxStyle.DropDownList;
             cbRole.FormattingEnabled = true;
             cbRole.Items.AddRange(new object[] { "Employee", "Admin", "Guard" });
             cbRole.Location = new Point(567, 29);
@@ -307,13 +303,6 @@
             pBEmp.TabIndex = 7;
             pBEmp.TabStop = false;
             // 
-            // txtDoB
-            // 
-            txtDoB.Location = new Point(343, 172);
-            txtDoB.Name = "txtDoB";
-            txtDoB.Size = new Size(143, 27);
-            txtDoB.TabIndex = 6;
-            // 
             // txtPassword
             // 
             txtPassword.Location = new Point(343, 126);
@@ -343,6 +332,7 @@
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(143, 27);
             txtPhone.TabIndex = 2;
+            txtPhone.KeyPress += txtPhone_KeyPress;
             // 
             // txtName
             // 
@@ -510,7 +500,7 @@
             btSearch.UseVisualStyleBackColor = true;
             btSearch.Click += btSearch_Click;
             // 
-            // ShowEmployees
+            // frmShowEmployee
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -525,7 +515,7 @@
             Controls.Add(label1);
             Controls.Add(groupBox1);
             Controls.Add(btAddEmployee);
-            Name = "ShowEmployees";
+            Name = "frmShowEmployee";
             Text = "ShowEmployees";
             Load += ShowEmployees_Load;
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).EndInit();
@@ -553,7 +543,6 @@
         private TextBox txtName;
         private Button btImport;
         private PictureBox pBEmp;
-        private TextBox txtDoB;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
         private Label label8;
         private Label label7;
@@ -580,10 +569,10 @@
         private DataGridViewTextBoxColumn addressEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn phoneEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dateJoinDataGridViewTextBoxColumn;
-        private Button btChange;
         private Label Status;
         private ComboBox cBStatus;
         private Label label9;
         private ComboBox cbGender;
+        private DateTimePicker dtDoB;
     }
 }

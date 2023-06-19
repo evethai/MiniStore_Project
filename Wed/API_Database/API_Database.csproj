@@ -140,6 +140,7 @@
     <Compile Include="Controllers\EmployeeDTO.cs" />
     <Compile Include="Controllers\JWTUtils.cs" />
     <Compile Include="Controllers\msController.cs" />
+    <Compile Include="Controllers\Myutils.cs" />
     <Compile Include="Controllers\WorkSheetDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
