@@ -140,18 +140,6 @@ namespace MiniStoreWinF.DashBoard
         }
         public void ChartRevenue(PictureBox p)
         {
-            _revenueService = new RevenueService();
-            var listRevenues = _revenueService.GetAll().Where(p => p.DateRevenue > DateTime.Now.AddDays(-7)).ToList();//7 ngày gần nhất
-
-            // Tạo danh sách dataPoints cho biểu đồ
-            var dataPoints = new List<DataPoint>();
-            foreach (var revenue in listRevenues)
-            {
-                var dataPoint = new DataPoint(revenue.DateRevenue.Date.Day, (double)revenue.TotalRevenueOfDay);
-                dataPoints.Add(dataPoint);
-            }
-            // Tạo đối tượng LineSeries
-            var revenueSeries = new LineSeries
 
             try
 
