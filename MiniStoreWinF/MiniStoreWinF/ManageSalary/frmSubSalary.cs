@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.Office.Interop.Excel;
 using Repository.Models;
 using Repository.Service;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace MiniStoreWinF.ManageSalary
         CalculationAuto ca = new CalculationAuto();
         List<SubSalary> _list = null;
         int pageNumber = 1;
-        int numberRecord = 3;
+        int numberRecord = 7;
 
         public frmSubSalary()
         {
@@ -31,11 +32,13 @@ namespace MiniStoreWinF.ManageSalary
             u.showListEmp(cbName);
             //
             showListEmployeHasSubSalary();
+            //
+            showAdvanceSalary();
         }
         public void showListEmployeHasSubSalary()
         {
             _subSalaryService = new SubSalaryService();
-            var list = _subSalaryService.GetAll().ToList();
+            var list = _subSalaryService.GetAll().Where(p => p.Time.Value.Month.Equals(DateTime.Now.AddMonths(-1).Month)).ToList();
             dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
             _list = list;
         }
@@ -97,8 +100,9 @@ namespace MiniStoreWinF.ManageSalary
             _subSalaryService = new SubSalaryService();
             var list = _subSalaryService.GetAll().Where(p => p.Time.Value.Month.Equals(time.Month)).ToList();
             dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
-
             _list = list;
+            //====
+            searchAdvAll();
         }
 
         private void btTotal_Click(object sender, EventArgs e)
@@ -111,7 +115,8 @@ namespace MiniStoreWinF.ManageSalary
             var list = _subSalaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.Time.Value.Month.Equals(time.Month)).ToList();
             dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
             _list = list;
-
+            //=========
+            searchAdvName();
         }
 
         private void nmPaging_ValueChanged(object sender, EventArgs e)
@@ -134,6 +139,52 @@ namespace MiniStoreWinF.ManageSalary
             List<SubSalary> result = new List<SubSalary>();
             result = list.Skip((page - 1) * numberRe).Take(numberRecord).ToList();
             return result;
+        }
+        //------------------------------------------------------------------------------
+        //------Code Advance Salary-----------------------------------------------------
+        //------------------------------------------------------------------------------
+        DetailAdvanceSalaryService _detailAdvanceSalaryService;
+        private void btAddnew_Adv_Click(object sender, EventArgs e)
+        {
+            Form form = new frmAddNewAdvSalary();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                showAdvanceSalary();
+            }
+        }
+        public void showAdvanceSalary()
+        {
+            _detailAdvanceSalaryService = new DetailAdvanceSalaryService();
+            var list = _detailAdvanceSalaryService.GetAll().Where(p => p.DateAs.Value.Month.Equals(DateTime.Now.AddMonths(-1).Month)).ToList();
+            dgvAdv.DataSource = list;
+        }
+        public void searchAdvName()
+        {
+            _employeeService = new EmployeeService();
+            _detailAdvanceSalaryService = new DetailAdvanceSalaryService();
+            var listAdv = _detailAdvanceSalaryService.GetAll().Where(p => p.DateAs.Value.Month.Equals(dtpList.Value.Month)).ToList();
+            var listEmp = _employeeService.GetAll().Where(p => p.FullNameEmp.Contains(cbName.Text) && p.IsActive == true).ToList();
+
+            //
+            BindingSource bindingSource = new BindingSource();
+            var resultList = from adv in listAdv
+                             join emp in listEmp on adv.IdEmp equals emp.IdEmp
+                             select adv;
+            bindingSource.DataSource = resultList;
+            dgvAdv.DataSource = bindingSource;
+        }
+        public void searchAdvAll()
+        {
+            _detailAdvanceSalaryService = new DetailAdvanceSalaryService();
+            var list = _detailAdvanceSalaryService.GetAll().Where(p => p.DateAs.Value.Month.Equals(dtpList.Value.Month)).ToList();
+            if (list != null)
+            {
+                dgvAdv.DataSource = list;
+            }
+            else
+            {
+                dgvAdv = null;
+            }
         }
     }
 }

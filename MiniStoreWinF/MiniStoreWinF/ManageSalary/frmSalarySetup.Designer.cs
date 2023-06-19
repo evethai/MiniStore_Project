@@ -56,6 +56,7 @@
             // 
             // gb1
             // 
+            gb1.BackColor = SystemColors.ButtonHighlight;
             gb1.Controls.Add(button1);
             gb1.Controls.Add(txtGuard);
             gb1.Controls.Add(txtEmp);
@@ -63,16 +64,19 @@
             gb1.Controls.Add(label1);
             gb1.Dock = DockStyle.Top;
             gb1.Location = new Point(0, 0);
+            gb1.Margin = new Padding(5, 4, 5, 4);
             gb1.Name = "gb1";
-            gb1.Size = new Size(374, 149);
+            gb1.Padding = new Padding(5, 4, 5, 4);
+            gb1.Size = new Size(1084, 219);
             gb1.TabIndex = 0;
             gb1.TabStop = false;
             // 
             // button1
             // 
-            button1.Location = new Point(12, 87);
+            button1.Location = new Point(19, 128);
+            button1.Margin = new Padding(5, 4, 5, 4);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(118, 34);
             button1.TabIndex = 4;
             button1.Text = "Detail";
             button1.UseVisualStyleBackColor = true;
@@ -81,34 +85,38 @@
             // txtGuard
             // 
             txtGuard.Enabled = false;
-            txtGuard.Location = new Point(188, 64);
+            txtGuard.Location = new Point(295, 94);
+            txtGuard.Margin = new Padding(5, 4, 5, 4);
             txtGuard.Name = "txtGuard";
-            txtGuard.Size = new Size(100, 25);
+            txtGuard.Size = new Size(155, 33);
             txtGuard.TabIndex = 3;
             // 
             // txtEmp
             // 
             txtEmp.Enabled = false;
-            txtEmp.Location = new Point(188, 32);
+            txtEmp.Location = new Point(295, 47);
+            txtEmp.Margin = new Padding(5, 4, 5, 4);
             txtEmp.Name = "txtEmp";
-            txtEmp.Size = new Size(100, 25);
+            txtEmp.Size = new Size(155, 33);
             txtEmp.TabIndex = 3;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 64);
+            label2.Location = new Point(19, 94);
+            label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
-            label2.Size = new Size(96, 17);
+            label2.Size = new Size(138, 25);
             label2.TabIndex = 2;
             label2.Text = "Number Guard";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 32);
+            label1.Location = new Point(19, 47);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(123, 17);
+            label1.Size = new Size(176, 25);
             label1.TabIndex = 1;
             label1.Text = "Number Employees";
             // 
@@ -124,17 +132,20 @@
             gb2.Controls.Add(label4);
             gb2.Controls.Add(label3);
             gb2.Dock = DockStyle.Top;
-            gb2.Location = new Point(0, 149);
+            gb2.Location = new Point(0, 219);
+            gb2.Margin = new Padding(5, 4, 5, 4);
             gb2.Name = "gb2";
-            gb2.Size = new Size(374, 146);
+            gb2.Padding = new Padding(5, 4, 5, 4);
+            gb2.Size = new Size(1084, 215);
             gb2.TabIndex = 1;
             gb2.TabStop = false;
             // 
             // btEdit
             // 
-            btEdit.Location = new Point(12, 96);
+            btEdit.Location = new Point(19, 141);
+            btEdit.Margin = new Padding(5, 4, 5, 4);
             btEdit.Name = "btEdit";
-            btEdit.Size = new Size(75, 23);
+            btEdit.Size = new Size(118, 34);
             btEdit.TabIndex = 2;
             btEdit.Text = "Edit";
             btEdit.UseVisualStyleBackColor = true;
@@ -143,34 +154,38 @@
             // txtSaGuard
             // 
             txtSaGuard.Enabled = false;
-            txtSaGuard.Location = new Point(188, 66);
+            txtSaGuard.Location = new Point(295, 97);
+            txtSaGuard.Margin = new Padding(5, 4, 5, 4);
             txtSaGuard.Name = "txtSaGuard";
-            txtSaGuard.Size = new Size(100, 25);
+            txtSaGuard.Size = new Size(155, 33);
             txtSaGuard.TabIndex = 1;
             // 
             // txtSaEmp
             // 
             txtSaEmp.Enabled = false;
-            txtSaEmp.Location = new Point(188, 28);
+            txtSaEmp.Location = new Point(295, 41);
+            txtSaEmp.Margin = new Padding(5, 4, 5, 4);
             txtSaEmp.Name = "txtSaEmp";
-            txtSaEmp.Size = new Size(100, 25);
+            txtSaEmp.Size = new Size(155, 33);
             txtSaEmp.TabIndex = 1;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(12, 36);
+            label4.Location = new Point(19, 53);
+            label4.Margin = new Padding(5, 0, 5, 0);
             label4.Name = "label4";
-            label4.Size = new Size(162, 17);
+            label4.Size = new Size(232, 25);
             label4.TabIndex = 0;
             label4.Text = "Basic Salary for Employee ";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(12, 74);
+            label3.Location = new Point(19, 109);
+            label3.Margin = new Padding(5, 0, 5, 0);
             label3.Name = "label3";
-            label3.Size = new Size(137, 17);
+            label3.Size = new Size(197, 25);
             label3.TabIndex = 0;
             label3.Text = "Basic Salary for Guard";
             // 
@@ -181,19 +196,21 @@
             groupBox1.Controls.Add(txtTaxEmp);
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label5);
-            groupBox1.Dock = DockStyle.Bottom;
-            groupBox1.Location = new Point(0, 301);
+            groupBox1.Dock = DockStyle.Top;
+            groupBox1.Location = new Point(0, 434);
+            groupBox1.Margin = new Padding(5, 4, 5, 4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(374, 149);
+            groupBox1.Padding = new Padding(5, 4, 5, 4);
+            groupBox1.Size = new Size(1084, 219);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
             // 
             // btEditTax
             // 
-            btEditTax.Location = new Point(12, 114);
+            btEditTax.Location = new Point(19, 168);
+            btEditTax.Margin = new Padding(5, 4, 5, 4);
             btEditTax.Name = "btEditTax";
-            btEditTax.Size = new Size(75, 23);
+            btEditTax.Size = new Size(118, 34);
             btEditTax.TabIndex = 2;
             btEditTax.Text = "Edit";
             btEditTax.UseVisualStyleBackColor = true;
@@ -202,46 +219,54 @@
             // txtTaxGua
             // 
             txtTaxGua.Enabled = false;
-            txtTaxGua.Location = new Point(188, 75);
+            txtTaxGua.Location = new Point(295, 110);
+            txtTaxGua.Margin = new Padding(5, 4, 5, 4);
             txtTaxGua.Name = "txtTaxGua";
-            txtTaxGua.Size = new Size(100, 25);
+            txtTaxGua.Size = new Size(155, 33);
             txtTaxGua.TabIndex = 1;
             // 
             // txtTaxEmp
             // 
             txtTaxEmp.Enabled = false;
-            txtTaxEmp.Location = new Point(188, 29);
+            txtTaxEmp.Location = new Point(295, 42);
+            txtTaxEmp.Margin = new Padding(5, 4, 5, 4);
             txtTaxEmp.Name = "txtTaxEmp";
-            txtTaxEmp.Size = new Size(100, 25);
+            txtTaxEmp.Size = new Size(155, 33);
             txtTaxEmp.TabIndex = 1;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(12, 78);
+            label6.Location = new Point(19, 115);
+            label6.Margin = new Padding(5, 0, 5, 0);
             label6.Name = "label6";
-            label6.Size = new Size(92, 17);
+            label6.Size = new Size(130, 25);
             label6.TabIndex = 0;
             label6.Text = "Tax for Guard ";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(12, 29);
+            label5.Location = new Point(19, 42);
+            label5.Margin = new Padding(5, 0, 5, 0);
             label5.Name = "label5";
-            label5.Size = new Size(113, 17);
+            label5.Size = new Size(160, 25);
             label5.TabIndex = 0;
             label5.Text = "Tax for Employee ";
             // 
             // frmSalarySetup
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(374, 450);
+            BackColor = SystemColors.ButtonHighlight;
+            ClientSize = new Size(1084, 662);
             Controls.Add(groupBox1);
             Controls.Add(gb2);
             Controls.Add(gb1);
+            Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(5, 4, 5, 4);
             Name = "frmSalarySetup";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmSalarySetup";
             Load += frmSalarySetup_Load;
             gb1.ResumeLayout(false);

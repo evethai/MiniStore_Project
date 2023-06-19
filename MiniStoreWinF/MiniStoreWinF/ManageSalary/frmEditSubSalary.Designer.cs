@@ -51,18 +51,21 @@
             gbAddSub.Controls.Add(label3);
             gbAddSub.Controls.Add(label2);
             gbAddSub.Controls.Add(label1);
-            gbAddSub.Location = new Point(0, 3);
+            gbAddSub.Location = new Point(0, 4);
+            gbAddSub.Margin = new Padding(5, 4, 5, 4);
             gbAddSub.Name = "gbAddSub";
-            gbAddSub.Size = new Size(252, 250);
+            gbAddSub.Padding = new Padding(5, 4, 5, 4);
+            gbAddSub.Size = new Size(396, 368);
             gbAddSub.TabIndex = 4;
             gbAddSub.TabStop = false;
             gbAddSub.Text = "Edit Subsidized Salary";
             // 
             // btRemove
             // 
-            btRemove.Location = new Point(16, 204);
+            btRemove.Location = new Point(25, 300);
+            btRemove.Margin = new Padding(5, 4, 5, 4);
             btRemove.Name = "btRemove";
-            btRemove.Size = new Size(75, 23);
+            btRemove.Size = new Size(118, 34);
             btRemove.TabIndex = 4;
             btRemove.Text = "Remove";
             btRemove.UseVisualStyleBackColor = true;
@@ -70,9 +73,10 @@
             // 
             // btUpdate
             // 
-            btUpdate.Location = new Point(153, 204);
+            btUpdate.Location = new Point(240, 300);
+            btUpdate.Margin = new Padding(5, 4, 5, 4);
             btUpdate.Name = "btUpdate";
-            btUpdate.Size = new Size(75, 23);
+            btUpdate.Size = new Size(118, 34);
             btUpdate.TabIndex = 4;
             btUpdate.Text = "Update";
             btUpdate.UseVisualStyleBackColor = true;
@@ -83,61 +87,68 @@
             cbCondi.DropDownHeight = 50;
             cbCondi.FormattingEnabled = true;
             cbCondi.IntegralHeight = false;
-            cbCondi.Location = new Point(107, 141);
+            cbCondi.Location = new Point(168, 207);
+            cbCondi.Margin = new Padding(5, 4, 5, 4);
             cbCondi.Name = "cbCondi";
-            cbCondi.Size = new Size(121, 25);
+            cbCondi.Size = new Size(188, 33);
             cbCondi.TabIndex = 3;
             // 
             // txtSalary
             // 
-            txtSalary.Location = new Point(107, 80);
+            txtSalary.Location = new Point(168, 118);
+            txtSalary.Margin = new Padding(5, 4, 5, 4);
             txtSalary.Name = "txtSalary";
-            txtSalary.Size = new Size(121, 25);
+            txtSalary.Size = new Size(188, 33);
             txtSalary.TabIndex = 2;
             txtSalary.KeyPress += txtSalary_KeyPress_1;
             // 
             // txtDis
             // 
-            txtDis.Location = new Point(107, 32);
+            txtDis.Location = new Point(168, 47);
+            txtDis.Margin = new Padding(5, 4, 5, 4);
             txtDis.Name = "txtDis";
-            txtDis.Size = new Size(121, 25);
+            txtDis.Size = new Size(188, 33);
             txtDis.TabIndex = 1;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(16, 149);
+            label3.Location = new Point(25, 219);
+            label3.Margin = new Padding(5, 0, 5, 0);
             label3.Name = "label3";
-            label3.Size = new Size(64, 17);
+            label3.Size = new Size(95, 25);
             label3.TabIndex = 1;
             label3.Text = "Condition";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(16, 88);
+            label2.Location = new Point(25, 129);
+            label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
-            label2.Size = new Size(43, 17);
+            label2.Size = new Size(63, 25);
             label2.TabIndex = 1;
             label2.Text = "Salary";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(16, 40);
+            label1.Location = new Point(25, 59);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(55, 17);
+            label1.Size = new Size(80, 25);
             label1.TabIndex = 0;
             label1.Text = "Discribe";
             // 
             // frmEditSubSalary
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(252, 255);
+            ClientSize = new Size(396, 375);
             Controls.Add(gbAddSub);
+            Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(5, 4, 5, 4);
             Name = "frmEditSubSalary";
-            Text = "frmEditSubSalary";
             Load += frmEditSubSalary_Load;
             gbAddSub.ResumeLayout(false);
             gbAddSub.PerformLayout();

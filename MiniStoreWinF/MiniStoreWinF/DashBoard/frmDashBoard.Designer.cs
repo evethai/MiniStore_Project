@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             panel2 = new Panel();
             label1 = new Label();
             pMain = new Panel();
@@ -35,6 +39,7 @@
             pbRevenues = new PictureBox();
             pbMember = new PictureBox();
             pbProduct = new PictureBox();
+            pbVouchers = new System.Windows.Forms.DataVisualization.Charting.Chart();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel9 = new Panel();
             label3 = new Label();
@@ -52,6 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)pbRevenues).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbMember).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbProduct).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbVouchers).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             panel9.SuspendLayout();
             btSalary.SuspendLayout();
@@ -68,7 +74,9 @@
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1359, 60);
+
+            panel2.Size = new Size(1296, 51);
+
             panel2.TabIndex = 1;
             // 
             // label1
@@ -76,7 +84,9 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(630, 21);
+
+            label1.Location = new Point(605, 18);
+
             label1.Name = "label1";
             label1.Size = new Size(137, 28);
             label1.TabIndex = 0;
@@ -90,8 +100,10 @@
             pMain.Location = new Point(0, 189);
             pMain.Margin = new Padding(3, 4, 3, 4);
             pMain.Name = "pMain";
-            pMain.Padding = new Padding(11, 12, 11, 12);
-            pMain.Size = new Size(1359, 689);
+
+            pMain.Padding = new Padding(10);
+            pMain.Size = new Size(1296, 581);
+
             pMain.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -102,6 +114,7 @@
             tableLayoutPanel2.Controls.Add(pbRevenues, 0, 0);
             tableLayoutPanel2.Controls.Add(pbMember, 0, 1);
             tableLayoutPanel2.Controls.Add(pbProduct, 1, 0);
+            tableLayoutPanel2.Controls.Add(pbVouchers, 1, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(11, 12);
             tableLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
@@ -109,7 +122,9 @@
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(1337, 665);
+
+            tableLayoutPanel2.Size = new Size(1276, 561);
+
             tableLayoutPanel2.TabIndex = 3;
             // 
             // pbRevenues
@@ -118,36 +133,63 @@
             pbRevenues.Location = new Point(3, 4);
             pbRevenues.Margin = new Padding(3, 4, 3, 4);
             pbRevenues.Name = "pbRevenues";
-            pbRevenues.Size = new Size(662, 324);
+
+            pbRevenues.Size = new Size(632, 274);
+
             pbRevenues.TabIndex = 0;
             pbRevenues.TabStop = false;
             // 
             // pbMember
             // 
             pbMember.Dock = DockStyle.Fill;
-            pbMember.Location = new Point(3, 336);
-            pbMember.Margin = new Padding(3, 4, 3, 4);
+<
+            pbMember.Location = new Point(3, 283);
             pbMember.Name = "pbMember";
-            pbMember.Size = new Size(662, 325);
+            pbMember.Size = new Size(632, 275);
+
             pbMember.TabIndex = 1;
             pbMember.TabStop = false;
             // 
             // pbProduct
             // 
             pbProduct.Dock = DockStyle.Fill;
-            pbProduct.Location = new Point(671, 4);
-            pbProduct.Margin = new Padding(3, 4, 3, 4);
+
+            pbProduct.Location = new Point(641, 3);
             pbProduct.Name = "pbProduct";
-            pbProduct.Size = new Size(663, 324);
+            pbProduct.Size = new Size(632, 274);
+
             pbProduct.TabIndex = 2;
             pbProduct.TabStop = false;
+            // 
+            // pbVouchers
+            // 
+            chartArea1.Name = "ChartArea1";
+            pbVouchers.ChartAreas.Add(chartArea1);
+            pbVouchers.Dock = DockStyle.Fill;
+            legend1.Name = "Legend1";
+            pbVouchers.Legends.Add(legend1);
+            pbVouchers.Location = new Point(641, 283);
+            pbVouchers.Name = "pbVouchers";
+            pbVouchers.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
+            series1.ChartArea = "ChartArea1";
+            series1.IsValueShownAsLabel = true;
+            series1.LabelBorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            series1.Legend = "Legend1";
+            series1.Name = "Quantity";
+            pbVouchers.Series.Add(series1);
+            pbVouchers.Size = new Size(632, 275);
+            pbVouchers.TabIndex = 3;
+            title1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            title1.Name = "Title1";
+            title1.Text = "Number of vouchers still available";
+            pbVouchers.Titles.Add(title1);
             // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 5;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.4759731F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 23.3409615F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.Controls.Add(panel9, 0, 0);
@@ -161,7 +203,9 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1359, 129);
+
+            tableLayoutPanel1.Size = new Size(1296, 110);
+
             tableLayoutPanel1.TabIndex = 0;
             // 
             // panel9
@@ -169,10 +213,12 @@
             panel9.BackColor = Color.FromArgb(192, 255, 255);
             panel9.Controls.Add(label3);
             panel9.Dock = DockStyle.Fill;
-            panel9.Location = new Point(272, 0);
-            panel9.Margin = new Padding(0, 0, 11, 12);
+
+            panel9.Location = new Point(259, 0);
+            panel9.Margin = new Padding(0, 0, 10, 10);
             panel9.Name = "panel9";
-            panel9.Size = new Size(213, 117);
+            panel9.Size = new Size(249, 100);
+
             panel9.TabIndex = 4;
             // 
             // label3
@@ -189,10 +235,12 @@
             btSalary.BackColor = Color.FromArgb(192, 255, 255);
             btSalary.Controls.Add(label9);
             btSalary.Dock = DockStyle.Fill;
-            btSalary.Location = new Point(1085, 0);
-            btSalary.Margin = new Padding(0, 0, 11, 12);
+
+            btSalary.Location = new Point(1036, 0);
+            btSalary.Margin = new Padding(0, 0, 10, 10);
             btSalary.Name = "btSalary";
-            btSalary.Size = new Size(263, 117);
+            btSalary.Size = new Size(250, 100);
+
             btSalary.TabIndex = 3;
             btSalary.Click += btSalary_Click;
             // 
@@ -210,10 +258,12 @@
             panel5.BackColor = Color.FromArgb(192, 255, 255);
             panel5.Controls.Add(label7);
             panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(813, 0);
-            panel5.Margin = new Padding(0, 0, 11, 12);
+
+            panel5.Location = new Point(777, 0);
+            panel5.Margin = new Padding(0, 0, 10, 10);
             panel5.Name = "panel5";
-            panel5.Size = new Size(261, 117);
+            panel5.Size = new Size(249, 100);
+
             panel5.TabIndex = 2;
             // 
             // label7
@@ -230,10 +280,12 @@
             panel4.BackColor = Color.FromArgb(192, 255, 255);
             panel4.Controls.Add(label5);
             panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(496, 0);
-            panel4.Margin = new Padding(0, 0, 11, 12);
+
+            panel4.Location = new Point(518, 0);
+            panel4.Margin = new Padding(0, 0, 10, 10);
             panel4.Name = "panel4";
-            panel4.Size = new Size(306, 117);
+            panel4.Size = new Size(249, 100);
+
             panel4.TabIndex = 1;
             // 
             // label5
@@ -253,7 +305,9 @@
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(0, 0, 11, 12);
             panel3.Name = "panel3";
-            panel3.Size = new Size(261, 117);
+
+            panel3.Size = new Size(249, 100);
+
             panel3.TabIndex = 0;
             panel3.Click += panel3_Click;
             // 
@@ -270,7 +324,9 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1359, 878);
+
+            ClientSize = new Size(1296, 742);
+
             Controls.Add(pMain);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel2);
@@ -285,6 +341,7 @@
             ((System.ComponentModel.ISupportInitialize)pbRevenues).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbMember).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbProduct).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbVouchers).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
@@ -319,5 +376,6 @@
         private PictureBox pbRevenues;
         private PictureBox pbMember;
         private PictureBox pbProduct;
+        private System.Windows.Forms.DataVisualization.Charting.Chart pbVouchers;
     }
 }

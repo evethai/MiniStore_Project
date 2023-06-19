@@ -31,25 +31,19 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdvSalary));
             dgvAdv = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            IdEmp = new DataGridViewTextBoxColumn();
-            DateAs = new DataGridViewTextBoxColumn();
-            DescriptionA = new DataGridViewTextBoxColumn();
-            AdvanceSalary = new DataGridViewTextBoxColumn();
-            Salaries = new DataGridViewTextBoxColumn();
             idEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             dateAsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             descriptionADataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             advanceSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             detailAdvanceSalaryBindingSource1 = new BindingSource(components);
             gbAdv = new GroupBox();
-            btAdd = new Button();
             label5 = new Label();
             cbSearch = new ComboBox();
             dtpTo = new DateTimePicker();
             btSearch = new Button();
             dtpFrom = new DateTimePicker();
             btFilter = new Button();
+            btAdd = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvAdv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)detailAdvanceSalaryBindingSource1).BeginInit();
             gbAdv.SuspendLayout();
@@ -58,75 +52,46 @@
             // dgvAdv
             // 
             dgvAdv.AutoGenerateColumns = false;
+            dgvAdv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvAdv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvAdv.BackgroundColor = SystemColors.ButtonHighlight;
             dgvAdv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAdv.Columns.AddRange(new DataGridViewColumn[] { Column1, IdEmp, DateAs, DescriptionA, AdvanceSalary, Salaries, idEmpDataGridViewTextBoxColumn, dateAsDataGridViewTextBoxColumn, descriptionADataGridViewTextBoxColumn, advanceSalaryDataGridViewTextBoxColumn });
+            dgvAdv.Columns.AddRange(new DataGridViewColumn[] { idEmpDataGridViewTextBoxColumn, dateAsDataGridViewTextBoxColumn, descriptionADataGridViewTextBoxColumn, advanceSalaryDataGridViewTextBoxColumn });
             dgvAdv.DataSource = detailAdvanceSalaryBindingSource1;
-            dgvAdv.Location = new Point(6, 133);
+            dgvAdv.Location = new Point(302, 200);
+            dgvAdv.Margin = new Padding(5, 4, 5, 4);
             dgvAdv.Name = "dgvAdv";
             dgvAdv.RowTemplate.Height = 27;
-            dgvAdv.Size = new Size(543, 397);
+            dgvAdv.Size = new Size(433, 289);
             dgvAdv.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            Column1.DataPropertyName = "IdadvanceSalary";
-            Column1.HeaderText = "Column1";
-            Column1.Name = "Column1";
-            // 
-            // IdEmp
-            // 
-            IdEmp.DataPropertyName = "IdEmp";
-            IdEmp.HeaderText = "IdEmp";
-            IdEmp.Name = "IdEmp";
-            // 
-            // DateAs
-            // 
-            DateAs.DataPropertyName = "DateAs";
-            DateAs.HeaderText = "DateAs";
-            DateAs.Name = "DateAs";
-            // 
-            // DescriptionA
-            // 
-            DescriptionA.DataPropertyName = "DescriptionA";
-            DescriptionA.HeaderText = "DescriptionA";
-            DescriptionA.Name = "DescriptionA";
-            // 
-            // AdvanceSalary
-            // 
-            AdvanceSalary.DataPropertyName = "AdvanceSalary";
-            AdvanceSalary.HeaderText = "AdvanceSalary";
-            AdvanceSalary.Name = "AdvanceSalary";
-            // 
-            // Salaries
-            // 
-            Salaries.DataPropertyName = "Salaries";
-            Salaries.HeaderText = "Salaries";
-            Salaries.Name = "Salaries";
             // 
             // idEmpDataGridViewTextBoxColumn
             // 
             idEmpDataGridViewTextBoxColumn.DataPropertyName = "IdEmp";
-            idEmpDataGridViewTextBoxColumn.HeaderText = "IdEmp";
+            idEmpDataGridViewTextBoxColumn.HeaderText = "Id";
             idEmpDataGridViewTextBoxColumn.Name = "idEmpDataGridViewTextBoxColumn";
+            idEmpDataGridViewTextBoxColumn.Width = 53;
             // 
             // dateAsDataGridViewTextBoxColumn
             // 
             dateAsDataGridViewTextBoxColumn.DataPropertyName = "DateAs";
-            dateAsDataGridViewTextBoxColumn.HeaderText = "DateAs";
+            dateAsDataGridViewTextBoxColumn.HeaderText = "Date ";
             dateAsDataGridViewTextBoxColumn.Name = "dateAsDataGridViewTextBoxColumn";
+            dateAsDataGridViewTextBoxColumn.Width = 81;
             // 
             // descriptionADataGridViewTextBoxColumn
             // 
             descriptionADataGridViewTextBoxColumn.DataPropertyName = "DescriptionA";
-            descriptionADataGridViewTextBoxColumn.HeaderText = "DescriptionA";
+            descriptionADataGridViewTextBoxColumn.HeaderText = "Description / note";
             descriptionADataGridViewTextBoxColumn.Name = "descriptionADataGridViewTextBoxColumn";
+            descriptionADataGridViewTextBoxColumn.Width = 137;
             // 
             // advanceSalaryDataGridViewTextBoxColumn
             // 
             advanceSalaryDataGridViewTextBoxColumn.DataPropertyName = "AdvanceSalary";
-            advanceSalaryDataGridViewTextBoxColumn.HeaderText = "AdvanceSalary";
+            advanceSalaryDataGridViewTextBoxColumn.HeaderText = "Money";
             advanceSalaryDataGridViewTextBoxColumn.Name = "advanceSalaryDataGridViewTextBoxColumn";
+            advanceSalaryDataGridViewTextBoxColumn.Width = 95;
             // 
             // detailAdvanceSalaryBindingSource1
             // 
@@ -134,7 +99,6 @@
             // 
             // gbAdv
             // 
-            gbAdv.Controls.Add(btAdd);
             gbAdv.Controls.Add(label5);
             gbAdv.Controls.Add(cbSearch);
             gbAdv.Controls.Add(dtpTo);
@@ -143,27 +107,20 @@
             gbAdv.Controls.Add(btFilter);
             gbAdv.Dock = DockStyle.Top;
             gbAdv.Location = new Point(0, 0);
+            gbAdv.Margin = new Padding(5, 4, 5, 4);
             gbAdv.Name = "gbAdv";
-            gbAdv.Size = new Size(549, 127);
+            gbAdv.Padding = new Padding(5, 4, 5, 4);
+            gbAdv.Size = new Size(1538, 187);
             gbAdv.TabIndex = 1;
             gbAdv.TabStop = false;
             gbAdv.Text = "List of employees with advance salary";
-            // 
-            // btAdd
-            // 
-            btAdd.Location = new Point(468, 98);
-            btAdd.Name = "btAdd";
-            btAdd.Size = new Size(75, 23);
-            btAdd.TabIndex = 2;
-            btAdd.Text = "Add new ";
-            btAdd.UseVisualStyleBackColor = true;
-            btAdd.Click += btAdd_Click;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(162, 21);
+            label5.Location = new Point(491, 47);
+            label5.Margin = new Padding(5, 0, 5, 0);
             label5.Name = "label5";
             label5.Size = new Size(33, 25);
             label5.TabIndex = 6;
@@ -174,24 +131,27 @@
             cbSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cbSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
             cbSearch.FormattingEnabled = true;
-            cbSearch.Location = new Point(6, 96);
+            cbSearch.Location = new Point(302, 142);
+            cbSearch.Margin = new Padding(5, 4, 5, 4);
             cbSearch.Name = "cbSearch";
-            cbSearch.Size = new Size(121, 25);
+            cbSearch.Size = new Size(199, 33);
             cbSearch.TabIndex = 8;
             // 
             // dtpTo
             // 
             dtpTo.Format = DateTimePickerFormat.Short;
-            dtpTo.Location = new Point(201, 21);
+            dtpTo.Location = new Point(566, 47);
+            dtpTo.Margin = new Padding(5, 4, 5, 4);
             dtpTo.Name = "dtpTo";
-            dtpTo.Size = new Size(140, 25);
+            dtpTo.Size = new Size(169, 33);
             dtpTo.TabIndex = 5;
             // 
             // btSearch
             // 
-            btSearch.Location = new Point(133, 96);
+            btSearch.Location = new Point(566, 142);
+            btSearch.Margin = new Padding(5, 4, 5, 4);
             btSearch.Name = "btSearch";
-            btSearch.Size = new Size(134, 25);
+            btSearch.Size = new Size(169, 37);
             btSearch.TabIndex = 7;
             btSearch.Text = "Search by Name";
             btSearch.UseVisualStyleBackColor = true;
@@ -200,31 +160,47 @@
             // dtpFrom
             // 
             dtpFrom.Format = DateTimePickerFormat.Short;
-            dtpFrom.Location = new Point(6, 22);
+            dtpFrom.Location = new Point(302, 43);
+            dtpFrom.Margin = new Padding(5, 4, 5, 4);
             dtpFrom.Name = "dtpFrom";
-            dtpFrom.Size = new Size(150, 25);
+            dtpFrom.Size = new Size(169, 33);
             dtpFrom.TabIndex = 4;
             // 
             // btFilter
             // 
             btFilter.BackgroundImage = (Image)resources.GetObject("btFilter.BackgroundImage");
             btFilter.BackgroundImageLayout = ImageLayout.Zoom;
-            btFilter.Location = new Point(347, 21);
+            btFilter.Location = new Point(745, 47);
+            btFilter.Margin = new Padding(5, 4, 5, 4);
             btFilter.Name = "btFilter";
-            btFilter.Size = new Size(45, 25);
+            btFilter.Size = new Size(63, 31);
             btFilter.TabIndex = 2;
             btFilter.UseVisualStyleBackColor = true;
             btFilter.Click += btFilter_Click;
             // 
+            // btAdd
+            // 
+            btAdd.Location = new Point(745, 455);
+            btAdd.Margin = new Padding(5, 4, 5, 4);
+            btAdd.Name = "btAdd";
+            btAdd.Size = new Size(98, 34);
+            btAdd.TabIndex = 2;
+            btAdd.Text = "Add new ";
+            btAdd.UseVisualStyleBackColor = true;
+            btAdd.Click += btAdd_Click;
+            // 
             // frmAdvSalary
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(549, 542);
+            ClientSize = new Size(1538, 797);
+            Controls.Add(btAdd);
             Controls.Add(gbAdv);
             Controls.Add(dgvAdv);
+            Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(5, 4, 5, 4);
             Name = "frmAdvSalary";
-            Text = "frmAdvSalary";
+            StartPosition = FormStartPosition.CenterScreen;
             Load += frmAdvSalary_Load;
             ((System.ComponentModel.ISupportInitialize)dgvAdv).EndInit();
             ((System.ComponentModel.ISupportInitialize)detailAdvanceSalaryBindingSource1).EndInit();
@@ -243,19 +219,13 @@
         private DateTimePicker dtpTo;
         private DateTimePicker dtpFrom;
         private BindingSource detailAdvanceSalaryBindingSource1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn IdEmp;
-        private DataGridViewTextBoxColumn DateAs;
-        private DataGridViewTextBoxColumn DescriptionA;
-        private DataGridViewTextBoxColumn AdvanceSalary;
-        private DataGridViewTextBoxColumn Salaries;
         private DataGridViewTextBoxColumn idadvanceSalaryDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn salariesDataGridViewTextBoxColumn;
+        private Button btSearch;
+        private ComboBox cbSearch;
         private DataGridViewTextBoxColumn idEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dateAsDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descriptionADataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn advanceSalaryDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn salariesDataGridViewTextBoxColumn;
-        private Button btSearch;
-        private ComboBox cbSearch;
     }
 }

@@ -15,7 +15,8 @@ namespace MiniStoreWinF.ManageSalary
     public partial class frmAddNewAdvSalary : Form
     {
         DetailAdvanceSalaryService _detailAdvanceSalaryService;
-        Utinity u= new Utinity();
+        Utinity u = new Utinity();
+
         public frmAddNewAdvSalary()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace MiniStoreWinF.ManageSalary
         //nhấn button để lưu kết quả add new 
         private void BtOK_Click(object sender, EventArgs e)
         {
-            
+
             double salary;
             if (txtDis.Text == null || !Double.TryParse(txtTotal.Text, out salary))
             {
@@ -36,10 +37,10 @@ namespace MiniStoreWinF.ManageSalary
                 _detailAdvanceSalaryService = new DetailAdvanceSalaryService();
                 DetailAdvanceSalary detailAdvanceSalary = new DetailAdvanceSalary();
                 int n = _detailAdvanceSalaryService.GetAll().Count();
-                detailAdvanceSalary.IdAdvanceSalary = u.GenerateAutoId(n,"ADV");//auto tạo ID
+                detailAdvanceSalary.IdAdvanceSalary = u.GenerateAutoId(n, "ADV");//auto tạo ID
                 //
                 var adv = _detailAdvanceSalaryService.GetAll().Count(p => p.IdAdvanceSalary.Equals(detailAdvanceSalary.IdAdvanceSalary));
-                if(adv > 0 )
+                if (adv > 0)
                 {
                     n = n + 1;//check id đã tồn tại
                 }
@@ -67,7 +68,7 @@ namespace MiniStoreWinF.ManageSalary
 
         private void txtTotal_KeyPress(object sender, KeyPressEventArgs e)
         {
-            u.numberOnly(e,txtTotal.Text);
+            u.numberOnly(e, txtTotal.Text);
         }
 
     }

@@ -18,7 +18,8 @@ using OxyPlot.Annotations;
 using System.Globalization;
 using Repository.Models;
 using MiniStoreWinF.ManageSalary;
-using MiniStoreWinF.ManageEmployees;
+using System.Net.WebSockets;
+
 
 namespace MiniStoreWinF.DashBoard
 {
@@ -29,6 +30,7 @@ namespace MiniStoreWinF.DashBoard
         CatalogyService _catalogyService;
         MemberService _memberService;
         RevenueService _revenueService;
+        VoucherService _voucherService;
         Utinity u = new Utinity();
         public frmDashBoard()
         {
@@ -41,6 +43,7 @@ namespace MiniStoreWinF.DashBoard
             ChartMember(pbMember);
             ChartProduct(pbProduct);
             ChartRevenue(pbRevenues);
+            ChartVoucher();
         }
 
         public void ChartProduct(PictureBox p)
@@ -138,19 +141,7 @@ namespace MiniStoreWinF.DashBoard
         }
         public void ChartRevenue(PictureBox p)
         {
-            _revenueService = new RevenueService();
-            var listRevenues = _revenueService.GetAll().Where(p => p.DateRevenue > DateTime.Now.AddDays(-7)).ToList();//7 ngày gần nhất
 
-            // Tạo danh sách dataPoints cho biểu đồ
-            var dataPoints = new List<DataPoint>();
-            foreach (var revenue in listRevenues)
-            {
-                var dataPoint = new DataPoint(revenue.DateRevenue.Date.Day, (double)revenue.TotalRevenueOfDay);
-                dataPoints.Add(dataPoint);
-            }
-            // Tạo đối tượng LineSeries
-            var revenueSeries = new LineSeries
-            {
 
                 ItemsSource = dataPoints,
                 StrokeThickness = 4
@@ -205,19 +196,19 @@ namespace MiniStoreWinF.DashBoard
                 plotModel.Annotations.Add(annotation);
             }
 
-            // Cấu hình trục x
-            double maxXValue = dataPoints.Max(dp => dp.X);//điểm cao nhất
-            double minXValue = dataPoints.Min(dp => dp.X);//điểm cao nhất
-            double maxXWithMargin = maxXValue + 0.2;//tăng thêm khoản cách
-            double minXWithMargin = minXValue - 0.3;//tăng thêm khoản cách
-            var xAxis = new OxyPlot.Axes.LinearAxis
-            {
-                Position = OxyPlot.Axes.AxisPosition.Bottom,
-                Maximum = maxXWithMargin,
-                Minimum = minXWithMargin,
-                Title = "Day",
-                MajorStep = 1 // Khoảng cách giữa các đánh dấu chính trên trục x
-            };
+
+                //cấu hình trục Y
+                double maxYValue = dataPoints.Max(dp => dp.Y);//điểm cao nhất
+                double maxYWithMargin = maxYValue * 1.1;//tăng thêm khoản cách
+                var yAxis = new OxyPlot.Axes.LinearAxis
+                {
+                    Position = OxyPlot.Axes.AxisPosition.Left,
+                    Title = "Revenues",
+                    Maximum = maxYWithMargin,
+                    MajorStep = 1000000,
+                    StringFormat = "#,#.##"
+                };
+
 
             //cấu hình trục Y
             double maxYValue = dataPoints.Max(dp => dp.Y);//điểm cao nhất
@@ -248,6 +239,21 @@ namespace MiniStoreWinF.DashBoard
             p.Controls.Add(plotView);
         }
 
+        public void ChartVoucher()
+        {
+            _voucherService = new VoucherService();
+            var list = _voucherService.GetAll().Where(p=>p.Quantity>0).ToList();
+            foreach (var voucher in list)
+            {
+                pbVouchers.Series["Quantity"].Points.AddXY(voucher.Name, voucher.Quantity);
+            }
+            // Tắt hiển thị lưới trục x
+            pbVouchers.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+
+            // Tắt hiển thị lưới trục y
+            pbVouchers.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+        }
+
         string FormatValue(double value)
         {
             if (value < 1000000)
@@ -262,10 +268,6 @@ namespace MiniStoreWinF.DashBoard
             }
         }
 
-        private void btSalary_Paint(object sender, PaintEventArgs e)
-        {
-            u.openChildForm(new frmSalary(), pMain);
-        }
 
         private void btSalary_Click(object sender, EventArgs e)
         {
