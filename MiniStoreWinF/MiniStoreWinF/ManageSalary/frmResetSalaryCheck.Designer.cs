@@ -36,16 +36,18 @@
             // 
             dtpTime.CustomFormat = "MM/yyyy";
             dtpTime.Format = DateTimePickerFormat.Custom;
-            dtpTime.Location = new Point(12, 12);
+            dtpTime.Location = new Point(19, 18);
+            dtpTime.Margin = new Padding(5, 4, 5, 4);
             dtpTime.Name = "dtpTime";
-            dtpTime.Size = new Size(179, 25);
+            dtpTime.Size = new Size(279, 33);
             dtpTime.TabIndex = 0;
             // 
             // btReset
             // 
-            btReset.Location = new Point(58, 121);
+            btReset.Location = new Point(91, 178);
+            btReset.Margin = new Padding(5, 4, 5, 4);
             btReset.Name = "btReset";
-            btReset.Size = new Size(75, 23);
+            btReset.Size = new Size(118, 34);
             btReset.TabIndex = 1;
             btReset.Text = "Reset";
             btReset.UseVisualStyleBackColor = true;
@@ -53,16 +55,17 @@
             // 
             // frmResetSalaryCheck
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Center;
-            ClientSize = new Size(200, 156);
+            ClientSize = new Size(314, 229);
             Controls.Add(btReset);
             Controls.Add(dtpTime);
             DoubleBuffered = true;
+            Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.Red;
+            Margin = new Padding(5, 4, 5, 4);
             Name = "frmResetSalaryCheck";
-            Text = "frmResetSalaryCheck";
             ResumeLayout(false);
         }
 

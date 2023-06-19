@@ -28,15 +28,15 @@ namespace MiniStoreWinF.ManageSalary
             DialogResult result = MessageBox.Show("Remember choice time to reset salary!", "Messages", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
-                var reset = _salaryService.GetAll().Where(p=>p.DateImonth.Month.Equals(time.Month)).ToList();
-                if (reset.Count>0)
+                var reset = _salaryService.GetAll().Where(p => p.DateImonth.Month.Equals(time.Month)).ToList();
+                if (reset.Count > 0)
                 {
                     foreach (var item in reset)
                     {
                         _salaryService.Delete(item);
                     }
                     ca.CalculatorSalary(getTime(time));
-                    MessageBox.Show("Reset Salary in " + time.Month+"/"+time.Year, "Messages", MessageBoxButtons.OK);
+                    MessageBox.Show("Reset Salary in " + time.Month + "/" + time.Year, "Messages", MessageBoxButtons.OK);
                     this.DialogResult = DialogResult.Yes;
                     this.Close();
                 }

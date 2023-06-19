@@ -12,7 +12,7 @@ namespace MiniStoreWinF.ManageSalary
         Utinity u = new Utinity();
         //Phân trang
         int pageNumber = 1;
-        int numberRecord = 5;
+        int numberRecord = 10;
         List<Salary> listSa = null;
         //reset
         DateTime time = DateTime.Now;
@@ -48,7 +48,7 @@ namespace MiniStoreWinF.ManageSalary
         public void ShowListSalary()
         {
             _salaryService = new SalaryService();
-            var list = _salaryService.GetAll().ToList();
+            var list = _salaryService.GetAll().Where(p=>p.DateOmonth.Month.Equals(DateTime.Now.AddMonths(-1).Month)).ToList();
             dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
             listSa = list;
         }

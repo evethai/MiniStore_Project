@@ -31,17 +31,6 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSalaryDetail));
             dgvSalary = new DataGridView();
-            salaryBindingSource = new BindingSource(components);
-            dtpTime = new DateTimePicker();
-            btFilter = new Button();
-            cbName = new ComboBox();
-            btSearch = new Button();
-            btReset = new Button();
-            btExport = new Button();
-            nmPaging = new NumericUpDown();
-            txtSave = new Label();
-            panel1 = new Panel();
-            panel2 = new Panel();
             idSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             idEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             salaryHourDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -52,29 +41,109 @@
             taxDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             salaryAfterTaxDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             DateOmonth = new DataGridViewTextBoxColumn();
+            salaryBindingSource = new BindingSource(components);
+            dtpTime = new DateTimePicker();
+            btFilter = new Button();
+            cbName = new ComboBox();
+            btSearch = new Button();
+            btReset = new Button();
+            btExport = new Button();
+            txtSave = new Label();
+            panel2 = new Panel();
+            numericUpDown1 = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)dgvSalary).BeginInit();
             ((System.ComponentModel.ISupportInitialize)salaryBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)nmPaging).BeginInit();
-            panel1.SuspendLayout();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
             // dgvSalary
             // 
             dgvSalary.AutoGenerateColumns = false;
             dgvSalary.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvSalary.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvSalary.BackgroundColor = SystemColors.ButtonHighlight;
             dgvSalary.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSalary.Columns.AddRange(new DataGridViewColumn[] { idSalaryDataGridViewTextBoxColumn, idEmpDataGridViewTextBoxColumn, salaryHourDataGridViewTextBoxColumn, basicSalaryDataGridViewTextBoxColumn, sumSubSalaryDataGridViewTextBoxColumn, sumAdvanceSalaryDataGridViewTextBoxColumn, totalSalaryDataGridViewTextBoxColumn, taxDataGridViewTextBoxColumn, salaryAfterTaxDataGridViewTextBoxColumn, DateOmonth });
             dgvSalary.DataSource = salaryBindingSource;
-            dgvSalary.Dock = DockStyle.Top;
-            dgvSalary.Location = new Point(0, 0);
+            dgvSalary.Location = new Point(20, 271);
+            dgvSalary.Margin = new Padding(4);
             dgvSalary.Name = "dgvSalary";
             dgvSalary.RowTemplate.Height = 27;
-            dgvSalary.Size = new Size(1231, 195);
+            dgvSalary.Size = new Size(1252, 347);
             dgvSalary.TabIndex = 0;
             dgvSalary.CellContentClick += dgvSalary_CellContentClick;
             dgvSalary.CellDoubleClick += dgvSalary_CellDoubleClick;
+            // 
+            // idSalaryDataGridViewTextBoxColumn
+            // 
+            idSalaryDataGridViewTextBoxColumn.DataPropertyName = "IdSalary";
+            idSalaryDataGridViewTextBoxColumn.HeaderText = "Id";
+            idSalaryDataGridViewTextBoxColumn.Name = "idSalaryDataGridViewTextBoxColumn";
+            idSalaryDataGridViewTextBoxColumn.Width = 53;
+            // 
+            // idEmpDataGridViewTextBoxColumn
+            // 
+            idEmpDataGridViewTextBoxColumn.DataPropertyName = "IdEmp";
+            idEmpDataGridViewTextBoxColumn.HeaderText = "Id Employee";
+            idEmpDataGridViewTextBoxColumn.Name = "idEmpDataGridViewTextBoxColumn";
+            idEmpDataGridViewTextBoxColumn.Width = 128;
+            // 
+            // salaryHourDataGridViewTextBoxColumn
+            // 
+            salaryHourDataGridViewTextBoxColumn.DataPropertyName = "SalaryHour";
+            salaryHourDataGridViewTextBoxColumn.HeaderText = "Salary In Hour";
+            salaryHourDataGridViewTextBoxColumn.Name = "salaryHourDataGridViewTextBoxColumn";
+            salaryHourDataGridViewTextBoxColumn.Width = 105;
+            // 
+            // basicSalaryDataGridViewTextBoxColumn
+            // 
+            basicSalaryDataGridViewTextBoxColumn.DataPropertyName = "BasicSalary";
+            basicSalaryDataGridViewTextBoxColumn.HeaderText = "Basic Salary";
+            basicSalaryDataGridViewTextBoxColumn.Name = "basicSalaryDataGridViewTextBoxColumn";
+            basicSalaryDataGridViewTextBoxColumn.Width = 124;
+            // 
+            // sumSubSalaryDataGridViewTextBoxColumn
+            // 
+            sumSubSalaryDataGridViewTextBoxColumn.DataPropertyName = "SumSubSalary";
+            sumSubSalaryDataGridViewTextBoxColumn.HeaderText = "Allowance";
+            sumSubSalaryDataGridViewTextBoxColumn.Name = "sumSubSalaryDataGridViewTextBoxColumn";
+            sumSubSalaryDataGridViewTextBoxColumn.Width = 124;
+            // 
+            // sumAdvanceSalaryDataGridViewTextBoxColumn
+            // 
+            sumAdvanceSalaryDataGridViewTextBoxColumn.DataPropertyName = "SumAdvanceSalary";
+            sumAdvanceSalaryDataGridViewTextBoxColumn.HeaderText = "Advance Salary";
+            sumAdvanceSalaryDataGridViewTextBoxColumn.Name = "sumAdvanceSalaryDataGridViewTextBoxColumn";
+            sumAdvanceSalaryDataGridViewTextBoxColumn.Width = 151;
+            // 
+            // totalSalaryDataGridViewTextBoxColumn
+            // 
+            totalSalaryDataGridViewTextBoxColumn.DataPropertyName = "TotalSalary";
+            totalSalaryDataGridViewTextBoxColumn.HeaderText = "Total Salary";
+            totalSalaryDataGridViewTextBoxColumn.Name = "totalSalaryDataGridViewTextBoxColumn";
+            totalSalaryDataGridViewTextBoxColumn.Width = 122;
+            // 
+            // taxDataGridViewTextBoxColumn
+            // 
+            taxDataGridViewTextBoxColumn.DataPropertyName = "Tax";
+            taxDataGridViewTextBoxColumn.HeaderText = "Tax";
+            taxDataGridViewTextBoxColumn.Name = "taxDataGridViewTextBoxColumn";
+            taxDataGridViewTextBoxColumn.Width = 64;
+            // 
+            // salaryAfterTaxDataGridViewTextBoxColumn
+            // 
+            salaryAfterTaxDataGridViewTextBoxColumn.DataPropertyName = "SalaryAfterTax";
+            salaryAfterTaxDataGridViewTextBoxColumn.HeaderText = "Salary Final (-Tax)";
+            salaryAfterTaxDataGridViewTextBoxColumn.Name = "salaryAfterTaxDataGridViewTextBoxColumn";
+            salaryAfterTaxDataGridViewTextBoxColumn.Width = 169;
+            // 
+            // DateOmonth
+            // 
+            DateOmonth.DataPropertyName = "DateOmonth";
+            DateOmonth.HeaderText = "Date";
+            DateOmonth.Name = "DateOmonth";
+            DateOmonth.Width = 76;
             // 
             // salaryBindingSource
             // 
@@ -84,18 +153,20 @@
             // 
             dtpTime.CustomFormat = "MM/yyyy";
             dtpTime.Format = DateTimePickerFormat.Custom;
-            dtpTime.Location = new Point(3, 3);
+            dtpTime.Location = new Point(12, 9);
+            dtpTime.Margin = new Padding(4);
             dtpTime.Name = "dtpTime";
-            dtpTime.Size = new Size(200, 25);
+            dtpTime.Size = new Size(277, 33);
             dtpTime.TabIndex = 1;
             // 
             // btFilter
             // 
             btFilter.BackgroundImage = (Image)resources.GetObject("btFilter.BackgroundImage");
             btFilter.BackgroundImageLayout = ImageLayout.Zoom;
-            btFilter.Location = new Point(209, 6);
+            btFilter.Location = new Point(319, 9);
+            btFilter.Margin = new Padding(4);
             btFilter.Name = "btFilter";
-            btFilter.Size = new Size(45, 25);
+            btFilter.Size = new Size(70, 37);
             btFilter.TabIndex = 3;
             btFilter.UseVisualStyleBackColor = true;
             btFilter.Click += btFilter_Click;
@@ -105,16 +176,18 @@
             cbName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cbName.AutoCompleteSource = AutoCompleteSource.CustomSource;
             cbName.FormattingEnabled = true;
-            cbName.Location = new Point(0, 34);
+            cbName.Location = new Point(12, 62);
+            cbName.Margin = new Padding(4);
             cbName.Name = "cbName";
-            cbName.Size = new Size(203, 25);
+            cbName.Size = new Size(277, 33);
             cbName.TabIndex = 10;
             // 
             // btSearch
             // 
-            btSearch.Location = new Point(209, 34);
+            btSearch.Location = new Point(319, 59);
+            btSearch.Margin = new Padding(4);
             btSearch.Name = "btSearch";
-            btSearch.Size = new Size(134, 25);
+            btSearch.Size = new Size(211, 37);
             btSearch.TabIndex = 9;
             btSearch.Text = "Search by Name";
             btSearch.UseVisualStyleBackColor = true;
@@ -122,10 +195,11 @@
             // 
             // btReset
             // 
-            btReset.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btReset.Location = new Point(1144, 61);
+            btReset.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btReset.Location = new Point(1634, 62);
+            btReset.Margin = new Padding(4);
             btReset.Name = "btReset";
-            btReset.Size = new Size(75, 23);
+            btReset.Size = new Size(117, 35);
             btReset.TabIndex = 11;
             btReset.Text = "Reset";
             btReset.UseVisualStyleBackColor = true;
@@ -134,146 +208,71 @@
             // btExport
             // 
             btExport.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btExport.Location = new Point(1144, 8);
+            btExport.Location = new Point(1634, 12);
+            btExport.Margin = new Padding(4);
             btExport.Name = "btExport";
-            btExport.Size = new Size(75, 23);
+            btExport.Size = new Size(117, 35);
             btExport.TabIndex = 12;
             btExport.Text = "Export";
             btExport.UseVisualStyleBackColor = true;
             btExport.Click += btExport_Click;
             // 
-            // nmPaging
-            // 
-            nmPaging.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            nmPaging.Location = new Point(1176, 124);
-            nmPaging.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            nmPaging.Name = "nmPaging";
-            nmPaging.Size = new Size(43, 25);
-            nmPaging.TabIndex = 13;
-            nmPaging.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            nmPaging.ValueChanged += nmPaging_ValueChanged;
-            // 
             // txtSave
             // 
             txtSave.AutoSize = true;
-            txtSave.Location = new Point(800, 138);
+            txtSave.Location = new Point(1258, 204);
+            txtSave.Margin = new Padding(4, 0, 4, 0);
             txtSave.Name = "txtSave";
-            txtSave.Size = new Size(0, 17);
+            txtSave.Size = new Size(0, 25);
             txtSave.TabIndex = 14;
             txtSave.Visible = false;
             // 
-            // panel1
-            // 
-            panel1.Controls.Add(dtpTime);
-            panel1.Controls.Add(nmPaging);
-            panel1.Controls.Add(cbName);
-            panel1.Controls.Add(btSearch);
-            panel1.Controls.Add(btExport);
-            panel1.Controls.Add(btFilter);
-            panel1.Controls.Add(btReset);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1231, 155);
-            panel1.TabIndex = 15;
-            // 
             // panel2
             // 
-            panel2.Controls.Add(dgvSalary);
-            panel2.Dock = DockStyle.Fill;
-            panel2.Font = new Font("Segoe UI Light", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            panel2.Location = new Point(0, 155);
+            panel2.Controls.Add(cbName);
+            panel2.Controls.Add(btSearch);
+            panel2.Controls.Add(btExport);
+            panel2.Controls.Add(dtpTime);
+            panel2.Controls.Add(btReset);
+            panel2.Controls.Add(btFilter);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 0);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1231, 388);
+            panel2.Size = new Size(1764, 229);
             panel2.TabIndex = 16;
             // 
-            // idSalaryDataGridViewTextBoxColumn
+            // numericUpDown1
             // 
-            idSalaryDataGridViewTextBoxColumn.DataPropertyName = "IdSalary";
-            idSalaryDataGridViewTextBoxColumn.HeaderText = "Id";
-            idSalaryDataGridViewTextBoxColumn.Name = "idSalaryDataGridViewTextBoxColumn";
-            idSalaryDataGridViewTextBoxColumn.Width = 55;
-            // 
-            // idEmpDataGridViewTextBoxColumn
-            // 
-            idEmpDataGridViewTextBoxColumn.DataPropertyName = "IdEmp";
-            idEmpDataGridViewTextBoxColumn.HeaderText = "Id Employee";
-            idEmpDataGridViewTextBoxColumn.Name = "idEmpDataGridViewTextBoxColumn";
-            idEmpDataGridViewTextBoxColumn.Width = 149;
-            // 
-            // salaryHourDataGridViewTextBoxColumn
-            // 
-            salaryHourDataGridViewTextBoxColumn.DataPropertyName = "SalaryHour";
-            salaryHourDataGridViewTextBoxColumn.HeaderText = "Salary In Hour";
-            salaryHourDataGridViewTextBoxColumn.Name = "salaryHourDataGridViewTextBoxColumn";
-            salaryHourDataGridViewTextBoxColumn.Width = 162;
-            // 
-            // basicSalaryDataGridViewTextBoxColumn
-            // 
-            basicSalaryDataGridViewTextBoxColumn.DataPropertyName = "BasicSalary";
-            basicSalaryDataGridViewTextBoxColumn.HeaderText = "Basic Salary";
-            basicSalaryDataGridViewTextBoxColumn.Name = "basicSalaryDataGridViewTextBoxColumn";
-            basicSalaryDataGridViewTextBoxColumn.Width = 138;
-            // 
-            // sumSubSalaryDataGridViewTextBoxColumn
-            // 
-            sumSubSalaryDataGridViewTextBoxColumn.DataPropertyName = "SumSubSalary";
-            sumSubSalaryDataGridViewTextBoxColumn.HeaderText = "Allowance";
-            sumSubSalaryDataGridViewTextBoxColumn.Name = "sumSubSalaryDataGridViewTextBoxColumn";
-            sumSubSalaryDataGridViewTextBoxColumn.Width = 126;
-            // 
-            // sumAdvanceSalaryDataGridViewTextBoxColumn
-            // 
-            sumAdvanceSalaryDataGridViewTextBoxColumn.DataPropertyName = "SumAdvanceSalary";
-            sumAdvanceSalaryDataGridViewTextBoxColumn.HeaderText = "Advance Salary";
-            sumAdvanceSalaryDataGridViewTextBoxColumn.Name = "sumAdvanceSalaryDataGridViewTextBoxColumn";
-            sumAdvanceSalaryDataGridViewTextBoxColumn.Width = 172;
-            // 
-            // totalSalaryDataGridViewTextBoxColumn
-            // 
-            totalSalaryDataGridViewTextBoxColumn.DataPropertyName = "TotalSalary";
-            totalSalaryDataGridViewTextBoxColumn.HeaderText = "Total Salary";
-            totalSalaryDataGridViewTextBoxColumn.Name = "totalSalaryDataGridViewTextBoxColumn";
-            totalSalaryDataGridViewTextBoxColumn.Width = 136;
-            // 
-            // taxDataGridViewTextBoxColumn
-            // 
-            taxDataGridViewTextBoxColumn.DataPropertyName = "Tax";
-            taxDataGridViewTextBoxColumn.HeaderText = "Tax";
-            taxDataGridViewTextBoxColumn.Name = "taxDataGridViewTextBoxColumn";
-            taxDataGridViewTextBoxColumn.Width = 65;
-            // 
-            // salaryAfterTaxDataGridViewTextBoxColumn
-            // 
-            salaryAfterTaxDataGridViewTextBoxColumn.DataPropertyName = "SalaryAfterTax";
-            salaryAfterTaxDataGridViewTextBoxColumn.HeaderText = "Salary Final (-Tax)";
-            salaryAfterTaxDataGridViewTextBoxColumn.Name = "salaryAfterTaxDataGridViewTextBoxColumn";
-            salaryAfterTaxDataGridViewTextBoxColumn.Width = 188;
-            // 
-            // DateOmonth
-            // 
-            DateOmonth.DataPropertyName = "DateOmonth";
-            DateOmonth.HeaderText = "Date";
-            DateOmonth.Name = "DateOmonth";
-            DateOmonth.Width = 79;
+            numericUpDown1.Location = new Point(1208, 232);
+            numericUpDown1.Margin = new Padding(11, 13, 11, 13);
+            numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(64, 33);
+            numericUpDown1.TabIndex = 13;
+            numericUpDown1.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDown1.ValueChanged += nmPaging_ValueChanged;
             // 
             // frmSalaryDetail
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1231, 543);
+            ClientSize = new Size(1764, 884);
+            Controls.Add(numericUpDown1);
+            Controls.Add(dgvSalary);
             Controls.Add(panel2);
-            Controls.Add(panel1);
             Controls.Add(txtSave);
+            Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(4);
             Name = "frmSalaryDetail";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmSalaryDetail";
             Load += frmSalaryDetail_Load;
             ((System.ComponentModel.ISupportInitialize)dgvSalary).EndInit();
             ((System.ComponentModel.ISupportInitialize)salaryBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)nmPaging).EndInit();
-            panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -290,10 +289,7 @@
         private Button btSearch;
         private Button btReset;
         private Button btExport;
-        private NumericUpDown nmPaging;
         private Label txtSave;
-        private Panel panel1;
-        private Panel panel2;
         private DataGridViewTextBoxColumn idSalaryDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn idEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn salaryHourDataGridViewTextBoxColumn;
@@ -304,5 +300,7 @@
         private DataGridViewTextBoxColumn taxDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn salaryAfterTaxDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn DateOmonth;
+        private Panel panel2;
+        private NumericUpDown numericUpDown1;
     }
 }

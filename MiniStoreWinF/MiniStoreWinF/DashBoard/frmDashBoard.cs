@@ -18,6 +18,7 @@ using OxyPlot.Annotations;
 using System.Globalization;
 using Repository.Models;
 using MiniStoreWinF.ManageSalary;
+using System.Net.WebSockets;
 
 namespace MiniStoreWinF.DashBoard
 {
@@ -28,6 +29,7 @@ namespace MiniStoreWinF.DashBoard
         CatalogyService _catalogyService;
         MemberService _memberService;
         RevenueService _revenueService;
+        VoucherService _voucherService;
         Utinity u = new Utinity();
         public frmDashBoard()
         {
@@ -40,6 +42,7 @@ namespace MiniStoreWinF.DashBoard
             ChartMember(pbMember);
             ChartProduct(pbProduct);
             ChartRevenue(pbRevenues);
+            ChartVoucher();
         }
 
         public void ChartProduct(PictureBox p)
@@ -195,7 +198,7 @@ namespace MiniStoreWinF.DashBoard
                     Title = "Revenues",
                     Maximum = maxYWithMargin,
                     MajorStep = 1000000,
-                    StringFormat = "#,#.##M"
+                    StringFormat = "#,#.##"
                 };
 
                 //add trục x và y vào
@@ -220,6 +223,21 @@ namespace MiniStoreWinF.DashBoard
             }
         }
 
+        public void ChartVoucher()
+        {
+            _voucherService = new VoucherService();
+            var list = _voucherService.GetAll().Where(p=>p.Quantity>0).ToList();
+            foreach (var voucher in list)
+            {
+                pbVouchers.Series["Quantity"].Points.AddXY(voucher.Name, voucher.Quantity);
+            }
+            // Tắt hiển thị lưới trục x
+            pbVouchers.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+
+            // Tắt hiển thị lưới trục y
+            pbVouchers.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+        }
+
         string FormatValue(double value)
         {
             if (value < 1000000)
@@ -234,10 +252,6 @@ namespace MiniStoreWinF.DashBoard
             }
         }
 
-        private void btSalary_Paint(object sender, PaintEventArgs e)
-        {
-            u.openChildForm(new frmSalary(), pMain);
-        }
 
         private void btSalary_Click(object sender, EventArgs e)
         {

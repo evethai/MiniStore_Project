@@ -47,7 +47,8 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { mnuAdmin, sTOREToolStripMenuItem, hELPToolStripMenuItem, dISPLAYToolStripMenuItem, qUITToolStripMenuItem, eXITToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1036, 33);
+            menuStrip1.Padding = new Padding(10, 4, 0, 4);
+            menuStrip1.Size = new Size(1743, 37);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -105,21 +106,24 @@
             // pMain
             // 
             pMain.Dock = DockStyle.Fill;
-            pMain.Location = new Point(0, 33);
+            pMain.Location = new Point(0, 37);
+            pMain.Margin = new Padding(5);
             pMain.Name = "pMain";
-            pMain.Size = new Size(1036, 531);
+            pMain.Size = new Size(1743, 953);
             pMain.TabIndex = 2;
             // 
             // frmMain
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1036, 564);
+            BackColor = SystemColors.ButtonHighlight;
+            ClientSize = new Size(1743, 990);
             Controls.Add(pMain);
             Controls.Add(menuStrip1);
-            Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(5);
             Name = "frmMain";
-            Text = "frmMain";
+            StartPosition = FormStartPosition.CenterScreen;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

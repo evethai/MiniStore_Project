@@ -37,9 +37,10 @@
             // 
             // btSave
             // 
-            btSave.Location = new Point(237, 125);
+            btSave.Location = new Point(372, 184);
+            btSave.Margin = new Padding(5, 4, 5, 4);
             btSave.Name = "btSave";
-            btSave.Size = new Size(75, 23);
+            btSave.Size = new Size(118, 34);
             btSave.TabIndex = 6;
             btSave.Text = "Save";
             btSave.UseVisualStyleBackColor = true;
@@ -48,49 +49,54 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(13, 59);
+            label6.Location = new Point(20, 87);
+            label6.Margin = new Padding(5, 0, 5, 0);
             label6.Name = "label6";
-            label6.Size = new Size(122, 17);
+            label6.Size = new Size(173, 25);
             label6.TabIndex = 3;
             label6.Text = "New Tax for Guard ";
             // 
             // txtNewGuard
             // 
-            txtNewGuard.Location = new Point(212, 59);
+            txtNewGuard.Location = new Point(333, 87);
+            txtNewGuard.Margin = new Padding(5, 4, 5, 4);
             txtNewGuard.Name = "txtNewGuard";
-            txtNewGuard.Size = new Size(100, 25);
+            txtNewGuard.Size = new Size(155, 33);
             txtNewGuard.TabIndex = 7;
             txtNewGuard.KeyPress += txtNewGuard_KeyPress;
             // 
             // txtNewEmp
             // 
-            txtNewEmp.Location = new Point(212, 19);
+            txtNewEmp.Location = new Point(333, 28);
+            txtNewEmp.Margin = new Padding(5, 4, 5, 4);
             txtNewEmp.Name = "txtNewEmp";
-            txtNewEmp.Size = new Size(100, 25);
+            txtNewEmp.Size = new Size(155, 33);
             txtNewEmp.TabIndex = 5;
             txtNewEmp.KeyPress += txtNewEmp_KeyPress_1;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(13, 19);
+            label5.Location = new Point(20, 28);
+            label5.Margin = new Padding(5, 0, 5, 0);
             label5.Name = "label5";
-            label5.Size = new Size(139, 17);
+            label5.Size = new Size(198, 25);
             label5.TabIndex = 4;
             label5.Text = "New Tax for Employee";
             // 
             // frmEditEachTax
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(336, 163);
+            ClientSize = new Size(528, 240);
             Controls.Add(btSave);
             Controls.Add(label6);
             Controls.Add(txtNewGuard);
             Controls.Add(txtNewEmp);
             Controls.Add(label5);
+            Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(5, 4, 5, 4);
             Name = "frmEditEachTax";
-            Text = "frmEditEachTax";
             Load += frmEditEachTax_Load;
             ResumeLayout(false);
             PerformLayout();
