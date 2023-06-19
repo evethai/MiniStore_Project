@@ -13,10 +13,12 @@ namespace MiniStoreWinF.Manage_Voucher
     {
         MiniStoreContext _context;
         DbSet<Voucher> _voucher;
+        DbSet<CodeVoucher> _codeVoucher;
         public Validation()
         {
             _context = new MiniStoreContext();
             _voucher = _context.Set<Voucher>();
+            _codeVoucher = _context.Set<CodeVoucher>();
         }
         public List<Voucher> GetName(string name)
         {
@@ -24,8 +26,7 @@ namespace MiniStoreWinF.Manage_Voucher
 
             return records;
         }
-
-        public void Add(Voucher voucher)
+        public void AddNewVoucher(Voucher voucher)
         {
             var lastRecord = _voucher.OrderByDescending(record => record.IdVoucher).FirstOrDefault();
             if (lastRecord != null)
@@ -58,6 +59,29 @@ namespace MiniStoreWinF.Manage_Voucher
             // Combine the prefix and the formatted ID
             return result;
 
+        }
+        public void AddNewEachVoucher(CodeVoucher voucher)
+        {
+            voucher.Id = GenerateRandomString(10);
+            _codeVoucher.Add(voucher);
+            _context.SaveChanges();
+        }
+
+
+        public string GenerateRandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+            StringBuilder stringBuilder = new StringBuilder();
+            Random random = new Random();
+
+            for (int i = 0; i < length; i++)
+            {
+                int randomIndex = random.Next(0, chars.Length);
+                char randomChar = chars[randomIndex];
+                stringBuilder.Append(randomChar);
+            }
+
+            return stringBuilder.ToString();
         }
 
 

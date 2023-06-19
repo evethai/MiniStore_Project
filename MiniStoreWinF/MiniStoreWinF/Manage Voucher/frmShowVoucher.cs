@@ -26,7 +26,7 @@ namespace MiniStoreWinF.Manage_Voucher
 
             var voucher = _voucherService.GetAll();
             dgvVoucher.DataSource = new BindingSource() { DataSource = voucher };
-          
+
 
         }
 
@@ -58,7 +58,7 @@ namespace MiniStoreWinF.Manage_Voucher
                         txtName.Text = voucher.Name;
                         txtPrice.Text = voucher.Price.ToString();
                         txtQuantity.Text = voucher.Quantity.ToString();
-                        txtType.Text = voucher.Type.ToString();
+
                         dpkEXP.Text = voucher.Exp.ToString();
 
 
@@ -74,7 +74,7 @@ namespace MiniStoreWinF.Manage_Voucher
                         txtName.Text = voucher.Name;
                         txtPrice.Text = voucher.Price.ToString();
                         txtQuantity.Text = voucher.Quantity.ToString();
-                        txtType.Text = voucher.Type.ToString();
+
                         dpkEXP.Text = voucher.Exp.ToString();
 
 
@@ -103,8 +103,9 @@ namespace MiniStoreWinF.Manage_Voucher
             var voucher = _voucherService.GetAll().Where(e => e.IdVoucher.Equals(txtID.Text)).FirstOrDefault();
             if (txtName.Text == "" ||
                 txtPrice.Text == "" ||
-                txtQuantity.Text == "" ||
-                txtType.Text == "")
+                txtQuantity.Text == ""
+
+                )
             {
                 MessageBox.Show("Please input all information!");
             }
@@ -117,11 +118,12 @@ namespace MiniStoreWinF.Manage_Voucher
                 voucher.Name = txtName.Text;
                 voucher.Price = float.Parse(txtPrice.Text);
                 voucher.Quantity = int.Parse(txtQuantity.Text);
+                voucher.Conditions = float.Parse(numAddCondition.Text);
                 voucher.Exp = dpkEXP.Value;
                 var update = voucher;
-                DialogResult result = MessageBox.Show("Have you check all update information?", 
-                    "Confirm", 
-                    MessageBoxButtons.YesNo, 
+                DialogResult result = MessageBox.Show("Have you check all update information?",
+                    "Confirm",
+                    MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
@@ -130,7 +132,7 @@ namespace MiniStoreWinF.Manage_Voucher
                     MessageBox.Show("Update successfully!");
                 }
 
-               
+
 
             }
         }
@@ -145,7 +147,7 @@ namespace MiniStoreWinF.Manage_Voucher
         private void btAdd_Click(object sender, EventArgs e)
         {
             if (txtAddName.Text == "" ||
-                txtAddType.Text == "" ||
+
                 txtNewQuantity.Text == "" ||
                 txtNewPrice.Text == "")
             {
@@ -158,9 +160,14 @@ namespace MiniStoreWinF.Manage_Voucher
             else
             {
                 var voucher = new Voucher();
+                var codeVoucher = new CodeVoucher();
 
                 voucher.Name = txtAddName.Text;
-                //voucher.Type = txtAddType.Text;
+
+                voucher.Conditions = float.Parse(numAddCondition.Text);
+
+                
+
                 voucher.Exp = dpkNewDate.Value;
                 voucher.Price = float.Parse(txtNewPrice.Text);
                 voucher.Quantity = int.Parse(txtNewQuantity.Text);
@@ -168,13 +175,19 @@ namespace MiniStoreWinF.Manage_Voucher
                 if (result == DialogResult.OK)
                 {
                     Validation createVoucher = new Validation();
-                    createVoucher.Add(voucher);
+                    createVoucher.AddNewVoucher(voucher);
                     MessageBox.Show("Create voucher successfully!");
-
+                    for (int i = 0; i < int.Parse(txtNewQuantity.Text); i++)
+                    {
+                        codeVoucher.QuantityValue = 1;
+                        codeVoucher.StatusV = true;
+                        codeVoucher.IdVoucher = voucher.IdVoucher;
+                        createVoucher.AddNewEachVoucher(codeVoucher);
+                    }
                 }
                 else
                 {
-
+                    return;
                 }
 
             }
