@@ -1,4 +1,5 @@
 using MiniStoreWinF.DashBoard;
+using MiniStoreWinF.Manage_Voucher;
 using MiniStoreWinF.ManageEmployees;
 using MiniStoreWinF.ManageProducts;
 using MiniStoreWinF.ManageSalary;
@@ -16,7 +17,11 @@ namespace MiniStoreWinF
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new frmMain());
+
+         
+
+            Application.Run(new frmLogin());
+
 
 
         }
