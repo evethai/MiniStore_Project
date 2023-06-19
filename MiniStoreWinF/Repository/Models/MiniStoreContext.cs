@@ -45,12 +45,16 @@ namespace Repository.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+            modelBuilder.HasAnnotation("Relational:Collation", "Vietnamese_CI_AS");
 
             modelBuilder.Entity<BillOrder>(entity =>
             {
                 entity.HasKey(e => e.IdBillOrder)
+
                     .HasName("PK__BillOrde__58724C24C89829A8");
+
+                  
+
 
                 entity.Property(e => e.IdBillOrder)
                     .HasMaxLength(20)
@@ -61,7 +65,10 @@ namespace Repository.Models
                 entity.HasOne(d => d.DateOfBillNavigation)
                     .WithMany(p => p.BillOrders)
                     .HasForeignKey(d => d.DateOfBill)
+
                     .HasConstraintName("FK__BillOrder__DateO__5535A963");
+
+                 
             });
 
             modelBuilder.Entity<Catalogy>(entity =>
@@ -92,13 +99,20 @@ namespace Repository.Models
                 entity.HasOne(d => d.IdVoucherNavigation)
                     .WithMany(p => p.CodeVouchers)
                     .HasForeignKey(d => d.IdVoucher)
+
                     .HasConstraintName("FK__CodeVouch__IdVou__5629CD9C");
+
+                 
+
             });
 
             modelBuilder.Entity<DetailAdvanceSalary>(entity =>
             {
                 entity.HasKey(e => e.IdAdvanceSalary)
+
                     .HasName("PK__DetailAd__8FF8B6367B2B103C");
+
+
 
                 entity.ToTable("DetailAdvanceSalary");
 
@@ -118,13 +132,20 @@ namespace Repository.Models
                     .WithMany(p => p.DetailAdvanceSalaries)
                     .HasForeignKey(d => d.IdEmp)
                     .OnDelete(DeleteBehavior.ClientSetNull)
+
                     .HasConstraintName("FK__DetailAdv__IdEmp__571DF1D5");
+
+
             });
 
             modelBuilder.Entity<DetailSubSalary>(entity =>
             {
                 entity.HasKey(e => e.IdDetailSubSalary)
+
                     .HasName("PK__DetailSu__38029D0FBA101B57");
+
+                    
+
 
                 entity.ToTable("DetailSubSalary");
 
@@ -136,7 +157,11 @@ namespace Repository.Models
             modelBuilder.Entity<Employee>(entity =>
             {
                 entity.HasKey(e => e.IdEmp)
+
                     .HasName("PK__Employee__0F23D647B3958663");
+
+                    
+
 
                 entity.ToTable("Employee");
 
@@ -177,7 +202,10 @@ namespace Repository.Models
             modelBuilder.Entity<Member>(entity =>
             {
                 entity.HasKey(e => e.PhoneMember)
+
                     .HasName("PK__Member__57790E25130B6F3B");
+
+
 
                 entity.ToTable("Member");
 
@@ -199,7 +227,11 @@ namespace Repository.Models
             modelBuilder.Entity<Order>(entity =>
             {
                 entity.HasKey(e => e.IdOrder)
+
                     .HasName("PK__Orders__C38F3009CFA2DD4F");
+
+                   
+
 
                 entity.Property(e => e.IdOrder).HasMaxLength(20);
 
@@ -230,27 +262,47 @@ namespace Repository.Models
                 entity.HasOne(d => d.IdBillOrderNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.IdBillOrder)
+
                     .HasConstraintName("FK__Orders__IdBillOr__59063A47");
+
+                   
+
 
                 entity.HasOne(d => d.IdEmpNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.IdEmp)
+
                     .HasConstraintName("FK__Orders__IdEmp__59FA5E80");
+
+                   
+
 
                 entity.HasOne(d => d.IdVoucherNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.IdVoucher)
+
                     .HasConstraintName("FK__Orders__IdVouche__5AEE82B9");
+
+                   
+
 
                 entity.HasOne(d => d.PhoneMemberNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.PhoneMember)
+
                     .HasConstraintName("FK__Orders__PhoneMem__5BE2A6F2");
+
+                  
+
 
                 entity.HasOne(d => d.SkuNavigation)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.Sku)
+
                     .HasConstraintName("FK__Orders__SKU__5CD6CB2B");
+
+                   
+
             });
 
             modelBuilder.Entity<Permission>(entity =>
@@ -304,7 +356,11 @@ namespace Repository.Models
             modelBuilder.Entity<Revenue>(entity =>
             {
                 entity.HasKey(e => e.DateRevenue)
+
                     .HasName("PK__Revenue__D0CEC0D9CA452B09");
+
+                   
+
 
                 entity.ToTable("Revenue");
 
@@ -314,7 +370,11 @@ namespace Repository.Models
             modelBuilder.Entity<Salary>(entity =>
             {
                 entity.HasKey(e => e.IdSalary)
+
                     .HasName("PK__Salary__4304AC9CE97A98FC");
+
+                   
+
 
                 entity.ToTable("Salary");
 
@@ -333,6 +393,9 @@ namespace Repository.Models
                     .HasForeignKey(d => d.IdEmp)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Salary__IdEmp__5EBF139D");
+
+                    
+
             });
 
             modelBuilder.Entity<SheetDetail>(entity =>
@@ -354,7 +417,11 @@ namespace Repository.Models
             modelBuilder.Entity<SubSalary>(entity =>
             {
                 entity.HasKey(e => e.IdSubSalary)
+
                     .HasName("PK__SubSalar__4D7A054D844434CD");
+
+                  
+
 
                 entity.ToTable("SubSalary");
 
@@ -369,18 +436,30 @@ namespace Repository.Models
                 entity.HasOne(d => d.IdDetailSubSalaryNavigation)
                     .WithMany(p => p.SubSalaries)
                     .HasForeignKey(d => d.IdDetailSubSalary)
+
                     .HasConstraintName("FK__SubSalary__IdDet__5FB337D6");
+
+                  
+
 
                 entity.HasOne(d => d.IdEmpNavigation)
                     .WithMany(p => p.SubSalaries)
                     .HasForeignKey(d => d.IdEmp)
+
                     .HasConstraintName("FK__SubSalary__IdEmp__60A75C0F");
+
+                   
+
             });
 
             modelBuilder.Entity<Voucher>(entity =>
             {
                 entity.HasKey(e => e.IdVoucher)
+
                     .HasName("PK__Voucher__329D557EF1E462C6");
+
+                   
+
 
                 entity.ToTable("Voucher");
 
@@ -402,7 +481,10 @@ namespace Repository.Models
             modelBuilder.Entity<WorkSheet>(entity =>
             {
                 entity.HasKey(e => e.IdWorkSheet)
+
                     .HasName("PK__WorkShee__AB7595E8C8436EB3");
+
+                  
 
                 entity.ToTable("WorkSheet");
 
@@ -419,7 +501,11 @@ namespace Repository.Models
                 entity.HasOne(d => d.IdEmpNavigation)
                     .WithMany(p => p.WorkSheets)
                     .HasForeignKey(d => d.IdEmp)
+
                     .HasConstraintName("FK__WorkSheet__IdEmp__619B8048");
+
+                  
+
 
                 entity.HasOne(d => d.SheetNavigation)
                     .WithMany(p => p.WorkSheets)

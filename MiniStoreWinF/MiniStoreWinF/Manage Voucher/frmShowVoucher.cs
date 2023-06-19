@@ -42,6 +42,14 @@ namespace MiniStoreWinF.Manage_Voucher
 
                 if (rdExpired.Checked)
                 {
+
+                    txtID.Text = voucher.IdVoucher.ToString();
+                    txtName.Text = voucher.Name;
+                    txtPrice.Text = voucher.Price.ToString();
+                    txtQuantity.Text = voucher.Quantity.ToString();
+                    //txtType.Text = voucher.Type.ToString();
+                    dpkEXP.Text = voucher.Exp.ToString();
+
                     voucher = _voucherService.GetAll().Where(e => e.Exp < DateTime.Now && e.Name.Equals(name)).FirstOrDefault();
                     rowIndex = e.RowIndex;
                     if (voucher != null)
@@ -155,7 +163,11 @@ namespace MiniStoreWinF.Manage_Voucher
                 var codeVoucher = new CodeVoucher();
 
                 voucher.Name = txtAddName.Text;
+
                 voucher.Conditions = float.Parse(numAddCondition.Text);
+
+                
+
                 voucher.Exp = dpkNewDate.Value;
                 voucher.Price = float.Parse(txtNewPrice.Text);
                 voucher.Quantity = int.Parse(txtNewQuantity.Text);
