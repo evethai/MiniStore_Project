@@ -20,17 +20,12 @@ namespace MiniStoreWinF.OrdersProducts
         private void button1_Click(object sender, EventArgs e)
         {
         }
-        public event EventHandler ChildFormClosed;
-
+        public event ChildFormClosedEventHandler ChildFormClosed;
+        public delegate void ChildFormClosedEventHandler(object sender, EventArgs e);
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
             base.OnFormClosed(e);
             ChildFormClosed?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void frmBill_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
         }
     }
 }

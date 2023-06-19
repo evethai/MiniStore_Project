@@ -353,7 +353,7 @@ namespace MiniStoreWinF.OrdersProducts
                 //------------------------------------// END Update point when payment successfull
                 AutoRevenuelUpdateWhenBillOrderDone();               
             }
-            ResetData();
+            OpenChildForm();
         } // ADD TO CART SHOW BILL => MAYBE OK
         public void AutoRevenuelUpdateWhenBillOrderDone() // Update Total Revenue in one day  => OK
         {
@@ -390,5 +390,17 @@ namespace MiniStoreWinF.OrdersProducts
                 return;
             }
         }
+        private void OpenChildForm()
+        {
+            frmBill childForm = new frmBill();
+            childForm.ChildFormClosed += ChildFormClosedHandler;
+            childForm.Show();
+        }
+
+        private void ChildFormClosedHandler(object sender, EventArgs e)
+        {
+            ResetData();
+        }
+
     }
 }
