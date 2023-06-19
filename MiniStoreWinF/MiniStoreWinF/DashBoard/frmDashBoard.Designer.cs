@@ -30,6 +30,7 @@
         {
             panel2 = new Panel();
             panel10 = new Panel();
+            label4 = new Label();
             label1 = new Label();
             panel1 = new Panel();
             pbProduct = new PictureBox();
@@ -48,7 +49,6 @@
             label5 = new Label();
             panel3 = new Panel();
             label2 = new Label();
-            label4 = new Label();
             panel2.SuspendLayout();
             panel10.SuspendLayout();
             panel1.SuspendLayout();
@@ -78,7 +78,6 @@
             // 
             // panel10
             // 
-            panel10.BackgroundImage = Properties.Resources.bell;
             panel10.BackgroundImageLayout = ImageLayout.Zoom;
             panel10.Controls.Add(label4);
             panel10.Dock = DockStyle.Right;
@@ -86,6 +85,18 @@
             panel10.Name = "panel10";
             panel10.Size = new Size(70, 51);
             panel10.TabIndex = 1;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Red;
+            label4.ForeColor = SystemColors.ButtonHighlight;
+            label4.Location = new Point(35, 31);
+            label4.Name = "label4";
+            label4.Size = new Size(15, 17);
+            label4.TabIndex = 0;
+            label4.Text = "0";
+            label4.Visible = false;
             // 
             // label1
             // 
@@ -277,18 +288,6 @@
             label2.Size = new Size(146, 17);
             label2.TabIndex = 0;
             label2.Text = "Employee Management";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.BackColor = Color.Red;
-            label4.ForeColor = SystemColors.ButtonHighlight;
-            label4.Location = new Point(35, 31);
-            label4.Name = "label4";
-            label4.Size = new Size(15, 17);
-            label4.TabIndex = 0;
-            label4.Text = "0";
-            label4.Visible = false;
             // 
             // frmDashBoard
             // 
