@@ -200,8 +200,8 @@ namespace API_Database.Controllers
 
         //add worksheet 
         [HttpPost]
-        [Route("api/ms/AddWS")]
-        public bool themSV([FromBody] JObject jsonData)
+        [Route("api/ms/addws")]
+        public bool AddWorkSheet([FromBody] JObject jsonData)
         {
             try
             {
@@ -222,7 +222,7 @@ namespace API_Database.Controllers
 
                 // Lấy các thông tin cần thiết từ JWT
                 if (claims != null)
-                {   
+                {
                     idEmpjwt = claims.FirstOrDefault(c => c.Type == "IdEmp")?.Value;
                     datejwt = claims.FirstOrDefault(c => c.Type == "Date")?.Value;
                     sheetjwt = claims.FirstOrDefault(c => c.Type == "Sheet")?.Value;
@@ -236,10 +236,12 @@ namespace API_Database.Controllers
 
                 WorkSheet workSheet = new WorkSheet
                 {
-                    
-
+                    IdWorkSheet = newIdWorkSheet,
+                    IdEmp = idEmpjwt,
+                    Date = DateTime.ParseExact(datejwt, "yyyy-MM-dd", CultureInfo.InvariantCulture),
+                    Sheet = int.Parse(sheetjwt),
+                    TimeCheckIn = DateTime.ParseExact(timeCheckInjwt, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture)
                 };
-
                 db.WorkSheets.InsertOnSubmit(workSheet);
                 db.SubmitChanges();
                 return true;

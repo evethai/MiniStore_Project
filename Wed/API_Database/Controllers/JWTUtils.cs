@@ -43,7 +43,6 @@ namespace API_Database.Controllers
                 Subject = new ClaimsIdentity(new[]
                 {
             new Claim("Sheet", wsdto.Sheet.ToString()),
-            new Claim("TimeCheckIn", wsdto.TimeCheckIn.ToString("MM/dd/yyyy HH:mm:ss")),
             new Claim("TimeCheckOut", wsdto.TimeCheckOut.ToString("MM/dd/yyyy HH:mm:ss"))
         }),
                 Expires = DateTime.UtcNow.AddHours(1), // Thời gian hết hạn của JWT: 1 giờ
