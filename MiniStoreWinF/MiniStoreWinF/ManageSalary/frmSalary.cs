@@ -88,7 +88,7 @@ namespace MiniStoreWinF.ManageSalary
 
         private void frmSalary_Load(object sender, EventArgs e)
         {
-            txtName.Text = "WelCome ";
+
         }
         private Form currentFormChild;
         private void openChildForm(Form childForm)
