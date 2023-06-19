@@ -142,7 +142,7 @@
             // pbMember
             // 
             pbMember.Dock = DockStyle.Fill;
-<
+
             pbMember.Location = new Point(3, 283);
             pbMember.Name = "pbMember";
             pbMember.Size = new Size(632, 275);
