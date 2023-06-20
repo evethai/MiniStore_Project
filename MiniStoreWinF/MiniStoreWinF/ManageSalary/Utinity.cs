@@ -15,6 +15,7 @@ namespace MiniStoreWinF.ManageSalary
     {
         EmployeeService _employeeService;
         WorkSheetService _workSheetService;
+        SalaryService _salaryService;
         public string GenerateAutoId(int currentCount,string headId)
         {
             int nextCount = currentCount + 1;
@@ -42,7 +43,7 @@ namespace MiniStoreWinF.ManageSalary
         public void showListEmp(ComboBox comboBox)
         {
             _employeeService = new EmployeeService();
-            var list = _employeeService.GetAll().Where(p => p.IsActive == true).ToList();
+            var list = _employeeService.GetAll().Where(p => p.IsActive == true && !p.Roles.Equals("Admin")).ToList();
             AutoCompleteStringCollection autoCompleteStringCollection = new AutoCompleteStringCollection();
             foreach (var item in list)
             {
@@ -109,6 +110,26 @@ namespace MiniStoreWinF.ManageSalary
             p.Tag = childForm;//gán form con cho thuộc tính tag của panel để lưu trử thông tin form con
             childForm.BringToFront();//ĐƯA form con ra trước trong các điều khiển panel
             childForm.Show();//hiện thị nó 
+        }
+
+        public List<Salary> salary()
+        {
+            _salaryService = new SalaryService();
+            _employeeService = new EmployeeService();
+            var listSal = _salaryService.GetAll().Where(p => p.DateOmonth.Month.Equals(DateTime.Now.AddMonths(-1).Month)).ToList();
+            var listEmp = _employeeService.GetAll().Where(p => p.IsActive == true && !p.Roles.Equals("Admin")).ToList();
+            List<Salary> listTrue = new List<Salary>();
+            foreach (var emp in listEmp)
+            {
+                foreach (var sa in listSal)
+                {
+                    if (sa.IdEmp.Equals(emp.IdEmp))
+                    {
+                        listTrue.Add(sa);
+                    }
+                }
+            }
+            return listTrue;
         }
     }
 }

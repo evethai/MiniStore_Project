@@ -301,7 +301,7 @@
             label2.Size = new Size(146, 17);
             label2.TabIndex = 0;
             label2.Text = "Employee Management";
-            label2.Click += label2_Click;
+            //label2.Click += label2_Click;
             // 
             // frmDashBoard
             // 
