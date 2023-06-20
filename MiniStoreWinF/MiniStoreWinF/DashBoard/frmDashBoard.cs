@@ -130,7 +130,7 @@ namespace MiniStoreWinF.DashBoard
                 LabelPlacement = LabelPlacement.Inside,
                 LabelFormatString = "{0:,00}",
                 LabelMargin = 10,
-                
+
 
             };
             c.Labels.Add(CultureInfo.GetCultureInfo("en-US").DateTimeFormat.GetMonthName(DateTime.Now.AddMonths(-1).Month));

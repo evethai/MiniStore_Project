@@ -32,7 +32,6 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDashBoard));
             panel2 = new Panel();
             label1 = new Label();
             pMain = new Panel();
@@ -90,7 +89,6 @@
             // 
             // pMain
             // 
-            pMain.Anchor = AnchorStyles.None;
             pMain.BackColor = SystemColors.Window;
             pMain.Controls.Add(tableLayoutPanel2);
             pMain.Dock = DockStyle.Fill;
@@ -191,8 +189,7 @@
             // 
             // panel9
             // 
-            panel9.BackColor = Color.Transparent;
-            panel9.BackgroundImage = (Image)resources.GetObject("panel9.BackgroundImage");
+            panel9.BackColor = Color.Cyan;
             panel9.BackgroundImageLayout = ImageLayout.Stretch;
             panel9.Controls.Add(label3);
             panel9.Dock = DockStyle.Fill;
@@ -213,8 +210,7 @@
             // 
             // btSalary
             // 
-            btSalary.BackColor = Color.Transparent;
-            btSalary.BackgroundImage = (Image)resources.GetObject("btSalary.BackgroundImage");
+            btSalary.BackColor = Color.Cyan;
             btSalary.BackgroundImageLayout = ImageLayout.Stretch;
             btSalary.Controls.Add(label9);
             btSalary.Dock = DockStyle.Fill;
@@ -236,8 +232,7 @@
             // 
             // panel5
             // 
-            panel5.BackColor = Color.Transparent;
-            panel5.BackgroundImage = (Image)resources.GetObject("panel5.BackgroundImage");
+            panel5.BackColor = Color.Cyan;
             panel5.BackgroundImageLayout = ImageLayout.Stretch;
             panel5.Controls.Add(label7);
             panel5.Dock = DockStyle.Fill;
@@ -258,8 +253,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = Color.Transparent;
-            panel4.BackgroundImage = (Image)resources.GetObject("panel4.BackgroundImage");
+            panel4.BackColor = Color.Cyan;
             panel4.BackgroundImageLayout = ImageLayout.Stretch;
             panel4.Controls.Add(label5);
             panel4.Dock = DockStyle.Fill;
@@ -280,8 +274,7 @@
             // 
             // panel3
             // 
-            panel3.BackColor = Color.Transparent;
-            panel3.BackgroundImage = (Image)resources.GetObject("panel3.BackgroundImage");
+            panel3.BackColor = Color.Cyan;
             panel3.BackgroundImageLayout = ImageLayout.Zoom;
             panel3.Controls.Add(label2);
             panel3.Dock = DockStyle.Fill;
@@ -301,7 +294,6 @@
             label2.Size = new Size(146, 17);
             label2.TabIndex = 0;
             label2.Text = "Employee Management";
-            //label2.Click += label2_Click;
             // 
             // frmDashBoard
             // 
