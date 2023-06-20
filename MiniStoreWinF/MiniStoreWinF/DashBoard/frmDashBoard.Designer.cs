@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+
             panel2 = new Panel();
             label1 = new Label();
             pMain = new Panel();
@@ -94,9 +96,9 @@
             // 
             // pMain
             // 
+            pMain.Anchor = AnchorStyles.None;
             pMain.BackColor = SystemColors.Window;
             pMain.Controls.Add(tableLayoutPanel2);
-            pMain.Dock = DockStyle.Fill;
             pMain.Location = new Point(0, 189);
             pMain.Margin = new Padding(3, 4, 3, 4);
             pMain.Name = "pMain";
@@ -210,7 +212,9 @@
             // 
             // panel9
             // 
-            panel9.BackColor = Color.FromArgb(192, 255, 255);
+            panel9.BackColor = Color.Transparent;
+            panel9.BackgroundImage = (Image)resources.GetObject("panel9.BackgroundImage");
+            panel9.BackgroundImageLayout = ImageLayout.Stretch;
             panel9.Controls.Add(label3);
             panel9.Dock = DockStyle.Fill;
 
@@ -224,7 +228,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(16, 14);
+            label3.Location = new Point(33, 46);
             label3.Name = "label3";
             label3.Size = new Size(157, 20);
             label3.TabIndex = 0;
@@ -232,7 +236,9 @@
             // 
             // btSalary
             // 
-            btSalary.BackColor = Color.FromArgb(192, 255, 255);
+            btSalary.BackColor = Color.Transparent;
+            btSalary.BackgroundImage = (Image)resources.GetObject("btSalary.BackgroundImage");
+            btSalary.BackgroundImageLayout = ImageLayout.Stretch;
             btSalary.Controls.Add(label9);
             btSalary.Dock = DockStyle.Fill;
 
@@ -247,7 +253,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(16, 14);
+            label9.Location = new Point(68, 46);
             label9.Name = "label9";
             label9.Size = new Size(141, 20);
             label9.TabIndex = 0;
@@ -255,7 +261,9 @@
             // 
             // panel5
             // 
-            panel5.BackColor = Color.FromArgb(192, 255, 255);
+            panel5.BackColor = Color.Transparent;
+            panel5.BackgroundImage = (Image)resources.GetObject("panel5.BackgroundImage");
+            panel5.BackgroundImageLayout = ImageLayout.Stretch;
             panel5.Controls.Add(label7);
             panel5.Dock = DockStyle.Fill;
 
@@ -269,7 +277,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(16, 14);
+            label7.Location = new Point(44, 46);
             label7.Name = "label7";
             label7.Size = new Size(172, 20);
             label7.TabIndex = 0;
@@ -277,7 +285,9 @@
             // 
             // panel4
             // 
-            panel4.BackColor = Color.FromArgb(192, 255, 255);
+            panel4.BackColor = Color.Transparent;
+            panel4.BackgroundImage = (Image)resources.GetObject("panel4.BackgroundImage");
+            panel4.BackgroundImageLayout = ImageLayout.Stretch;
             panel4.Controls.Add(label5);
             panel4.Dock = DockStyle.Fill;
 
@@ -291,7 +301,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(16, 14);
+            label5.Location = new Point(75, 46);
             label5.Name = "label5";
             label5.Size = new Size(152, 20);
             label5.TabIndex = 0;
@@ -299,7 +309,9 @@
             // 
             // panel3
             // 
-            panel3.BackColor = Color.FromArgb(192, 255, 255);
+            panel3.BackColor = Color.Transparent;
+            panel3.BackgroundImage = (Image)resources.GetObject("panel3.BackgroundImage");
+            panel3.BackgroundImageLayout = ImageLayout.Zoom;
             panel3.Controls.Add(label2);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 0);
@@ -313,12 +325,14 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Location = new Point(16, 14);
+            label2.Location = new Point(46, 46);
             label2.Name = "label2";
             label2.Size = new Size(167, 20);
             label2.TabIndex = 0;
             label2.Text = "Employee Management";
+            label2.Click += label2_Click;
             // 
             // frmDashBoard
             // 
