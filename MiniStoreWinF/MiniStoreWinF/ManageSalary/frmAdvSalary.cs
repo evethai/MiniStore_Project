@@ -25,7 +25,7 @@ namespace MiniStoreWinF.ManageSalary
         public void showAdvanceSalary()
         {
             _detailAdvanceSalaryService = new DetailAdvanceSalaryService();
-            var list = _detailAdvanceSalaryService.GetAll().ToList();
+            var list = _detailAdvanceSalaryService.GetAll().Where(p=>p.DateAs.Value.Month.Equals(DateTime.Now.AddMonths(-1).Month)).ToList();
             dgvAdv.DataSource = list;
         }
         private void btAdd_Click(object sender, EventArgs e)
@@ -55,8 +55,8 @@ namespace MiniStoreWinF.ManageSalary
         {
             _employeeService = new EmployeeService();
             _detailAdvanceSalaryService = new DetailAdvanceSalaryService();
-            var listAdv = _detailAdvanceSalaryService.GetAll().ToList();
-            var listEmp = _employeeService.GetAll().Where(p => p.FullNameEmp.Contains(cbSearch.Text) && p.IsActive==true).ToList();
+            var listAdv = _detailAdvanceSalaryService.GetAll().Where(p => (p.DateAs >= dtpFrom.Value && p.DateAs <= dtpTo.Value)).ToList();
+            var listEmp = _employeeService.GetAll().Where(p => p.FullNameEmp.Contains(cbSearch.Text) && p.IsActive == true).ToList();
 
             //
             BindingSource bindingSource = new BindingSource();

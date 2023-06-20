@@ -18,6 +18,7 @@ using OxyPlot.Annotations;
 using System.Globalization;
 using Repository.Models;
 using MiniStoreWinF.ManageSalary;
+using System.Net.WebSockets;
 using MiniStoreWinF.ManageEmployees;
 
 namespace MiniStoreWinF.DashBoard
@@ -29,6 +30,7 @@ namespace MiniStoreWinF.DashBoard
         CatalogyService _catalogyService;
         MemberService _memberService;
         RevenueService _revenueService;
+        VoucherService _voucherService;
         Utinity u = new Utinity();
         public frmDashBoard()
         {
@@ -41,6 +43,7 @@ namespace MiniStoreWinF.DashBoard
             ChartMember(pbMember);
             ChartProduct(pbProduct);
             ChartRevenue(pbRevenues);
+            ChartVoucher();
         }
 
         public void ChartProduct(PictureBox p)
@@ -138,114 +141,104 @@ namespace MiniStoreWinF.DashBoard
         }
         public void ChartRevenue(PictureBox p)
         {
-            _revenueService = new RevenueService();
-            var listRevenues = _revenueService.GetAll().Where(p => p.DateRevenue > DateTime.Now.AddDays(-7)).ToList();//7 ngày gần nhất
 
-            // Tạo danh sách dataPoints cho biểu đồ
-            var dataPoints = new List<DataPoint>();
-            foreach (var revenue in listRevenues)
+            try
+
             {
-                var dataPoint = new DataPoint(revenue.DateRevenue.Date.Day, (double)revenue.TotalRevenueOfDay);
-                dataPoints.Add(dataPoint);
-            }
-            // Tạo đối tượng LineSeries
-            var revenueSeries = new LineSeries
-            {
+                _revenueService = new RevenueService();
+                var listRevenues = _revenueService.GetAll().OrderByDescending(p => p.DateRevenue).Take(7).ToList();//7 ngày gần nhất 
 
-                ItemsSource = dataPoints,
-                StrokeThickness = 4
-            };
-
-            //_revenueService = new RevenueService();
-            //var listRevenues = _revenueService.GetAll().OrderByDescending(p => p.DateRevenue).Take(7).ToList();//7 ngày gần nhất 
-
-            //// Tạo danh sách dataPoints cho biểu đồ
-            //var dataPoints = new List<DataPoint>();
-            //foreach (var revenue in listRevenues)
-            //{
-            //    var dataPoint = new DataPoint(revenue.DateRevenue.Date.Day, (double)revenue.TotalRevenueOfDay);
-            //    dataPoints.Add(dataPoint);
-            //}
-            //// Tạo đối tượng LineSeries
-            //var revenueSeries = new LineSeries
-            //{
-            //    ItemsSource = dataPoints,
-            //    StrokeThickness = 4
-            //};
-
-            //// Tạo đối tượng PlotModel cho biểu đồ
-            //var plotModel = new PlotModel { Title = "Revenue fluctuations in the past 7 days" };
-            //foreach (var dataPoint in dataPoints)
-            //{
-            //    double value = dataPoint.Y;
-            //    string formattedValue = FormatValue(value); // Hàm để định dạng giá trị
-            //    string label = $"{formattedValue}";
-            //    var annotation = new OxyPlot.Annotations.TextAnnotation
-            //    {
-            //        Text = label,
-            //        TextPosition = new DataPoint(dataPoint.X, dataPoint.Y + 300),
-            //        StrokeThickness = 0
-            //    };
-            //    plotModel.Annotations.Add(annotation);
-            //}
-
-            // Tạo đối tượng PlotModel cho biểu đồ
-            var plotModel = new PlotModel { Title = "Revenue fluctuations in the past 7 days" };
-            foreach (var dataPoint in dataPoints)
-            {
-                double value = dataPoint.Y;
-                string formattedValue = FormatValue(value); // Hàm để định dạng giá trị
-                string label = $"{formattedValue}M";
-                var annotation = new OxyPlot.Annotations.TextAnnotation
+                // Tạo danh sách dataPoints cho biểu đồ
+                var dataPoints = new List<DataPoint>();
+                foreach (var revenue in listRevenues)
                 {
-                    Text = label,
-                    TextPosition = new DataPoint(dataPoint.X + 0.5, dataPoint.Y),
-                    StrokeThickness = 0
+                    var dataPoint = new DataPoint(revenue.DateRevenue.Date.Day, (double)revenue.TotalRevenueOfDay);
+                    dataPoints.Add(dataPoint);
+                }
+                // Tạo đối tượng LineSeries
+                var revenueSeries = new LineSeries
+                {
+                    ItemsSource = dataPoints,
+                    StrokeThickness = 4
                 };
-                plotModel.Annotations.Add(annotation);
+
+                // Tạo đối tượng PlotModel cho biểu đồ
+                var plotModel = new PlotModel { Title = "Revenue fluctuations in the past 7 days" };
+                foreach (var dataPoint in dataPoints)
+                {
+                    double value = dataPoint.Y;
+                    string formattedValue = FormatValue(value); // Hàm để định dạng giá trị
+                    string label = $"{formattedValue}";
+                    var annotation = new OxyPlot.Annotations.TextAnnotation
+                    {
+                        Text = label,
+                        TextPosition = new DataPoint(dataPoint.X, dataPoint.Y + 300),
+                        StrokeThickness = 0
+                    };
+                    plotModel.Annotations.Add(annotation);
+                }
+
+                // Cấu hình trục x
+                double maxXValue = dataPoints.Max(dp => dp.X);//điểm cao nhất
+                double minXValue = dataPoints.Min(dp => dp.X);//điểm cao nhất
+                double maxXWithMargin = maxXValue + 0.2;//tăng thêm khoản cách
+                double minXWithMargin = minXValue - 0.3;//tăng thêm khoản cách
+                var xAxis = new OxyPlot.Axes.LinearAxis
+                {
+                    Position = OxyPlot.Axes.AxisPosition.Bottom,
+                    Maximum = maxXWithMargin,
+                    Minimum = minXWithMargin,
+                    Title = "Day",
+                    MajorStep = 1 // Khoảng cách giữa các đánh dấu chính trên trục x
+                };
+
+                //cấu hình trục Y
+                double maxYValue = dataPoints.Max(dp => dp.Y);//điểm cao nhất
+                double maxYWithMargin = maxYValue * 1.1;//tăng thêm khoản cách
+                var yAxis = new OxyPlot.Axes.LinearAxis
+                {
+                    Position = OxyPlot.Axes.AxisPosition.Left,
+                    Title = "Revenues",
+                    Maximum = maxYWithMargin,
+                    MajorStep = 1000000,
+                    StringFormat = "#,#.##"
+                };
+
+                //add trục x và y vào
+                plotModel.Axes.Add(xAxis);
+                plotModel.Axes.Add(yAxis);
+
+                // Thêm chuỗi dữ liệu vào Model.Series
+                plotModel.Series.Add(revenueSeries);
+
+                // Tạo đối tượng PlotView và thêm vào pictureBox3
+                var plotView = new PlotView
+                {
+                    Dock = DockStyle.Fill,
+                    Model = plotModel
+                };
+
+                p.Controls.Add(plotView);
             }
-
-            // Cấu hình trục x
-            double maxXValue = dataPoints.Max(dp => dp.X);//điểm cao nhất
-            double minXValue = dataPoints.Min(dp => dp.X);//điểm cao nhất
-            double maxXWithMargin = maxXValue + 0.2;//tăng thêm khoản cách
-            double minXWithMargin = minXValue - 0.3;//tăng thêm khoản cách
-            var xAxis = new OxyPlot.Axes.LinearAxis
+            catch (Exception ex)
             {
-                Position = OxyPlot.Axes.AxisPosition.Bottom,
-                Maximum = maxXWithMargin,
-                Minimum = minXWithMargin,
-                Title = "Day",
-                MajorStep = 1 // Khoảng cách giữa các đánh dấu chính trên trục x
-            };
+                MessageBox.Show(ex + " not have data revenues", "Messages", MessageBoxButtons.OK);
+            }
+        }
 
-            //cấu hình trục Y
-            double maxYValue = dataPoints.Max(dp => dp.Y);//điểm cao nhất
-            double maxYWithMargin = maxYValue * 1.1;//tăng thêm khoản cách
-            var yAxis = new OxyPlot.Axes.LinearAxis
+        public void ChartVoucher()
+        {
+            _voucherService = new VoucherService();
+            var list = _voucherService.GetAll().Where(p=>p.Quantity>0).ToList();
+            foreach (var voucher in list)
             {
-                Position = OxyPlot.Axes.AxisPosition.Left,
-                Title = "Revenues",
-                Maximum = maxYWithMargin,
-                MajorStep = 1000000,
-                StringFormat = "#,#.##M"
-            };
+                pbVouchers.Series["Quantity"].Points.AddXY(voucher.Name, voucher.Quantity);
+            }
+            // Tắt hiển thị lưới trục x
+            pbVouchers.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
 
-            //add trục x và y vào
-            plotModel.Axes.Add(xAxis);
-            plotModel.Axes.Add(yAxis);
-
-            // Thêm chuỗi dữ liệu vào Model.Series
-            plotModel.Series.Add(revenueSeries);
-
-            // Tạo đối tượng PlotView và thêm vào pictureBox3
-            var plotView = new PlotView
-            {
-                Dock = DockStyle.Fill,
-                Model = plotModel
-            };
-
-            p.Controls.Add(plotView);
+            // Tắt hiển thị lưới trục y
+            pbVouchers.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
         }
 
         string FormatValue(double value)
@@ -262,10 +255,6 @@ namespace MiniStoreWinF.DashBoard
             }
         }
 
-        private void btSalary_Paint(object sender, PaintEventArgs e)
-        {
-            u.openChildForm(new frmSalary(), pMain);
-        }
 
         private void btSalary_Click(object sender, EventArgs e)
         {

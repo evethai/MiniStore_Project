@@ -10,6 +10,7 @@ namespace MiniStoreWinF.ManageSalary
 {
     public class CalculationAuto
     {
+        //no cmt
         EmployeeService _employeeService;
         PermissionService _permissionService;
         WorkSheetService _workSheetService;

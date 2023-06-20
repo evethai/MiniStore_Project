@@ -70,7 +70,7 @@ namespace MiniStoreWinF.ManageSalary
 
         private void txtNewGuard_KeyPress(object sender, KeyPressEventArgs e)
         {
-            u.numberOnly(e,txtNewGuard.Text);
+            u.numberOnly(e, txtNewGuard.Text);
         }
     }
 }

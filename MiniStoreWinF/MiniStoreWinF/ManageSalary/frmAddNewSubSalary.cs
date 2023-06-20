@@ -37,9 +37,9 @@ namespace MiniStoreWinF.ManageSalary
                 DetailSubSalary detailSubSalary = new DetailSubSalary();
                 int n = _detailSubSalaryService.GetAll().Count();
                 detailSubSalary.IdDetailSubSalary = u.GenerateAutoId(n, "SUB");
-                
-                var Sub = _detailSubSalaryService.GetAll().Count(p=>p.IdDetailSubSalary.Equals(detailSubSalary.IdDetailSubSalary));
-                if(Sub > 0)
+
+                var Sub = _detailSubSalaryService.GetAll().Count(p => p.IdDetailSubSalary.Equals(detailSubSalary.IdDetailSubSalary));
+                if (Sub > 0)
                 {
                     n = n + 1;
                 }
@@ -55,7 +55,7 @@ namespace MiniStoreWinF.ManageSalary
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
-                
+
 
             }
         }
@@ -72,7 +72,7 @@ namespace MiniStoreWinF.ManageSalary
 
         private void txtSalary_KeyPress(object sender, KeyPressEventArgs e)
         {
-            u.numberOnly(e,txtSalary.Text);
+            u.numberOnly(e, txtSalary.Text);
         }
     }
 }
