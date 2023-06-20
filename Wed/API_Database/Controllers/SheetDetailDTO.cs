@@ -5,11 +5,10 @@ using System.Web;
 
 namespace API_Database.Controllers
 {
-    public class WorkSheetDTO
+    public class SheetDetailDTO
     {
         public int Sheet { get; set; }
-
-        public DateTime TimeCheckIn { get; set; }
-        public DateTime TimeCheckOut { get; set; }
+        public string ShiftStartTime { get; set; }
+        public string ShiftEndTime { get; set; }
     }
 }
