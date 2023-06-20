@@ -229,7 +229,7 @@ namespace MiniStoreWinF.DashBoard
         public void ChartVoucher()
         {
             _voucherService = new VoucherService();
-            var list = _voucherService.GetAll().Where(p=>p.Quantity>0).ToList();
+            var list = _voucherService.GetAll().Where(p => p.Quantity > 0).ToList();
             foreach (var voucher in list)
             {
                 pbVouchers.Series["Quantity"].Points.AddXY(voucher.Name, voucher.Quantity);

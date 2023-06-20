@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDashBoard));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDashBoard));
             panel2 = new Panel();
             label1 = new Label();
             pMain = new Panel();
@@ -76,9 +75,7 @@
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-
             panel2.Size = new Size(1296, 51);
-
             panel2.TabIndex = 1;
             // 
             // label1
@@ -86,9 +83,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-
             label1.Location = new Point(605, 18);
-
             label1.Name = "label1";
             label1.Size = new Size(137, 28);
             label1.TabIndex = 0;
@@ -102,10 +97,8 @@
             pMain.Location = new Point(0, 189);
             pMain.Margin = new Padding(3, 4, 3, 4);
             pMain.Name = "pMain";
-
             pMain.Padding = new Padding(10);
             pMain.Size = new Size(1296, 581);
-
             pMain.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -118,15 +111,13 @@
             tableLayoutPanel2.Controls.Add(pbProduct, 1, 0);
             tableLayoutPanel2.Controls.Add(pbVouchers, 1, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(11, 12);
+            tableLayoutPanel2.Location = new Point(10, 10);
             tableLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-
             tableLayoutPanel2.Size = new Size(1276, 561);
-
             tableLayoutPanel2.TabIndex = 3;
             // 
             // pbRevenues
@@ -135,31 +126,25 @@
             pbRevenues.Location = new Point(3, 4);
             pbRevenues.Margin = new Padding(3, 4, 3, 4);
             pbRevenues.Name = "pbRevenues";
-
-            pbRevenues.Size = new Size(632, 274);
-
+            pbRevenues.Size = new Size(632, 272);
             pbRevenues.TabIndex = 0;
             pbRevenues.TabStop = false;
             // 
             // pbMember
             // 
             pbMember.Dock = DockStyle.Fill;
-
             pbMember.Location = new Point(3, 283);
             pbMember.Name = "pbMember";
             pbMember.Size = new Size(632, 275);
-
             pbMember.TabIndex = 1;
             pbMember.TabStop = false;
             // 
             // pbProduct
             // 
             pbProduct.Dock = DockStyle.Fill;
-
             pbProduct.Location = new Point(641, 3);
             pbProduct.Name = "pbProduct";
             pbProduct.Size = new Size(632, 274);
-
             pbProduct.TabIndex = 2;
             pbProduct.TabStop = false;
             // 
@@ -200,14 +185,12 @@
             tableLayoutPanel1.Controls.Add(panel4, 1, 0);
             tableLayoutPanel1.Controls.Add(panel3, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Top;
-            tableLayoutPanel1.Location = new Point(0, 60);
+            tableLayoutPanel1.Location = new Point(0, 51);
             tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-
             tableLayoutPanel1.Size = new Size(1296, 110);
-
             tableLayoutPanel1.TabIndex = 0;
             // 
             // panel9
@@ -217,12 +200,10 @@
             panel9.BackgroundImageLayout = ImageLayout.Stretch;
             panel9.Controls.Add(label3);
             panel9.Dock = DockStyle.Fill;
-
             panel9.Location = new Point(259, 0);
             panel9.Margin = new Padding(0, 0, 10, 10);
             panel9.Name = "panel9";
             panel9.Size = new Size(249, 100);
-
             panel9.TabIndex = 4;
             // 
             // label3
@@ -241,12 +222,10 @@
             btSalary.BackgroundImageLayout = ImageLayout.Stretch;
             btSalary.Controls.Add(label9);
             btSalary.Dock = DockStyle.Fill;
-
             btSalary.Location = new Point(1036, 0);
             btSalary.Margin = new Padding(0, 0, 10, 10);
             btSalary.Name = "btSalary";
             btSalary.Size = new Size(250, 100);
-
             btSalary.TabIndex = 3;
             btSalary.Click += btSalary_Click;
             // 
@@ -266,12 +245,10 @@
             panel5.BackgroundImageLayout = ImageLayout.Stretch;
             panel5.Controls.Add(label7);
             panel5.Dock = DockStyle.Fill;
-
             panel5.Location = new Point(777, 0);
             panel5.Margin = new Padding(0, 0, 10, 10);
             panel5.Name = "panel5";
             panel5.Size = new Size(249, 100);
-
             panel5.TabIndex = 2;
             // 
             // label7
@@ -290,12 +267,10 @@
             panel4.BackgroundImageLayout = ImageLayout.Stretch;
             panel4.Controls.Add(label5);
             panel4.Dock = DockStyle.Fill;
-
             panel4.Location = new Point(518, 0);
             panel4.Margin = new Padding(0, 0, 10, 10);
             panel4.Name = "panel4";
             panel4.Size = new Size(249, 100);
-
             panel4.TabIndex = 1;
             // 
             // label5
@@ -317,9 +292,7 @@
             panel3.Location = new Point(0, 0);
             panel3.Margin = new Padding(0, 0, 11, 12);
             panel3.Name = "panel3";
-
-            panel3.Size = new Size(249, 100);
-
+            panel3.Size = new Size(248, 98);
             panel3.TabIndex = 0;
             panel3.Click += panel3_Click;
             // 
@@ -338,9 +311,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-
             ClientSize = new Size(1296, 742);
-
             Controls.Add(pMain);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel2);
