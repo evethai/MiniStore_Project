@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
+using MiniStoreWinF.DashBoard;
 using Repository.Service;
 using System;
 using System.Drawing;
@@ -30,15 +31,16 @@ namespace MiniStoreWinF
             else if (login.Roles == "Admin")
             {
                 this.Hide();
-                ManagePage.AdminPage adminPage = new ManagePage.AdminPage();
-                adminPage.Show();
+                frmMain form = new frmMain();
+                form.checkRoles(true);
+                form.ShowDialog();
             }// end check role admin
             else if (login.Roles == "Employee")
             {
                 this.Hide();
-                OrdersProducts.OrderProducts employessPage = new OrdersProducts.OrderProducts();
-                employessPage.DataEmployee = txtUserName.Text;
-                employessPage.Show();
+                frmMain form = new frmMain();
+                form.checkRoles(false);
+                form.ShowDialog();
             }//end check role employee
             else
             {

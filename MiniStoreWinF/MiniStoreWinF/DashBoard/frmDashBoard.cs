@@ -128,7 +128,9 @@ namespace MiniStoreWinF.DashBoard
                     new BarItem{Value = currentCount,CategoryIndex=1},
                 }),
                 LabelPlacement = LabelPlacement.Inside,
-                LabelFormatString = "{0:,00}"
+                LabelFormatString = "{0:,00}",
+                LabelMargin = 10,
+                
 
             };
             c.Labels.Add(CultureInfo.GetCultureInfo("en-US").DateTimeFormat.GetMonthName(DateTime.Now.AddMonths(-1).Month));
@@ -229,7 +231,7 @@ namespace MiniStoreWinF.DashBoard
         public void ChartVoucher()
         {
             _voucherService = new VoucherService();
-            var list = _voucherService.GetAll().Where(p=>p.Quantity>0).ToList();
+            var list = _voucherService.GetAll().Where(p => p.Quantity > 0).ToList();
             foreach (var voucher in list)
             {
                 pbVouchers.Series["Quantity"].Points.AddXY(voucher.Name, voucher.Quantity);

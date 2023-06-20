@@ -20,7 +20,7 @@ namespace MiniStoreWinF
 
          
 
-            Application.Run(new frmMain());
+            Application.Run(new frmLogin());
 
 
 
