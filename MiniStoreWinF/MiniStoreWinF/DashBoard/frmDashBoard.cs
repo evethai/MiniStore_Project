@@ -267,5 +267,10 @@ namespace MiniStoreWinF.DashBoard
         {
             u.openChildForm(new frmShowEmployee(), pMain);
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
