@@ -143,29 +143,34 @@ namespace API_Database.Controllers
 
             return worksheet;
         }
-        //find sheet
+        //find sheetjwt
         [HttpGet]
         [Route("api/ms/fst")]
-        public List<SheetDetailDTO> FindSheetjwt()
+        public IHttpActionResult FindSheetjwt()
         {
             List<SheetDetailDTO> sheetList = new List<SheetDetailDTO>();
 
             List<SheetDetail> sheetDetails = db.SheetDetails.ToList();
+
             foreach (SheetDetail sheetD in sheetDetails)
             {
-                SheetDetailDTO sheetDDTO = new SheetDetailDTO
+                if (sheetD.DescriptionS == "Guard")
                 {
-                    Sheet = sheetD.Sheet,
-                    ShiftStartTime = sheetD.ShiftStartTime,
-                    ShiftEndTime = sheetD.ShiftEndTime
-                };
-                sheetList.Add(sheetDDTO);
+                    SheetDetailDTO sheetDDTO = new SheetDetailDTO
+                    {
+                        Sheet = sheetD.Sheet,
+                        ShiftStartTime = sheetD.ShiftStartTime,
+                        ShiftEndTime = sheetD.ShiftEndTime
+                    };
+                    sheetList.Add(sheetDDTO);
+                }
             }
 
-            string jwt = JWTUtils.GenerateJWTFSD(sheetList;
+            string jwt = JWTUtils.GenerateJWTFSD(sheetList);
 
-            return sheetList; // Trả về danh sách chứa thông tin bản ghi
+            return Ok(new { jwt });
         }
+
 
         //find sheet
         [HttpGet]
@@ -175,19 +180,24 @@ namespace API_Database.Controllers
             List<SheetDetailDTO> sheetList = new List<SheetDetailDTO>();
 
             List<SheetDetail> sheetDetails = db.SheetDetails.ToList();
+
             foreach (SheetDetail sheetD in sheetDetails)
             {
-                SheetDetailDTO sheetDDTO = new SheetDetailDTO
-                {   
-                    Sheet = sheetD.Sheet,
-                    ShiftStartTime = sheetD.ShiftStartTime,
-                    ShiftEndTime = sheetD.ShiftEndTime
-                };
-                sheetList.Add(sheetDDTO);
+                if (sheetD.DescriptionS == "Guard")
+                {
+                    SheetDetailDTO sheetDDTO = new SheetDetailDTO
+                    {
+                        Sheet = sheetD.Sheet,
+                        ShiftStartTime = sheetD.ShiftStartTime,
+                        ShiftEndTime = sheetD.ShiftEndTime
+                    };
+                    sheetList.Add(sheetDDTO);
+                }
             }
 
-            return sheetList; // Trả về danh sách chứa thông tin bản ghi
+            return sheetList;
         }
+
 
 
 

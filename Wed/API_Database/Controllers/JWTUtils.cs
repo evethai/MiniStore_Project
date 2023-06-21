@@ -63,8 +63,8 @@ namespace API_Database.Controllers
             foreach (SheetDetailDTO dto in wsdto)
             {
                 claims.Add(new Claim("Sheet", dto.Sheet.ToString()));
-                claims.Add(new Claim("TimeCheckIn", dto.TimeCheckIn.ToString("MM/dd/yyyy HH:mm:ss")));
-                claims.Add(new Claim("TimeCheckOut", dto.TimeCheckOut.ToString("MM/dd/yyyy HH:mm:ss")));
+                claims.Add(new Claim("ShiftStartTime", dto.ShiftStartTime.ToString()));
+                claims.Add(new Claim("ShiftEndTime", dto.ShiftEndTime.ToString()));
             }
 
             var tokenDescriptor = new SecurityTokenDescriptor
