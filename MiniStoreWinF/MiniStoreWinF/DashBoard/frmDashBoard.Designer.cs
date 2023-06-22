@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             panel2 = new Panel();
             label1 = new Label();
             pMain = new Panel();
@@ -49,7 +49,7 @@
             label7 = new Label();
             panel4 = new Panel();
             label5 = new Label();
-            panel3 = new Panel();
+            btEmployee = new Panel();
             label2 = new Label();
             panel2.SuspendLayout();
             pMain.SuspendLayout();
@@ -63,7 +63,7 @@
             btSalary.SuspendLayout();
             panel5.SuspendLayout();
             panel4.SuspendLayout();
-            panel3.SuspendLayout();
+            btEmployee.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
@@ -145,26 +145,28 @@
             // 
             // pbVouchers
             // 
-            chartArea1.Name = "ChartArea1";
-            pbVouchers.ChartAreas.Add(chartArea1);
+            chartArea2.Name = "ChartArea1";
+            pbVouchers.ChartAreas.Add(chartArea2);
             pbVouchers.Dock = DockStyle.Fill;
-            legend1.Name = "Legend1";
-            pbVouchers.Legends.Add(legend1);
-            pbVouchers.Location = new Point(561, 242);
+            legend2.Name = "Legend1";
+            pbVouchers.Legends.Add(legend2);
+            pbVouchers.Location = new Point(641, 285);
+            pbVouchers.Margin = new Padding(3, 4, 3, 4);
             pbVouchers.Name = "pbVouchers";
             pbVouchers.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series1.ChartArea = "ChartArea1";
-            series1.IsValueShownAsLabel = true;
-            series1.LabelBorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
-            series1.Legend = "Legend1";
-            series1.Name = "Quantity";
-            pbVouchers.Series.Add(series1);
-            pbVouchers.Size = new Size(552, 233);
+            series2.ChartArea = "ChartArea1";
+            series2.IsValueShownAsLabel = true;
+            series2.LabelBorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            series2.Legend = "Legend1";
+            series2.Name = "Quantity";
+            pbVouchers.Series.Add(series2);
+            pbVouchers.Size = new Size(632, 273);
             pbVouchers.TabIndex = 3;
-            title1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            title1.Name = "Title1";
-            title1.Text = "Number of vouchers still available";
-            pbVouchers.Titles.Add(title1);
+            title2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            title2.Name = "Title1";
+            title2.Text = "Number of vouchers still available";
+            pbVouchers.Titles.Add(title2);
+            pbVouchers.Click += pbVouchers_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -178,7 +180,7 @@
             tableLayoutPanel1.Controls.Add(btSalary, 3, 0);
             tableLayoutPanel1.Controls.Add(panel5, 2, 0);
             tableLayoutPanel1.Controls.Add(panel4, 1, 0);
-            tableLayoutPanel1.Controls.Add(panel3, 0, 0);
+            tableLayoutPanel1.Controls.Add(btEmployee, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(0, 43);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -202,7 +204,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(37, 12);
+            label3.Location = new Point(42, 14);
             label3.Name = "label3";
             label3.Size = new Size(138, 17);
             label3.TabIndex = 0;
@@ -273,18 +275,18 @@
             label5.TabIndex = 0;
             label5.Text = "Product Management";
             // 
-            // panel3
+            // btEmployee
             // 
-            panel3.BackColor = Color.Cyan;
-            panel3.BackgroundImageLayout = ImageLayout.Zoom;
-            panel3.Controls.Add(label2);
-            panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 0);
-            panel3.Margin = new Padding(0, 0, 10, 10);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(216, 84);
-            panel3.TabIndex = 0;
-            panel3.Click += panel3_Click;
+            btEmployee.BackColor = Color.Cyan;
+            btEmployee.BackgroundImageLayout = ImageLayout.Zoom;
+            btEmployee.Controls.Add(label2);
+            btEmployee.Dock = DockStyle.Fill;
+            btEmployee.Location = new Point(0, 0);
+            btEmployee.Margin = new Padding(0, 0, 11, 12);
+            btEmployee.Name = "btEmployee";
+            btEmployee.Size = new Size(248, 99);
+            btEmployee.TabIndex = 0;
+            btEmployee.Click += panel3_Click;
             // 
             // label2
             // 
@@ -324,8 +326,8 @@
             panel5.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
+            btEmployee.ResumeLayout(false);
+            btEmployee.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -335,7 +337,7 @@
         private Label label1;
         private Panel pMain;
         private TableLayoutPanel tableLayoutPanel1;
-        private Panel panel3;
+        private Panel btEmployee;
         private Panel panel5;
         private Label label7;
         private Panel panel4;

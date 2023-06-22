@@ -99,7 +99,7 @@ namespace MiniStoreWinF.ManageMember
             var removeMem = _memberservice.GetAll().Where(e => e.PhoneMember.Equals(txtPhone.Text.Trim())).FirstOrDefault();
             if (removeMem != null)
             {
-                _memberservice.Delete(removeMem);   
+                _memberservice.Delete(removeMem);
             }
             dgvMember.DataSource = new BindingSource() { DataSource = removeMem };
         }
@@ -115,14 +115,39 @@ namespace MiniStoreWinF.ManageMember
             var phone = dgvMember[0, e.RowIndex].ToString();
             var showMem = _memberservice.GetAll().Where(p => p.PhoneMember.Equals(txtPhone.Text.Trim())).FirstOrDefault();
             rowIndex = e.RowIndex;
-            if(showMem != null)
+            if (showMem != null)
             {
                 txtPhone.Text = showMem.PhoneMember.ToString();
                 txtPoint.Text = showMem.Point.ToString();
                 txtName.Text = showMem.Name.ToString();
-                cbGender.Text  = showMem.Gender.ToString(); 
+                cbGender.Text = showMem.Gender.ToString();
                 dtDoB.Text = showMem.DoB.ToString();
+            }
+        }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            {
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true; // Cannot continue input
+                }
+
+                // Kiểm tra giới hạn độ dài của chuỗi
+                if (txtPhone.Text.Length >= 10 && !char.IsControl(e.KeyChar))
+                {
+                    e.Handled = true; // Cannot continue input
+                }
+
+                // Kiểm tra việc bắt đầu với số 0
+                if (txtPhone.Text.Length == 0 && e.KeyChar != '0')
+                {
+                    e.Handled = true; // Cannot continue input
+                }
+
             }
         }
     }
 }
+    

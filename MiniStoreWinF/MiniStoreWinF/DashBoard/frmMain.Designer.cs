@@ -46,11 +46,12 @@
             // menuStrip
             // 
             menuStrip.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            menuStrip.ImageScalingSize = new Size(20, 20);
             menuStrip.Items.AddRange(new ToolStripItem[] { mnuAdmin, mnuStore, mnuCheck, mnuHelp, mnuDis, mnuLogout, txtUser });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
             menuStrip.Padding = new Padding(8, 3, 0, 3);
-            menuStrip.Size = new Size(1307, 35);
+            menuStrip.Size = new Size(1307, 42);
             menuStrip.TabIndex = 1;
             menuStrip.Text = "menuStrip1";
             // 
@@ -59,7 +60,7 @@
             mnuAdmin.DropDownItems.AddRange(new ToolStripItem[] { mnuMoMo });
             mnuAdmin.Name = "mnuAdmin";
             mnuAdmin.ShortcutKeys = Keys.F1;
-            mnuAdmin.Size = new Size(90, 29);
+            mnuAdmin.Size = new Size(113, 36);
             mnuAdmin.Text = "ADMIN";
             mnuAdmin.Click += mnuAdmin_Click;
             // 
@@ -67,7 +68,7 @@
             // 
             mnuStore.Name = "mnuStore";
             mnuStore.ShortcutKeys = Keys.F2;
-            mnuStore.Size = new Size(81, 29);
+            mnuStore.Size = new Size(101, 36);
             mnuStore.Text = "STORE";
             mnuStore.Click += mnuStore_Click;
             // 
@@ -76,41 +77,43 @@
             mnuCheck.DropDownItems.AddRange(new ToolStripItem[] { btCheckIn, btCheckOut });
             mnuCheck.Name = "mnuCheck";
             mnuCheck.ShortcutKeys = Keys.F3;
-            mnuCheck.Size = new Size(85, 29);
+            mnuCheck.Size = new Size(105, 36);
             mnuCheck.Text = "CHECK";
             // 
             // btCheckIn
             // 
             btCheckIn.Name = "btCheckIn";
-            btCheckIn.Size = new Size(177, 30);
+            btCheckIn.Size = new Size(224, 36);
             btCheckIn.Text = "Check-In";
             btCheckIn.Click += btCheckIn_Click;
             // 
             // btCheckOut
             // 
             btCheckOut.Name = "btCheckOut";
-            btCheckOut.Size = new Size(177, 30);
+            btCheckOut.Size = new Size(224, 36);
             btCheckOut.Text = "Check-Out";
+            btCheckOut.Click += btCheckOut_Click;
             // 
             // mnuHelp
             // 
             mnuHelp.Name = "mnuHelp";
             mnuHelp.ShortcutKeys = Keys.F4;
-            mnuHelp.Size = new Size(71, 29);
+            mnuHelp.Size = new Size(86, 36);
             mnuHelp.Text = "HELP";
             // 
             // mnuDis
             // 
             mnuDis.Name = "mnuDis";
             mnuDis.ShortcutKeys = Keys.F5;
-            mnuDis.Size = new Size(101, 29);
+            mnuDis.Size = new Size(125, 36);
             mnuDis.Text = "DISPLAY";
+            mnuDis.Click += mnuDis_Click;
             // 
             // mnuLogout
             // 
             mnuLogout.Name = "mnuLogout";
             mnuLogout.ShortcutKeys = Keys.Alt | Keys.F4;
-            mnuLogout.Size = new Size(101, 29);
+            mnuLogout.Size = new Size(123, 36);
             mnuLogout.Text = "LOGOUT";
             mnuLogout.Click += mnuLogout_Click;
             // 
@@ -118,16 +121,17 @@
             // 
             txtUser.ForeColor = Color.Blue;
             txtUser.Name = "txtUser";
-            txtUser.Size = new Size(29, 29);
+            txtUser.Size = new Size(35, 36);
             txtUser.Text = ".";
             // 
             // pMain
             // 
             pMain.Dock = DockStyle.Fill;
-            pMain.Location = new Point(0, 35);
+            pMain.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            pMain.Location = new Point(0, 42);
             pMain.Margin = new Padding(4);
             pMain.Name = "pMain";
-            pMain.Size = new Size(1307, 658);
+            pMain.Size = new Size(1307, 651);
             pMain.TabIndex = 2;
             // 
             // mnuMoMo
@@ -139,7 +143,7 @@
             // 
             // frmMain
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(1307, 693);
