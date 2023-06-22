@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -200,8 +201,8 @@ namespace MiniStoreWinF.ManageWorkSheet
             {
                 var updateDetailsSheet = _sheetDetailService.GetAll();
                 updateDetailsSheet[rowIndex].Sheet = Int32.Parse(txtSheetDetail.Text);
-                updateDetailsSheet[rowIndex].ShiftStartTime = txtStartDetails.Text;
-                updateDetailsSheet[rowIndex].ShiftEndTime = txtEndDetails.Text;
+                updateDetailsSheet[rowIndex].ShiftStartTime = TimeSpan.Parse(txtStartDetails.Text);
+                updateDetailsSheet[rowIndex].ShiftEndTime = TimeSpan.Parse(txtEndDetails.Text);
                 updateDetailsSheet[rowIndex].DescriptionS = txtDescriptionsDetails.Text;
                 updateDetailsSheet[rowIndex].CoefficientsSalary = float.Parse(txtCoefficientsSalaryDetails.Text);
                 var listUpdate = updateDetailsSheet[rowIndex];
@@ -241,8 +242,8 @@ namespace MiniStoreWinF.ManageWorkSheet
             {
                 var CreateNewSheet = _sheetDetailService.GetAll().FirstOrDefault();
                 CreateNewSheet.Sheet = Convert.ToInt32(txtSheetDetail.Text);
-                CreateNewSheet.ShiftStartTime = txtStartDetails.Text;
-                CreateNewSheet.ShiftEndTime = txtEndDetails.Text;
+                CreateNewSheet.ShiftStartTime = TimeSpan.Parse(txtStartDetails.Text);
+                CreateNewSheet.ShiftEndTime = TimeSpan.Parse(txtEndDetails.Text);
                 CreateNewSheet.CoefficientsSalary = float.Parse(txtCoefficientsSalaryDetails.Text);
                 CreateNewSheet.DescriptionS = txtDescriptionsDetails.Text;
                 _sheetDetailService.Create(CreateNewSheet);
