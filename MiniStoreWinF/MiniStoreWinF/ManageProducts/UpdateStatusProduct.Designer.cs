@@ -31,9 +31,6 @@
             components = new System.ComponentModel.Container();
             groupBox4 = new GroupBox();
             DgvListProduct = new DataGridView();
-            skuDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            nameProductDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            statusPDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             productBindingSource = new BindingSource(components);
             label = new Label();
             label4 = new Label();
@@ -43,6 +40,8 @@
             txtStatusProduct = new ComboBox();
             btUpdateProduct = new Button();
             txtLoadPro = new Button();
+            skuDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nameProductDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DgvListProduct).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productBindingSource).BeginInit();
@@ -54,7 +53,7 @@
             groupBox4.ForeColor = SystemColors.ActiveCaptionText;
             groupBox4.Location = new Point(43, 12);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(471, 190);
+            groupBox4.Size = new Size(498, 190);
             groupBox4.TabIndex = 14;
             groupBox4.TabStop = false;
             groupBox4.Text = "List Product";
@@ -63,39 +62,15 @@
             // 
             DgvListProduct.AutoGenerateColumns = false;
             DgvListProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgvListProduct.Columns.AddRange(new DataGridViewColumn[] { skuDataGridViewTextBoxColumn, nameProductDataGridViewTextBoxColumn, statusPDataGridViewTextBoxColumn });
+            DgvListProduct.Columns.AddRange(new DataGridViewColumn[] { skuDataGridViewTextBoxColumn, nameProductDataGridViewTextBoxColumn });
             DgvListProduct.DataSource = productBindingSource;
             DgvListProduct.Location = new Point(0, 20);
             DgvListProduct.Name = "DgvListProduct";
             DgvListProduct.RowHeadersWidth = 51;
             DgvListProduct.RowTemplate.Height = 29;
-            DgvListProduct.Size = new Size(469, 169);
+            DgvListProduct.Size = new Size(498, 169);
             DgvListProduct.TabIndex = 0;
             DgvListProduct.CellClick += DgvListProduct_CellClick;
-            // 
-            // skuDataGridViewTextBoxColumn
-            // 
-            skuDataGridViewTextBoxColumn.DataPropertyName = "Sku";
-            skuDataGridViewTextBoxColumn.HeaderText = "Sku";
-            skuDataGridViewTextBoxColumn.MinimumWidth = 6;
-            skuDataGridViewTextBoxColumn.Name = "skuDataGridViewTextBoxColumn";
-            skuDataGridViewTextBoxColumn.Width = 90;
-            // 
-            // nameProductDataGridViewTextBoxColumn
-            // 
-            nameProductDataGridViewTextBoxColumn.DataPropertyName = "NameProduct";
-            nameProductDataGridViewTextBoxColumn.HeaderText = "NameProduct";
-            nameProductDataGridViewTextBoxColumn.MinimumWidth = 6;
-            nameProductDataGridViewTextBoxColumn.Name = "nameProductDataGridViewTextBoxColumn";
-            nameProductDataGridViewTextBoxColumn.Width = 200;
-            // 
-            // statusPDataGridViewTextBoxColumn
-            // 
-            statusPDataGridViewTextBoxColumn.DataPropertyName = "StatusP";
-            statusPDataGridViewTextBoxColumn.HeaderText = "StatusP";
-            statusPDataGridViewTextBoxColumn.MinimumWidth = 6;
-            statusPDataGridViewTextBoxColumn.Name = "statusPDataGridViewTextBoxColumn";
-            statusPDataGridViewTextBoxColumn.Width = 125;
             // 
             // productBindingSource
             // 
@@ -177,6 +152,22 @@
             txtLoadPro.UseVisualStyleBackColor = true;
             txtLoadPro.Click += txtLoadPro_Click;
             // 
+            // skuDataGridViewTextBoxColumn
+            // 
+            skuDataGridViewTextBoxColumn.DataPropertyName = "Sku";
+            skuDataGridViewTextBoxColumn.HeaderText = "Sku";
+            skuDataGridViewTextBoxColumn.MinimumWidth = 6;
+            skuDataGridViewTextBoxColumn.Name = "skuDataGridViewTextBoxColumn";
+            skuDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // nameProductDataGridViewTextBoxColumn
+            // 
+            nameProductDataGridViewTextBoxColumn.DataPropertyName = "NameProduct";
+            nameProductDataGridViewTextBoxColumn.HeaderText = "NameProduct";
+            nameProductDataGridViewTextBoxColumn.MinimumWidth = 6;
+            nameProductDataGridViewTextBoxColumn.Name = "nameProductDataGridViewTextBoxColumn";
+            nameProductDataGridViewTextBoxColumn.Width = 350;
+            // 
             // UpdateStatusProduct
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -207,9 +198,6 @@
         private GroupBox groupBox4;
         private DataGridView DgvListProduct;
         private BindingSource productBindingSource;
-        private DataGridViewTextBoxColumn skuDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nameProductDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn statusPDataGridViewTextBoxColumn;
         private Label label;
         private Label label4;
         private Label label10;
@@ -218,5 +206,7 @@
         private ComboBox txtStatusProduct;
         private Button btUpdateProduct;
         private Button txtLoadPro;
+        private DataGridViewTextBoxColumn skuDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nameProductDataGridViewTextBoxColumn;
     }
 }

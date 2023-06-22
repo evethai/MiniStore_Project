@@ -15,7 +15,7 @@ namespace MiniStoreWinF.ManageProducts
     {
         private int rowindex { get; set; }
         ProductService _productList;
-        
+
         public UpdateStatusProduct()
         {
             InitializeComponent();
@@ -36,36 +36,43 @@ namespace MiniStoreWinF.ManageProducts
 
         private void DgvListProduct_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _productList = new ProductService();
-            var id = DgvListProduct[0, e.RowIndex].Value;
-            var showPro = _productList.GetAll().Where(p => p.Sku.Trim().Equals(id)).FirstOrDefault();
-            rowindex = e.RowIndex;
-            if (showPro != null)
+            try
             {
-                txtIDProduct.Text = showPro.Sku.ToString();
-                txtNameProduct.Text = showPro.NameProduct.ToString();
-                //txtStatusProduct.Text = showPro.StatusP.ToString();
-                if (showPro.StatusP == true)
+                _productList = new ProductService();
+                var id = DgvListProduct[0, e.RowIndex].Value;
+                var showPro = _productList.GetAll().Where(p => p.Sku.Trim().Equals(id)).FirstOrDefault();
+                rowindex = e.RowIndex;
+                if (showPro != null)
                 {
-                    txtStatusProduct.Text = "Availability";
+                    txtIDProduct.Text = showPro.Sku.ToString();
+                    txtNameProduct.Text = showPro.NameProduct.ToString();
+                    //txtStatusProduct.Text = showPro.StatusP.ToString();
+                    if (showPro.StatusP == true)
+                    {
+                        txtStatusProduct.Text = "Availability";
+                    }
+                    else
+                    {
+                        txtStatusProduct.Text = "Sold Out";
+                    }
+
                 }
-                else
-                {
-                    txtStatusProduct.Text = "Sold Out";
-                }
+            } catch (Exception ex)
+            {
 
             }
+            
         }
 
         private void btUpdateProduct_Click(object sender, EventArgs e)
         {
             _productList = new ProductService();
             var RemovePro = _productList.GetAll()
-                .Where(p => p.Sku.Equals(txtIDProduct.Text) && p.StatusP==false).FirstOrDefault();
+                .Where(p => p.Sku.Equals(txtIDProduct.Text) && p.StatusP == false).FirstOrDefault();
             if (RemovePro != null)
             {
 
-                if (RemovePro.StatusP ==true)
+                if (RemovePro.StatusP == true)
                 {
                     MessageBox.Show("Item is in status Sold Out");
                 }
@@ -80,7 +87,14 @@ namespace MiniStoreWinF.ManageProducts
                     {
                         RemovePro.StatusP = false;
                     }
-                    _productList.Update(RemovePro);
+                    DialogResult result = MessageBox.Show("You Want To Change?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (result == DialogResult.OK)
+                    {
+                        _productList.Update(RemovePro);
+                        txtLoadPro_Click(sender, new EventArgs());
+                        
+                    }
+                    
                 }
             }
         }
