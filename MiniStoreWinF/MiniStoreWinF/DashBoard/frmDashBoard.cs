@@ -270,12 +270,29 @@ namespace MiniStoreWinF.DashBoard
 
         private void label2_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void panel4_Click(object sender, EventArgs e)
         {
             u.openChildForm(new ManageProducts.ManageAllProduct(), pMain);
+        }
+
+        private void pbVouchers_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Do you want to open Voucher Management window", "MS Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+
+            if (result == DialogResult.Yes)
+            {
+                Form form = new Manage_Voucher.frmShowVoucher();
+                form.ShowDialog();
+            }
+            else
+            {
+
+            }
+
+
         }
     }
 }

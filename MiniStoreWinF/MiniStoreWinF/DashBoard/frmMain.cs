@@ -65,5 +65,10 @@ namespace MiniStoreWinF.DashBoard
         {
 
         }
+
+        private void mnuDis_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
