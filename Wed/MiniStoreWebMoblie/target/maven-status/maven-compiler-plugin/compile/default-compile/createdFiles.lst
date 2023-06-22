@@ -3,3 +3,4 @@ com\mycompany\ministorewebmoblie\Utils\MyUtils.class
 com\mycompany\ministorewebmoblie\CheckInServlet.class
 com\mycompany\ministorewebmoblie\LogoutServlet.class
 com\mycompany\ministorewebmoblie\LoginServlet.class
+com\mycompany\ministorewebmoblie\Utils\JWTUtils.class

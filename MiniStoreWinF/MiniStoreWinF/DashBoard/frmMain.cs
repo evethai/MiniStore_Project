@@ -17,15 +17,30 @@ namespace MiniStoreWinF.DashBoard
     {
         EmployeeService _employeeService = new EmployeeService();
         Utinity u = new Utinity();
+        bool check;
         public string dataAccountLogin { get; set; }
         public frmMain()
         {
             InitializeComponent();
+            checkRoles(check);
         }
 
         private void mnuAdminDB_Click(object sender, EventArgs e)
         {
             u.openChildForm(new frmDashBoard(), pMain);
+        }
+        public void checkRoles(bool b)
+        {
+            ToolStripMenuItem menu = menuStrip.Items["mnuAdmin"] as ToolStripMenuItem;
+            if (b == false)
+            {
+                menu.Enabled = false;
+            }
+            else
+            {
+                menu.Enabled = true;
+
+            }
         }
 
         private void sTOREToolStripMenuItem_Click(object sender, EventArgs e)

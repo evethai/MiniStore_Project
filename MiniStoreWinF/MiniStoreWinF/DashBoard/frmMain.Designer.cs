@@ -28,31 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            menuStrip1 = new MenuStrip();
+            menuStrip = new MenuStrip();
             mnuAdmin = new ToolStripMenuItem();
             mnuAdminDB = new ToolStripMenuItem();
             mnuAdminLogout = new ToolStripMenuItem();
             sTOREToolStripMenuItem = new ToolStripMenuItem();
             hELPToolStripMenuItem = new ToolStripMenuItem();
             dISPLAYToolStripMenuItem = new ToolStripMenuItem();
-            qUITToolStripMenuItem = new ToolStripMenuItem();
             eXITToolStripMenuItem = new ToolStripMenuItem();
             txtAccountLogin = new ToolStripTextBox();
             pMain = new Panel();
-            menuStrip1.SuspendLayout();
+            menuStrip.SuspendLayout();
             SuspendLayout();
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            menuStrip1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { mnuAdmin, sTOREToolStripMenuItem, hELPToolStripMenuItem, dISPLAYToolStripMenuItem, qUITToolStripMenuItem, eXITToolStripMenuItem, txtAccountLogin });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(10, 4, 0, 4);
-            menuStrip1.Size = new Size(1680, 47);
-            menuStrip1.TabIndex = 1;
-            menuStrip1.Text = "menuStrip1";
+            menuStrip.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            menuStrip.Items.AddRange(new ToolStripItem[] { mnuAdmin, sTOREToolStripMenuItem, hELPToolStripMenuItem, dISPLAYToolStripMenuItem, eXITToolStripMenuItem });
+            menuStrip.Location = new Point(0, 0);
+            menuStrip.Name = "menuStrip";
+            menuStrip.Padding = new Padding(8, 3, 0, 3);
+            menuStrip.Size = new Size(1307, 35);
+            menuStrip.TabIndex = 1;
+            menuStrip.Text = "menuStrip1";
             // 
             // mnuAdmin
             // 
@@ -94,12 +92,6 @@
             dISPLAYToolStripMenuItem.Size = new Size(125, 39);
             dISPLAYToolStripMenuItem.Text = "DISPLAY";
             // 
-            // qUITToolStripMenuItem
-            // 
-            qUITToolStripMenuItem.Name = "qUITToolStripMenuItem";
-            qUITToolStripMenuItem.Size = new Size(85, 39);
-            qUITToolStripMenuItem.Text = "QUIT";
-            // 
             // eXITToolStripMenuItem
             // 
             eXITToolStripMenuItem.Name = "eXITToolStripMenuItem";
@@ -116,35 +108,33 @@
             // pMain
             // 
             pMain.Dock = DockStyle.Fill;
-            pMain.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            pMain.Location = new Point(0, 47);
-            pMain.Margin = new Padding(5);
+            pMain.Location = new Point(0, 35);
+            pMain.Margin = new Padding(4, 4, 4, 4);
             pMain.Name = "pMain";
-            pMain.Size = new Size(1680, 661);
+            pMain.Size = new Size(1307, 658);
             pMain.TabIndex = 2;
             // 
             // frmMain
             // 
-            AutoScaleDimensions = new SizeF(14F, 36F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1680, 708);
+            ClientSize = new Size(1307, 693);
             Controls.Add(pMain);
-            Controls.Add(menuStrip1);
-            Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(5);
+            Controls.Add(menuStrip);
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(4, 4, 4, 4);
             Name = "frmMain";
             StartPosition = FormStartPosition.CenterScreen;
-            Load += frmMain_Load;
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            menuStrip.ResumeLayout(false);
+            menuStrip.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private MenuStrip menuStrip1;
+        private MenuStrip menuStrip;
         private ToolStripMenuItem mnuAdmin;
         private ToolStripMenuItem mnuAdminDB;
         private ToolStripMenuItem mnuAdminLogout;
@@ -152,7 +142,6 @@
         private ToolStripMenuItem sTOREToolStripMenuItem;
         private ToolStripMenuItem hELPToolStripMenuItem;
         private ToolStripMenuItem dISPLAYToolStripMenuItem;
-        private ToolStripMenuItem qUITToolStripMenuItem;
         private ToolStripMenuItem eXITToolStripMenuItem;
         private ToolStripTextBox txtAccountLogin;
     }
