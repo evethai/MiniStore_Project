@@ -23,7 +23,7 @@ namespace MiniStoreWinF.ManageSalary
             return id;
         }
         
-        public void numberOnly(KeyPressEventArgs e,string text)
+        public void numberOnly(KeyPressEventArgs e,string text,int num)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b' )
             {
@@ -31,7 +31,7 @@ namespace MiniStoreWinF.ManageSalary
                 e.Handled = true;
             }
             string text1 = text+e.KeyChar.ToString();
-            if( text1.Length > 9)
+            if( text1.Length > num)
             {
                 e.Handled=true;
             }
@@ -54,23 +54,7 @@ namespace MiniStoreWinF.ManageSalary
             comboBox.DisplayMember = "FullNameEmp";
             comboBox.DataSource = list;
         }
-        public void TaxOnly(KeyPressEventArgs e, string text)
-        {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b')
-            {
-                // Loại bỏ ký tự không hợp lệ
-                e.Handled = true;
-            }
-            string text1 = text + e.KeyChar.ToString();
-            if (text1.Length > 8)
-            {
-                e.Handled = true;
-            }
-            if (e.KeyChar == '\b')
-            {
-                e.Handled = false;
-            }
-        }
+
         public DateTime GetTime(DateTime currentTime)
         {
             return currentTime.AddMonths(-1);

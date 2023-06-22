@@ -270,7 +270,7 @@ namespace MiniStoreWinF.DashBoard
 
         private void label2_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void panel4_Click(object sender, EventArgs e)

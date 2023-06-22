@@ -105,7 +105,8 @@ namespace MiniStoreWinF.ManageSalary
                 double coeff = (double)c.Item1;
                 result += Math.Abs(h_salary * hour * coeff);
             }
-            return result;
+            double r = Math.Round(result, 2);
+            return r;
         }
 
         //tính tổng số sub salary của mỗi nhân viên

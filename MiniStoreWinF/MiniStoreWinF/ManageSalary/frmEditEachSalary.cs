@@ -65,12 +65,12 @@ namespace MiniStoreWinF.ManageSalary
 
         private void txtNewEmp_KeyPress(object sender, KeyPressEventArgs e)
         {
-            u.numberOnly(e, txtNewEmp.Text);
+            u.numberOnly(e, txtNewEmp.Text, 9);
         }
 
         private void txtNewGuard_KeyPress(object sender, KeyPressEventArgs e)
         {
-            u.numberOnly(e, txtNewGuard.Text);
+            u.numberOnly(e, txtNewGuard.Text, 9);
         }
     }
 }

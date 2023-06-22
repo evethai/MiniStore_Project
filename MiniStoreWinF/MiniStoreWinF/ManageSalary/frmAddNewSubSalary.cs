@@ -72,7 +72,7 @@ namespace MiniStoreWinF.ManageSalary
 
         private void txtSalary_KeyPress(object sender, KeyPressEventArgs e)
         {
-            u.numberOnly(e, txtSalary.Text);
+            u.numberOnly(e, txtSalary.Text,9);
         }
     }
 }

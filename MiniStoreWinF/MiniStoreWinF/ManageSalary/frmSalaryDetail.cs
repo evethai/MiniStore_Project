@@ -26,7 +26,7 @@ namespace MiniStoreWinF.ManageSalary
         {
             _salaryService = new SalaryService();
             List<Salary> result = new List<Salary>();
-            result = list.Skip((page - 1) * numberRe).Take(numberRecord).ToList();
+            result = list.Skip((page - 1) * numberRe).Take(numberRe).ToList();
             return result;
         }
 
@@ -141,13 +141,16 @@ namespace MiniStoreWinF.ManageSalary
             var s_salary = _salaryService.GetAll().Where(p => p.IdSalary.Equals(id)).FirstOrDefault();
             if (s_salary != null)
             {
-                txtS.Text = s_salary.IdSalary.ToString();
+                DialogResult result = MessageBox.Show("Would you like to see this salary details?", "Messages", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    frmDetailSalaryDetail form = new frmDetailSalaryDetail();
+                    form.id = s_salary.IdEmp;
+                    form.time = s_salary.DateImonth;
+                    form.ShowDialog();
+                }
             }
-            DialogResult result =  MessageBox.Show("Would you like to see this salary details?", "Messages", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
 
-            }
         }
     }
 }

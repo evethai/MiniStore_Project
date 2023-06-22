@@ -49,11 +49,14 @@ namespace MiniStoreWinF.DashBoard
             Form form = new frmLogin();
             this.Hide();
             form.ShowDialog();
+
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            txtUser.Text = user;
+            //txtUser.Text = user;
+            var emp = ContextScope.currentEmployee;
+            txtUser.Text = emp.FullNameEmp;
         }
 
         private void mnuStore_Click(object sender, EventArgs e)
@@ -62,6 +65,11 @@ namespace MiniStoreWinF.DashBoard
         }
 
         private void btCheckIn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuMoMo_Click(object sender, EventArgs e)
         {
 
         }

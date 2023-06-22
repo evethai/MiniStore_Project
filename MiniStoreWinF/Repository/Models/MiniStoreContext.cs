@@ -24,6 +24,7 @@ namespace Repository.Models
         public virtual DbSet<DetailSubSalary> DetailSubSalaries { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Member> Members { get; set; }
+        public virtual DbSet<MoMo> MoMos { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Permission> Permissions { get; set; }
         public virtual DbSet<Product> Products { get; set; }
@@ -39,8 +40,7 @@ namespace Repository.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=(local);uid=sa;pwd=12345;database=MiniStore;TrustServerCertificate=True");
-
+                optionsBuilder.UseSqlServer("Server=MSI;uid=sa;pwd=12345;database=MiniStore;TrustServerCertificate=True");
             }
         }
 
@@ -195,6 +195,28 @@ namespace Repository.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.TimeCreate).HasColumnType("datetime");
+            });
+
+            modelBuilder.Entity<MoMo>(entity =>
+            {
+                entity.ToTable("MoMo");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Active).HasColumnName("active");
+
+                entity.Property(e => e.Gmail)
+                    .HasMaxLength(100)
+                    .HasColumnName("gmail");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(50)
+                    .HasColumnName("name");
+
+                entity.Property(e => e.Phone)
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnName("phone");
             });
 
             modelBuilder.Entity<Order>(entity =>

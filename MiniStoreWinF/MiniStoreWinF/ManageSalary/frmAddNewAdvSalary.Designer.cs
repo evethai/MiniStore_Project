@@ -109,7 +109,7 @@
             txtTotal.Name = "txtTotal";
             txtTotal.Size = new Size(312, 33);
             txtTotal.TabIndex = 4;
-            txtTotal.KeyPress += txtTotal_KeyPress;
+            txtTotal.TextChanged += txtTotal_TextChanged;
             // 
             // txtDis
             // 

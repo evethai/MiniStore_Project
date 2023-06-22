@@ -39,6 +39,7 @@
             mnuLogout = new ToolStripMenuItem();
             txtUser = new ToolStripMenuItem();
             pMain = new Panel();
+            mnuMoMo = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,6 +56,7 @@
             // 
             // mnuAdmin
             // 
+            mnuAdmin.DropDownItems.AddRange(new ToolStripItem[] { mnuMoMo });
             mnuAdmin.Name = "mnuAdmin";
             mnuAdmin.ShortcutKeys = Keys.F1;
             mnuAdmin.Size = new Size(90, 29);
@@ -128,6 +130,13 @@
             pMain.Size = new Size(1307, 658);
             pMain.TabIndex = 2;
             // 
+            // mnuMoMo
+            // 
+            mnuMoMo.Name = "mnuMoMo";
+            mnuMoMo.Size = new Size(180, 30);
+            mnuMoMo.Text = "MoMo";
+            mnuMoMo.Click += mnuMoMo_Click;
+            // 
             // frmMain
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
@@ -169,5 +178,6 @@
         private ToolStripMenuItem txtUser;
         private ToolStripMenuItem btCheckIn;
         private ToolStripMenuItem btCheckOut;
+        private ToolStripMenuItem mnuMoMo;
     }
 }

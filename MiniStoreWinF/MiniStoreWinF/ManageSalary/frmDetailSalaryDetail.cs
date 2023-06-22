@@ -1,4 +1,5 @@
-﻿using Repository.Service;
+﻿using Repository.Models;
+using Repository.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,60 +16,152 @@ namespace MiniStoreWinF.ManageSalary
     {
         WorkSheetService _workSheetService;
         SalaryService _salaryService;
+        OrderService _orderService;
+        EmployeeService _employeeService;
+        public string id;
+        public DateTime time;
         public frmDetailSalaryDetail()
         {
             InitializeComponent();
         }
-        public int sumday(string id)
-        {
-            _salaryService = new SalaryService();
-            int n = 0;
-            var list = _salaryService.GetAll().Where(p => p.IdSalary.Equals(id)).FirstOrDefault();
-            if (list != null)
-            {
-                n = list.DateOmonth.Day - list.DateImonth.Day;
-            }
-            return n;
-        }
 
         private void frmDetailSalaryDetail_Load(object sender, EventArgs e)
         {
-            dataList("SE12", DateTime.Now.AddMonths(-1));
+            dataList(id, time);
+            txtTime.Text = time.Month + "/" + time.Year;
+            txtHour.Text = sumHourinMonth(time, id).ToString();
+            txtOrder.Text = sumOrdersInMonth(time, id).ToString();
+            txtRevenus.Text = countTotal(time, id).ToString();
+            txtName.Text = name(id);
         }
-        public void dataList(string id,DateTime date)
+        //Paging
+        private int currentPage = 1;
+        private int pageSize = 7;
+        private DataTable dt;
+        public void dataList(string id, DateTime date)
         {
             _salaryService = new SalaryService();
             _workSheetService = new WorkSheetService();
             var listSa = _salaryService.GetAll().ToList();
-            var listWs = _workSheetService.GetAll().Where(p=>p.Date.Value.Month.Equals(date.Month)).ToList();
-
-
+            var listWs = _workSheetService.GetAll().Where(p => p.Date.Value.Month.Equals(date.Month)).ToList();
 
             var data = (from sa in listSa
                         join ws in listWs on sa.IdEmp equals ws.IdEmp
                         where sa.IdEmp.Equals(id)
                         select Tuple.Create(ws.TimeCheckIn, ws.TimeCheckOut)).ToList();
 
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Date", typeof(string));
+            dt = new DataTable();
             DataRow newRow1 = dt.NewRow();
-            newRow1["Date"] ="Time Check In";
             DataRow newRow2 = dt.NewRow();
-            newRow2["Date"] = "Time Check Out";
-            dt.Rows.Add(newRow1);
-            dt.Rows.Add(newRow2);
 
             for (int i = 0; i < data.Count; i++)
             {
-                string time = data[i].Item1.Value.Day.ToString();
-                dt.Columns.Add(time, typeof(string));
-                    newRow1[time] = data[i].Item1.Value.TimeOfDay;
-                    newRow2[time] = data[i].Item2.Value.TimeOfDay;
+                string row = data[i].Item1.Value.Day.ToString();
+                dt.Columns.Add(row, typeof(string));
+                newRow1[row] = data[i].Item1.Value.TimeOfDay;
+                newRow2[row] = data[i].Item2.Value.TimeOfDay;
             }
+            //LoadDataByPage(currentPage);
+            dt.Rows.Add(newRow1);
+            dt.Rows.Add(newRow2);
 
-            dataGridView1.DataSource = dt;
+            LoadDataByPage(currentPage);
         }
 
+        private void LoadDataByPage(int page)
+        {
+            int startIndex = (page - 1) * pageSize;
+            int endIndex = startIndex + pageSize - 1;
+
+            // Xóa các cột hiện tại trong DataGridView
+            dataGridView1.Columns.Clear();
+
+            // Tạo và thêm cột cho trang hiện tại
+            for (int i = startIndex; i <= endIndex && i < dt.Columns.Count; i++)
+            {
+                string columnName = dt.Columns[i].ColumnName;
+                dataGridView1.Columns.Add(columnName, columnName);
+            }
+
+            // Xóa các dòng hiện tại trong DataGridView
+            dataGridView1.Rows.Clear();
+
+            // Thêm dữ liệu vào các dòng của trang hiện tại
+            for (int rowIndex = 0; rowIndex < 2; rowIndex++) // Số dòng cố định là 2
+            {
+                DataGridViewRow dataGridViewRow = new DataGridViewRow();
+
+                for (int i = startIndex; i <= endIndex && i < dt.Columns.Count; i++)
+                {
+                    string columnName = dt.Columns[i].ColumnName;
+                    dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell
+                    {
+                        Value = dt.Rows[rowIndex][columnName].ToString()
+                    });
+                }
+
+                dataGridView1.Rows.Add(dataGridViewRow);
+            }
+        }
+
+        private void btPre_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadDataByPage(currentPage);
+            }
+        }
+
+        private void btNext_Click(object sender, EventArgs e)
+        {
+            if (currentPage < (int)Math.Ceiling((double)dt.Columns.Count / pageSize))
+            {
+                currentPage++;
+                LoadDataByPage(currentPage);
+            }
+        }
+
+        public double sumHourinMonth(DateTime time, string id)
+        {
+            double sum = 0;
+            _workSheetService = new WorkSheetService();
+            var list = _workSheetService.GetAll().Where(p => p.Date.Value.Month.Equals(time.Month) && p.IdEmp.Equals(id)).ToList();
+            foreach (var item in list)
+            {
+                sum += (item.TimeCheckOut.Value.TimeOfDay - item.TimeCheckIn.Value.TimeOfDay).TotalHours;
+            }
+            return sum;
+        }
+        public double? sumOrdersInMonth(DateTime time, string id)
+        {
+
+            double? total = 0;
+            _orderService = new OrderService();
+            var list = _orderService.GetAll().Where(p => p.IdEmp.Equals(id) && p.DateOrders.Value.Month.Equals(time.Month)).ToList();
+            foreach (var item in list)
+            {
+                total += item.Total;
+            }
+            return total;
+        }
+        public int countTotal(DateTime time, string id)
+        {
+            _orderService = new OrderService();
+            var count = _orderService.GetAll().Count(p => p.IdEmp.Equals(id) && p.DateOrders.Value.Month.Equals(time.Month));
+            return count;
+        }
+        public string name(string id)
+        {
+            string emp = "";
+            _employeeService = new EmployeeService();
+            var list = _employeeService.GetAll().Where(p => p.IdEmp.Equals(id)).FirstOrDefault();
+            if (list != null)
+            {
+                emp = list.FullNameEmp;
+            }
+            return emp;
+        }
     }
 
 }

@@ -20,6 +20,7 @@ namespace MiniStoreWinF
             string userName = txtUserName.Text;
             string password = txtPassword.Text;
             var login = _employeeService.GetAll().Where(entity => entity.Username == userName && entity.Password == password && entity.IsActive == true).FirstOrDefault(); //create check login username-password
+            
             if (userName.Length <= 0 || password.Length <= 0)
             {
                 MessageBox.Show("Username and Password cannot be left blank !!", "Notification", MessageBoxButtons.OK);
@@ -30,6 +31,7 @@ namespace MiniStoreWinF
             }//end check wrong username or password
             else if (login.Roles == "Admin")
             {
+                ContextScope.currentEmployee = login;
                 this.Hide();
                 frmMain form = new frmMain();
                 form.checkRoles(true);
@@ -38,10 +40,12 @@ namespace MiniStoreWinF
             }// end check role admin
             else if (login.Roles == "Employee")
             {
+                ContextScope.currentEmployee = login;
                 this.Hide();
                 frmMain form = new frmMain();
                 form.checkRoles(false);
                 form.user = login.FullNameEmp;
+
                 form.ShowDialog();
             }//end check role employee
             else
