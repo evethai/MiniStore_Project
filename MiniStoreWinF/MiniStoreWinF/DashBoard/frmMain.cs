@@ -1,5 +1,6 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using MiniStoreWinF.ManageSalary;
+using Repository.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace MiniStoreWinF.DashBoard
 {
     public partial class frmMain : Form
     {
+        EmployeeService _employeeService = new EmployeeService();
         Utinity u = new Utinity();
         public bool check;
         public string user = "";

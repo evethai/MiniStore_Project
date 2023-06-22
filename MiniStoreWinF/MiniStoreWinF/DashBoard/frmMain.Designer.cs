@@ -106,6 +106,13 @@
             txtUser.Size = new Size(29, 29);
             txtUser.Text = ".";
             // 
+            // txtAccountLogin
+            // 
+            txtAccountLogin.BackColor = Color.Gainsboro;
+            txtAccountLogin.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            txtAccountLogin.Name = "txtAccountLogin";
+            txtAccountLogin.Size = new Size(300, 39);
+            // 
             // pMain
             // 
             pMain.Dock = DockStyle.Fill;

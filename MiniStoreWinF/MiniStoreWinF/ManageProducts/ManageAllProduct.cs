@@ -58,6 +58,8 @@ namespace MiniStoreWinF.ManageProducts
             txtComboType.ValueMember = "IdCa";
             txtComboType.DisplayMember = "ProductType";
             txtComboType.DataSource = _listComboProduct;
+
+           
         }
         //Change Base64 To Image
         public Image Base64ToImage(string base64String)
@@ -71,31 +73,39 @@ namespace MiniStoreWinF.ManageProducts
         // Click to show detail product
         private void DgvListProduct_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _productList = new ProductService();
-            var id = DgvListProduct[0, e.RowIndex].Value;
-            var showPro = _productList.GetAll().Where(p => p.Sku.Trim().Equals(id)).FirstOrDefault();
-            rowindex = e.RowIndex;
-            if (showPro != null)
+            try
             {
-                txtIDProduct.Text = showPro.Sku.ToString();
-                txtNameProduct.Text = showPro.NameProduct.ToString();
-                NumberQuantityProduct.Text = showPro.QuantityProduct.ToString();
-                txtPriceProduct.Text = showPro.PriceProduct.ToString();
-                dateTimeNXSProduct.Value = showPro.Mfg.Value;
-                dateTimeHSDProduct.Value = showPro.Exp.Value;
-                txtTypeProductList.Text = showPro.ProductType.ToString();
-                //txtStatusProduct.Text = showPro.StatusP.ToString();
-                if(showPro.StatusP == true)
+                _productList = new ProductService();
+                var id = DgvListProduct[0, e.RowIndex].Value;
+                var showPro = _productList.GetAll().Where(p => p.Sku.Trim().Equals(id)).FirstOrDefault();
+                rowindex = e.RowIndex;
+                if (showPro != null)
                 {
-                    txtStatusProduct.Text = "Availability";
+                    txtIDProduct.Text = showPro.Sku.ToString();
+                    txtNameProduct.Text = showPro.NameProduct.ToString();
+                    NumberQuantityProduct.Text = showPro.QuantityProduct.ToString();
+                    txtPriceProduct.Text = showPro.PriceProduct.ToString();
+                    dateTimeNXSProduct.Value = showPro.Mfg.Value;
+                    dateTimeHSDProduct.Value = showPro.Exp.Value;
+                    txtTypeProductList.Text = showPro.ProductType.ToString();
+                    //txtStatusProduct.Text = showPro.StatusP.ToString();
+                    if (showPro.StatusP == true)
+                    {
+                        txtStatusProduct.Text = "Availability";
+                    }
+                    else
+                    {
+                        txtStatusProduct.Text = "Sold Out";
+                    }
+                    txtPathPictureProduct.Text = showPro.PictureProduct;
+                    pictureProduct.Image = Base64ToImage(showPro.PictureProduct);
                 }
-                else
-                {
-                    txtStatusProduct.Text = "Sold Out";
-                }
-                txtPathPictureProduct.Text = showPro.PictureProduct;
-                pictureProduct.Image = Base64ToImage(showPro.PictureProduct);
             }
+            catch (Exception ex)
+            {
+
+            }
+
         }
         //Change Image to Base64
         public string ImageToBase64(string path)
@@ -127,34 +137,54 @@ namespace MiniStoreWinF.ManageProducts
                 }
             }
         }
+        // auto Id for product
         public string autoID(string id)
         {
-            string result="";
+            string result = "";
             int cutID = int.Parse(id.Substring(2, 2));
             cutID++;
             int digit = 2;
             string predix = "S";
 
-            string idstring =cutID.ToString().PadLeft(digit, '0');
+            string idstring = cutID.ToString().PadLeft(digit, '0');
             result = predix + idstring;
             return result;
         }
+        // auto id for type product
+        public string autoIDType(int id)
+        {
+            string result = "";
+            int cutID = id;
+            cutID++;
+
+            string IdInt = cutID.ToString().PadLeft('0');
+            result = IdInt;
+            return result;
+        }
+
         //Click to show detail type product
         private void DgvTypeProduct_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            _catalogyList = new CatalogyService();
-            var id = DgvTypeProduct[0, e.RowIndex].Value;
-            var showProType = _catalogyList.GetAll()
-                .Where(p => p.IdCa.Equals(id))
-                .FirstOrDefault();
-            rowindex = e.RowIndex;
-            if (showProType != null)
+            try
             {
-                txtIDTypeProduct.Text = showProType.IdCa.ToString();
-                txtTypeProductCategory.Text = showProType.ProductType.ToString();
+                _catalogyList = new CatalogyService();
+                var id = DgvTypeProduct[0, e.RowIndex].Value;
+                var showProType = _catalogyList.GetAll()
+                    .Where(p => p.IdCa.Equals(id))
+                    .FirstOrDefault();
+                rowindex = e.RowIndex;
+                if (showProType != null)
+                {
+                    txtIDTypeProduct.Text = showProType.IdCa.ToString();
+                    txtTypeProductCategory.Text = showProType.ProductType.ToString();
+
+                }
+            }
+            catch (Exception ex)
+            {
 
             }
+
         }
         //Search Product
         private void txtSearchName_Click(object sender, EventArgs e)
@@ -197,6 +227,8 @@ namespace MiniStoreWinF.ManageProducts
             {
                 MessageBox.Show("Ko Bo Trong check");
             }
+
+
         }
         // Load DgvProduct
         private void txtLoadPro_Click(object sender, EventArgs e)
@@ -263,6 +295,7 @@ namespace MiniStoreWinF.ManageProducts
                 float.Parse(txtPriceProduct.Text) < 0 ||
                 txtPriceProduct.Text == "" ||
                 txtPathPictureProduct.Text == ""
+
                 )
             {
                 MessageBox.Show("Not Be Empty");
@@ -288,17 +321,30 @@ namespace MiniStoreWinF.ManageProducts
 
                     _addProduct.Exp = Convert.ToDateTime(dateTimeHSDProduct.Text);
                     _addProduct.ProductType = txtTypeProductList.Text;
-                    //_addProduct.StatusP = txtStatusProduct.Text;
-                    if(txtStatusProduct.Text == "Availability")
+
+                    if (url == "")
+                    {
+                        _addProduct.PictureProduct = txtPathPictureProduct.Text;
+                    }
+                    else
+                    {
+                        _addProduct.PictureProduct = (txtPathPictureProduct.Text = ImageToBase64(url));
+                    }
+
+                    if (txtStatusProduct.Text == "Availability")
                     {
                         _addProduct.StatusP = true;
                     }
-                    else 
-                    { 
+                    else
+                    {
                         _addProduct.StatusP = false;
                     }
-                    _addProduct.PictureProduct = (txtPathPictureProduct.Text = ImageToBase64(url));
-                    productService.Create(_addProduct);
+                    DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (result == DialogResult.OK)
+                    {
+                        productService.Create(_addProduct);
+                        txtLoadPro_Click(sender, new EventArgs());
+                    }
                 }
             }
 
@@ -309,7 +355,7 @@ namespace MiniStoreWinF.ManageProducts
 
             _productList = new ProductService();
             var RemovePro = _productList.GetAll()
-                .Where(p => p.Sku.Equals(txtIDProduct.Text) && p.StatusP==true).FirstOrDefault();
+                .Where(p => p.Sku.Equals(txtIDProduct.Text) && p.StatusP == true).FirstOrDefault();
             if (RemovePro != null)
             {
 
@@ -320,7 +366,13 @@ namespace MiniStoreWinF.ManageProducts
                 else
                 {
                     RemovePro.StatusP = false;
-                    _productList.Update(RemovePro);
+                    DialogResult result = MessageBox.Show("You Want To Remove", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (result == DialogResult.OK)
+                    {
+                        _productList.Update(RemovePro);
+                        txtLoadPro_Click(sender, new EventArgs());
+                    }
+
                 }
             }
         }
@@ -345,30 +397,7 @@ namespace MiniStoreWinF.ManageProducts
                     _UpdatePro.PriceProduct = float.Parse(txtPriceProduct.Text);
                     _UpdatePro.Mfg = Convert.ToDateTime(dateTimeNXSProduct.Text);
                     _UpdatePro.Exp = Convert.ToDateTime(dateTimeHSDProduct.Text);
-                    //_UpdatePro.StatusP = txtStatusProduct.Text;
-                    if(txtStatusProduct.Text== "Availability")
-                    {
-                        _UpdatePro.StatusP=true;
-                    }
-                    else
-                    {
-                        _UpdatePro.StatusP = false;
-                    }
-                    _UpdatePro.ProductType = txtTypeProductList.Text;
 
-                    var proUp = _UpdatePro;
-                    _productList.Update(proUp);
-
-                    DgvListProduct.DataSource = new BindingSource() { DataSource = _UpdatePro };
-                }
-                else
-                {
-                    _UpdatePro.Sku = txtIDProduct.Text;
-                    _UpdatePro.QuantityProduct = Int32.Parse(NumberQuantityProduct.Text);
-                    _UpdatePro.PriceProduct = float.Parse(txtPriceProduct.Text);
-                    _UpdatePro.Mfg = Convert.ToDateTime(dateTimeNXSProduct.Text);
-                    _UpdatePro.Exp = Convert.ToDateTime(dateTimeHSDProduct.Text);
-                    //_UpdatePro.StatusP = txtStatusProduct.Text;
                     if (txtStatusProduct.Text == "Availability")
                     {
                         _UpdatePro.StatusP = true;
@@ -380,9 +409,41 @@ namespace MiniStoreWinF.ManageProducts
                     _UpdatePro.ProductType = txtTypeProductList.Text;
 
                     var proUp = _UpdatePro;
-                    _productList.Update(proUp);
+                    DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (result == DialogResult.OK)
+                    {
+                        _productList.Update(proUp);
+                        txtLoadPro_Click(sender, new EventArgs());
+                    }
+                    txtLoadPro_Click(sender, new EventArgs());
+                }
+                else
+                {
+                    _UpdatePro.Sku = txtIDProduct.Text;
+                    _UpdatePro.QuantityProduct = Int32.Parse(NumberQuantityProduct.Text);
+                    _UpdatePro.PriceProduct = float.Parse(txtPriceProduct.Text);
+                    _UpdatePro.Mfg = Convert.ToDateTime(dateTimeNXSProduct.Text);
+                    _UpdatePro.Exp = Convert.ToDateTime(dateTimeHSDProduct.Text);
 
-                    DgvListProduct.DataSource = new BindingSource() { DataSource = _UpdatePro };
+                    if (txtStatusProduct.Text == "Availability")
+                    {
+                        _UpdatePro.StatusP = true;
+                    }
+                    else
+                    {
+                        _UpdatePro.StatusP = false;
+                    }
+                    _UpdatePro.ProductType = txtTypeProductList.Text;
+
+                    var proUp = _UpdatePro;
+                    DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (result == DialogResult.OK)
+                    {
+                        _productList.Update(proUp);
+                        txtLoadPro_Click(sender, new EventArgs());
+                    }
+
+                    txtLoadPro_Click(sender, new EventArgs());
 
                 }
             }
@@ -401,43 +462,17 @@ namespace MiniStoreWinF.ManageProducts
             {
                 _updateType = new CatalogyService();
                 var _addProduct = _updateType.GetAll().ToList().FirstOrDefault();
-                _addProduct.IdCa = int.Parse(txtIDTypeProduct.Text);
+                _addProduct.IdCa = int.Parse(autoIDType(3));
                 _addProduct.ProductType = txtTypeProductCategory.Text;
-
-                _updateType.Create(_addProduct);
-
+                DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK)
+                {
+                    _updateType.Create(_addProduct);
+                    txtLoadPro_Click(sender, new EventArgs());
+                }
             }
         }
-        // Detele type Product
-        //private void btDeleteTypeProduct_Click(object sender, EventArgs e)
-        //{
-        //    _productList = new ProductService();
-        //    _catalogyList = new CatalogyService();
-        //    var RemovePro = _catalogyList.GetAll()
-        //        .Where(p => p.IdCa.Equals(int.Parse(txtIDTypeProduct.Text)) && p.StatusC.Trim() == _status.Trim()).FirstOrDefault();
-        //    if (RemovePro != null)
-        //    {
 
-        //        if (RemovePro.StatusC == "Sold Out")
-        //        {
-        //            MessageBox.Show("Item is in status Sold Out");
-        //        }
-        //        else
-        //        {
-        //            RemovePro.StatusC = "Sold Out";
-        //            _catalogyList.Update(RemovePro);
-
-
-        //        }
-        //    }
-        //}
-
-        //Edit status type Product to change Availability to Sold Out
-        //private void btEditStatusCProduct_Click(object sender, EventArgs e)
-        //{
-        //    Form form = new UpdateStatusTypeProduct();
-        //    form.ShowDialog();
-        //}
 
 
         //Edit status product to change Availability to Sold Out
@@ -454,7 +489,5 @@ namespace MiniStoreWinF.ManageProducts
                 .OrderBy(o => o.IdCa);
             DgvTypeProduct.DataSource = new BindingSource { DataSource = listproductType };
         }
-
-
     }
 }

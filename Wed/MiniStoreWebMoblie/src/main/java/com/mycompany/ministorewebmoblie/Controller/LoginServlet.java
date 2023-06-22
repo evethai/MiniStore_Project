@@ -1,5 +1,6 @@
-package com.mycompany.ministorewebmoblie;
+package com.mycompany.ministorewebmoblie.Controller;
 
+import com.mycompany.ministorewebmoblie.Utils.JWTUtils;
 import com.mycompany.ministorewebmoblie.Utils.MyUtils;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.ServletException;
@@ -22,6 +23,7 @@ public class LoginServlet extends HttpServlet {
 
         try {
             // Gửi yêu cầu GET đến API và nhận phản hồi
+            //localhost dung iis host 
             String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/facc?username=" + username + "&password=" + password);
             JSONObject json = new JSONObject(jsonResponse);
             String jwt = json.getString("jwt");
@@ -33,7 +35,7 @@ public class LoginServlet extends HttpServlet {
             }
 
             // Phân tích phản hồi JSON và tạo JWT
-            Claims claims = MyUtils.parseJWT(jwt);
+            Claims claims = JWTUtils.parseJWT(jwt);
             String fullnameemapi = claims.get("FullNameEmp", String.class);
             String IdEmpapi = claims.get("IdEmp", String.class);
             String rolesapi = claims.get("Roles", String.class);
