@@ -33,6 +33,7 @@ namespace MiniStoreWinF
                 this.Hide();
                 frmMain form = new frmMain();
                 form.checkRoles(true);
+                form.user = login.FullNameEmp;
                 form.ShowDialog();
             }// end check role admin
             else if (login.Roles == "Employee")
@@ -40,6 +41,7 @@ namespace MiniStoreWinF
                 this.Hide();
                 frmMain form = new frmMain();
                 form.checkRoles(false);
+                form.user = login.FullNameEmp;
                 form.ShowDialog();
             }//end check role employee
             else

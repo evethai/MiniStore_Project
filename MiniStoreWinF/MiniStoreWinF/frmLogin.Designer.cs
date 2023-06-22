@@ -102,8 +102,8 @@
             // 
             txtUserName.Location = new Point(101, 36);
             txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(222, 27);
-            txtUserName.TabIndex = 6;
+            txtUserName.Size = new Size(222, 25);
+            txtUserName.TabIndex = 1;
             txtUserName.TextAlign = HorizontalAlignment.Center;
             // 
             // txtPassword
@@ -111,8 +111,8 @@
             txtPassword.Location = new Point(101, 99);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
-            txtPassword.Size = new Size(222, 27);
-            txtPassword.TabIndex = 5;
+            txtPassword.Size = new Size(222, 25);
+            txtPassword.TabIndex = 2;
             txtPassword.TextAlign = HorizontalAlignment.Center;
             // 
             // btLogin
@@ -122,7 +122,7 @@
             btLogin.Location = new Point(320, 132);
             btLogin.Name = "btLogin";
             btLogin.Size = new Size(88, 44);
-            btLogin.TabIndex = 4;
+            btLogin.TabIndex = 3;
             btLogin.TextAlign = ContentAlignment.MiddleLeft;
             btLogin.UseVisualStyleBackColor = false;
             btLogin.Click += btLogin_Click;
@@ -138,6 +138,7 @@
             // 
             // frmLogin
             // 
+            AcceptButton = btLogin;
             AutoScaleMode = AutoScaleMode.None;
             BackColor = SystemColors.Control;
             ClientSize = new Size(558, 442);

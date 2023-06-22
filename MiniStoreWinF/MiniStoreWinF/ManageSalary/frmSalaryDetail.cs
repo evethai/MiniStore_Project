@@ -48,7 +48,7 @@ namespace MiniStoreWinF.ManageSalary
             DateTime time = dtpTime.Value;
             //var list = _salaryService.GetAll().Where(p => p.DateImonth.Month.Equals(time.Month)).ToList();
 
-            var list =u.salary().Where(p=>p.DateImonth.Month.Equals(time.Month)).ToList();
+            var list = u.salary().Where(p => p.DateImonth.Month.Equals(time.Month)).ToList();
 
             dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
             listSa = list;
@@ -64,16 +64,6 @@ namespace MiniStoreWinF.ManageSalary
             listSa = list;
         }
 
-        private void dgvSalary_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            _salaryService = new SalaryService();
-            var id = dgvSalary[0, e.RowIndex].Value;
-            var s_salary = _salaryService.GetAll().Where(p => p.IdSalary.Equals(id)).FirstOrDefault();
-            if (s_salary != null)
-            {
-                txtSave.Text = s_salary.IdEmp.ToString();
-            }
-        }
 
         private void btReset_Click(object sender, EventArgs e)
         {
@@ -143,11 +133,21 @@ namespace MiniStoreWinF.ManageSalary
             }
         }
 
-        private void dgvSalary_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void dgvSalary_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            _salaryService = new SalaryService();
+            var id = dgvSalary[0, e.RowIndex].Value;
+            var s_salary = _salaryService.GetAll().Where(p => p.IdSalary.Equals(id)).FirstOrDefault();
+            if (s_salary != null)
+            {
+                txtS.Text = s_salary.IdSalary.ToString();
+            }
+            DialogResult result =  MessageBox.Show("Would you like to see this salary details?", "Messages", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
 
+            }
         }
-
-
     }
 }

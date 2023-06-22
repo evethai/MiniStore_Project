@@ -48,9 +48,9 @@
             btSearch = new Button();
             btReset = new Button();
             btExport = new Button();
-            txtSave = new Label();
             panel2 = new Panel();
             numericUpDown1 = new NumericUpDown();
+            txtS = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvSalary).BeginInit();
             ((System.ComponentModel.ISupportInitialize)salaryBindingSource).BeginInit();
             panel2.SuspendLayout();
@@ -72,8 +72,7 @@
             dgvSalary.RowTemplate.Height = 27;
             dgvSalary.Size = new Size(1252, 347);
             dgvSalary.TabIndex = 0;
-            dgvSalary.CellContentClick += dgvSalary_CellContentClick;
-            dgvSalary.CellDoubleClick += dgvSalary_CellDoubleClick;
+            dgvSalary.CellMouseDoubleClick += dgvSalary_CellMouseDoubleClick;
             // 
             // idSalaryDataGridViewTextBoxColumn
             // 
@@ -217,16 +216,6 @@
             btExport.UseVisualStyleBackColor = true;
             btExport.Click += btExport_Click;
             // 
-            // txtSave
-            // 
-            txtSave.AutoSize = true;
-            txtSave.Location = new Point(1258, 204);
-            txtSave.Margin = new Padding(4, 0, 4, 0);
-            txtSave.Name = "txtSave";
-            txtSave.Size = new Size(0, 25);
-            txtSave.TabIndex = 14;
-            txtSave.Visible = false;
-            // 
             // panel2
             // 
             panel2.Controls.Add(cbName);
@@ -253,16 +242,25 @@
             numericUpDown1.Value = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown1.ValueChanged += nmPaging_ValueChanged;
             // 
+            // txtS
+            // 
+            txtS.Enabled = false;
+            txtS.Location = new Point(878, 234);
+            txtS.Name = "txtS";
+            txtS.Size = new Size(100, 33);
+            txtS.TabIndex = 17;
+            txtS.Visible = false;
+            // 
             // frmSalaryDetail
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(1764, 884);
+            Controls.Add(txtS);
             Controls.Add(numericUpDown1);
             Controls.Add(dgvSalary);
             Controls.Add(panel2);
-            Controls.Add(txtSave);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
             Name = "frmSalaryDetail";
@@ -289,7 +287,6 @@
         private Button btSearch;
         private Button btReset;
         private Button btExport;
-        private Label txtSave;
         private DataGridViewTextBoxColumn idSalaryDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn idEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn salaryHourDataGridViewTextBoxColumn;
@@ -302,5 +299,6 @@
         private DataGridViewTextBoxColumn DateOmonth;
         private Panel panel2;
         private NumericUpDown numericUpDown1;
+        private TextBox txtS;
     }
 }

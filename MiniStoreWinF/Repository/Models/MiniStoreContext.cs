@@ -50,7 +50,7 @@ namespace Repository.Models
             modelBuilder.Entity<BillOrder>(entity =>
             {
                 entity.HasKey(e => e.IdBillOrder)
-                    .HasName("PK__BillOrde__58724C243200E238");
+                    .HasName("PK__BillOrde__58724C24F7126830");
 
                 entity.Property(e => e.IdBillOrder)
                     .HasMaxLength(20)
@@ -98,7 +98,7 @@ namespace Repository.Models
             modelBuilder.Entity<DetailAdvanceSalary>(entity =>
             {
                 entity.HasKey(e => e.IdAdvanceSalary)
-                    .HasName("PK__DetailAd__8FF8B6360962B270");
+                    .HasName("PK__DetailAd__8FF8B636FC79795F");
 
                 entity.ToTable("DetailAdvanceSalary");
 
@@ -124,7 +124,7 @@ namespace Repository.Models
             modelBuilder.Entity<DetailSubSalary>(entity =>
             {
                 entity.HasKey(e => e.IdDetailSubSalary)
-                    .HasName("PK__DetailSu__38029D0FE829FA85");
+                    .HasName("PK__DetailSu__38029D0F4AF9F874");
 
                 entity.ToTable("DetailSubSalary");
 
@@ -136,7 +136,7 @@ namespace Repository.Models
             modelBuilder.Entity<Employee>(entity =>
             {
                 entity.HasKey(e => e.IdEmp)
-                    .HasName("PK__Employee__0F23D647BE3F2884");
+                    .HasName("PK__Employee__0F23D647D08B390E");
 
                 entity.ToTable("Employee");
 
@@ -177,7 +177,7 @@ namespace Repository.Models
             modelBuilder.Entity<Member>(entity =>
             {
                 entity.HasKey(e => e.PhoneMember)
-                    .HasName("PK__Member__57790E255272BEAE");
+                    .HasName("PK__Member__57790E25DD4DD065");
 
                 entity.ToTable("Member");
 
@@ -199,7 +199,7 @@ namespace Repository.Models
             modelBuilder.Entity<Order>(entity =>
             {
                 entity.HasKey(e => e.IdOrder)
-                    .HasName("PK__Orders__C38F30094CE5A964");
+                    .HasName("PK__Orders__C38F30096016314A");
 
                 entity.Property(e => e.IdOrder).HasMaxLength(20);
 
@@ -304,7 +304,7 @@ namespace Repository.Models
             modelBuilder.Entity<Revenue>(entity =>
             {
                 entity.HasKey(e => e.DateRevenue)
-                    .HasName("PK__Revenue__D0CEC0D9B1B5659E");
+                    .HasName("PK__Revenue__D0CEC0D9755D6FCA");
 
                 entity.ToTable("Revenue");
 
@@ -314,7 +314,7 @@ namespace Repository.Models
             modelBuilder.Entity<Salary>(entity =>
             {
                 entity.HasKey(e => e.IdSalary)
-                    .HasName("PK__Salary__4304AC9C2CAD1BAC");
+                    .HasName("PK__Salary__4304AC9C9AB6DF9E");
 
                 entity.ToTable("Salary");
 
@@ -354,7 +354,7 @@ namespace Repository.Models
             modelBuilder.Entity<SubSalary>(entity =>
             {
                 entity.HasKey(e => e.IdSubSalary)
-                    .HasName("PK__SubSalar__4D7A054D14B5CDD7");
+                    .HasName("PK__SubSalar__4D7A054D23A8B967");
 
                 entity.ToTable("SubSalary");
 
@@ -380,7 +380,7 @@ namespace Repository.Models
             modelBuilder.Entity<Voucher>(entity =>
             {
                 entity.HasKey(e => e.IdVoucher)
-                    .HasName("PK__Voucher__329D557EAFCFA673");
+                    .HasName("PK__Voucher__329D557E41C32B19");
 
                 entity.ToTable("Voucher");
 
@@ -402,7 +402,7 @@ namespace Repository.Models
             modelBuilder.Entity<WorkSheet>(entity =>
             {
                 entity.HasKey(e => e.IdWorkSheet)
-                    .HasName("PK__WorkShee__AB7595E869616718");
+                    .HasName("PK__WorkShee__AB7595E86223C3DA");
 
                 entity.ToTable("WorkSheet");
 

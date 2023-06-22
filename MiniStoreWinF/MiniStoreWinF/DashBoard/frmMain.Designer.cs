@@ -30,20 +30,22 @@
         {
             menuStrip = new MenuStrip();
             mnuAdmin = new ToolStripMenuItem();
-            mnuAdminDB = new ToolStripMenuItem();
-            mnuAdminLogout = new ToolStripMenuItem();
-            sTOREToolStripMenuItem = new ToolStripMenuItem();
-            hELPToolStripMenuItem = new ToolStripMenuItem();
-            dISPLAYToolStripMenuItem = new ToolStripMenuItem();
-            eXITToolStripMenuItem = new ToolStripMenuItem();
+            mnuStore = new ToolStripMenuItem();
+            mnuCheck = new ToolStripMenuItem();
+            mnuHelp = new ToolStripMenuItem();
+            mnuDis = new ToolStripMenuItem();
+            mnuLogout = new ToolStripMenuItem();
+            txtUser = new ToolStripMenuItem();
             pMain = new Panel();
+            btCheckIn = new ToolStripMenuItem();
+            btCheckOut = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip
             // 
             menuStrip.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            menuStrip.Items.AddRange(new ToolStripItem[] { mnuAdmin, sTOREToolStripMenuItem, hELPToolStripMenuItem, dISPLAYToolStripMenuItem, eXITToolStripMenuItem });
+            menuStrip.Items.AddRange(new ToolStripItem[] { mnuAdmin, mnuStore, mnuCheck, mnuHelp, mnuDis, mnuLogout, txtUser });
             menuStrip.Location = new Point(0, 0);
             menuStrip.Name = "menuStrip";
             menuStrip.Padding = new Padding(8, 3, 0, 3);
@@ -53,57 +55,78 @@
             // 
             // mnuAdmin
             // 
-            mnuAdmin.DropDownItems.AddRange(new ToolStripItem[] { mnuAdminDB, mnuAdminLogout });
             mnuAdmin.Name = "mnuAdmin";
+            mnuAdmin.ShortcutKeys = Keys.F1;
             mnuAdmin.Size = new Size(90, 29);
             mnuAdmin.Text = "ADMIN";
+            mnuAdmin.Click += mnuAdmin_Click;
             // 
-            // mnuAdminDB
+            // mnuStore
             // 
-            mnuAdminDB.Name = "mnuAdminDB";
-            mnuAdminDB.Size = new Size(232, 30);
-            mnuAdminDB.Text = "DASHBOARD";
-            mnuAdminDB.Click += mnuAdminDB_Click;
+            mnuStore.Name = "mnuStore";
+            mnuStore.ShortcutKeys = Keys.F2;
+            mnuStore.Size = new Size(81, 29);
+            mnuStore.Text = "STORE";
+            mnuStore.Click += mnuStore_Click;
             // 
-            // mnuAdminLogout
+            // mnuCheck
             // 
-            mnuAdminLogout.Name = "mnuAdminLogout";
-            mnuAdminLogout.ShortcutKeys = Keys.Alt | Keys.F4;
-            mnuAdminLogout.Size = new Size(232, 30);
-            mnuAdminLogout.Text = "LOGOUT";
+            mnuCheck.DropDownItems.AddRange(new ToolStripItem[] { btCheckIn, btCheckOut });
+            mnuCheck.Name = "mnuCheck";
+            mnuCheck.ShortcutKeys = Keys.F3;
+            mnuCheck.Size = new Size(85, 29);
+            mnuCheck.Text = "CHECK";
             // 
-            // sTOREToolStripMenuItem
+            // mnuHelp
             // 
-            sTOREToolStripMenuItem.Name = "sTOREToolStripMenuItem";
-            sTOREToolStripMenuItem.Size = new Size(81, 29);
-            sTOREToolStripMenuItem.Text = "STORE";
+            mnuHelp.Name = "mnuHelp";
+            mnuHelp.ShortcutKeys = Keys.F4;
+            mnuHelp.Size = new Size(71, 29);
+            mnuHelp.Text = "HELP";
             // 
-            // hELPToolStripMenuItem
+            // mnuDis
             // 
-            hELPToolStripMenuItem.Name = "hELPToolStripMenuItem";
-            hELPToolStripMenuItem.Size = new Size(71, 29);
-            hELPToolStripMenuItem.Text = "HELP";
+            mnuDis.Name = "mnuDis";
+            mnuDis.ShortcutKeys = Keys.F5;
+            mnuDis.Size = new Size(101, 29);
+            mnuDis.Text = "DISPLAY";
             // 
-            // dISPLAYToolStripMenuItem
+            // mnuLogout
             // 
-            dISPLAYToolStripMenuItem.Name = "dISPLAYToolStripMenuItem";
-            dISPLAYToolStripMenuItem.Size = new Size(101, 29);
-            dISPLAYToolStripMenuItem.Text = "DISPLAY";
+            mnuLogout.Name = "mnuLogout";
+            mnuLogout.ShortcutKeys = Keys.Alt | Keys.F4;
+            mnuLogout.Size = new Size(101, 29);
+            mnuLogout.Text = "LOGOUT";
+            mnuLogout.Click += mnuLogout_Click;
             // 
-            // eXITToolStripMenuItem
+            // txtUser
             // 
-            eXITToolStripMenuItem.Name = "eXITToolStripMenuItem";
-            eXITToolStripMenuItem.Size = new Size(63, 29);
-            eXITToolStripMenuItem.Text = "EXIT";
+            txtUser.ForeColor = Color.Blue;
+            txtUser.Name = "txtUser";
+            txtUser.Size = new Size(29, 29);
+            txtUser.Text = ".";
             // 
             // pMain
             // 
             pMain.Dock = DockStyle.Fill;
             pMain.Location = new Point(0, 35);
-            pMain.Margin = new Padding(4, 4, 4, 4);
+            pMain.Margin = new Padding(4);
             pMain.Name = "pMain";
             pMain.Size = new Size(1307, 658);
             pMain.TabIndex = 2;
+            // 
+            // btCheckIn
+            // 
+            btCheckIn.Name = "btCheckIn";
+            btCheckIn.Size = new Size(180, 30);
+            btCheckIn.Text = "Check-In";
+            btCheckIn.Click += btCheckIn_Click;
+            // 
+            // btCheckOut
+            // 
+            btCheckOut.Name = "btCheckOut";
+            btCheckOut.Size = new Size(180, 30);
+            btCheckOut.Text = "Check-Out";
             // 
             // frmMain
             // 
@@ -114,9 +137,10 @@
             Controls.Add(pMain);
             Controls.Add(menuStrip);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "frmMain";
             StartPosition = FormStartPosition.CenterScreen;
+            Load += frmMain_Load;
             menuStrip.ResumeLayout(false);
             menuStrip.PerformLayout();
             ResumeLayout(false);
@@ -130,9 +154,20 @@
         private ToolStripMenuItem mnuAdminDB;
         private ToolStripMenuItem mnuAdminLogout;
         private Panel pMain;
-        private ToolStripMenuItem sTOREToolStripMenuItem;
-        private ToolStripMenuItem hELPToolStripMenuItem;
-        private ToolStripMenuItem dISPLAYToolStripMenuItem;
-        private ToolStripMenuItem eXITToolStripMenuItem;
+        private ToolStripMenuItem mnuStore;
+        private ToolStripMenuItem mnuCheck;
+        private ToolStripMenuItem mnuHelp;
+        private ToolStripMenuItem mnuDis;
+        private ToolStripMenuItem mnuExit;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem toolStripMenuItem2;
+        private ToolStripMenuItem toolStripMenuItem3;
+        private ToolStripMenuItem toolStripMenuItem4;
+        private ToolStripMenuItem toolStripMenuItem5;
+        private ToolStripMenuItem toolStripMenuItem6;
+        private ToolStripMenuItem mnuLogout;
+        private ToolStripMenuItem txtUser;
+        private ToolStripMenuItem btCheckIn;
+        private ToolStripMenuItem btCheckOut;
     }
 }

@@ -15,17 +15,14 @@ namespace MiniStoreWinF.DashBoard
     public partial class frmMain : Form
     {
         Utinity u = new Utinity();
-        bool check;
+        public bool check;
+        public string user = "";
         public frmMain()
         {
             InitializeComponent();
             checkRoles(check);
         }
 
-        private void mnuAdminDB_Click(object sender, EventArgs e)
-        {
-            u.openChildForm(new frmDashBoard(), pMain);
-        }
         public void checkRoles(bool b)
         {
             ToolStripMenuItem menu = menuStrip.Items["mnuAdmin"] as ToolStripMenuItem;
@@ -38,6 +35,33 @@ namespace MiniStoreWinF.DashBoard
                 menu.Enabled = true;
 
             }
+        }
+
+        private void mnuAdmin_Click(object sender, EventArgs e)
+        {
+            u.openChildForm(new frmDashBoard(), pMain);
+        }
+
+        private void mnuLogout_Click(object sender, EventArgs e)
+        {
+            Form form = new frmLogin();
+            this.Hide();
+            form.ShowDialog();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            txtUser.Text = user;
+        }
+
+        private void mnuStore_Click(object sender, EventArgs e)
+        {
+            u.openChildForm(new OrdersProducts.OrderProducts(), pMain);
+        }
+
+        private void btCheckIn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
