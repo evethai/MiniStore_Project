@@ -223,15 +223,16 @@ namespace MiniStoreWinF.OrdersProducts
         } // function translate base64 to image  => OK 
         private void btUsingVoucher_Click(object sender, EventArgs e)
         {
-            string CheckCodeVoucher =txtScanVoucher.Text;
+            string CheckCodeVoucher = txtScanVoucher.Text;
             var codeVouchers = _codeVoucherService.GetAll().Where(p => p.Id.Equals(CheckCodeVoucher) && p.StatusV == true).FirstOrDefault();
             if (codeVouchers == null || txtScanVoucher.Text == "")
             {
                 MessageBox.Show("Voucher is incorrect or used !", "Notification", MessageBoxButtons.OK);
             }
-            else {
+            else
+            {
                 var Voucher = _voucherService.GetAll().Where(p => p.IdVoucher.Equals(codeVouchers.IdVoucher)).FirstOrDefault();
-                if ( Voucher.Exp < DateTime.Now)
+                if (Voucher.Exp < DateTime.Now)
                 {
                     MessageBox.Show("Voucher has expired !", "Notification", MessageBoxButtons.OK);
                 }
@@ -244,32 +245,32 @@ namespace MiniStoreWinF.OrdersProducts
                     MessageBox.Show("You use " + Voucher.Name + " Voucher Successfully !");
                     txtTotalAllOrders.Text = (Convert.ToDouble(txtTotalAllOrders.Text) - Voucher.Price).ToString();
                     txtScanVoucher.Enabled = false;
-                } 
+                }
             }
-            
+
         }//button to using voucher => OK
-        //private void cbVourcherOrder_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    var checkEXP = DateTime.Now;
-        //    var checkName = txtScanVoucher.Text;
-        //    var checkVoucher = _voucherService.GetAll().Where(p => p.Name.Equals(checkName)).FirstOrDefault();
-            //if (checkVoucher != null)
-            //{
-            //    if (checkVoucher.Exp < checkEXP || checkVoucher.Quantity <= 0 || Convert.ToInt32(txtTotalAllOrders.Text) <= 0)
-            //    {
-            //        MessageBox.Show("The Voucher EXP or Quantity is 0", "Notification", MessageBoxButtons.OK);
-            //        cbVourcherOrder.SelectedIndex = -1;
-            //        cbVourcherOrder.Enabled = false;
-            //    }
-            //    else
-            //    {
-            //        var TotalUseVoucher = double.Parse(txtTotalAllOrders.Text) - (checkVoucher.Price * 10);
-            //        txtTotalAllOrders.Text = TotalUseVoucher.ToString();
-            //        MessageBox.Show("Using voucher Successfully", "Notification", MessageBoxButtons.OK);
-            //        cbVourcherOrder.Enabled = false;
-            //    }
-            //}
-        //}//combo box using the Voucher ==> OK
+         //private void cbVourcherOrder_SelectedIndexChanged(object sender, EventArgs e)
+         //{
+         //    var checkEXP = DateTime.Now;
+         //    var checkName = txtScanVoucher.Text;
+         //    var checkVoucher = _voucherService.GetAll().Where(p => p.Name.Equals(checkName)).FirstOrDefault();
+         //if (checkVoucher != null)
+         //{
+         //    if (checkVoucher.Exp < checkEXP || checkVoucher.Quantity <= 0 || Convert.ToInt32(txtTotalAllOrders.Text) <= 0)
+         //    {
+         //        MessageBox.Show("The Voucher EXP or Quantity is 0", "Notification", MessageBoxButtons.OK);
+         //        cbVourcherOrder.SelectedIndex = -1;
+         //        cbVourcherOrder.Enabled = false;
+         //    }
+         //    else
+         //    {
+         //        var TotalUseVoucher = double.Parse(txtTotalAllOrders.Text) - (checkVoucher.Price * 10);
+         //        txtTotalAllOrders.Text = TotalUseVoucher.ToString();
+         //        MessageBox.Show("Using voucher Successfully", "Notification", MessageBoxButtons.OK);
+         //        cbVourcherOrder.Enabled = false;
+         //    }
+         //}
+         //}//combo box using the Voucher ==> OK
         private void cbPointUsing_SelectedIndexChanged(object sender, EventArgs e)
         {
             int CheckPoint = Convert.ToInt32(cbPointUsing.SelectedItem);
@@ -353,8 +354,8 @@ namespace MiniStoreWinF.OrdersProducts
                 //------------------------------------//  END Create new Bill order                      
 
                 var checkCodeVoucher = _codeVoucherService.GetAll().Where(p => p.Id.Equals(txtScanVoucher.Text)).FirstOrDefault();
-                
-                if (checkCodeVoucher == null)
+
+                if (checkCodeVoucher == null || txtScanVoucher.Text =="")
                 {
                     order.IdVoucher = null;
                 }
@@ -435,10 +436,11 @@ namespace MiniStoreWinF.OrdersProducts
                 AutoRevenuelUpdateWhenBillOrderDone();
                 OpenChildForm();
             }
-            else {
+            else
+            {
                 return;
             }
-            
+
         } // ADD TO CART SHOW BILL => MAYBE OK
         public void AutoRevenuelUpdateWhenBillOrderDone() // Update Total Revenue in one day  => OK
         {

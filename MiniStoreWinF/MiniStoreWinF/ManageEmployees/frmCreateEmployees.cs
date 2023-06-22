@@ -59,7 +59,7 @@ namespace MiniStoreWinF.ManageEmployees
         }
 
         private void btAddNew_Click(object sender, EventArgs e)
-        {   
+        {
             //Check existed username
             var duplicated = employeeService.GetAll().Where(entity => entity.Username.Equals(txtUsername.Text)).FirstOrDefault();
             if (txtAddName.Text == "" ||
@@ -85,7 +85,7 @@ namespace MiniStoreWinF.ManageEmployees
                 txtConfirm.Text = "";
 
             }
-            
+
 
             else if (duplicated != null)
             {
@@ -94,7 +94,7 @@ namespace MiniStoreWinF.ManageEmployees
                 txtUsername.SelectAll();
                 txtUsername.Text = "";
             }
-            
+
             //Check age > 18
             else if (DateTime.Now.Year - dtDoB.Value.Year < 18)
             {
@@ -248,6 +248,6 @@ namespace MiniStoreWinF.ManageEmployees
 
         }
 
-        
+
     }
 }

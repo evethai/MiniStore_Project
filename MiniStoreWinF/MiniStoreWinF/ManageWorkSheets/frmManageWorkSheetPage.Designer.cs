@@ -1,6 +1,6 @@
 ﻿namespace MiniStoreWinF.ManageWorkSheet
 {
-    partial class ManageWorkSheetPage
+    partial class frmManageWorkSheetPage
     {
         /// <summary>
         /// Required designer variable.
@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageWorkSheetPage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageWorkSheetPage));
             tabManageWorkSheet = new TabControl();
-            tabUpdateWorkSheet = new TabPage();
+            tabWorkSheetHistory = new TabPage();
             panel3 = new Panel();
             btNextList = new Button();
             btBackList = new Button();
@@ -67,16 +67,12 @@
             tabDetailWorkSheet = new TabPage();
             panel5 = new Panel();
             dgvDetailWorksheet = new DataGridView();
-            sheetDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            shiftStartTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            shiftEndTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            descriptionSDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            coefficientsSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             sheetDetailBindingSource = new BindingSource(components);
             panel4 = new Panel();
+            txtCoefficientsSalaryDetails = new NumericUpDown();
+            btCreate = new Button();
             label9 = new Label();
             btUpdateDetailsWorkSheet = new Button();
-            txtCoefficientsSalaryDetails = new TextBox();
             txtDescriptionsDetails = new TextBox();
             txtEndDetails = new TextBox();
             txtStartDetails = new TextBox();
@@ -85,8 +81,13 @@
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
+            sheetDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            shiftStartTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            shiftEndTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descriptionSDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            coefficientsSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             tabManageWorkSheet.SuspendLayout();
-            tabUpdateWorkSheet.SuspendLayout();
+            tabWorkSheetHistory.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvShowWorkSheet).BeginInit();
             ((System.ComponentModel.ISupportInitialize)workSheetBindingSource).BeginInit();
@@ -97,51 +98,51 @@
             ((System.ComponentModel.ISupportInitialize)dgvDetailWorksheet).BeginInit();
             ((System.ComponentModel.ISupportInitialize)sheetDetailBindingSource).BeginInit();
             panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)txtCoefficientsSalaryDetails).BeginInit();
             SuspendLayout();
             // 
             // tabManageWorkSheet
             // 
-            tabManageWorkSheet.Controls.Add(tabUpdateWorkSheet);
+            tabManageWorkSheet.Controls.Add(tabWorkSheetHistory);
             tabManageWorkSheet.Controls.Add(tabDetailWorkSheet);
             tabManageWorkSheet.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            tabManageWorkSheet.Location = new Point(12, 57);
+            tabManageWorkSheet.Location = new Point(12, 4);
             tabManageWorkSheet.Multiline = true;
             tabManageWorkSheet.Name = "tabManageWorkSheet";
             tabManageWorkSheet.RightToLeft = RightToLeft.No;
             tabManageWorkSheet.SelectedIndex = 0;
-            tabManageWorkSheet.Size = new Size(1380, 564);
+            tabManageWorkSheet.Size = new Size(1355, 525);
             tabManageWorkSheet.TabIndex = 0;
             // 
-            // tabUpdateWorkSheet
+            // tabWorkSheetHistory
             // 
-            tabUpdateWorkSheet.Controls.Add(panel3);
-            tabUpdateWorkSheet.Controls.Add(panel2);
-            tabUpdateWorkSheet.Controls.Add(panel1);
-            tabUpdateWorkSheet.Location = new Point(4, 32);
-            tabUpdateWorkSheet.Name = "tabUpdateWorkSheet";
-            tabUpdateWorkSheet.Padding = new Padding(3);
-            tabUpdateWorkSheet.Size = new Size(1372, 528);
-            tabUpdateWorkSheet.TabIndex = 1;
-            tabUpdateWorkSheet.Text = "History WorkSheet";
-            tabUpdateWorkSheet.UseVisualStyleBackColor = true;
+            tabWorkSheetHistory.Controls.Add(panel3);
+            tabWorkSheetHistory.Controls.Add(panel2);
+            tabWorkSheetHistory.Controls.Add(panel1);
+            tabWorkSheetHistory.Location = new Point(4, 32);
+            tabWorkSheetHistory.Name = "tabWorkSheetHistory";
+            tabWorkSheetHistory.Padding = new Padding(3);
+            tabWorkSheetHistory.Size = new Size(1347, 489);
+            tabWorkSheetHistory.TabIndex = 1;
+            tabWorkSheetHistory.Text = "History WorkSheet";
+            tabWorkSheetHistory.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
             panel3.Controls.Add(btNextList);
             panel3.Controls.Add(btBackList);
             panel3.Controls.Add(dgvShowWorkSheet);
-            panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(411, 94);
             panel3.Name = "panel3";
-            panel3.Size = new Size(958, 431);
+            panel3.Size = new Size(934, 394);
             panel3.TabIndex = 18;
             // 
             // btNextList
             // 
             btNextList.Image = (Image)resources.GetObject("btNextList.Image");
-            btNextList.Location = new Point(492, 388);
+            btNextList.Location = new Point(508, 347);
             btNextList.Name = "btNextList";
-            btNextList.Size = new Size(127, 29);
+            btNextList.Size = new Size(96, 29);
             btNextList.TabIndex = 14;
             btNextList.UseVisualStyleBackColor = true;
             btNextList.Click += btNextList_Click;
@@ -149,9 +150,9 @@
             // btBackList
             // 
             btBackList.Image = (Image)resources.GetObject("btBackList.Image");
-            btBackList.Location = new Point(333, 388);
+            btBackList.Location = new Point(364, 347);
             btBackList.Name = "btBackList";
-            btBackList.Size = new Size(127, 29);
+            btBackList.Size = new Size(96, 29);
             btBackList.TabIndex = 13;
             btBackList.UseVisualStyleBackColor = true;
             btBackList.Click += btBackList_Click;
@@ -162,52 +163,51 @@
             dgvShowWorkSheet.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvShowWorkSheet.Columns.AddRange(new DataGridViewColumn[] { idWorkSheetDataGridViewTextBoxColumn, idEmpDataGridViewTextBoxColumn, dateDataGridViewTextBoxColumn, sheetDataGridViewTextBoxColumn, timeCheckInDataGridViewTextBoxColumn, timeCheckOutDataGridViewTextBoxColumn });
             dgvShowWorkSheet.DataSource = workSheetBindingSource;
-            dgvShowWorkSheet.Dock = DockStyle.Top;
-            dgvShowWorkSheet.Location = new Point(0, 0);
+            dgvShowWorkSheet.Location = new Point(3, 0);
             dgvShowWorkSheet.Name = "dgvShowWorkSheet";
             dgvShowWorkSheet.RowHeadersWidth = 51;
             dgvShowWorkSheet.RowTemplate.Height = 29;
-            dgvShowWorkSheet.Size = new Size(958, 369);
+            dgvShowWorkSheet.Size = new Size(929, 328);
             dgvShowWorkSheet.TabIndex = 12;
             dgvShowWorkSheet.CellMouseDoubleClick += dgvShowWorkSheet_CellMouseDoubleClick_1;
             // 
             // idWorkSheetDataGridViewTextBoxColumn
             // 
-            idWorkSheetDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             idWorkSheetDataGridViewTextBoxColumn.DataPropertyName = "IdWorkSheet";
-            idWorkSheetDataGridViewTextBoxColumn.HeaderText = "IdWorkSheet";
+            idWorkSheetDataGridViewTextBoxColumn.HeaderText = "Work Sheet ID";
             idWorkSheetDataGridViewTextBoxColumn.MinimumWidth = 6;
             idWorkSheetDataGridViewTextBoxColumn.Name = "idWorkSheetDataGridViewTextBoxColumn";
+            idWorkSheetDataGridViewTextBoxColumn.Width = 125;
             // 
             // idEmpDataGridViewTextBoxColumn
             // 
-            idEmpDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             idEmpDataGridViewTextBoxColumn.DataPropertyName = "IdEmp";
-            idEmpDataGridViewTextBoxColumn.HeaderText = "IdEmp";
+            idEmpDataGridViewTextBoxColumn.HeaderText = "Id Emp";
             idEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
             idEmpDataGridViewTextBoxColumn.Name = "idEmpDataGridViewTextBoxColumn";
+            idEmpDataGridViewTextBoxColumn.Width = 110;
             // 
             // dateDataGridViewTextBoxColumn
             // 
-            dateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
             dateDataGridViewTextBoxColumn.HeaderText = "Date";
             dateDataGridViewTextBoxColumn.MinimumWidth = 6;
             dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            dateDataGridViewTextBoxColumn.Width = 130;
             // 
             // sheetDataGridViewTextBoxColumn
             // 
-            sheetDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             sheetDataGridViewTextBoxColumn.DataPropertyName = "Sheet";
             sheetDataGridViewTextBoxColumn.HeaderText = "Sheet";
             sheetDataGridViewTextBoxColumn.MinimumWidth = 6;
             sheetDataGridViewTextBoxColumn.Name = "sheetDataGridViewTextBoxColumn";
+            sheetDataGridViewTextBoxColumn.Width = 125;
             // 
             // timeCheckInDataGridViewTextBoxColumn
             // 
             timeCheckInDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             timeCheckInDataGridViewTextBoxColumn.DataPropertyName = "TimeCheckIn";
-            timeCheckInDataGridViewTextBoxColumn.HeaderText = "TimeCheckIn";
+            timeCheckInDataGridViewTextBoxColumn.HeaderText = "Time Check-In";
             timeCheckInDataGridViewTextBoxColumn.MinimumWidth = 6;
             timeCheckInDataGridViewTextBoxColumn.Name = "timeCheckInDataGridViewTextBoxColumn";
             // 
@@ -215,7 +215,7 @@
             // 
             timeCheckOutDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             timeCheckOutDataGridViewTextBoxColumn.DataPropertyName = "TimeCheckOut";
-            timeCheckOutDataGridViewTextBoxColumn.HeaderText = "TimeCheckOut";
+            timeCheckOutDataGridViewTextBoxColumn.HeaderText = "Time Check-Out";
             timeCheckOutDataGridViewTextBoxColumn.MinimumWidth = 6;
             timeCheckOutDataGridViewTextBoxColumn.Name = "timeCheckOutDataGridViewTextBoxColumn";
             // 
@@ -230,15 +230,14 @@
             panel2.Controls.Add(button1);
             panel2.Controls.Add(dateStart);
             panel2.Controls.Add(btSearch);
-            panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(411, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(958, 91);
+            panel2.Size = new Size(935, 91);
             panel2.TabIndex = 17;
             // 
             // btLoadDayWorkSheet
             // 
-            btLoadDayWorkSheet.Location = new Point(366, 21);
+            btLoadDayWorkSheet.Location = new Point(686, 7);
             btLoadDayWorkSheet.Name = "btLoadDayWorkSheet";
             btLoadDayWorkSheet.Size = new Size(94, 41);
             btLoadDayWorkSheet.TabIndex = 11;
@@ -249,15 +248,15 @@
             // dateEnd
             // 
             dateEnd.Format = DateTimePickerFormat.Short;
-            dateEnd.Location = new Point(140, 48);
+            dateEnd.Location = new Point(476, 12);
             dateEnd.Name = "dateEnd";
             dateEnd.Size = new Size(187, 30);
             dateEnd.TabIndex = 6;
-            dateEnd.Value = new DateTime(2023, 5, 9, 14, 47, 0, 0);
+            dateEnd.Value = new DateTime(2023, 5, 1, 0, 0, 0, 0);
             // 
             // button1
             // 
-            button1.Location = new Point(16, 48);
+            button1.Location = new Point(342, 12);
             button1.Name = "button1";
             button1.Size = new Size(118, 30);
             button1.TabIndex = 5;
@@ -271,7 +270,7 @@
             dateStart.Name = "dateStart";
             dateStart.Size = new Size(187, 30);
             dateStart.TabIndex = 4;
-            dateStart.Value = new DateTime(2023, 5, 9, 14, 47, 0, 0);
+            dateStart.Value = new DateTime(2023, 5, 1, 0, 0, 0, 0);
             // 
             // btSearch
             // 
@@ -298,10 +297,9 @@
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label1);
-            panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(3, 3);
+            panel1.Location = new Point(3, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(408, 522);
+            panel1.Size = new Size(408, 488);
             panel1.TabIndex = 16;
             // 
             // txtTimeCheckOut
@@ -348,7 +346,7 @@
             // 
             // btReset
             // 
-            btReset.Location = new Point(39, 378);
+            btReset.Location = new Point(216, 404);
             btReset.Name = "btReset";
             btReset.Size = new Size(169, 41);
             btReset.TabIndex = 15;
@@ -374,7 +372,7 @@
             // 
             // btUpdateWorkSheet
             // 
-            btUpdateWorkSheet.Location = new Point(291, 378);
+            btUpdateWorkSheet.Location = new Point(291, 341);
             btUpdateWorkSheet.Name = "btUpdateWorkSheet";
             btUpdateWorkSheet.Size = new Size(94, 41);
             btUpdateWorkSheet.TabIndex = 10;
@@ -433,7 +431,7 @@
             tabDetailWorkSheet.Location = new Point(4, 32);
             tabDetailWorkSheet.Name = "tabDetailWorkSheet";
             tabDetailWorkSheet.Padding = new Padding(3);
-            tabDetailWorkSheet.Size = new Size(1372, 528);
+            tabDetailWorkSheet.Size = new Size(1347, 489);
             tabDetailWorkSheet.TabIndex = 2;
             tabDetailWorkSheet.Text = "Worksheet Defaut";
             tabDetailWorkSheet.UseVisualStyleBackColor = true;
@@ -444,7 +442,7 @@
             panel5.Dock = DockStyle.Fill;
             panel5.Location = new Point(3, 3);
             panel5.Name = "panel5";
-            panel5.Size = new Size(982, 522);
+            panel5.Size = new Size(881, 483);
             panel5.TabIndex = 21;
             // 
             // dgvDetailWorksheet
@@ -458,13 +456,140 @@
             dgvDetailWorksheet.Name = "dgvDetailWorksheet";
             dgvDetailWorksheet.RowHeadersWidth = 51;
             dgvDetailWorksheet.RowTemplate.Height = 29;
-            dgvDetailWorksheet.Size = new Size(982, 522);
+            dgvDetailWorksheet.Size = new Size(881, 483);
             dgvDetailWorksheet.TabIndex = 1;
             dgvDetailWorksheet.CellMouseDoubleClick += dgvDetailWorksheet_CellMouseDoubleClick_1;
             // 
+            // sheetDetailBindingSource
+            // 
+            sheetDetailBindingSource.DataSource = typeof(Repository.Models.SheetDetail);
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(txtCoefficientsSalaryDetails);
+            panel4.Controls.Add(btCreate);
+            panel4.Controls.Add(label9);
+            panel4.Controls.Add(btUpdateDetailsWorkSheet);
+            panel4.Controls.Add(txtDescriptionsDetails);
+            panel4.Controls.Add(txtEndDetails);
+            panel4.Controls.Add(txtStartDetails);
+            panel4.Controls.Add(txtSheetDetail);
+            panel4.Controls.Add(label8);
+            panel4.Controls.Add(label7);
+            panel4.Controls.Add(label6);
+            panel4.Controls.Add(label5);
+            panel4.Dock = DockStyle.Right;
+            panel4.Location = new Point(884, 3);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(460, 483);
+            panel4.TabIndex = 20;
+            // 
+            // txtCoefficientsSalaryDetails
+            // 
+            txtCoefficientsSalaryDetails.DecimalPlaces = 1;
+            txtCoefficientsSalaryDetails.Increment = new decimal(new int[] { 5, 0, 0, 65536 });
+            txtCoefficientsSalaryDetails.Location = new Point(172, 295);
+            txtCoefficientsSalaryDetails.Name = "txtCoefficientsSalaryDetails";
+            txtCoefficientsSalaryDetails.Size = new Size(196, 30);
+            txtCoefficientsSalaryDetails.TabIndex = 32;
+            // 
+            // btCreate
+            // 
+            btCreate.Location = new Point(160, 394);
+            btCreate.Name = "btCreate";
+            btCreate.Size = new Size(94, 41);
+            btCreate.TabIndex = 31;
+            btCreate.Text = "Create";
+            btCreate.UseVisualStyleBackColor = true;
+            btCreate.Click += btCreate_Click;
+            // 
+            // label9
+            // 
+            label9.Location = new Point(35, 278);
+            label9.Name = "label9";
+            label9.Size = new Size(113, 47);
+            label9.TabIndex = 30;
+            label9.Text = "Coefficients salary";
+            label9.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btUpdateDetailsWorkSheet
+            // 
+            btUpdateDetailsWorkSheet.Location = new Point(274, 394);
+            btUpdateDetailsWorkSheet.Name = "btUpdateDetailsWorkSheet";
+            btUpdateDetailsWorkSheet.Size = new Size(94, 41);
+            btUpdateDetailsWorkSheet.TabIndex = 29;
+            btUpdateDetailsWorkSheet.Text = "Update";
+            btUpdateDetailsWorkSheet.UseVisualStyleBackColor = true;
+            btUpdateDetailsWorkSheet.Click += btUpdateDetailsWorkSheet_Click_1;
+            // 
+            // txtDescriptionsDetails
+            // 
+            txtDescriptionsDetails.Location = new Point(172, 206);
+            txtDescriptionsDetails.Multiline = true;
+            txtDescriptionsDetails.Name = "txtDescriptionsDetails";
+            txtDescriptionsDetails.Size = new Size(196, 62);
+            txtDescriptionsDetails.TabIndex = 27;
+            // 
+            // txtEndDetails
+            // 
+            txtEndDetails.Location = new Point(172, 150);
+            txtEndDetails.Name = "txtEndDetails";
+            txtEndDetails.Size = new Size(196, 30);
+            txtEndDetails.TabIndex = 26;
+            // 
+            // txtStartDetails
+            // 
+            txtStartDetails.Location = new Point(172, 94);
+            txtStartDetails.Name = "txtStartDetails";
+            txtStartDetails.Size = new Size(196, 30);
+            txtStartDetails.TabIndex = 25;
+            // 
+            // txtSheetDetail
+            // 
+            txtSheetDetail.Location = new Point(172, 38);
+            txtSheetDetail.Name = "txtSheetDetail";
+            txtSheetDetail.Size = new Size(196, 30);
+            txtSheetDetail.TabIndex = 24;
+            txtSheetDetail.KeyPress += txtSheetDetail_KeyPress;
+            // 
+            // label8
+            // 
+            label8.Location = new Point(39, 154);
+            label8.Name = "label8";
+            label8.Size = new Size(113, 47);
+            label8.TabIndex = 23;
+            label8.Text = "Time End";
+            label8.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            label7.Location = new Point(39, 92);
+            label7.Name = "label7";
+            label7.Size = new Size(113, 47);
+            label7.TabIndex = 22;
+            label7.Text = "Time Start";
+            label7.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            label6.Location = new Point(39, 30);
+            label6.Name = "label6";
+            label6.Size = new Size(113, 47);
+            label6.TabIndex = 21;
+            label6.Text = "Sheet";
+            label6.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            label5.Location = new Point(39, 216);
+            label5.Name = "label5";
+            label5.Size = new Size(113, 47);
+            label5.TabIndex = 20;
+            label5.Text = "Descriptions";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // sheetDataGridViewTextBoxColumn1
             // 
-            sheetDataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             sheetDataGridViewTextBoxColumn1.DataPropertyName = "Sheet";
             sheetDataGridViewTextBoxColumn1.HeaderText = "Sheet";
             sheetDataGridViewTextBoxColumn1.MinimumWidth = 6;
@@ -496,139 +621,22 @@
             // 
             // coefficientsSalaryDataGridViewTextBoxColumn
             // 
-            coefficientsSalaryDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             coefficientsSalaryDataGridViewTextBoxColumn.DataPropertyName = "CoefficientsSalary";
             coefficientsSalaryDataGridViewTextBoxColumn.HeaderText = "Coefficients Salary";
             coefficientsSalaryDataGridViewTextBoxColumn.MinimumWidth = 6;
             coefficientsSalaryDataGridViewTextBoxColumn.Name = "coefficientsSalaryDataGridViewTextBoxColumn";
+            coefficientsSalaryDataGridViewTextBoxColumn.Width = 120;
             // 
-            // sheetDetailBindingSource
-            // 
-            sheetDetailBindingSource.DataSource = typeof(Repository.Models.SheetDetail);
-            // 
-            // panel4
-            // 
-            panel4.Controls.Add(label9);
-            panel4.Controls.Add(btUpdateDetailsWorkSheet);
-            panel4.Controls.Add(txtCoefficientsSalaryDetails);
-            panel4.Controls.Add(txtDescriptionsDetails);
-            panel4.Controls.Add(txtEndDetails);
-            panel4.Controls.Add(txtStartDetails);
-            panel4.Controls.Add(txtSheetDetail);
-            panel4.Controls.Add(label8);
-            panel4.Controls.Add(label7);
-            panel4.Controls.Add(label6);
-            panel4.Controls.Add(label5);
-            panel4.Dock = DockStyle.Right;
-            panel4.Location = new Point(985, 3);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(384, 522);
-            panel4.TabIndex = 20;
-            // 
-            // label9
-            // 
-            label9.Location = new Point(26, 284);
-            label9.Name = "label9";
-            label9.Size = new Size(113, 47);
-            label9.TabIndex = 30;
-            label9.Text = "Coefficients salary";
-            label9.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // btUpdateDetailsWorkSheet
-            // 
-            btUpdateDetailsWorkSheet.Location = new Point(265, 400);
-            btUpdateDetailsWorkSheet.Name = "btUpdateDetailsWorkSheet";
-            btUpdateDetailsWorkSheet.Size = new Size(94, 41);
-            btUpdateDetailsWorkSheet.TabIndex = 29;
-            btUpdateDetailsWorkSheet.Text = "Update";
-            btUpdateDetailsWorkSheet.UseVisualStyleBackColor = true;
-            btUpdateDetailsWorkSheet.Click += btUpdateDetailsWorkSheet_Click_1;
-            // 
-            // txtCoefficientsSalaryDetails
-            // 
-            txtCoefficientsSalaryDetails.Location = new Point(163, 300);
-            txtCoefficientsSalaryDetails.Name = "txtCoefficientsSalaryDetails";
-            txtCoefficientsSalaryDetails.Size = new Size(196, 30);
-            txtCoefficientsSalaryDetails.TabIndex = 28;
-            // 
-            // txtDescriptionsDetails
-            // 
-            txtDescriptionsDetails.Location = new Point(163, 212);
-            txtDescriptionsDetails.Multiline = true;
-            txtDescriptionsDetails.Name = "txtDescriptionsDetails";
-            txtDescriptionsDetails.Size = new Size(196, 62);
-            txtDescriptionsDetails.TabIndex = 27;
-            // 
-            // txtEndDetails
-            // 
-            txtEndDetails.Location = new Point(163, 156);
-            txtEndDetails.Name = "txtEndDetails";
-            txtEndDetails.ReadOnly = true;
-            txtEndDetails.Size = new Size(196, 30);
-            txtEndDetails.TabIndex = 26;
-            // 
-            // txtStartDetails
-            // 
-            txtStartDetails.Location = new Point(163, 100);
-            txtStartDetails.Name = "txtStartDetails";
-            txtStartDetails.ReadOnly = true;
-            txtStartDetails.Size = new Size(196, 30);
-            txtStartDetails.TabIndex = 25;
-            // 
-            // txtSheetDetail
-            // 
-            txtSheetDetail.Location = new Point(163, 44);
-            txtSheetDetail.Name = "txtSheetDetail";
-            txtSheetDetail.ReadOnly = true;
-            txtSheetDetail.Size = new Size(196, 30);
-            txtSheetDetail.TabIndex = 24;
-            // 
-            // label8
-            // 
-            label8.Location = new Point(30, 160);
-            label8.Name = "label8";
-            label8.Size = new Size(113, 47);
-            label8.TabIndex = 23;
-            label8.Text = "Time End";
-            label8.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            label7.Location = new Point(30, 98);
-            label7.Name = "label7";
-            label7.Size = new Size(113, 47);
-            label7.TabIndex = 22;
-            label7.Text = "Time Start";
-            label7.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label6
-            // 
-            label6.Location = new Point(30, 36);
-            label6.Name = "label6";
-            label6.Size = new Size(113, 47);
-            label6.TabIndex = 21;
-            label6.Text = "Sheet";
-            label6.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            label5.Location = new Point(30, 222);
-            label5.Name = "label5";
-            label5.Size = new Size(113, 47);
-            label5.TabIndex = 20;
-            label5.Text = "Descriptions";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // ManageWorkSheetPage
+            // frmManageWorkSheetPage
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1393, 619);
+            ClientSize = new Size(1370, 532);
             Controls.Add(tabManageWorkSheet);
-            Name = "ManageWorkSheetPage";
+            Name = "frmManageWorkSheetPage";
             Text = "ManageWorkSheetPage";
             tabManageWorkSheet.ResumeLayout(false);
-            tabUpdateWorkSheet.ResumeLayout(false);
+            tabWorkSheetHistory.ResumeLayout(false);
             panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvShowWorkSheet).EndInit();
             ((System.ComponentModel.ISupportInitialize)workSheetBindingSource).EndInit();
@@ -641,13 +649,14 @@
             ((System.ComponentModel.ISupportInitialize)sheetDetailBindingSource).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)txtCoefficientsSalaryDetails).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private TabControl tabManageWorkSheet;
-        private TabPage tabUpdateWorkSheet;
+        private TabPage tabWorkSheetHistory;
         private Button btUpdateWorkSheet;
         private Label label4;
         private Label label3;
@@ -672,7 +681,6 @@
         private Panel panel4;
         private Label label9;
         private Button btUpdateDetailsWorkSheet;
-        private TextBox txtCoefficientsSalaryDetails;
         private TextBox txtDescriptionsDetails;
         private TextBox txtEndDetails;
         private TextBox txtStartDetails;
@@ -683,24 +691,26 @@
         private Label label5;
         private Panel panel5;
         private DataGridView dgvDetailWorksheet;
+        private BindingSource workSheetBindingSource;
+        private Button btNextList;
+        private Button btBackList;
+        private BindingSource sheetDetailBindingSource;
+        private TextBox txtTimeCheckOut;
+        private Label label12;
+        private TextBox txtTimeCheckIn;
+        private Label label11;
+        private Button btCreate;
+        private NumericUpDown txtCoefficientsSalaryDetails;
         private DataGridViewTextBoxColumn idWorkSheetDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn idEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn sheetDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn timeCheckInDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn timeCheckOutDataGridViewTextBoxColumn;
-        private BindingSource workSheetBindingSource;
-        private Button btNextList;
-        private Button btBackList;
         private DataGridViewTextBoxColumn sheetDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn shiftStartTimeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn shiftEndTimeDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descriptionSDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn coefficientsSalaryDataGridViewTextBoxColumn;
-        private BindingSource sheetDetailBindingSource;
-        private TextBox txtTimeCheckOut;
-        private Label label12;
-        private TextBox txtTimeCheckIn;
-        private Label label11;
     }
 }

@@ -36,6 +36,7 @@
             hELPToolStripMenuItem = new ToolStripMenuItem();
             dISPLAYToolStripMenuItem = new ToolStripMenuItem();
             eXITToolStripMenuItem = new ToolStripMenuItem();
+            txtAccountLogin = new ToolStripTextBox();
             pMain = new Panel();
             menuStrip.SuspendLayout();
             SuspendLayout();
@@ -55,13 +56,13 @@
             // 
             mnuAdmin.DropDownItems.AddRange(new ToolStripItem[] { mnuAdminDB, mnuAdminLogout });
             mnuAdmin.Name = "mnuAdmin";
-            mnuAdmin.Size = new Size(90, 29);
+            mnuAdmin.Size = new Size(113, 36);
             mnuAdmin.Text = "ADMIN";
             // 
             // mnuAdminDB
             // 
             mnuAdminDB.Name = "mnuAdminDB";
-            mnuAdminDB.Size = new Size(232, 30);
+            mnuAdminDB.Size = new Size(287, 36);
             mnuAdminDB.Text = "DASHBOARD";
             mnuAdminDB.Click += mnuAdminDB_Click;
             // 
@@ -69,32 +70,40 @@
             // 
             mnuAdminLogout.Name = "mnuAdminLogout";
             mnuAdminLogout.ShortcutKeys = Keys.Alt | Keys.F4;
-            mnuAdminLogout.Size = new Size(232, 30);
+            mnuAdminLogout.Size = new Size(287, 36);
             mnuAdminLogout.Text = "LOGOUT";
             // 
             // sTOREToolStripMenuItem
             // 
             sTOREToolStripMenuItem.Name = "sTOREToolStripMenuItem";
-            sTOREToolStripMenuItem.Size = new Size(81, 29);
+            sTOREToolStripMenuItem.Size = new Size(101, 36);
             sTOREToolStripMenuItem.Text = "STORE";
+            sTOREToolStripMenuItem.Click += sTOREToolStripMenuItem_Click;
             // 
             // hELPToolStripMenuItem
             // 
             hELPToolStripMenuItem.Name = "hELPToolStripMenuItem";
-            hELPToolStripMenuItem.Size = new Size(71, 29);
+            hELPToolStripMenuItem.Size = new Size(86, 36);
             hELPToolStripMenuItem.Text = "HELP";
             // 
             // dISPLAYToolStripMenuItem
             // 
             dISPLAYToolStripMenuItem.Name = "dISPLAYToolStripMenuItem";
-            dISPLAYToolStripMenuItem.Size = new Size(101, 29);
+            dISPLAYToolStripMenuItem.Size = new Size(125, 36);
             dISPLAYToolStripMenuItem.Text = "DISPLAY";
             // 
             // eXITToolStripMenuItem
             // 
             eXITToolStripMenuItem.Name = "eXITToolStripMenuItem";
-            eXITToolStripMenuItem.Size = new Size(63, 29);
+            eXITToolStripMenuItem.Size = new Size(79, 36);
             eXITToolStripMenuItem.Text = "EXIT";
+            // 
+            // txtAccountLogin
+            // 
+            txtAccountLogin.BackColor = Color.Gainsboro;
+            txtAccountLogin.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            txtAccountLogin.Name = "txtAccountLogin";
+            txtAccountLogin.Size = new Size(300, 39);
             // 
             // pMain
             // 
@@ -134,5 +143,6 @@
         private ToolStripMenuItem hELPToolStripMenuItem;
         private ToolStripMenuItem dISPLAYToolStripMenuItem;
         private ToolStripMenuItem eXITToolStripMenuItem;
+        private ToolStripTextBox txtAccountLogin;
     }
 }

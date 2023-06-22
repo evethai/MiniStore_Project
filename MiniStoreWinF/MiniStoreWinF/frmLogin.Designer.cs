@@ -140,7 +140,7 @@
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(558, 442);
+            ClientSize = new Size(584, 442);
             Controls.Add(button1);
             Controls.Add(panel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
