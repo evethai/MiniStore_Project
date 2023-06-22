@@ -32,13 +32,13 @@
             mnuAdmin = new ToolStripMenuItem();
             mnuStore = new ToolStripMenuItem();
             mnuCheck = new ToolStripMenuItem();
+            btCheckIn = new ToolStripMenuItem();
+            btCheckOut = new ToolStripMenuItem();
             mnuHelp = new ToolStripMenuItem();
             mnuDis = new ToolStripMenuItem();
             mnuLogout = new ToolStripMenuItem();
             txtUser = new ToolStripMenuItem();
             pMain = new Panel();
-            btCheckIn = new ToolStripMenuItem();
-            btCheckOut = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             SuspendLayout();
             // 
@@ -77,6 +77,19 @@
             mnuCheck.Size = new Size(85, 29);
             mnuCheck.Text = "CHECK";
             // 
+            // btCheckIn
+            // 
+            btCheckIn.Name = "btCheckIn";
+            btCheckIn.Size = new Size(177, 30);
+            btCheckIn.Text = "Check-In";
+            btCheckIn.Click += btCheckIn_Click;
+            // 
+            // btCheckOut
+            // 
+            btCheckOut.Name = "btCheckOut";
+            btCheckOut.Size = new Size(177, 30);
+            btCheckOut.Text = "Check-Out";
+            // 
             // mnuHelp
             // 
             mnuHelp.Name = "mnuHelp";
@@ -106,13 +119,6 @@
             txtUser.Size = new Size(29, 29);
             txtUser.Text = ".";
             // 
-            // txtAccountLogin
-            // 
-            txtAccountLogin.BackColor = Color.Gainsboro;
-            txtAccountLogin.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            txtAccountLogin.Name = "txtAccountLogin";
-            txtAccountLogin.Size = new Size(300, 39);
-            // 
             // pMain
             // 
             pMain.Dock = DockStyle.Fill;
@@ -121,19 +127,6 @@
             pMain.Name = "pMain";
             pMain.Size = new Size(1307, 658);
             pMain.TabIndex = 2;
-            // 
-            // btCheckIn
-            // 
-            btCheckIn.Name = "btCheckIn";
-            btCheckIn.Size = new Size(180, 30);
-            btCheckIn.Text = "Check-In";
-            btCheckIn.Click += btCheckIn_Click;
-            // 
-            // btCheckOut
-            // 
-            btCheckOut.Name = "btCheckOut";
-            btCheckOut.Size = new Size(180, 30);
-            btCheckOut.Text = "Check-Out";
             // 
             // frmMain
             // 
