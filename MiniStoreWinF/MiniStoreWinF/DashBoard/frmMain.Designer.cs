@@ -58,7 +58,7 @@
             // 
             mnuAdmin.DropDownItems.AddRange(new ToolStripItem[] { mnuAdminDB, mnuAdminLogout });
             mnuAdmin.Name = "mnuAdmin";
-            mnuAdmin.Size = new Size(113, 39);
+            mnuAdmin.Size = new Size(113, 36);
             mnuAdmin.Text = "ADMIN";
             // 
             // mnuAdminDB
@@ -78,20 +78,20 @@
             // sTOREToolStripMenuItem
             // 
             sTOREToolStripMenuItem.Name = "sTOREToolStripMenuItem";
-            sTOREToolStripMenuItem.Size = new Size(101, 39);
+            sTOREToolStripMenuItem.Size = new Size(101, 36);
             sTOREToolStripMenuItem.Text = "STORE";
             sTOREToolStripMenuItem.Click += sTOREToolStripMenuItem_Click;
             // 
             // hELPToolStripMenuItem
             // 
             hELPToolStripMenuItem.Name = "hELPToolStripMenuItem";
-            hELPToolStripMenuItem.Size = new Size(86, 39);
+            hELPToolStripMenuItem.Size = new Size(86, 36);
             hELPToolStripMenuItem.Text = "HELP";
             // 
             // dISPLAYToolStripMenuItem
             // 
             dISPLAYToolStripMenuItem.Name = "dISPLAYToolStripMenuItem";
-            dISPLAYToolStripMenuItem.Size = new Size(125, 39);
+            dISPLAYToolStripMenuItem.Size = new Size(125, 36);
             dISPLAYToolStripMenuItem.Text = "DISPLAY";
             // 
             // qUITToolStripMenuItem
@@ -103,7 +103,7 @@
             // eXITToolStripMenuItem
             // 
             eXITToolStripMenuItem.Name = "eXITToolStripMenuItem";
-            eXITToolStripMenuItem.Size = new Size(79, 39);
+            eXITToolStripMenuItem.Size = new Size(79, 36);
             eXITToolStripMenuItem.Text = "EXIT";
             // 
             // txtAccountLogin
