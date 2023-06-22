@@ -61,7 +61,7 @@ namespace MiniStoreWinF.OrdersProducts
             };
 
             //frmLogin employeeLogin = new frmLogin();
-            var TakeInforEmployee = _employeeService.GetAll().Where(p => p.Username == DataEmployee).FirstOrDefault();
+            var TakeInforEmployee = _employeeService.GetAll().Where(p => p.FullNameEmp == DataEmployee).FirstOrDefault();
             if (TakeInforEmployee != null)
             {
                 txtEmployee.Text = "Hello " + TakeInforEmployee.FullNameEmp.ToString();
@@ -395,7 +395,7 @@ namespace MiniStoreWinF.OrdersProducts
                     string columnDataTotal = item.SubItems[4].Text;
                     //------------------------------------// END take information in Cart
 
-                    var checkIdEmployee = _employeeService.GetAll().Where(p => p.Username == DataEmployee).FirstOrDefault();
+                    var checkIdEmployee = _employeeService.GetAll().Where(p => p.FullNameEmp == DataEmployee).FirstOrDefault();
                     order.IdEmp = checkIdEmployee.IdEmp;
                     //------------------------------------//END Take information employee create order
 

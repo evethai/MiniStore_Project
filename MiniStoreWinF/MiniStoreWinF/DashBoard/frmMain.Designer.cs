@@ -81,15 +81,16 @@
             // btCheckIn
             // 
             btCheckIn.Name = "btCheckIn";
-            btCheckIn.Size = new Size(220, 36);
+            btCheckIn.Size = new Size(224, 36);
             btCheckIn.Text = "Check-In";
             btCheckIn.Click += btCheckIn_Click;
             // 
             // btCheckOut
             // 
             btCheckOut.Name = "btCheckOut";
-            btCheckOut.Size = new Size(220, 36);
+            btCheckOut.Size = new Size(224, 36);
             btCheckOut.Text = "Check-Out";
+            btCheckOut.Click += btCheckOut_Click;
             // 
             // mnuHelp
             // 
@@ -124,6 +125,7 @@
             // pMain
             // 
             pMain.Dock = DockStyle.Fill;
+            pMain.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             pMain.Location = new Point(0, 42);
             pMain.Margin = new Padding(4);
             pMain.Name = "pMain";
