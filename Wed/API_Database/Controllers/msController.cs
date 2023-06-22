@@ -11,6 +11,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Web;
 using System.Web.Http;
+using System.Windows.Documents;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Linq;
 
@@ -100,13 +101,14 @@ namespace API_Database.Controllers
 
             if (worksheet == null)
             {
-                return null;
+                return Ok();
             }
 
             // Nếu tài khoản hợp lệ
             WorkSheetDTO worksheetDTO = new WorkSheetDTO
             {
                 Sheet = (int)worksheet.Sheet,
+                TimeCheckIn = worksheet.TimeCheckIn.HasValue ? worksheet.TimeCheckIn.Value : DateTime.MinValue,
                 TimeCheckOut = worksheet.TimeCheckOut.HasValue ? worksheet.TimeCheckOut.Value : DateTime.MinValue
             };
 
@@ -118,7 +120,7 @@ namespace API_Database.Controllers
         //find wS
         [HttpGet]
         [Route("api/ms/fwst")]
-        public WorkSheetDTO FindWorkSheetst(string idemp, string date)
+        public WorkSheet FindWorkSheetst(string idemp, string date)
         {
             if (!DateTime.TryParse(date, out DateTime searchDate))
             {
@@ -135,11 +137,68 @@ namespace API_Database.Controllers
             WorkSheetDTO worksheetDTO = new WorkSheetDTO
             {
                 Sheet = (int)worksheet.Sheet,
+                TimeCheckIn = worksheet.TimeCheckIn.HasValue ? worksheet.TimeCheckIn.Value : DateTime.MinValue,
                 TimeCheckOut = worksheet.TimeCheckOut.HasValue ? worksheet.TimeCheckOut.Value : DateTime.MinValue
             };
 
-            return worksheetDTO;
+            return worksheet;
         }
+        //find sheetjwt
+        [HttpGet]
+        [Route("api/ms/fst")]
+        public IHttpActionResult FindSheetjwt()
+        {
+            List<SheetDetailDTO> sheetList = new List<SheetDetailDTO>();
+
+            List<SheetDetail> sheetDetails = db.SheetDetails.ToList();
+
+            foreach (SheetDetail sheetD in sheetDetails)
+            {
+                if (sheetD.DescriptionS == "Guard")
+                {
+                    SheetDetailDTO sheetDDTO = new SheetDetailDTO
+                    {
+                        Sheet = sheetD.Sheet,
+                        ShiftStartTime = sheetD.ShiftStartTime,
+                        ShiftEndTime = sheetD.ShiftEndTime
+                    };
+                    sheetList.Add(sheetDDTO);
+                }
+            }
+
+            string jwt = JWTUtils.GenerateJWTFSD(sheetList);
+
+            return Ok(new { jwt });
+        }
+
+
+        //find sheet
+        [HttpGet]
+        [Route("api/ms/fstt")]
+        public List<SheetDetailDTO> FindSheet()
+        {
+            List<SheetDetailDTO> sheetList = new List<SheetDetailDTO>();
+
+            List<SheetDetail> sheetDetails = db.SheetDetails.ToList();
+
+            foreach (SheetDetail sheetD in sheetDetails)
+            {
+                if (sheetD.DescriptionS == "Guard")
+                {
+                    SheetDetailDTO sheetDDTO = new SheetDetailDTO
+                    {
+                        Sheet = sheetD.Sheet,
+                        ShiftStartTime = sheetD.ShiftStartTime,
+                        ShiftEndTime = sheetD.ShiftEndTime
+                    };
+                    sheetList.Add(sheetDDTO);
+                }
+            }
+
+            return sheetList;
+        }
+
+
 
 
         //update worksheet jwt
@@ -230,7 +289,7 @@ namespace API_Database.Controllers
                 }
                 else
                 {
-                    Console.WriteLine("JWT bị null.");
+                    Console.WriteLine("JWT bị null!!!");
                     return false;
                 }
 

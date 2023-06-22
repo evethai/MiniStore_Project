@@ -30,12 +30,15 @@ namespace API_Database
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertEmployee(Employee instance);
-    partial void UpdateEmployee(Employee instance);
-    partial void DeleteEmployee(Employee instance);
     partial void InsertWorkSheet(WorkSheet instance);
     partial void UpdateWorkSheet(WorkSheet instance);
     partial void DeleteWorkSheet(WorkSheet instance);
+    partial void InsertEmployee(Employee instance);
+    partial void UpdateEmployee(Employee instance);
+    partial void DeleteEmployee(Employee instance);
+    partial void InsertSheetDetail(SheetDetail instance);
+    partial void UpdateSheetDetail(SheetDetail instance);
+    partial void DeleteSheetDetail(SheetDetail instance);
     #endregion
 		
 		public MiniStoreDataContext(string connection) : 
@@ -62,6 +65,14 @@ namespace API_Database
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<WorkSheet> WorkSheets
+		{
+			get
+			{
+				return this.GetTable<WorkSheet>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Employee> Employees
 		{
 			get
@@ -70,11 +81,275 @@ namespace API_Database
 			}
 		}
 		
-		public System.Data.Linq.Table<WorkSheet> WorkSheets
+		public System.Data.Linq.Table<SheetDetail> SheetDetails
 		{
 			get
 			{
-				return this.GetTable<WorkSheet>();
+				return this.GetTable<SheetDetail>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.WorkSheet")]
+	public partial class WorkSheet : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _IdWorkSheet;
+		
+		private string _IdEmp;
+		
+		private System.Nullable<System.DateTime> _Date;
+		
+		private System.Nullable<int> _Sheet;
+		
+		private System.Nullable<System.DateTime> _TimeCheckIn;
+		
+		private System.Nullable<System.DateTime> _TimeCheckOut;
+		
+		private EntityRef<Employee> _Employee;
+		
+		private EntityRef<SheetDetail> _SheetDetail;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdWorkSheetChanging(string value);
+    partial void OnIdWorkSheetChanged();
+    partial void OnIdEmpChanging(string value);
+    partial void OnIdEmpChanged();
+    partial void OnDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateChanged();
+    partial void OnSheetChanging(System.Nullable<int> value);
+    partial void OnSheetChanged();
+    partial void OnTimeCheckInChanging(System.Nullable<System.DateTime> value);
+    partial void OnTimeCheckInChanged();
+    partial void OnTimeCheckOutChanging(System.Nullable<System.DateTime> value);
+    partial void OnTimeCheckOutChanged();
+    #endregion
+		
+		public WorkSheet()
+		{
+			this._Employee = default(EntityRef<Employee>);
+			this._SheetDetail = default(EntityRef<SheetDetail>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdWorkSheet", DbType="NVarChar(20) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string IdWorkSheet
+		{
+			get
+			{
+				return this._IdWorkSheet;
+			}
+			set
+			{
+				if ((this._IdWorkSheet != value))
+				{
+					this.OnIdWorkSheetChanging(value);
+					this.SendPropertyChanging();
+					this._IdWorkSheet = value;
+					this.SendPropertyChanged("IdWorkSheet");
+					this.OnIdWorkSheetChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdEmp", DbType="NVarChar(20)")]
+		public string IdEmp
+		{
+			get
+			{
+				return this._IdEmp;
+			}
+			set
+			{
+				if ((this._IdEmp != value))
+				{
+					if (this._Employee.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdEmpChanging(value);
+					this.SendPropertyChanging();
+					this._IdEmp = value;
+					this.SendPropertyChanged("IdEmp");
+					this.OnIdEmpChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
+		public System.Nullable<System.DateTime> Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sheet", DbType="Int")]
+		public System.Nullable<int> Sheet
+		{
+			get
+			{
+				return this._Sheet;
+			}
+			set
+			{
+				if ((this._Sheet != value))
+				{
+					if (this._SheetDetail.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSheetChanging(value);
+					this.SendPropertyChanging();
+					this._Sheet = value;
+					this.SendPropertyChanged("Sheet");
+					this.OnSheetChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeCheckIn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TimeCheckIn
+		{
+			get
+			{
+				return this._TimeCheckIn;
+			}
+			set
+			{
+				if ((this._TimeCheckIn != value))
+				{
+					this.OnTimeCheckInChanging(value);
+					this.SendPropertyChanging();
+					this._TimeCheckIn = value;
+					this.SendPropertyChanged("TimeCheckIn");
+					this.OnTimeCheckInChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeCheckOut", DbType="DateTime")]
+		public System.Nullable<System.DateTime> TimeCheckOut
+		{
+			get
+			{
+				return this._TimeCheckOut;
+			}
+			set
+			{
+				if ((this._TimeCheckOut != value))
+				{
+					this.OnTimeCheckOutChanging(value);
+					this.SendPropertyChanging();
+					this._TimeCheckOut = value;
+					this.SendPropertyChanged("TimeCheckOut");
+					this.OnTimeCheckOutChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_WorkSheet", Storage="_Employee", ThisKey="IdEmp", OtherKey="IdEmp", IsForeignKey=true)]
+		public Employee Employee
+		{
+			get
+			{
+				return this._Employee.Entity;
+			}
+			set
+			{
+				Employee previousValue = this._Employee.Entity;
+				if (((previousValue != value) 
+							|| (this._Employee.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Employee.Entity = null;
+						previousValue.WorkSheets.Remove(this);
+					}
+					this._Employee.Entity = value;
+					if ((value != null))
+					{
+						value.WorkSheets.Add(this);
+						this._IdEmp = value.IdEmp;
+					}
+					else
+					{
+						this._IdEmp = default(string);
+					}
+					this.SendPropertyChanged("Employee");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SheetDetail_WorkSheet", Storage="_SheetDetail", ThisKey="Sheet", OtherKey="Sheet", IsForeignKey=true)]
+		public SheetDetail SheetDetail
+		{
+			get
+			{
+				return this._SheetDetail.Entity;
+			}
+			set
+			{
+				SheetDetail previousValue = this._SheetDetail.Entity;
+				if (((previousValue != value) 
+							|| (this._SheetDetail.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SheetDetail.Entity = null;
+						previousValue.WorkSheets.Remove(this);
+					}
+					this._SheetDetail.Entity = value;
+					if ((value != null))
+					{
+						value.WorkSheets.Add(this);
+						this._Sheet = value.Sheet;
+					}
+					else
+					{
+						this._Sheet = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("SheetDetail");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -457,116 +732,48 @@ namespace API_Database
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.WorkSheet")]
-	public partial class WorkSheet : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SheetDetail")]
+	public partial class SheetDetail : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _IdWorkSheet;
+		private int _Sheet;
 		
-		private string _IdEmp;
+		private string _ShiftStartTime;
 		
-		private System.Nullable<System.DateTime> _Date;
+		private string _ShiftEndTime;
 		
-		private System.Nullable<int> _Sheet;
+		private string _DescriptionS;
 		
-		private System.Nullable<System.DateTime> _TimeCheckIn;
+		private System.Nullable<double> _CoefficientsSalary;
 		
-		private System.Nullable<System.DateTime> _TimeCheckOut;
-		
-		private EntityRef<Employee> _Employee;
+		private EntitySet<WorkSheet> _WorkSheets;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnIdWorkSheetChanging(string value);
-    partial void OnIdWorkSheetChanged();
-    partial void OnIdEmpChanging(string value);
-    partial void OnIdEmpChanged();
-    partial void OnDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnDateChanged();
-    partial void OnSheetChanging(System.Nullable<int> value);
+    partial void OnSheetChanging(int value);
     partial void OnSheetChanged();
-    partial void OnTimeCheckInChanging(System.Nullable<System.DateTime> value);
-    partial void OnTimeCheckInChanged();
-    partial void OnTimeCheckOutChanging(System.Nullable<System.DateTime> value);
-    partial void OnTimeCheckOutChanged();
+    partial void OnShiftStartTimeChanging(string value);
+    partial void OnShiftStartTimeChanged();
+    partial void OnShiftEndTimeChanging(string value);
+    partial void OnShiftEndTimeChanged();
+    partial void OnDescriptionSChanging(string value);
+    partial void OnDescriptionSChanged();
+    partial void OnCoefficientsSalaryChanging(System.Nullable<double> value);
+    partial void OnCoefficientsSalaryChanged();
     #endregion
 		
-		public WorkSheet()
+		public SheetDetail()
 		{
-			this._Employee = default(EntityRef<Employee>);
+			this._WorkSheets = new EntitySet<WorkSheet>(new Action<WorkSheet>(this.attach_WorkSheets), new Action<WorkSheet>(this.detach_WorkSheets));
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdWorkSheet", DbType="NVarChar(20) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string IdWorkSheet
-		{
-			get
-			{
-				return this._IdWorkSheet;
-			}
-			set
-			{
-				if ((this._IdWorkSheet != value))
-				{
-					this.OnIdWorkSheetChanging(value);
-					this.SendPropertyChanging();
-					this._IdWorkSheet = value;
-					this.SendPropertyChanged("IdWorkSheet");
-					this.OnIdWorkSheetChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdEmp", DbType="NVarChar(20)")]
-		public string IdEmp
-		{
-			get
-			{
-				return this._IdEmp;
-			}
-			set
-			{
-				if ((this._IdEmp != value))
-				{
-					if (this._Employee.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIdEmpChanging(value);
-					this.SendPropertyChanging();
-					this._IdEmp = value;
-					this.SendPropertyChanged("IdEmp");
-					this.OnIdEmpChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="Date")]
-		public System.Nullable<System.DateTime> Date
-		{
-			get
-			{
-				return this._Date;
-			}
-			set
-			{
-				if ((this._Date != value))
-				{
-					this.OnDateChanging(value);
-					this.SendPropertyChanging();
-					this._Date = value;
-					this.SendPropertyChanged("Date");
-					this.OnDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sheet", DbType="Int")]
-		public System.Nullable<int> Sheet
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sheet", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Sheet
 		{
 			get
 			{
@@ -585,77 +792,96 @@ namespace API_Database
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeCheckIn", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TimeCheckIn
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShiftStartTime", DbType="NVarChar(50)")]
+		public string ShiftStartTime
 		{
 			get
 			{
-				return this._TimeCheckIn;
+				return this._ShiftStartTime;
 			}
 			set
 			{
-				if ((this._TimeCheckIn != value))
+				if ((this._ShiftStartTime != value))
 				{
-					this.OnTimeCheckInChanging(value);
+					this.OnShiftStartTimeChanging(value);
 					this.SendPropertyChanging();
-					this._TimeCheckIn = value;
-					this.SendPropertyChanged("TimeCheckIn");
-					this.OnTimeCheckInChanged();
+					this._ShiftStartTime = value;
+					this.SendPropertyChanged("ShiftStartTime");
+					this.OnShiftStartTimeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeCheckOut", DbType="DateTime")]
-		public System.Nullable<System.DateTime> TimeCheckOut
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ShiftEndTime", DbType="NVarChar(50)")]
+		public string ShiftEndTime
 		{
 			get
 			{
-				return this._TimeCheckOut;
+				return this._ShiftEndTime;
 			}
 			set
 			{
-				if ((this._TimeCheckOut != value))
+				if ((this._ShiftEndTime != value))
 				{
-					this.OnTimeCheckOutChanging(value);
+					this.OnShiftEndTimeChanging(value);
 					this.SendPropertyChanging();
-					this._TimeCheckOut = value;
-					this.SendPropertyChanged("TimeCheckOut");
-					this.OnTimeCheckOutChanged();
+					this._ShiftEndTime = value;
+					this.SendPropertyChanged("ShiftEndTime");
+					this.OnShiftEndTimeChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_WorkSheet", Storage="_Employee", ThisKey="IdEmp", OtherKey="IdEmp", IsForeignKey=true)]
-		public Employee Employee
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DescriptionS", DbType="NVarChar(50)")]
+		public string DescriptionS
 		{
 			get
 			{
-				return this._Employee.Entity;
+				return this._DescriptionS;
 			}
 			set
 			{
-				Employee previousValue = this._Employee.Entity;
-				if (((previousValue != value) 
-							|| (this._Employee.HasLoadedOrAssignedValue == false)))
+				if ((this._DescriptionS != value))
 				{
+					this.OnDescriptionSChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Employee.Entity = null;
-						previousValue.WorkSheets.Remove(this);
-					}
-					this._Employee.Entity = value;
-					if ((value != null))
-					{
-						value.WorkSheets.Add(this);
-						this._IdEmp = value.IdEmp;
-					}
-					else
-					{
-						this._IdEmp = default(string);
-					}
-					this.SendPropertyChanged("Employee");
+					this._DescriptionS = value;
+					this.SendPropertyChanged("DescriptionS");
+					this.OnDescriptionSChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CoefficientsSalary", DbType="Float")]
+		public System.Nullable<double> CoefficientsSalary
+		{
+			get
+			{
+				return this._CoefficientsSalary;
+			}
+			set
+			{
+				if ((this._CoefficientsSalary != value))
+				{
+					this.OnCoefficientsSalaryChanging(value);
+					this.SendPropertyChanging();
+					this._CoefficientsSalary = value;
+					this.SendPropertyChanged("CoefficientsSalary");
+					this.OnCoefficientsSalaryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SheetDetail_WorkSheet", Storage="_WorkSheets", ThisKey="Sheet", OtherKey="Sheet")]
+		public EntitySet<WorkSheet> WorkSheets
+		{
+			get
+			{
+				return this._WorkSheets;
+			}
+			set
+			{
+				this._WorkSheets.Assign(value);
 			}
 		}
 		
@@ -677,6 +903,18 @@ namespace API_Database
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_WorkSheets(WorkSheet entity)
+		{
+			this.SendPropertyChanging();
+			entity.SheetDetail = this;
+		}
+		
+		private void detach_WorkSheets(WorkSheet entity)
+		{
+			this.SendPropertyChanging();
+			entity.SheetDetail = null;
 		}
 	}
 }

@@ -33,31 +33,23 @@ namespace MiniStoreWinF.ManageSalary
         private void frmSalaryDetail_Load(object sender, EventArgs e)
         {
             ShowListSalary();
-            _employeeService = new EmployeeService();
-            var listEmp = _employeeService.GetAll().Where(p => p.IsActive == true).ToList();
-            AutoCompleteStringCollection autoCompleteStringCollection = new AutoCompleteStringCollection();
-            foreach (var item in listEmp)
-            {
-                autoCompleteStringCollection.Add(item.FullNameEmp);
-            }
-            cbName.AutoCompleteCustomSource = autoCompleteStringCollection;
-            cbName.ValueMember = "IdEmp";
-            cbName.DisplayMember = "FullNameEmp";
-            cbName.DataSource = listEmp;
+            u.showListEmp(cbName);
         }
         public void ShowListSalary()
         {
-            _salaryService = new SalaryService();
-            var list = _salaryService.GetAll().Where(p=>p.DateOmonth.Month.Equals(DateTime.Now.AddMonths(-1).Month)).ToList();
-            dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
-            listSa = list;
+
+            dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, u.salary());
+            listSa = u.salary();
         }
 
         private void btFilter_Click(object sender, EventArgs e)
         {
             _salaryService = new SalaryService();
             DateTime time = dtpTime.Value;
-            var list = _salaryService.GetAll().Where(p => p.DateImonth.Month.Equals(time.Month)).ToList();
+            //var list = _salaryService.GetAll().Where(p => p.DateImonth.Month.Equals(time.Month)).ToList();
+
+            var list =u.salary().Where(p=>p.DateImonth.Month.Equals(time.Month)).ToList();
+
             dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
             listSa = list;
         }
@@ -155,5 +147,7 @@ namespace MiniStoreWinF.ManageSalary
         {
 
         }
+
+
     }
 }
