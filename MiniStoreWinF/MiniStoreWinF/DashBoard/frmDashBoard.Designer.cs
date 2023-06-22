@@ -211,6 +211,7 @@
             // 
             label3.AutoSize = true;
             label3.Location = new Point(42, 14);
+
             label3.Name = "label3";
             label3.Size = new Size(157, 20);
             label3.TabIndex = 0;
@@ -270,6 +271,7 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(249, 102);
             panel4.TabIndex = 1;
+            panel4.Click += panel4_Click;
             // 
             // label5
             // 

@@ -63,6 +63,16 @@ namespace MiniStoreWinF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _899ba66ece49c49ffff440be6dba7b57 {
+            get {
+                object obj = ResourceManager.GetObject("899ba66ece49c49ffff440be6dba7b57", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap adv {
             get {
                 object obj = ResourceManager.GetObject("adv", resourceCulture);
@@ -86,6 +96,16 @@ namespace MiniStoreWinF.Properties {
         internal static System.Drawing.Bitmap fill {
             get {
                 object obj = ResourceManager.GetObject("fill", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_fast_moving_consumer_goods_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-fast-moving-consumer-goods-50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
