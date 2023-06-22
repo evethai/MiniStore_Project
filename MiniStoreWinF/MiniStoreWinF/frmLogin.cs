@@ -32,14 +32,15 @@ namespace MiniStoreWinF
             {
                 this.Hide();
                 frmMain ControlPage= new frmMain();
+                ControlPage.dataAccountLogin = txtUserName.Text;
                 ControlPage.Show();
             }// end check role admin
             else if (login.Roles == "Employee")
             {
                 this.Hide();
-                OrdersProducts.OrderProducts employessPage = new OrdersProducts.OrderProducts();
-                employessPage.DataEmployee = txtUserName.Text;
-                employessPage.Show();
+                frmMain ControlPage = new frmMain();
+                ControlPage.dataAccountLogin = txtUserName.Text;
+                ControlPage.Show();
             }//end check role employee
             else
             {

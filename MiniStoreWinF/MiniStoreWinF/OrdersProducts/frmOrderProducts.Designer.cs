@@ -97,11 +97,11 @@
             dgvShowListProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvShowListProducts.Columns.AddRange(new DataGridViewColumn[] { skuDataGridViewTextBoxColumn, nameProductDataGridViewTextBoxColumn, priceProductDataGridViewTextBoxColumn, mfgDataGridViewTextBoxColumn, expDataGridViewTextBoxColumn });
             dgvShowListProducts.DataSource = productBindingSource;
-            dgvShowListProducts.Location = new Point(7, 85);
+            dgvShowListProducts.Location = new Point(0, 0);
             dgvShowListProducts.Name = "dgvShowListProducts";
             dgvShowListProducts.RowHeadersWidth = 51;
             dgvShowListProducts.RowTemplate.Height = 29;
-            dgvShowListProducts.Size = new Size(655, 513);
+            dgvShowListProducts.Size = new Size(668, 541);
             dgvShowListProducts.TabIndex = 2;
             dgvShowListProducts.CellDoubleClick += dgvShowListProducts_CellDoubleClick;
             // 
@@ -213,11 +213,9 @@
             // panel2
             // 
             panel2.Controls.Add(dgvShowListProducts);
-            panel2.Controls.Add(panel8);
-            panel2.Controls.Add(panel4);
-            panel2.Location = new Point(0, 31);
+            panel2.Location = new Point(0, 82);
             panel2.Name = "panel2";
-            panel2.Size = new Size(662, 604);
+            panel2.Size = new Size(668, 553);
             panel2.TabIndex = 2;
             // 
             // panel8
@@ -226,16 +224,16 @@
             panel8.Controls.Add(label1);
             panel8.Location = new Point(346, 0);
             panel8.Name = "panel8";
-            panel8.Size = new Size(316, 82);
+            panel8.Size = new Size(322, 82);
             panel8.TabIndex = 13;
             // 
             // panel1
             // 
             panel1.Controls.Add(listViewOrders);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(1110, 31);
+            panel1.Location = new Point(1115, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(502, 589);
+            panel1.Size = new Size(502, 617);
             panel1.TabIndex = 1;
             // 
             // listViewOrders
@@ -245,7 +243,7 @@
             listViewOrders.GridLines = true;
             listViewOrders.Location = new Point(3, 3);
             listViewOrders.Name = "listViewOrders";
-            listViewOrders.Size = new Size(499, 593);
+            listViewOrders.Size = new Size(499, 614);
             listViewOrders.TabIndex = 9;
             listViewOrders.UseCompatibleStateImageBehavior = false;
             listViewOrders.View = View.Details;
@@ -286,9 +284,9 @@
             panel5.Controls.Add(label7);
             panel5.Controls.Add(label6);
             panel5.Controls.Add(txtTotalAllOrders);
-            panel5.Location = new Point(664, 368);
+            panel5.Location = new Point(668, 337);
             panel5.Name = "panel5";
-            panel5.Size = new Size(445, 261);
+            panel5.Size = new Size(445, 280);
             panel5.TabIndex = 16;
             // 
             // txtScanVoucher
@@ -313,7 +311,7 @@
             btCheckMember.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btCheckMember.Image = (Image)resources.GetObject("btCheckMember.Image");
             btCheckMember.ImageAlign = ContentAlignment.TopCenter;
-            btCheckMember.Location = new Point(152, 164);
+            btCheckMember.Location = new Point(327, 168);
             btCheckMember.Name = "btCheckMember";
             btCheckMember.Size = new Size(98, 69);
             btCheckMember.TabIndex = 6;
@@ -337,7 +335,7 @@
             btShowBill.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btShowBill.Image = (Image)resources.GetObject("btShowBill.Image");
             btShowBill.ImageAlign = ContentAlignment.TopCenter;
-            btShowBill.Location = new Point(21, 164);
+            btShowBill.Location = new Point(213, 168);
             btShowBill.Name = "btShowBill";
             btShowBill.Size = new Size(98, 69);
             btShowBill.TabIndex = 11;
@@ -395,9 +393,9 @@
             panel6.Controls.Add(txtPriceOrder);
             panel6.Controls.Add(label4);
             panel6.Controls.Add(label5);
-            panel6.Location = new Point(664, 31);
+            panel6.Location = new Point(668, 0);
             panel6.Name = "panel6";
-            panel6.Size = new Size(445, 334);
+            panel6.Size = new Size(445, 331);
             panel6.TabIndex = 17;
             // 
             // label9
@@ -500,9 +498,10 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { txtEmployee, Information });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1612, 31);
+            menuStrip1.Size = new Size(1617, 31);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
+            menuStrip1.Visible = false;
             // 
             // txtEmployee
             // 
@@ -531,9 +530,11 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1612, 620);
+            ClientSize = new Size(1617, 617);
             Controls.Add(panel6);
+            Controls.Add(panel8);
             Controls.Add(panel5);
+            Controls.Add(panel4);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(menuStrip1);

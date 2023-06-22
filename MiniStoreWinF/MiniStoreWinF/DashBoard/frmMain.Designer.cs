@@ -37,6 +37,7 @@
             dISPLAYToolStripMenuItem = new ToolStripMenuItem();
             qUITToolStripMenuItem = new ToolStripMenuItem();
             eXITToolStripMenuItem = new ToolStripMenuItem();
+            txtAccountLogin = new ToolStripTextBox();
             pMain = new Panel();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -44,11 +45,12 @@
             // menuStrip1
             // 
             menuStrip1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { mnuAdmin, sTOREToolStripMenuItem, hELPToolStripMenuItem, dISPLAYToolStripMenuItem, qUITToolStripMenuItem, eXITToolStripMenuItem });
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { mnuAdmin, sTOREToolStripMenuItem, hELPToolStripMenuItem, dISPLAYToolStripMenuItem, qUITToolStripMenuItem, eXITToolStripMenuItem, txtAccountLogin });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(10, 4, 0, 4);
-            menuStrip1.Size = new Size(1743, 37);
+            menuStrip1.Size = new Size(1680, 47);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -56,13 +58,13 @@
             // 
             mnuAdmin.DropDownItems.AddRange(new ToolStripItem[] { mnuAdminDB, mnuAdminLogout });
             mnuAdmin.Name = "mnuAdmin";
-            mnuAdmin.Size = new Size(90, 29);
+            mnuAdmin.Size = new Size(113, 39);
             mnuAdmin.Text = "ADMIN";
             // 
             // mnuAdminDB
             // 
             mnuAdminDB.Name = "mnuAdminDB";
-            mnuAdminDB.Size = new Size(232, 30);
+            mnuAdminDB.Size = new Size(287, 36);
             mnuAdminDB.Text = "DASHBOARD";
             mnuAdminDB.Click += mnuAdminDB_Click;
             // 
@@ -70,60 +72,70 @@
             // 
             mnuAdminLogout.Name = "mnuAdminLogout";
             mnuAdminLogout.ShortcutKeys = Keys.Alt | Keys.F4;
-            mnuAdminLogout.Size = new Size(232, 30);
+            mnuAdminLogout.Size = new Size(287, 36);
             mnuAdminLogout.Text = "LOGOUT";
             // 
             // sTOREToolStripMenuItem
             // 
             sTOREToolStripMenuItem.Name = "sTOREToolStripMenuItem";
-            sTOREToolStripMenuItem.Size = new Size(81, 29);
+            sTOREToolStripMenuItem.Size = new Size(101, 39);
             sTOREToolStripMenuItem.Text = "STORE";
+            sTOREToolStripMenuItem.Click += sTOREToolStripMenuItem_Click;
             // 
             // hELPToolStripMenuItem
             // 
             hELPToolStripMenuItem.Name = "hELPToolStripMenuItem";
-            hELPToolStripMenuItem.Size = new Size(71, 29);
+            hELPToolStripMenuItem.Size = new Size(86, 39);
             hELPToolStripMenuItem.Text = "HELP";
             // 
             // dISPLAYToolStripMenuItem
             // 
             dISPLAYToolStripMenuItem.Name = "dISPLAYToolStripMenuItem";
-            dISPLAYToolStripMenuItem.Size = new Size(101, 29);
+            dISPLAYToolStripMenuItem.Size = new Size(125, 39);
             dISPLAYToolStripMenuItem.Text = "DISPLAY";
             // 
             // qUITToolStripMenuItem
             // 
             qUITToolStripMenuItem.Name = "qUITToolStripMenuItem";
-            qUITToolStripMenuItem.Size = new Size(69, 29);
+            qUITToolStripMenuItem.Size = new Size(85, 39);
             qUITToolStripMenuItem.Text = "QUIT";
             // 
             // eXITToolStripMenuItem
             // 
             eXITToolStripMenuItem.Name = "eXITToolStripMenuItem";
-            eXITToolStripMenuItem.Size = new Size(63, 29);
+            eXITToolStripMenuItem.Size = new Size(79, 39);
             eXITToolStripMenuItem.Text = "EXIT";
+            // 
+            // txtAccountLogin
+            // 
+            txtAccountLogin.BackColor = Color.Gainsboro;
+            txtAccountLogin.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            txtAccountLogin.Name = "txtAccountLogin";
+            txtAccountLogin.Size = new Size(300, 39);
             // 
             // pMain
             // 
             pMain.Dock = DockStyle.Fill;
-            pMain.Location = new Point(0, 37);
+            pMain.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            pMain.Location = new Point(0, 47);
             pMain.Margin = new Padding(5);
             pMain.Name = "pMain";
-            pMain.Size = new Size(1743, 953);
+            pMain.Size = new Size(1680, 661);
             pMain.TabIndex = 2;
             // 
             // frmMain
             // 
-            AutoScaleDimensions = new SizeF(12F, 30F);
+            AutoScaleDimensions = new SizeF(14F, 36F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1743, 990);
+            ClientSize = new Size(1680, 708);
             Controls.Add(pMain);
             Controls.Add(menuStrip1);
             Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(5);
             Name = "frmMain";
             StartPosition = FormStartPosition.CenterScreen;
+            Load += frmMain_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -142,5 +154,6 @@
         private ToolStripMenuItem dISPLAYToolStripMenuItem;
         private ToolStripMenuItem qUITToolStripMenuItem;
         private ToolStripMenuItem eXITToolStripMenuItem;
+        private ToolStripTextBox txtAccountLogin;
     }
 }
