@@ -21,12 +21,12 @@
                         <h2>Đăng nhập</h2>
                         <div class="inputbox">
                             <ion-icon name="mail-outline"></ion-icon>
-                            <input type="text" name="txtusername" required>
+                            <input type="text" name="txtusername" required maxlength="20">
                             <label for="">Username:</label>
                         </div>
                         <div class="inputbox">
                             <ion-icon name="lock-closed-outline"></ion-icon>
-                            <input type="password" name="txtpassword" required>
+                            <input type="password" name="txtpassword" required maxlength="20">
                             <label for="">Password</label>
                         </div>
                         <div class="g-recaptcha" data-sitekey="6Lcf9XcmAAAAAJjJG3BepTpkCmglEjKSh8HCdMIQ"></div>

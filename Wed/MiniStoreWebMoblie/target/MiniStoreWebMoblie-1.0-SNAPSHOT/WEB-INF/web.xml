@@ -2,7 +2,7 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>com.mycompany.ministorewebmoblie.LoginServlet</servlet-class>
+        <servlet-class>com.mycompany.ministorewebmoblie.Controller.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -10,7 +10,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>CheckInServlet</servlet-name>
-        <servlet-class>com.mycompany.ministorewebmoblie.CheckInServlet</servlet-class>
+        <servlet-class>com.mycompany.ministorewebmoblie.Controller.CheckInServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CheckInServlet</servlet-name>
@@ -18,7 +18,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>com.mycompany.ministorewebmoblie.LogoutServlet</servlet-class>
+        <servlet-class>com.mycompany.ministorewebmoblie.Controller.LogoutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
@@ -26,7 +26,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>CheckOutServlet</servlet-name>
-        <servlet-class>com.mycompany.ministorewebmoblie.CheckOutServlet</servlet-class>
+        <servlet-class>com.mycompany.ministorewebmoblie.Controller.CheckOutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CheckOutServlet</servlet-name>
