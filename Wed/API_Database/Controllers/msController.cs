@@ -87,6 +87,59 @@ namespace API_Database.Controllers
         //    return empDTO;
         //}
 
+        //find fws by date jwt
+        [HttpGet]
+        [Route("api/ms/fwsd")]
+        public IHttpActionResult listWorkSheetByDatejwt(string date)
+        {
+            if (!DateTime.TryParse(date, out DateTime searchDate))
+            {
+                throw new ArgumentException("Ngày không hợp lệ");
+            }
+
+            // Giả sử bạn có một tập hợp các đối tượng WorkSheet được gọi là 'worksheets'
+            List<WorkSheet> filteredWorksheets = db.WorkSheets.Where(ws => ws.Date.ToString().Equals(searchDate.Date)).ToList();
+            if (filteredWorksheets == null)
+            {
+                return Ok();
+            }
+
+            List<WorkSheetDTO> worksheetDTOs = filteredWorksheets.Select(ws => new WorkSheetDTO
+            {
+                Sheet = (int)ws.Sheet // Điều chỉnh tùy thuộc vào thuộc tính Sheet trong lớp WorkSheetDTO
+            }).ToList();
+
+            string jwt = JWTUtils.GenerateJWTFLWS(worksheetDTOs);
+
+            return Ok(new { jwt });
+        }
+
+        //find fws by date 
+        [HttpGet]
+        [Route("api/ms/fwsdt")]
+        public List<WorkSheetDTO> listWorkSheetByDate(string date)
+        {
+            if (!DateTime.TryParse(date, out DateTime searchDate))
+            {
+                throw new ArgumentException("Ngày không hợp lệ");
+            }
+
+            // Giả sử bạn có một tập hợp các đối tượng WorkSheet được gọi là 'worksheets'
+            List<WorkSheet> filteredWorksheets = db.WorkSheets.Where(ws => ws.Date.ToString().Equals(searchDate.Date)).ToList();
+            if (filteredWorksheets == null)
+            {
+                return null;
+            }
+
+            List<WorkSheetDTO> worksheetDTOs = filteredWorksheets.Select(ws => new WorkSheetDTO
+            {
+                Sheet = (int)ws.Sheet // Điều chỉnh tùy thuộc vào thuộc tính Sheet trong lớp WorkSheetDTO
+            }).ToList();
+
+            return worksheetDTOs;
+        }
+
+
         //find fws jwt
         [HttpGet]
         [Route("api/ms/fws")]
@@ -143,7 +196,7 @@ namespace API_Database.Controllers
 
             return worksheet;
         }
-        //find sheetjwt
+        //find sheet guard jwt
         [HttpGet]
         [Route("api/ms/fst")]
         public IHttpActionResult FindSheetjwt()
@@ -154,7 +207,7 @@ namespace API_Database.Controllers
 
             foreach (SheetDetail sheetD in sheetDetails)
             {
-                if (sheetD.DescriptionS == "Guard")
+                if (sheetD.DescriptionS.Trim() == "Guard")
                 {
                     SheetDetailDTO sheetDDTO = new SheetDetailDTO
                     {
@@ -172,7 +225,7 @@ namespace API_Database.Controllers
         }
 
 
-        //find sheet
+        //list sheet Guard
         [HttpGet]
         [Route("api/ms/fstt")]
         public List<SheetDetailDTO> FindSheet()
@@ -183,7 +236,7 @@ namespace API_Database.Controllers
 
             foreach (SheetDetail sheetD in sheetDetails)
             {
-                if (sheetD.DescriptionS == "Guard")
+                if (sheetD.DescriptionS.Trim() == "Guard")
                 {
                     SheetDetailDTO sheetDDTO = new SheetDetailDTO
                     {
@@ -194,7 +247,6 @@ namespace API_Database.Controllers
                     sheetList.Add(sheetDDTO);
                 }
             }
-
             return sheetList;
         }
 

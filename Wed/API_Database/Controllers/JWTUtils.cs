@@ -78,6 +78,28 @@ namespace API_Database.Controllers
             return tokenHandler.WriteToken(token);
         }
 
+        public static string GenerateJWTFLWS(List<WorkSheetDTO> wsdto)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(SecretKey);
+
+            var claims = new List<Claim>();
+            foreach (WorkSheetDTO dto in wsdto)
+            {
+                claims.Add(new Claim("Sheet", dto.Sheet.ToString()));
+            }
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.UtcNow.AddHours(1), // Thời gian hết hạn của JWT: 1 giờ
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }
+
         public static ClaimsPrincipal ValidateJWT(string jwt)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
