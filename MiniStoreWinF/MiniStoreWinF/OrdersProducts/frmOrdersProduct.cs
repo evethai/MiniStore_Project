@@ -60,21 +60,19 @@ namespace MiniStoreWinF.OrdersProducts
             {
                 DataSource = listProductsShow
             };
-
-            //frmLogin employeeLogin = new frmLogin();
-            var TakeInforEmployee = _employeeService.GetAll().Where(p => p.FullNameEmp == DataEmployee).FirstOrDefault();
-            if (TakeInforEmployee != null)
-            {
-                txtEmployee.Text = "Hello " + TakeInforEmployee.FullNameEmp.ToString();
-            }
+            listViewOrders.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }//Load form => OK
         private void btSearch_Click(object sender, EventArgs e)
         {
-            string txtSearch = txtSearchName.Text;
-            var valueSearch = _productService.GetAll().Where(p => p.NameProduct.Contains(txtSearch)).ToList();
+            string txtSearch = txtSearchName.Text.ToLower();
+            var valueSearch = _productService.GetAll().Where(p => p.NameProduct.ToLower().Contains(txtSearch)).ToList();
             if (txtSearch == "")
             {
-                return;
+                var listProductsShow = _productService.GetAll().Select(p => new { p.Sku, p.NameProduct, p.QuantityProduct, p.PriceProduct, p.Mfg, p.Exp, p.PictureProduct }).ToList();
+                dgvShowListProducts.DataSource = new BindingSource()
+                {
+                    DataSource = listProductsShow
+                };
             }
             else
             {
@@ -127,35 +125,6 @@ namespace MiniStoreWinF.OrdersProducts
         } // button add product => OK
         public void AddItems()
         {
-            //int columnIndex = 4; // Index của cột cần tính tổng (0 là cột đầu tiên)
-            //double total = 0;
-            //string NameOrder = txtNameOrder.Text;
-            //float PriceOrder = float.Parse(txtPriceOrder.Text);
-            //if (NameOrder.Length <= 0 || PriceOrder <= 0)
-            //{
-            //    MessageBox.Show("Place choise Products", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-            //else if (txtQuantityOrder.Text == "" || txtQuantityOrder.Text == "0")
-            //{
-            //    MessageBox.Show("Error Enter Quantity", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-            //else if (int.TryParse(txtQuantityOrder.Text, out int result))
-            //{
-            //    int QuantityOrder = result;
-            //    float totals = QuantityOrder * PriceOrder;
-            //    ListViewItem items = new ListViewItem(SKU);
-            //    items.SubItems.Add(NameOrder).ToString();
-            //    items.SubItems.Add(QuantityOrder.ToString());
-            //    items.SubItems.Add(PriceOrder.ToString());
-            //    items.SubItems.Add(totals.ToString());
-            //    listViewOrders.Items.Add(items);
-            //    foreach (ListViewItem item in listViewOrders.Items)
-            //    {
-            //        int value = int.Parse(item.SubItems[columnIndex].Text);
-            //        total += value;
-            //    }
-            //    txtTotalAllOrders.Text = total.ToString();
-            //}
             int columnIndex = 4; // Index của cột cần tính tổng (0 là cột đầu tiên)
             double total = 0;
             string NameOrder = txtNameOrder.Text;
@@ -249,29 +218,7 @@ namespace MiniStoreWinF.OrdersProducts
                 }
             }
 
-        }//button to using voucher => OK
-         //private void cbVourcherOrder_SelectedIndexChanged(object sender, EventArgs e)
-         //{
-         //    var checkEXP = DateTime.Now;
-         //    var checkName = txtScanVoucher.Text;
-         //    var checkVoucher = _voucherService.GetAll().Where(p => p.Name.Equals(checkName)).FirstOrDefault();
-         //if (checkVoucher != null)
-         //{
-         //    if (checkVoucher.Exp < checkEXP || checkVoucher.Quantity <= 0 || Convert.ToInt32(txtTotalAllOrders.Text) <= 0)
-         //    {
-         //        MessageBox.Show("The Voucher EXP or Quantity is 0", "Notification", MessageBoxButtons.OK);
-         //        cbVourcherOrder.SelectedIndex = -1;
-         //        cbVourcherOrder.Enabled = false;
-         //    }
-         //    else
-         //    {
-         //        var TotalUseVoucher = double.Parse(txtTotalAllOrders.Text) - (checkVoucher.Price * 10);
-         //        txtTotalAllOrders.Text = TotalUseVoucher.ToString();
-         //        MessageBox.Show("Using voucher Successfully", "Notification", MessageBoxButtons.OK);
-         //        cbVourcherOrder.Enabled = false;
-         //    }
-         //}
-         //}//combo box using the Voucher ==> OK
+        }
         private void cbPointUsing_SelectedIndexChanged(object sender, EventArgs e)
         {
             int CheckPoint = Convert.ToInt32(cbPointUsing.SelectedItem);
@@ -437,11 +384,14 @@ namespace MiniStoreWinF.OrdersProducts
                 AutoRevenuelUpdateWhenBillOrderDone();
                 OpenChildForm();
             }
+            else if (listViewOrders.Items == null)
+            {
+                MessageBox.Show("Can not show Bill !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            }
             else
             {
                 return;
             }
-
         } // ADD TO CART SHOW BILL => MAYBE OK
         public void AutoRevenuelUpdateWhenBillOrderDone() // Update Total Revenue in one day  => OK
         {

@@ -67,6 +67,11 @@
             tabDetailWorkSheet = new TabPage();
             panel5 = new Panel();
             dgvDetailWorksheet = new DataGridView();
+            sheetDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            shiftStartTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            shiftEndTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descriptionSDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            coefficientsSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             sheetDetailBindingSource = new BindingSource(components);
             panel4 = new Panel();
             txtCoefficientsSalaryDetails = new NumericUpDown();
@@ -81,11 +86,6 @@
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
-            sheetDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            shiftStartTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            shiftEndTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            descriptionSDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            coefficientsSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             tabManageWorkSheet.SuspendLayout();
             tabWorkSheetHistory.SuspendLayout();
             panel3.SuspendLayout();
@@ -460,6 +460,46 @@
             dgvDetailWorksheet.TabIndex = 1;
             dgvDetailWorksheet.CellMouseDoubleClick += dgvDetailWorksheet_CellMouseDoubleClick_1;
             // 
+            // sheetDataGridViewTextBoxColumn1
+            // 
+            sheetDataGridViewTextBoxColumn1.DataPropertyName = "Sheet";
+            sheetDataGridViewTextBoxColumn1.HeaderText = "Sheet";
+            sheetDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            sheetDataGridViewTextBoxColumn1.Name = "sheetDataGridViewTextBoxColumn1";
+            sheetDataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // shiftStartTimeDataGridViewTextBoxColumn
+            // 
+            shiftStartTimeDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            shiftStartTimeDataGridViewTextBoxColumn.DataPropertyName = "ShiftStartTime";
+            shiftStartTimeDataGridViewTextBoxColumn.HeaderText = "Start Time";
+            shiftStartTimeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            shiftStartTimeDataGridViewTextBoxColumn.Name = "shiftStartTimeDataGridViewTextBoxColumn";
+            // 
+            // shiftEndTimeDataGridViewTextBoxColumn
+            // 
+            shiftEndTimeDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            shiftEndTimeDataGridViewTextBoxColumn.DataPropertyName = "ShiftEndTime";
+            shiftEndTimeDataGridViewTextBoxColumn.HeaderText = "End Time";
+            shiftEndTimeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            shiftEndTimeDataGridViewTextBoxColumn.Name = "shiftEndTimeDataGridViewTextBoxColumn";
+            // 
+            // descriptionSDataGridViewTextBoxColumn
+            // 
+            descriptionSDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            descriptionSDataGridViewTextBoxColumn.DataPropertyName = "DescriptionS";
+            descriptionSDataGridViewTextBoxColumn.HeaderText = "Description";
+            descriptionSDataGridViewTextBoxColumn.MinimumWidth = 6;
+            descriptionSDataGridViewTextBoxColumn.Name = "descriptionSDataGridViewTextBoxColumn";
+            // 
+            // coefficientsSalaryDataGridViewTextBoxColumn
+            // 
+            coefficientsSalaryDataGridViewTextBoxColumn.DataPropertyName = "CoefficientsSalary";
+            coefficientsSalaryDataGridViewTextBoxColumn.HeaderText = "Coefficients Salary";
+            coefficientsSalaryDataGridViewTextBoxColumn.MinimumWidth = 6;
+            coefficientsSalaryDataGridViewTextBoxColumn.Name = "coefficientsSalaryDataGridViewTextBoxColumn";
+            coefficientsSalaryDataGridViewTextBoxColumn.Width = 120;
+            // 
             // sheetDetailBindingSource
             // 
             sheetDetailBindingSource.DataSource = typeof(Repository.Models.SheetDetail);
@@ -536,6 +576,7 @@
             txtEndDetails.Name = "txtEndDetails";
             txtEndDetails.Size = new Size(196, 30);
             txtEndDetails.TabIndex = 26;
+            txtEndDetails.Leave += txtEndDetails_Leave;
             // 
             // txtStartDetails
             // 
@@ -543,6 +584,7 @@
             txtStartDetails.Name = "txtStartDetails";
             txtStartDetails.Size = new Size(196, 30);
             txtStartDetails.TabIndex = 25;
+            txtStartDetails.Leave += txtStartDetails_Leave;
             // 
             // txtSheetDetail
             // 
@@ -587,45 +629,6 @@
             label5.TabIndex = 20;
             label5.Text = "Descriptions";
             label5.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // sheetDataGridViewTextBoxColumn1
-            // 
-            sheetDataGridViewTextBoxColumn1.DataPropertyName = "Sheet";
-            sheetDataGridViewTextBoxColumn1.HeaderText = "Sheet";
-            sheetDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            sheetDataGridViewTextBoxColumn1.Name = "sheetDataGridViewTextBoxColumn1";
-            // 
-            // shiftStartTimeDataGridViewTextBoxColumn
-            // 
-            shiftStartTimeDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            shiftStartTimeDataGridViewTextBoxColumn.DataPropertyName = "ShiftStartTime";
-            shiftStartTimeDataGridViewTextBoxColumn.HeaderText = "Start Time";
-            shiftStartTimeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            shiftStartTimeDataGridViewTextBoxColumn.Name = "shiftStartTimeDataGridViewTextBoxColumn";
-            // 
-            // shiftEndTimeDataGridViewTextBoxColumn
-            // 
-            shiftEndTimeDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            shiftEndTimeDataGridViewTextBoxColumn.DataPropertyName = "ShiftEndTime";
-            shiftEndTimeDataGridViewTextBoxColumn.HeaderText = "End Time";
-            shiftEndTimeDataGridViewTextBoxColumn.MinimumWidth = 6;
-            shiftEndTimeDataGridViewTextBoxColumn.Name = "shiftEndTimeDataGridViewTextBoxColumn";
-            // 
-            // descriptionSDataGridViewTextBoxColumn
-            // 
-            descriptionSDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            descriptionSDataGridViewTextBoxColumn.DataPropertyName = "DescriptionS";
-            descriptionSDataGridViewTextBoxColumn.HeaderText = "Description";
-            descriptionSDataGridViewTextBoxColumn.MinimumWidth = 6;
-            descriptionSDataGridViewTextBoxColumn.Name = "descriptionSDataGridViewTextBoxColumn";
-            // 
-            // coefficientsSalaryDataGridViewTextBoxColumn
-            // 
-            coefficientsSalaryDataGridViewTextBoxColumn.DataPropertyName = "CoefficientsSalary";
-            coefficientsSalaryDataGridViewTextBoxColumn.HeaderText = "Coefficients Salary";
-            coefficientsSalaryDataGridViewTextBoxColumn.MinimumWidth = 6;
-            coefficientsSalaryDataGridViewTextBoxColumn.Name = "coefficientsSalaryDataGridViewTextBoxColumn";
-            coefficientsSalaryDataGridViewTextBoxColumn.Width = 120;
             // 
             // frmManageWorkSheetPage
             // 
