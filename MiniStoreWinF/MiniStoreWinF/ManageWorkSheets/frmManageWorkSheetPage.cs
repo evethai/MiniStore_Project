@@ -9,8 +9,10 @@ using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MiniStoreWinF.ManageWorkSheet
 {
@@ -32,7 +34,8 @@ namespace MiniStoreWinF.ManageWorkSheet
             cbSheet.DataSource = sheetDetails;
             cbSheet.DisplayMember = "Sheet";//end code lấy sheet
             var showDetails = _sheetDetailService.GetAll(); // take table
-            dgvDetailWorksheet.DataSource = new BindingSource() { DataSource = showDetails }; //end show sheet details tab 
+            dgvDetailWorksheet.DataSource = new BindingSource() { DataSource = showDetails }; //end show sheet details tab 5
+
         }
 
         List<WorkSheet> Loadrecord(int page, int recordnumber)
@@ -132,28 +135,19 @@ namespace MiniStoreWinF.ManageWorkSheet
         {
             try
             {
-                var rowWorkSheet = dgvShowWorkSheet[0, e.RowIndex].Value; // take row 
+                var rowWorkSheet = dgvShowWorkSheet[0, e.RowIndex].Value;
+
                 var IdWorkSheet = _workSheetService.GetAll().Where(entity => entity.IdWorkSheet.Equals(rowWorkSheet)).FirstOrDefault(); // comapare row choise with table in data
                 if (IdWorkSheet == null)
-                { return; } //end check table
+                { return; }
                 rowIndex = e.RowIndex;
                 var sheet = IdWorkSheet.Sheet;
-                var sheetId = _workSheetService.GetAll().Where(p => p.Sheet.Equals(sheet)).FirstOrDefault(); // choise sheet show
-                cbSheet.Text = sheetId.Sheet.ToString();
+                cbSheet.Text = IdWorkSheet.Sheet.ToString();
                 txtIdWorkSheet.Text = IdWorkSheet.IdWorkSheet.ToString();
                 txtIdEmployees.Text = IdWorkSheet.IdEmp.ToString();
                 txtDateWorkSheet.Text = IdWorkSheet.Date.ToString();
                 txtTimeCheckIn.Text = IdWorkSheet.TimeCheckIn.ToString();
                 txtTimeCheckOut.Text = IdWorkSheet.TimeCheckOut.ToString();
-                //end choise in table
-                if (sheetId != null)
-                {
-                    txtIdWorkSheet.Text = sheetId.IdWorkSheet.ToString();
-                } //end check null
-                else
-                {
-                    txtIdWorkSheet.Text = "None";
-                }
             }
             catch
             {
@@ -261,6 +255,33 @@ namespace MiniStoreWinF.ManageWorkSheet
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true; // Cannot continue input
+            }
+        }
+        private void txtStartDetails_Leave(object sender, EventArgs e)
+        {
+            TextBoxBase textBox = (TextBoxBase)sender;
+            string input = textBox.Text;
+            // Kiểm tra định dạng hh:mm:ss
+            TimeSpan timeSpan;
+            if (!TimeSpan.TryParseExact(input, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out timeSpan))
+            {
+                // Nếu không đúng định dạng, thông báo lỗi cho người dùng
+                MessageBox.Show("Định dạng thời gian không hợp lệ. Vui lòng nhập lại theo định dạng hh:mm:ss.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBox.Focus(); // Đưa con trỏ về TextBox để người dùng nhập lại
+            }
+        }
+
+        private void txtEndDetails_Leave(object sender, EventArgs e)
+        {
+            TextBoxBase textBox = (TextBoxBase)sender;
+            string input = textBox.Text;
+            // Kiểm tra định dạng hh:mm:ss
+            TimeSpan timeSpan;
+            if (!TimeSpan.TryParseExact(input, "hh\\:mm\\:ss", CultureInfo.InvariantCulture, out timeSpan))
+            {
+                // Nếu không đúng định dạng, thông báo lỗi cho người dùng
+                MessageBox.Show("Định dạng thời gian không hợp lệ. Vui lòng nhập lại theo định dạng hh:mm:ss.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                textBox.Focus(); // Đưa con trỏ về TextBox để người dùng nhập lại
             }
         }
     }
