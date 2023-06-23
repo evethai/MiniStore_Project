@@ -77,11 +77,20 @@ namespace MiniStoreWinF.ManageSalary
 
         private void dgvSub_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            var id = dgvSub[0, e.RowIndex].Value;
-            var s_salary = _detailSubSalaryService.GetAll().Where(p => p.IdDetailSubSalary.Equals(id) && p.ActiveSub == true).FirstOrDefault();
-            if (s_salary != null)
+            try
             {
-                txtSaveID.Text = s_salary.IdDetailSubSalary.ToString();
+
+
+                var id = dgvSub[0, e.RowIndex].Value;
+                var s_salary = _detailSubSalaryService.GetAll().Where(p => p.IdDetailSubSalary.Equals(id) && p.ActiveSub == true).FirstOrDefault();
+                if (s_salary != null)
+                {
+                    txtSaveID.Text = s_salary.IdDetailSubSalary.ToString();
+                }
+            }
+            catch   (Exception ex)
+            {
+
             }
         }
 

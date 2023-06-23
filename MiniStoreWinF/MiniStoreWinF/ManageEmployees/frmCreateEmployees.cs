@@ -122,11 +122,11 @@ namespace MiniStoreWinF.ManageEmployees
                 employee.IsActive = true;
                 if (cbGender.SelectedItem.Equals("Man"))
                 {
-                    employee.Sex = true;
+                    employee.Sex = false;
                 }
                 else
                 {
-                    employee.Sex = false;
+                    employee.Sex = true;
                 }
                 DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
