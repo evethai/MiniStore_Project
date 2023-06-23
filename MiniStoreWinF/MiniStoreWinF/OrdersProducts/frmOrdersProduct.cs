@@ -102,7 +102,7 @@ namespace MiniStoreWinF.OrdersProducts
                 rowIndex = e.RowIndex;
                 if (OrderChoise != null)
                 {
-                    SKU = OrderChoise.Sku.ToString();
+                    SKU = OrderChoise.Sku;
                     txtNameOrder.Text = OrderChoise.NameProduct.ToString();
                     txtPriceOrder.Text = OrderChoise.PriceProduct.ToString();
                     imageProducts = OrderChoise.PictureProduct.ToString();
@@ -432,14 +432,15 @@ namespace MiniStoreWinF.OrdersProducts
             ResetData();
         } //Function clear data in form bill => OK
 
-        private void btMoMo_CheckedChanged(object sender, EventArgs e)
+        private void rdMomopayment_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
                 double total = 0;
-                if (txtTotalAllOrders != null) {
+                if (txtTotalAllOrders != null)
+                {
                     MoMoService _moService = new MoMoService();
-                     total= Double.Parse(txtTotalAllOrders.Text);
+                    total = Double.Parse(txtTotalAllOrders.Text);
                     var list = _moService.GetAll().Where(p => p.Active == true).FirstOrDefault();
                     if (list != null)
                     {
@@ -458,6 +459,29 @@ namespace MiniStoreWinF.OrdersProducts
             {
 
                 MessageBox.Show("Not find a bill ", "Messages", MessageBoxButtons.OK);
+            }
+        }
+
+        private void rdCashpayment_CheckedChanged(object sender, EventArgs e)
+        {
+           
+                double total = 0;
+                double returnPay = 0;
+                if (txtTotalAllOrders.Text == null)
+                {
+                    return;
+                }
+                else
+                {
+                    frmCashPayment _frmCashPayment = new frmCashPayment();
+                    total = Double.Parse(txtTotalAllOrders.Text);
+                    _frmCashPayment.TotalBill = total;
+                    _frmCashPayment.ShowDialog();
+                    txtProvidesCash.Text = _frmCashPayment.DataProvidesCash.ToString();
+                    txtTotalBillPayment.Text = txtTotalAllOrders.Text;
+                    returnPay =  Double.Parse(txtProvidesCash.Text) -total;
+                    txtReturnPayment.Text = returnPay.ToString();
+               
             }
         }
     }
