@@ -17,6 +17,7 @@ using Microsoft.EntityFrameworkCore.Query.Internal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
+using MiniStoreWinF.DashBoard;
 
 namespace MiniStoreWinF.OrdersProducts
 {
@@ -355,7 +356,7 @@ namespace MiniStoreWinF.OrdersProducts
 
                 var checkCodeVoucher = _codeVoucherService.GetAll().Where(p => p.Id.Equals(txtScanVoucher.Text)).FirstOrDefault();
 
-                if (checkCodeVoucher == null || txtScanVoucher.Text =="")
+                if (checkCodeVoucher == null || txtScanVoucher.Text == "")
                 {
                     order.IdVoucher = null;
                 }
@@ -481,5 +482,33 @@ namespace MiniStoreWinF.OrdersProducts
             ResetData();
         } //Function clear data in form bill => OK
 
+        private void btMoMo_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                double total = 0;
+                if (txtTotalAllOrders != null) {
+                    MoMoService _moService = new MoMoService();
+                     total= Double.Parse(txtTotalAllOrders.Text);
+                    var list = _moService.GetAll().Where(p => p.Active == true).FirstOrDefault();
+                    if (list != null)
+                    {
+                        ContextScope.currentMoMo = list;
+                        frmQRCode form = new frmQRCode();
+                        form.total = total;
+                        form.ShowDialog();
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Not find a bill ", "Messages", MessageBoxButtons.OK);
+            }
+        }
     }
 }

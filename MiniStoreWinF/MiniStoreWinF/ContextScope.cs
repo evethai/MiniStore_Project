@@ -10,5 +10,6 @@ namespace MiniStoreWinF
     public static class ContextScope
     {
         public static Employee? currentEmployee { get; set; }
+        public static MoMo currentMoMo { get; set; }
     }
 }

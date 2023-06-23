@@ -30,8 +30,8 @@ namespace MiniStoreWinF.ManageSalary
             dataList(id, time);
             txtTime.Text = time.Month + "/" + time.Year;
             txtHour.Text = sumHourinMonth(time, id).ToString();
-            txtOrder.Text = sumOrdersInMonth(time, id).ToString();
-            txtRevenus.Text = countTotal(time, id).ToString();
+            txtRevenus.Text = sumOrdersInMonth(time, id).ToString();
+            txtOrder.Text = countTotal(time, id).ToString();
             txtName.Text = name(id);
         }
         //Paging

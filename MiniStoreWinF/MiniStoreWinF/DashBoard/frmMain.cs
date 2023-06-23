@@ -134,7 +134,8 @@ namespace MiniStoreWinF.DashBoard
 
         private void mnuMoMo_Click(object sender, EventArgs e)
         {
-
+            Form form = new frmMoMo();
+            form.ShowDialog();
         }
     }
 }

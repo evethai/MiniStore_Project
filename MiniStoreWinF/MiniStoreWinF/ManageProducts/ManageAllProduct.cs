@@ -59,7 +59,7 @@ namespace MiniStoreWinF.ManageProducts
             txtComboType.DisplayMember = "ProductType";
             txtComboType.DataSource = _listComboProduct;
 
-           
+
         }
         //Change Base64 To Image
         public Image Base64ToImage(string base64String)

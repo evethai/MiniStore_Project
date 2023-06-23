@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             pictureBox1 = new PictureBox();
+            label1 = new Label();
+            txtTotal = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -42,21 +44,46 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(35, 353);
+            label1.Name = "label1";
+            label1.Size = new Size(55, 25);
+            label1.TabIndex = 1;
+            label1.Text = "Total";
+            // 
+            // txtTotal
+            // 
+            txtTotal.AutoSize = true;
+            txtTotal.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            txtTotal.Location = new Point(162, 353);
+            txtTotal.Name = "txtTotal";
+            txtTotal.Size = new Size(23, 25);
+            txtTotal.TabIndex = 1;
+            txtTotal.Text = "1";
+            // 
             // frmQRCode
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(434, 450);
+            Controls.Add(txtTotal);
+            Controls.Add(label1);
             Controls.Add(pictureBox1);
             Name = "frmQRCode";
             Text = "frmQRCode";
             Load += frmQRCode_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private PictureBox pictureBox1;
+        private Label label1;
+        private Label txtTotal;
     }
 }

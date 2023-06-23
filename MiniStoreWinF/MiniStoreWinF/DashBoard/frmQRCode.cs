@@ -21,6 +21,7 @@ namespace MiniStoreWinF.DashBoard
     public partial class frmQRCode : Form
     {
         MoMoService _moService;
+        public double total;
         public frmQRCode()
         {
             InitializeComponent();
@@ -53,12 +54,9 @@ namespace MiniStoreWinF.DashBoard
 
         private void frmQRCode_Load(object sender, EventArgs e)
         {
-            _moService = new MoMoService();
-            var list = _moService.GetAll().Where(p => p.Active == true).FirstOrDefault();
-            if (list != null)
-            {
-                CreatQRCode(list.Phone, list.Name, list.Gmail, "2000");
-            }
+            var qrCode = ContextScope.currentMoMo;
+            CreatQRCode(qrCode.Phone, qrCode.Name, qrCode.Gmail, total.ToString());
+            txtTotal.Text= total.ToString();
         }
 
     }
