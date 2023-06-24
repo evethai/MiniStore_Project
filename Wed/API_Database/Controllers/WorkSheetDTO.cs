@@ -7,6 +7,7 @@ namespace API_Database.Controllers
 {
     public class WorkSheetDTO
     {
+        public string IdWorkSheet { get; set; }
         public int Sheet { get; set; }
 
         public DateTime TimeCheckIn { get; set; }
