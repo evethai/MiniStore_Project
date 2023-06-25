@@ -51,18 +51,13 @@ namespace MiniStoreWinF.ManageEmployees
 
         }
         //Get name from application and compare with database
-        public List<Employee> GetName(string name)
+        public List<Employee> SearchEmployee(string name)
         {
-            var records = _employees.Where(entity => entity.FullNameEmp.Contains(name)).ToList();
+            var records = _employees.Where(entity => entity.FullNameEmp.Contains(name) || entity.PhoneEmp.Contains(name)).ToList();
 
             return records;
         }
-        //Get username from application and compare with database
-        //public List<Employee> Duplicated(string name)
-        //{
-        //    var records = _employees.Where(entity => entity.Username.Equals(name)).FirstOrDefault();
-        //    return records;
-            
-        //}
+
+        
     }
 }

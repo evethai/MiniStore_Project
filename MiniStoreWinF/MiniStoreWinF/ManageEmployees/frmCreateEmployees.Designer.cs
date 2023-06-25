@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreateEmployees));
             panel1 = new Panel();
-            txtImport = new TextBox();
             btImport = new Button();
             pbEmployee = new PictureBox();
             cbGender = new ComboBox();
@@ -47,6 +46,7 @@
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
+            txtImport = new TextBox();
             panel2 = new Panel();
             label1 = new Label();
             pnAccount = new Panel();
@@ -65,6 +65,8 @@
             pnAccount1 = new Label();
             btAddNew = new Button();
             btClose = new Button();
+            pbImport = new PictureBox();
+            pbNext = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbEmployee).BeginInit();
             panel2.SuspendLayout();
@@ -72,12 +74,15 @@
             ((System.ComponentModel.ISupportInitialize)pbInvalid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbValid).BeginInit();
             pnAccount2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbImport).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbNext).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(txtImport);
+            panel1.Controls.Add(pbNext);
+            panel1.Controls.Add(pbImport);
             panel1.Controls.Add(btImport);
             panel1.Controls.Add(pbEmployee);
             panel1.Controls.Add(cbGender);
@@ -98,29 +103,23 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(405, 538);
             panel1.TabIndex = 0;
-            // 
-            // txtImport
-            // 
-            txtImport.Location = new Point(134, 496);
-            txtImport.Name = "txtImport";
-            txtImport.Size = new Size(125, 27);
-            txtImport.TabIndex = 19;
-            txtImport.Visible = false;
+            panel1.Paint += panel1_Paint;
             // 
             // btImport
             // 
-            btImport.Location = new Point(151, 460);
+            btImport.Location = new Point(96, 331);
             btImport.Name = "btImport";
-            btImport.Size = new Size(94, 29);
+            btImport.Size = new Size(10, 29);
             btImport.TabIndex = 18;
             btImport.Text = "Import";
             btImport.UseVisualStyleBackColor = true;
+            btImport.Visible = false;
             btImport.Click += btImport_Click;
             // 
             // pbEmployee
             // 
             pbEmployee.BorderStyle = BorderStyle.Fixed3D;
-            pbEmployee.Location = new Point(129, 335);
+            pbEmployee.Location = new Point(112, 330);
             pbEmployee.Name = "pbEmployee";
             pbEmployee.Size = new Size(147, 119);
             pbEmployee.SizeMode = PictureBoxSizeMode.Zoom;
@@ -139,12 +138,13 @@
             // 
             // btNext
             // 
-            btNext.Location = new Point(299, 497);
+            btNext.Location = new Point(93, 366);
             btNext.Name = "btNext";
-            btNext.Size = new Size(94, 29);
+            btNext.Size = new Size(13, 29);
             btNext.TabIndex = 15;
             btNext.Text = "Next";
             btNext.UseVisualStyleBackColor = true;
+            btNext.Visible = false;
             btNext.Click += btNext_Click;
             // 
             // dtDoB
@@ -158,7 +158,7 @@
             // 
             // txtAddAddress
             // 
-            txtAddAddress.Location = new Point(83, 286);
+            txtAddAddress.Location = new Point(86, 287);
             txtAddAddress.Multiline = true;
             txtAddAddress.Name = "txtAddAddress";
             txtAddAddress.Size = new Size(251, 25);
@@ -169,7 +169,7 @@
             txtAddPhone.Location = new Point(83, 237);
             txtAddPhone.Multiline = true;
             txtAddPhone.Name = "txtAddPhone";
-            txtAddPhone.Size = new Size(251, 25);
+            txtAddPhone.Size = new Size(176, 25);
             txtAddPhone.TabIndex = 10;
             txtAddPhone.KeyPress += txtAddPhone_KeyPress;
             // 
@@ -203,7 +203,7 @@
             // label7
             // 
             label7.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(14, 335);
+            label7.Location = new Point(19, 330);
             label7.Name = "label7";
             label7.Size = new Size(61, 30);
             label7.TabIndex = 6;
@@ -213,7 +213,7 @@
             // label6
             // 
             label6.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(14, 286);
+            label6.Location = new Point(14, 285);
             label6.Name = "label6";
             label6.Size = new Size(66, 27);
             label6.TabIndex = 5;
@@ -259,6 +259,14 @@
             label2.TabIndex = 2;
             label2.Text = "Gender";
             label2.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // txtImport
+            // 
+            txtImport.Location = new Point(443, 333);
+            txtImport.Name = "txtImport";
+            txtImport.Size = new Size(125, 27);
+            txtImport.TabIndex = 19;
+            txtImport.Visible = false;
             // 
             // panel2
             // 
@@ -444,11 +452,35 @@
             btClose.UseVisualStyleBackColor = true;
             btClose.Click += btClose_Click;
             // 
+            // pbImport
+            // 
+            pbImport.Image = (Image)resources.GetObject("pbImport.Image");
+            pbImport.Location = new Point(265, 402);
+            pbImport.Name = "pbImport";
+            pbImport.Size = new Size(58, 47);
+            pbImport.SizeMode = PictureBoxSizeMode.Zoom;
+            pbImport.TabIndex = 19;
+            pbImport.TabStop = false;
+            pbImport.Click += btImport_Click;
+            // 
+            // pbNext
+            // 
+            pbNext.Image = (Image)resources.GetObject("pbNext.Image");
+            pbNext.Location = new Point(326, 496);
+            pbNext.Name = "pbNext";
+            pbNext.Size = new Size(74, 37);
+            pbNext.SizeMode = PictureBoxSizeMode.Zoom;
+            pbNext.TabIndex = 20;
+            pbNext.TabStop = false;
+            pbNext.Click += btNext_Click;
+            // 
             // frmCreateEmployees
             // 
             AutoScaleDimensions = new SizeF(120F, 120F);
             AutoScaleMode = AutoScaleMode.Dpi;
+            BackColor = Color.White;
             ClientSize = new Size(920, 608);
+            Controls.Add(txtImport);
             Controls.Add(btClose);
             Controls.Add(btAddNew);
             Controls.Add(pnAccount2);
@@ -469,7 +501,10 @@
             ((System.ComponentModel.ISupportInitialize)pbValid).EndInit();
             pnAccount2.ResumeLayout(false);
             pnAccount2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbImport).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbNext).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -510,5 +545,7 @@
         private PictureBox pbValid;
         private PictureBox pbInvalid;
         private CheckBox cbShowPassword;
+        private PictureBox pbImport;
+        private PictureBox pbNext;
     }
 }
