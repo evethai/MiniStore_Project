@@ -92,28 +92,14 @@ namespace MiniStoreWinF.OrdersProducts
             };
 
         } // filter product by type  => OK
-        private void dgvShowListProducts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        public Image Base64ToImage(string base64String)
         {
-            try
-            {
-                string imageProducts = "";
-                var RowOrder = dgvShowListProducts[0, e.RowIndex].Value;
-                var OrderChoise = _productService.GetAll().Where(entity => entity.Sku.Equals(RowOrder)).FirstOrDefault();
-                rowIndex = e.RowIndex;
-                if (OrderChoise != null)
-                {
-                    SKU = OrderChoise.Sku;
-                    txtNameOrder.Text = OrderChoise.NameProduct.ToString();
-                    txtPriceOrder.Text = OrderChoise.PriceProduct.ToString();
-                    imageProducts = OrderChoise.PictureProduct.ToString();
-                    pcPictureOrders.Image = Base64ToImage(imageProducts);
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-
-        }  // click data to choise product => OK 
+            byte[] imageBytes = Convert.FromBase64String(base64String);
+            MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
+            ms.Write(imageBytes, 0, imageBytes.Length);
+            System.Drawing.Image image = System.Drawing.Image.FromStream(ms, true);
+            return image;
+        } // function translate base64 to image  => OK 
         private void btAddOrders_Click(object sender, EventArgs e)
         {
             AddItems();
@@ -183,14 +169,28 @@ namespace MiniStoreWinF.OrdersProducts
             CheckMemberNewCreate = memberCheckcs.TextBoxValueMemberNew.ToString();
             cbPointUsing.Enabled = true;
         } // button check member and create new member ==> OK 
-        public Image Base64ToImage(string base64String)
+        private void dgvShowListProducts_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            byte[] imageBytes = Convert.FromBase64String(base64String);
-            MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
-            ms.Write(imageBytes, 0, imageBytes.Length);
-            System.Drawing.Image image = System.Drawing.Image.FromStream(ms, true);
-            return image;
-        } // function translate base64 to image  => OK 
+            try
+            {
+                string imageProducts = "";
+                var RowOrder = dgvShowListProducts[0, e.RowIndex].Value;
+                var OrderChoise = _productService.GetAll().Where(entity => entity.Sku.Equals(RowOrder)).FirstOrDefault();
+                rowIndex = e.RowIndex;
+                if (OrderChoise != null)
+                {
+                    SKU = OrderChoise.Sku;
+                    txtNameOrder.Text = OrderChoise.NameProduct.ToString();
+                    txtPriceOrder.Text = OrderChoise.PriceProduct.ToString();
+                    imageProducts = OrderChoise.PictureProduct.ToString();
+                    pcPictureOrders.Image = Base64ToImage(imageProducts);
+                }
+            }
+            catch
+            {
+                return;
+            }
+        }
         private void btUsingVoucher_Click(object sender, EventArgs e)
         {
             string CheckCodeVoucher = txtScanVoucher.Text;
@@ -253,7 +253,15 @@ namespace MiniStoreWinF.OrdersProducts
                     int value = int.Parse(item.SubItems[columnIndex].Text);
                     total += value;
                 }
-                txtTotalAllOrders.Text = total.ToString();
+
+                if (total != 0)
+                {
+                    txtTotalAllOrders.Text = total.ToString();
+                }
+                else
+                {
+                    txtTotalAllOrders.Text = null;
+                }
             }
             else
             {
@@ -274,123 +282,127 @@ namespace MiniStoreWinF.OrdersProducts
         } // function add DateRevenue of Revenue ==> OK
         private void btShowBill_Click(object sender, EventArgs e)
         {
-            Order order = new Order();
-            AutoOrdersID autoOrdersID = new AutoOrdersID();
-            //---------------------------------------// 
-
-            DateTime DateTimeCreateOrders = DateTime.Now.Date;
-            var CheckDateRevenue = _revenueService.GetAll().Where(p => p.DateRevenue.Equals(DateTimeCreateOrders)).FirstOrDefault();
-            if (CheckDateRevenue != null)
+            try
             {
-                DateTimeCreateOrders = CheckDateRevenue.DateRevenue;
-            }
-            else
-            {
-                AddTimeRevenue();
-            }
-            //------------------------------------// END Take Date Orders in Revenue 
+                Order order = new Order();
+                AutoOrdersID autoOrdersID = new AutoOrdersID();
+                //---------------------------------------// 
 
-            DialogResult show = MessageBox.Show("Do you sure Show Bill !", "Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            //------------------------------------// END Take each product choise
-            if (show == DialogResult.OK)
-            {
-                BillOrder billOrder = new BillOrder();
-                AutoBillsID checkBill = new AutoBillsID();
-                double totalBill = 0;
-                billOrder.TotalBill = totalBill;
-                checkBill.AddBill(billOrder);
-                //------------------------------------//  END Create new Bill order                      
-
-                var checkCodeVoucher = _codeVoucherService.GetAll().Where(p => p.Id.Equals(txtScanVoucher.Text)).FirstOrDefault();
-
-                if (checkCodeVoucher == null || txtScanVoucher.Text == "")
+                DateTime DateTimeCreateOrders = DateTime.Now.Date;
+                var CheckDateRevenue = _revenueService.GetAll().Where(p => p.DateRevenue.Equals(DateTimeCreateOrders)).FirstOrDefault();
+                if (CheckDateRevenue != null)
                 {
-                    order.IdVoucher = null;
+                    DateTimeCreateOrders = CheckDateRevenue.DateRevenue;
                 }
                 else
                 {
-                    var checkVoucher = _voucherService.GetAll().Where(p => p.IdVoucher.Equals(checkCodeVoucher.IdVoucher)).FirstOrDefault();
-                    order.IdVoucher = checkCodeVoucher.IdVoucher;
-                    checkCodeVoucher.StatusV = Convert.ToBoolean(0);
-                    _codeVoucherService.Update(checkCodeVoucher);
-                    checkVoucher.Quantity = checkVoucher.Quantity - 1;
-                    _voucherService.Update(checkVoucher);
+                    AddTimeRevenue();
                 }
-                //------------------------------------//  END Check voucher and update when using voucher successfully
+                //------------------------------------// END Take Date Orders in Revenue 
 
-                var checkPhoneMemb = _memberService.GetAll().Where(p => p.PhoneMember == CheckMemberSuccessfully || p.PhoneMember == CheckMemberNewCreate).FirstOrDefault();
-                if (checkPhoneMemb != null)
+                DialogResult show = MessageBox.Show("Do you sure Show Bill !", "Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                //------------------------------------// END Take each product choise
+                if (show == DialogResult.OK)
                 {
-                    order.PhoneMember = checkPhoneMemb.PhoneMember;
-                    if (cbPointUsing.SelectedItem != null)
+                    BillOrder billOrder = new BillOrder();
+                    AutoBillsID checkBill = new AutoBillsID();
+                    if (txtTotalAllOrders == null)
                     {
-                        checkPhoneMemb.Point = checkPhoneMemb.Point - Convert.ToInt32(cbPointUsing.SelectedItem);
-                        _memberService.Update(checkPhoneMemb);
+                        MessageBox.Show("Order Bill is not items", "Notification", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
+                    else
+                    {
+                        double totalBill = 0;
+                        billOrder.TotalBill = totalBill;
+                        checkBill.AddBill(billOrder);
+                        var checkCodeVoucher = _codeVoucherService.GetAll().Where(p => p.Id.Equals(txtScanVoucher.Text)).FirstOrDefault();
+                        if (checkCodeVoucher == null || txtScanVoucher.Text == "")
+                        {
+                            order.IdVoucher = null;
+                        }
+                        else
+                        {
+                            var checkVoucher = _voucherService.GetAll().Where(p => p.IdVoucher.Equals(checkCodeVoucher.IdVoucher)).FirstOrDefault();
+                            order.IdVoucher = checkCodeVoucher.IdVoucher;
+                            checkCodeVoucher.StatusV = Convert.ToBoolean(0);
+                            _codeVoucherService.Update(checkCodeVoucher);
+                            checkVoucher.Quantity = checkVoucher.Quantity - 1;
+                            _voucherService.Update(checkVoucher);
+                        }
+                        //------------------------------------//  END Check voucher and update when using voucher successfully
+
+                        var checkPhoneMemb = _memberService.GetAll().Where(p => p.PhoneMember == CheckMemberSuccessfully
+                        || p.PhoneMember == CheckMemberNewCreate).FirstOrDefault();
+                        if (checkPhoneMemb != null)
+                        {
+                            order.PhoneMember = checkPhoneMemb.PhoneMember;
+                            if (cbPointUsing.SelectedItem != null)
+                            {
+                                checkPhoneMemb.Point = checkPhoneMemb.Point - Convert.ToInt32(cbPointUsing.SelectedItem);
+                                _memberService.Update(checkPhoneMemb);
+                            }
+                        }
+                        else
+                        {
+                            order.PhoneMember = null;
+                        }
+                        //------------------------------------// END check member and update member when using point
+
+                        foreach (ListViewItem item in listViewOrders.Items)
+                        {
+                            string columnDataSKU = item.SubItems[0].Text;
+                            string columnDataName = item.SubItems[1].Text;
+                            string columnDataQuantity = item.SubItems[2].Text;
+                            string columnDataPrice = item.SubItems[3].Text;
+                            string columnDataTotal = item.SubItems[4].Text;
+                            //------------------------------------// END take information in Cart
+
+                            var checkIdEmployee = _employeeService.GetAll().Where(p => p.FullNameEmp == DataEmployee).FirstOrDefault();
+                            order.IdEmp = checkIdEmployee.IdEmp;
+                            //------------------------------------//END Take information employee create order
+
+                            order.Sku = columnDataSKU.ToString();
+                            order.NameProduct = columnDataName.ToString();
+                            order.PriceProduct = Convert.ToDouble(columnDataPrice.ToString());
+                            order.Total = Convert.ToDouble(columnDataTotal.ToString());
+                            order.QuantityOrders = Convert.ToInt32(columnDataQuantity.ToString());
+                            //------------------------------------// END Take information of Products
+
+                            var UpdateProductQuantity = _productService.GetAll().Where(p => p.Sku == order.Sku).FirstOrDefault();
+                            UpdateProductQuantity.QuantityProduct = UpdateProductQuantity.QuantityProduct - order.QuantityOrders;
+                            _productService.Update(UpdateProductQuantity);
+                            //------------------------------------// END Update Quantity of Products when successfully orders
+
+                            var checkIdBills = _showBillService.GetAll().Where(p => p.IdBillOrder == billOrder.IdBillOrder).FirstOrDefault();
+                            order.IdBillOrder = checkIdBills.IdBillOrder;
+                            //------------------------------------// END take BillID in BillOrder
+
+                            order.DateOrders = DateTime.Now;
+                            //------------------------------------//END Take DateOrder of Orders
+
+                            autoOrdersID.AddBill(order);
+                            //------------------------------------// END add all information of all data 
+
+                        }
+                        var checkIdBill = _showBillService.GetAll().Where(p => p.IdBillOrder == billOrder.IdBillOrder).FirstOrDefault();
+                        checkIdBill.TotalBill = Convert.ToDouble(txtTotalAllOrders.Text);
+                        checkIdBill.DateOfBill = DateTime.Now.Date;
+                        _showBillService.Update(checkIdBill);
+                        //------------------------------------// END Update TotalBill of BillOrders
+                        if (checkPhoneMemb != null)
+                        {
+                            checkPhoneMemb.Point = Convert.ToInt32(txtTotalAllOrders.Text) / 1000;
+                            _memberService.Update(checkPhoneMemb);
+                        }
+                        //------------------------------------// END Update point when payment successfull
+                        AutoRevenuelUpdateWhenBillOrderDone();
+                        OpenChildForm();
                     }
                 }
-                else
-                {
-                    order.PhoneMember = null;
-                }
-                //------------------------------------// END check member and update member when using point
-
-                foreach (ListViewItem item in listViewOrders.Items)
-                {
-                    string columnDataSKU = item.SubItems[0].Text;
-                    string columnDataName = item.SubItems[1].Text;
-                    string columnDataQuantity = item.SubItems[2].Text;
-                    string columnDataPrice = item.SubItems[3].Text;
-                    string columnDataTotal = item.SubItems[4].Text;
-                    //------------------------------------// END take information in Cart
-
-                    var checkIdEmployee = _employeeService.GetAll().Where(p => p.FullNameEmp == DataEmployee).FirstOrDefault();
-                    order.IdEmp = checkIdEmployee.IdEmp;
-                    //------------------------------------//END Take information employee create order
-
-                    order.Sku = columnDataSKU.ToString();
-                    order.NameProduct = columnDataName.ToString();
-                    order.PriceProduct = Convert.ToDouble(columnDataPrice.ToString());
-                    order.Total = Convert.ToDouble(columnDataTotal.ToString());
-                    order.QuantityOrders = Convert.ToInt32(columnDataQuantity.ToString());
-                    //------------------------------------// END Take information of Products
-
-                    var UpdateProductQuantity = _productService.GetAll().Where(p => p.Sku == order.Sku).FirstOrDefault();
-                    UpdateProductQuantity.QuantityProduct = UpdateProductQuantity.QuantityProduct - order.QuantityOrders;
-                    _productService.Update(UpdateProductQuantity);
-                    //------------------------------------// END Update Quantity of Products when successfully orders
-
-                    var checkIdBills = _showBillService.GetAll().Where(p => p.IdBillOrder == billOrder.IdBillOrder).FirstOrDefault();
-                    order.IdBillOrder = checkIdBills.IdBillOrder;
-                    //------------------------------------// END take BillID in BillOrder
-
-                    order.DateOrders = DateTime.Now;
-                    //------------------------------------//END Take DateOrder of Orders
-
-                    autoOrdersID.AddBill(order);
-                    //------------------------------------// END add all information of all data 
-
-                }
-                var checkIdBill = _showBillService.GetAll().Where(p => p.IdBillOrder == billOrder.IdBillOrder).FirstOrDefault();
-                checkIdBill.TotalBill = Convert.ToDouble(txtTotalAllOrders.Text);
-                checkIdBill.DateOfBill = DateTime.Now.Date;
-                _showBillService.Update(checkIdBill);
-                //------------------------------------// END Update TotalBill of BillOrders
-                if (checkPhoneMemb != null)
-                {
-                    checkPhoneMemb.Point = Convert.ToInt32(txtTotalAllOrders.Text) / 1000;
-                    _memberService.Update(checkPhoneMemb);
-                }
-                //------------------------------------// END Update point when payment successfull
-                AutoRevenuelUpdateWhenBillOrderDone();
-                OpenChildForm();
             }
-            else if (listViewOrders.Items == null)
+            catch (Exception ex)
             {
                 MessageBox.Show("Can not show Bill !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Question);
-            }
-            else
-            {
-                return;
             }
         } // ADD TO CART SHOW BILL => MAYBE OK
         public void AutoRevenuelUpdateWhenBillOrderDone() // Update Total Revenue in one day  => OK
@@ -431,7 +443,6 @@ namespace MiniStoreWinF.OrdersProducts
         {
             ResetData();
         } //Function clear data in form bill => OK
-
         private void rdMomopayment_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -461,28 +472,34 @@ namespace MiniStoreWinF.OrdersProducts
                 MessageBox.Show("Not find a bill ", "Messages", MessageBoxButtons.OK);
             }
         }
-
         private void rdCashpayment_CheckedChanged(object sender, EventArgs e)
         {
-           
-                double total = 0;
-                double returnPay = 0;
-                if (txtTotalAllOrders.Text == null)
+            try
+            {
+                if (txtTotalAllOrders.Text != null)
                 {
-                    return;
-                }
-                else
-                {
+                    double returnPay = 0;
                     frmCashPayment _frmCashPayment = new frmCashPayment();
-                    total = Double.Parse(txtTotalAllOrders.Text);
-                    _frmCashPayment.TotalBill = total;
+                    _frmCashPayment.TotalBill = Double.Parse(txtTotalAllOrders.Text); ;
                     _frmCashPayment.ShowDialog();
                     txtProvidesCash.Text = _frmCashPayment.DataProvidesCash.ToString();
                     txtTotalBillPayment.Text = txtTotalAllOrders.Text;
-                    returnPay =  Double.Parse(txtProvidesCash.Text) -total;
+                    returnPay = Double.Parse(txtProvidesCash.Text) - Double.Parse(txtTotalAllOrders.Text); ;
                     txtReturnPayment.Text = returnPay.ToString();
-               
+                }
+                else
+                {
+                    MessageBox.Show("Not find a bill ", "Messages", MessageBoxButtons.OK);
+                    rdCashpayment.Checked = false;
+                }
             }
+            catch
+            {
+                return;
+            }
+
         }
     }
 }
+
+

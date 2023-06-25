@@ -1,4 +1,5 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using MiniStoreWinF.InformationEmployee;
 using MiniStoreWinF.ManageSalary;
 using Repository.Service;
 using System;
@@ -98,7 +99,7 @@ namespace MiniStoreWinF.DashBoard
                     Check_Worksheet.TimeCheckIn = currentDate;
                     Check_Worksheet.TimeCheckOut = null;
                     _autoWorkSheetID.AddID(Check_Worksheet);
-                    MessageBox.Show("Your check-in was successful" +currentDate, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Your check-in was successful" + currentDate, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     SheetWork = Check_Worksheet.IdWorkSheet;
                     btCheckIn.Enabled = false;
                 }
@@ -111,20 +112,20 @@ namespace MiniStoreWinF.DashBoard
 
         private void btCheckOut_Click(object sender, EventArgs e)
         {
-            DialogResult result= MessageBox.Show("Are you sure you want to check out?", "Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Are you sure you want to check out?", "Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.OK)
             {
                 var check_employee = _employeeService.GetAll().Where(p => p.FullNameEmp.Equals(user)).FirstOrDefault();
-                var Check_Worksheet = _workSheetService.GetAll().Where(p => p.IdWorkSheet == SheetWork || p.IdEmp == check_employee.IdEmp && p.Date == currentDate.Date ).FirstOrDefault();
+                var Check_Worksheet = _workSheetService.GetAll().Where(p => p.IdWorkSheet == SheetWork || p.IdEmp == check_employee.IdEmp && p.Date == currentDate.Date).FirstOrDefault();
                 Check_Worksheet.TimeCheckOut = currentDate;
                 _workSheetService.Update(Check_Worksheet);
-                MessageBox.Show("Your check-out was successful" +currentDate, "Notification");
+                MessageBox.Show("Your check-out was successful" + currentDate, "Notification");
                 btCheckOut.Enabled = false;
             }
             else
             {
                 return;
-            } 
+            }
         }
 
         private void mnuDis_Click(object sender, EventArgs e)
@@ -136,6 +137,22 @@ namespace MiniStoreWinF.DashBoard
         {
             Form form = new frmMoMo();
             form.ShowDialog();
+        }
+
+        private void infomationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var check_employee = _employeeService.GetAll().Where(p => p.FullNameEmp.Equals(user) && p.Roles == "Employee").FirstOrDefault();
+            if (check_employee != null)
+            {
+                frmInformationEmp _frmInformationEmp = new frmInformationEmp();
+                _frmInformationEmp.DataEmployee = check_employee.IdEmp;
+                _frmInformationEmp.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("You are not an employee", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
         }
     }
 }

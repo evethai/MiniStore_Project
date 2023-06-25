@@ -30,6 +30,7 @@
         {
             menuStrip = new MenuStrip();
             mnuAdmin = new ToolStripMenuItem();
+            mnuMoMo = new ToolStripMenuItem();
             mnuStore = new ToolStripMenuItem();
             mnuCheck = new ToolStripMenuItem();
             btCheckIn = new ToolStripMenuItem();
@@ -38,8 +39,8 @@
             mnuDis = new ToolStripMenuItem();
             mnuLogout = new ToolStripMenuItem();
             txtUser = new ToolStripMenuItem();
+            infomationToolStripMenuItem = new ToolStripMenuItem();
             pMain = new Panel();
-            mnuMoMo = new ToolStripMenuItem();
             menuStrip.SuspendLayout();
             SuspendLayout();
             // 
@@ -64,6 +65,13 @@
             mnuAdmin.Text = "ADMIN";
             mnuAdmin.Click += mnuAdmin_Click;
             // 
+            // mnuMoMo
+            // 
+            mnuMoMo.Name = "mnuMoMo";
+            mnuMoMo.Size = new Size(178, 36);
+            mnuMoMo.Text = "MoMo";
+            mnuMoMo.Click += mnuMoMo_Click;
+            // 
             // mnuStore
             // 
             mnuStore.Name = "mnuStore";
@@ -83,14 +91,14 @@
             // btCheckIn
             // 
             btCheckIn.Name = "btCheckIn";
-            btCheckIn.Size = new Size(224, 36);
+            btCheckIn.Size = new Size(220, 36);
             btCheckIn.Text = "Check-In";
             btCheckIn.Click += btCheckIn_Click;
             // 
             // btCheckOut
             // 
             btCheckOut.Name = "btCheckOut";
-            btCheckOut.Size = new Size(224, 36);
+            btCheckOut.Size = new Size(220, 36);
             btCheckOut.Text = "Check-Out";
             btCheckOut.Click += btCheckOut_Click;
             // 
@@ -119,10 +127,18 @@
             // 
             // txtUser
             // 
+            txtUser.DropDownItems.AddRange(new ToolStripItem[] { infomationToolStripMenuItem });
             txtUser.ForeColor = Color.Blue;
             txtUser.Name = "txtUser";
             txtUser.Size = new Size(35, 36);
             txtUser.Text = ".";
+            // 
+            // infomationToolStripMenuItem
+            // 
+            infomationToolStripMenuItem.Name = "infomationToolStripMenuItem";
+            infomationToolStripMenuItem.Size = new Size(230, 36);
+            infomationToolStripMenuItem.Text = "Infomation";
+            infomationToolStripMenuItem.Click += infomationToolStripMenuItem_Click;
             // 
             // pMain
             // 
@@ -133,13 +149,6 @@
             pMain.Name = "pMain";
             pMain.Size = new Size(1307, 651);
             pMain.TabIndex = 2;
-            // 
-            // mnuMoMo
-            // 
-            mnuMoMo.Name = "mnuMoMo";
-            mnuMoMo.Size = new Size(180, 30);
-            mnuMoMo.Text = "MoMo";
-            mnuMoMo.Click += mnuMoMo_Click;
             // 
             // frmMain
             // 
@@ -172,7 +181,6 @@
         private ToolStripMenuItem mnuHelp;
         private ToolStripMenuItem mnuDis;
         private ToolStripMenuItem mnuExit;
-        private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem toolStripMenuItem2;
         private ToolStripMenuItem toolStripMenuItem3;
         private ToolStripMenuItem toolStripMenuItem4;
@@ -183,5 +191,6 @@
         private ToolStripMenuItem btCheckIn;
         private ToolStripMenuItem btCheckOut;
         private ToolStripMenuItem mnuMoMo;
+        private ToolStripMenuItem infomationToolStripMenuItem;
     }
 }

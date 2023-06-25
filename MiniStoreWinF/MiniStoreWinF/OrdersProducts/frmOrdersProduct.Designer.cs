@@ -102,17 +102,18 @@
             // dgvShowListProducts
             // 
             dgvShowListProducts.AutoGenerateColumns = false;
+            dgvShowListProducts.BackgroundColor = SystemColors.Control;
             dgvShowListProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvShowListProducts.Columns.AddRange(new DataGridViewColumn[] { skuDataGridViewTextBoxColumn, nameProductDataGridViewTextBoxColumn, priceProductDataGridViewTextBoxColumn, mfgDataGridViewTextBoxColumn, expDataGridViewTextBoxColumn });
             dgvShowListProducts.DataSource = productBindingSource;
             dgvShowListProducts.Dock = DockStyle.Fill;
-            dgvShowListProducts.Location = new Point(3, 94);
+            dgvShowListProducts.Location = new Point(3, 93);
             dgvShowListProducts.Name = "dgvShowListProducts";
             dgvShowListProducts.RowHeadersWidth = 51;
             dgvShowListProducts.RowTemplate.Height = 29;
-            dgvShowListProducts.Size = new Size(585, 514);
+            dgvShowListProducts.Size = new Size(533, 504);
             dgvShowListProducts.TabIndex = 2;
-            dgvShowListProducts.CellContentClick += dgvShowListProducts_CellDoubleClick;
+            dgvShowListProducts.CellMouseDoubleClick += dgvShowListProducts_CellMouseDoubleClick;
             // 
             // skuDataGridViewTextBoxColumn
             // 
@@ -164,7 +165,7 @@
             pnlAll.Dock = DockStyle.Fill;
             pnlAll.Location = new Point(0, 0);
             pnlAll.Name = "pnlAll";
-            pnlAll.Size = new Size(1494, 617);
+            pnlAll.Size = new Size(1364, 606);
             pnlAll.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -181,22 +182,22 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1494, 617);
+            tableLayoutPanel1.Size = new Size(1364, 606);
             tableLayoutPanel1.TabIndex = 20;
             // 
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.ColumnCount = 1;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Controls.Add(panel1, 0, 0);
             tableLayoutPanel2.Controls.Add(dgvShowListProducts, 0, 1);
+            tableLayoutPanel2.Controls.Add(panel1, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(3, 3);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 85F));
-            tableLayoutPanel2.Size = new Size(591, 611);
+            tableLayoutPanel2.Size = new Size(539, 600);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // panel1
@@ -208,7 +209,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(585, 85);
+            panel1.Size = new Size(533, 84);
             panel1.TabIndex = 19;
             // 
             // btSearch
@@ -259,12 +260,12 @@
             tableLayoutPanel3.Controls.Add(panel5, 0, 1);
             tableLayoutPanel3.Controls.Add(panel6, 0, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(600, 3);
+            tableLayoutPanel3.Location = new Point(548, 3);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            tableLayoutPanel3.Size = new Size(442, 611);
+            tableLayoutPanel3.Size = new Size(403, 600);
             tableLayoutPanel3.TabIndex = 1;
             // 
             // panel5
@@ -279,9 +280,9 @@
             panel5.Controls.Add(lblVoucher);
             panel5.Controls.Add(txtTotalAllOrders);
             panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(3, 369);
+            panel5.Location = new Point(3, 363);
             panel5.Name = "panel5";
-            panel5.Size = new Size(436, 239);
+            panel5.Size = new Size(397, 234);
             panel5.TabIndex = 16;
             // 
             // panel2
@@ -410,7 +411,7 @@
             panel6.Controls.Add(lblQuantity);
             panel6.Location = new Point(3, 3);
             panel6.Name = "panel6";
-            panel6.Size = new Size(436, 360);
+            panel6.Size = new Size(397, 354);
             panel6.TabIndex = 17;
             // 
             // pcPictureOrders
@@ -437,7 +438,7 @@
             // 
             btAddOrders.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btAddOrders.Image = (Image)resources.GetObject("btAddOrders.Image");
-            btAddOrders.Location = new Point(292, 268);
+            btAddOrders.Location = new Point(187, 315);
             btAddOrders.Name = "btAddOrders";
             btAddOrders.Size = new Size(100, 36);
             btAddOrders.TabIndex = 8;
@@ -506,12 +507,12 @@
             tableLayoutPanel4.Controls.Add(listViewOrders, 0, 0);
             tableLayoutPanel4.Controls.Add(pnlCashPayment, 0, 1);
             tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(1048, 3);
+            tableLayoutPanel4.Location = new Point(957, 3);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 2;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            tableLayoutPanel4.Size = new Size(443, 611);
+            tableLayoutPanel4.Size = new Size(404, 600);
             tableLayoutPanel4.TabIndex = 2;
             // 
             // listViewOrders
@@ -519,10 +520,14 @@
             listViewOrders.AutoArrange = false;
             listViewOrders.Columns.AddRange(new ColumnHeader[] { clmSKU, clmName, clmQuantity, clmPrice, clmTotal });
             listViewOrders.Dock = DockStyle.Fill;
+            listViewOrders.FullRowSelect = true;
             listViewOrders.GridLines = true;
             listViewOrders.Location = new Point(3, 3);
             listViewOrders.Name = "listViewOrders";
-            listViewOrders.Size = new Size(437, 360);
+            listViewOrders.RightToLeft = RightToLeft.No;
+            listViewOrders.RightToLeftLayout = true;
+            listViewOrders.Size = new Size(398, 354);
+            listViewOrders.Sorting = SortOrder.Ascending;
             listViewOrders.TabIndex = 9;
             listViewOrders.UseCompatibleStateImageBehavior = false;
             listViewOrders.View = View.Details;
@@ -531,12 +536,13 @@
             // clmSKU
             // 
             clmSKU.Text = "SKU";
-            clmSKU.Width = 100;
+            clmSKU.Width = 150;
             // 
             // clmName
             // 
             clmName.Text = "Name";
-            clmName.Width = 100;
+            clmName.TextAlign = HorizontalAlignment.Center;
+            clmName.Width = 150;
             // 
             // clmQuantity
             // 
@@ -546,12 +552,12 @@
             // clmPrice
             // 
             clmPrice.Text = "Price";
-            clmPrice.Width = 100;
+            clmPrice.Width = 150;
             // 
             // clmTotal
             // 
             clmTotal.Text = "Total";
-            clmTotal.Width = 100;
+            clmTotal.Width = 150;
             // 
             // pnlCashPayment
             // 
@@ -563,9 +569,9 @@
             pnlCashPayment.Controls.Add(lblCustomerProvidesCash);
             pnlCashPayment.Controls.Add(lblTotalBillAmount);
             pnlCashPayment.Dock = DockStyle.Fill;
-            pnlCashPayment.Location = new Point(3, 369);
+            pnlCashPayment.Location = new Point(3, 363);
             pnlCashPayment.Name = "pnlCashPayment";
-            pnlCashPayment.Size = new Size(437, 239);
+            pnlCashPayment.Size = new Size(398, 234);
             pnlCashPayment.TabIndex = 10;
             // 
             // txtReturnPayment
@@ -607,7 +613,7 @@
             btShowBill.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btShowBill.Image = (Image)resources.GetObject("btShowBill.Image");
             btShowBill.ImageAlign = ContentAlignment.TopCenter;
-            btShowBill.Location = new Point(313, 156);
+            btShowBill.Location = new Point(293, 156);
             btShowBill.Name = "btShowBill";
             btShowBill.Size = new Size(99, 70);
             btShowBill.TabIndex = 11;
@@ -640,7 +646,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1494, 617);
+            ClientSize = new Size(1364, 606);
             Controls.Add(pnlAll);
             Name = "OrderProducts";
             StartPosition = FormStartPosition.WindowsDefaultBounds;
@@ -675,11 +681,6 @@
         private Label lblPrice;
         private Label lblName;
         private Button btAddOrders;
-        private ListView listViewOrders;
-        private ColumnHeader clmQuantity;
-        private ColumnHeader clmPrice;
-        private ColumnHeader clmName;
-        private ColumnHeader clmTotal;
         private TextBox txtNameOrder;
         private NumericUpDown txtQuantityOrder;
         private TextBox txtPriceOrder;
@@ -688,7 +689,6 @@
         private DataGridViewTextBoxColumn hsdDataGridViewTextBoxColumn;
         private Label lblPicture;
         private PictureBox pcPictureOrders;
-        private ColumnHeader clmSKU;
         private BindingSource productBindingSource;
         private DataGridViewTextBoxColumn skuDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nameProductDataGridViewTextBoxColumn;
@@ -705,7 +705,6 @@
         private Button btUsingVoucher;
         private Button btCheckMember;
         private Label lblPoint;
-        private Button btShowBill;
         private ComboBox cbPointUsing;
         private Label lblTotal;
         private Label lblVoucher;
@@ -717,12 +716,19 @@
         private RadioButton rdCashpayment;
         private RadioButton rdMomopayment;
         private TableLayoutPanel tableLayoutPanel4;
+        private ListView listViewOrders;
+        private ColumnHeader clmSKU;
+        private ColumnHeader clmName;
+        private ColumnHeader clmQuantity;
+        private ColumnHeader clmPrice;
+        private ColumnHeader clmTotal;
         private Panel pnlCashPayment;
-        private Label lblReturnChange;
-        private Label lblCustomerProvidesCash;
-        private Label lblTotalBillAmount;
-        private TextBox txtTotalBillPayment;
         private TextBox txtReturnPayment;
         private TextBox txtProvidesCash;
+        private TextBox txtTotalBillPayment;
+        private Label lblReturnChange;
+        private Button btShowBill;
+        private Label lblCustomerProvidesCash;
+        private Label lblTotalBillAmount;
     }
 }

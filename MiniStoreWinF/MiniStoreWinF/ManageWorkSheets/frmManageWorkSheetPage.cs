@@ -211,8 +211,6 @@ namespace MiniStoreWinF.ManageWorkSheet
             }
 
         }
-
-
         private void btCreate_Click(object sender, EventArgs e)
         {
             string Empty = "";
