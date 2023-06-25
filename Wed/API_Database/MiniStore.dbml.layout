@@ -2,36 +2,36 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="MiniStore">
   <DataContextMoniker Name="/MiniStoreDataContext" />
   <nestedChildShapes>
-    <classShape Id="c5c27075-c7fd-4bc8-85d6-ca8b4948914a" absoluteBounds="3.5, 1.625, 2, 1.9631982421875003">
-      <DataClassMoniker Name="/MiniStoreDataContext/WorkSheet" />
-      <nestedChildShapes>
-        <elementListCompartment Id="d4658657-bfa9-4968-a250-50cfa4e4b974" absoluteBounds="3.515, 2.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="2947dfe8-72dd-423e-a6c4-873cb103e93d" absoluteBounds="0.75, 1, 2, 3.3093082682291666">
-      <DataClassMoniker Name="/MiniStoreDataContext/Employee" />
-      <nestedChildShapes>
-        <elementListCompartment Id="5b45bacf-5c85-404f-a359-1a4f6093f67f" absoluteBounds="0.765, 1.46, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <associationConnector edgePoints="[(2.75 : 2.40625); (3.5 : 2.40625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/MiniStoreDataContext/Employee/Employee_WorkSheet" />
-      <nodes>
-        <classShapeMoniker Id="2947dfe8-72dd-423e-a6c4-873cb103e93d" />
-        <classShapeMoniker Id="c5c27075-c7fd-4bc8-85d6-ca8b4948914a" />
-      </nodes>
-    </associationConnector>
-    <classShape Id="c9fc6b97-3c69-42f5-9478-210e7ddf1696" absoluteBounds="6.5, 1.625, 2, 1.7708968098958331">
+    <classShape Id="6a09bb23-e3dc-4aff-8da1-901aafc54595" absoluteBounds="0.75, 1, 2, 1.7708968098958331">
       <DataClassMoniker Name="/MiniStoreDataContext/SheetDetail" />
       <nestedChildShapes>
-        <elementListCompartment Id="04fe3451-bbc3-42be-a517-5146d836866e" absoluteBounds="6.515, 2.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="af897182-f8eb-4067-b214-bfe30befaf93" absoluteBounds="0.765, 1.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.5 : 2.51044840494792); (5.5 : 2.51044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="4adaaa5f-e00e-4679-a934-889216dbe4a8" absoluteBounds="3.5, 0.875, 2, 1.9631982421875">
+      <DataClassMoniker Name="/MiniStoreDataContext/WorkSheet" />
+      <nestedChildShapes>
+        <elementListCompartment Id="307de4b5-caa9-4d47-83c3-8d83501ebeec" absoluteBounds="3.515, 1.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="441957b9-0ef1-42fb-84ef-672727d03797" absoluteBounds="7.375, 2.75, 2, 3.3093082682291657">
+      <DataClassMoniker Name="/MiniStoreDataContext/Employee" />
+      <nestedChildShapes>
+        <elementListCompartment Id="451f1022-6bf3-4d3f-9dba-aae6f03cb54e" absoluteBounds="7.39, 3.21, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.88544840494792); (3.5 : 1.88544840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/MiniStoreDataContext/SheetDetail/SheetDetail_WorkSheet" />
       <nodes>
-        <classShapeMoniker Id="c9fc6b97-3c69-42f5-9478-210e7ddf1696" />
-        <classShapeMoniker Id="c5c27075-c7fd-4bc8-85d6-ca8b4948914a" />
+        <classShapeMoniker Id="6a09bb23-e3dc-4aff-8da1-901aafc54595" />
+        <classShapeMoniker Id="4adaaa5f-e00e-4679-a934-889216dbe4a8" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.375 : 4.44875375520833); (4.5 : 4.44875375520833); (4.5 : 2.8381982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/MiniStoreDataContext/Employee/Employee_WorkSheet" />
+      <nodes>
+        <classShapeMoniker Id="441957b9-0ef1-42fb-84ef-672727d03797" />
+        <classShapeMoniker Id="4adaaa5f-e00e-4679-a934-889216dbe4a8" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

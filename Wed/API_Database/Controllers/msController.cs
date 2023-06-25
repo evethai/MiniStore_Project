@@ -106,7 +106,9 @@ namespace API_Database.Controllers
 
             List<WorkSheetDTO> worksheetDTOs = filteredWorksheets.Select(ws => new WorkSheetDTO
             {
-                Sheet = (int)ws.Sheet // Điều chỉnh tùy thuộc vào thuộc tính Sheet trong lớp WorkSheetDTO
+                Sheet = (int)ws.Sheet, // Điều chỉnh tùy thuộc vào thuộc tính Sheet trong lớp WorkSheetDTO
+                TimeCheckIn = ws.TimeCheckIn.HasValue ? ws.TimeCheckIn.Value : DateTime.MinValue,
+                TimeCheckOut = ws.TimeCheckOut.HasValue ? ws.TimeCheckOut.Value : DateTime.MinValue
             }).ToList();
 
             string jwt = JWTUtils.GenerateJWTFLWS(worksheetDTOs);
@@ -133,7 +135,9 @@ namespace API_Database.Controllers
 
             List<WorkSheetDTO> worksheetDTOs = filteredWorksheets.Select(ws => new WorkSheetDTO
             {
-                Sheet = (int)ws.Sheet // Điều chỉnh tùy thuộc vào thuộc tính Sheet trong lớp WorkSheetDTO
+                Sheet = (int)ws.Sheet, // Điều chỉnh tùy thuộc vào thuộc tính Sheet trong lớp WorkSheetDTO
+                TimeCheckIn = ws.TimeCheckIn.HasValue ? ws.TimeCheckIn.Value : DateTime.MinValue,
+                TimeCheckOut = ws.TimeCheckOut.HasValue ? ws.TimeCheckOut.Value : DateTime.MinValue
             }).ToList();
 
             return worksheetDTOs;
@@ -212,8 +216,12 @@ namespace API_Database.Controllers
                     SheetDetailDTO sheetDDTO = new SheetDetailDTO
                     {
                         Sheet = sheetD.Sheet,
-                        ShiftStartTime = sheetD.ShiftStartTime,
-                        ShiftEndTime = sheetD.ShiftEndTime
+                        ShiftStartTime = sheetD.ShiftStartTime.HasValue
+        ? sheetD.ShiftStartTime.Value.ToString(@"hh\:mm\:ss")
+        : string.Empty,
+                        ShiftEndTime = sheetD.ShiftEndTime.HasValue
+        ? sheetD.ShiftEndTime.Value.ToString(@"hh\:mm\:ss")
+        : string.Empty
                     };
                     sheetList.Add(sheetDDTO);
                 }
@@ -241,8 +249,12 @@ namespace API_Database.Controllers
                     SheetDetailDTO sheetDDTO = new SheetDetailDTO
                     {
                         Sheet = sheetD.Sheet,
-                        ShiftStartTime = sheetD.ShiftStartTime,
-                        ShiftEndTime = sheetD.ShiftEndTime
+                        ShiftStartTime = sheetD.ShiftStartTime.HasValue
+        ? sheetD.ShiftStartTime.Value.ToString(@"hh\:mm\:ss")
+        : string.Empty,
+                        ShiftEndTime = sheetD.ShiftEndTime.HasValue
+        ? sheetD.ShiftEndTime.Value.ToString(@"hh\:mm\:ss")
+        : string.Empty
                     };
                     sheetList.Add(sheetDDTO);
                 }
@@ -250,6 +262,14 @@ namespace API_Database.Controllers
             return sheetList;
         }
 
+        //list all sheet Guard
+        [HttpGet]
+        [Route("api/ms/fsttt")]
+        public List<SheetDetail> FindSheetAll()
+        {
+
+            return db.SheetDetails.ToList(); ;
+        }
 
 
 
@@ -309,7 +329,7 @@ namespace API_Database.Controllers
         }
 
 
-        //add worksheet 
+        //add worksheet jwt
         [HttpPost]
         [Route("api/ms/addws")]
         public bool AddWorkSheet([FromBody] JObject jsonData)

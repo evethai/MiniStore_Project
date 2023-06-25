@@ -33,6 +33,23 @@ namespace API_Database.Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
+/*        public static string GenerateJWTFWSIWSheet(WorkSheetDTO wsdto)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(SecretKey);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new[]
+                {
+            new Claim("IdWorkSheet", wsdto.IdWorkSheet)
+        }),
+                Expires = DateTime.UtcNow.AddHours(1), // Thời gian hết hạn của JWT: 1 giờ
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }*/
 
         public static string GenerateJWTFWS(WorkSheetDTO wsdto)
         {
@@ -87,6 +104,9 @@ namespace API_Database.Controllers
             foreach (WorkSheetDTO dto in wsdto)
             {
                 claims.Add(new Claim("Sheet", dto.Sheet.ToString()));
+                claims.Add(new Claim("TimeCheckIn", dto.TimeCheckIn.ToString("MM/dd/yyyy HH:mm:ss")));
+                claims.Add(new Claim("TimeCheckOut", dto.TimeCheckOut.ToString("MM/dd/yyyy HH:mm:ss")));
+
             }
 
             var tokenDescriptor = new SecurityTokenDescriptor

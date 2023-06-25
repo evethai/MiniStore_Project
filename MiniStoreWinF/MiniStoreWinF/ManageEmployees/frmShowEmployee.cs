@@ -187,11 +187,11 @@ namespace MiniStoreWinF.ManageEmployees
                     employeeService.Cccd = txtCccd.Text;
                     if (cbGender.SelectedItem.Equals("Man"))
                     {
-                        employeeService.Sex = true;
+                        employeeService.Sex = false;
                     }
                     else if (cbGender.SelectedItem.Equals("Woman"))
                     {
-                        employeeService.Sex = false;
+                        employeeService.Sex = true;
                     }
                     if (cbRole.SelectedItem.Equals("Admin"))
                     {
