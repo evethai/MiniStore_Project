@@ -41,7 +41,7 @@ namespace Repository.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=LAPTOP-7AAE1FUD\\MAVERICK;uid=sa;pwd=12345;database=MiniStore;TrustServerCertificate=True");
+                optionsBuilder.UseSqlServer("Server=MSI;uid=sa;pwd=12345;database=MiniStore;TrustServerCertificate=True");
             }
         }
 
@@ -312,7 +312,7 @@ namespace Repository.Models
                 entity.HasOne(d => d.IdPerNavigation)
                     .WithMany(p => p.PermissionDetails)
                     .HasForeignKey(d => d.IdPer)
-                    .HasConstraintName("FK__Permissio__id_pe__7A672E12");
+                    .HasConstraintName("FK__Permissio__id_pe__7D439ABD");
             });
 
             modelBuilder.Entity<Product>(entity =>

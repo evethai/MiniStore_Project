@@ -358,7 +358,7 @@
             panel18.Name = "panel18";
             panel18.Size = new Size(157, 80);
             panel18.TabIndex = 1;
-            panel18.Click += REVENUE_Click;
+            panel18.Click += VOUCHER_Click;
             // 
             // label8
             // 
