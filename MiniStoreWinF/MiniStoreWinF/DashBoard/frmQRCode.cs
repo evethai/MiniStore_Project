@@ -56,7 +56,7 @@ namespace MiniStoreWinF.DashBoard
         {
             var qrCode = ContextScope.currentMoMo;
             CreatQRCode(qrCode.Phone, qrCode.Name, qrCode.Gmail, total.ToString());
-            txtTotal.Text= total.ToString();
+            txtTotal.Text = total.ToString();
         }
 
     }

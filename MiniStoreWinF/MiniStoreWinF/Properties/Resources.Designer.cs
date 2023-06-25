@@ -73,9 +73,9 @@ namespace MiniStoreWinF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap adv {
+        internal static System.Drawing.Bitmap bell {
             get {
-                object obj = ResourceManager.GetObject("adv", resourceCulture);
+                object obj = ResourceManager.GetObject("bell", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,19 @@ namespace MiniStoreWinF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bell {
+        internal static System.Drawing.Bitmap Custom_Icon_Design_Flatastic_5_Order_history_512 {
             get {
-                object obj = ResourceManager.GetObject("bell", resourceCulture);
+                object obj = ResourceManager.GetObject("Custom-Icon-Design-Flatastic-5-Order-history.512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Custom_Icon_Design_Pretty_Office_7_Calendar_256 {
+            get {
+                object obj = ResourceManager.GetObject("Custom_Icon_Design_Pretty_Office_7_Calendar_256", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,6 +113,26 @@ namespace MiniStoreWinF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Hopstarter_Sleek_Xp_Basic_Preppy_256 {
+            get {
+                object obj = ResourceManager.GetObject("Hopstarter_Sleek_Xp_Basic_Preppy_256", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_admin_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_admin_50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_fast_moving_consumer_goods_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-fast-moving-consumer-goods-50", resourceCulture);
@@ -113,9 +143,59 @@ namespace MiniStoreWinF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap menu {
+        internal static System.Drawing.Bitmap icons8_home {
             get {
-                object obj = ResourceManager.GetObject("menu", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-home", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_product_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_product_100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_revenue_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_revenue_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_revenue_64__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8_revenue_64__1_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_user_16 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_user_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_voucher_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_voucher_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,36 +206,6 @@ namespace MiniStoreWinF.Properties {
         internal static System.Drawing.Bitmap MoMo {
             get {
                 object obj = ResourceManager.GetObject("MoMo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap salary {
-            get {
-                object obj = ResourceManager.GetObject("salary", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap setup {
-            get {
-                object obj = ResourceManager.GetObject("setup", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap sub {
-            get {
-                object obj = ResourceManager.GetObject("sub", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

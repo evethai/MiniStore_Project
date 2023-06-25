@@ -11,5 +11,6 @@ namespace MiniStoreWinF
     {
         public static Employee? currentEmployee { get; set; }
         public static MoMo currentMoMo { get; set; }
+        public static DateTime currentDate { get; set; }
     }
 }

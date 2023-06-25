@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmResetSalaryCheck));
             dtpTime = new DateTimePicker();
             btReset = new Button();
             SuspendLayout();
@@ -64,7 +65,10 @@
             DoubleBuffered = true;
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.Red;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(5, 4, 5, 4);
+            MaximumSize = new Size(330, 268);
+            MinimumSize = new Size(330, 268);
             Name = "frmResetSalaryCheck";
             ResumeLayout(false);
         }

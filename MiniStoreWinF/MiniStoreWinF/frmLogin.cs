@@ -19,39 +19,31 @@ namespace MiniStoreWinF
         {
             string userName = txtUserName.Text;
             string password = txtPassword.Text;
-            var login = _employeeService.GetAll().Where(entity => entity.Username == userName && entity.Password == password && entity.IsActive == true).FirstOrDefault(); //create check login username-password
-            
             if (userName.Length <= 0 || password.Length <= 0)
             {
                 MessageBox.Show("Username and Password cannot be left blank !!", "Notification", MessageBoxButtons.OK);
-            }// end check empty username or password
-            else if (login == null)
-            {
-                MessageBox.Show("Invalid username or password !!", "Notification", MessageBoxButtons.OK);
-            }//end check wrong username or password
-            else if (login.Roles == "Admin")
-            {
-                ContextScope.currentEmployee = login;
-                this.Hide();
-                frmMain form = new frmMain();
-                form.checkRoles(true);
-                form.user = login.FullNameEmp;
-                form.ShowDialog();
-            }// end check role admin
-            else if (login.Roles == "Employee")
-            {
-                ContextScope.currentEmployee = login;
-                this.Hide();
-                frmMain form = new frmMain();
-                form.checkRoles(false);
-                form.user = login.FullNameEmp;
-
-                form.ShowDialog();
-            }//end check role employee
+            }
             else
             {
-                MessageBox.Show("Invalid role !!", "Notification", MessageBoxButtons.OK);
-            }//end check other role               
+                var login = _employeeService.GetAll()
+                    .Where(entity => entity.Username == userName 
+                    && entity.Password == password 
+                    && entity.IsActive == true)
+                    .FirstOrDefault(); 
+                if(login != null)
+                {
+                    ContextScope.currentEmployee = login;
+                    frmMainScreen form = new frmMainScreen();
+                    this.Hide();
+                    form.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid username or password !!", "Notification", MessageBoxButtons.OK);
+                    return;
+                }
+            }
+
         }
         private void ptbSeePasswords_Click(object sender, EventArgs e)
         {

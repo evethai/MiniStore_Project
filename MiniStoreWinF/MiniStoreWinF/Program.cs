@@ -2,6 +2,7 @@ using MiniStoreWinF.DashBoard;
 using MiniStoreWinF.Manage_Voucher;
 using MiniStoreWinF.ManageEmployees;
 using MiniStoreWinF.ManageProducts;
+using MiniStoreWinF.ManageRevenue;
 using MiniStoreWinF.ManageSalary;
 using MiniStoreWinF.ManageWorkSheet;
 using MiniStoreWinF.OrdersProducts;

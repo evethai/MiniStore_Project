@@ -111,11 +111,11 @@ namespace MiniStoreWinF.DashBoard
 
         private void btCheckOut_Click(object sender, EventArgs e)
         {
-            DialogResult result= MessageBox.Show("Are you sure you want to check out?", "Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Are you sure you want to check out?", "Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result == DialogResult.OK)
             {
                 var check_employee = _employeeService.GetAll().Where(p => p.FullNameEmp.Equals(user)).FirstOrDefault();
-                var Check_Worksheet = _workSheetService.GetAll().Where(p => p.IdWorkSheet == SheetWork || p.IdEmp == check_employee.IdEmp && p.Date == currentDate.Date ).FirstOrDefault();
+                var Check_Worksheet = _workSheetService.GetAll().Where(p => p.IdWorkSheet == SheetWork || p.IdEmp == check_employee.IdEmp && p.Date == currentDate.Date).FirstOrDefault();
                 Check_Worksheet.TimeCheckOut = currentDate;
                 _workSheetService.Update(Check_Worksheet);
                 MessageBox.Show("Your check-out was successful", "Notification");
@@ -124,7 +124,7 @@ namespace MiniStoreWinF.DashBoard
             else
             {
                 return;
-            } 
+            }
         }
 
         private void mnuDis_Click(object sender, EventArgs e)

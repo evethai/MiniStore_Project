@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetailSalaryDetail));
             dataGridView1 = new DataGridView();
             btPre = new Button();
             btNext = new Button();
@@ -211,8 +212,10 @@
             Controls.Add(btPre);
             Controls.Add(dataGridView1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             MaximumSize = new Size(760, 420);
+            MinimumSize = new Size(760, 420);
             Name = "frmDetailSalaryDetail";
             StartPosition = FormStartPosition.CenterScreen;
             Load += frmDetailSalaryDetail_Load;

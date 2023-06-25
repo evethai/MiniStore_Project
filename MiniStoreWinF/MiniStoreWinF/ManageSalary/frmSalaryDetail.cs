@@ -10,12 +10,10 @@ namespace MiniStoreWinF.ManageSalary
         SalaryService _salaryService;
         EmployeeService _employeeService;
         Utinity u = new Utinity();
-        //Phân trang
+        //Paging
         int pageNumber = 1;
         int numberRecord = 10;
         List<Salary> listSa = null;
-        //reset
-        DateTime time = DateTime.Now;
 
         public frmSalaryDetail()
         {
@@ -32,24 +30,20 @@ namespace MiniStoreWinF.ManageSalary
 
         private void frmSalaryDetail_Load(object sender, EventArgs e)
         {
-            ShowListSalary();
+            ShowListSalary(DateTime.Now.AddMonths(-1));
             u.showListEmp(cbName);
         }
-        public void ShowListSalary()
+        public void ShowListSalary(DateTime time)
         {
-
-            dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, u.salary());
-            listSa = u.salary();
+            dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, u.salary(time));
+            listSa = u.salary(time);
         }
 
         private void btFilter_Click(object sender, EventArgs e)
         {
             _salaryService = new SalaryService();
             DateTime time = dtpTime.Value;
-            //var list = _salaryService.GetAll().Where(p => p.DateImonth.Month.Equals(time.Month)).ToList();
-
-            var list = u.salary().Where(p => p.DateImonth.Month.Equals(time.Month)).ToList();
-
+            var list = u.salary(time);
             dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
             listSa = list;
         }
@@ -75,7 +69,7 @@ namespace MiniStoreWinF.ManageSalary
                 form.ShowDialog();
                 if (form.DialogResult == DialogResult.Yes)
                 {
-                    ShowListSalary();
+                    ShowListSalary(ContextScope.currentDate);
                 }
             }
             else

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddNewAdvSalary));
             gbAdd = new GroupBox();
             label4 = new Label();
             label3 = new Label();
@@ -157,10 +158,12 @@
             ClientSize = new Size(525, 416);
             Controls.Add(gbAdd);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(5, 4, 5, 4);
+            MaximumSize = new Size(541, 455);
+            MinimumSize = new Size(541, 455);
             Name = "frmAddNewAdvSalary";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "frmAddNewAdvSalary";
             Load += frmAddNewAdvSalary_Load;
             gbAdd.ResumeLayout(false);
             gbAdd.PerformLayout();

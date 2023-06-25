@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditEachTax));
             btSave = new Button();
             label6 = new Label();
             txtNewGuard = new TextBox();
@@ -95,7 +96,10 @@
             Controls.Add(txtNewEmp);
             Controls.Add(label5);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(5, 4, 5, 4);
+            MaximumSize = new Size(544, 279);
+            MinimumSize = new Size(544, 279);
             Name = "frmEditEachTax";
             Load += frmEditEachTax_Load;
             ResumeLayout(false);

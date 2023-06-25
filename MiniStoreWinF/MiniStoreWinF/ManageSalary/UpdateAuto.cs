@@ -31,6 +31,7 @@ namespace MiniStoreWinF.ManageSalary
                 {
                     if (n >= subDetail.Condition)
                     {
+                        //list employee over conditon to entitled sub salary
                         employees.Add(emp);
                     }
                     foreach (var item in employees)

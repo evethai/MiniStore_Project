@@ -62,17 +62,12 @@ namespace MiniStoreWinF.ManageSalary
 
         private void frmAddNewSubSalary_Load(object sender, EventArgs e)
         {
-            List<int> num = new List<int>();
-            for (int i = 0; i <= 30; i++)
-            {
-                num.Add(i);
-            }
-            cbCondi.DataSource = num;
+            u.comboxGeneration(cbCondi, 30);
         }
 
         private void txtSalary_KeyPress(object sender, KeyPressEventArgs e)
         {
-            u.numberOnly(e, txtSalary.Text,9);
+            u.numberOnly(e, txtSalary.Text, 9);
         }
     }
 }

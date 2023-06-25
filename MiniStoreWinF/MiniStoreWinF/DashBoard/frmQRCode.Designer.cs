@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQRCode));
             pictureBox1 = new PictureBox();
             label1 = new Label();
             txtTotal = new Label();
@@ -58,7 +59,7 @@
             // 
             txtTotal.AutoSize = true;
             txtTotal.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            txtTotal.Location = new Point(162, 353);
+            txtTotal.Location = new Point(202, 353);
             txtTotal.Name = "txtTotal";
             txtTotal.Size = new Size(23, 25);
             txtTotal.TabIndex = 1;
@@ -72,8 +73,9 @@
             Controls.Add(txtTotal);
             Controls.Add(label1);
             Controls.Add(pictureBox1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new Size(450, 489);
             Name = "frmQRCode";
-            Text = "frmQRCode";
             Load += frmQRCode_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
