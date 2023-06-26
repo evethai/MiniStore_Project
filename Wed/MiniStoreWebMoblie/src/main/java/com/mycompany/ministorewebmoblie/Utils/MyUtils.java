@@ -5,7 +5,7 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
-import com.mycompany.ministorewebmoblie.DTO.SheetTimeSlot;
+import com.mycompany.ministorewebmoblie.DTO.SheetTimeSlotDTO;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.ServletException;
 import java.io.BufferedReader;
@@ -15,8 +15,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -27,6 +25,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MyUtils {
+
+    private static final int checkInStart = 5;//minus Minutes
+    private static final int checkInEnd = 5;//minus Minutes
+    private static final int checkOutStart = 6;//hours minus
+    private static final int checkOutEnd = 30;//minus plus
 
     // Gửi yêu cầu GET và trả về phản hồi dạng chuỗi JSON
     public static String sendGetRequest(String apiUrl) throws IOException {
@@ -49,10 +52,53 @@ public class MyUtils {
         } finally {
             conn.disconnect();
         }
+
     }
 
-    // Lấy danh sách SheetTimeSlot từ API
-    public static List<SheetTimeSlot> getSheetTimeSlots() throws IOException {
+    // Lấy danh sách Sheet đã có từ API
+    public static List<String> getSheetAvailable(String date) {
+        try {
+            // Lấy danh sách Sheet từ API
+            String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/fwsd?date=" + date);
+            JSONObject json = new JSONObject(jsonResponse);
+
+            String jwt = json.optString("jwt");
+
+            // Check JWT
+            if (jwt.isEmpty() || jwt.equals("Unauthorized")) {
+                // Invalid user
+                System.out.println("Invalid JWT");
+                return Collections.emptyList();
+            }
+
+            Claims claims = JWTUtils.parseJWT(jwt);
+            Object sheetClaimValue = claims.get("Sheet");
+
+            // Convert the claim value to a list manually
+            List<String> sheetNumbers = new ArrayList<>();
+            if (sheetClaimValue instanceof List<?>) {
+                List<?> sheetList = (List<?>) sheetClaimValue;
+                for (Object sheet : sheetList) {
+                    if (sheet instanceof String) {
+                        sheetNumbers.add((String) sheet);
+                    }
+                }
+            } else if (sheetClaimValue instanceof String) {
+                // Trường hợp sheetClaimValue là một giá trị duy nhất
+                String sheet = (String) sheetClaimValue;
+                sheetNumbers.add(sheet);
+            }
+
+            return sheetNumbers;
+        } catch (Exception e) {
+            // Handle error
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
+
+    // Lấy danh sách SheetTimeSlotDTO từ API
+    public static List<SheetTimeSlotDTO> getSheetTimeSlots(boolean check) throws IOException {
         String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/fst");
         JSONObject json;
 
@@ -78,35 +124,71 @@ public class MyUtils {
         List<String> sheetNumbers = claims.get("Sheet", List.class);
         List<String> shiftStartTimes = claims.get("ShiftStartTime", List.class);
         List<String> shiftEndTimes = claims.get("ShiftEndTime", List.class);
-
-        List<SheetTimeSlot> sheetTimeSlots = new ArrayList<>();
+        
+        
+        List<SheetTimeSlotDTO> sheetTimeSlots = new ArrayList<>();
 
         for (int i = 0; i < sheetNumbers.size(); i++) {
             String sheetNumber = sheetNumbers.get(i);
             String shiftStartTime = shiftStartTimes.get(i);
             String shiftEndTime = shiftEndTimes.get(i);
-
-            LocalTime startTime;
-            LocalTime endTime;
-
-            try {
-                startTime = LocalTime.parse(shiftStartTime);
-                endTime = LocalTime.parse(shiftEndTime);
-            } catch (DateTimeParseException e) {
-                // Xử lý lỗi khi phân tích chuỗi thời gian
-                e.printStackTrace();
-                continue;
+            SheetTimeSlotDTO sheetTimeSlot;
+            if (check) {
+                sheetTimeSlot = createSheetTimeSlotCheckin(sheetNumber, shiftStartTime, shiftEndTime);
+            } else {
+                sheetTimeSlot = createSheetTimeSlotCheckOut(sheetNumber, shiftStartTime, shiftEndTime);
             }
 
-            SheetTimeSlot sheetTimeSlot = new SheetTimeSlot(sheetNumber, startTime, endTime);
             sheetTimeSlots.add(sheetTimeSlot);
         }
 
         return sheetTimeSlots;
     }
 
+    // Tạo đối tượng SheetTimeSlotDTO từ thông tin phiếu và chuỗi thời gian
+    private static SheetTimeSlotDTO createSheetTimeSlotCheckin(String sheetNumber, String shiftStartTime, String shiftEndTime) {
+        LocalTime startTime;
+        LocalTime endTime;
+        LocalTime shiftStartTimeLC;
+//        LocalTime shiftEndTimeLC;
+        
+        
+        try {
+            startTime = LocalTime.parse(shiftStartTime).minusMinutes(checkInStart);
+            endTime = LocalTime.parse(shiftEndTime).minusMinutes(checkInEnd);
+            shiftStartTimeLC = LocalTime.parse(shiftStartTime);
+//            shiftEndTimeLC = LocalTime.parse(shiftEndTime);
+        } catch (DateTimeParseException e) {
+            // Xử lý lỗi khi phân tích chuỗi thời gian
+            e.printStackTrace();
+            return null;
+        }
+
+        return new SheetTimeSlotDTO(sheetNumber, startTime, endTime, shiftStartTimeLC, null);
+    }
+
+    private static SheetTimeSlotDTO createSheetTimeSlotCheckOut(String sheetNumber, String shiftStartTime, String shiftEndTime) {
+        LocalTime startTime;
+        LocalTime endTime;
+//        LocalTime shiftStartTimeLC;
+        LocalTime shiftEndTimeLC;
+        
+        try {
+            startTime = LocalTime.parse(shiftStartTime).plusHours(checkOutStart);
+            endTime = LocalTime.parse(shiftEndTime).plusMinutes(checkOutEnd);
+//            shiftStartTimeLC = LocalTime.parse(shiftStartTime);
+            shiftEndTimeLC = LocalTime.parse(shiftEndTime);
+        } catch (DateTimeParseException e) {
+            // Xử lý lỗi khi phân tích chuỗi thời gian
+            e.printStackTrace();
+            return null;
+        }
+
+        return new SheetTimeSlotDTO(sheetNumber, startTime, endTime, null, shiftEndTimeLC);
+    }
+
     //update worksheet
-    public static boolean updateWorksheet(String idemp, String date, String update) throws IOException {
+    public static boolean updateWorksheet(String idemp, String date, String update, String check) throws IOException {
         String url = "http://localhost/swp/api/ms/uco";
         URL urlObj = new URL(url);
         HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
@@ -114,8 +196,12 @@ public class MyUtils {
         conn.setRequestProperty("Content-Type", "application/json");
         conn.setDoOutput(true);
         String jwt = "";
-
-        jwt = JWTUtils.generateJWTUWS(idemp, date, update);
+        if (check.equals("checkin")) {
+            jwt = JWTUtils.generateJWTUWS(idemp, date, update, "TimeCheckIn");
+        } else{
+            jwt = JWTUtils.generateJWTUWS(idemp, date, update, "TimeCheckOut");
+        }
+        
 
         if (jwt == null || jwt.isEmpty()) {
             return false;
@@ -201,70 +287,4 @@ public class MyUtils {
         return "data:image/" + imageFormat + ";base64," + base64Image;
     }
 
-    public static String checkSundayHoliday() {
-        String sheet;
-        LocalDate today = LocalDate.now();
-        DayOfWeek dayOfWeek = today.getDayOfWeek();
-
-        if (dayOfWeek == DayOfWeek.SUNDAY) {
-            boolean isHoliday = checkHoliday(today);
-            if (isHoliday) {
-                sheet = "9"; // Ngày nghỉ lễ là Chủ Nhật
-            } else {
-                sheet = "8"; // Chủ Nhật không phải ngày nghỉ lễ
-            }
-        } else {
-            sheet = ""; // Các ngày khác
-        }
-
-        return sheet;
-    }
-
-    private static boolean checkHoliday(LocalDate date) {
-        int year = date.getYear();
-        List<LocalDate> holidayDates = getHolidayDates(year);
-
-        // Kiểm tra ngày hôm nay có thuộc danh sách ngày nghỉ lễ hay không
-        return holidayDates.contains(date);
-    }
-
-    private static List<LocalDate> getHolidayDates(int year) {
-        List<LocalDate> holidayDates = new ArrayList<>();
-
-        // Tết Dương lịch: 1/1, 2/1, 3/1
-        holidayDates.add(LocalDate.of(year, 1, 1));
-        holidayDates.add(LocalDate.of(year, 1, 2));
-        holidayDates.add(LocalDate.of(year, 1, 3));
-
-        // Tết Nguyên đán: 21/1, 22/1, 23/1, 24/1, 25/1, 26/1, 27/1
-        holidayDates.add(LocalDate.of(year, 1, 21));
-        holidayDates.add(LocalDate.of(year, 1, 22));
-        holidayDates.add(LocalDate.of(year, 1, 23));
-        holidayDates.add(LocalDate.of(year, 1, 24));
-        holidayDates.add(LocalDate.of(year, 1, 25));
-        holidayDates.add(LocalDate.of(year, 1, 26));
-        holidayDates.add(LocalDate.of(year, 1, 27));
-
-        // Giỗ tổ Hùng Vương: 4/4, 5/4, 6/4, 7/4, 8/4
-        holidayDates.add(LocalDate.of(year, 4, 4));
-        holidayDates.add(LocalDate.of(year, 4, 5));
-        holidayDates.add(LocalDate.of(year, 4, 6));
-        holidayDates.add(LocalDate.of(year, 4, 7));
-        holidayDates.add(LocalDate.of(year, 4, 8));
-
-        // Lễ 30/4 - 1/5: 29/4, 30/4, 1/5, 2/5, 3/5
-        holidayDates.add(LocalDate.of(year, 4, 29));
-        holidayDates.add(LocalDate.of(year, 4, 30));
-        holidayDates.add(LocalDate.of(year, 5, 1));
-        holidayDates.add(LocalDate.of(year, 5, 2));
-        holidayDates.add(LocalDate.of(year, 5, 3));
-
-        // Quốc khánh: 2/9, 3/9, 4/9, 5/9
-        holidayDates.add(LocalDate.of(year, 9, 2));
-        holidayDates.add(LocalDate.of(year, 9, 3));
-        holidayDates.add(LocalDate.of(year, 9, 4));
-        holidayDates.add(LocalDate.of(year, 9, 5));
-
-        return holidayDates;
-    }
 }

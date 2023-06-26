@@ -6,22 +6,19 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import java.util.Date;
 
-/**
- *
- * @author nanat
- */
+
 public class JWTUtils {
 
     private static final String SECRET_KEY = "1Y8NuQTyiWqqXCPiwJeCENE23bJE77ydN92cacjb";
 
-    public static String generateJWTUWS(String idEmp, String date, String update) {
+    public static String generateJWTUWS(String idEmp, String date, String update,String check) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + 3600000); // Thời gian hết hạn của JWT: 1 giờ
 
         JwtBuilder builder = Jwts.builder()
                 .claim("IdEmp", idEmp)
                 .claim("Date", date)
-                .claim("TimeCheckOut", update)
+                .claim(check, update)
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY.getBytes());
