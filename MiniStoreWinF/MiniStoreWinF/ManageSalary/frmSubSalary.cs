@@ -195,5 +195,16 @@ namespace MiniStoreWinF.ManageSalary
                 dgvAdv = null;
             }
         }
+
+        private void dtpList_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime time = dtpList.Value;
+            _subSalaryService = new SubSalaryService();
+            var list = _subSalaryService.GetAll().Where(p => p.Time.Value.Month.Equals(time.Month)).ToList();
+            dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
+            _list = list;
+            //====
+            searchAdvAll();
+        }
     }
 }

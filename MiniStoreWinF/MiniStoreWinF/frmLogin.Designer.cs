@@ -38,6 +38,7 @@
             txtPassword = new TextBox();
             btLogin = new Button();
             button1 = new Button();
+            label1 = new Label();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ptbSeePasswords).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ptbNoSeePasswords).BeginInit();
@@ -52,7 +53,7 @@
             panel2.Controls.Add(txtUserName);
             panel2.Controls.Add(txtPassword);
             panel2.Controls.Add(btLogin);
-            panel2.Location = new Point(105, 220);
+            panel2.Location = new Point(12, 247);
             panel2.Name = "panel2";
             panel2.Size = new Size(411, 183);
             panel2.TabIndex = 1;
@@ -130,18 +131,30 @@
             // button1
             // 
             button1.Image = (Image)resources.GetObject("button1.Image");
-            button1.Location = new Point(146, 31);
+            button1.Location = new Point(69, 58);
             button1.Name = "button1";
             button1.Size = new Size(304, 183);
             button1.TabIndex = 2;
             button1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            label1.Dock = DockStyle.Top;
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(0, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(441, 32);
+            label1.TabIndex = 3;
+            label1.Text = "Login";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // frmLogin
             // 
             AcceptButton = btLogin;
             AutoScaleMode = AutoScaleMode.None;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(584, 442);
+            ClientSize = new Size(441, 442);
+            Controls.Add(label1);
             Controls.Add(button1);
             Controls.Add(panel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -164,5 +177,6 @@
         private Panel panel1;
         private PictureBox ptbNoSeePasswords;
         private PictureBox ptbSeePasswords;
+        private Label label1;
     }
 }

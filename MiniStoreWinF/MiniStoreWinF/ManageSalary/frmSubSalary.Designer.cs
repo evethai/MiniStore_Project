@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSubSalary));
             dgvTotalSub = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             idEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -38,7 +39,6 @@
             txtTotal = new TextBox();
             btTotal = new Button();
             cbName = new ComboBox();
-            btShow = new Button();
             dtpList = new DateTimePicker();
             groupBox2 = new GroupBox();
             dgvSub = new DataGridView();
@@ -50,9 +50,8 @@
             txtSaveID = new Label();
             btEdit = new Button();
             btAdd = new Button();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            panel3 = new Panel();
-            tableLayoutPanel2 = new TableLayoutPanel();
+            groupBox5 = new GroupBox();
+            numericUpDown1 = new NumericUpDown();
             groupBox3 = new GroupBox();
             groupBox4 = new GroupBox();
             dgvAdv = new DataGridView();
@@ -63,22 +62,27 @@
             advanceSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             detailAdvanceSalaryBindingSource = new BindingSource(components);
             btAddnew_Adv = new Button();
-            groupBox5 = new GroupBox();
-            numericUpDown1 = new NumericUpDown();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            panel3 = new Panel();
+            panel4 = new Panel();
+            panel5 = new Panel();
+            panel6 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvTotalSub).BeginInit();
             ((System.ComponentModel.ISupportInitialize)subSalaryBindingSource).BeginInit();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSub).BeginInit();
             ((System.ComponentModel.ISupportInitialize)detailSubSalaryBindingSource).BeginInit();
-            tableLayoutPanel1.SuspendLayout();
-            panel3.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
+            groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAdv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)detailAdvanceSalaryBindingSource).BeginInit();
-            groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            tableLayoutPanel1.SuspendLayout();
+            panel3.SuspendLayout();
+            panel4.SuspendLayout();
+            panel5.SuspendLayout();
+            panel6.SuspendLayout();
             SuspendLayout();
             // 
             // dgvTotalSub
@@ -132,7 +136,7 @@
             // txtTotal
             // 
             txtTotal.Enabled = false;
-            txtTotal.Location = new Point(47, 140);
+            txtTotal.Location = new Point(203, 298);
             txtTotal.Margin = new Padding(4, 3, 4, 3);
             txtTotal.Name = "txtTotal";
             txtTotal.Size = new Size(360, 29);
@@ -141,7 +145,7 @@
             // 
             // btTotal
             // 
-            btTotal.Location = new Point(47, 85);
+            btTotal.Location = new Point(425, 26);
             btTotal.Margin = new Padding(4, 3, 4, 3);
             btTotal.Name = "btTotal";
             btTotal.Size = new Size(158, 31);
@@ -155,32 +159,22 @@
             cbName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cbName.AutoCompleteSource = AutoCompleteSource.CustomSource;
             cbName.FormattingEnabled = true;
-            cbName.Location = new Point(239, 87);
+            cbName.Location = new Point(222, 28);
             cbName.Margin = new Padding(4, 3, 4, 3);
             cbName.Name = "cbName";
-            cbName.Size = new Size(168, 29);
+            cbName.Size = new Size(163, 29);
             cbName.TabIndex = 3;
-            // 
-            // btShow
-            // 
-            btShow.Location = new Point(47, 29);
-            btShow.Margin = new Padding(4, 3, 4, 3);
-            btShow.Name = "btShow";
-            btShow.Size = new Size(158, 29);
-            btShow.TabIndex = 2;
-            btShow.Text = "View All";
-            btShow.UseVisualStyleBackColor = true;
-            btShow.Click += btShow_Click;
             // 
             // dtpList
             // 
             dtpList.CustomFormat = "MM/yyyy";
             dtpList.Format = DateTimePickerFormat.Custom;
-            dtpList.Location = new Point(239, 28);
+            dtpList.Location = new Point(25, 28);
             dtpList.Margin = new Padding(4, 3, 4, 3);
             dtpList.Name = "dtpList";
-            dtpList.Size = new Size(168, 29);
+            dtpList.Size = new Size(158, 29);
             dtpList.TabIndex = 1;
+            dtpList.ValueChanged += dtpList_ValueChanged;
             // 
             // groupBox2
             // 
@@ -189,11 +183,11 @@
             groupBox2.Controls.Add(btEdit);
             groupBox2.Controls.Add(btAdd);
             groupBox2.Dock = DockStyle.Fill;
-            groupBox2.Location = new Point(4, 374);
+            groupBox2.Location = new Point(0, 0);
             groupBox2.Margin = new Padding(4, 3, 4, 3);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(4, 3, 4, 3);
-            groupBox2.Size = new Size(648, 366);
+            groupBox2.Size = new Size(679, 345);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Information salary allowance";
@@ -278,46 +272,27 @@
             btAdd.UseVisualStyleBackColor = true;
             btAdd.Click += btAdd_Click;
             // 
-            // tableLayoutPanel1
+            // groupBox5
             // 
-            tableLayoutPanel1.ColumnCount = 1;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Controls.Add(groupBox2, 0, 1);
-            tableLayoutPanel1.Controls.Add(groupBox5, 0, 0);
-            tableLayoutPanel1.Dock = DockStyle.Left;
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Margin = new Padding(2, 3, 2, 3);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(656, 743);
-            tableLayoutPanel1.TabIndex = 2;
+            groupBox5.Controls.Add(numericUpDown1);
+            groupBox5.Controls.Add(dgvTotalSub);
+            groupBox5.Dock = DockStyle.Fill;
+            groupBox5.Location = new Point(0, 0);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(679, 344);
+            groupBox5.TabIndex = 2;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Information about employees salary allowance";
             // 
-            // panel3
+            // numericUpDown1
             // 
-            panel3.Controls.Add(tableLayoutPanel2);
-            panel3.Dock = DockStyle.Left;
-            panel3.Location = new Point(656, 0);
-            panel3.Margin = new Padding(2, 3, 2, 3);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(731, 743);
-            panel3.TabIndex = 3;
-            // 
-            // tableLayoutPanel2
-            // 
-            tableLayoutPanel2.ColumnCount = 1;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Controls.Add(groupBox3, 0, 0);
-            tableLayoutPanel2.Controls.Add(groupBox4, 0, 1);
-            tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(0, 0);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 2;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(731, 743);
-            tableLayoutPanel2.TabIndex = 2;
+            numericUpDown1.Location = new Point(397, 276);
+            numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(55, 29);
+            numericUpDown1.TabIndex = 7;
+            numericUpDown1.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDown1.ValueChanged += nmPaging_ValueChanged;
             // 
             // groupBox3
             // 
@@ -325,11 +300,10 @@
             groupBox3.Controls.Add(btTotal);
             groupBox3.Controls.Add(txtTotal);
             groupBox3.Controls.Add(cbName);
-            groupBox3.Controls.Add(btShow);
             groupBox3.Dock = DockStyle.Fill;
-            groupBox3.Location = new Point(3, 3);
+            groupBox3.Location = new Point(0, 0);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(725, 365);
+            groupBox3.Size = new Size(679, 344);
             groupBox3.TabIndex = 0;
             groupBox3.TabStop = false;
             // 
@@ -338,9 +312,9 @@
             groupBox4.Controls.Add(dgvAdv);
             groupBox4.Controls.Add(btAddnew_Adv);
             groupBox4.Dock = DockStyle.Fill;
-            groupBox4.Location = new Point(3, 374);
+            groupBox4.Location = new Point(0, 0);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(725, 366);
+            groupBox4.Size = new Size(679, 345);
             groupBox4.TabIndex = 1;
             groupBox4.TabStop = false;
             groupBox4.Text = "List of employees with advance salary";
@@ -411,27 +385,67 @@
             btAddnew_Adv.UseVisualStyleBackColor = true;
             btAddnew_Adv.Click += btAddnew_Adv_Click;
             // 
-            // groupBox5
+            // tableLayoutPanel1
             // 
-            groupBox5.Controls.Add(numericUpDown1);
-            groupBox5.Controls.Add(dgvTotalSub);
-            groupBox5.Dock = DockStyle.Fill;
-            groupBox5.Location = new Point(3, 3);
-            groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(650, 365);
-            groupBox5.TabIndex = 2;
-            groupBox5.TabStop = false;
-            groupBox5.Text = "Information about employees salary allowance";
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(panel3, 0, 0);
+            tableLayoutPanel1.Controls.Add(panel4, 1, 0);
+            tableLayoutPanel1.Controls.Add(panel5, 1, 1);
+            tableLayoutPanel1.Controls.Add(panel6, 0, 1);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(1412, 743);
+            tableLayoutPanel1.TabIndex = 3;
             // 
-            // numericUpDown1
+            // panel3
             // 
-            numericUpDown1.Location = new Point(397, 276);
-            numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(55, 29);
-            numericUpDown1.TabIndex = 7;
-            numericUpDown1.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDown1.ValueChanged += nmPaging_ValueChanged;
+            panel3.BorderStyle = BorderStyle.Fixed3D;
+            panel3.Controls.Add(groupBox5);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(3, 3);
+            panel3.Margin = new Padding(3, 3, 20, 20);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(683, 348);
+            panel3.TabIndex = 4;
+            // 
+            // panel4
+            // 
+            panel4.BorderStyle = BorderStyle.Fixed3D;
+            panel4.Controls.Add(groupBox3);
+            panel4.Dock = DockStyle.Fill;
+            panel4.Location = new Point(709, 3);
+            panel4.Margin = new Padding(3, 3, 20, 20);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(683, 348);
+            panel4.TabIndex = 4;
+            // 
+            // panel5
+            // 
+            panel5.BorderStyle = BorderStyle.Fixed3D;
+            panel5.Controls.Add(groupBox4);
+            panel5.Dock = DockStyle.Fill;
+            panel5.Location = new Point(709, 374);
+            panel5.Margin = new Padding(3, 3, 20, 20);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(683, 349);
+            panel5.TabIndex = 4;
+            // 
+            // panel6
+            // 
+            panel6.BorderStyle = BorderStyle.Fixed3D;
+            panel6.Controls.Add(groupBox2);
+            panel6.Dock = DockStyle.Fill;
+            panel6.Location = new Point(3, 374);
+            panel6.Margin = new Padding(3, 3, 20, 20);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(683, 349);
+            panel6.TabIndex = 4;
             // 
             // frmSubSalary
             // 
@@ -439,9 +453,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(1412, 743);
-            Controls.Add(panel3);
             Controls.Add(tableLayoutPanel1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 3, 4, 3);
             Name = "frmSubSalary";
             StartPosition = FormStartPosition.CenterParent;
@@ -453,16 +467,18 @@
             groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSub).EndInit();
             ((System.ComponentModel.ISupportInitialize)detailSubSalaryBindingSource).EndInit();
-            tableLayoutPanel1.ResumeLayout(false);
-            panel3.ResumeLayout(false);
-            tableLayoutPanel2.ResumeLayout(false);
+            groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvAdv).EndInit();
             ((System.ComponentModel.ISupportInitialize)detailAdvanceSalaryBindingSource).EndInit();
-            groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            tableLayoutPanel1.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel5.ResumeLayout(false);
+            panel6.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -475,7 +491,6 @@
         private DataGridView dgvSub;
         private DataGridViewTextBoxColumn descriptionSDataGridViewTextBoxColumn;
         private DateTimePicker dtpList;
-        private Button btShow;
         private Label txtSaveID;
         private TextBox txtTotal;
         private Button btTotal;
@@ -495,8 +510,6 @@
         private DataGridViewTextBoxColumn idEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn idDetailSubSalaryDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
-        private TableLayoutPanel tableLayoutPanel1;
-        private Panel panel3;
         private DataGridView dgvAdv;
         private BindingSource detailAdvanceSalaryBindingSource;
         private DataGridViewTextBoxColumn idAdvanceSalaryDataGridViewTextBoxColumn;
@@ -505,10 +518,14 @@
         private DataGridViewTextBoxColumn descriptionADataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn advanceSalaryDataGridViewTextBoxColumn;
         private Button btAddnew_Adv;
-        private TableLayoutPanel tableLayoutPanel2;
         private GroupBox groupBox3;
         private GroupBox groupBox4;
         private GroupBox groupBox5;
         private NumericUpDown numericUpDown1;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Panel panel3;
+        private Panel panel4;
+        private Panel panel5;
+        private Panel panel6;
     }
 }

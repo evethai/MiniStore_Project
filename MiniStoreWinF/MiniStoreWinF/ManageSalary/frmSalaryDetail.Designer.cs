@@ -51,10 +51,14 @@
             panel2 = new Panel();
             numericUpDown1 = new NumericUpDown();
             txtS = new TextBox();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            panel3 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvSalary).BeginInit();
             ((System.ComponentModel.ISupportInitialize)salaryBindingSource).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            tableLayoutPanel1.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // dgvSalary
@@ -63,14 +67,16 @@
             dgvSalary.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvSalary.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvSalary.BackgroundColor = SystemColors.ButtonHighlight;
+            dgvSalary.BorderStyle = BorderStyle.Fixed3D;
             dgvSalary.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSalary.Columns.AddRange(new DataGridViewColumn[] { idSalaryDataGridViewTextBoxColumn, idEmpDataGridViewTextBoxColumn, salaryHourDataGridViewTextBoxColumn, basicSalaryDataGridViewTextBoxColumn, sumSubSalaryDataGridViewTextBoxColumn, sumAdvanceSalaryDataGridViewTextBoxColumn, totalSalaryDataGridViewTextBoxColumn, taxDataGridViewTextBoxColumn, salaryAfterTaxDataGridViewTextBoxColumn, DateOmonth });
             dgvSalary.DataSource = salaryBindingSource;
-            dgvSalary.Location = new Point(20, 271);
+            dgvSalary.Dock = DockStyle.Fill;
+            dgvSalary.Location = new Point(0, 0);
             dgvSalary.Margin = new Padding(4);
             dgvSalary.Name = "dgvSalary";
             dgvSalary.RowTemplate.Height = 27;
-            dgvSalary.Size = new Size(1252, 347);
+            dgvSalary.Size = new Size(1229, 245);
             dgvSalary.TabIndex = 0;
             dgvSalary.CellMouseDoubleClick += dgvSalary_CellMouseDoubleClick;
             // 
@@ -195,7 +201,7 @@
             // btReset
             // 
             btReset.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btReset.Location = new Point(1634, 62);
+            btReset.Location = new Point(1095, 62);
             btReset.Margin = new Padding(4);
             btReset.Name = "btReset";
             btReset.Size = new Size(117, 35);
@@ -207,7 +213,7 @@
             // btExport
             // 
             btExport.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btExport.Location = new Point(1634, 12);
+            btExport.Location = new Point(1095, 12);
             btExport.Margin = new Padding(4);
             btExport.Name = "btExport";
             btExport.Size = new Size(117, 35);
@@ -218,22 +224,26 @@
             // 
             // panel2
             // 
+            panel2.BorderStyle = BorderStyle.Fixed3D;
+            panel2.Controls.Add(numericUpDown1);
             panel2.Controls.Add(cbName);
+            panel2.Controls.Add(txtS);
             panel2.Controls.Add(btSearch);
             panel2.Controls.Add(btExport);
             panel2.Controls.Add(dtpTime);
             panel2.Controls.Add(btReset);
             panel2.Controls.Add(btFilter);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 0);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(3, 2);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1764, 229);
+            panel2.Size = new Size(1229, 246);
             panel2.TabIndex = 16;
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Location = new Point(1208, 232);
+            numericUpDown1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            numericUpDown1.Location = new Point(11, 200);
             numericUpDown1.Margin = new Padding(11, 13, 11, 13);
             numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
@@ -245,23 +255,45 @@
             // txtS
             // 
             txtS.Enabled = false;
-            txtS.Location = new Point(878, 234);
+            txtS.Location = new Point(528, 375);
             txtS.Name = "txtS";
             txtS.Size = new Size(100, 33);
             txtS.TabIndex = 17;
             txtS.Visible = false;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(panel2, 0, 0);
+            tableLayoutPanel1.Controls.Add(panel3, 0, 1);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(1235, 501);
+            tableLayoutPanel1.TabIndex = 18;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(dgvSalary);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(3, 253);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1229, 245);
+            panel3.TabIndex = 0;
             // 
             // frmSalaryDetail
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1764, 884);
-            Controls.Add(txtS);
-            Controls.Add(numericUpDown1);
-            Controls.Add(dgvSalary);
-            Controls.Add(panel2);
+            ClientSize = new Size(1235, 501);
+            Controls.Add(tableLayoutPanel1);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "frmSalaryDetail";
             StartPosition = FormStartPosition.CenterScreen;
@@ -270,9 +302,11 @@
             ((System.ComponentModel.ISupportInitialize)dgvSalary).EndInit();
             ((System.ComponentModel.ISupportInitialize)salaryBindingSource).EndInit();
             panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            tableLayoutPanel1.ResumeLayout(false);
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -300,5 +334,7 @@
         private Panel panel2;
         private NumericUpDown numericUpDown1;
         private TextBox txtS;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Panel panel3;
     }
 }

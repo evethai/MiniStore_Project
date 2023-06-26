@@ -16,6 +16,8 @@ namespace MiniStoreWinF.ManageSalary
         EmployeeService _employeeService;
         WorkSheetService _workSheetService;
         SalaryService _salaryService;
+
+        /*Generate Id auto of object with template: CCxxxx(C: character, x: number) can identity */
         public string GenerateAutoId(int currentCount,string headId)
         {
             int nextCount = currentCount + 1;
@@ -23,6 +25,7 @@ namespace MiniStoreWinF.ManageSalary
             return id;
         }
         
+        /* Constraint the textbox in form only input number with max has n number*/
         public void numberOnly(KeyPressEventArgs e,string text,int num)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b' )
@@ -40,6 +43,9 @@ namespace MiniStoreWinF.ManageSalary
                 e.Handled=false;
             }
         }
+
+        /*Show list combobox with display is name of employee anh valueSeleted is id employee
+         * except Admin and help search on combobox by input text*/
         public void showListEmp(ComboBox comboBox)
         {
             _employeeService = new EmployeeService();
@@ -55,23 +61,40 @@ namespace MiniStoreWinF.ManageSalary
             comboBox.DataSource = list;
         }
 
+        /*Combobox can show list number with max has n number*/
+        public void comboxGeneration(ComboBox comboBox,int n)
+        {
+            List<int> num = new List<int>();
+            for (int i = 0; i <= n; i++)
+            {
+                num.Add(i);
+            }
+            comboBox.DataSource = num;
+        }
+
+        /*Can take last month of the time*/
         public DateTime GetTime(DateTime currentTime)
         {
             return currentTime.AddMonths(-1);
         }
 
+        /*Method return the number worksheet of a employee in specifically month*/
         public int sum(string id, DateTime time)
         {
             _workSheetService = new WorkSheetService();
             var sum1 = _workSheetService.GetAll().Count(p => p.IdEmp.Equals(id) && p.Date.Value.Month.Equals(time.Month));
             return sum1;
         }
+
+        /*Get final day in specifically month*/
         public DateTime GetLastDayOfMonth(DateTime time)
         {
             int daysInMonth = DateTime.DaysInMonth(time.Year, time.Month);
             DateTime lastDayOfMonth = new DateTime(time.Year, time.Month, daysInMonth);
             return lastDayOfMonth;
         }
+
+        /*Get first day in specifically month*/
         public DateTime GetFirstDayofMonth(DateTime time)
         {
             int daysInMonth = 1;
@@ -79,6 +102,7 @@ namespace MiniStoreWinF.ManageSalary
             return lastDayOfMonth;
         }
 
+        /*Can open child form in panel help design display*/
         public Form currentFormChild;
         public void openChildForm(Form childForm,Panel p)
         {
@@ -96,11 +120,12 @@ namespace MiniStoreWinF.ManageSalary
             childForm.Show();//hiện thị nó 
         }
 
-        public List<Salary> salary()
+        /*show list salary with specifically month and not have admin*/
+        public List<Salary> salary(DateTime time)
         {
             _salaryService = new SalaryService();
             _employeeService = new EmployeeService();
-            var listSal = _salaryService.GetAll().Where(p => p.DateOmonth.Month.Equals(DateTime.Now.AddMonths(-1).Month)).ToList();
+            var listSal = _salaryService.GetAll().Where(p => p.DateOmonth.Month.Equals(time.Month)).ToList();
             var listEmp = _employeeService.GetAll().Where(p => p.IsActive == true && !p.Roles.Equals("Admin")).ToList();
             List<Salary> listTrue = new List<Salary>();
             foreach (var emp in listEmp)
@@ -114,6 +139,11 @@ namespace MiniStoreWinF.ManageSalary
                 }
             }
             return listTrue;
+        }
+        /*format the doubel to string when show in form */
+        public string formatDouble (double? d)
+        {
+            return d?.ToString("#,###,###");
         }
     }
 }

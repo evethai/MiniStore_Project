@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetailSetup));
             dgvRoles = new DataGridView();
-            employeeBindingSource = new BindingSource(components);
             idEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             fullNameEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             rolesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            employeeBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dgvRoles).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
             SuspendLayout();
@@ -53,10 +54,6 @@
             dgvRoles.RowTemplate.Height = 27;
             dgvRoles.Size = new Size(542, 185);
             dgvRoles.TabIndex = 1;
-            // 
-            // employeeBindingSource
-            // 
-            employeeBindingSource.DataSource = typeof(Repository.Models.Employee);
             // 
             // idEmpDataGridViewTextBoxColumn
             // 
@@ -79,6 +76,10 @@
             rolesDataGridViewTextBoxColumn.Name = "rolesDataGridViewTextBoxColumn";
             rolesDataGridViewTextBoxColumn.Width = 81;
             // 
+            // employeeBindingSource
+            // 
+            employeeBindingSource.DataSource = typeof(Repository.Models.Employee);
+            // 
             // frmDetailSetup
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
@@ -86,7 +87,10 @@
             ClientSize = new Size(433, 172);
             Controls.Add(dgvRoles);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(5, 4, 5, 4);
+            MaximumSize = new Size(449, 211);
+            MinimumSize = new Size(449, 211);
             Name = "frmDetailSetup";
             Load += frmDetailSetup_Load;
             ((System.ComponentModel.ISupportInitialize)dgvRoles).EndInit();

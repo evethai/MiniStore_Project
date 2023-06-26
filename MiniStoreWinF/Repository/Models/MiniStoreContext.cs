@@ -27,6 +27,7 @@ namespace Repository.Models
         public virtual DbSet<MoMo> MoMos { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Permission> Permissions { get; set; }
+        public virtual DbSet<PermissionDetail> PermissionDetails { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Revenue> Revenues { get; set; }
         public virtual DbSet<Salary> Salaries { get; set; }
@@ -40,9 +41,7 @@ namespace Repository.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-
-                optionsBuilder.UseSqlServer("Server=(local);uid=sa;pwd=12345;database=MiniStore;TrustServerCertificate=True");
-
+                optionsBuilder.UseSqlServer("Server=MSI;uid=sa;pwd=12345;database=MiniStore;TrustServerCertificate=True");
             }
         }
 
@@ -163,10 +162,6 @@ namespace Repository.Models
 
                 entity.Property(e => e.PhoneEmp).HasMaxLength(15);
 
-                entity.Property(e => e.Roles)
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.Username)
                     .HasMaxLength(20)
                     .IsUnicode(false);
@@ -174,7 +169,7 @@ namespace Repository.Models
                 entity.HasOne(d => d.RolesNavigation)
                     .WithMany(p => p.Employees)
                     .HasForeignKey(d => d.Roles)
-                    .HasConstraintName("FK__Employee__Roles__32E0915F");
+                    .HasConstraintName("FK_emp_per");
             });
 
             modelBuilder.Entity<Member>(entity =>
@@ -285,9 +280,7 @@ namespace Repository.Models
 
                 entity.ToTable("Permission");
 
-                entity.Property(e => e.Roles)
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
+                entity.Property(e => e.Roles).ValueGeneratedNever();
 
                 entity.Property(e => e.Permission1)
                     .HasMaxLength(30)
@@ -295,6 +288,31 @@ namespace Repository.Models
                     .HasColumnName("Permission");
 
                 entity.Property(e => e.Tax).HasColumnName("tax");
+            });
+
+            modelBuilder.Entity<PermissionDetail>(entity =>
+            {
+                entity.ToTable("PermissionDetail");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.ActionCode)
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnName("action_code");
+
+                entity.Property(e => e.ActionName)
+                    .HasMaxLength(20)
+                    .HasColumnName("action_name");
+
+                entity.Property(e => e.CheckAction).HasColumnName("check_action");
+
+                entity.Property(e => e.IdPer).HasColumnName("id_per");
+
+                entity.HasOne(d => d.IdPerNavigation)
+                    .WithMany(p => p.PermissionDetails)
+                    .HasForeignKey(d => d.IdPer)
+                    .HasConstraintName("FK__Permissio__id_pe__7D439ABD");
             });
 
             modelBuilder.Entity<Product>(entity =>

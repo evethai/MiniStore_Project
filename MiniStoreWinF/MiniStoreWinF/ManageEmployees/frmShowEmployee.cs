@@ -195,15 +195,15 @@ namespace MiniStoreWinF.ManageEmployees
                     }
                     if (cbRole.SelectedItem.Equals("Admin"))
                     {
-                        employeeService.Roles = "Admin";
+                        employeeService.Roles = 1;
                     }
                     else if (cbRole.SelectedItem.Equals("Employee"))
                     {
-                        employeeService.Roles = "Employee";
+                        employeeService.Roles = 2;
                     }
                     else if (cbRole.SelectedItem.Equals("Guard"))
                     {
-                        employeeService.Roles = "Guard";
+                        employeeService.Roles = 3;
                     }
                     if (cBStatus.SelectedItem.Equals("Active"))
                     {

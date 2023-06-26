@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddNewSubSalary));
             gbAddSub = new GroupBox();
             btOKEdit = new Button();
             cbCondi = new ComboBox();
@@ -51,6 +52,8 @@
             gbAddSub.Controls.Add(label1);
             gbAddSub.Location = new Point(3, 3);
             gbAddSub.Margin = new Padding(5, 4, 5, 4);
+            gbAddSub.MaximumSize = new Size(396, 368);
+            gbAddSub.MinimumSize = new Size(396, 368);
             gbAddSub.Name = "gbAddSub";
             gbAddSub.Padding = new Padding(5, 4, 5, 4);
             gbAddSub.Size = new Size(396, 368);
@@ -135,6 +138,7 @@
             ClientSize = new Size(401, 388);
             Controls.Add(gbAddSub);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(5, 4, 5, 4);
             Name = "frmAddNewSubSalary";
             StartPosition = FormStartPosition.CenterScreen;

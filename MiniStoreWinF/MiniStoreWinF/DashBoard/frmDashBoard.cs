@@ -263,16 +263,6 @@ namespace MiniStoreWinF.DashBoard
             u.openChildForm(new frmSalary(), pMain);
         }
 
-        private void panel3_Click(object sender, EventArgs e)
-        {
-            u.openChildForm(new frmShowEmployee(), pMain);
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void panel4_Click(object sender, EventArgs e)
         {
             u.openChildForm(new ManageProducts.ManageAllProduct(), pMain);
@@ -291,8 +281,16 @@ namespace MiniStoreWinF.DashBoard
             {
 
             }
+        }
 
+        private void bntRevenues_Click(object sender, EventArgs e)
+        {
+            u.openChildForm(new ManageRevenue.frmRevenues(), pMain);
+        }
 
+        private void btEmployee_Click(object sender, EventArgs e)
+        {
+            u.openChildForm(new frmShowEmployee(), pMain);
         }
     }
 }

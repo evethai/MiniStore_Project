@@ -102,7 +102,7 @@ namespace MiniStoreWinF.DashBoard
 
         private void btnUse_Click(object sender, EventArgs e)
         {
-            _moService=new MoMoService();
+            _moService = new MoMoService();
             DialogResult result = MessageBox.Show("Are you sure you want to change your MoMo account?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditSubSalary));
             gbAddSub = new GroupBox();
             btRemove = new Button();
             btUpdate = new Button();
@@ -147,7 +148,10 @@
             ClientSize = new Size(396, 375);
             Controls.Add(gbAddSub);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(5, 4, 5, 4);
+            MaximumSize = new Size(412, 414);
+            MinimumSize = new Size(412, 414);
             Name = "frmEditSubSalary";
             Load += frmEditSubSalary_Load;
             gbAddSub.ResumeLayout(false);

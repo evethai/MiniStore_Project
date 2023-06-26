@@ -174,6 +174,7 @@ namespace MiniStoreWinF.ManageSalary
             {
                 _salaryService = new SalaryService();
                 Salary salary = new Salary();
+
                 int id = _salaryService.GetAll().Count();
                 salary.IdSalary = u.GenerateAutoId(id,"SA");
                 var nId = _salaryService.GetAll().Count(p => p.IdSalary.Equals(salary.IdSalary));
@@ -183,17 +184,27 @@ namespace MiniStoreWinF.ManageSalary
                 }
                 else
                 {
+                    //id
                     salary.IdEmp = employee.IdEmp;
+                    //salary hour
                     salary.SalaryHour = HourSalary(employee.IdEmp);
+                    //basic salary
                     salary.BasicSalary = BasicSalary(employee.IdEmp,time, HourSalary(employee.IdEmp));
+                    //sub salary
                     salary.SumSubSalary = SubSalary(employee.IdEmp, time);
+                    //advance salary
                     salary.SumAdvanceSalary = AdvSalary(employee.IdEmp, time);
+                    //total basic
                     salary.TotalSalary = totalSalry(employee.IdEmp, time);
-                    //salary.Tax = Tax(employee.IdEmp,time, BasicSalary(employee.IdEmp, time, HourSalary(employee.IdEmp)));
+                    //tax
                     salary.Tax = Tax(employee.IdEmp,time, totalSalry(employee.IdEmp, time));
+                    //after tax
                     salary.SalaryAfterTax = sumaryResultTotalSalary(employee.IdEmp, time);
+                    //day begin 
                     salary.DateImonth = u.GetFirstDayofMonth(time);
-                    salary.DateOmonth = time;
+                    //day close month
+                    salary.DateOmonth = u.GetLastDayOfMonth(time);
+                    //add into
                     _salaryService.Create(salary);
                 }
             }

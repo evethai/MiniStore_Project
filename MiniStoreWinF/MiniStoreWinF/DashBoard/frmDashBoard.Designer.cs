@@ -32,6 +32,7 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDashBoard));
             panel2 = new Panel();
             label1 = new Label();
             pMain = new Panel();
@@ -40,17 +41,6 @@
             pbMember = new PictureBox();
             pbProduct = new PictureBox();
             pbVouchers = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            panel9 = new Panel();
-            label3 = new Label();
-            btSalary = new Panel();
-            label9 = new Label();
-            panel5 = new Panel();
-            label7 = new Label();
-            panel4 = new Panel();
-            label5 = new Label();
-            btEmployee = new Panel();
-            label2 = new Label();
             panel2.SuspendLayout();
             pMain.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -58,12 +48,6 @@
             ((System.ComponentModel.ISupportInitialize)pbMember).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbProduct).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbVouchers).BeginInit();
-            tableLayoutPanel1.SuspendLayout();
-            panel9.SuspendLayout();
-            btSalary.SuspendLayout();
-            panel5.SuspendLayout();
-            panel4.SuspendLayout();
-            btEmployee.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
@@ -72,7 +56,7 @@
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
-            panel2.Margin = new Padding(4, 4, 4, 4);
+            panel2.Margin = new Padding(4);
             panel2.Name = "panel2";
             panel2.Size = new Size(1458, 53);
             panel2.TabIndex = 1;
@@ -94,11 +78,11 @@
             pMain.BackColor = SystemColors.Window;
             pMain.Controls.Add(tableLayoutPanel2);
             pMain.Dock = DockStyle.Fill;
-            pMain.Location = new Point(0, 169);
-            pMain.Margin = new Padding(4, 4, 4, 4);
+            pMain.Location = new Point(0, 53);
+            pMain.Margin = new Padding(4);
             pMain.Name = "pMain";
             pMain.Padding = new Padding(12, 10, 12, 10);
-            pMain.Size = new Size(1458, 610);
+            pMain.Size = new Size(1458, 726);
             pMain.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -112,31 +96,31 @@
             tableLayoutPanel2.Controls.Add(pbVouchers, 1, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(12, 10);
-            tableLayoutPanel2.Margin = new Padding(4, 4, 4, 4);
+            tableLayoutPanel2.Margin = new Padding(4);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(1434, 590);
+            tableLayoutPanel2.Size = new Size(1434, 706);
             tableLayoutPanel2.TabIndex = 3;
             // 
             // pbRevenues
             // 
             pbRevenues.Dock = DockStyle.Fill;
             pbRevenues.Location = new Point(4, 4);
-            pbRevenues.Margin = new Padding(4, 4, 4, 4);
+            pbRevenues.Margin = new Padding(4);
             pbRevenues.Name = "pbRevenues";
-            pbRevenues.Size = new Size(709, 287);
+            pbRevenues.Size = new Size(709, 345);
             pbRevenues.TabIndex = 0;
             pbRevenues.TabStop = false;
             // 
             // pbMember
             // 
             pbMember.Dock = DockStyle.Fill;
-            pbMember.Location = new Point(4, 299);
-            pbMember.Margin = new Padding(4, 4, 4, 4);
+            pbMember.Location = new Point(4, 357);
+            pbMember.Margin = new Padding(4);
             pbMember.Name = "pbMember";
-            pbMember.Size = new Size(709, 287);
+            pbMember.Size = new Size(709, 345);
             pbMember.TabIndex = 1;
             pbMember.TabStop = false;
             // 
@@ -144,9 +128,9 @@
             // 
             pbProduct.Dock = DockStyle.Fill;
             pbProduct.Location = new Point(721, 4);
-            pbProduct.Margin = new Padding(4, 4, 4, 4);
+            pbProduct.Margin = new Padding(4);
             pbProduct.Name = "pbProduct";
-            pbProduct.Size = new Size(709, 287);
+            pbProduct.Size = new Size(709, 345);
             pbProduct.TabIndex = 2;
             pbProduct.TabStop = false;
             // 
@@ -157,7 +141,7 @@
             pbVouchers.Dock = DockStyle.Fill;
             legend1.Name = "Legend1";
             pbVouchers.Legends.Add(legend1);
-            pbVouchers.Location = new Point(721, 300);
+            pbVouchers.Location = new Point(721, 358);
             pbVouchers.Margin = new Padding(4, 5, 4, 5);
             pbVouchers.Name = "pbVouchers";
             pbVouchers.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
@@ -167,148 +151,13 @@
             series1.Legend = "Legend1";
             series1.Name = "Quantity";
             pbVouchers.Series.Add(series1);
-            pbVouchers.Size = new Size(709, 285);
+            pbVouchers.Size = new Size(709, 343);
             pbVouchers.TabIndex = 3;
             title1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             title1.Name = "Title1";
             title1.Text = "Number of vouchers still available";
             pbVouchers.Titles.Add(title1);
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 5;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.Controls.Add(panel9, 0, 0);
-            tableLayoutPanel1.Controls.Add(btSalary, 3, 0);
-            tableLayoutPanel1.Controls.Add(panel5, 2, 0);
-            tableLayoutPanel1.Controls.Add(panel4, 1, 0);
-            tableLayoutPanel1.Controls.Add(btEmployee, 0, 0);
-            tableLayoutPanel1.Dock = DockStyle.Top;
-            tableLayoutPanel1.Location = new Point(0, 53);
-            tableLayoutPanel1.Margin = new Padding(4, 4, 4, 4);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1458, 116);
-            tableLayoutPanel1.TabIndex = 0;
-            // 
-            // panel9
-            // 
-            panel9.BackColor = Color.Cyan;
-            panel9.BackgroundImageLayout = ImageLayout.Stretch;
-            panel9.Controls.Add(label3);
-            panel9.Dock = DockStyle.Fill;
-            panel9.Location = new Point(291, 0);
-            panel9.Margin = new Padding(0, 0, 12, 10);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(279, 106);
-            panel9.TabIndex = 4;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(54, 17);
-            label3.Margin = new Padding(4, 0, 4, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(166, 21);
-            label3.TabIndex = 0;
-            label3.Text = "Revenue Management";
-            // 
-            // btSalary
-            // 
-            btSalary.BackColor = Color.Cyan;
-            btSalary.BackgroundImageLayout = ImageLayout.Stretch;
-            btSalary.Controls.Add(label9);
-            btSalary.Dock = DockStyle.Fill;
-            btSalary.Location = new Point(1164, 0);
-            btSalary.Margin = new Padding(0, 0, 12, 10);
-            btSalary.Name = "btSalary";
-            btSalary.Size = new Size(282, 106);
-            btSalary.TabIndex = 3;
-            btSalary.Click += btSalary_Click;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(55, 15);
-            label9.Margin = new Padding(4, 0, 4, 0);
-            label9.Name = "label9";
-            label9.Size = new Size(149, 21);
-            label9.TabIndex = 0;
-            label9.Text = "Salary Management";
-            // 
-            // panel5
-            // 
-            panel5.BackColor = Color.Cyan;
-            panel5.BackgroundImageLayout = ImageLayout.Stretch;
-            panel5.Controls.Add(label7);
-            panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(873, 0);
-            panel5.Margin = new Padding(0, 0, 12, 10);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(279, 106);
-            panel5.TabIndex = 2;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(37, 15);
-            label7.Margin = new Padding(4, 0, 4, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(182, 21);
-            label7.TabIndex = 0;
-            label7.Text = "WorkSheet Management";
-            // 
-            // panel4
-            // 
-            panel4.BackColor = Color.Cyan;
-            panel4.BackgroundImageLayout = ImageLayout.Stretch;
-            panel4.Controls.Add(label5);
-            panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(582, 0);
-            panel4.Margin = new Padding(0, 0, 12, 10);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(279, 106);
-            panel4.TabIndex = 1;
-            panel4.Click += panel4_Click;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(53, 15);
-            label5.Margin = new Padding(4, 0, 4, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(160, 21);
-            label5.TabIndex = 0;
-            label5.Text = "Product Management";
-            // 
-            // btEmployee
-            // 
-            btEmployee.BackColor = Color.Cyan;
-            btEmployee.BackgroundImageLayout = ImageLayout.Zoom;
-            btEmployee.Controls.Add(label2);
-            btEmployee.Dock = DockStyle.Fill;
-            btEmployee.Location = new Point(0, 0);
-            btEmployee.Margin = new Padding(0, 0, 14, 15);
-            btEmployee.Name = "btEmployee";
-            btEmployee.Size = new Size(277, 101);
-            btEmployee.TabIndex = 0;
-            btEmployee.Click += panel3_Click;
-            // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            label2.AutoSize = true;
-            label2.Location = new Point(41, 15);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(174, 21);
-            label2.TabIndex = 0;
-            label2.Text = "Employee Management";
+            pbVouchers.Click += pbVouchers_Click;
             // 
             // frmDashBoard
             // 
@@ -316,12 +165,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1458, 779);
             Controls.Add(pMain);
-            Controls.Add(tableLayoutPanel1);
             Controls.Add(panel2);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(4, 4, 4, 4);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4);
             Name = "frmDashBoard";
-            Text = "frmDashBoard";
             Load += frmDashBoard_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -331,17 +179,6 @@
             ((System.ComponentModel.ISupportInitialize)pbMember).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbProduct).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbVouchers).EndInit();
-            tableLayoutPanel1.ResumeLayout(false);
-            panel9.ResumeLayout(false);
-            panel9.PerformLayout();
-            btSalary.ResumeLayout(false);
-            btSalary.PerformLayout();
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            btEmployee.ResumeLayout(false);
-            btEmployee.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -350,17 +187,6 @@
         private Panel panel2;
         private Label label1;
         private Panel pMain;
-        private TableLayoutPanel tableLayoutPanel1;
-        private Panel btEmployee;
-        private Panel panel5;
-        private Label label7;
-        private Panel panel4;
-        private Label label5;
-        private Panel btSalary;
-        private Label label9;
-        private Panel panel9;
-        private Label label3;
-        private Label label2;
         private TableLayoutPanel tableLayoutPanel2;
         private PictureBox pbRevenues;
         private PictureBox pbMember;
