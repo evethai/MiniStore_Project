@@ -21,13 +21,21 @@ namespace MiniStoreWinF.ManageEmployees
         public EmployeeService employeeService = new EmployeeService();
         public string url = "";
         Validation validation = new Validation();
+        PermissionService permissionService = new PermissionService();
+        Permission Permission = new Permission();
+        private string verificationCode;
         public frmCreateEmployees()
         {
             InitializeComponent();
+            if (ContextScope.currentEmployee.Roles.Equals(0))
+            {
+                var role = new PermissionService().GetAll();
+                cbRole.DataSource = role;
 
-            var role = new PermissionService().GetAll();
-            cbRole.DataSource = role;
-            cbRole.DisplayMember = "Roles";
+                cbRole.DisplayMember = "Permission1";
+            }
+
+
         }
         private void CreateEmployees_Load(object sender, EventArgs e)
         {
@@ -60,6 +68,7 @@ namespace MiniStoreWinF.ManageEmployees
 
         private void btAddNew_Click(object sender, EventArgs e)
         {
+
             //Check existed username
             var duplicated = employeeService.GetAll().Where(entity => entity.Username.Equals(txtUsername.Text)).FirstOrDefault();
             if (txtAddName.Text == "" ||
@@ -245,6 +254,11 @@ namespace MiniStoreWinF.ManageEmployees
                 e.Handled = true; // Cannot continue input
             }
 
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
 
         }
 

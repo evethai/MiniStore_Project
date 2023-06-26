@@ -98,7 +98,7 @@ namespace MiniStoreWinF.DashBoard
 
         private void EMPLOYEE_Click(object sender, EventArgs e)
         {
-
+            u.openChildForm(new ManageEmployees.frmShowEmployee(), pnMain);
         }
 
         private void SHEET_Click(object sender, EventArgs e)
@@ -108,12 +108,20 @@ namespace MiniStoreWinF.DashBoard
 
         private void VOUCHER_Click(object sender, EventArgs e)
         {
+            Form voucher = new Manage_Voucher.frmShowVoucher();
+            voucher.Show();
 
         }
 
         private void AUTHORIZATION_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pbSetting_Click(object sender, EventArgs e)
+        {
+            Form setting = new frmSettingScreen();
+            setting.Show();
         }
     }
 }

@@ -166,7 +166,7 @@ namespace MiniStoreWinF.Manage_Voucher
 
                 voucher.Conditions = float.Parse(numAddCondition.Text);
 
-                
+
 
                 voucher.Exp = dpkNewDate.Value;
                 voucher.Price = float.Parse(txtNewPrice.Text);
