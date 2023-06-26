@@ -1,10 +1,12 @@
-﻿using Repository.Models;
+﻿using MiniStoreWinF.ManageWorkSheets;
+using Repository.Models;
 using Repository.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
@@ -13,6 +15,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Button = System.Windows.Forms.Button;
 
 namespace MiniStoreWinF.ManageWorkSheet
 {
@@ -26,6 +29,18 @@ namespace MiniStoreWinF.ManageWorkSheet
         int loadrecord = 0;
         int numberRecord = 7;
         int pagenumber = 1;
+
+        #region Properties
+        private List<List<Button>> matrix;
+        public List<List<Button>> Matrix
+        {
+            get { return matrix; }
+            set { matrix = value; }
+        }
+        private List<string> _dateOfWeek = new List<string>()
+        { "Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday" };
+        #endregion
+
         public frmManageWorkSheetPage()
         {
             InitializeComponent();
@@ -35,9 +50,9 @@ namespace MiniStoreWinF.ManageWorkSheet
             cbSheet.DisplayMember = "Sheet";//end code lấy sheet
             var showDetails = _sheetDetailService.GetAll(); // take table
             dgvDetailWorksheet.DataSource = new BindingSource() { DataSource = showDetails }; //end show sheet details tab 5
+            LoadDataManage();
 
         }
-
         List<WorkSheet> Loadrecord(int page, int recordnumber)
         {
             List<WorkSheet> result = new List<WorkSheet>();
@@ -268,7 +283,6 @@ namespace MiniStoreWinF.ManageWorkSheet
                 textBox.Focus(); // Đưa con trỏ về TextBox để người dùng nhập lại
             }
         }
-
         private void txtEndDetails_Leave(object sender, EventArgs e)
         {
             TextBoxBase textBox = (TextBoxBase)sender;
@@ -281,6 +295,109 @@ namespace MiniStoreWinF.ManageWorkSheet
                 MessageBox.Show("Định dạng thời gian không hợp lệ. Vui lòng nhập lại theo định dạng hh:mm:ss.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBox.Focus(); // Đưa con trỏ về TextBox để người dùng nhập lại
             }
+        }
+
+        public void LoadDataManage()
+        {
+
+            Matrix = new List<List<Button>>();
+            Button oldBtn = new Button() { Width = 0, Height = 0, Location = new Point(-TableSheet.DateButtonMagin, 0) };
+            for (int i = 0; i < TableSheet.DayOfColumn; i++)
+            {
+                Matrix.Add(new List<Button>());
+                for (int j = 0; j < TableSheet.DayOfWeek; j++)
+                {
+                    Button btn = new Button() { Width = TableSheet.DateButtonWidth, Height = TableSheet.DateButtonHeight };
+                    btn.Location = new Point(oldBtn.Location.X + oldBtn.Width + TableSheet.DateButtonMagin, oldBtn.Location.Y);
+                    pnlMatricDate.Controls.Add(btn);
+                    Matrix[i].Add(btn);
+                    oldBtn = btn;
+                }
+                oldBtn = new Button() { Width = 0, Height = 0, Location = new Point(-TableSheet.DateButtonMagin, oldBtn.Location.Y + TableSheet.DateButtonHeight) };
+            }
+            setDefaultDate();
+        } //Matric SheetManager
+
+        int DayOfMonth(DateTime date)
+        {
+            switch (date.Month)
+            {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    return 31;
+                case 2:
+                    if ((date.Year % 4 == 0 && date.Year % 100 != 0) || date.Year % 400 == 0)
+                        return 29;
+                    else
+                        return 28;
+                default:
+                    return 30;
+            }
+        }
+        public void AddNumberIntoMatrixByDate(DateTime date)
+        {
+            ClearMatrix();
+            DateTime useDate = new DateTime(date.Year, date.Month, 1);
+
+            int row = 0;
+            for (int i = 1; i <= DayOfMonth(date); i++)
+            {
+                int column = _dateOfWeek.IndexOf(useDate.DayOfWeek.ToString());
+                Button btn = Matrix[row][column];
+                btn.Text = i.ToString();
+                if(isEqualDate(useDate,DateTime.Now))
+                {
+                    btn.BackColor = Color.Yellow;
+                }
+                if (isEqualDate(useDate, date))
+                {
+                    btn.BackColor = Color.AliceBlue;
+                }
+                if (column >= 6)
+                    row++;
+                useDate = useDate.AddDays(1);
+
+            }
+        }
+        public bool isEqualDate(DateTime dateA, DateTime dateB)
+        {
+            return dateA.Year == dateB.Year && dateA.Month == dateB.Month 
+                && dateA.Day == dateB.Day;
+        }
+        public void ClearMatrix()
+        {
+            for (int i = 0; i < Matrix.Count; i++)
+            {
+                for (int j = 0; j < Matrix[i].Count; j++)
+                {
+                    Button btn = Matrix[i][j];
+                    btn.Text = "";
+                    btn.BackColor = Color.White;
+                }
+            }
+        }
+        void setDefaultDate()
+        {
+            dtpkDate.Value = DateTime.Now;
+        }
+        private void dtpkDate_ValueChanged(object sender, EventArgs e)
+        {
+            AddNumberIntoMatrixByDate((sender as DateTimePicker).Value);
+        }
+
+        private void btnMonthBack_Click(object sender, EventArgs e)
+        {
+            dtpkDate.Value = dtpkDate.Value.AddMonths(-1);
+        }
+
+        private void btnNextMonth_Click(object sender, EventArgs e)
+        {
+            dtpkDate.Value =dtpkDate.Value.AddMonths(1);
         }
     }
 }

@@ -103,7 +103,7 @@
             // 
             txtUserName.Location = new Point(101, 36);
             txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(222, 25);
+            txtUserName.Size = new Size(222, 27);
             txtUserName.TabIndex = 1;
             txtUserName.TextAlign = HorizontalAlignment.Center;
             // 
@@ -112,7 +112,7 @@
             txtPassword.Location = new Point(101, 99);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
-            txtPassword.Size = new Size(222, 25);
+            txtPassword.Size = new Size(222, 27);
             txtPassword.TabIndex = 2;
             txtPassword.TextAlign = HorizontalAlignment.Center;
             // 
@@ -143,7 +143,7 @@
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(441, 32);
+            label1.Size = new Size(443, 32);
             label1.TabIndex = 3;
             label1.Text = "Login";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -153,7 +153,7 @@
             AcceptButton = btLogin;
             AutoScaleMode = AutoScaleMode.None;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(441, 442);
+            ClientSize = new Size(443, 442);
             Controls.Add(label1);
             Controls.Add(button1);
             Controls.Add(panel2);

@@ -111,54 +111,60 @@ namespace MiniStoreWinF.OrdersProducts
         } // button add product => OK
         public void AddItems()
         {
-            int columnIndex = 4; // Index của cột cần tính tổng (0 là cột đầu tiên)
-            double total = 0;
-            string NameOrder = txtNameOrder.Text;
-            float PriceOrder = float.Parse(txtPriceOrder.Text);
-            var checkItemsList = false;
-            if (NameOrder.Length <= 0 || PriceOrder <= 0)
+            try
             {
-                MessageBox.Show("Place choise Products", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (txtQuantityOrder.Text == "" || txtQuantityOrder.Text == "0")
-            {
-                MessageBox.Show("Error Enter Quantity", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else if (int.TryParse(txtQuantityOrder.Text, out int result))
-            {
-                int QuantityOrder = result;
-                float totals = QuantityOrder * PriceOrder;
-                ListViewItem items = new ListViewItem(SKU);
-                items.SubItems.Add(NameOrder).ToString();
-                items.SubItems.Add(QuantityOrder.ToString());
-                items.SubItems.Add(PriceOrder.ToString());
-                items.SubItems.Add(totals.ToString());
-                foreach (ListViewItem item in listViewOrders.Items)
+                int columnIndex = 4; // Index của cột cần tính tổng (0 là cột đầu tiên)
+                double total = 0;
+                string NameOrder = txtNameOrder.Text;
+                float PriceOrder = float.Parse(txtPriceOrder.Text);
+                var checkItemsList = false;
+                if (NameOrder.Length <= 0 || PriceOrder <= 0)
                 {
-                    if (item.SubItems[0].Text.Equals(items.SubItems[0].Text)) // Kiểm tra theo cột đầu tiên, thay đổi chỉ mục nếu cần
+                    MessageBox.Show("Place choise Products", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (txtQuantityOrder.Text == "" || txtQuantityOrder.Text == "0")
+                {
+                    MessageBox.Show("Error Enter Quantity", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (int.TryParse(txtQuantityOrder.Text, out int result))
+                {
+                    int QuantityOrder = result;
+                    float totals = QuantityOrder * PriceOrder;
+                    ListViewItem items = new ListViewItem(SKU);
+                    items.SubItems.Add(NameOrder).ToString();
+                    items.SubItems.Add(QuantityOrder.ToString());
+                    items.SubItems.Add(PriceOrder.ToString());
+                    items.SubItems.Add(totals.ToString());
+                    foreach (ListViewItem item in listViewOrders.Items)
                     {
-                        checkItemsList = true;
-                        int currentQuantity = int.Parse(item.SubItems[2].Text); // Giả sử cột thứ hai chứa giá trị cộng dồn
-                        int newQuantity = int.Parse(items.SubItems[2].Text);
-                        int TotalQuantity = Convert.ToInt32(item.SubItems[2].Text);
+                        if (item.SubItems[0].Text.Equals(items.SubItems[0].Text)) // Kiểm tra theo cột đầu tiên, thay đổi chỉ mục nếu cần
+                        {
+                            checkItemsList = true;
+                            int currentQuantity = int.Parse(item.SubItems[2].Text); // Giả sử cột thứ hai chứa giá trị cộng dồn
+                            int newQuantity = int.Parse(items.SubItems[2].Text);
+                            int TotalQuantity = Convert.ToInt32(item.SubItems[2].Text);
 
-                        TotalQuantity = currentQuantity + newQuantity;
-                        item.SubItems[2].Text = (currentQuantity + newQuantity).ToString();
-                        int currentPrice = int.Parse(item.SubItems[3].Text);
-                        item.SubItems[4].Text = (TotalQuantity * currentPrice).ToString();
-                        break;
+                            TotalQuantity = currentQuantity + newQuantity;
+                            item.SubItems[2].Text = (currentQuantity + newQuantity).ToString();
+                            int currentPrice = int.Parse(item.SubItems[3].Text);
+                            item.SubItems[4].Text = (TotalQuantity * currentPrice).ToString();
+                            break;
+                        }
                     }
+                    if (checkItemsList == false)
+                    {
+                        listViewOrders.Items.Add(items);
+                    }
+                    foreach (ListViewItem item in listViewOrders.Items)
+                    {
+                        int value = int.Parse(item.SubItems[columnIndex].Text);
+                        total += value;
+                    }
+                    txtTotalAllOrders.Text = total.ToString();
                 }
-                if (checkItemsList == false)
-                {
-                    listViewOrders.Items.Add(items);
-                }
-                foreach (ListViewItem item in listViewOrders.Items)
-                {
-                    int value = int.Parse(item.SubItems[columnIndex].Text);
-                    total += value;
-                }
-                txtTotalAllOrders.Text = total.ToString();
+            }
+            catch {
+                MessageBox.Show("You dont choise you items","Notification",MessageBoxButtons.OK,MessageBoxIcon.Stop);
             }
         } // function add to cart   ==> OK
         private void btCheckMember_Click(object sender, EventArgs e)
@@ -357,8 +363,7 @@ namespace MiniStoreWinF.OrdersProducts
                             string columnDataTotal = item.SubItems[4].Text;
                             //------------------------------------// END take information in Cart
 
-                            var checkIdEmployee = _employeeService.GetAll().Where(p => p.FullNameEmp == DataEmployee).FirstOrDefault();
-                            order.IdEmp = checkIdEmployee.IdEmp;
+                            order.IdEmp = ContextScope.currentEmployee.IdEmp;
                             //------------------------------------//END Take information employee create order
 
                             order.Sku = columnDataSKU.ToString();
@@ -424,6 +429,9 @@ namespace MiniStoreWinF.OrdersProducts
             pcPictureOrders.Image = null;
             txtScanVoucher.Text = "";
             txtScanVoucher.Enabled = true;
+            txtProvidesCash.Text = "";
+            txtReturnPayment.Text = "";
+            txtTotalBillPayment.Text = "";
             if (cbPointUsing.Enabled == false)
             {
                 cbPointUsing.SelectedIndex = -1;
@@ -459,6 +467,8 @@ namespace MiniStoreWinF.OrdersProducts
                         frmQRCode form = new frmQRCode();
                         form.total = total;
                         form.ShowDialog();
+                        btShowBill.Visible = true;
+                        rdMomopayment.Checked = false;
                     }
                 }
                 else
@@ -486,6 +496,7 @@ namespace MiniStoreWinF.OrdersProducts
                     txtTotalBillPayment.Text = txtTotalAllOrders.Text;
                     returnPay = Double.Parse(txtProvidesCash.Text) - Double.Parse(txtTotalAllOrders.Text); ;
                     txtReturnPayment.Text = returnPay.ToString();
+                    btShowBill.Visible = true;
                 }
                 else
                 {

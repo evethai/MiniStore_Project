@@ -1,6 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using MiniStoreWinF.InformationEmployee;
 using MiniStoreWinF.ManageSalary;
+using MiniStoreWinF.ManageWorkSheets;
 using Repository.Service;
 using System;
 using System.Collections.Generic;
@@ -141,7 +142,7 @@ namespace MiniStoreWinF.DashBoard
 
         private void infomationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var check_employee = _employeeService.GetAll().Where(p => p.FullNameEmp.Equals(user) && p.Roles == "Employee").FirstOrDefault();
+            var check_employee = _employeeService.GetAll().Where(p => p.FullNameEmp.Equals(user) && p.Roles == 2).FirstOrDefault();
             if (check_employee != null)
             {
                 frmInformationEmp _frmInformationEmp = new frmInformationEmp();
@@ -153,6 +154,11 @@ namespace MiniStoreWinF.DashBoard
                 MessageBox.Show("You are not an employee", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
+        }
+
+        private void txtUser_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

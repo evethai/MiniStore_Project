@@ -327,6 +327,7 @@
             // 
             // btUsingVoucher
             // 
+            btUsingVoucher.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btUsingVoucher.Location = new Point(292, 17);
             btUsingVoucher.Name = "btUsingVoucher";
             btUsingVoucher.Size = new Size(88, 35);
@@ -610,16 +611,18 @@
             // 
             // btShowBill
             // 
+            btShowBill.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btShowBill.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btShowBill.Image = (Image)resources.GetObject("btShowBill.Image");
             btShowBill.ImageAlign = ContentAlignment.TopCenter;
-            btShowBill.Location = new Point(293, 156);
+            btShowBill.Location = new Point(246, 151);
             btShowBill.Name = "btShowBill";
             btShowBill.Size = new Size(99, 70);
             btShowBill.TabIndex = 11;
             btShowBill.Text = "Bill";
             btShowBill.TextAlign = ContentAlignment.BottomCenter;
             btShowBill.UseVisualStyleBackColor = true;
+            btShowBill.Visible = false;
             btShowBill.Click += btShowBill_Click;
             // 
             // lblCustomerProvidesCash

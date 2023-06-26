@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MiniStoreWinF.DashBoard
+namespace MiniStoreWinF.ManageWorkSheets
 {
     public class AutoWorkSheetID : ServiceMiniStore<WorkSheet>
     {

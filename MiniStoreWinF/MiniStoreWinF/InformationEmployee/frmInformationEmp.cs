@@ -38,17 +38,21 @@ namespace MiniStoreWinF.InformationEmployee
 
         private void btChangePassword_Click(object sender, EventArgs e)
         {
+
             var CheckPassWork = _employeeService.GetAll().Where(p => p.IdEmp == DataEmployee).FirstOrDefault();
             if (CheckPassWork != null)
             {
                 cbCheckExactly.Checked = true;
-                if (cbCheckExactly.Checked && txtConfirmNewPassword.Text.Equals(txtNewPassword.Text) == true)
+                if (cbCheckExactly.Checked && txtConfirmNewPassword.Text.Equals(txtNewPassword.Text) == true && txtCurrentPassword.Text.Equals(CheckPassWork.Password))
                 {
                     CheckPassWork.Password = txtNewPassword.Text;
                     chbConfirmSuccess.Checked = true;
                     _employeeService.Update(CheckPassWork);
-                    MessageBox.Show("Reset Password Successful", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                    MessageBox.Show("Reset Password Successful", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     pnlShowResetPassword.Visible = false;
+                    txtCurrentPassword.Text = null;
+                    txtConfirmNewPassword.Text = null;
+                    txtNewPassword.Text = null;
                 }
                 else
                 {
