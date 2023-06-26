@@ -13,6 +13,7 @@ namespace Repository.Models
         public int? Sheet { get; set; }
         public DateTime? TimeCheckIn { get; set; }
         public DateTime? TimeCheckOut { get; set; }
+        public bool? Status { get; set; }
 
         public virtual Employee IdEmpNavigation { get; set; }
         public virtual SheetDetail SheetNavigation { get; set; }

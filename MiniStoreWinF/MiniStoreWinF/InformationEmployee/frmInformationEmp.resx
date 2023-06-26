@@ -117,39 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btBackList.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DAAACwwBP0AiyAAAATVJREFUaEPtmDFOw0AQRU0RAUUkKLgDDddAQdwhNFQ03IKeo6TOFag4AkQ0iI4i
-        UAB/EhINo42940FRRvpPepI12T/alWJ71w0hhBBCCClyCWfwGV5IIRsy8e9fn6TQg2M4XF72IpRfTX6l
-        hwG8g5/wA15DD9H8gr4LOIUPUGdfYS3R/BrdQKxhDN+hzW4r/wdPgxM4gTajbSOaL1Lb4By+QDveuolo
-        fiNdDQ7hPfyCdmxJSzTfSVuDM/gI7Zg2NdF8FaUGe/AWyqPN/t6lEM27sA0O4NTUPEbzbmyDm0LNYzTv
-        xjZIv4D0fyEh9U2sSfsY1aR+kWnSbiU0qTdzmrTbaU3pQPIGa4nm1+gGogd9JJzDK+ghml/wH4f6I7i/
-        vOxFKC+fUmQRMvmRFAghhBBCyC7RND/UPN/RrRs78AAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btNextList.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DAAACwwBP0AiyAAAAS5JREFUaEPtl7FKA0EURVeFFFoIljYprK3EPl/gr/gL/oKNRfo0/oGljR9gI5a2
-        VqYRREi8zzAwXMZs3r5tntwDBzazcy8sZHZnOiGEEEII0eQenmwuBxHNr0k3FnqDs99ffsbI17opwRW8
-        hRPoYax80Q0XPMNzuCtj591wgfkJr+Ee7GPsvBsuqH2Ap3AbrVxxSN4NF7Dv8Ar+RStT68274YJlY8wW
-        6B08hAzPjebdcMEUPtJY8QVewBqeE827aRXsQ1uEX5Dvf8MbeAANvm9E8y62FVzCV8hzzCd4RmNmTTS/
-        E30FR3AOeZ750Rhjovle+gpSP0Dav1DqRZz+NZr+Q8am20rUpt3Mpd5Opz3QRI+E0XzRjYVSH+oX8Hhz
-        OYhoPvwAQgghhBD/m677AT4BwcQfc2viAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <metadata name="workSheetBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="workSheetBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="sheetDetailBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>244, 17</value>
-  </metadata>
-  <metadata name="sheetDetailBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>244, 17</value>
-  </metadata>
 </root>

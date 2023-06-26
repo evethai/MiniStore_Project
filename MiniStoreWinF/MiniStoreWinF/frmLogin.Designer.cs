@@ -159,7 +159,9 @@
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
+
             label1.Size = new Size(441, 43);
+
             label1.TabIndex = 3;
             label1.Text = "MiniStore Management System";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -168,8 +170,10 @@
             // 
             AcceptButton = btLogin;
             AutoScaleMode = AutoScaleMode.None;
+
             BackColor = Color.White;
             ClientSize = new Size(441, 442);
+
             Controls.Add(label1);
             Controls.Add(button1);
             Controls.Add(panel2);

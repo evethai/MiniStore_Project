@@ -59,9 +59,10 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             menuStrip1 = new MenuStrip();
             panel1 = new Panel();
-            pUser = new Panel();
             txtUser = new Label();
-            panel4 = new Panel();
+            pUser = new Panel();
+            btCheckIn = new Button();
+            pnlPicture = new Panel();
             panel3 = new Panel();
             bntLogout = new Button();
             panel5 = new Panel();
@@ -442,7 +443,9 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(txtUser);
             panel1.Controls.Add(pbSetting);
+
             panel1.Controls.Add(pUser);
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(panel5);
@@ -453,21 +456,15 @@
             panel1.Size = new Size(725, 41);
             panel1.TabIndex = 1;
             // 
-            // pUser
-            // 
-            pUser.BackgroundImageLayout = ImageLayout.Zoom;
-            pUser.Controls.Add(txtUser);
-            pUser.Controls.Add(panel4);
-            pUser.Dock = DockStyle.Left;
-            pUser.Location = new Point(176, 0);
-            pUser.Margin = new Padding(4);
-            pUser.Name = "pUser";
-            pUser.Size = new Size(208, 41);
-            pUser.TabIndex = 3;
-            // 
             // txtUser
             // 
             txtUser.Dock = DockStyle.Fill;
+
+            txtUser.Location = new Point(336, 0);
+            txtUser.Margin = new Padding(4, 0, 4, 0);
+            txtUser.Name = "txtUser";
+            txtUser.Size = new Size(281, 41);
+
             txtUser.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             txtUser.Location = new Point(0, 0);
             txtUser.Margin = new Padding(4, 0, 4, 0);
@@ -476,9 +473,45 @@
             txtUser.TabIndex = 4;
             txtUser.Text = "name";
             txtUser.TextAlign = ContentAlignment.MiddleLeft;
+            txtUser.DoubleClick += pnlPicture_DoubleClick;
             // 
-            // panel4
+            // pUser
             // 
+            pUser.BackgroundImageLayout = ImageLayout.Zoom;
+            pUser.Controls.Add(btCheckIn);
+            pUser.Controls.Add(pnlPicture);
+            pUser.Dock = DockStyle.Left;
+            pUser.Location = new Point(176, 0);
+            pUser.Margin = new Padding(4);
+            pUser.Name = "pUser";
+            pUser.Size = new Size(160, 41);
+            pUser.TabIndex = 3;
+            // 
+            // btCheckIn
+            // 
+            btCheckIn.BackColor = SystemColors.ActiveBorder;
+            btCheckIn.Dock = DockStyle.Fill;
+            btCheckIn.Enabled = false;
+            btCheckIn.Location = new Point(0, 0);
+            btCheckIn.Name = "btCheckIn";
+            btCheckIn.Size = new Size(121, 41);
+            btCheckIn.TabIndex = 4;
+            btCheckIn.Text = "Attendance";
+            btCheckIn.TextAlign = ContentAlignment.MiddleLeft;
+            btCheckIn.UseVisualStyleBackColor = false;
+            btCheckIn.Click += btCheckIn_Click;
+            // 
+            // pnlPicture
+            // 
+            pnlPicture.BackgroundImage = Properties.Resources.icons8_user_16;
+            pnlPicture.BackgroundImageLayout = ImageLayout.Zoom;
+            pnlPicture.Dock = DockStyle.Right;
+            pnlPicture.Location = new Point(121, 0);
+            pnlPicture.Margin = new Padding(4);
+            pnlPicture.Name = "pnlPicture";
+            pnlPicture.Size = new Size(39, 41);
+            pnlPicture.TabIndex = 3;
+            pnlPicture.DoubleClick += pnlPicture_DoubleClick;
             panel4.BackgroundImage = Properties.Resources.icons8_user_16;
             panel4.BackgroundImageLayout = ImageLayout.Zoom;
             panel4.Dock = DockStyle.Right;
@@ -487,6 +520,7 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(46, 41);
             panel4.TabIndex = 3;
+
             // 
             // panel3
             // 
@@ -659,7 +693,7 @@
         private Label label8;
         private Panel pUser;
         private Label txtUser;
-        private Panel panel4;
+        private Panel pnlPicture;
         private Label txtClock;
         private System.Windows.Forms.Timer timer;
         private Panel AUTHORIZATION;
@@ -669,6 +703,8 @@
         private Button bntLogout;
         private Panel panel5;
         private Panel pnMain;
+        private Button btCheckIn;
         private PictureBox pbSetting;
+
     }
 }

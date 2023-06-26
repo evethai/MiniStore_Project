@@ -242,7 +242,7 @@
             btCreateSusscessMember.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btCreateSusscessMember.Image = (Image)resources.GetObject("btCreateSusscessMember.Image");
             btCreateSusscessMember.ImageAlign = ContentAlignment.TopCenter;
-            btCreateSusscessMember.Location = new Point(510, 89);
+            btCreateSusscessMember.Location = new Point(509, 98);
             btCreateSusscessMember.Name = "btCreateSusscessMember";
             btCreateSusscessMember.Size = new Size(98, 76);
             btCreateSusscessMember.TabIndex = 9;
