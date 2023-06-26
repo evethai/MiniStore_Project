@@ -26,11 +26,11 @@ namespace MiniStoreWinF
             else
             {
                 var login = _employeeService.GetAll()
-                    .Where(entity => entity.Username == userName 
-                    && entity.Password == password 
+                    .Where(entity => entity.Username == userName
+                    && entity.Password == password
                     && entity.IsActive == true)
-                    .FirstOrDefault(); 
-                if(login != null)
+                    .FirstOrDefault();
+                if (login != null)
                 {
                     ContextScope.currentEmployee = login;
                     frmMainScreen form = new frmMainScreen();

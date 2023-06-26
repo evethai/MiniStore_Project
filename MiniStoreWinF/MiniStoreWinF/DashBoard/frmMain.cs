@@ -1,5 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using MiniStoreWinF.InformationEmployee;
 using MiniStoreWinF.ManageSalary;
+using MiniStoreWinF.ManageWorkSheets;
 using Repository.Service;
 using System;
 using System.Collections.Generic;
@@ -98,7 +100,7 @@ namespace MiniStoreWinF.DashBoard
                     Check_Worksheet.TimeCheckIn = currentDate;
                     Check_Worksheet.TimeCheckOut = null;
                     _autoWorkSheetID.AddID(Check_Worksheet);
-                    MessageBox.Show("Your check-in was successful", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Your check-in was successful" + currentDate, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     SheetWork = Check_Worksheet.IdWorkSheet;
                     btCheckIn.Enabled = false;
                 }
@@ -118,7 +120,7 @@ namespace MiniStoreWinF.DashBoard
                 var Check_Worksheet = _workSheetService.GetAll().Where(p => p.IdWorkSheet == SheetWork || p.IdEmp == check_employee.IdEmp && p.Date == currentDate.Date).FirstOrDefault();
                 Check_Worksheet.TimeCheckOut = currentDate;
                 _workSheetService.Update(Check_Worksheet);
-                MessageBox.Show("Your check-out was successful", "Notification");
+                MessageBox.Show("Your check-out was successful" + currentDate, "Notification");
                 btCheckOut.Enabled = false;
             }
             else
@@ -136,6 +138,27 @@ namespace MiniStoreWinF.DashBoard
         {
             Form form = new frmMoMo();
             form.ShowDialog();
+        }
+
+        private void infomationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var check_employee = _employeeService.GetAll().Where(p => p.FullNameEmp.Equals(user) && p.Roles == 2).FirstOrDefault();
+            if (check_employee != null)
+            {
+                frmInformationEmp _frmInformationEmp = new frmInformationEmp();
+                _frmInformationEmp.DataEmployee = check_employee.IdEmp;
+                _frmInformationEmp.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("You are not an employee", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+        }
+
+        private void txtUser_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

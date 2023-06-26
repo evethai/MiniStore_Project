@@ -10,19 +10,42 @@ import java.time.LocalTime;
  *
  * @author nanat
  */
-public class SheetTimeSlot {
+public class SheetTimeSlotDTO {
     private String sheet;
     private LocalTime startTime;
     private LocalTime endTime;
+    private LocalTime ShiftStartTime;
+    private LocalTime ShiftEndTime;
+    
 
-    public SheetTimeSlot() {
+    public SheetTimeSlotDTO() {
     }
 
-    public SheetTimeSlot(String sheet, LocalTime startTime, LocalTime endTime) {
+    public SheetTimeSlotDTO(String sheet, LocalTime startTime, LocalTime endTime, LocalTime ShiftStartTime, LocalTime ShiftEndTime) {
         this.sheet = sheet;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.ShiftStartTime = ShiftStartTime;
+        this.ShiftEndTime = ShiftEndTime;
     }
+
+    public LocalTime getShiftStartTime() {
+        return ShiftStartTime;
+    }
+
+    public void setShiftStartTime(LocalTime ShiftStartTime) {
+        this.ShiftStartTime = ShiftStartTime;
+    }
+
+    public LocalTime getShiftEndTime() {
+        return ShiftEndTime;
+    }
+
+    public void setShiftEndTime(LocalTime ShiftEndTime) {
+        this.ShiftEndTime = ShiftEndTime;
+    }
+
+    
 
     public String getSheet() {
         return sheet;

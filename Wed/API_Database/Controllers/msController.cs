@@ -56,7 +56,7 @@ namespace API_Database.Controllers
             {
                 FullNameEmp = (string)emp.FullNameEmp,
                 IdEmp = (string)emp.IdEmp,
-                Roles = (string)emp.Roles,
+                Roles = (string)emp.Roles.ToString(),
                 IsActive = (Boolean)emp.IsActive
             };
 
@@ -262,16 +262,6 @@ namespace API_Database.Controllers
             return sheetList;
         }
 
-        //list all sheet Guard
-        [HttpGet]
-        [Route("api/ms/fsttt")]
-        public List<SheetDetail> FindSheetAll()
-        {
-
-            return db.SheetDetails.ToList(); ;
-        }
-
-
 
         //update worksheet jwt
         [HttpPut]
@@ -286,20 +276,24 @@ namespace API_Database.Controllers
                 string idEmp = "";
                 string date = "";
                 string update = "";
+                string check = "";
+
                 // Lấy các thông tin cần thiết từ JWT
                 if (claims != null)
                 {
                     idEmp = claims.FirstOrDefault(c => c.Type == "IdEmp")?.Value;
                     date = claims.FirstOrDefault(c => c.Type == "Date")?.Value;
-                    update = claims.FirstOrDefault(c => c.Type == "TimeCheckOut")?.Value;
+                    check = claims.FirstOrDefault(c => c.Type == "TimeCheckIn" || c.Type == "TimeCheckOut")?.Type;
+                    update = claims.FirstOrDefault(c => c.Type == check)?.Value;
                 }
                 else
                 {
                     Console.WriteLine("JWT bị null.");
                     return false;
                 }
+
                 // Kiểm tra thông tin cần thiết
-                if (string.IsNullOrEmpty(idEmp) || string.IsNullOrEmpty(date) || string.IsNullOrEmpty(update))
+                if (string.IsNullOrEmpty(idEmp) || string.IsNullOrEmpty(date) || string.IsNullOrEmpty(check) || string.IsNullOrEmpty(update))
                 {
                     Console.WriteLine("Dữ liệu không hợp lệ từ JWT.");
                     return false;
@@ -314,8 +308,16 @@ namespace API_Database.Controllers
                 }
 
                 // Cập nhật dữ liệu vào database
-                existingRecord.TimeCheckOut = DateTime.ParseExact(update, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-
+                if (check == "TimeCheckIn")
+                {
+                    existingRecord.TimeCheckIn = DateTime.ParseExact(update, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+                    existingRecord.Status = true;
+                }
+                else
+                {
+                    existingRecord.TimeCheckOut = DateTime.ParseExact(update, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+                    
+                }
 
                 // Thực hiện lưu thay đổi vào cơ sở dữ liệu
                 db.SubmitChanges();
@@ -327,6 +329,7 @@ namespace API_Database.Controllers
                 return false;
             }
         }
+
 
 
         //add worksheet jwt

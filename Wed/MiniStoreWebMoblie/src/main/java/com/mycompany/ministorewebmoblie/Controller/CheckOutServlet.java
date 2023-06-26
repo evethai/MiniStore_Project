@@ -1,6 +1,6 @@
 package com.mycompany.ministorewebmoblie.Controller;
 
-import com.mycompany.ministorewebmoblie.DTO.SheetTimeSlot;
+import com.mycompany.ministorewebmoblie.DTO.SheetTimeSlotDTO;
 import com.mycompany.ministorewebmoblie.Utils.JWTUtils;
 import com.mycompany.ministorewebmoblie.Utils.MyUtils;
 import io.jsonwebtoken.Claims;
@@ -10,9 +10,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Date;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import org.json.JSONObject;
 
@@ -23,21 +24,32 @@ public class CheckOutServlet extends HttpServlet {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         String idemp = (String) session.getAttribute("IdEmpapi");
-        String checkDay = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        String checkOutTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        String checkDay = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String checkOutTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         LocalTime checkTime = LocalTime.now();
-        LocalTime timeS4OutF = LocalTime.parse("09:00");
-        LocalTime timeS4OutL = LocalTime.parse("18:30");
-        LocalTime timeS5OutF = LocalTime.parse("06:00");
-        LocalTime timeS5OutL = LocalTime.parse("06:30");
-
+        String check = "checkout";
+        if (checkTime.isAfter(LocalTime.MIDNIGHT) && checkTime.isBefore(LocalTime.MIDNIGHT.plusMinutes(30))) {
+            LocalDate previousDate = LocalDate.parse(checkDay).minusDays(1);
+            checkDay = previousDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//            checkOutTime = LocalDateTime.of(previousDate, LocalTime.MAX).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        }
         String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/fws?idemp=" + idemp + "&date=" + checkDay);
         JSONObject json = null;
         try {
             json = new JSONObject(jsonResponse);
         } catch (Exception e) {
             // Handle JSON parsing error
+            if (idemp == null || idemp.isEmpty()) {
+                request.setAttribute("errorMessage", "Hãy đăng nhập lại!!!");
+                request.getRequestDispatcher("qr-code.jsp").forward(request, response);
+                return;
+            } else {
+                request.setAttribute("errorMessage", "không có ca trong ngày hôm nay");
+                request.getRequestDispatcher("qr-code.jsp").forward(request, response);
+                return;
+            }
         }
+
         String jwt = json.getString("jwt");
 
         if (jwt.equals("Unauthorized")) {
@@ -50,24 +62,62 @@ public class CheckOutServlet extends HttpServlet {
         Claims claims = JWTUtils.parseJWT(jwt);
         String checkoutTimeapi = claims.get("TimeCheckOut", String.class);
         String sheet = claims.get("Sheet", String.class);
-
-        List<SheetTimeSlot> sheetTimeSlots = MyUtils.getSheetTimeSlots();
         boolean isCheckOutTimeValid = false;
 
-        for (SheetTimeSlot sheetTimeSlot : sheetTimeSlots) {
-            String slotSheet = sheetTimeSlot.getSheet();
-            LocalTime slotStartTime = sheetTimeSlot.getStartTime();
-            LocalTime slotEndTime = sheetTimeSlot.getEndTime();
+        // Lấy danh sách SheetTimeSlotDTO từ API
+        List<SheetTimeSlotDTO> sheetTimeSlots = MyUtils.getSheetTimeSlots(false);
 
-            if (sheet.equals(slotSheet) && checkTime.isAfter(slotStartTime) && checkTime.isBefore(slotEndTime)) {
-                isCheckOutTimeValid = true;
-                break;
+        if (!sheetTimeSlots.isEmpty()) {
+
+            for (SheetTimeSlotDTO slot : sheetTimeSlots) {
+                LocalTime startTime = slot.getStartTime();
+                LocalTime endTime = slot.getEndTime();
+                LocalTime shiftEndTime = slot.getShiftEndTime();
+
+                if (sheet.equals(slot.getSheet())) {
+                    // Check if the end time is on the next day
+                    if (startTime.isAfter(endTime)) {
+                        // Check if the check time is after the start time or before the end of the day
+                        if (checkTime.isBefore(endTime) || checkTime.isAfter(startTime)) {
+                            isCheckOutTimeValid = true;
+                            if (checkTime.isBefore(endTime) && checkTime.isAfter(LocalTime.MIN)) {
+//                                LocalDate nextDate = LocalDate.parse(checkDay).minusDays(1);
+//                                checkDay = nextDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                                LocalDate date = LocalDate.parse(checkDay);
+                                checkOutTime = LocalDateTime.of(date, shiftEndTime).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                            }
+                            break;
+                        }
+                    } else {
+                        // Check if the check time is between the start time and end time
+                        if (checkTime.isAfter(startTime) && checkTime.isBefore(endTime)) {
+                            isCheckOutTimeValid = true;
+                            if (checkTime.isAfter(shiftEndTime) && checkTime.isBefore(endTime)) {
+                                LocalDate localDate = LocalDate.parse(checkDay, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                                LocalDateTime checkoutDateTime = LocalDateTime.of(localDate, shiftEndTime);
+                                checkOutTime = checkoutDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                            }
+                            break;
+                        }
+                    }
+                }
             }
+            if (!isCheckOutTimeValid) {
+                request.setAttribute("errorMessage", "không phải giờ check out");
+                request.getRequestDispatcher("qr-code.jsp").forward(request, response);
+                return;
+            }
+        } else {
+            request.setAttribute("errorMessage", "không phải giờ check out");
+            request.getRequestDispatcher("qr-code.jsp").forward(request, response);
+            return;
         }
+        // Check if the check-in time is valid
+
         if (!checkoutTimeapi.equals("01/01/0001 00:00:00")) {
             request.setAttribute("errorMessage", "đã check Out");
         } else if (isCheckOutTimeValid) {
-            if (MyUtils.updateWorksheet(idemp, checkDay, checkOutTime)) {
+            if (MyUtils.updateWorksheet(idemp, checkDay, checkOutTime, check)) {
                 String qrCodeURL = MyUtils.generateQRCodeURL(idemp, checkOutTime);
                 request.setAttribute("qrCodeURL", qrCodeURL);
             } else {

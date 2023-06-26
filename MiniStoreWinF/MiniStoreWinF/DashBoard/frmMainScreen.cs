@@ -1,4 +1,7 @@
-﻿using MiniStoreWinF.ManageSalary;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using MiniStoreWinF.InformationEmployee;
+using MiniStoreWinF.ManageSalary;
+using MiniStoreWinF.ManageWorkSheets;
 using Repository.Models;
 using Repository.Service;
 using System;
@@ -16,6 +19,8 @@ namespace MiniStoreWinF.DashBoard
     public partial class frmMainScreen : Form
     {
         Utinity u = new Utinity();
+        WorkSheetService _workSheetService = new WorkSheetService();
+        SheetDetailService _sheetDetailService = new SheetDetailService();
         public frmMainScreen()
         {
             InitializeComponent();
@@ -45,10 +50,12 @@ namespace MiniStoreWinF.DashBoard
             if (ContextScope.currentEmployee.Roles <= 1)
             {
                 u.openChildForm(new frmDashBoard(), pnMain);
+
             }
             else
             {
                 u.openChildForm(new OrdersProducts.OrderProducts(), pnMain);
+                btCheckIn.Enabled = true;
             }
         }
 
@@ -98,7 +105,7 @@ namespace MiniStoreWinF.DashBoard
 
         private void EMPLOYEE_Click(object sender, EventArgs e)
         {
-
+            u.openChildForm(new ManageEmployees.frmShowEmployee(), pnMain);
         }
 
         private void SHEET_Click(object sender, EventArgs e)
@@ -108,6 +115,8 @@ namespace MiniStoreWinF.DashBoard
 
         private void VOUCHER_Click(object sender, EventArgs e)
         {
+            Form voucher = new Manage_Voucher.frmShowVoucher();
+            voucher.Show();
 
         }
 
@@ -115,5 +124,80 @@ namespace MiniStoreWinF.DashBoard
         {
             u.openChildForm(new frmAdmin(), pnMain);
         }
+
+
+        private void btCheckIn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime now = DateTime.Now;
+                TimeSpan timeSpan = new TimeSpan(now.Hour, now.Minute, 0);
+                var CheckEmp = ContextScope.currentEmployee.IdEmp;
+                var CheckWorkSheet = _workSheetService.GetAll().Where(p => p.IdEmp.Equals(CheckEmp) && p.Date == now.Date).FirstOrDefault();
+                if (CheckWorkSheet != null)
+                {
+                    var CheckTimeWork = _sheetDetailService.GetAll().Where(p => p.Sheet == CheckWorkSheet.Sheet && timeSpan >= p.ShiftStartTime
+                    && timeSpan <= p.ShiftEndTime).ToList();
+                    if (CheckWorkSheet.TimeCheckIn != null) // check Out
+                    {
+                        if (CheckTimeWork != null)
+                        {
+                            CheckWorkSheet.TimeCheckOut = now;
+                            CheckWorkSheet.Status = true;
+                            _workSheetService.Update(CheckWorkSheet);
+                            MessageBox.Show("You have successfully checked-out at " + now, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("You checked-out at " + now + " is Wrong Sheet", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else // Check in 
+                    {
+                        if (CheckTimeWork != null)
+                        {
+                            CheckWorkSheet.TimeCheckIn = now;
+                            _workSheetService.Update(CheckWorkSheet);
+                            MessageBox.Show("You have successfully checked-in at " + now, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("You checked-in at " + now + " is Wrong Sheet", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("You don't have a timetable", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("BUG", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private void pnlPicture_DoubleClick(object sender, EventArgs e)
+        {
+            string Emp = ContextScope.currentEmployee.IdEmp;
+            if (Emp != null)
+            {
+                frmInformationEmp _frmInformationEmp = new frmInformationEmp();
+                _frmInformationEmp.DataEmployee = Emp;
+                _frmInformationEmp.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("You are not an employee", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+        }
+        private void pbSetting_Click(object sender, EventArgs e)
+        {
+            Form setting = new frmSettingScreen();
+            setting.Show();
+        }
+
     }
 }

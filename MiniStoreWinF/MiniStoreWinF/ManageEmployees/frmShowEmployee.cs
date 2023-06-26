@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace MiniStoreWinF.ManageEmployees
 {
@@ -17,7 +18,8 @@ namespace MiniStoreWinF.ManageEmployees
     {
 
         Validation _employeeService = new Validation();
-
+        Permission _permission = new Permission();
+        PermissionService _permissionService = new PermissionService();
         public string url = "";
 
 
@@ -87,16 +89,20 @@ namespace MiniStoreWinF.ManageEmployees
 
         private void ShowEmployees_Load(object sender, EventArgs e)
         {
-
+            rd1.Checked = true;
         }
         //Double click to get specific employee's information
         private void dgvEmployee_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
+
                 var id = dgvEmployee[0, e.RowIndex].Value;
 
+
                 var RoleType = _employeeService.GetAll().Where(entity => entity.FullNameEmp.Equals(id)).FirstOrDefault();
+                var roles = RoleType.Roles;
+                var permission = _permissionService.GetAll().Where(entity => entity.Roles.Equals(roles)).FirstOrDefault();
                 rowIndex = e.RowIndex;
                 if (RoleType != null)
                 {
@@ -104,13 +110,12 @@ namespace MiniStoreWinF.ManageEmployees
                     txtName.Text = RoleType.FullNameEmp.ToString();
                     txtAddress.Text = RoleType.AddressEmp.ToString();
                     txtPhone.Text = RoleType.PhoneEmp.ToString();
-                    txtUsername.Text = RoleType.Username.ToString();
-                    txtPassword.Text = RoleType.Password.ToString();
+
                     dtDoB.Value = RoleType.DoB.Value;
                     txtCccd.Text = RoleType.Cccd.ToString();
                     pBEmp.Image = Base64ToImage(RoleType.PictureEmp);
                     txtUrl.Text = RoleType.PictureEmp.ToString();
-                    cbRole.Text = RoleType.Roles.ToString();
+                    txtRole.Text = RoleType.Roles.ToString();
                     if (RoleType.Sex == false)
                     {
                         cbGender.Text = "Man";
@@ -127,6 +132,14 @@ namespace MiniStoreWinF.ManageEmployees
                     {
                         cBStatus.Text = "Disable";
                     }
+                    if (permission != null)
+                    {
+                        txtRole.Text = permission.Permission1.ToString();
+                    }
+                    else
+                    {
+                        txtRole.Text = "None";
+                    }
 
 
                 }
@@ -136,32 +149,19 @@ namespace MiniStoreWinF.ManageEmployees
                 MessageBox.Show("Please choose in the grid!");
             }
         }
-        //Show or hide password
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBox1.Checked)
-            {
-                // Hiển thị mật khẩu
-                txtPassword.PasswordChar = '\0'; // '\0' là ký tự null
-            }
-            else
-            {
-                // Ẩn mật khẩu
-                txtPassword.PasswordChar = '*';
-            }
-        }
+
+
 
         //Update employee's information
         private void btUpdate_Click(object sender, EventArgs e)
         {
 
 
-            bool valid;
             var employeeService = _employeeService.GetAll().Where(e => e.IdEmp == txtId.Text).FirstOrDefault();
             if (txtName.Text == "" ||
                 txtPhone.Text == "" ||
-                txtAddress.Text == "" ||
-                txtPassword.Text == ""
+                txtAddress.Text == ""
+
                 )
             {
                 MessageBox.Show("Please input all information!");
@@ -182,8 +182,7 @@ namespace MiniStoreWinF.ManageEmployees
                     employeeService.FullNameEmp = txtName.Text;
                     employeeService.PhoneEmp = txtPhone.Text;
                     employeeService.AddressEmp = txtAddress.Text;
-                    employeeService.Password = txtPassword.Text;
-                    employeeService.Username = txtUsername.Text;
+
                     employeeService.Cccd = txtCccd.Text;
                     if (cbGender.SelectedItem.Equals("Man"))
                     {
@@ -193,18 +192,7 @@ namespace MiniStoreWinF.ManageEmployees
                     {
                         employeeService.Sex = true;
                     }
-                    if (cbRole.SelectedItem.Equals("Admin"))
-                    {
-                        employeeService.Roles = 1;
-                    }
-                    else if (cbRole.SelectedItem.Equals("Employee"))
-                    {
-                        employeeService.Roles = 2;
-                    }
-                    else if (cbRole.SelectedItem.Equals("Guard"))
-                    {
-                        employeeService.Roles = 3;
-                    }
+
                     if (cBStatus.SelectedItem.Equals("Active"))
                     {
                         employeeService.IsActive = true;
@@ -214,6 +202,7 @@ namespace MiniStoreWinF.ManageEmployees
                         employeeService.IsActive = false;
                     }
                     var Update = employeeService;
+                    _employeeService.Update(Update);
                     MessageBox.Show("UPDATE SUCCESSFULLY!");
                 }
                 else
@@ -222,8 +211,7 @@ namespace MiniStoreWinF.ManageEmployees
                     employeeService.FullNameEmp = txtName.Text;
                     employeeService.PhoneEmp = txtPhone.Text;
                     employeeService.AddressEmp = txtAddress.Text;
-                    employeeService.Password = txtPassword.Text;
-                    employeeService.Username = txtUsername.Text;
+
                     employeeService.PictureEmp = txtUrl.Text;
                     employeeService.DoB = dtDoB.Value;
                     if (cbGender.SelectedIndex.Equals("Man"))
@@ -233,6 +221,14 @@ namespace MiniStoreWinF.ManageEmployees
                     else if (cbGender.SelectedItem.Equals("Woman"))
                     {
                         employeeService.Sex = false;
+                    }
+                    if (cBStatus.SelectedItem.Equals("Active"))
+                    {
+                        employeeService.IsActive = true;
+                    }
+                    else if (cBStatus.SelectedItem.Equals("Disable"))
+                    {
+                        employeeService.IsActive = false;
                     }
 
 
@@ -289,19 +285,19 @@ namespace MiniStoreWinF.ManageEmployees
             string searchName = txtSearch.Text;
             if (searchName.Length > 0 && rd1.Checked)
             {
-                var listSearchName = _employeeService.GetName(searchName).Where(e => e.IsActive == true);
+                var listSearchName = _employeeService.SearchEmployee(searchName).Where(e => e.IsActive == true);
                 dgvEmployee.DataSource = new BindingSource() { DataSource = listSearchName };
 
             }
             else if (searchName.Length > 0 && rd2.Checked)
             {
-                var listSearchName = _employeeService.GetName(searchName).Where(e => e.IsActive == false);
+                var listSearchName = _employeeService.SearchEmployee(searchName).Where(e => e.IsActive == false);
                 dgvEmployee.DataSource = new BindingSource() { DataSource = listSearchName };
             }
 
             else
             {
-                var listSearchName = _employeeService.GetName(searchName).Where(e => e.IsActive == true);
+                var listSearchName = _employeeService.SearchEmployee(searchName).Where(e => e.IsActive == true);
                 dgvEmployee.DataSource = new BindingSource() { DataSource = listSearchName };
             }
         }
@@ -324,6 +320,107 @@ namespace MiniStoreWinF.ManageEmployees
             if (txtPhone.Text.Length == 0 && e.KeyChar != '0')
             {
                 e.Handled = true; // Cannot continue input
+            }
+        }
+
+
+
+        private void btShow_Click(object sender, EventArgs e)
+        {
+            if (tbMain.Visible == false)
+            {
+
+
+                tbMain.Visible = true;
+            }
+            else
+            {
+                tbMain.Visible = false;
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            var employeeService = _employeeService.GetAll().Where(e => e.IdEmp == txtId.Text).FirstOrDefault();
+            if (txtName.Text == "" ||
+                txtPhone.Text == "" ||
+                txtAddress.Text == ""
+
+                )
+            {
+                MessageBox.Show("Please input all information!");
+
+            }
+            //Check age > 18
+            else if (DateTime.Now.Year - dtDoB.Value.Year < 18)
+            {
+                MessageBox.Show("Employee's age must higher than 18!");
+                dtDoB.Focus();
+
+            }
+
+            else
+            {
+                if (employeeService.PictureEmp == txtUrl.Text)
+                {
+                    employeeService.FullNameEmp = txtName.Text;
+                    employeeService.PhoneEmp = txtPhone.Text;
+                    employeeService.AddressEmp = txtAddress.Text;
+
+                    employeeService.Cccd = txtCccd.Text;
+                    if (cbGender.SelectedItem.Equals("Man"))
+                    {
+                        employeeService.Sex = false;
+                    }
+                    else if (cbGender.SelectedItem.Equals("Woman"))
+                    {
+                        employeeService.Sex = true;
+                    }
+
+                    if (cBStatus.SelectedItem.Equals("Active"))
+                    {
+                        employeeService.IsActive = true;
+                    }
+                    else if (cBStatus.SelectedItem.Equals("Disable"))
+                    {
+                        employeeService.IsActive = false;
+                    }
+                    var Update = employeeService;
+                    _employeeService.Update(Update);
+                    MessageBox.Show("UPDATE SUCCESSFULLY!");
+                }
+                else
+                {
+                    txtUrl.Text = ImageToBase64(url);
+                    employeeService.FullNameEmp = txtName.Text;
+                    employeeService.PhoneEmp = txtPhone.Text;
+                    employeeService.AddressEmp = txtAddress.Text;
+
+                    employeeService.PictureEmp = txtUrl.Text;
+                    employeeService.DoB = dtDoB.Value;
+                    if (cbGender.SelectedIndex.Equals("Man"))
+                    {
+                        employeeService.Sex = true;
+                    }
+                    else if (cbGender.SelectedItem.Equals("Woman"))
+                    {
+                        employeeService.Sex = false;
+                    }
+                    if (cBStatus.SelectedItem.Equals("Active"))
+                    {
+                        employeeService.IsActive = true;
+                    }
+                    else if (cBStatus.SelectedItem.Equals("Disable"))
+                    {
+                        employeeService.IsActive = false;
+                    }
+
+
+                    employeeService.Cccd = txtCccd.Text;
+                    var update = employeeService;
+                    _employeeService.Update(update);
+                    MessageBox.Show("UPDATE SUCCESSFULLY!");
+                }
             }
         }
     }

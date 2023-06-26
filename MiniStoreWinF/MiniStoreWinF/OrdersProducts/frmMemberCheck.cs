@@ -32,7 +32,6 @@ namespace MiniStoreWinF.OrdersProducts
         {
             get { return txtPhoneNewMember.Text; }
         }
-
         private void btCheckPhoneMember_Click(object sender, EventArgs e)
         {
             string _phoneMember = txtSearchMember.Text;
@@ -54,18 +53,14 @@ namespace MiniStoreWinF.OrdersProducts
                 MessageBox.Show("You aren't already a member", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         } //Check Member ==> OK
-
         private void btCreateMember_Click(object sender, EventArgs e)
         {
             pnlCreateMember.Visible = true;
         } // Create Member Page=> OK
-
-
         private void btCloseMemberCheck_Click(object sender, EventArgs e)
         {
             CloseTest();
         }
-
         public void CloseTest()
         {
             DialogResult comback = MessageBox.Show("Do you want to Close Check Member", "Notification", MessageBoxButtons.YesNo);
@@ -80,11 +75,11 @@ namespace MiniStoreWinF.OrdersProducts
             string _GenderMember = cbGenderNewMember.SelectedItem.ToString();
             var _DoBMember = dtDoBNewMember.Text;
             int _pointUsing = 0;
+            DateTime _dateUsing = DateTime.Now;
             var checkMember = _memberService.GetAll().Where(p => p.PhoneMember.Equals(_phoneMember)).FirstOrDefault();
             bool nonLetterInPhone = false;
             foreach (char c in txtPhoneNewMember.Text)
             {
-
                 if (Char.IsLetter(c))
                 {
                     nonLetterInPhone = true;
@@ -108,12 +103,12 @@ namespace MiniStoreWinF.OrdersProducts
                 }
                 else
                 {
-
                     newMember.Name = _NameMember;
                     newMember.Gender = _GenderMember;
                     newMember.PhoneMember = _phoneMember;
                     newMember.Point = _pointUsing;
                     newMember.DoB = DateTime.Parse(_DoBMember);
+                    newMember.TimeCreate = _dateUsing;
                     _memberService.Create(newMember);
                     MessageBox.Show("Create Successfully !", "Notification", MessageBoxButtons.OK);
                 }
