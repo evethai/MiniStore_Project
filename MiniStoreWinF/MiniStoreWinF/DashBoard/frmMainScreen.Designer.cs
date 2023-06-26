@@ -72,6 +72,7 @@
             label5 = new Label();
             timer = new System.Windows.Forms.Timer(components);
             pnMain = new Panel();
+            pbSetting = new PictureBox();
             flowPanel.SuspendLayout();
             ORDER.SuspendLayout();
             REVENUE.SuspendLayout();
@@ -87,6 +88,7 @@
             panel3.SuspendLayout();
             panel5.SuspendLayout();
             panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbSetting).BeginInit();
             SuspendLayout();
             // 
             // flowPanel
@@ -442,6 +444,8 @@
             // panel1
             // 
             panel1.Controls.Add(txtUser);
+            panel1.Controls.Add(pbSetting);
+
             panel1.Controls.Add(pUser);
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(panel5);
@@ -455,10 +459,17 @@
             // txtUser
             // 
             txtUser.Dock = DockStyle.Fill;
+
             txtUser.Location = new Point(336, 0);
             txtUser.Margin = new Padding(4, 0, 4, 0);
             txtUser.Name = "txtUser";
             txtUser.Size = new Size(281, 41);
+
+            txtUser.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUser.Location = new Point(0, 0);
+            txtUser.Margin = new Padding(4, 0, 4, 0);
+            txtUser.Name = "txtUser";
+            txtUser.Size = new Size(162, 41);
             txtUser.TabIndex = 4;
             txtUser.Text = "name";
             txtUser.TextAlign = ContentAlignment.MiddleLeft;
@@ -501,6 +512,15 @@
             pnlPicture.Size = new Size(39, 41);
             pnlPicture.TabIndex = 3;
             pnlPicture.DoubleClick += pnlPicture_DoubleClick;
+            panel4.BackgroundImage = Properties.Resources.icons8_user_16;
+            panel4.BackgroundImageLayout = ImageLayout.Zoom;
+            panel4.Dock = DockStyle.Right;
+            panel4.Location = new Point(162, 0);
+            panel4.Margin = new Padding(4);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(46, 41);
+            panel4.TabIndex = 3;
+
             // 
             // panel3
             // 
@@ -591,6 +611,17 @@
             pnMain.Size = new Size(1466, 976);
             pnMain.TabIndex = 3;
             // 
+            // pbSetting
+            // 
+            pbSetting.Image = (Image)resources.GetObject("pbSetting.Image");
+            pbSetting.Location = new Point(534, 0);
+            pbSetting.Name = "pbSetting";
+            pbSetting.Size = new Size(53, 44);
+            pbSetting.SizeMode = PictureBoxSizeMode.Zoom;
+            pbSetting.TabIndex = 0;
+            pbSetting.TabStop = false;
+            pbSetting.Click += pbSetting_Click;
+            // 
             // frmMainScreen
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
@@ -625,6 +656,7 @@
             panel3.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbSetting).EndInit();
             ResumeLayout(false);
         }
 
@@ -672,5 +704,7 @@
         private Panel panel5;
         private Panel pnMain;
         private Button btCheckIn;
+        private PictureBox pbSetting;
+
     }
 }

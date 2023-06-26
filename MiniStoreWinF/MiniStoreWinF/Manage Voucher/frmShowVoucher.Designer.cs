@@ -78,7 +78,7 @@
             dgvVoucher.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvVoucher.Columns.AddRange(new DataGridViewColumn[] { nameDataGridViewTextBoxColumn });
             dgvVoucher.DataSource = voucherBindingSource2;
-            dgvVoucher.Location = new Point(12, 130);
+            dgvVoucher.Location = new Point(12, 37);
             dgvVoucher.Name = "dgvVoucher";
             dgvVoucher.RowHeadersWidth = 51;
             dgvVoucher.RowTemplate.Height = 29;
@@ -108,7 +108,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(256, 197);
+            button1.Location = new Point(256, 104);
             button1.Name = "button1";
             button1.Size = new Size(110, 29);
             button1.TabIndex = 1;
@@ -342,14 +342,14 @@
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(230, 129);
+            txtSearch.Location = new Point(230, 36);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(136, 27);
             txtSearch.TabIndex = 15;
             // 
             // btSearch
             // 
-            btSearch.Location = new Point(256, 162);
+            btSearch.Location = new Point(256, 69);
             btSearch.Name = "btSearch";
             btSearch.Size = new Size(110, 29);
             btSearch.TabIndex = 16;
@@ -360,7 +360,7 @@
             // rdExpired
             // 
             rdExpired.AutoSize = true;
-            rdExpired.Location = new Point(110, 100);
+            rdExpired.Location = new Point(110, 7);
             rdExpired.Name = "rdExpired";
             rdExpired.Size = new Size(80, 24);
             rdExpired.TabIndex = 17;
@@ -372,7 +372,7 @@
             // rdInUse
             // 
             rdInUse.AutoSize = true;
-            rdInUse.Location = new Point(12, 100);
+            rdInUse.Location = new Point(12, 7);
             rdInUse.Name = "rdInUse";
             rdInUse.Size = new Size(70, 24);
             rdInUse.TabIndex = 18;
@@ -385,6 +385,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Window;
             ClientSize = new Size(979, 527);
             Controls.Add(rdInUse);
             Controls.Add(rdExpired);

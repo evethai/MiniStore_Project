@@ -29,43 +29,10 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            Label label1;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmShowEmployee));
             employeeBindingSource = new BindingSource(components);
             btAddEmployee = new Button();
-            groupBox1 = new GroupBox();
-            dtDoB = new DateTimePicker();
-            label9 = new Label();
-            cbGender = new ComboBox();
-            Status = new Label();
-            cBStatus = new ComboBox();
-            lb = new Label();
-            txtCccd = new TextBox();
-            checkBox1 = new CheckBox();
-            label10 = new Label();
-            cbRole = new ComboBox();
-            label8 = new Label();
-            label7 = new Label();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            btImport = new Button();
-            pBEmp = new PictureBox();
-            txtPassword = new TextBox();
-            txtUsername = new TextBox();
-            txtAddress = new TextBox();
-            txtPhone = new TextBox();
-            txtName = new TextBox();
-            txtId = new TextBox();
-            label1 = new Label();
-            dgvEmployee = new DataGridView();
-            fullNameEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            sexDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            cccdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            doBDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            addressEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            phoneEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            dateJoinDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             employeeBindingSource1 = new BindingSource(components);
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             txtUrl = new TextBox();
@@ -74,12 +41,66 @@
             rd1 = new RadioButton();
             rd2 = new RadioButton();
             btSearch = new Button();
+            pnButton = new Panel();
+            pbSearch = new PictureBox();
+            pictureBox1 = new PictureBox();
+            dgvEmployee = new DataGridView();
+            fullNameEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            sexDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            cccdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            doBDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            addressEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            phoneEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dateJoinDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            tbMain = new TableLayoutPanel();
+            pnInfor = new Panel();
+            pbImport = new PictureBox();
+            txtRole = new TextBox();
+            dtDoB = new DateTimePicker();
+            label9 = new Label();
+            cbGender = new ComboBox();
+            Status = new Label();
+            cBStatus = new ComboBox();
+            lb = new Label();
+            txtCccd = new TextBox();
+            label10 = new Label();
+            label8 = new Label();
+            label7 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            btImport = new Button();
+            pBEmp = new PictureBox();
+            txtAddress = new TextBox();
+            txtPhone = new TextBox();
+            txtName = new TextBox();
+            txtId = new TextBox();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            panel1 = new Panel();
+            btShow = new Button();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
-            groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pBEmp).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvEmployee).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).BeginInit();
+            pnButton.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbSearch).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEmployee).BeginInit();
+            tbMain.SuspendLayout();
+            pnInfor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbImport).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pBEmp).BeginInit();
+            tableLayoutPanel2.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(88, 416);
+            label1.Name = "label1";
+            label1.Size = new Size(77, 28);
+            label1.TabIndex = 55;
+            label1.Text = "Update";
             // 
             // employeeBindingSource
             // 
@@ -87,378 +108,14 @@
             // 
             // btAddEmployee
             // 
-            btAddEmployee.Location = new Point(12, 361);
-            btAddEmployee.Margin = new Padding(4, 4, 4, 4);
+            btAddEmployee.Location = new Point(4, 94);
+            btAddEmployee.Margin = new Padding(4, 5, 4, 5);
             btAddEmployee.Name = "btAddEmployee";
-            btAddEmployee.Size = new Size(118, 36);
+            btAddEmployee.Size = new Size(264, 72);
             btAddEmployee.TabIndex = 1;
-            btAddEmployee.Text = "Add new";
+            btAddEmployee.Text = "Create Employee";
             btAddEmployee.UseVisualStyleBackColor = true;
             btAddEmployee.Click += btAddEmployee_Click;
-            // 
-            // groupBox1
-            // 
-            groupBox1.BackColor = Color.Transparent;
-            groupBox1.Controls.Add(dtDoB);
-            groupBox1.Controls.Add(label9);
-            groupBox1.Controls.Add(cbGender);
-            groupBox1.Controls.Add(Status);
-            groupBox1.Controls.Add(cBStatus);
-            groupBox1.Controls.Add(lb);
-            groupBox1.Controls.Add(txtCccd);
-            groupBox1.Controls.Add(checkBox1);
-            groupBox1.Controls.Add(label10);
-            groupBox1.Controls.Add(cbRole);
-            groupBox1.Controls.Add(label8);
-            groupBox1.Controls.Add(label7);
-            groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(btImport);
-            groupBox1.Controls.Add(pBEmp);
-            groupBox1.Controls.Add(txtPassword);
-            groupBox1.Controls.Add(txtUsername);
-            groupBox1.Controls.Add(txtAddress);
-            groupBox1.Controls.Add(txtPhone);
-            groupBox1.Controls.Add(txtName);
-            groupBox1.Controls.Add(txtId);
-            groupBox1.Location = new Point(14, 82);
-            groupBox1.Margin = new Padding(4, 4, 4, 4);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4, 4, 4, 4);
-            groupBox1.Size = new Size(1122, 260);
-            groupBox1.TabIndex = 3;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Employee information";
-            // 
-            // dtDoB
-            // 
-            dtDoB.Location = new Point(428, 216);
-            dtDoB.Margin = new Padding(4, 4, 4, 4);
-            dtDoB.Name = "dtDoB";
-            dtDoB.Size = new Size(268, 31);
-            dtDoB.TabIndex = 26;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(350, 43);
-            label9.Margin = new Padding(4, 0, 4, 0);
-            label9.Name = "label9";
-            label9.Size = new Size(69, 25);
-            label9.TabIndex = 32;
-            label9.Text = "Gender";
-            // 
-            // cbGender
-            // 
-            cbGender.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbGender.FormattingEnabled = true;
-            cbGender.Items.AddRange(new object[] { "Man", "Woman" });
-            cbGender.Location = new Point(428, 32);
-            cbGender.Margin = new Padding(4, 4, 4, 4);
-            cbGender.Name = "cbGender";
-            cbGender.Size = new Size(178, 33);
-            cbGender.TabIndex = 31;
-            // 
-            // Status
-            // 
-            Status.AutoSize = true;
-            Status.Location = new Point(640, 148);
-            Status.Margin = new Padding(4, 0, 4, 0);
-            Status.Name = "Status";
-            Status.Size = new Size(60, 25);
-            Status.TabIndex = 29;
-            Status.Text = "Status";
-            // 
-            // cBStatus
-            // 
-            cBStatus.FormattingEnabled = true;
-            cBStatus.Items.AddRange(new object[] { "Active", "Disable" });
-            cBStatus.Location = new Point(708, 144);
-            cBStatus.Margin = new Padding(4, 4, 4, 4);
-            cBStatus.Name = "cBStatus";
-            cBStatus.Size = new Size(178, 33);
-            cBStatus.TabIndex = 28;
-            // 
-            // lb
-            // 
-            lb.AutoSize = true;
-            lb.Location = new Point(674, 96);
-            lb.Margin = new Padding(4, 0, 4, 0);
-            lb.Name = "lb";
-            lb.Size = new Size(28, 25);
-            lb.TabIndex = 27;
-            lb.Text = "CI";
-            // 
-            // txtCccd
-            // 
-            txtCccd.Location = new Point(708, 91);
-            txtCccd.Margin = new Padding(4, 4, 4, 4);
-            txtCccd.Name = "txtCccd";
-            txtCccd.Size = new Size(178, 31);
-            txtCccd.TabIndex = 20;
-            // 
-            // checkBox1
-            // 
-            checkBox1.BackColor = Color.Transparent;
-            checkBox1.ForeColor = Color.Transparent;
-            checkBox1.Location = new Point(585, 156);
-            checkBox1.Margin = new Padding(4, 4, 4, 4);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(22, 31);
-            checkBox1.TabIndex = 19;
-            checkBox1.UseVisualStyleBackColor = false;
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(648, 40);
-            label10.Margin = new Padding(4, 0, 4, 0);
-            label10.Name = "label10";
-            label10.Size = new Size(46, 25);
-            label10.TabIndex = 18;
-            label10.Text = "Role";
-            // 
-            // cbRole
-            // 
-            cbRole.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbRole.FormattingEnabled = true;
-            cbRole.Items.AddRange(new object[] { "Employee", "Admin", "Guard" });
-            cbRole.Location = new Point(708, 36);
-            cbRole.Margin = new Padding(4, 4, 4, 4);
-            cbRole.Name = "cbRole";
-            cbRole.Size = new Size(178, 33);
-            cbRole.TabIndex = 17;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(28, 154);
-            label8.Margin = new Padding(4, 0, 4, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(62, 25);
-            label8.TabIndex = 15;
-            label8.Text = "Phone";
-            label8.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(12, 223);
-            label7.Margin = new Padding(4, 0, 4, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(77, 25);
-            label7.TabIndex = 14;
-            label7.Text = "Address";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(328, 102);
-            label6.Margin = new Padding(4, 0, 4, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(91, 25);
-            label6.TabIndex = 13;
-            label6.Text = "Username";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(334, 157);
-            label5.Margin = new Padding(4, 0, 4, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(87, 25);
-            label5.TabIndex = 12;
-            label5.Text = "Password";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(372, 219);
-            label4.Margin = new Padding(4, 0, 4, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(48, 25);
-            label4.TabIndex = 11;
-            label4.Text = "Birth";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(-2, 91);
-            label3.Margin = new Padding(4, 0, 4, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(88, 25);
-            label3.TabIndex = 10;
-            label3.Text = "Full name";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(62, 36);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(28, 25);
-            label2.TabIndex = 9;
-            label2.Text = "Id";
-            // 
-            // btImport
-            // 
-            btImport.Location = new Point(960, 223);
-            btImport.Margin = new Padding(4, 4, 4, 4);
-            btImport.Name = "btImport";
-            btImport.Size = new Size(118, 36);
-            btImport.TabIndex = 8;
-            btImport.Text = "Import";
-            btImport.UseVisualStyleBackColor = true;
-            btImport.Click += btImport_Click_1;
-            // 
-            // pBEmp
-            // 
-            pBEmp.Location = new Point(928, 32);
-            pBEmp.Margin = new Padding(4, 4, 4, 4);
-            pBEmp.Name = "pBEmp";
-            pBEmp.Size = new Size(192, 184);
-            pBEmp.SizeMode = PictureBoxSizeMode.Zoom;
-            pBEmp.TabIndex = 7;
-            pBEmp.TabStop = false;
-            // 
-            // txtPassword
-            // 
-            txtPassword.Location = new Point(428, 157);
-            txtPassword.Margin = new Padding(4, 4, 4, 4);
-            txtPassword.Name = "txtPassword";
-            txtPassword.PasswordChar = '*';
-            txtPassword.Size = new Size(178, 31);
-            txtPassword.TabIndex = 5;
-            // 
-            // txtUsername
-            // 
-            txtUsername.Location = new Point(428, 102);
-            txtUsername.Margin = new Padding(4, 4, 4, 4);
-            txtUsername.Name = "txtUsername";
-            txtUsername.ReadOnly = true;
-            txtUsername.Size = new Size(178, 31);
-            txtUsername.TabIndex = 4;
-            // 
-            // txtAddress
-            // 
-            txtAddress.Location = new Point(98, 215);
-            txtAddress.Margin = new Padding(4, 4, 4, 4);
-            txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(178, 31);
-            txtAddress.TabIndex = 3;
-            // 
-            // txtPhone
-            // 
-            txtPhone.Location = new Point(98, 154);
-            txtPhone.Margin = new Padding(4, 4, 4, 4);
-            txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(178, 31);
-            txtPhone.TabIndex = 2;
-            txtPhone.KeyPress += txtPhone_KeyPress;
-            // 
-            // txtName
-            // 
-            txtName.Location = new Point(98, 87);
-            txtName.Margin = new Padding(4, 4, 4, 4);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(178, 31);
-            txtName.TabIndex = 1;
-            // 
-            // txtId
-            // 
-            txtId.Location = new Point(98, 32);
-            txtId.Margin = new Padding(4, 4, 4, 4);
-            txtId.Name = "txtId";
-            txtId.ReadOnly = true;
-            txtId.Size = new Size(178, 31);
-            txtId.TabIndex = 0;
-            // 
-            // label1
-            // 
-            label1.BackColor = SystemColors.Control;
-            label1.Font = new Font("Segoe UI Semibold", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(14, 11);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(348, 68);
-            label1.TabIndex = 4;
-            label1.Text = "Manage Employee";
-            // 
-            // dgvEmployee
-            // 
-            dgvEmployee.AutoGenerateColumns = false;
-            dgvEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmployee.Columns.AddRange(new DataGridViewColumn[] { fullNameEmpDataGridViewTextBoxColumn, sexDataGridViewTextBoxColumn, cccdDataGridViewTextBoxColumn, doBDataGridViewTextBoxColumn, addressEmpDataGridViewTextBoxColumn, phoneEmpDataGridViewTextBoxColumn, dateJoinDataGridViewTextBoxColumn });
-            dgvEmployee.DataSource = employeeBindingSource1;
-            dgvEmployee.Location = new Point(15, 446);
-            dgvEmployee.Margin = new Padding(4, 4, 4, 4);
-            dgvEmployee.Name = "dgvEmployee";
-            dgvEmployee.RowHeadersWidth = 51;
-            dgvEmployee.RowTemplate.Height = 29;
-            dgvEmployee.Size = new Size(1120, 235);
-            dgvEmployee.TabIndex = 5;
-            dgvEmployee.CellDoubleClick += dgvEmployee_CellDoubleClick;
-            dgvEmployee.CellFormatting += dgvEmployee_CellFormatting;
-            // 
-            // fullNameEmpDataGridViewTextBoxColumn
-            // 
-            fullNameEmpDataGridViewTextBoxColumn.DataPropertyName = "FullNameEmp";
-            fullNameEmpDataGridViewTextBoxColumn.HeaderText = "FullNameEmp";
-            fullNameEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
-            fullNameEmpDataGridViewTextBoxColumn.Name = "fullNameEmpDataGridViewTextBoxColumn";
-            fullNameEmpDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // sexDataGridViewTextBoxColumn
-            // 
-            sexDataGridViewTextBoxColumn.DataPropertyName = "Sex";
-            sexDataGridViewTextBoxColumn.HeaderText = "Sex";
-            sexDataGridViewTextBoxColumn.MinimumWidth = 6;
-            sexDataGridViewTextBoxColumn.Name = "sexDataGridViewTextBoxColumn";
-            sexDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // cccdDataGridViewTextBoxColumn
-            // 
-            cccdDataGridViewTextBoxColumn.DataPropertyName = "Cccd";
-            cccdDataGridViewTextBoxColumn.HeaderText = "Cccd";
-            cccdDataGridViewTextBoxColumn.MinimumWidth = 6;
-            cccdDataGridViewTextBoxColumn.Name = "cccdDataGridViewTextBoxColumn";
-            cccdDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // doBDataGridViewTextBoxColumn
-            // 
-            doBDataGridViewTextBoxColumn.DataPropertyName = "DoB";
-            doBDataGridViewTextBoxColumn.HeaderText = "DoB";
-            doBDataGridViewTextBoxColumn.MinimumWidth = 6;
-            doBDataGridViewTextBoxColumn.Name = "doBDataGridViewTextBoxColumn";
-            doBDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // addressEmpDataGridViewTextBoxColumn
-            // 
-            addressEmpDataGridViewTextBoxColumn.DataPropertyName = "AddressEmp";
-            addressEmpDataGridViewTextBoxColumn.HeaderText = "AddressEmp";
-            addressEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
-            addressEmpDataGridViewTextBoxColumn.Name = "addressEmpDataGridViewTextBoxColumn";
-            addressEmpDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // phoneEmpDataGridViewTextBoxColumn
-            // 
-            phoneEmpDataGridViewTextBoxColumn.DataPropertyName = "PhoneEmp";
-            phoneEmpDataGridViewTextBoxColumn.HeaderText = "PhoneEmp";
-            phoneEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
-            phoneEmpDataGridViewTextBoxColumn.Name = "phoneEmpDataGridViewTextBoxColumn";
-            phoneEmpDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // dateJoinDataGridViewTextBoxColumn
-            // 
-            dateJoinDataGridViewTextBoxColumn.DataPropertyName = "DateJoin";
-            dateJoinDataGridViewTextBoxColumn.HeaderText = "DateJoin";
-            dateJoinDataGridViewTextBoxColumn.MinimumWidth = 6;
-            dateJoinDataGridViewTextBoxColumn.Name = "dateJoinDataGridViewTextBoxColumn";
-            dateJoinDataGridViewTextBoxColumn.Width = 125;
             // 
             // employeeBindingSource1
             // 
@@ -473,39 +130,40 @@
             // 
             // txtUrl
             // 
-            txtUrl.Location = new Point(848, 15);
-            txtUrl.Margin = new Padding(4, 4, 4, 4);
+            txtUrl.Location = new Point(932, 17);
+            txtUrl.Margin = new Padding(4, 5, 4, 5);
             txtUrl.Name = "txtUrl";
-            txtUrl.Size = new Size(296, 31);
+            txtUrl.Size = new Size(326, 34);
             txtUrl.TabIndex = 19;
             txtUrl.Visible = false;
             // 
             // btUpdate
             // 
-            btUpdate.Location = new Point(138, 361);
-            btUpdate.Margin = new Padding(4, 4, 4, 4);
+            btUpdate.Location = new Point(960, 50);
+            btUpdate.Margin = new Padding(4, 5, 4, 5);
             btUpdate.Name = "btUpdate";
-            btUpdate.Size = new Size(118, 36);
+            btUpdate.Size = new Size(10, 10);
             btUpdate.TabIndex = 20;
             btUpdate.Text = "Update";
             btUpdate.UseVisualStyleBackColor = true;
+            btUpdate.Visible = false;
             btUpdate.Click += btUpdate_Click;
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(262, 361);
-            txtSearch.Margin = new Padding(4, 4, 4, 4);
+            txtSearch.Location = new Point(13, 8);
+            txtSearch.Margin = new Padding(4, 5, 4, 5);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(209, 31);
+            txtSearch.Size = new Size(229, 34);
             txtSearch.TabIndex = 21;
             // 
             // rd1
             // 
             rd1.AutoSize = true;
-            rd1.Location = new Point(26, 412);
-            rd1.Margin = new Padding(4, 4, 4, 4);
+            rd1.Location = new Point(310, 10);
+            rd1.Margin = new Padding(4, 5, 4, 5);
             rd1.Name = "rd1";
-            rd1.Size = new Size(81, 29);
+            rd1.Size = new Size(87, 32);
             rd1.TabIndex = 22;
             rd1.TabStop = true;
             rd1.Text = "Active";
@@ -515,10 +173,10 @@
             // rd2
             // 
             rd2.AutoSize = true;
-            rd2.Location = new Point(122, 412);
-            rd2.Margin = new Padding(4, 4, 4, 4);
+            rd2.Location = new Point(397, 10);
+            rd2.Margin = new Padding(4, 5, 4, 5);
             rd2.Name = "rd2";
-            rd2.Size = new Size(91, 29);
+            rd2.Size = new Size(97, 32);
             rd2.TabIndex = 23;
             rd2.TabStop = true;
             rd2.Text = "Disable";
@@ -527,41 +185,445 @@
             // 
             // btSearch
             // 
-            btSearch.Location = new Point(480, 360);
-            btSearch.Margin = new Padding(4, 4, 4, 4);
+            btSearch.Location = new Point(896, 49);
+            btSearch.Margin = new Padding(4, 5, 4, 5);
             btSearch.Name = "btSearch";
-            btSearch.Size = new Size(118, 36);
+            btSearch.Size = new Size(16, 14);
             btSearch.TabIndex = 25;
             btSearch.Text = "Search";
             btSearch.UseVisualStyleBackColor = true;
+            btSearch.Visible = false;
             btSearch.Click += btSearch_Click;
+            // 
+            // pnButton
+            // 
+            pnButton.BorderStyle = BorderStyle.Fixed3D;
+            pnButton.Controls.Add(pbSearch);
+            pnButton.Controls.Add(rd1);
+            pnButton.Controls.Add(rd2);
+            pnButton.Controls.Add(txtSearch);
+            pnButton.Dock = DockStyle.Fill;
+            pnButton.Location = new Point(3, 4);
+            pnButton.Margin = new Padding(3, 4, 3, 4);
+            pnButton.Name = "pnButton";
+            pnButton.Size = new Size(1338, 61);
+            pnButton.TabIndex = 27;
+            // 
+            // pbSearch
+            // 
+            pbSearch.Image = (Image)resources.GetObject("pbSearch.Image");
+            pbSearch.Location = new Point(249, 4);
+            pbSearch.Name = "pbSearch";
+            pbSearch.Size = new Size(54, 50);
+            pbSearch.TabIndex = 27;
+            pbSearch.TabStop = false;
+            pbSearch.Click += btSearch_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(16, 398);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(66, 46);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 26;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += btUpdate_Click;
+            // 
+            // dgvEmployee
+            // 
+            dgvEmployee.AutoGenerateColumns = false;
+            dgvEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEmployee.Columns.AddRange(new DataGridViewColumn[] { fullNameEmpDataGridViewTextBoxColumn, sexDataGridViewTextBoxColumn, cccdDataGridViewTextBoxColumn, doBDataGridViewTextBoxColumn, addressEmpDataGridViewTextBoxColumn, phoneEmpDataGridViewTextBoxColumn, dateJoinDataGridViewTextBoxColumn });
+            dgvEmployee.DataSource = employeeBindingSource1;
+            dgvEmployee.Dock = DockStyle.Fill;
+            dgvEmployee.Location = new Point(4, 74);
+            dgvEmployee.Margin = new Padding(4, 5, 4, 5);
+            dgvEmployee.Name = "dgvEmployee";
+            dgvEmployee.RowHeadersWidth = 51;
+            dgvEmployee.RowTemplate.Height = 29;
+            dgvEmployee.Size = new Size(1336, 383);
+            dgvEmployee.TabIndex = 6;
+            dgvEmployee.CellDoubleClick += dgvEmployee_CellDoubleClick;
+            dgvEmployee.CellFormatting += dgvEmployee_CellFormatting;
+            // 
+            // fullNameEmpDataGridViewTextBoxColumn
+            // 
+            fullNameEmpDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            fullNameEmpDataGridViewTextBoxColumn.DataPropertyName = "FullNameEmp";
+            fullNameEmpDataGridViewTextBoxColumn.HeaderText = "FullNameEmp";
+            fullNameEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
+            fullNameEmpDataGridViewTextBoxColumn.Name = "fullNameEmpDataGridViewTextBoxColumn";
+            // 
+            // sexDataGridViewTextBoxColumn
+            // 
+            sexDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            sexDataGridViewTextBoxColumn.DataPropertyName = "Sex";
+            sexDataGridViewTextBoxColumn.HeaderText = "Sex";
+            sexDataGridViewTextBoxColumn.MinimumWidth = 6;
+            sexDataGridViewTextBoxColumn.Name = "sexDataGridViewTextBoxColumn";
+            // 
+            // cccdDataGridViewTextBoxColumn
+            // 
+            cccdDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            cccdDataGridViewTextBoxColumn.DataPropertyName = "Cccd";
+            cccdDataGridViewTextBoxColumn.HeaderText = "Cccd";
+            cccdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            cccdDataGridViewTextBoxColumn.Name = "cccdDataGridViewTextBoxColumn";
+            // 
+            // doBDataGridViewTextBoxColumn
+            // 
+            doBDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            doBDataGridViewTextBoxColumn.DataPropertyName = "DoB";
+            doBDataGridViewTextBoxColumn.HeaderText = "DoB";
+            doBDataGridViewTextBoxColumn.MinimumWidth = 6;
+            doBDataGridViewTextBoxColumn.Name = "doBDataGridViewTextBoxColumn";
+            // 
+            // addressEmpDataGridViewTextBoxColumn
+            // 
+            addressEmpDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            addressEmpDataGridViewTextBoxColumn.DataPropertyName = "AddressEmp";
+            addressEmpDataGridViewTextBoxColumn.HeaderText = "AddressEmp";
+            addressEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
+            addressEmpDataGridViewTextBoxColumn.Name = "addressEmpDataGridViewTextBoxColumn";
+            // 
+            // phoneEmpDataGridViewTextBoxColumn
+            // 
+            phoneEmpDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            phoneEmpDataGridViewTextBoxColumn.DataPropertyName = "PhoneEmp";
+            phoneEmpDataGridViewTextBoxColumn.HeaderText = "PhoneEmp";
+            phoneEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
+            phoneEmpDataGridViewTextBoxColumn.Name = "phoneEmpDataGridViewTextBoxColumn";
+            // 
+            // dateJoinDataGridViewTextBoxColumn
+            // 
+            dateJoinDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dateJoinDataGridViewTextBoxColumn.DataPropertyName = "DateJoin";
+            dateJoinDataGridViewTextBoxColumn.HeaderText = "DateJoin";
+            dateJoinDataGridViewTextBoxColumn.MinimumWidth = 6;
+            dateJoinDataGridViewTextBoxColumn.Name = "dateJoinDataGridViewTextBoxColumn";
+            // 
+            // tbMain
+            // 
+            tbMain.ColumnCount = 1;
+            tbMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tbMain.Controls.Add(pnInfor, 0, 0);
+            tbMain.Controls.Add(tableLayoutPanel2, 0, 1);
+            tbMain.Location = new Point(283, 0);
+            tbMain.Margin = new Padding(3, 4, 3, 4);
+            tbMain.Name = "tbMain";
+            tbMain.RowCount = 2;
+            tbMain.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tbMain.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tbMain.Size = new Size(1350, 939);
+            tbMain.TabIndex = 54;
+            tbMain.Visible = false;
+            // 
+            // pnInfor
+            // 
+            pnInfor.BorderStyle = BorderStyle.Fixed3D;
+            pnInfor.Controls.Add(label1);
+            pnInfor.Controls.Add(pbImport);
+            pnInfor.Controls.Add(pictureBox1);
+            pnInfor.Controls.Add(btSearch);
+            pnInfor.Controls.Add(txtRole);
+            pnInfor.Controls.Add(dtDoB);
+            pnInfor.Controls.Add(btUpdate);
+            pnInfor.Controls.Add(label9);
+            pnInfor.Controls.Add(cbGender);
+            pnInfor.Controls.Add(Status);
+            pnInfor.Controls.Add(cBStatus);
+            pnInfor.Controls.Add(lb);
+            pnInfor.Controls.Add(txtCccd);
+            pnInfor.Controls.Add(label10);
+            pnInfor.Controls.Add(label8);
+            pnInfor.Controls.Add(label7);
+            pnInfor.Controls.Add(label4);
+            pnInfor.Controls.Add(label3);
+            pnInfor.Controls.Add(label2);
+            pnInfor.Controls.Add(btImport);
+            pnInfor.Controls.Add(pBEmp);
+            pnInfor.Controls.Add(txtAddress);
+            pnInfor.Controls.Add(txtPhone);
+            pnInfor.Controls.Add(txtName);
+            pnInfor.Controls.Add(txtId);
+            pnInfor.Dock = DockStyle.Fill;
+            pnInfor.Location = new Point(3, 4);
+            pnInfor.Margin = new Padding(3, 4, 3, 4);
+            pnInfor.Name = "pnInfor";
+            pnInfor.Size = new Size(1344, 461);
+            pnInfor.TabIndex = 27;
+            // 
+            // pbImport
+            // 
+            pbImport.BackColor = Color.Transparent;
+            pbImport.Image = (Image)resources.GetObject("pbImport.Image");
+            pbImport.Location = new Point(809, 290);
+            pbImport.Name = "pbImport";
+            pbImport.Size = new Size(94, 50);
+            pbImport.SizeMode = PictureBoxSizeMode.Zoom;
+            pbImport.TabIndex = 54;
+            pbImport.TabStop = false;
+            pbImport.Click += btImport_Click_1;
+            // 
+            // txtRole
+            // 
+            txtRole.Location = new Point(462, 293);
+            txtRole.Margin = new Padding(3, 4, 3, 4);
+            txtRole.Name = "txtRole";
+            txtRole.ReadOnly = true;
+            txtRole.Size = new Size(195, 34);
+            txtRole.TabIndex = 53;
+            // 
+            // dtDoB
+            // 
+            dtDoB.Location = new Point(462, 353);
+            dtDoB.Margin = new Padding(4, 5, 4, 5);
+            dtDoB.Name = "dtDoB";
+            dtDoB.Size = new Size(279, 34);
+            dtDoB.TabIndex = 47;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(376, 95);
+            label9.Margin = new Padding(4, 0, 4, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(76, 28);
+            label9.TabIndex = 52;
+            label9.Text = "Gender";
+            // 
+            // cbGender
+            // 
+            cbGender.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbGender.FormattingEnabled = true;
+            cbGender.Items.AddRange(new object[] { "Man", "Woman" });
+            cbGender.Location = new Point(462, 82);
+            cbGender.Margin = new Padding(4, 5, 4, 5);
+            cbGender.Name = "cbGender";
+            cbGender.Size = new Size(195, 36);
+            cbGender.TabIndex = 51;
+            // 
+            // Status
+            // 
+            Status.AutoSize = true;
+            Status.Location = new Point(387, 212);
+            Status.Margin = new Padding(4, 0, 4, 0);
+            Status.Name = "Status";
+            Status.Size = new Size(65, 28);
+            Status.TabIndex = 50;
+            Status.Text = "Status";
+            // 
+            // cBStatus
+            // 
+            cBStatus.FormattingEnabled = true;
+            cBStatus.Items.AddRange(new object[] { "Active", "Disable" });
+            cBStatus.Location = new Point(462, 208);
+            cBStatus.Margin = new Padding(4, 5, 4, 5);
+            cBStatus.Name = "cBStatus";
+            cBStatus.Size = new Size(195, 36);
+            cBStatus.TabIndex = 49;
+            // 
+            // lb
+            // 
+            lb.AutoSize = true;
+            lb.Location = new Point(424, 155);
+            lb.Margin = new Padding(4, 0, 4, 0);
+            lb.Name = "lb";
+            lb.Size = new Size(29, 28);
+            lb.TabIndex = 48;
+            lb.Text = "CI";
+            // 
+            // txtCccd
+            // 
+            txtCccd.Location = new Point(462, 148);
+            txtCccd.Margin = new Padding(4, 5, 4, 5);
+            txtCccd.Name = "txtCccd";
+            txtCccd.Size = new Size(195, 34);
+            txtCccd.TabIndex = 46;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(400, 296);
+            label10.Margin = new Padding(4, 0, 4, 0);
+            label10.Name = "label10";
+            label10.Size = new Size(50, 28);
+            label10.TabIndex = 45;
+            label10.Text = "Role";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(61, 222);
+            label8.Margin = new Padding(4, 0, 4, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(67, 28);
+            label8.TabIndex = 44;
+            label8.Text = "Phone";
+            label8.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(43, 299);
+            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(82, 28);
+            label7.TabIndex = 43;
+            label7.Text = "Address";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(399, 359);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(53, 28);
+            label4.TabIndex = 42;
+            label4.Text = "Birth";
+            // 
+            // label3
+            // 
+            label3.Location = new Point(28, 151);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(96, 28);
+            label3.TabIndex = 41;
+            label3.Text = "Full name";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(98, 91);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(29, 28);
+            label2.TabIndex = 40;
+            label2.Text = "Id";
+            // 
+            // btImport
+            // 
+            btImport.Location = new Point(941, 49);
+            btImport.Margin = new Padding(4, 5, 4, 5);
+            btImport.Name = "btImport";
+            btImport.Size = new Size(10, 12);
+            btImport.TabIndex = 39;
+            btImport.Text = "Import";
+            btImport.UseVisualStyleBackColor = true;
+            btImport.Visible = false;
+            // 
+            // pBEmp
+            // 
+            pBEmp.Image = (Image)resources.GetObject("pBEmp.Image");
+            pBEmp.Location = new Point(754, 76);
+            pBEmp.Margin = new Padding(4, 5, 4, 5);
+            pBEmp.Name = "pBEmp";
+            pBEmp.Size = new Size(212, 206);
+            pBEmp.SizeMode = PictureBoxSizeMode.Zoom;
+            pBEmp.TabIndex = 38;
+            pBEmp.TabStop = false;
+            // 
+            // txtAddress
+            // 
+            txtAddress.Location = new Point(138, 290);
+            txtAddress.Margin = new Padding(4, 5, 4, 5);
+            txtAddress.Name = "txtAddress";
+            txtAddress.Size = new Size(195, 34);
+            txtAddress.TabIndex = 37;
+            // 
+            // txtPhone
+            // 
+            txtPhone.Location = new Point(138, 222);
+            txtPhone.Margin = new Padding(4, 5, 4, 5);
+            txtPhone.Name = "txtPhone";
+            txtPhone.Size = new Size(195, 34);
+            txtPhone.TabIndex = 36;
+            // 
+            // txtName
+            // 
+            txtName.Location = new Point(138, 147);
+            txtName.Margin = new Padding(4, 5, 4, 5);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(195, 34);
+            txtName.TabIndex = 35;
+            // 
+            // txtId
+            // 
+            txtId.Location = new Point(138, 87);
+            txtId.Margin = new Padding(4, 5, 4, 5);
+            txtId.Multiline = true;
+            txtId.Name = "txtId";
+            txtId.ReadOnly = true;
+            txtId.Size = new Size(195, 34);
+            txtId.TabIndex = 34;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 1;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.Controls.Add(dgvEmployee, 0, 1);
+            tableLayoutPanel2.Controls.Add(pnButton, 0, 0);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(3, 473);
+            tableLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 85F));
+            tableLayoutPanel2.Size = new Size(1344, 462);
+            tableLayoutPanel2.TabIndex = 28;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(128, 255, 128);
+            panel1.Controls.Add(btShow);
+            panel1.Controls.Add(btAddEmployee);
+            panel1.Dock = DockStyle.Left;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(274, 837);
+            panel1.TabIndex = 55;
+            // 
+            // btShow
+            // 
+            btShow.Location = new Point(4, 12);
+            btShow.Name = "btShow";
+            btShow.Size = new Size(264, 72);
+            btShow.TabIndex = 2;
+            btShow.Text = "Show Employee";
+            btShow.UseVisualStyleBackColor = true;
+            btShow.Click += btShow_Click;
             // 
             // frmShowEmployee
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1150, 760);
-            Controls.Add(btSearch);
-            Controls.Add(rd2);
-            Controls.Add(rd1);
-            Controls.Add(txtSearch);
-            Controls.Add(btUpdate);
+            BackColor = Color.White;
+            ClientSize = new Size(1547, 837);
+            Controls.Add(panel1);
+            Controls.Add(tbMain);
             Controls.Add(txtUrl);
-            Controls.Add(dgvEmployee);
-            Controls.Add(label1);
-            Controls.Add(groupBox1);
-            Controls.Add(btAddEmployee);
-            Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(4, 4, 4, 4);
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "frmShowEmployee";
             Text = "ShowEmployees";
             Load += ShowEmployees_Load;
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).EndInit();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pBEmp).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvEmployee).EndInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).EndInit();
+            pnButton.ResumeLayout(false);
+            pnButton.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbSearch).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEmployee).EndInit();
+            tbMain.ResumeLayout(false);
+            pnInfor.ResumeLayout(false);
+            pnInfor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbImport).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pBEmp).EndInit();
+            tableLayoutPanel2.ResumeLayout(false);
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -569,37 +631,39 @@
         #endregion
         private BindingSource employeeBindingSource;
         private Button btAddEmployee;
-        private GroupBox groupBox1;
-        private Label label1;
-        private DataGridView dgvEmployee;
         private BindingSource employeeBindingSource1;
-        private TextBox txtId;
-        private TextBox txtPassword;
-        private TextBox txtUsername;
-        private TextBox txtAddress;
-        private TextBox txtPhone;
-        private TextBox txtName;
-        private Button btImport;
-        private PictureBox pBEmp;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
-        private Label label8;
-        private Label label7;
-        private Label label6;
-        private Label label5;
-        private Label label4;
-        private Label label3;
-        private Label label2;
-        private Label label10;
-        private ComboBox cbRole;
         private TextBox txtUrl;
-        private CheckBox checkBox1;
         private Button btUpdate;
         private TextBox txtSearch;
         private RadioButton rd1;
         private RadioButton rd2;
         private Button btSearch;
+        private Panel pnButton;
+        private DataGridView dgvEmployee;
+        private TableLayoutPanel tbMain;
+        private Panel pnInfor;
+        private TextBox txtRole;
+        private DateTimePicker dtDoB;
+        private Label label9;
+        private ComboBox cbGender;
+        private Label Status;
+        private ComboBox cBStatus;
         private Label lb;
         private TextBox txtCccd;
+        private Label label10;
+        private Label label8;
+        private Label label7;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private Button btImport;
+        private PictureBox pBEmp;
+        private TextBox txtAddress;
+        private TextBox txtPhone;
+        private TextBox txtName;
+        private TextBox txtId;
+        private TableLayoutPanel tableLayoutPanel2;
         private DataGridViewTextBoxColumn fullNameEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn sexDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn cccdDataGridViewTextBoxColumn;
@@ -607,10 +671,10 @@
         private DataGridViewTextBoxColumn addressEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn phoneEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dateJoinDataGridViewTextBoxColumn;
-        private Label Status;
-        private ComboBox cBStatus;
-        private Label label9;
-        private ComboBox cbGender;
-        private DateTimePicker dtDoB;
+        private Panel panel1;
+        private Button btShow;
+        private PictureBox pictureBox1;
+        private PictureBox pbImport;
+        private PictureBox pbSearch;
     }
 }
