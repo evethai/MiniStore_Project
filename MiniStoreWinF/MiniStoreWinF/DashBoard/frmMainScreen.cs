@@ -113,7 +113,7 @@ namespace MiniStoreWinF.DashBoard
 
         private void AUTHORIZATION_Click(object sender, EventArgs e)
         {
-
+            u.openChildForm(new frmAdmin(), pnMain);
         }
     }
 }

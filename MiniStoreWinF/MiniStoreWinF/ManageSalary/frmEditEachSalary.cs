@@ -34,7 +34,7 @@ namespace MiniStoreWinF.ManageSalary
             _permissionService = new PermissionService();
             if (oldEmpSalary != txtNewEmp.Text || oldGuardSalary != txtNewGuard.Text)
             {
-                var emp = _permissionService.GetAll().Where(p => p.Roles.Equals("Employee")).FirstOrDefault();
+                var emp = _permissionService.GetAll().Where(p => p.Roles == 2).FirstOrDefault();
                 if (emp != null)
                 {
                     emp.BasicSalary = Double.Parse(txtNewEmp.Text);
@@ -42,7 +42,7 @@ namespace MiniStoreWinF.ManageSalary
                 _permissionService.Update(emp);
 
                 //
-                var guard = _permissionService.GetAll().Where(p => p.Roles.Equals("Guard")).FirstOrDefault();
+                var guard = _permissionService.GetAll().Where(p => p.Roles == 3 ).FirstOrDefault();
                 if (guard != null)
                 {
                     guard.BasicSalary = Double.Parse(txtNewGuard.Text);

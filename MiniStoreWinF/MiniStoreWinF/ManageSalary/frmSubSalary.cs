@@ -88,7 +88,7 @@ namespace MiniStoreWinF.ManageSalary
                     txtSaveID.Text = s_salary.IdDetailSubSalary.ToString();
                 }
             }
-            catch   (Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -120,7 +120,7 @@ namespace MiniStoreWinF.ManageSalary
             DateTime time = dtpList.Value;
             string id = cbName.SelectedValue.ToString();
             double total = ca.SubSalary(id, time);
-            txtTotal.Text = total.ToString();
+            txtTotal.Text = u.formatDouble(total);
             var list = _subSalaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.Time.Value.Month.Equals(time.Month)).ToList();
             dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
             _list = list;

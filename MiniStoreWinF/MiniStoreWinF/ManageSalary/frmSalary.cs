@@ -29,7 +29,33 @@ namespace MiniStoreWinF.ManageSalary
             AutoSalary();
 
             //begin page
-            openChildForm(new frmSalarySetup());
+            openChildForm(new frmSalaryDetail());
+            //
+            foreach (Control control in flplow.Controls)
+            {
+                if (control is Button)
+                {
+                    foreach (var item in Authorization(ContextScope.currentEmployee))
+                    {
+                        if (item.ActionCode.Equals(control.Name))
+                        {
+                            control.Enabled = false;
+                            control.Visible = false;
+                        }
+                    }
+                }
+            }
+        }
+        /*Authorization*/
+        private List<PermissionDetail> Authorization(Employee emp)
+        {
+            List<PermissionDetail> listDetail = new List<PermissionDetail>();
+            PermissionService _permissionService = new PermissionService();
+            PermissionDetailService _permissionDetailService = new PermissionDetailService();
+            var per = _permissionService.GetAll().Where(p => p.Roles == emp.Roles).FirstOrDefault();
+            listDetail = _permissionDetailService.GetAll().Where(p => p.IdPer == per.Roles && p.CheckAction == false).ToList();
+            return listDetail;
+
         }
         public void AutoSubSalary()
         {

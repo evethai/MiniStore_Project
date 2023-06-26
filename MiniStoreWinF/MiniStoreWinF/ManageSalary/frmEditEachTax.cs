@@ -30,7 +30,7 @@ namespace MiniStoreWinF.ManageSalary
             _permissionService = new PermissionService();
             if (oldTaxEmp != txtNewEmp.Text || oldTaxGuard != txtNewGuard.Text)
             {
-                var emp = _permissionService.GetAll().Where(p => p.Roles.Equals("Employee")).FirstOrDefault();
+                var emp = _permissionService.GetAll().Where(p => p.Roles == 2).FirstOrDefault();
                 if (emp != null)
                 {
                     emp.Tax = Double.Parse(txtNewEmp.Text);
@@ -38,7 +38,7 @@ namespace MiniStoreWinF.ManageSalary
                 _permissionService.Update(emp);
 
                 //
-                var guard = _permissionService.GetAll().Where(p => p.Roles.Equals("Guard")).FirstOrDefault();
+                var guard = _permissionService.GetAll().Where(p => p.Roles == 3 ).FirstOrDefault();
                 if (guard != null)
                 {
                     guard.Tax = Double.Parse(txtNewGuard.Text);
@@ -67,12 +67,12 @@ namespace MiniStoreWinF.ManageSalary
 
         private void txtNewEmp_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            u.numberOnly(e, txtNewEmp.Text, 8);
+            u.numberOnly(e, txtNewEmp.Text, 11);
         }
 
         private void txtNewGuard_KeyPress(object sender, KeyPressEventArgs e)
         {
-            u.numberOnly(e, txtNewGuard.Text, 8);
+            u.numberOnly(e, txtNewGuard.Text, 11);
         }
     }
 }

@@ -38,12 +38,14 @@ namespace MiniStoreWinF.ManageSalary
         private int currentPage = 1;
         private int pageSize = 7;
         private DataTable dt;
+
+        /*show list worktime in month of each specific employee*/
         public void dataList(string id, DateTime date)
         {
             _salaryService = new SalaryService();
             _workSheetService = new WorkSheetService();
             var listSa = _salaryService.GetAll().ToList();
-            var listWs = _workSheetService.GetAll().Where(p => p.Date.Value.Month.Equals(date.Month)).ToList();
+            var listWs = _workSheetService.GetAll().Where(p => p.Date.Value.Month.Equals(date.Month)&&p.Status==true).ToList();
 
             var data = (from sa in listSa
                         join ws in listWs on sa.IdEmp equals ws.IdEmp
@@ -68,6 +70,7 @@ namespace MiniStoreWinF.ManageSalary
             LoadDataByPage(currentPage);
         }
 
+        /*Paging*/
         private void LoadDataByPage(int page)
         {
             int startIndex = (page - 1) * pageSize;
@@ -122,11 +125,12 @@ namespace MiniStoreWinF.ManageSalary
             }
         }
 
+        
         public double sumHourinMonth(DateTime time, string id)
         {
             double sum = 0;
             _workSheetService = new WorkSheetService();
-            var list = _workSheetService.GetAll().Where(p => p.Date.Value.Month.Equals(time.Month) && p.IdEmp.Equals(id)).ToList();
+            var list = _workSheetService.GetAll().Where(p => p.Date.Value.Month.Equals(time.Month) && p.IdEmp.Equals(id)&&p.Status==true).ToList();
             foreach (var item in list)
             {
                 sum += (item.TimeCheckOut.Value.TimeOfDay - item.TimeCheckIn.Value.TimeOfDay).TotalHours;

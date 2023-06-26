@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSubSalary));
             dgvTotalSub = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
@@ -42,10 +44,6 @@
             dtpList = new DateTimePicker();
             groupBox2 = new GroupBox();
             dgvSub = new DataGridView();
-            idDetailSubSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            descriptionADataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            subsidiesSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            conditionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             detailSubSalaryBindingSource = new BindingSource(components);
             txtSaveID = new Label();
             btEdit = new Button();
@@ -55,11 +53,6 @@
             groupBox3 = new GroupBox();
             groupBox4 = new GroupBox();
             dgvAdv = new DataGridView();
-            idAdvanceSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            idEmpDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dateAsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            descriptionADataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            advanceSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             detailAdvanceSalaryBindingSource = new BindingSource(components);
             btAddnew_Adv = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -67,6 +60,15 @@
             panel4 = new Panel();
             panel5 = new Panel();
             panel6 = new Panel();
+            idDetailSubSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descriptionADataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            subsidiesSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            conditionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            idAdvanceSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            idEmpDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dateAsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descriptionADataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            advanceSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvTotalSub).BeginInit();
             ((System.ComponentModel.ISupportInitialize)subSalaryBindingSource).BeginInit();
             groupBox2.SuspendLayout();
@@ -208,34 +210,6 @@
             dgvSub.TabIndex = 5;
             dgvSub.CellMouseClick += dgvSub_CellMouseClick;
             // 
-            // idDetailSubSalaryDataGridViewTextBoxColumn
-            // 
-            idDetailSubSalaryDataGridViewTextBoxColumn.DataPropertyName = "IdDetailSubSalary";
-            idDetailSubSalaryDataGridViewTextBoxColumn.HeaderText = "ID";
-            idDetailSubSalaryDataGridViewTextBoxColumn.Name = "idDetailSubSalaryDataGridViewTextBoxColumn";
-            idDetailSubSalaryDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // descriptionADataGridViewTextBoxColumn
-            // 
-            descriptionADataGridViewTextBoxColumn.DataPropertyName = "DescriptionA";
-            descriptionADataGridViewTextBoxColumn.HeaderText = "Description / note";
-            descriptionADataGridViewTextBoxColumn.Name = "descriptionADataGridViewTextBoxColumn";
-            descriptionADataGridViewTextBoxColumn.Width = 117;
-            // 
-            // subsidiesSalaryDataGridViewTextBoxColumn
-            // 
-            subsidiesSalaryDataGridViewTextBoxColumn.DataPropertyName = "SubsidiesSalary";
-            subsidiesSalaryDataGridViewTextBoxColumn.HeaderText = "Subsidies Salary";
-            subsidiesSalaryDataGridViewTextBoxColumn.Name = "subsidiesSalaryDataGridViewTextBoxColumn";
-            subsidiesSalaryDataGridViewTextBoxColumn.Width = 135;
-            // 
-            // conditionDataGridViewTextBoxColumn
-            // 
-            conditionDataGridViewTextBoxColumn.DataPropertyName = "Condition";
-            conditionDataGridViewTextBoxColumn.HeaderText = "Condition (shifts)";
-            conditionDataGridViewTextBoxColumn.Name = "conditionDataGridViewTextBoxColumn";
-            conditionDataGridViewTextBoxColumn.Width = 141;
-            // 
             // detailSubSalaryBindingSource
             // 
             detailSubSalaryBindingSource.DataSource = typeof(Repository.Models.DetailSubSalary);
@@ -335,41 +309,6 @@
             dgvAdv.Size = new Size(576, 236);
             dgvAdv.TabIndex = 1;
             // 
-            // idAdvanceSalaryDataGridViewTextBoxColumn
-            // 
-            idAdvanceSalaryDataGridViewTextBoxColumn.DataPropertyName = "IdAdvanceSalary";
-            idAdvanceSalaryDataGridViewTextBoxColumn.HeaderText = "ID";
-            idAdvanceSalaryDataGridViewTextBoxColumn.Name = "idAdvanceSalaryDataGridViewTextBoxColumn";
-            idAdvanceSalaryDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // idEmpDataGridViewTextBoxColumn1
-            // 
-            idEmpDataGridViewTextBoxColumn1.DataPropertyName = "IdEmp";
-            idEmpDataGridViewTextBoxColumn1.HeaderText = "Id Employee";
-            idEmpDataGridViewTextBoxColumn1.Name = "idEmpDataGridViewTextBoxColumn1";
-            idEmpDataGridViewTextBoxColumn1.Width = 120;
-            // 
-            // dateAsDataGridViewTextBoxColumn
-            // 
-            dateAsDataGridViewTextBoxColumn.DataPropertyName = "DateAs";
-            dateAsDataGridViewTextBoxColumn.HeaderText = "Date";
-            dateAsDataGridViewTextBoxColumn.Name = "dateAsDataGridViewTextBoxColumn";
-            dateAsDataGridViewTextBoxColumn.Width = 67;
-            // 
-            // descriptionADataGridViewTextBoxColumn1
-            // 
-            descriptionADataGridViewTextBoxColumn1.DataPropertyName = "DescriptionA";
-            descriptionADataGridViewTextBoxColumn1.HeaderText = "Description/note";
-            descriptionADataGridViewTextBoxColumn1.Name = "descriptionADataGridViewTextBoxColumn1";
-            descriptionADataGridViewTextBoxColumn1.Width = 151;
-            // 
-            // advanceSalaryDataGridViewTextBoxColumn
-            // 
-            advanceSalaryDataGridViewTextBoxColumn.DataPropertyName = "AdvanceSalary";
-            advanceSalaryDataGridViewTextBoxColumn.HeaderText = "Money";
-            advanceSalaryDataGridViewTextBoxColumn.Name = "advanceSalaryDataGridViewTextBoxColumn";
-            advanceSalaryDataGridViewTextBoxColumn.Width = 83;
-            // 
             // detailAdvanceSalaryBindingSource
             // 
             detailAdvanceSalaryBindingSource.DataSource = typeof(Repository.Models.DetailAdvanceSalary);
@@ -447,6 +386,75 @@
             panel6.Size = new Size(683, 349);
             panel6.TabIndex = 4;
             // 
+            // idDetailSubSalaryDataGridViewTextBoxColumn
+            // 
+            idDetailSubSalaryDataGridViewTextBoxColumn.DataPropertyName = "IdDetailSubSalary";
+            idDetailSubSalaryDataGridViewTextBoxColumn.HeaderText = "ID";
+            idDetailSubSalaryDataGridViewTextBoxColumn.Name = "idDetailSubSalaryDataGridViewTextBoxColumn";
+            idDetailSubSalaryDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // descriptionADataGridViewTextBoxColumn
+            // 
+            descriptionADataGridViewTextBoxColumn.DataPropertyName = "DescriptionA";
+            descriptionADataGridViewTextBoxColumn.HeaderText = "Description / note";
+            descriptionADataGridViewTextBoxColumn.Name = "descriptionADataGridViewTextBoxColumn";
+            descriptionADataGridViewTextBoxColumn.Width = 117;
+            // 
+            // subsidiesSalaryDataGridViewTextBoxColumn
+            // 
+            subsidiesSalaryDataGridViewTextBoxColumn.DataPropertyName = "SubsidiesSalary";
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            subsidiesSalaryDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            subsidiesSalaryDataGridViewTextBoxColumn.HeaderText = "Subsidies Salary";
+            subsidiesSalaryDataGridViewTextBoxColumn.Name = "subsidiesSalaryDataGridViewTextBoxColumn";
+            subsidiesSalaryDataGridViewTextBoxColumn.Width = 135;
+            // 
+            // conditionDataGridViewTextBoxColumn
+            // 
+            conditionDataGridViewTextBoxColumn.DataPropertyName = "Condition";
+            conditionDataGridViewTextBoxColumn.HeaderText = "Condition (shifts)";
+            conditionDataGridViewTextBoxColumn.Name = "conditionDataGridViewTextBoxColumn";
+            conditionDataGridViewTextBoxColumn.Width = 141;
+            // 
+            // idAdvanceSalaryDataGridViewTextBoxColumn
+            // 
+            idAdvanceSalaryDataGridViewTextBoxColumn.DataPropertyName = "IdAdvanceSalary";
+            idAdvanceSalaryDataGridViewTextBoxColumn.HeaderText = "ID";
+            idAdvanceSalaryDataGridViewTextBoxColumn.Name = "idAdvanceSalaryDataGridViewTextBoxColumn";
+            idAdvanceSalaryDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // idEmpDataGridViewTextBoxColumn1
+            // 
+            idEmpDataGridViewTextBoxColumn1.DataPropertyName = "IdEmp";
+            idEmpDataGridViewTextBoxColumn1.HeaderText = "Id Employee";
+            idEmpDataGridViewTextBoxColumn1.Name = "idEmpDataGridViewTextBoxColumn1";
+            idEmpDataGridViewTextBoxColumn1.Width = 120;
+            // 
+            // dateAsDataGridViewTextBoxColumn
+            // 
+            dateAsDataGridViewTextBoxColumn.DataPropertyName = "DateAs";
+            dateAsDataGridViewTextBoxColumn.HeaderText = "Date";
+            dateAsDataGridViewTextBoxColumn.Name = "dateAsDataGridViewTextBoxColumn";
+            dateAsDataGridViewTextBoxColumn.Width = 67;
+            // 
+            // descriptionADataGridViewTextBoxColumn1
+            // 
+            descriptionADataGridViewTextBoxColumn1.DataPropertyName = "DescriptionA";
+            descriptionADataGridViewTextBoxColumn1.HeaderText = "Description/note";
+            descriptionADataGridViewTextBoxColumn1.Name = "descriptionADataGridViewTextBoxColumn1";
+            descriptionADataGridViewTextBoxColumn1.Width = 151;
+            // 
+            // advanceSalaryDataGridViewTextBoxColumn
+            // 
+            advanceSalaryDataGridViewTextBoxColumn.DataPropertyName = "AdvanceSalary";
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            advanceSalaryDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            advanceSalaryDataGridViewTextBoxColumn.HeaderText = "Money";
+            advanceSalaryDataGridViewTextBoxColumn.Name = "advanceSalaryDataGridViewTextBoxColumn";
+            advanceSalaryDataGridViewTextBoxColumn.Width = 83;
+            // 
             // frmSubSalary
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
@@ -500,10 +508,6 @@
         private BindingSource subSalaryBindingSource;
         private NumericUpDown nmPaging;
         private Panel panel1;
-        private DataGridViewTextBoxColumn idDetailSubSalaryDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn descriptionADataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn subsidiesSalaryDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn conditionDataGridViewTextBoxColumn;
         private Panel panel2;
         private DataGridView dgvTotalSub;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -512,11 +516,6 @@
         private DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn;
         private DataGridView dgvAdv;
         private BindingSource detailAdvanceSalaryBindingSource;
-        private DataGridViewTextBoxColumn idAdvanceSalaryDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn idEmpDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dateAsDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn descriptionADataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn advanceSalaryDataGridViewTextBoxColumn;
         private Button btAddnew_Adv;
         private GroupBox groupBox3;
         private GroupBox groupBox4;
@@ -527,5 +526,14 @@
         private Panel panel4;
         private Panel panel5;
         private Panel panel6;
+        private DataGridViewTextBoxColumn idDetailSubSalaryDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionADataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn subsidiesSalaryDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn conditionDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn idAdvanceSalaryDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn idEmpDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dateAsDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionADataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn advanceSalaryDataGridViewTextBoxColumn;
     }
 }

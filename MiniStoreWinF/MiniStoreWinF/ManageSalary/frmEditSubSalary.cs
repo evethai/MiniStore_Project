@@ -16,7 +16,6 @@ namespace MiniStoreWinF.ManageSalary
     public partial class frmEditSubSalary : Form
     {
         DetailSubSalaryService _detailSubSalaryService;
-        SubSalaryService _subSalaryService;
         public string idForm;
         public string disForm;
         public string saForm;

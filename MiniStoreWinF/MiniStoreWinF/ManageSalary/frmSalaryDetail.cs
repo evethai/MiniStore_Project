@@ -8,7 +8,7 @@ namespace MiniStoreWinF.ManageSalary
     public partial class frmSalaryDetail : Form
     {
         SalaryService _salaryService;
-        EmployeeService _employeeService;
+        //EmployeeService _employeeService;
         Utinity u = new Utinity();
         //Paging
         int pageNumber = 1;
@@ -19,6 +19,11 @@ namespace MiniStoreWinF.ManageSalary
         {
             InitializeComponent();
         }
+        private void frmSalaryDetail_Load(object sender, EventArgs e)
+        {
+            ShowListSalary(DateTime.Now.AddMonths(-1));
+            u.showListEmp(cbName);
+        }
 
         List<Salary> LoadRecord(int page, int numberRe, List<Salary> list)
         {
@@ -28,11 +33,7 @@ namespace MiniStoreWinF.ManageSalary
             return result;
         }
 
-        private void frmSalaryDetail_Load(object sender, EventArgs e)
-        {
-            ShowListSalary(DateTime.Now.AddMonths(-1));
-            u.showListEmp(cbName);
-        }
+
         public void ShowListSalary(DateTime time)
         {
             dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, u.salary(time));

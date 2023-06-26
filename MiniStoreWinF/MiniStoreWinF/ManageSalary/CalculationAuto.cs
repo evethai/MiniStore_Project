@@ -91,7 +91,7 @@ namespace MiniStoreWinF.ManageSalary
             List<double> conffient = new List<double>();
             _workSheetService = new WorkSheetService();
             _sheetDetailService = new SheetDetailService();
-            var listWS = _workSheetService.GetAll().ToList();
+            var listWS = _workSheetService.GetAll().Where(p=>p.Status==true).ToList();
             var listDetail = _sheetDetailService.GetAll().ToList();
 
             var listCon = (from ws in listWS

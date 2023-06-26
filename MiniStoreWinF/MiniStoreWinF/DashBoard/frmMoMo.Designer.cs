@@ -55,58 +55,65 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(28, 170);
+            label1.Location = new Point(36, 210);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(44, 17);
+            label1.Size = new Size(54, 21);
             label1.TabIndex = 0;
             label1.Text = "Phone";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(28, 217);
+            label2.Location = new Point(36, 268);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(168, 17);
+            label2.Size = new Size(201, 21);
             label2.TabIndex = 0;
             label2.Text = "Full Name (Account MoMo)";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(28, 253);
+            label3.Location = new Point(36, 313);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(41, 17);
+            label3.Size = new Size(51, 21);
             label3.TabIndex = 0;
             label3.Text = "Gmail";
             // 
             // txtPhone
             // 
-            txtPhone.Location = new Point(216, 173);
+            txtPhone.Location = new Point(278, 214);
+            txtPhone.Margin = new Padding(4, 4, 4, 4);
             txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(214, 25);
+            txtPhone.Size = new Size(274, 29);
             txtPhone.TabIndex = 1;
             txtPhone.Text = "0";
             txtPhone.KeyPress += txtPhone_KeyPress;
             // 
             // txtName
             // 
-            txtName.Location = new Point(216, 212);
+            txtName.Location = new Point(278, 262);
+            txtName.Margin = new Padding(4, 4, 4, 4);
             txtName.Name = "txtName";
-            txtName.Size = new Size(214, 25);
-            txtName.TabIndex = 1;
+            txtName.Size = new Size(274, 29);
+            txtName.TabIndex = 2;
             // 
             // txtGmail
             // 
-            txtGmail.Location = new Point(216, 253);
+            txtGmail.Location = new Point(278, 313);
+            txtGmail.Margin = new Padding(4, 4, 4, 4);
             txtGmail.Name = "txtGmail";
-            txtGmail.Size = new Size(214, 25);
-            txtGmail.TabIndex = 1;
+            txtGmail.Size = new Size(274, 29);
+            txtGmail.TabIndex = 3;
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(355, 308);
+            btnAdd.Location = new Point(456, 380);
+            btnAdd.Margin = new Padding(4, 4, 4, 4);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(75, 23);
+            btnAdd.Size = new Size(96, 28);
             btnAdd.TabIndex = 2;
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = true;
@@ -121,10 +128,11 @@
             dgvList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvList.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, phoneDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, gmailDataGridViewTextBoxColumn });
             dgvList.DataSource = moMoBindingSource1;
-            dgvList.Location = new Point(12, 12);
+            dgvList.Location = new Point(15, 15);
+            dgvList.Margin = new Padding(4, 4, 4, 4);
             dgvList.Name = "dgvList";
             dgvList.RowTemplate.Height = 27;
-            dgvList.Size = new Size(402, 127);
+            dgvList.Size = new Size(517, 157);
             dgvList.TabIndex = 3;
             dgvList.CellDoubleClick += dgvList_CellDoubleClick;
             // 
@@ -133,28 +141,28 @@
             idDataGridViewTextBoxColumn.DataPropertyName = "Id";
             idDataGridViewTextBoxColumn.HeaderText = "Id";
             idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            idDataGridViewTextBoxColumn.Width = 44;
+            idDataGridViewTextBoxColumn.Width = 48;
             // 
             // phoneDataGridViewTextBoxColumn
             // 
             phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
             phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
             phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
-            phoneDataGridViewTextBoxColumn.Width = 69;
+            phoneDataGridViewTextBoxColumn.Width = 79;
             // 
             // nameDataGridViewTextBoxColumn
             // 
             nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             nameDataGridViewTextBoxColumn.HeaderText = "Name";
             nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            nameDataGridViewTextBoxColumn.Width = 68;
+            nameDataGridViewTextBoxColumn.Width = 77;
             // 
             // gmailDataGridViewTextBoxColumn
             // 
             gmailDataGridViewTextBoxColumn.DataPropertyName = "Gmail";
             gmailDataGridViewTextBoxColumn.HeaderText = "Gmail";
             gmailDataGridViewTextBoxColumn.Name = "gmailDataGridViewTextBoxColumn";
-            gmailDataGridViewTextBoxColumn.Width = 66;
+            gmailDataGridViewTextBoxColumn.Width = 76;
             // 
             // moMoBindingSource1
             // 
@@ -166,9 +174,10 @@
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(216, 308);
+            btnUpdate.Location = new Point(278, 380);
+            btnUpdate.Margin = new Padding(4, 4, 4, 4);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(75, 23);
+            btnUpdate.Size = new Size(96, 28);
             btnUpdate.TabIndex = 4;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = true;
@@ -177,9 +186,10 @@
             // btnUse
             // 
             btnUse.BackColor = Color.FromArgb(128, 255, 128);
-            btnUse.Location = new Point(470, 173);
+            btnUse.Location = new Point(604, 214);
+            btnUse.Margin = new Padding(4, 4, 4, 4);
             btnUse.Name = "btnUse";
-            btnUse.Size = new Size(112, 105);
+            btnUse.Size = new Size(144, 130);
             btnUse.TabIndex = 5;
             btnUse.Text = "USE";
             btnUse.UseVisualStyleBackColor = false;
@@ -188,19 +198,20 @@
             // txtSave
             // 
             txtSave.AutoSize = true;
-            txtSave.Location = new Point(571, 12);
+            txtSave.Location = new Point(734, 15);
+            txtSave.Margin = new Padding(4, 0, 4, 0);
             txtSave.Name = "txtSave";
-            txtSave.Size = new Size(11, 17);
+            txtSave.Size = new Size(13, 21);
             txtSave.TabIndex = 6;
             txtSave.Text = ".";
             txtSave.Visible = false;
             // 
             // frmMoMo
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(594, 358);
+            ClientSize = new Size(819, 497);
             Controls.Add(txtSave);
             Controls.Add(btnUse);
             Controls.Add(btnUpdate);
@@ -212,9 +223,11 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            MaximumSize = new Size(610, 397);
-            MinimumSize = new Size(610, 397);
+            Margin = new Padding(4, 4, 4, 4);
+            MaximumSize = new Size(835, 536);
+            MinimumSize = new Size(835, 536);
             Name = "frmMoMo";
             StartPosition = FormStartPosition.CenterScreen;
             Load += frmMoMo_Load;

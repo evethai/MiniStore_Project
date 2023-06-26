@@ -45,14 +45,16 @@
             dgvRoles.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvRoles.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvRoles.BackgroundColor = SystemColors.ButtonHighlight;
+            dgvRoles.BorderStyle = BorderStyle.Fixed3D;
             dgvRoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRoles.Columns.AddRange(new DataGridViewColumn[] { idEmpDataGridViewTextBoxColumn, fullNameEmpDataGridViewTextBoxColumn, rolesDataGridViewTextBoxColumn });
             dgvRoles.DataSource = employeeBindingSource;
-            dgvRoles.Location = new Point(-2, -1);
+            dgvRoles.Dock = DockStyle.Fill;
+            dgvRoles.Location = new Point(0, 0);
             dgvRoles.Margin = new Padding(5, 4, 5, 4);
             dgvRoles.Name = "dgvRoles";
             dgvRoles.RowTemplate.Height = 27;
-            dgvRoles.Size = new Size(542, 185);
+            dgvRoles.Size = new Size(433, 341);
             dgvRoles.TabIndex = 1;
             // 
             // idEmpDataGridViewTextBoxColumn
@@ -84,14 +86,13 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(433, 172);
+            ClientSize = new Size(433, 341);
             Controls.Add(dgvRoles);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(5, 4, 5, 4);
-            MaximumSize = new Size(449, 211);
-            MinimumSize = new Size(449, 211);
             Name = "frmDetailSetup";
+            StartPosition = FormStartPosition.CenterScreen;
             Load += frmDetailSetup_Load;
             ((System.ComponentModel.ISupportInitialize)dgvRoles).EndInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).EndInit();

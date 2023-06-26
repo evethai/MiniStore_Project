@@ -23,7 +23,7 @@ namespace MiniStoreWinF.ManageSalary
         {
             _employeeService = new EmployeeService();
             var list = _employeeService.GetAll()
-                .Where(p => (p.Roles.Equals("Employee") || p.Roles.Equals("Guard")) && p.IsActive == true).ToList();
+                .Where(p => (p.Roles == 2 || p.Roles == 3) && p.IsActive == true).ToList();
             dgvRoles.DataSource = list;
         }
     }

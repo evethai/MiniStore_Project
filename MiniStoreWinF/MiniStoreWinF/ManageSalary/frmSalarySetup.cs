@@ -16,6 +16,7 @@ namespace MiniStoreWinF.ManageSalary
     {
         EmployeeService employeeService;
         PermissionService permissionService;
+        Utinity u = new Utinity();
         public frmSalarySetup()
         {
             InitializeComponent();
@@ -26,21 +27,21 @@ namespace MiniStoreWinF.ManageSalary
             permissionService = new PermissionService();
             employeeService = new EmployeeService();
             //
-            var SaEmp = permissionService.GetAll().Where(p => p.Roles.Equals("Employee")).FirstOrDefault();
+            var SaEmp = permissionService.GetAll().Where(p => p.Roles == 2).FirstOrDefault();
             if (SaEmp != null)
             {
-                txtSaEmp.Text = SaEmp.BasicSalary.ToString();
-                txtTaxEmp.Text = SaEmp.Tax.ToString();
+                txtSaEmp.Text = u.formatDouble(SaEmp.BasicSalary); 
+                txtTaxEmp.Text = u.formatDouble(SaEmp.Tax);
             }
-            var SaGuard = permissionService.GetAll().Where(p => p.Roles.Equals("Guard")).FirstOrDefault();
+            var SaGuard = permissionService.GetAll().Where(p => p.Roles == 3).FirstOrDefault();
             if (SaGuard != null)
             {
-                txtSaGuard.Text = SaGuard.BasicSalary.ToString();
-                txtTaxGua.Text = SaGuard.Tax.ToString();
+                txtSaGuard.Text = u.formatDouble(SaGuard.BasicSalary);
+                txtTaxGua.Text = u.formatDouble(SaGuard.Tax);
             }
-            //
-            var nEmp = employeeService.GetAll().Count(p => p.Roles.Equals("Employee") && p.IsActive == true);
-            var nGuard = employeeService.GetAll().Count(p => p.Roles.Equals("Guard") && p.IsActive == true);
+                //
+            var nEmp = employeeService.GetAll().Count(p => p.Roles == 2 && p.IsActive == true);
+            var nGuard = employeeService.GetAll().Count(p => p.Roles == 3 && p.IsActive == true);
             txtEmp.Text = nEmp.ToString();
             txtGuard.Text = nGuard.ToString();
         }

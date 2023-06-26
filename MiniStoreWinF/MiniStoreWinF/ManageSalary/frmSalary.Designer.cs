@@ -29,28 +29,28 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSalary));
-            btManage = new Button();
+            AUTHORIZATION = new Button();
             btSalary = new Button();
             btSub = new Button();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            flplow = new FlowLayoutPanel();
             panel1 = new Panel();
             pMain = new Panel();
-            flowLayoutPanel1.SuspendLayout();
+            flplow.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // btManage
+            // AUTHORIZATION
             // 
-            btManage.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            btManage.ImageAlign = ContentAlignment.MiddleLeft;
-            btManage.Location = new Point(5, 4);
-            btManage.Margin = new Padding(5, 4, 5, 4);
-            btManage.Name = "btManage";
-            btManage.Size = new Size(253, 65);
-            btManage.TabIndex = 0;
-            btManage.Text = "Manager Records";
-            btManage.UseVisualStyleBackColor = true;
-            btManage.Click += btManage_Click;
+            AUTHORIZATION.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            AUTHORIZATION.ImageAlign = ContentAlignment.MiddleLeft;
+            AUTHORIZATION.Location = new Point(5, 4);
+            AUTHORIZATION.Margin = new Padding(5, 4, 5, 4);
+            AUTHORIZATION.Name = "AUTHORIZATION";
+            AUTHORIZATION.Size = new Size(253, 65);
+            AUTHORIZATION.TabIndex = 0;
+            AUTHORIZATION.Text = "Manager Records";
+            AUTHORIZATION.UseVisualStyleBackColor = true;
+            AUTHORIZATION.Click += btManage_Click;
             // 
             // btSalary
             // 
@@ -78,22 +78,22 @@
             btSub.UseVisualStyleBackColor = true;
             btSub.Click += btSub_Click;
             // 
-            // flowLayoutPanel1
+            // flplow
             // 
-            flowLayoutPanel1.BorderStyle = BorderStyle.Fixed3D;
-            flowLayoutPanel1.Controls.Add(btManage);
-            flowLayoutPanel1.Controls.Add(btSalary);
-            flowLayoutPanel1.Controls.Add(btSub);
-            flowLayoutPanel1.Dock = DockStyle.Left;
-            flowLayoutPanel1.Location = new Point(0, 0);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(264, 884);
-            flowLayoutPanel1.TabIndex = 3;
+            flplow.BorderStyle = BorderStyle.Fixed3D;
+            flplow.Controls.Add(AUTHORIZATION);
+            flplow.Controls.Add(btSalary);
+            flplow.Controls.Add(btSub);
+            flplow.Dock = DockStyle.Left;
+            flplow.Location = new Point(0, 0);
+            flplow.Name = "flplow";
+            flplow.Size = new Size(264, 884);
+            flplow.TabIndex = 3;
             // 
             // panel1
             // 
             panel1.Controls.Add(pMain);
-            panel1.Controls.Add(flowLayoutPanel1);
+            panel1.Controls.Add(flplow);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -122,7 +122,7 @@
             Name = "frmSalary";
             Text = "frmSalary";
             Load += frmSalary_Load;
-            flowLayoutPanel1.ResumeLayout(false);
+            flplow.ResumeLayout(false);
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -130,8 +130,8 @@
         #endregion
         private Button btSub;
         private Button btSalary;
-        private Button btManage;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private Button AUTHORIZATION;
+        private FlowLayoutPanel flplow;
         private Panel panel1;
         private Panel pMain;
     }
