@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Repository.Models;
+using Repository.Service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,8 +12,11 @@ using System.Windows.Forms;
 
 namespace MiniStoreWinF.OrdersProducts
 {
+    
     public partial class frmBill : Form
     {
+        OrderService _orderService = new OrderService();
+        BillOrderService _billService = new BillOrderService();
         public frmBill()
         {
             InitializeComponent();
@@ -26,6 +31,11 @@ namespace MiniStoreWinF.OrdersProducts
         {
             base.OnFormClosed(e);
             ChildFormClosed?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void frmBill_Load(object sender, EventArgs e)
+        {
+           
         }
     }
 }

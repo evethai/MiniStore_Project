@@ -38,7 +38,9 @@ namespace MiniStoreWinF.OrdersProducts
             else
             {
                 id.IdBillOrder=autoId("Bi0001");
+                
             }
+           
             _bill.Add(id);
             _context.SaveChanges();         
         }

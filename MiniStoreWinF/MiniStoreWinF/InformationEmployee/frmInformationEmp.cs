@@ -16,6 +16,7 @@ namespace MiniStoreWinF.InformationEmployee
     {
         EmployeeService _employeeService = new EmployeeService();
         public string DataEmployee { get; set; }
+        string DataLoadEmployee = ContextScope.currentEmployee.IdEmp;
         public frmInformationEmp()
         {
             InitializeComponent();
@@ -39,7 +40,7 @@ namespace MiniStoreWinF.InformationEmployee
         private void btChangePassword_Click(object sender, EventArgs e)
         {
 
-            var CheckPassWork = _employeeService.GetAll().Where(p => p.IdEmp == DataEmployee).FirstOrDefault();
+            var CheckPassWork = _employeeService.GetAll().Where(p => p.IdEmp == DataLoadEmployee).FirstOrDefault();
             if (CheckPassWork != null)
             {
                 cbCheckExactly.Checked = true;
@@ -70,7 +71,7 @@ namespace MiniStoreWinF.InformationEmployee
         {
 
             string PictureEmp = "";
-            var infoEmployee = _employeeService.GetAll().Where(p => p.IdEmp == DataEmployee).FirstOrDefault();
+            var infoEmployee = _employeeService.GetAll().Where(p => p.IdEmp == DataLoadEmployee).FirstOrDefault();
             if (infoEmployee != null)
             {
                 txtIdEmp.Text = infoEmployee.IdEmp;
@@ -96,6 +97,11 @@ namespace MiniStoreWinF.InformationEmployee
             {
                 return;
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

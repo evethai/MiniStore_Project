@@ -26,11 +26,22 @@ namespace MiniStoreWinF.ManageEmployees
         private int rowIndex { get; set; }
         public frmShowEmployee()
         {
-            var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true); ;
+            //if (ContextScope.currentEmployee.Roles > 0)
+            //{
+            //    var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true);
+            //    dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
+            //}
+            //else
+            //{
+            //    var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true);
+            //    dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
+            //}
+            
+
             InitializeComponent();
-
-
+            var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true);
             dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
+
 
 
         }
@@ -239,8 +250,17 @@ namespace MiniStoreWinF.ManageEmployees
                 }
 
             }
-            var employeeServiceU = _employeeService.GetAll().Where(e => e.IsActive == true);
-            dgvEmployee.DataSource = new BindingSource() { DataSource = employeeServiceU };
+            if (ContextScope.currentEmployee.Roles > 0)
+            {
+                var employeeServiceU = _employeeService.GetAll().Where(e => e.IsActive == true);
+                dgvEmployee.DataSource = new BindingSource() { DataSource = employeeServiceU };
+            }
+            else
+            {
+                var employeeServiceU = _employeeService.GetAll().Where(e => e.IsActive == true);
+                dgvEmployee.DataSource = new BindingSource() { DataSource = employeeServiceU };
+            }
+
         }
 
 
