@@ -107,7 +107,7 @@ namespace MiniStoreWinF.OrdersProducts
 
 
             txtQuantityOrder.Value = 0;
-
+            
         } // button add product => OK
         public void AddItems()
         {
@@ -163,8 +163,9 @@ namespace MiniStoreWinF.OrdersProducts
                     txtTotalAllOrders.Text = total.ToString();
                 }
             }
-            catch {
-                MessageBox.Show("You dont choise you items","Notification",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+            catch
+            {
+                MessageBox.Show("You dont choise you items", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         } // function add to cart   ==> OK
         private void btCheckMember_Click(object sender, EventArgs e)
