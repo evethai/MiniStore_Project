@@ -192,12 +192,12 @@ namespace MiniStoreWinF.DashBoard
                 MessageBox.Show("You are not an employee", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
-
+        }
         private void pbSetting_Click(object sender, EventArgs e)
         {
             Form setting = new frmSettingScreen();
             setting.Show();
-
         }
+
     }
 }
