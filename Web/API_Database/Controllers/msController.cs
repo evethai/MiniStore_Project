@@ -164,6 +164,7 @@ namespace API_Database.Controllers
             // Nếu tài khoản hợp lệ
             WorkSheetDTO worksheetDTO = new WorkSheetDTO
             {
+                Status = worksheet.Status.ToString(),
                 Sheet = (int)worksheet.Sheet,
                 TimeCheckIn = worksheet.TimeCheckIn.HasValue ? worksheet.TimeCheckIn.Value : DateTime.MinValue,
                 TimeCheckOut = worksheet.TimeCheckOut.HasValue ? worksheet.TimeCheckOut.Value : DateTime.MinValue
@@ -177,7 +178,7 @@ namespace API_Database.Controllers
         //find wS
         [HttpGet]
         [Route("api/ms/fwst")]
-        public WorkSheet FindWorkSheetst(string idemp, string date)
+        public WorkSheetDTO FindWorkSheetst(string idemp, string date)
         {
             if (!DateTime.TryParse(date, out DateTime searchDate))
             {
@@ -193,12 +194,13 @@ namespace API_Database.Controllers
 
             WorkSheetDTO worksheetDTO = new WorkSheetDTO
             {
+                Status = worksheet.Status.ToString(),
                 Sheet = (int)worksheet.Sheet,
                 TimeCheckIn = worksheet.TimeCheckIn.HasValue ? worksheet.TimeCheckIn.Value : DateTime.MinValue,
                 TimeCheckOut = worksheet.TimeCheckOut.HasValue ? worksheet.TimeCheckOut.Value : DateTime.MinValue
             };
 
-            return worksheet;
+            return worksheetDTO;
         }
         //find sheet guard jwt
         [HttpGet]

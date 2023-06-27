@@ -61,7 +61,8 @@ namespace API_Database.Controllers
                 {
             new Claim("Sheet", wsdto.Sheet.ToString()),
             new Claim("TimeCheckIn", wsdto.TimeCheckIn.ToString("MM/dd/yyyy HH:mm:ss")),
-            new Claim("TimeCheckOut", wsdto.TimeCheckOut.ToString("MM/dd/yyyy HH:mm:ss"))
+            new Claim("TimeCheckOut", wsdto.TimeCheckOut.ToString("MM/dd/yyyy HH:mm:ss")),
+            new Claim("Status", wsdto.Status.ToString())
         }),
                 Expires = DateTime.UtcNow.AddHours(1), // Thời gian hết hạn của JWT: 1 giờ
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
