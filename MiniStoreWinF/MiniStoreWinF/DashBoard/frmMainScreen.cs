@@ -183,9 +183,11 @@ namespace MiniStoreWinF.DashBoard
             string Emp = ContextScope.currentEmployee.IdEmp;
             if (Emp != null)
             {
-                frmInformationEmp _frmInformationEmp = new frmInformationEmp();
-                _frmInformationEmp.DataEmployee = Emp;
-                _frmInformationEmp.ShowDialog();
+                frmInformationMain _frmInformationMain = new frmInformationMain();
+                frmInformationEmp frmInformationEmp = new frmInformationEmp();
+
+                frmInformationEmp.DataEmployee = Emp;
+                _frmInformationMain.ShowDialog();
             }
             else
             {

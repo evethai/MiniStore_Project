@@ -108,10 +108,10 @@
             // 
             // btAddEmployee
             // 
-            btAddEmployee.Location = new Point(4, 94);
+            btAddEmployee.Location = new Point(4, 7);
             btAddEmployee.Margin = new Padding(4, 5, 4, 5);
             btAddEmployee.Name = "btAddEmployee";
-            btAddEmployee.Size = new Size(264, 72);
+            btAddEmployee.Size = new Size(108, 38);
             btAddEmployee.TabIndex = 1;
             btAddEmployee.Text = "Create Employee";
             btAddEmployee.UseVisualStyleBackColor = true;
@@ -324,6 +324,7 @@
             // 
             pnInfor.BorderStyle = BorderStyle.Fixed3D;
             pnInfor.Controls.Add(label1);
+            pnInfor.Controls.Add(btAddEmployee);
             pnInfor.Controls.Add(pbImport);
             pnInfor.Controls.Add(pictureBox1);
             pnInfor.Controls.Add(btSearch);
@@ -577,9 +578,8 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.FromArgb(128, 255, 128);
+            panel1.BackColor = Color.White;
             panel1.Controls.Add(btShow);
-            panel1.Controls.Add(btAddEmployee);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
@@ -588,7 +588,7 @@
             // 
             // btShow
             // 
-            btShow.Location = new Point(4, 12);
+            btShow.Location = new Point(7, 4);
             btShow.Name = "btShow";
             btShow.Size = new Size(264, 72);
             btShow.TabIndex = 2;
@@ -672,9 +672,9 @@
         private DataGridViewTextBoxColumn phoneEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dateJoinDataGridViewTextBoxColumn;
         private Panel panel1;
-        private Button btShow;
         private PictureBox pictureBox1;
         private PictureBox pbImport;
         private PictureBox pbSearch;
+        private Button btShow;
     }
 }
