@@ -35,15 +35,11 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel2 = new Panel();
-            textBox1 = new TextBox();
-            label13 = new Label();
-            comboBox1 = new ComboBox();
-            label10 = new Label();
-            btLoadDayWorkSheet = new Button();
+            btLoad = new Button();
             dateEnd = new DateTimePicker();
-            button1 = new Button();
+            bttodate = new Button();
             dateStart = new DateTimePicker();
-            btSearch = new Button();
+            btformdate = new Button();
             panel3 = new Panel();
             tableLayoutPanel3 = new TableLayoutPanel();
             panel6 = new Panel();
@@ -82,18 +78,19 @@
             coefficientsSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             sheetDetailBindingSource = new BindingSource(components);
             panel4 = new Panel();
+            panel9 = new Panel();
             txtCoefficientsSalaryDetails = new NumericUpDown();
-            btCreate = new Button();
-            label9 = new Label();
-            btUpdateDetailsWorkSheet = new Button();
-            txtDescriptionsDetails = new TextBox();
-            txtEndDetails = new TextBox();
             txtStartDetails = new TextBox();
-            txtSheetDetail = new TextBox();
-            label8 = new Label();
-            label7 = new Label();
-            label6 = new Label();
+            btCreate = new Button();
             label5 = new Label();
+            label9 = new Label();
+            label6 = new Label();
+            btUpdateDetailsWorkSheet = new Button();
+            label7 = new Label();
+            txtDescriptionsDetails = new TextBox();
+            label8 = new Label();
+            txtEndDetails = new TextBox();
+            txtSheetDetail = new TextBox();
             tbMamageWorksheet = new TabPage();
             tableLayoutPanel4 = new TableLayoutPanel();
             panel7 = new Panel();
@@ -109,6 +106,8 @@
             btnTuesday = new Button();
             btMonday = new Button();
             panel10 = new Panel();
+            numericUpDown1 = new NumericUpDown();
+            chbNotification = new CheckBox();
             btDateNow = new Button();
             dtpkDate = new DateTimePicker();
             tabManageWorkSheet.SuspendLayout();
@@ -127,12 +126,14 @@
             ((System.ComponentModel.ISupportInitialize)dgvDetailWorksheet).BeginInit();
             ((System.ComponentModel.ISupportInitialize)sheetDetailBindingSource).BeginInit();
             panel4.SuspendLayout();
+            panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)txtCoefficientsSalaryDetails).BeginInit();
             tbMamageWorksheet.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             panel7.SuspendLayout();
             panel8.SuspendLayout();
             panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
             // tabManageWorkSheet
@@ -193,100 +194,62 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(textBox1);
-            panel2.Controls.Add(label13);
-            panel2.Controls.Add(comboBox1);
-            panel2.Controls.Add(label10);
-            panel2.Controls.Add(btLoadDayWorkSheet);
+            panel2.Controls.Add(btLoad);
             panel2.Controls.Add(dateEnd);
-            panel2.Controls.Add(button1);
+            panel2.Controls.Add(bttodate);
             panel2.Controls.Add(dateStart);
-            panel2.Controls.Add(btSearch);
+            panel2.Controls.Add(btformdate);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 3);
             panel2.Name = "panel2";
             panel2.Size = new Size(957, 118);
             panel2.TabIndex = 17;
             // 
-            // textBox1
+            // btLoad
             // 
-            textBox1.Location = new Point(606, 48);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(198, 30);
-            textBox1.TabIndex = 17;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Location = new Point(532, 48);
-            label13.Name = "label13";
-            label13.Size = new Size(67, 23);
-            label13.TabIndex = 16;
-            label13.Text = "Name :";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(606, 5);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(198, 31);
-            comboBox1.TabIndex = 15;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(532, 5);
-            label10.Name = "label10";
-            label10.Size = new Size(55, 23);
-            label10.TabIndex = 14;
-            label10.Text = "Sheet";
-            // 
-            // btLoadDayWorkSheet
-            // 
-            btLoadDayWorkSheet.Location = new Point(342, 18);
-            btLoadDayWorkSheet.Name = "btLoadDayWorkSheet";
-            btLoadDayWorkSheet.Size = new Size(94, 41);
-            btLoadDayWorkSheet.TabIndex = 11;
-            btLoadDayWorkSheet.Text = "Load";
-            btLoadDayWorkSheet.UseVisualStyleBackColor = true;
-            btLoadDayWorkSheet.Click += btLoadDayWorkSheet_Click;
+            btLoad.Location = new Point(716, 27);
+            btLoad.Name = "btLoad";
+            btLoad.Size = new Size(94, 29);
+            btLoad.TabIndex = 7;
+            btLoad.Text = "LOAD";
+            btLoad.UseVisualStyleBackColor = true;
+            btLoad.Click += btLoad_Click;
             // 
             // dateEnd
             // 
             dateEnd.Format = DateTimePickerFormat.Short;
-            dateEnd.Location = new Point(140, 48);
+            dateEnd.Location = new Point(504, 27);
             dateEnd.Name = "dateEnd";
             dateEnd.Size = new Size(187, 30);
             dateEnd.TabIndex = 6;
             dateEnd.Value = new DateTime(2023, 5, 1, 0, 0, 0, 0);
             // 
-            // button1
+            // bttodate
             // 
-            button1.Location = new Point(16, 48);
-            button1.Name = "button1";
-            button1.Size = new Size(118, 30);
-            button1.TabIndex = 5;
-            button1.Text = "To date :";
-            button1.UseVisualStyleBackColor = true;
+            bttodate.Location = new Point(364, 27);
+            bttodate.Name = "bttodate";
+            bttodate.Size = new Size(118, 30);
+            bttodate.TabIndex = 5;
+            bttodate.Text = "To date :";
+            bttodate.UseVisualStyleBackColor = true;
             // 
             // dateStart
             // 
             dateStart.Format = DateTimePickerFormat.Short;
-            dateStart.Location = new Point(140, 12);
+            dateStart.Location = new Point(146, 27);
             dateStart.Name = "dateStart";
             dateStart.Size = new Size(187, 30);
             dateStart.TabIndex = 4;
             dateStart.Value = new DateTime(2023, 5, 1, 0, 0, 0, 0);
             // 
-            // btSearch
+            // btformdate
             // 
-            btSearch.Location = new Point(16, 10);
-            btSearch.Name = "btSearch";
-            btSearch.Size = new Size(118, 30);
-            btSearch.TabIndex = 3;
-            btSearch.Text = "From date :";
-            btSearch.UseVisualStyleBackColor = true;
+            btformdate.Location = new Point(22, 27);
+            btformdate.Name = "btformdate";
+            btformdate.Size = new Size(118, 30);
+            btformdate.TabIndex = 3;
+            btformdate.Text = "From date :";
+            btformdate.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -635,36 +598,51 @@
             // 
             // panel4
             // 
-            panel4.Controls.Add(txtCoefficientsSalaryDetails);
-            panel4.Controls.Add(btCreate);
-            panel4.Controls.Add(label9);
-            panel4.Controls.Add(btUpdateDetailsWorkSheet);
-            panel4.Controls.Add(txtDescriptionsDetails);
-            panel4.Controls.Add(txtEndDetails);
-            panel4.Controls.Add(txtStartDetails);
-            panel4.Controls.Add(txtSheetDetail);
-            panel4.Controls.Add(label8);
-            panel4.Controls.Add(label7);
-            panel4.Controls.Add(label6);
-            panel4.Controls.Add(label5);
+            panel4.Controls.Add(panel9);
             panel4.Dock = DockStyle.Right;
             panel4.Location = new Point(926, 3);
             panel4.Name = "panel4";
             panel4.Size = new Size(460, 626);
             panel4.TabIndex = 20;
             // 
+            // panel9
+            // 
+            panel9.Controls.Add(txtCoefficientsSalaryDetails);
+            panel9.Controls.Add(txtStartDetails);
+            panel9.Controls.Add(btCreate);
+            panel9.Controls.Add(label5);
+            panel9.Controls.Add(label9);
+            panel9.Controls.Add(label6);
+            panel9.Controls.Add(btUpdateDetailsWorkSheet);
+            panel9.Controls.Add(label7);
+            panel9.Controls.Add(txtDescriptionsDetails);
+            panel9.Controls.Add(label8);
+            panel9.Controls.Add(txtEndDetails);
+            panel9.Controls.Add(txtSheetDetail);
+            panel9.Location = new Point(0, 0);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(460, 626);
+            panel9.TabIndex = 33;
+            // 
             // txtCoefficientsSalaryDetails
             // 
             txtCoefficientsSalaryDetails.DecimalPlaces = 1;
-            txtCoefficientsSalaryDetails.Increment = new decimal(new int[] { 5, 0, 0, 65536 });
-            txtCoefficientsSalaryDetails.Location = new Point(172, 295);
+            txtCoefficientsSalaryDetails.Location = new Point(176, 284);
             txtCoefficientsSalaryDetails.Name = "txtCoefficientsSalaryDetails";
-            txtCoefficientsSalaryDetails.Size = new Size(196, 30);
+            txtCoefficientsSalaryDetails.Size = new Size(156, 30);
             txtCoefficientsSalaryDetails.TabIndex = 32;
+            // 
+            // txtStartDetails
+            // 
+            txtStartDetails.Location = new Point(164, 90);
+            txtStartDetails.Name = "txtStartDetails";
+            txtStartDetails.Size = new Size(196, 30);
+            txtStartDetails.TabIndex = 25;
+            txtStartDetails.Leave += txtStartDetails_Leave;
             // 
             // btCreate
             // 
-            btCreate.Location = new Point(160, 394);
+            btCreate.Location = new Point(152, 390);
             btCreate.Name = "btCreate";
             btCreate.Size = new Size(94, 41);
             btCreate.TabIndex = 31;
@@ -672,18 +650,36 @@
             btCreate.UseVisualStyleBackColor = true;
             btCreate.Click += btCreate_Click;
             // 
+            // label5
+            // 
+            label5.Location = new Point(31, 212);
+            label5.Name = "label5";
+            label5.Size = new Size(113, 47);
+            label5.TabIndex = 20;
+            label5.Text = "Descriptions";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // label9
             // 
-            label9.Location = new Point(35, 278);
+            label9.Location = new Point(27, 274);
             label9.Name = "label9";
             label9.Size = new Size(113, 47);
             label9.TabIndex = 30;
             label9.Text = "Coefficients salary";
             label9.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // label6
+            // 
+            label6.Location = new Point(31, 26);
+            label6.Name = "label6";
+            label6.Size = new Size(113, 47);
+            label6.TabIndex = 21;
+            label6.Text = "Sheet";
+            label6.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // btUpdateDetailsWorkSheet
             // 
-            btUpdateDetailsWorkSheet.Location = new Point(274, 394);
+            btUpdateDetailsWorkSheet.Location = new Point(266, 390);
             btUpdateDetailsWorkSheet.Name = "btUpdateDetailsWorkSheet";
             btUpdateDetailsWorkSheet.Size = new Size(94, 41);
             btUpdateDetailsWorkSheet.TabIndex = 29;
@@ -691,73 +687,47 @@
             btUpdateDetailsWorkSheet.UseVisualStyleBackColor = true;
             btUpdateDetailsWorkSheet.Click += btUpdateDetailsWorkSheet_Click_1;
             // 
-            // txtDescriptionsDetails
-            // 
-            txtDescriptionsDetails.Location = new Point(172, 206);
-            txtDescriptionsDetails.Multiline = true;
-            txtDescriptionsDetails.Name = "txtDescriptionsDetails";
-            txtDescriptionsDetails.Size = new Size(196, 62);
-            txtDescriptionsDetails.TabIndex = 27;
-            // 
-            // txtEndDetails
-            // 
-            txtEndDetails.Location = new Point(172, 150);
-            txtEndDetails.Name = "txtEndDetails";
-            txtEndDetails.Size = new Size(196, 30);
-            txtEndDetails.TabIndex = 26;
-            txtEndDetails.Leave += txtEndDetails_Leave;
-            // 
-            // txtStartDetails
-            // 
-            txtStartDetails.Location = new Point(172, 94);
-            txtStartDetails.Name = "txtStartDetails";
-            txtStartDetails.Size = new Size(196, 30);
-            txtStartDetails.TabIndex = 25;
-            txtStartDetails.Leave += txtStartDetails_Leave;
-            // 
-            // txtSheetDetail
-            // 
-            txtSheetDetail.Location = new Point(172, 38);
-            txtSheetDetail.Name = "txtSheetDetail";
-            txtSheetDetail.Size = new Size(196, 30);
-            txtSheetDetail.TabIndex = 24;
-            txtSheetDetail.KeyPress += txtSheetDetail_KeyPress;
-            // 
-            // label8
-            // 
-            label8.Location = new Point(39, 154);
-            label8.Name = "label8";
-            label8.Size = new Size(113, 47);
-            label8.TabIndex = 23;
-            label8.Text = "Time End";
-            label8.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // label7
             // 
-            label7.Location = new Point(39, 92);
+            label7.Location = new Point(31, 88);
             label7.Name = "label7";
             label7.Size = new Size(113, 47);
             label7.TabIndex = 22;
             label7.Text = "Time Start";
             label7.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // label6
+            // txtDescriptionsDetails
             // 
-            label6.Location = new Point(39, 30);
-            label6.Name = "label6";
-            label6.Size = new Size(113, 47);
-            label6.TabIndex = 21;
-            label6.Text = "Sheet";
-            label6.TextAlign = ContentAlignment.MiddleCenter;
+            txtDescriptionsDetails.Location = new Point(164, 202);
+            txtDescriptionsDetails.Multiline = true;
+            txtDescriptionsDetails.Name = "txtDescriptionsDetails";
+            txtDescriptionsDetails.Size = new Size(196, 62);
+            txtDescriptionsDetails.TabIndex = 27;
             // 
-            // label5
+            // label8
             // 
-            label5.Location = new Point(39, 216);
-            label5.Name = "label5";
-            label5.Size = new Size(113, 47);
-            label5.TabIndex = 20;
-            label5.Text = "Descriptions";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
+            label8.Location = new Point(31, 150);
+            label8.Name = "label8";
+            label8.Size = new Size(113, 47);
+            label8.TabIndex = 23;
+            label8.Text = "Time End";
+            label8.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // txtEndDetails
+            // 
+            txtEndDetails.Location = new Point(164, 146);
+            txtEndDetails.Name = "txtEndDetails";
+            txtEndDetails.Size = new Size(196, 30);
+            txtEndDetails.TabIndex = 26;
+            txtEndDetails.Leave += txtEndDetails_Leave;
+            // 
+            // txtSheetDetail
+            // 
+            txtSheetDetail.Location = new Point(164, 34);
+            txtSheetDetail.Name = "txtSheetDetail";
+            txtSheetDetail.Size = new Size(196, 30);
+            txtSheetDetail.TabIndex = 24;
+            txtSheetDetail.KeyPress += txtSheetDetail_KeyPress;
             // 
             // tbMamageWorksheet
             // 
@@ -904,6 +874,8 @@
             // 
             // panel10
             // 
+            panel10.Controls.Add(numericUpDown1);
+            panel10.Controls.Add(chbNotification);
             panel10.Controls.Add(btDateNow);
             panel10.Controls.Add(dtpkDate);
             panel10.Dock = DockStyle.Fill;
@@ -912,18 +884,36 @@
             panel10.Size = new Size(1377, 60);
             panel10.TabIndex = 1;
             // 
+            // numericUpDown1
+            // 
+            numericUpDown1.Location = new Point(169, 10);
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(91, 30);
+            numericUpDown1.TabIndex = 3;
+            // 
+            // chbNotification
+            // 
+            chbNotification.AutoSize = true;
+            chbNotification.Location = new Point(41, 10);
+            chbNotification.Name = "chbNotification";
+            chbNotification.Size = new Size(128, 27);
+            chbNotification.TabIndex = 2;
+            chbNotification.Text = "Notification";
+            chbNotification.UseVisualStyleBackColor = true;
+            // 
             // btDateNow
             // 
-            btDateNow.Location = new Point(863, 2);
+            btDateNow.Location = new Point(863, 10);
             btDateNow.Name = "btDateNow";
             btDateNow.Size = new Size(110, 36);
             btDateNow.TabIndex = 1;
             btDateNow.Text = "Date Now";
             btDateNow.UseVisualStyleBackColor = true;
+            btDateNow.Click += btDateNow_Click;
             // 
             // dtpkDate
             // 
-            dtpkDate.Location = new Point(539, 3);
+            dtpkDate.Location = new Point(536, 11);
             dtpkDate.Name = "dtpkDate";
             dtpkDate.Size = new Size(290, 30);
             dtpkDate.TabIndex = 0;
@@ -942,7 +932,6 @@
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             panel3.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             panel6.ResumeLayout(false);
@@ -955,13 +944,16 @@
             ((System.ComponentModel.ISupportInitialize)dgvDetailWorksheet).EndInit();
             ((System.ComponentModel.ISupportInitialize)sheetDetailBindingSource).EndInit();
             panel4.ResumeLayout(false);
-            panel4.PerformLayout();
+            panel9.ResumeLayout(false);
+            panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)txtCoefficientsSalaryDetails).EndInit();
             tbMamageWorksheet.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel8.ResumeLayout(false);
             panel10.ResumeLayout(false);
+            panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
         }
 
@@ -980,14 +972,12 @@
         private TextBox txtIdEmployees;
         private Button btReset;
         private TabPage tabDetailWorkSheet;
-        private Label label10;
         private Panel panel1;
         private Panel panel3;
         private Panel panel2;
-        private Button btSearch;
-        private Button btLoadDayWorkSheet;
+        private Button btformdate;
         private DateTimePicker dateEnd;
-        private Button button1;
+        private Button bttodate;
         private DateTimePicker dateStart;
         private DataGridView dgvShowWorkSheet;
         private Panel panel4;
@@ -1012,7 +1002,6 @@
         private TextBox txtTimeCheckIn;
         private Label label11;
         private Button btCreate;
-        private NumericUpDown txtCoefficientsSalaryDetails;
         private DataGridViewTextBoxColumn idWorkSheetDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn idEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
@@ -1028,9 +1017,6 @@
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tableLayoutPanel3;
         private Panel panel6;
-        private ComboBox comboBox1;
-        private TextBox textBox1;
-        private Label label13;
         private TabPage tbMamageWorksheet;
         private TableLayoutPanel tableLayoutPanel4;
         private Panel panel7;
@@ -1048,5 +1034,10 @@
         private Button btMonday;
         private Button btnNextMonth;
         private Button btnMonthBack;
+        private NumericUpDown numericUpDown1;
+        private CheckBox chbNotification;
+        private Button btLoad;
+        private NumericUpDown txtCoefficientsSalaryDetails;
+        private Panel panel9;
     }
 }
