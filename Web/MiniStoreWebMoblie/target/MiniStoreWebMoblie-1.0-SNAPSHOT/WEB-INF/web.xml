@@ -9,12 +9,20 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>ShowListWSServlet</servlet-name>
+        <servlet-class>com.mycompany.ministorewebmoblie.Controller.ShowListWSServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowListWSServlet</servlet-name>
+        <url-pattern>/ShowList</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>CheckInServlet</servlet-name>
         <servlet-class>com.mycompany.ministorewebmoblie.Controller.CheckInServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CheckInServlet</servlet-name>
-        <url-pattern>/CheckInServlet</url-pattern>
+        <url-pattern>/CheckIn</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>LogoutServlet</servlet-name>
@@ -22,7 +30,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
-        <url-pattern>/LogoutServlet</url-pattern>
+        <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>CheckOutServlet</servlet-name>
@@ -30,7 +38,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>CheckOutServlet</servlet-name>
-        <url-pattern>/CheckOutServlet</url-pattern>
+        <url-pattern>/CheckOut</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
