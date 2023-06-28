@@ -299,6 +299,7 @@
             Controls.Add(pnlCreateMember);
             Controls.Add(pnlCheckMember);
             Name = "frmMemberCheck";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Member Check";
             pnlCheckMember.ResumeLayout(false);
             pnlCheckMember.PerformLayout();

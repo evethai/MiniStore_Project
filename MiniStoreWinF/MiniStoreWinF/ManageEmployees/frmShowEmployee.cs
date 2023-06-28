@@ -414,8 +414,6 @@ namespace MiniStoreWinF.ManageEmployees
                     {
                         employeeService.IsActive = false;
                     }
-
-
                     employeeService.Cccd = txtCccd.Text;
                     var update = employeeService;
                     _employeeService.Update(update);

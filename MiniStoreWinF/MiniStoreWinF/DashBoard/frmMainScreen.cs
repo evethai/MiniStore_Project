@@ -110,7 +110,7 @@ namespace MiniStoreWinF.DashBoard
 
         private void SHEET_Click(object sender, EventArgs e)
         {
-
+            u.openChildForm(new ManageWorkSheet.frmManageWorkSheetPage(), pnMain);
         }
 
         private void VOUCHER_Click(object sender, EventArgs e)

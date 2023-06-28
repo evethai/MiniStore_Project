@@ -29,7 +29,6 @@ namespace MiniStoreWinF.ManageWorkSheet
         int loadrecord = 0;
         int numberRecord = 7;
         int pagenumber = 1;
-
         #region Properties
         private List<List<Button>> matrix;
         public List<List<Button>> Matrix
@@ -95,7 +94,7 @@ namespace MiniStoreWinF.ManageWorkSheet
         {
             loadData();
         }
-        private void btLoadDayWorkSheet_Click(object sender, EventArgs e)
+        private void btLoad_Click(object sender, EventArgs e)
         {
             DateTime dateStarts = dateStart.Value;
             DateTime dateEnds = dateEnd.Value;
@@ -296,10 +295,9 @@ namespace MiniStoreWinF.ManageWorkSheet
                 textBox.Focus(); // Đưa con trỏ về TextBox để người dùng nhập lại
             }
         }
-
+        //======================================================================
         public void LoadDataManage()
         {
-
             Matrix = new List<List<Button>>();
             Button oldBtn = new Button() { Width = 0, Height = 0, Location = new Point(-TableSheet.DateButtonMagin, 0) };
             for (int i = 0; i < TableSheet.DayOfColumn; i++)
@@ -309,6 +307,9 @@ namespace MiniStoreWinF.ManageWorkSheet
                 {
                     Button btn = new Button() { Width = TableSheet.DateButtonWidth, Height = TableSheet.DateButtonHeight };
                     btn.Location = new Point(oldBtn.Location.X + oldBtn.Width + TableSheet.DateButtonMagin, oldBtn.Location.Y);
+                    btn.Click += bnt_Click;
+
+
                     pnlMatricDate.Controls.Add(btn);
                     Matrix[i].Add(btn);
                     oldBtn = btn;
@@ -317,7 +318,15 @@ namespace MiniStoreWinF.ManageWorkSheet
             }
             setDefaultDate();
         } //Matric SheetManager
-
+        private void bnt_Click(object? sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty((sender as Button).Text))
+            {
+                return;
+            }
+            frmTableWork daily = new frmTableWork((sender as Button).Text, dtpkDate.Value);
+            daily.ShowDialog();
+        }
         int DayOfMonth(DateTime date)
         {
             switch (date.Month)
@@ -350,13 +359,13 @@ namespace MiniStoreWinF.ManageWorkSheet
                 int column = _dateOfWeek.IndexOf(useDate.DayOfWeek.ToString());
                 Button btn = Matrix[row][column];
                 btn.Text = i.ToString();
-                if(isEqualDate(useDate,DateTime.Now))
+                if (isEqualDate(useDate, DateTime.Now))
                 {
                     btn.BackColor = Color.Yellow;
                 }
                 if (isEqualDate(useDate, date))
                 {
-                    btn.BackColor = Color.AliceBlue;
+                    btn.BackColor = Color.Red;
                 }
                 if (column >= 6)
                     row++;
@@ -366,7 +375,7 @@ namespace MiniStoreWinF.ManageWorkSheet
         }
         public bool isEqualDate(DateTime dateA, DateTime dateB)
         {
-            return dateA.Year == dateB.Year && dateA.Month == dateB.Month 
+            return dateA.Year == dateB.Year && dateA.Month == dateB.Month
                 && dateA.Day == dateB.Day;
         }
         public void ClearMatrix()
@@ -397,7 +406,12 @@ namespace MiniStoreWinF.ManageWorkSheet
 
         private void btnNextMonth_Click(object sender, EventArgs e)
         {
-            dtpkDate.Value =dtpkDate.Value.AddMonths(1);
+            dtpkDate.Value = dtpkDate.Value.AddMonths(1);
+        }
+
+        private void btDateNow_Click(object sender, EventArgs e)
+        {
+            dtpkDate.Value = DateTime.Now;
         }
     }
 }

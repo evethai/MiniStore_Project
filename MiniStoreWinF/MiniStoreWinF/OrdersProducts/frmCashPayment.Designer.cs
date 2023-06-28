@@ -82,6 +82,7 @@
             Controls.Add(lblCustomerProvidesCash);
             Controls.Add(txtProvidesCash);
             Name = "frmCashPayment";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmCashPayment";
             ResumeLayout(false);
             PerformLayout();

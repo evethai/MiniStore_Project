@@ -84,6 +84,7 @@
             Controls.Add(button1);
             Controls.Add(Logo);
             Name = "frmBill";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Bill";
             Logo.ResumeLayout(false);
             panel1.ResumeLayout(false);
