@@ -13,5 +13,6 @@ namespace MiniStoreWinF
         public static MoMo currentMoMo { get; set; }
         public static DateTime currentDate { get; set; }
         public static DetailSubSalary currentSubSalary { get; set;}
+        public static Order IdOrder { get; set; }
     }
 }
