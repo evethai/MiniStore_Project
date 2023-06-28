@@ -11,6 +11,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Results;
 using System.Windows.Documents;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Linq;
@@ -42,7 +43,7 @@ namespace API_Database.Controllers
         //find acc jwt
         [HttpGet]
         [Route("api/ms/facc")]
-        public IHttpActionResult FindAccount(string username, string password)
+        public IHttpActionResult FindAccountjwt(string username, string password)
         {
             // Kiểm tra tài khoản và mật khẩu
             Employee emp = db.Employees.SingleOrDefault(acc => acc.Username.Equals(username) && acc.Password.Equals(password));
@@ -51,6 +52,43 @@ namespace API_Database.Controllers
             {
                 return null;
             }
+
+            if (!DateTime.TryParse(DateTime.Now.Date.ToString(), out DateTime searchDate))
+            {
+                throw new ArgumentException("Ngày không hợp lệ");
+            }
+
+            WorkSheet worksheet = db.WorkSheets.SingleOrDefault(ws => ws.IdEmp.Equals((string)emp.IdEmp) && ws.Date == searchDate);
+
+
+            // Nếu tài khoản hợp lệ
+            EmployeeDTO empDTO = new EmployeeDTO
+            {
+                FullNameEmp = (string)emp.FullNameEmp,
+                IdEmp = (string)emp.IdEmp,
+                Roles = (string)emp.Roles.ToString(),
+                IsActive = (Boolean)emp.IsActive,
+                TimeCheckIn = worksheet != null ? (string)worksheet.TimeCheckIn.ToString() : "nonsheet"
+            };
+
+            string jwt = JWTUtils.GenerateJWTFAcc(empDTO);
+
+            return Ok(new { jwt });
+        }
+
+        // jwt and chuyển trang
+        [HttpGet]
+        [Route("api/ms/faccct")]
+        public IHttpActionResult FindAccountjwttran(string username, string password)
+        {
+            // Kiểm tra tài khoản và mật khẩu
+            Employee emp = db.Employees.SingleOrDefault(acc => acc.Username.Equals(username) && acc.Password.Equals(password));
+
+            if (emp == null)
+            {
+                return null;
+            }
+
             // Nếu tài khoản hợp lệ
             EmployeeDTO empDTO = new EmployeeDTO
             {
@@ -62,51 +100,64 @@ namespace API_Database.Controllers
 
             string jwt = JWTUtils.GenerateJWTFAcc(empDTO);
 
-            return Ok(new { jwt });
+            // Redirect to qr-code.jsp
+            var response = Redirect("http://localhost:9990/MiniStoreWebMoblie/qr-code.jsp");
+            return response;
         }
 
-        //find acc
-        //[HttpGet]
-        //[Route("api/ms/facc")]
-        //public EmployeeDTO FindAccount(string username, string password)
-        //{
-        //    Employee emp = db.Employees.SingleOrDefault(acc => acc.Username.Equals(username) && acc.Password.Equals(password));
 
-        //    if (emp == null)
-        //    {
-        //        return null;
-        //    }
-        //    EmployeeDTO empDTO = new EmployeeDTO
-        //    {
-        //        FullNameEmp = (string)emp.FullNameEmp,
-        //        IdEmp = (string)emp.IdEmp,
-        //        Roles = (string)emp.Roles,
-        //        IsActive = (Boolean)emp.IsActive
-        //    };
 
-        //    return empDTO;
-        //}
 
-        //find fws by date jwt
+        //find acc had TimeCheckIn
         [HttpGet]
-        [Route("api/ms/fwsd")]
-        public IHttpActionResult listWorkSheetByDatejwt(string date)
+        [Route("api/ms/facct")]
+        public EmployeeDTO FindAccount(string username, string password)
         {
-            if (!DateTime.TryParse(date, out DateTime searchDate))
+            Employee emp = db.Employees.SingleOrDefault(acc => acc.Username.Equals(username) && acc.Password.Equals(password));
+
+            if (emp == null)
+            {
+                return null;
+            }
+
+            if (!DateTime.TryParse(DateTime.Now.Date.ToString(), out DateTime searchDate))
             {
                 throw new ArgumentException("Ngày không hợp lệ");
             }
 
-            // Giả sử bạn có một tập hợp các đối tượng WorkSheet được gọi là 'worksheets'
-            List<WorkSheet> filteredWorksheets = db.WorkSheets.Where(ws => ws.Date.ToString().Equals(searchDate.Date)).ToList();
-            if (filteredWorksheets == null)
+            WorkSheet worksheet = db.WorkSheets.SingleOrDefault(ws => ws.IdEmp.Equals((string)emp.IdEmp) && ws.Date == searchDate);
+
+            EmployeeDTO empDTO = new EmployeeDTO
             {
-                return Ok();
+                FullNameEmp = (string)emp.FullNameEmp,
+                IdEmp = (string)emp.IdEmp,
+                Roles = (string)emp.Roles.ToString(),
+                IsActive = (Boolean)emp.IsActive,
+                TimeCheckIn = worksheet != null ? (string)worksheet.TimeCheckIn.ToString() : "nonsheet"
+            };
+
+            return empDTO;
+        }
+
+
+
+        //find list fws by date jwt
+        [HttpGet]
+        [Route("api/ms/fwsd")]
+        public IHttpActionResult listWorkSheetByDatejwt(string idemp, string dateStar, string dateEnd)
+        {
+            if (!DateTime.TryParse(dateStar, out DateTime startDate) || !DateTime.TryParse(dateEnd, out DateTime endDate))
+            {
+                throw new ArgumentException("Ngày không hợp lệ");
             }
+
+            List<WorkSheet> filteredWorksheets = db.WorkSheets
+       .Where(ws => ws.IdEmp == idemp && ws.Date >= startDate && ws.Date <= endDate && ws.Status == true)
+       .ToList();
 
             List<WorkSheetDTO> worksheetDTOs = filteredWorksheets.Select(ws => new WorkSheetDTO
             {
-                Sheet = (int)ws.Sheet, // Điều chỉnh tùy thuộc vào thuộc tính Sheet trong lớp WorkSheetDTO
+                Date = ws.Date.HasValue ? ws.TimeCheckIn.Value : DateTime.MinValue,
                 TimeCheckIn = ws.TimeCheckIn.HasValue ? ws.TimeCheckIn.Value : DateTime.MinValue,
                 TimeCheckOut = ws.TimeCheckOut.HasValue ? ws.TimeCheckOut.Value : DateTime.MinValue
             }).ToList();
@@ -116,32 +167,30 @@ namespace API_Database.Controllers
             return Ok(new { jwt });
         }
 
-        //find fws by date 
+        //find list fws by date ol
         [HttpGet]
         [Route("api/ms/fwsdt")]
-        public List<WorkSheetDTO> listWorkSheetByDate(string date)
+        public List<WorkSheetDTO> ListWorkSheetByDate(string idemp, string dateStar, string dateEnd)
         {
-            if (!DateTime.TryParse(date, out DateTime searchDate))
+            if (!DateTime.TryParse(dateStar, out DateTime startDate) || !DateTime.TryParse(dateEnd, out DateTime endDate))
             {
                 throw new ArgumentException("Ngày không hợp lệ");
             }
 
-            // Giả sử bạn có một tập hợp các đối tượng WorkSheet được gọi là 'worksheets'
-            List<WorkSheet> filteredWorksheets = db.WorkSheets.Where(ws => ws.Date.ToString().Equals(searchDate.Date)).ToList();
-            if (filteredWorksheets == null)
-            {
-                return null;
-            }
+            List<WorkSheet> filteredWorksheets = db.WorkSheets
+       .Where(ws => ws.IdEmp == idemp && ws.Date >= startDate && ws.Date <= endDate && ws.Status == true)
+       .ToList();
 
             List<WorkSheetDTO> worksheetDTOs = filteredWorksheets.Select(ws => new WorkSheetDTO
             {
-                Sheet = (int)ws.Sheet, // Điều chỉnh tùy thuộc vào thuộc tính Sheet trong lớp WorkSheetDTO
+                Date = ws.Date.HasValue ? ws.TimeCheckIn.Value : DateTime.MinValue,
                 TimeCheckIn = ws.TimeCheckIn.HasValue ? ws.TimeCheckIn.Value : DateTime.MinValue,
                 TimeCheckOut = ws.TimeCheckOut.HasValue ? ws.TimeCheckOut.Value : DateTime.MinValue
             }).ToList();
 
             return worksheetDTOs;
         }
+
 
 
         //find fws jwt
@@ -202,7 +251,7 @@ namespace API_Database.Controllers
 
             return worksheetDTO;
         }
-        //find sheet guard jwt
+        //find list sheet guard jwt
         [HttpGet]
         [Route("api/ms/fst")]
         public IHttpActionResult FindSheetjwt()
@@ -318,7 +367,7 @@ namespace API_Database.Controllers
                 else
                 {
                     existingRecord.TimeCheckOut = DateTime.ParseExact(update, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-                    
+
                 }
 
                 // Thực hiện lưu thay đổi vào cơ sở dữ liệu
