@@ -4,6 +4,7 @@ using Repository.Service;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace MiniStoreWinF
@@ -14,6 +15,7 @@ namespace MiniStoreWinF
         public frmLogin()
         {
             InitializeComponent();
+
         }
         private void btLogin_Click(object sender, EventArgs e)
         {
@@ -60,6 +62,24 @@ namespace MiniStoreWinF
             ptbSeePasswords.Visible = true;
             // Ẩn mật khẩu
             txtPassword.PasswordChar = '*';
+        }
+
+
+
+        private void txtPassword_Enter(object sender, EventArgs e)
+        {
+            lblpass.Visible = false;
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            btnLogin.Focus();
+        }
+
+
+        private void txtUserName_Enter_1(object sender, EventArgs e)
+        {
+            lblname.Visible = false;
         }
     }
 }

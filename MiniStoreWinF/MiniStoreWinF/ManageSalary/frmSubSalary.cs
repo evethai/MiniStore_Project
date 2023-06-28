@@ -27,29 +27,37 @@ namespace MiniStoreWinF.ManageSalary
 
         private void frmSubSalary_Load(object sender, EventArgs e)
         {
-            showlvSub();
-            //
-            u.showListEmp(cbName);
-            //
-            showListEmployeHasSubSalary();
-            //
-            showAdvanceSalary();
+            //Show list SubSalary of MiniStore by Admin create create
+            showListSub();
+
+            //Show combobox
+            u.showListEmp_ALL(cbName);
+
+            //Show list Sub Salary  last month
+            showListEmployeHasSubSalary(DateTime.Now.AddMonths(-1));
+
+            //Show list Advance Salary  last month
+            dgvAdv.DataSource = showAdvanceSalary(DateTime.Now.AddMonths(-1)).ToList();
         }
-        public void showListEmployeHasSubSalary()
+
+        //Show list Sub Salary  last month
+        public void showListEmployeHasSubSalary(DateTime time)
         {
             _subSalaryService = new SubSalaryService();
-            var list = _subSalaryService.GetAll().Where(p => p.Time.Value.Month.Equals(DateTime.Now.AddMonths(-1).Month)).ToList();
+            var list = _subSalaryService.GetAll().Where(p => p.Time.Value.Month.Equals(time.Month)).ToList();
             dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
             _list = list;
         }
 
-        public void showlvSub()
+        //Show list SubSalary of MiniStore by Admin create create
+        public void showListSub()
         {
             _detailSubSalaryService = new DetailSubSalaryService();
             var listSub = _detailSubSalaryService.GetAll().Where(p => p.ActiveSub == true).ToList();
             dgvSub.DataSource = listSub;
         }
 
+        //Edit subSalary if this active
         private void btEdit_Click(object sender, EventArgs e)
         {
             if (txtSaveID.Text == null)
@@ -62,14 +70,11 @@ namespace MiniStoreWinF.ManageSalary
                 if (sub_salary != null)
                 {
                     frmEditSubSalary form = new frmEditSubSalary();
-                    form.idForm = txtSaveID.Text;
-                    form.disForm = sub_salary.DescriptionA;
-                    form.saForm = sub_salary.SubsidiesSalary.ToString();
-                    form.conForm = sub_salary.Condition.ToString();
+                    ContextScope.currentSubSalary = sub_salary;
                     form.ShowDialog();
                     if (form.DialogResult == DialogResult.OK)
                     {
-                        showlvSub();
+                        showListSub();
                     }
                 }
             }
@@ -94,40 +99,17 @@ namespace MiniStoreWinF.ManageSalary
             }
         }
 
+        //add new Sub salary by admin
         private void btAdd_Click(object sender, EventArgs e)
         {
             Form form = new frmAddNewSubSalary();
             if (form.ShowDialog() == DialogResult.OK)
             {
-                showlvSub();
+                showListSub();
             }
         }
 
-        private void btShow_Click(object sender, EventArgs e)
-        {
-            DateTime time = dtpList.Value;
-            _subSalaryService = new SubSalaryService();
-            var list = _subSalaryService.GetAll().Where(p => p.Time.Value.Month.Equals(time.Month)).ToList();
-            dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
-            _list = list;
-            //====
-            searchAdvAll();
-        }
-
-        private void btTotal_Click(object sender, EventArgs e)
-        {
-            _subSalaryService = new SubSalaryService();
-            DateTime time = dtpList.Value;
-            string id = cbName.SelectedValue.ToString();
-            double total = ca.SubSalary(id, time);
-            txtTotal.Text = u.formatDouble(total);
-            var list = _subSalaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.Time.Value.Month.Equals(time.Month)).ToList();
-            dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
-            _list = list;
-            //=========
-            searchAdvName();
-        }
-
+        //Paging
         private void nmPaging_ValueChanged(object sender, EventArgs e)
         {
             if (_list != null)
@@ -141,7 +123,7 @@ namespace MiniStoreWinF.ManageSalary
             }
 
         }
-
+        //Paging
         List<SubSalary> LoadRecord(int page, int numberRe, List<SubSalary> list)
         {
             _subSalaryService = new SubSalaryService();
@@ -149,30 +131,38 @@ namespace MiniStoreWinF.ManageSalary
             result = list.Skip((page - 1) * numberRe).Take(numberRecord).ToList();
             return result;
         }
+
+
         //------------------------------------------------------------------------------
         //------Code Advance Salary-----------------------------------------------------
         //------------------------------------------------------------------------------
         DetailAdvanceSalaryService _detailAdvanceSalaryService;
+
+        //Add new Advance salary 
         private void btAddnew_Adv_Click(object sender, EventArgs e)
         {
-            Form form = new frmAddNewAdvSalary();
+            frmAddNewAdvSalary form = new frmAddNewAdvSalary();
             if (form.ShowDialog() == DialogResult.OK)
             {
-                showAdvanceSalary();
+                dgvAdv.DataSource = showAdvanceSalary(DateTime.Now.AddMonths(-1));
             }
         }
-        public void showAdvanceSalary()
+
+        //Show list Advance Salary last month
+        public List<DetailAdvanceSalary> showAdvanceSalary(DateTime time)
         {
             _detailAdvanceSalaryService = new DetailAdvanceSalaryService();
-            var list = _detailAdvanceSalaryService.GetAll().Where(p => p.DateAs.Value.Month.Equals(DateTime.Now.AddMonths(-1).Month)).ToList();
-            dgvAdv.DataSource = list;
+            var list = _detailAdvanceSalaryService.GetAll().Where(p => p.DateAs.Value.Month.Equals(time.Month)).ToList();
+            return list;
         }
-        public void searchAdvName()
+
+        //Search Advance salary by name
+        public void searchAdvByName(string id)
         {
             _employeeService = new EmployeeService();
             _detailAdvanceSalaryService = new DetailAdvanceSalaryService();
             var listAdv = _detailAdvanceSalaryService.GetAll().Where(p => p.DateAs.Value.Month.Equals(dtpList.Value.Month)).ToList();
-            var listEmp = _employeeService.GetAll().Where(p => p.FullNameEmp.Contains(cbName.Text) && p.IsActive == true).ToList();
+            var listEmp = _employeeService.GetAll().Where(p => p.IdEmp.Equals(id) && p.IsActive == true).ToList();
 
             //
             BindingSource bindingSource = new BindingSource();
@@ -182,29 +172,39 @@ namespace MiniStoreWinF.ManageSalary
             bindingSource.DataSource = resultList;
             dgvAdv.DataSource = bindingSource;
         }
-        public void searchAdvAll()
+
+        //Search Sub salary by name
+        public void searchSubByName(string id)
         {
-            _detailAdvanceSalaryService = new DetailAdvanceSalaryService();
-            var list = _detailAdvanceSalaryService.GetAll().Where(p => p.DateAs.Value.Month.Equals(dtpList.Value.Month)).ToList();
-            if (list != null)
+            _subSalaryService = new SubSalaryService();
+            DateTime time = dtpList.Value;
+            double total = ca.SubSalary(id, time);
+            txtTotal.Text = u.formatDouble(total);
+            var list = _subSalaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.Time.Value.Month.Equals(time.Month)).ToList();
+            dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
+        }
+
+
+        //filter
+        private void btFilter_Click(object sender, EventArgs e)
+        {
+            string id = cbName.SelectedValue.ToString();
+            if (cbOrderby.Text == "Descending" && id == "-1")
             {
-                dgvAdv.DataSource = list;
+                showListEmployeHasSubSalary(dtpList.Value);
+                dgvAdv.DataSource = showAdvanceSalary(dtpList.Value).OrderByDescending(p => p.AdvanceSalary).ToList();
+
+            }
+            else if (cbOrderby.Text != "Descending" && id == "-1")
+            {
+                showListEmployeHasSubSalary(dtpList.Value);
+                dgvAdv.DataSource = showAdvanceSalary(dtpList.Value).OrderBy(p => p.AdvanceSalary).ToList();
             }
             else
             {
-                dgvAdv = null;
+                searchAdvByName(id);
+                searchSubByName(id);
             }
-        }
-
-        private void dtpList_ValueChanged(object sender, EventArgs e)
-        {
-            DateTime time = dtpList.Value;
-            _subSalaryService = new SubSalaryService();
-            var list = _subSalaryService.GetAll().Where(p => p.Time.Value.Month.Equals(time.Month)).ToList();
-            dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
-            _list = list;
-            //====
-            searchAdvAll();
         }
     }
 }

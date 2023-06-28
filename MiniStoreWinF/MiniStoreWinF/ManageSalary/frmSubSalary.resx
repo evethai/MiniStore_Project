@@ -123,10 +123,22 @@
   <metadata name="detailSubSalaryBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btFilter.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAAYJJREFUaEPt2S0sRXEcxvHrZcxmU2yCIAiKoCiSJCFomqaJslFFTdMkwSSbTfAy
+        XREEm2Cz2cww8/b9N7Pn/Hbvdc65z7H73T7tnv//Cadwau3Mu8BXRZwjM/WAs8zUj51lpn7sLLMzqAcc
+        pa2ZDeIS6kEnVxhC2DCuoQ5wcIMR1NUobqEOaqU7jKGhxnEPdWArPGACTTWJR6iDy/SEKfypdEA6SF1Q
+        hmdMI5dm8Ap1UZHeMItcW8A71IVF+MAiCmkJn1AX5yndsYxCW4G6PE+rKKUNqAF5WEepbUIN+YstlF4H
+        tqEGNWMHnWhJXdiFGtaIPXSjpfXgAGpgPQ7RC4v6cAw1NHKKflg1gCOowcoJ0jPt2tWReoUitqmxEdvU
+        2IhtamzENjU2YpsaG7FNjY3YpsZGbFNjI7apsRHb1NiIbWpsxDY1NmKbGhuxTY2N2Nbo523b0t/ua3iB
+        Gv6bfemL1z7U+J8q0xyi75GVKnrdKpl63SrdPNJ38vR/rXb/tFrtGykChKhgUwQZAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="detailAdvanceSalaryBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>439, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAQEAAAAEAIAAoQgAAFgAAACgAAABAAAAAgAAAAAEAIAAAAAAAAEAAABMLAAATCwAAAAAAAAAA

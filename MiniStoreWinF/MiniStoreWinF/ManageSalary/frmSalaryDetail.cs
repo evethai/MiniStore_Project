@@ -18,11 +18,12 @@ namespace MiniStoreWinF.ManageSalary
         public frmSalaryDetail()
         {
             InitializeComponent();
+
         }
         private void frmSalaryDetail_Load(object sender, EventArgs e)
         {
             ShowListSalary(DateTime.Now.AddMonths(-1));
-            u.showListEmp(cbName);
+            u.showListEmp_ALL(cbName);
         }
 
         List<Salary> LoadRecord(int page, int numberRe, List<Salary> list)
@@ -36,29 +37,39 @@ namespace MiniStoreWinF.ManageSalary
 
         public void ShowListSalary(DateTime time)
         {
-            dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, u.salary(time));
-            listSa = u.salary(time);
+            var list = u.salary(time).OrderByDescending(p => p.SalaryAfterTax).ToList();
+            dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
+            listSa = list;
         }
 
         private void btFilter_Click(object sender, EventArgs e)
         {
-            _salaryService = new SalaryService();
-            DateTime time = dtpTime.Value;
-            var list = u.salary(time);
-            dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
-            listSa = list;
-        }
-
-        private void btSearch_Click(object sender, EventArgs e)
-        {
-            _salaryService = new SalaryService();
             string id = cbName.SelectedValue.ToString();
-            DateTime time = dtpTime.Value;
-            var list = _salaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.DateImonth.Month.Equals(time.Month)).ToList();
-            dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
-            listSa = list;
+            if (cbOrderby.Text == "Descending" && id == "-1")
+            {
+                _salaryService = new SalaryService();
+                DateTime time = dtpTime.Value;
+                var list = u.salary(time).OrderByDescending(p => p.SalaryAfterTax).ToList();
+                dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
+                listSa = list;
+            }
+            else if (cbOrderby.Text != "Descending" && id == "-1")
+            {
+                _salaryService = new SalaryService();
+                DateTime time = dtpTime.Value;
+                var list = u.salary(time).OrderBy(p => p.SalaryAfterTax).ToList();
+                dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
+                listSa = list;
+            }
+            else
+            {
+                _salaryService = new SalaryService();
+                DateTime time = dtpTime.Value;
+                var list = _salaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.DateImonth.Month.Equals(time.Month)).ToList();
+                dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
+                listSa = list;
+            }
         }
-
 
         private void btReset_Click(object sender, EventArgs e)
         {

@@ -38,14 +38,18 @@ namespace MiniStoreWinF.ManageSalary
                 _permissionService.Update(emp);
 
                 //
-                var guard = _permissionService.GetAll().Where(p => p.Roles == 3 ).FirstOrDefault();
+                var guard = _permissionService.GetAll().Where(p => p.Roles == 3).FirstOrDefault();
                 if (guard != null)
                 {
                     guard.Tax = Double.Parse(txtNewGuard.Text);
                 }
                 _permissionService.Update(guard);
 
-                MessageBox.Show("Save Successfull.", "messages", MessageBoxButtons.OK);
+                //MessageBox.Show("Save Successfull.", "messages", MessageBoxButtons.OK);
+                notiSave.BalloonTipText = "Save Successfull";
+                notiSave.BalloonTipTitle = "Change Success";
+                notiSave.Icon = SystemIcons.Hand;
+                notiSave.ShowBalloonTip(1000);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
 

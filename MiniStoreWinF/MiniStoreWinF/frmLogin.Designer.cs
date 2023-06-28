@@ -30,47 +30,74 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             panel2 = new Panel();
-            pictureBox1 = new PictureBox();
+            lblname = new Label();
+            txtUserName = new TextBox();
+            lblpass = new Label();
+            btnLogin = new Button();
             ptbSeePasswords = new PictureBox();
             ptbNoSeePasswords = new PictureBox();
             panel3 = new Panel();
             panel1 = new Panel();
-            txtUserName = new TextBox();
             txtPassword = new TextBox();
-            btLogin = new Button();
             button1 = new Button();
             label1 = new Label();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ptbSeePasswords).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ptbNoSeePasswords).BeginInit();
             SuspendLayout();
             // 
             // panel2
             // 
-            panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(lblname);
+            panel2.Controls.Add(txtUserName);
+            panel2.Controls.Add(lblpass);
+            panel2.Controls.Add(btnLogin);
             panel2.Controls.Add(ptbSeePasswords);
             panel2.Controls.Add(ptbNoSeePasswords);
             panel2.Controls.Add(panel3);
             panel2.Controls.Add(panel1);
-            panel2.Controls.Add(txtUserName);
             panel2.Controls.Add(txtPassword);
-            panel2.Controls.Add(btLogin);
             panel2.Location = new Point(12, 247);
             panel2.Name = "panel2";
             panel2.Size = new Size(411, 183);
             panel2.TabIndex = 1;
             // 
-            // pictureBox1
+            // lblname
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(329, 134);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(69, 46);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 13;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += btLogin_Click;
+            lblname.AutoSize = true;
+            lblname.Location = new Point(109, 38);
+            lblname.Name = "lblname";
+            lblname.Size = new Size(67, 17);
+            lblname.TabIndex = 14;
+            lblname.Text = "Username";
+            // 
+            // txtUserName
+            // 
+            txtUserName.Location = new Point(109, 35);
+            txtUserName.Name = "txtUserName";
+            txtUserName.Size = new Size(214, 25);
+            txtUserName.TabIndex = 16;
+            txtUserName.TextAlign = HorizontalAlignment.Center;
+            txtUserName.Enter += txtUserName_Enter_1;
+            // 
+            // lblpass
+            // 
+            lblpass.AutoSize = true;
+            lblpass.Location = new Point(109, 102);
+            lblpass.Name = "lblpass";
+            lblpass.Size = new Size(64, 17);
+            lblpass.TabIndex = 15;
+            lblpass.Text = "Password";
+            // 
+            // btnLogin
+            // 
+            btnLogin.Location = new Point(166, 130);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(92, 40);
+            btnLogin.TabIndex = 13;
+            btnLogin.Text = "Login";
+            btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Click += btLogin_Click;
             // 
             // ptbSeePasswords
             // 
@@ -108,40 +135,20 @@
             // 
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Zoom;
-            panel1.Location = new Point(29, 26);
+            panel1.Location = new Point(29, 14);
             panel1.Name = "panel1";
             panel1.Size = new Size(74, 62);
             panel1.TabIndex = 7;
-            // 
-            // txtUserName
-            // 
-            txtUserName.Location = new Point(101, 36);
-            txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(222, 27);
-            txtUserName.TabIndex = 1;
-            txtUserName.TextAlign = HorizontalAlignment.Center;
             // 
             // txtPassword
             // 
             txtPassword.Location = new Point(101, 99);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
-            txtPassword.Size = new Size(222, 27);
-            txtPassword.TabIndex = 2;
+            txtPassword.Size = new Size(222, 25);
+            txtPassword.TabIndex = 17;
             txtPassword.TextAlign = HorizontalAlignment.Center;
-            // 
-            // btLogin
-            // 
-            btLogin.BackColor = SystemColors.Control;
-            btLogin.Image = (Image)resources.GetObject("btLogin.Image");
-            btLogin.Location = new Point(19, 150);
-            btLogin.Name = "btLogin";
-            btLogin.Size = new Size(18, 12);
-            btLogin.TabIndex = 3;
-            btLogin.TextAlign = ContentAlignment.MiddleLeft;
-            btLogin.UseVisualStyleBackColor = false;
-            btLogin.Visible = false;
-            btLogin.Click += btLogin_Click;
+            txtPassword.Enter += txtPassword_Enter;
             // 
             // button1
             // 
@@ -159,30 +166,26 @@
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-
             label1.Size = new Size(441, 43);
-
             label1.TabIndex = 3;
             label1.Text = "MiniStore Management System";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // frmLogin
             // 
-            AcceptButton = btLogin;
+            AcceptButton = btnLogin;
             AutoScaleMode = AutoScaleMode.None;
-
             BackColor = Color.White;
             ClientSize = new Size(441, 442);
-
             Controls.Add(label1);
             Controls.Add(button1);
             Controls.Add(panel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmLogin";
             StartPosition = FormStartPosition.CenterScreen;
+            Load += frmLogin_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)ptbSeePasswords).EndInit();
             ((System.ComponentModel.ISupportInitialize)ptbNoSeePasswords).EndInit();
             ResumeLayout(false);
@@ -191,14 +194,15 @@
         #endregion
         private Panel panel2;
         private TextBox txtPassword;
-        private Button btLogin;
-        private TextBox txtUserName;
         private Button button1;
         private Panel panel3;
         private Panel panel1;
         private PictureBox ptbNoSeePasswords;
         private PictureBox ptbSeePasswords;
         private Label label1;
-        private PictureBox pictureBox1;
+        private Button btnLogin;
+        private Label lblpass;
+        private Label lblname;
+        private TextBox txtUserName;
     }
 }

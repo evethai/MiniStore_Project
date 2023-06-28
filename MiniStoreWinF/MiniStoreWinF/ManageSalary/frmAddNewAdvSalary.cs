@@ -63,7 +63,7 @@ namespace MiniStoreWinF.ManageSalary
 
         private void frmAddNewAdvSalary_Load(object sender, EventArgs e)
         {
-            u.showListEmp(cbName);
+            u.showlistEmp(cbName);
         }
 
         private void txtTotal_KeyPress(object sender, KeyPressEventArgs e)

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSalaryDetail));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
@@ -37,19 +36,8 @@
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSalaryDetail));
             dgvSalary = new DataGridView();
-            salaryBindingSource = new BindingSource(components);
-            dtpTime = new DateTimePicker();
-            btFilter = new Button();
-            cbName = new ComboBox();
-            btSearch = new Button();
-            btReset = new Button();
-            btExport = new Button();
-            panel2 = new Panel();
-            numericUpDown1 = new NumericUpDown();
-            txtS = new TextBox();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            panel3 = new Panel();
             idSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             idEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             salaryHourDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -60,6 +48,18 @@
             taxDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             salaryAfterTaxDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             DateOmonth = new DataGridViewTextBoxColumn();
+            salaryBindingSource = new BindingSource(components);
+            dtpTime = new DateTimePicker();
+            btFilter = new Button();
+            cbName = new ComboBox();
+            btReset = new Button();
+            btExport = new Button();
+            panel2 = new Panel();
+            cbOrderby = new ComboBox();
+            numericUpDown1 = new NumericUpDown();
+            txtS = new TextBox();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            panel3 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvSalary).BeginInit();
             ((System.ComponentModel.ISupportInitialize)salaryBindingSource).BeginInit();
             panel2.SuspendLayout();
@@ -87,6 +87,98 @@
             dgvSalary.TabIndex = 0;
             dgvSalary.CellMouseDoubleClick += dgvSalary_CellMouseDoubleClick;
             // 
+            // idSalaryDataGridViewTextBoxColumn
+            // 
+            idSalaryDataGridViewTextBoxColumn.DataPropertyName = "IdSalary";
+            idSalaryDataGridViewTextBoxColumn.HeaderText = "Id";
+            idSalaryDataGridViewTextBoxColumn.Name = "idSalaryDataGridViewTextBoxColumn";
+            idSalaryDataGridViewTextBoxColumn.Width = 53;
+            // 
+            // idEmpDataGridViewTextBoxColumn
+            // 
+            idEmpDataGridViewTextBoxColumn.DataPropertyName = "IdEmp";
+            idEmpDataGridViewTextBoxColumn.HeaderText = "Id Employee";
+            idEmpDataGridViewTextBoxColumn.Name = "idEmpDataGridViewTextBoxColumn";
+            idEmpDataGridViewTextBoxColumn.Resizable = DataGridViewTriState.True;
+            idEmpDataGridViewTextBoxColumn.Width = 128;
+            // 
+            // salaryHourDataGridViewTextBoxColumn
+            // 
+            salaryHourDataGridViewTextBoxColumn.DataPropertyName = "SalaryHour";
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            salaryHourDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            salaryHourDataGridViewTextBoxColumn.HeaderText = "Salary In Hour";
+            salaryHourDataGridViewTextBoxColumn.Name = "salaryHourDataGridViewTextBoxColumn";
+            salaryHourDataGridViewTextBoxColumn.Width = 105;
+            // 
+            // basicSalaryDataGridViewTextBoxColumn
+            // 
+            basicSalaryDataGridViewTextBoxColumn.DataPropertyName = "BasicSalary";
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            basicSalaryDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            basicSalaryDataGridViewTextBoxColumn.HeaderText = "Basic Salary";
+            basicSalaryDataGridViewTextBoxColumn.Name = "basicSalaryDataGridViewTextBoxColumn";
+            basicSalaryDataGridViewTextBoxColumn.Width = 124;
+            // 
+            // sumSubSalaryDataGridViewTextBoxColumn
+            // 
+            sumSubSalaryDataGridViewTextBoxColumn.DataPropertyName = "SumSubSalary";
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            sumSubSalaryDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            sumSubSalaryDataGridViewTextBoxColumn.HeaderText = "Allowance";
+            sumSubSalaryDataGridViewTextBoxColumn.Name = "sumSubSalaryDataGridViewTextBoxColumn";
+            sumSubSalaryDataGridViewTextBoxColumn.Width = 124;
+            // 
+            // sumAdvanceSalaryDataGridViewTextBoxColumn
+            // 
+            sumAdvanceSalaryDataGridViewTextBoxColumn.DataPropertyName = "SumAdvanceSalary";
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            sumAdvanceSalaryDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            sumAdvanceSalaryDataGridViewTextBoxColumn.HeaderText = "Advance Salary";
+            sumAdvanceSalaryDataGridViewTextBoxColumn.Name = "sumAdvanceSalaryDataGridViewTextBoxColumn";
+            sumAdvanceSalaryDataGridViewTextBoxColumn.Width = 151;
+            // 
+            // totalSalaryDataGridViewTextBoxColumn
+            // 
+            totalSalaryDataGridViewTextBoxColumn.DataPropertyName = "TotalSalary";
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            totalSalaryDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            totalSalaryDataGridViewTextBoxColumn.HeaderText = "Total Salary";
+            totalSalaryDataGridViewTextBoxColumn.Name = "totalSalaryDataGridViewTextBoxColumn";
+            totalSalaryDataGridViewTextBoxColumn.Width = 122;
+            // 
+            // taxDataGridViewTextBoxColumn
+            // 
+            taxDataGridViewTextBoxColumn.DataPropertyName = "Tax";
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            taxDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            taxDataGridViewTextBoxColumn.HeaderText = "Tax";
+            taxDataGridViewTextBoxColumn.Name = "taxDataGridViewTextBoxColumn";
+            taxDataGridViewTextBoxColumn.Width = 64;
+            // 
+            // salaryAfterTaxDataGridViewTextBoxColumn
+            // 
+            salaryAfterTaxDataGridViewTextBoxColumn.DataPropertyName = "SalaryAfterTax";
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = null;
+            salaryAfterTaxDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            salaryAfterTaxDataGridViewTextBoxColumn.HeaderText = "Salary Final (-Tax)";
+            salaryAfterTaxDataGridViewTextBoxColumn.Name = "salaryAfterTaxDataGridViewTextBoxColumn";
+            salaryAfterTaxDataGridViewTextBoxColumn.Width = 169;
+            // 
+            // DateOmonth
+            // 
+            DateOmonth.DataPropertyName = "DateOmonth";
+            DateOmonth.HeaderText = "Date";
+            DateOmonth.Name = "DateOmonth";
+            DateOmonth.Width = 76;
+            // 
             // salaryBindingSource
             // 
             salaryBindingSource.DataSource = typeof(Repository.Models.Salary);
@@ -98,17 +190,17 @@
             dtpTime.Location = new Point(12, 9);
             dtpTime.Margin = new Padding(4);
             dtpTime.Name = "dtpTime";
-            dtpTime.Size = new Size(277, 33);
+            dtpTime.Size = new Size(178, 33);
             dtpTime.TabIndex = 1;
             // 
             // btFilter
             // 
             btFilter.BackgroundImage = (Image)resources.GetObject("btFilter.BackgroundImage");
             btFilter.BackgroundImageLayout = ImageLayout.Zoom;
-            btFilter.Location = new Point(319, 9);
+            btFilter.Location = new Point(624, 8);
             btFilter.Margin = new Padding(4);
             btFilter.Name = "btFilter";
-            btFilter.Size = new Size(70, 37);
+            btFilter.Size = new Size(71, 34);
             btFilter.TabIndex = 3;
             btFilter.UseVisualStyleBackColor = true;
             btFilter.Click += btFilter_Click;
@@ -118,22 +210,13 @@
             cbName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cbName.AutoCompleteSource = AutoCompleteSource.CustomSource;
             cbName.FormattingEnabled = true;
-            cbName.Location = new Point(12, 62);
+            cbName.Items.AddRange(new object[] { "ALL" });
+            cbName.Location = new Point(198, 9);
             cbName.Margin = new Padding(4);
             cbName.Name = "cbName";
             cbName.Size = new Size(277, 33);
             cbName.TabIndex = 10;
-            // 
-            // btSearch
-            // 
-            btSearch.Location = new Point(319, 59);
-            btSearch.Margin = new Padding(4);
-            btSearch.Name = "btSearch";
-            btSearch.Size = new Size(211, 37);
-            btSearch.TabIndex = 9;
-            btSearch.Text = "Search by Name";
-            btSearch.UseVisualStyleBackColor = true;
-            btSearch.Click += btSearch_Click;
+            cbName.Text = "ALL";
             // 
             // btReset
             // 
@@ -162,10 +245,10 @@
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.Fixed3D;
+            panel2.Controls.Add(cbOrderby);
             panel2.Controls.Add(numericUpDown1);
             panel2.Controls.Add(cbName);
             panel2.Controls.Add(txtS);
-            panel2.Controls.Add(btSearch);
             panel2.Controls.Add(btExport);
             panel2.Controls.Add(dtpTime);
             panel2.Controls.Add(btReset);
@@ -176,6 +259,16 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1229, 246);
             panel2.TabIndex = 16;
+            // 
+            // cbOrderby
+            // 
+            cbOrderby.FormattingEnabled = true;
+            cbOrderby.Items.AddRange(new object[] { "Descending", "Ascending" });
+            cbOrderby.Location = new Point(482, 8);
+            cbOrderby.Name = "cbOrderby";
+            cbOrderby.Size = new Size(121, 33);
+            cbOrderby.TabIndex = 18;
+            cbOrderby.Text = "Descending";
             // 
             // numericUpDown1
             // 
@@ -222,98 +315,6 @@
             panel3.Size = new Size(1229, 245);
             panel3.TabIndex = 0;
             // 
-            // idSalaryDataGridViewTextBoxColumn
-            // 
-            idSalaryDataGridViewTextBoxColumn.DataPropertyName = "IdSalary";
-            idSalaryDataGridViewTextBoxColumn.HeaderText = "Id";
-            idSalaryDataGridViewTextBoxColumn.Name = "idSalaryDataGridViewTextBoxColumn";
-            idSalaryDataGridViewTextBoxColumn.Width = 53;
-            // 
-            // idEmpDataGridViewTextBoxColumn
-            // 
-            idEmpDataGridViewTextBoxColumn.DataPropertyName = "IdEmp";
-            idEmpDataGridViewTextBoxColumn.HeaderText = "Id Employee";
-            idEmpDataGridViewTextBoxColumn.Name = "idEmpDataGridViewTextBoxColumn";
-            idEmpDataGridViewTextBoxColumn.Resizable = DataGridViewTriState.True;
-            idEmpDataGridViewTextBoxColumn.Width = 140;
-            // 
-            // salaryHourDataGridViewTextBoxColumn
-            // 
-            salaryHourDataGridViewTextBoxColumn.DataPropertyName = "SalaryHour";
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = null;
-            salaryHourDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            salaryHourDataGridViewTextBoxColumn.HeaderText = "Salary In Hour";
-            salaryHourDataGridViewTextBoxColumn.Name = "salaryHourDataGridViewTextBoxColumn";
-            salaryHourDataGridViewTextBoxColumn.Width = 156;
-            // 
-            // basicSalaryDataGridViewTextBoxColumn
-            // 
-            basicSalaryDataGridViewTextBoxColumn.DataPropertyName = "BasicSalary";
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            basicSalaryDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            basicSalaryDataGridViewTextBoxColumn.HeaderText = "Basic Salary";
-            basicSalaryDataGridViewTextBoxColumn.Name = "basicSalaryDataGridViewTextBoxColumn";
-            basicSalaryDataGridViewTextBoxColumn.Width = 136;
-            // 
-            // sumSubSalaryDataGridViewTextBoxColumn
-            // 
-            sumSubSalaryDataGridViewTextBoxColumn.DataPropertyName = "SumSubSalary";
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            sumSubSalaryDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            sumSubSalaryDataGridViewTextBoxColumn.HeaderText = "Allowance";
-            sumSubSalaryDataGridViewTextBoxColumn.Name = "sumSubSalaryDataGridViewTextBoxColumn";
-            sumSubSalaryDataGridViewTextBoxColumn.Width = 124;
-            // 
-            // sumAdvanceSalaryDataGridViewTextBoxColumn
-            // 
-            sumAdvanceSalaryDataGridViewTextBoxColumn.DataPropertyName = "SumAdvanceSalary";
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            sumAdvanceSalaryDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            sumAdvanceSalaryDataGridViewTextBoxColumn.HeaderText = "Advance Salary";
-            sumAdvanceSalaryDataGridViewTextBoxColumn.Name = "sumAdvanceSalaryDataGridViewTextBoxColumn";
-            sumAdvanceSalaryDataGridViewTextBoxColumn.Width = 165;
-            // 
-            // totalSalaryDataGridViewTextBoxColumn
-            // 
-            totalSalaryDataGridViewTextBoxColumn.DataPropertyName = "TotalSalary";
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            totalSalaryDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            totalSalaryDataGridViewTextBoxColumn.HeaderText = "Total Salary";
-            totalSalaryDataGridViewTextBoxColumn.Name = "totalSalaryDataGridViewTextBoxColumn";
-            totalSalaryDataGridViewTextBoxColumn.Width = 133;
-            // 
-            // taxDataGridViewTextBoxColumn
-            // 
-            taxDataGridViewTextBoxColumn.DataPropertyName = "Tax";
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            taxDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
-            taxDataGridViewTextBoxColumn.HeaderText = "Tax";
-            taxDataGridViewTextBoxColumn.Name = "taxDataGridViewTextBoxColumn";
-            taxDataGridViewTextBoxColumn.Width = 64;
-            // 
-            // salaryAfterTaxDataGridViewTextBoxColumn
-            // 
-            salaryAfterTaxDataGridViewTextBoxColumn.DataPropertyName = "SalaryAfterTax";
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = null;
-            salaryAfterTaxDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
-            salaryAfterTaxDataGridViewTextBoxColumn.HeaderText = "Salary Final (-Tax)";
-            salaryAfterTaxDataGridViewTextBoxColumn.Name = "salaryAfterTaxDataGridViewTextBoxColumn";
-            salaryAfterTaxDataGridViewTextBoxColumn.Width = 169;
-            // 
-            // DateOmonth
-            // 
-            DateOmonth.DataPropertyName = "DateOmonth";
-            DateOmonth.HeaderText = "Date";
-            DateOmonth.Name = "DateOmonth";
-            DateOmonth.Width = 76;
-            // 
             // frmSalaryDetail
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
@@ -347,7 +348,6 @@
         private BindingSource salaryBindingSource;
         private Button btFilter;
         private ComboBox cbName;
-        private Button btSearch;
         private Button btReset;
         private Button btExport;
         private Panel panel2;
@@ -365,5 +365,6 @@
         private DataGridViewTextBoxColumn taxDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn salaryAfterTaxDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn DateOmonth;
+        private ComboBox cbOrderby;
     }
 }

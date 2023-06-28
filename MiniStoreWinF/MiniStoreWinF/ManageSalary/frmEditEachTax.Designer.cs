@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditEachTax));
             btSave = new Button();
             label6 = new Label();
             txtNewGuard = new TextBox();
             txtNewEmp = new TextBox();
             label5 = new Label();
+            notiSave = new NotifyIcon(components);
             SuspendLayout();
             // 
             // btSave
@@ -85,6 +87,11 @@
             label5.TabIndex = 4;
             label5.Text = "New Tax for Employee";
             // 
+            // notiSave
+            // 
+            notiSave.Text = "notifyIcon1";
+            notiSave.Visible = true;
+            // 
             // frmEditEachTax
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
@@ -113,5 +120,6 @@
         private TextBox txtNewGuard;
         private TextBox txtNewEmp;
         private Label label5;
+        private NotifyIcon notiSave;
     }
 }

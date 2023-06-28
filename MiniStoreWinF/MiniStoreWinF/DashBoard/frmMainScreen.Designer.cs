@@ -59,6 +59,7 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             menuStrip1 = new MenuStrip();
             panel1 = new Panel();
+            panel4 = new Panel();
             txtUser = new Label();
             pbSetting = new PictureBox();
             pUser = new Panel();
@@ -73,7 +74,6 @@
             label5 = new Label();
             timer = new System.Windows.Forms.Timer(components);
             pnMain = new Panel();
-            panel4 = new Panel();
             flowPanel.SuspendLayout();
             ORDER.SuspendLayout();
             REVENUE.SuspendLayout();
@@ -457,6 +457,17 @@
             panel1.Size = new Size(725, 41);
             panel1.TabIndex = 1;
             // 
+            // panel4
+            // 
+            panel4.BackgroundImage = (Image)resources.GetObject("panel4.BackgroundImage");
+            panel4.BackgroundImageLayout = ImageLayout.Zoom;
+            panel4.Dock = DockStyle.Right;
+            panel4.Location = new Point(553, 0);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(64, 41);
+            panel4.TabIndex = 6;
+            panel4.Click += pbSetting_Click;
+            // 
             // txtUser
             // 
             txtUser.Dock = DockStyle.Fill;
@@ -608,20 +619,9 @@
             pnMain.Size = new Size(1466, 976);
             pnMain.TabIndex = 3;
             // 
-            // panel4
-            // 
-            panel4.BackgroundImage = (Image)resources.GetObject("panel4.BackgroundImage");
-            panel4.BackgroundImageLayout = ImageLayout.Zoom;
-            panel4.Dock = DockStyle.Right;
-            panel4.Location = new Point(553, 0);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(64, 41);
-            panel4.TabIndex = 6;
-            panel4.Click += pbSetting_Click;
-            // 
             // frmMainScreen
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(1638, 1025);

@@ -31,10 +31,9 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDetailSetup));
             dgvRoles = new DataGridView();
+            employeeBindingSource = new BindingSource(components);
             idEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             fullNameEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            rolesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            employeeBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dgvRoles).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
             SuspendLayout();
@@ -47,7 +46,7 @@
             dgvRoles.BackgroundColor = SystemColors.ButtonHighlight;
             dgvRoles.BorderStyle = BorderStyle.Fixed3D;
             dgvRoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRoles.Columns.AddRange(new DataGridViewColumn[] { idEmpDataGridViewTextBoxColumn, fullNameEmpDataGridViewTextBoxColumn, rolesDataGridViewTextBoxColumn });
+            dgvRoles.Columns.AddRange(new DataGridViewColumn[] { idEmpDataGridViewTextBoxColumn, fullNameEmpDataGridViewTextBoxColumn });
             dgvRoles.DataSource = employeeBindingSource;
             dgvRoles.Dock = DockStyle.Fill;
             dgvRoles.Location = new Point(0, 0);
@@ -56,6 +55,10 @@
             dgvRoles.RowTemplate.Height = 27;
             dgvRoles.Size = new Size(433, 341);
             dgvRoles.TabIndex = 1;
+            // 
+            // employeeBindingSource
+            // 
+            employeeBindingSource.DataSource = typeof(Repository.Models.Employee);
             // 
             // idEmpDataGridViewTextBoxColumn
             // 
@@ -70,17 +73,6 @@
             fullNameEmpDataGridViewTextBoxColumn.HeaderText = "Full Name";
             fullNameEmpDataGridViewTextBoxColumn.Name = "fullNameEmpDataGridViewTextBoxColumn";
             fullNameEmpDataGridViewTextBoxColumn.Width = 122;
-            // 
-            // rolesDataGridViewTextBoxColumn
-            // 
-            rolesDataGridViewTextBoxColumn.DataPropertyName = "Roles";
-            rolesDataGridViewTextBoxColumn.HeaderText = "Roles";
-            rolesDataGridViewTextBoxColumn.Name = "rolesDataGridViewTextBoxColumn";
-            rolesDataGridViewTextBoxColumn.Width = 81;
-            // 
-            // employeeBindingSource
-            // 
-            employeeBindingSource.DataSource = typeof(Repository.Models.Employee);
             // 
             // frmDetailSetup
             // 

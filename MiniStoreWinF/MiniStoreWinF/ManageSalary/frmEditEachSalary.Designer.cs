@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditEachSalary));
             label6 = new Label();
             btSave = new Button();
             label5 = new Label();
             txtNewEmp = new TextBox();
             txtNewGuard = new TextBox();
+            notiSave = new NotifyIcon(components);
             SuspendLayout();
             // 
             // label6
@@ -85,6 +87,11 @@
             txtNewGuard.TabIndex = 2;
             txtNewGuard.KeyPress += txtNewGuard_KeyPress;
             // 
+            // notiSave
+            // 
+            notiSave.Text = "notifyIcon1";
+            notiSave.Visible = true;
+            // 
             // frmEditEachSalary
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
@@ -114,5 +121,6 @@
         private Label label5;
         private TextBox txtNewEmp;
         private TextBox txtNewGuard;
+        private NotifyIcon notiSave;
     }
 }

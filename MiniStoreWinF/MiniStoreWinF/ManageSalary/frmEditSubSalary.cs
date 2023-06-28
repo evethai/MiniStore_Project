@@ -16,10 +16,10 @@ namespace MiniStoreWinF.ManageSalary
     public partial class frmEditSubSalary : Form
     {
         DetailSubSalaryService _detailSubSalaryService;
-        public string idForm;
-        public string disForm;
-        public string saForm;
-        public string conForm;
+        //public string idForm;
+        //public string disForm;
+        //public string saForm;
+        //public string conForm;
         public frmEditSubSalary()
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace MiniStoreWinF.ManageSalary
         {
             _detailSubSalaryService = new DetailSubSalaryService();
             double subSalary;
-            string id = idForm;
+            string id = ContextScope.currentSubSalary.IdDetailSubSalary;
             if (txtDis.Text == null || !double.TryParse(txtSalary.Text, out subSalary))
             {
                 MessageBox.Show("Can not empty Discribe", "Messages", MessageBoxButtons.OK);
@@ -56,7 +56,7 @@ namespace MiniStoreWinF.ManageSalary
         private void btRemove_Click(object sender, EventArgs e)
         {
             _detailSubSalaryService = new DetailSubSalaryService();
-            string id = idForm;
+            string id = ContextScope.currentSubSalary.IdDetailSubSalary;
             DialogResult result = MessageBox.Show("Remove SubSalary!", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
@@ -79,9 +79,9 @@ namespace MiniStoreWinF.ManageSalary
 
         private void frmEditSubSalary_Load(object sender, EventArgs e)
         {
-            txtDis.Text = disForm;
-            txtSalary.Text = saForm;
-            cbCondi.Text = conForm;
+            txtDis.Text = ContextScope.currentSubSalary.DescriptionA;
+            txtSalary.Text = ContextScope.currentSubSalary.SubsidiesSalary.ToString();
+            cbCondi.Text = ContextScope.currentSubSalary.Condition.ToString();
             //
             List<int> num = new List<int>();
             for (int i = 0; i <= 30; i++)

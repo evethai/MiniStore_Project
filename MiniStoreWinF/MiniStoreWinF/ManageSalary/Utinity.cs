@@ -46,10 +46,31 @@ namespace MiniStoreWinF.ManageSalary
 
         /*Show list combobox with display is name of employee anh valueSeleted is id employee
          * except Admin and help search on combobox by input text*/
-        public void showListEmp(ComboBox comboBox)
+        public void showListEmp_ALL(ComboBox comboBox)
         {
             _employeeService = new EmployeeService();
-            var list = _employeeService.GetAll().Where(p => p.IsActive == true && p.Roles!=0 &&p.Roles!=1).ToList();
+            var list = _employeeService.GetAll().Where(p => p.IsActive == true && p.Roles != 0 && p.Roles != 1).ToList();
+            List<Employee>listTrue = new List<Employee>();
+            listTrue.Insert(0, new Employee { IdEmp = "-1", FullNameEmp = "ALL" });
+            foreach (Employee emp in list)
+            {
+                listTrue.Add(emp);
+            }
+            AutoCompleteStringCollection autoCompleteStringCollection = new AutoCompleteStringCollection();
+            foreach (var item in listTrue)
+            {
+                autoCompleteStringCollection.Add(item.FullNameEmp);
+            }
+            comboBox.AutoCompleteCustomSource = autoCompleteStringCollection;
+            comboBox.ValueMember = "IdEmp";
+            comboBox.DisplayMember = "FullNameEmp";
+            comboBox.DataSource = listTrue;
+        }
+        /*Same showListEmp_ALL but not have ALL */
+        public void showlistEmp(ComboBox comboBox)
+        {
+            _employeeService = new EmployeeService();
+            var list = _employeeService.GetAll().Where(p => p.IsActive == true && p.Roles != 0 && p.Roles != 1).ToList();
             AutoCompleteStringCollection autoCompleteStringCollection = new AutoCompleteStringCollection();
             foreach (var item in list)
             {
