@@ -37,12 +37,13 @@
             // 
             // panel1
             // 
+            panel1.BorderStyle = BorderStyle.Fixed3D;
             panel1.Controls.Add(btMember);
             panel1.Controls.Add(btVoucher);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(154, 709);
+            panel1.Size = new Size(157, 709);
             panel1.TabIndex = 0;
             // 
             // btMember
@@ -67,10 +68,11 @@
             // 
             // pnMain
             // 
+            pnMain.BorderStyle = BorderStyle.Fixed3D;
             pnMain.Dock = DockStyle.Fill;
-            pnMain.Location = new Point(154, 0);
+            pnMain.Location = new Point(157, 0);
             pnMain.Name = "pnMain";
-            pnMain.Size = new Size(1542, 709);
+            pnMain.Size = new Size(1539, 709);
             pnMain.TabIndex = 1;
             // 
             // frmMemberVVoucher

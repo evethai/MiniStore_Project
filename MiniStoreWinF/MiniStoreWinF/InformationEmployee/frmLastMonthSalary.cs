@@ -209,13 +209,7 @@ namespace MiniStoreWinF.InformationEmployee
             }
         }
 
-        private void lbAttended_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbAttended_TextChanged(object sender, EventArgs e)
-       
+     
     }
 
 }
