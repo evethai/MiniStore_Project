@@ -32,30 +32,30 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainScreen));
             flowPanel = new FlowLayoutPanel();
             panel2 = new Panel();
-            ORDER = new Panel();
-            panel9 = new Panel();
-            label1 = new Label();
-            REVENUE = new Panel();
-            label4 = new Label();
-            panel7 = new Panel();
-            PRODUCT = new Panel();
-            panel11 = new Panel();
-            label6 = new Label();
-            EMPLOYEE = new Panel();
-            panel12 = new Panel();
-            label2 = new Label();
-            SHEET = new Panel();
-            panel13 = new Panel();
-            label3 = new Label();
-            SALARY = new Panel();
-            panel17 = new Panel();
-            label7 = new Label();
-            VOUCHER = new Panel();
-            panel18 = new Panel();
-            label8 = new Label();
             AUTHORIZATION = new Panel();
             label9 = new Label();
             panel8 = new Panel();
+            REVENUE = new Panel();
+            label4 = new Label();
+            panel7 = new Panel();
+            SALARY = new Panel();
+            label7 = new Label();
+            panel17 = new Panel();
+            EMPLOYEE = new Panel();
+            label2 = new Label();
+            panel12 = new Panel();
+            PRODUCT = new Panel();
+            label6 = new Label();
+            SHEET = new Panel();
+            label3 = new Label();
+            VOUCHER = new Panel();
+            label8 = new Label();
+            ORDER = new Panel();
+            label1 = new Label();
+            panel9 = new Panel();
+            panel18 = new Panel();
+            panel11 = new Panel();
+            panel13 = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
             menuStrip1 = new MenuStrip();
             panel1 = new Panel();
@@ -75,14 +75,14 @@
             timer = new System.Windows.Forms.Timer(components);
             pnMain = new Panel();
             flowPanel.SuspendLayout();
-            ORDER.SuspendLayout();
-            REVENUE.SuspendLayout();
-            PRODUCT.SuspendLayout();
-            EMPLOYEE.SuspendLayout();
-            SHEET.SuspendLayout();
-            SALARY.SuspendLayout();
-            VOUCHER.SuspendLayout();
             AUTHORIZATION.SuspendLayout();
+            REVENUE.SuspendLayout();
+            SALARY.SuspendLayout();
+            EMPLOYEE.SuspendLayout();
+            PRODUCT.SuspendLayout();
+            SHEET.SuspendLayout();
+            VOUCHER.SuspendLayout();
+            ORDER.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbSetting).BeginInit();
@@ -95,14 +95,14 @@
             // flowPanel
             // 
             flowPanel.Controls.Add(panel2);
-            flowPanel.Controls.Add(ORDER);
-            flowPanel.Controls.Add(REVENUE);
-            flowPanel.Controls.Add(PRODUCT);
-            flowPanel.Controls.Add(EMPLOYEE);
-            flowPanel.Controls.Add(SHEET);
-            flowPanel.Controls.Add(SALARY);
-            flowPanel.Controls.Add(VOUCHER);
             flowPanel.Controls.Add(AUTHORIZATION);
+            flowPanel.Controls.Add(REVENUE);
+            flowPanel.Controls.Add(SALARY);
+            flowPanel.Controls.Add(EMPLOYEE);
+            flowPanel.Controls.Add(PRODUCT);
+            flowPanel.Controls.Add(SHEET);
+            flowPanel.Controls.Add(VOUCHER);
+            flowPanel.Controls.Add(ORDER);
             flowPanel.Dock = DockStyle.Left;
             flowPanel.Location = new Point(0, 0);
             flowPanel.Margin = new Padding(4);
@@ -124,58 +124,58 @@
             panel2.TabIndex = 2;
             panel2.Click += frmMainScreen_Load;
             // 
-            // ORDER
+            // AUTHORIZATION
             // 
-            ORDER.BorderStyle = BorderStyle.Fixed3D;
-            ORDER.Controls.Add(panel9);
-            ORDER.Controls.Add(label1);
-            ORDER.Location = new Point(4, 58);
-            ORDER.Margin = new Padding(4);
-            ORDER.Name = "ORDER";
-            ORDER.Size = new Size(161, 105);
-            ORDER.TabIndex = 2;
-            ORDER.Click += ORDER_Click;
+            AUTHORIZATION.BorderStyle = BorderStyle.Fixed3D;
+            AUTHORIZATION.Controls.Add(label9);
+            AUTHORIZATION.Controls.Add(panel8);
+            AUTHORIZATION.Location = new Point(4, 58);
+            AUTHORIZATION.Margin = new Padding(4);
+            AUTHORIZATION.Name = "AUTHORIZATION";
+            AUTHORIZATION.Size = new Size(161, 111);
+            AUTHORIZATION.TabIndex = 3;
+            AUTHORIZATION.Click += AUTHORIZATION_Click;
             // 
-            // panel9
+            // label9
             // 
-            panel9.BackgroundImage = Properties.Resources.Custom_Icon_Design_Flatastic_5_Order_history_512;
-            panel9.BackgroundImageLayout = ImageLayout.Zoom;
-            panel9.Dock = DockStyle.Fill;
-            panel9.Location = new Point(0, 0);
-            panel9.Margin = new Padding(4);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(157, 80);
-            panel9.TabIndex = 1;
-            panel9.Click += ORDER_Click;
+            label9.Dock = DockStyle.Bottom;
+            label9.Location = new Point(0, 86);
+            label9.Margin = new Padding(4, 0, 4, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(157, 21);
+            label9.TabIndex = 1;
+            label9.Text = "Admin";
+            label9.TextAlign = ContentAlignment.BottomCenter;
+            label9.Click += AUTHORIZATION_Click;
             // 
-            // label1
+            // panel8
             // 
-            label1.Dock = DockStyle.Bottom;
-            label1.Location = new Point(0, 80);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(157, 21);
-            label1.TabIndex = 0;
-            label1.Text = "Sales";
-            label1.TextAlign = ContentAlignment.BottomCenter;
-            label1.Click += ORDER_Click;
+            panel8.BackgroundImage = Properties.Resources.icons8_admin_50;
+            panel8.BackgroundImageLayout = ImageLayout.Zoom;
+            panel8.Dock = DockStyle.Fill;
+            panel8.Location = new Point(0, 0);
+            panel8.Margin = new Padding(4);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(157, 107);
+            panel8.TabIndex = 0;
+            panel8.Click += AUTHORIZATION_Click;
             // 
             // REVENUE
             // 
             REVENUE.BorderStyle = BorderStyle.Fixed3D;
             REVENUE.Controls.Add(label4);
             REVENUE.Controls.Add(panel7);
-            REVENUE.Location = new Point(4, 171);
+            REVENUE.Location = new Point(4, 177);
             REVENUE.Margin = new Padding(4);
             REVENUE.Name = "REVENUE";
-            REVENUE.Size = new Size(161, 105);
+            REVENUE.Size = new Size(161, 110);
             REVENUE.TabIndex = 2;
             REVENUE.Click += REVENUE_Click;
             // 
             // label4
             // 
             label4.Dock = DockStyle.Bottom;
-            label4.Location = new Point(0, 80);
+            label4.Location = new Point(0, 85);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(157, 21);
@@ -192,129 +192,33 @@
             panel7.Location = new Point(0, 0);
             panel7.Margin = new Padding(4);
             panel7.Name = "panel7";
-            panel7.Size = new Size(157, 101);
+            panel7.Size = new Size(157, 106);
             panel7.TabIndex = 2;
             panel7.Click += REVENUE_Click;
-            // 
-            // PRODUCT
-            // 
-            PRODUCT.BorderStyle = BorderStyle.Fixed3D;
-            PRODUCT.Controls.Add(panel11);
-            PRODUCT.Controls.Add(label6);
-            PRODUCT.Location = new Point(4, 284);
-            PRODUCT.Margin = new Padding(4);
-            PRODUCT.Name = "PRODUCT";
-            PRODUCT.Size = new Size(161, 105);
-            PRODUCT.TabIndex = 2;
-            PRODUCT.Click += PRODUCT_Click;
-            // 
-            // panel11
-            // 
-            panel11.BackgroundImage = Properties.Resources.icons8_product_100;
-            panel11.BackgroundImageLayout = ImageLayout.Zoom;
-            panel11.Dock = DockStyle.Fill;
-            panel11.Location = new Point(0, 0);
-            panel11.Margin = new Padding(4);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(157, 80);
-            panel11.TabIndex = 1;
-            panel11.Click += PRODUCT_Click;
-            // 
-            // label6
-            // 
-            label6.Dock = DockStyle.Bottom;
-            label6.Location = new Point(0, 80);
-            label6.Margin = new Padding(4, 0, 4, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(157, 21);
-            label6.TabIndex = 0;
-            label6.Text = "Product";
-            label6.TextAlign = ContentAlignment.BottomCenter;
-            label6.Click += PRODUCT_Click;
-            // 
-            // EMPLOYEE
-            // 
-            EMPLOYEE.BorderStyle = BorderStyle.Fixed3D;
-            EMPLOYEE.Controls.Add(panel12);
-            EMPLOYEE.Controls.Add(label2);
-            EMPLOYEE.Location = new Point(4, 397);
-            EMPLOYEE.Margin = new Padding(4);
-            EMPLOYEE.Name = "EMPLOYEE";
-            EMPLOYEE.Size = new Size(161, 105);
-            EMPLOYEE.TabIndex = 2;
-            EMPLOYEE.Click += EMPLOYEE_Click;
-            // 
-            // panel12
-            // 
-            panel12.BackgroundImage = Properties.Resources.Hopstarter_Sleek_Xp_Basic_Preppy_256;
-            panel12.BackgroundImageLayout = ImageLayout.Zoom;
-            panel12.Dock = DockStyle.Fill;
-            panel12.Location = new Point(0, 0);
-            panel12.Margin = new Padding(4);
-            panel12.Name = "panel12";
-            panel12.Size = new Size(157, 80);
-            panel12.TabIndex = 1;
-            panel12.Click += EMPLOYEE_Click;
-            // 
-            // label2
-            // 
-            label2.Dock = DockStyle.Bottom;
-            label2.Location = new Point(0, 80);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(157, 21);
-            label2.TabIndex = 0;
-            label2.Text = "Employee";
-            label2.TextAlign = ContentAlignment.BottomCenter;
-            label2.Click += EMPLOYEE_Click;
-            // 
-            // SHEET
-            // 
-            SHEET.BorderStyle = BorderStyle.Fixed3D;
-            SHEET.Controls.Add(panel13);
-            SHEET.Controls.Add(label3);
-            SHEET.Location = new Point(4, 510);
-            SHEET.Margin = new Padding(4);
-            SHEET.Name = "SHEET";
-            SHEET.Size = new Size(161, 105);
-            SHEET.TabIndex = 2;
-            SHEET.Click += SHEET_Click;
-            // 
-            // panel13
-            // 
-            panel13.BackgroundImage = Properties.Resources.Custom_Icon_Design_Pretty_Office_7_Calendar_256;
-            panel13.BackgroundImageLayout = ImageLayout.Zoom;
-            panel13.Dock = DockStyle.Fill;
-            panel13.Location = new Point(0, 0);
-            panel13.Margin = new Padding(4);
-            panel13.Name = "panel13";
-            panel13.Size = new Size(157, 80);
-            panel13.TabIndex = 1;
-            panel13.Click += SHEET_Click;
-            // 
-            // label3
-            // 
-            label3.Dock = DockStyle.Bottom;
-            label3.Location = new Point(0, 80);
-            label3.Margin = new Padding(4, 0, 4, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(157, 21);
-            label3.TabIndex = 0;
-            label3.Text = "Timekeeping";
-            label3.TextAlign = ContentAlignment.BottomCenter;
-            label3.Click += SHEET_Click;
             // 
             // SALARY
             // 
             SALARY.BorderStyle = BorderStyle.Fixed3D;
-            SALARY.Controls.Add(panel17);
             SALARY.Controls.Add(label7);
-            SALARY.Location = new Point(4, 623);
+            SALARY.Controls.Add(panel17);
+            SALARY.Location = new Point(4, 295);
             SALARY.Margin = new Padding(4);
             SALARY.Name = "SALARY";
-            SALARY.Size = new Size(161, 105);
+            SALARY.Size = new Size(161, 110);
             SALARY.TabIndex = 3;
             SALARY.Click += SALARY_Click;
+            // 
+            // label7
+            // 
+            label7.Dock = DockStyle.Bottom;
+            label7.Location = new Point(0, 85);
+            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(157, 21);
+            label7.TabIndex = 0;
+            label7.Text = "Salary";
+            label7.TextAlign = ContentAlignment.BottomCenter;
+            label7.Click += SALARY_Click;
             // 
             // panel17
             // 
@@ -324,50 +228,110 @@
             panel17.Location = new Point(0, 0);
             panel17.Margin = new Padding(4);
             panel17.Name = "panel17";
-            panel17.Size = new Size(157, 80);
+            panel17.Size = new Size(157, 106);
             panel17.TabIndex = 1;
             panel17.Click += SALARY_Click;
             // 
-            // label7
+            // EMPLOYEE
             // 
-            label7.Dock = DockStyle.Bottom;
-            label7.Location = new Point(0, 80);
-            label7.Margin = new Padding(4, 0, 4, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(157, 21);
-            label7.TabIndex = 0;
-            label7.Text = "Salary";
-            label7.TextAlign = ContentAlignment.BottomCenter;
-            label7.Click += SALARY_Click;
+            EMPLOYEE.BorderStyle = BorderStyle.Fixed3D;
+            EMPLOYEE.Controls.Add(label2);
+            EMPLOYEE.Controls.Add(panel12);
+            EMPLOYEE.Location = new Point(4, 413);
+            EMPLOYEE.Margin = new Padding(4);
+            EMPLOYEE.Name = "EMPLOYEE";
+            EMPLOYEE.Size = new Size(161, 110);
+            EMPLOYEE.TabIndex = 2;
+            EMPLOYEE.Click += EMPLOYEE_Click;
+            // 
+            // label2
+            // 
+            label2.Dock = DockStyle.Bottom;
+            label2.Location = new Point(0, 85);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(157, 21);
+            label2.TabIndex = 0;
+            label2.Text = "Employee";
+            label2.TextAlign = ContentAlignment.BottomCenter;
+            label2.Click += EMPLOYEE_Click;
+            // 
+            // panel12
+            // 
+            panel12.BackgroundImage = Properties.Resources.Hopstarter_Sleek_Xp_Basic_Preppy_256;
+            panel12.BackgroundImageLayout = ImageLayout.Zoom;
+            panel12.Dock = DockStyle.Fill;
+            panel12.Location = new Point(0, 0);
+            panel12.Margin = new Padding(4);
+            panel12.Name = "panel12";
+            panel12.Size = new Size(157, 106);
+            panel12.TabIndex = 1;
+            panel12.Click += EMPLOYEE_Click;
+            // 
+            // PRODUCT
+            // 
+            PRODUCT.BorderStyle = BorderStyle.Fixed3D;
+            PRODUCT.Controls.Add(panel11);
+            PRODUCT.Controls.Add(label6);
+            PRODUCT.Location = new Point(4, 531);
+            PRODUCT.Margin = new Padding(4);
+            PRODUCT.Name = "PRODUCT";
+            PRODUCT.Size = new Size(161, 110);
+            PRODUCT.TabIndex = 2;
+            PRODUCT.Click += PRODUCT_Click;
+            // 
+            // label6
+            // 
+            label6.Dock = DockStyle.Bottom;
+            label6.Location = new Point(0, 85);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(157, 21);
+            label6.TabIndex = 0;
+            label6.Text = "Product";
+            label6.TextAlign = ContentAlignment.BottomCenter;
+            label6.Click += PRODUCT_Click;
+            // 
+            // SHEET
+            // 
+            SHEET.BorderStyle = BorderStyle.Fixed3D;
+            SHEET.Controls.Add(panel13);
+            SHEET.Controls.Add(label3);
+            SHEET.Location = new Point(4, 649);
+            SHEET.Margin = new Padding(4);
+            SHEET.Name = "SHEET";
+            SHEET.Size = new Size(161, 110);
+            SHEET.TabIndex = 2;
+            SHEET.Click += SHEET_Click;
+            // 
+            // label3
+            // 
+            label3.Dock = DockStyle.Bottom;
+            label3.Location = new Point(0, 85);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(157, 21);
+            label3.TabIndex = 0;
+            label3.Text = "Timekeeping";
+            label3.TextAlign = ContentAlignment.BottomCenter;
+            label3.Click += SHEET_Click;
             // 
             // VOUCHER
             // 
             VOUCHER.BorderStyle = BorderStyle.Fixed3D;
             VOUCHER.Controls.Add(panel18);
             VOUCHER.Controls.Add(label8);
-            VOUCHER.Location = new Point(4, 736);
+            VOUCHER.Location = new Point(4, 767);
             VOUCHER.Margin = new Padding(4);
             VOUCHER.Name = "VOUCHER";
-            VOUCHER.Size = new Size(161, 105);
+            VOUCHER.Size = new Size(161, 110);
             VOUCHER.TabIndex = 3;
             VOUCHER.Click += VOUCHER_Click;
-            // 
-            // panel18
-            // 
-            panel18.BackgroundImage = Properties.Resources.icons8_voucher_64;
-            panel18.BackgroundImageLayout = ImageLayout.Zoom;
-            panel18.Dock = DockStyle.Fill;
-            panel18.Location = new Point(0, 0);
-            panel18.Margin = new Padding(4);
-            panel18.Name = "panel18";
-            panel18.Size = new Size(157, 80);
-            panel18.TabIndex = 1;
-            panel18.Click += VOUCHER_Click;
             // 
             // label8
             // 
             label8.Dock = DockStyle.Bottom;
-            label8.Location = new Point(0, 80);
+            label8.Location = new Point(0, 85);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new Size(157, 21);
@@ -376,41 +340,77 @@
             label8.TextAlign = ContentAlignment.BottomCenter;
             label8.Click += VOUCHER_Click;
             // 
-            // AUTHORIZATION
+            // ORDER
             // 
-            AUTHORIZATION.BorderStyle = BorderStyle.Fixed3D;
-            AUTHORIZATION.Controls.Add(label9);
-            AUTHORIZATION.Controls.Add(panel8);
-            AUTHORIZATION.Location = new Point(4, 849);
-            AUTHORIZATION.Margin = new Padding(4);
-            AUTHORIZATION.Name = "AUTHORIZATION";
-            AUTHORIZATION.Size = new Size(161, 105);
-            AUTHORIZATION.TabIndex = 3;
-            AUTHORIZATION.Click += AUTHORIZATION_Click;
+            ORDER.BorderStyle = BorderStyle.Fixed3D;
+            ORDER.Controls.Add(label1);
+            ORDER.Controls.Add(panel9);
+            ORDER.Location = new Point(4, 885);
+            ORDER.Margin = new Padding(4);
+            ORDER.Name = "ORDER";
+            ORDER.Size = new Size(161, 110);
+            ORDER.TabIndex = 2;
+            ORDER.Click += ORDER_Click;
             // 
-            // label9
+            // label1
             // 
-            label9.Dock = DockStyle.Bottom;
-            label9.Location = new Point(0, 80);
-            label9.Margin = new Padding(4, 0, 4, 0);
-            label9.Name = "label9";
-            label9.Size = new Size(157, 21);
-            label9.TabIndex = 1;
-            label9.Text = "Admin";
-            label9.TextAlign = ContentAlignment.BottomCenter;
-            label9.Click += AUTHORIZATION_Click;
+            label1.Dock = DockStyle.Bottom;
+            label1.Location = new Point(0, 85);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(157, 21);
+            label1.TabIndex = 0;
+            label1.Text = "Sales";
+            label1.TextAlign = ContentAlignment.BottomCenter;
+            label1.Click += ORDER_Click;
             // 
-            // panel8
+            // panel9
             // 
-            panel8.BackgroundImage = Properties.Resources.icons8_admin_50;
-            panel8.BackgroundImageLayout = ImageLayout.Center;
-            panel8.Dock = DockStyle.Fill;
-            panel8.Location = new Point(0, 0);
-            panel8.Margin = new Padding(4);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(157, 101);
-            panel8.TabIndex = 0;
-            panel8.Click += AUTHORIZATION_Click;
+            panel9.BackgroundImage = Properties.Resources.icons8_order_100;
+            panel9.BackgroundImageLayout = ImageLayout.Center;
+            panel9.Dock = DockStyle.Fill;
+            panel9.Location = new Point(0, 0);
+            panel9.Margin = new Padding(4);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(157, 106);
+            panel9.TabIndex = 1;
+            panel9.Click += ORDER_Click;
+            // 
+            // panel18
+            // 
+            panel18.BackgroundImage = Properties.Resources.icons8_voucher_64__1_;
+            panel18.BackgroundImageLayout = ImageLayout.Zoom;
+            panel18.Dock = DockStyle.Fill;
+            panel18.Location = new Point(0, 0);
+            panel18.Margin = new Padding(4);
+            panel18.Name = "panel18";
+            panel18.Size = new Size(157, 85);
+            panel18.TabIndex = 1;
+            panel18.Click += VOUCHER_Click;
+            // 
+            // panel11
+            // 
+            panel11.BackgroundImage = Properties.Resources.icons8_product_64;
+            panel11.BackgroundImageLayout = ImageLayout.Zoom;
+            panel11.Dock = DockStyle.Fill;
+            panel11.Location = new Point(0, 0);
+            panel11.Margin = new Padding(4);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(157, 85);
+            panel11.TabIndex = 1;
+            panel11.Click += PRODUCT_Click;
+            // 
+            // panel13
+            // 
+            panel13.BackgroundImage = Properties.Resources.Custom_Icon_Design_Pretty_Office_7_Calendar_256;
+            panel13.BackgroundImageLayout = ImageLayout.Zoom;
+            panel13.Dock = DockStyle.Fill;
+            panel13.Location = new Point(0, 0);
+            panel13.Margin = new Padding(4);
+            panel13.Name = "panel13";
+            panel13.Size = new Size(157, 85);
+            panel13.TabIndex = 1;
+            panel13.Click += SHEET_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -638,14 +638,14 @@
             WindowState = FormWindowState.Maximized;
             Load += frmMainScreen_Load;
             flowPanel.ResumeLayout(false);
-            ORDER.ResumeLayout(false);
-            REVENUE.ResumeLayout(false);
-            PRODUCT.ResumeLayout(false);
-            EMPLOYEE.ResumeLayout(false);
-            SHEET.ResumeLayout(false);
-            SALARY.ResumeLayout(false);
-            VOUCHER.ResumeLayout(false);
             AUTHORIZATION.ResumeLayout(false);
+            REVENUE.ResumeLayout(false);
+            SALARY.ResumeLayout(false);
+            EMPLOYEE.ResumeLayout(false);
+            PRODUCT.ResumeLayout(false);
+            SHEET.ResumeLayout(false);
+            VOUCHER.ResumeLayout(false);
+            ORDER.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             panel1.ResumeLayout(false);

@@ -83,16 +83,6 @@ namespace MiniStoreWinF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Custom_Icon_Design_Flatastic_5_Order_history_512 {
-            get {
-                object obj = ResourceManager.GetObject("Custom-Icon-Design-Flatastic-5-Order-history.512", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Custom_Icon_Design_Pretty_Office_7_Calendar_256 {
             get {
                 object obj = ResourceManager.GetObject("Custom_Icon_Design_Pretty_Office_7_Calendar_256", resourceCulture);
@@ -153,9 +143,19 @@ namespace MiniStoreWinF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_product_100 {
+        internal static System.Drawing.Bitmap icons8_order_100 {
             get {
-                object obj = ResourceManager.GetObject("icons8_product_100", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-order-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_product_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-product-64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +193,9 @@ namespace MiniStoreWinF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_voucher_64 {
+        internal static System.Drawing.Bitmap icons8_voucher_64__1_ {
             get {
-                object obj = ResourceManager.GetObject("icons8_voucher_64", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-voucher-64 (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
