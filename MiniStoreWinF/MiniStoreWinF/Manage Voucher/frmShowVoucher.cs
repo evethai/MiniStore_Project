@@ -34,7 +34,8 @@ namespace MiniStoreWinF.Manage_Voucher
         private void dgvVoucher_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             _voucherService = new VoucherService();
-            pnShow.Visible = true;
+            pnVoucher.Visible = true;
+            lbAnnou.Visible = true;
             try
             {
                 var name = dgvVoucher[0, e.RowIndex].Value;
@@ -42,14 +43,6 @@ namespace MiniStoreWinF.Manage_Voucher
 
                 if (rdExpired.Checked)
                 {
-
-                    txtID.Text = voucher.IdVoucher.ToString();
-                    txtName.Text = voucher.Name;
-                    txtPrice.Text = voucher.Price.ToString();
-                    txtQuantity.Text = voucher.Quantity.ToString();
-                    //txtType.Text = voucher.Type.ToString();
-                    dpkEXP.Text = voucher.Exp.ToString();
-
                     voucher = _voucherService.GetAll().Where(e => e.Exp < DateTime.Now && e.Name.Equals(name)).FirstOrDefault();
                     rowIndex = e.RowIndex;
                     if (voucher != null)
@@ -58,7 +51,9 @@ namespace MiniStoreWinF.Manage_Voucher
                         txtName.Text = voucher.Name;
                         txtPrice.Text = voucher.Price.ToString();
                         txtQuantity.Text = voucher.Quantity.ToString();
-
+                        lbPrice.Text = txtPrice.Text;
+                        lbName.Text = voucher.Name;
+                        lbDate.Text = voucher.Exp.ToString();
                         dpkEXP.Text = voucher.Exp.ToString();
 
 
@@ -74,7 +69,9 @@ namespace MiniStoreWinF.Manage_Voucher
                         txtName.Text = voucher.Name;
                         txtPrice.Text = voucher.Price.ToString();
                         txtQuantity.Text = voucher.Quantity.ToString();
-
+                        lbPrice.Text = txtPrice.Text;
+                        lbName.Text = voucher.Name;
+                        lbDate.Text = voucher.Exp.ToString();
                         dpkEXP.Text = voucher.Exp.ToString();
 
 
@@ -99,6 +96,7 @@ namespace MiniStoreWinF.Manage_Voucher
         //Update voucher and save it
         private void btUpdate_Click(object sender, EventArgs e)
         {
+
             var data = _voucherService.GetAll().Where(e => e.Exp > DateTime.Now);
             var voucher = _voucherService.GetAll().Where(e => e.IdVoucher.Equals(txtID.Text)).FirstOrDefault();
             if (txtName.Text == "" ||
@@ -118,7 +116,7 @@ namespace MiniStoreWinF.Manage_Voucher
                 voucher.Name = txtName.Text;
                 voucher.Price = float.Parse(txtPrice.Text);
                 voucher.Quantity = int.Parse(txtQuantity.Text);
-                voucher.Conditions = float.Parse(numAddCondition.Text);
+                voucher.Conditions = float.Parse(numCondition.Text);
                 voucher.Exp = dpkEXP.Value;
                 var update = voucher;
                 DialogResult result = MessageBox.Show("Have you check all update information?",
@@ -136,64 +134,21 @@ namespace MiniStoreWinF.Manage_Voucher
 
             }
         }
-        //Call Create voucher panel
+        //Create new voucher and save it
         private void button1_Click(object sender, EventArgs e)
         {
 
-            pnAdd.Visible = true;
-
-        }
-        //Create new voucher and save it
-        private void btAdd_Click(object sender, EventArgs e)
-        {
-            if (txtAddName.Text == "" ||
-
-                txtNewQuantity.Text == "" ||
-                txtNewPrice.Text == "")
             {
-                MessageBox.Show("Please input all information!");
-            }
-            else if (dpkNewDate.Value < DateTime.Now)
-            {
-                MessageBox.Show("Expire date must higher than now!");
-            }
-            else
-            {
-                var voucher = new Voucher();
-                var codeVoucher = new CodeVoucher();
-
-                voucher.Name = txtAddName.Text;
-
-                voucher.Conditions = float.Parse(numAddCondition.Text);
-
-
-
-                voucher.Exp = dpkNewDate.Value;
-                voucher.Price = float.Parse(txtNewPrice.Text);
-                voucher.Quantity = int.Parse(txtNewQuantity.Text);
-                DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.OK)
-                {
-                    Validation createVoucher = new Validation();
-                    createVoucher.AddNewVoucher(voucher);
-                    MessageBox.Show("Create voucher successfully!");
-                    for (int i = 0; i < int.Parse(txtNewQuantity.Text); i++)
-                    {
-                        codeVoucher.QuantityValue = 1;
-                        codeVoucher.StatusV = true;
-                        codeVoucher.IdVoucher = voucher.IdVoucher;
-                        createVoucher.AddNewEachVoucher(codeVoucher);
-                    }
-                }
-                else
-                {
-                    return;
-                }
+                Form frmCreate = new frmCreateNewVoucher();
+                frmCreate.ShowDialog();
 
             }
             var voucherCreate = _voucherService.GetAll().Where(e => e.Exp > DateTime.Now);
             dgvVoucher.DataSource = new BindingSource() { DataSource = voucherCreate };
+
         }
+
+
         //Search Voucher by Name
         private void btSearch_Click(object sender, EventArgs e)
         {
@@ -262,6 +217,54 @@ namespace MiniStoreWinF.Manage_Voucher
         {
             var voucher = _voucherService.GetAll().Where(e => e.Exp < DateTime.Now);
             dgvVoucher.DataSource = new BindingSource() { DataSource = voucher };
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmShowVoucher_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnVoucher_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pbVoucher_Click(object sender, EventArgs e)
+        {
+
+            lbAnnou.Text = "*Click to see voucher";
+            pbVoucher.Visible = false;
+            lbPrice.Visible = false;
+            lbName.Visible = false;
+            lbDate.Visible = false;
+            pnShow.Visible = true;
+            pnVoucher.Visible = false;
+        }
+
+        private void pnShow_Click(object sender, EventArgs e)
+        {
+            lbAnnou.Text = "*Click to see detail of voucher";
+            pbVoucher.Visible = true;
+            lbPrice.Visible = true;
+            lbName.Visible = true;
+            lbDate.Visible = true;
+            pnShow.Visible = false;
+            pnVoucher.Visible = true;
+        }
+
+        private void pnVoucher_Click(object sender, EventArgs e)
+        {
+            lbAnnou.Text = "*Click to see voucher";
+            pbVoucher.Visible = false;
+            lbPrice.Visible = false;
+            lbName.Visible = false;
+            lbDate.Visible = false;
+            pnShow.Visible = true;
         }
     }
 }

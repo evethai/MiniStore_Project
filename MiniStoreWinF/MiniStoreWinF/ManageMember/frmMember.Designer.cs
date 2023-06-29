@@ -1,6 +1,6 @@
 ﻿namespace MiniStoreWinF.ManageMember
 {
-    partial class CreateMember
+    partial class frmMember
     {
         /// <summary>
         /// Required designer variable.
@@ -38,10 +38,8 @@
             txtPoint = new TextBox();
             txtName = new TextBox();
             dtDoB = new DateTimePicker();
-            cbGender = new ComboBox();
             sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
             btAdd = new Button();
-            btClose = new Button();
             LABEL = new Label();
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             btUpdate = new Button();
@@ -51,105 +49,103 @@
             memberBindingSource = new BindingSource(components);
             dgvMember = new DataGridView();
             phoneMemberDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            pointDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            genderDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            doBDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            ordersDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            btDelete = new Button();
-            txtLoad = new Button();
+            panel1 = new Panel();
+            cbGender = new ComboBox();
+            tableLayoutPanel1 = new TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)memberBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvMember).BeginInit();
+            panel1.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(55, 82);
+            label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(55, 68);
             label1.Name = "label1";
-            label1.Size = new Size(50, 20);
+            label1.Size = new Size(78, 31);
             label1.TabIndex = 0;
             label1.Text = "Phone";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(50, 214);
+            label3.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(548, 64);
             label3.Name = "label3";
-            label3.Size = new Size(49, 20);
+            label3.Size = new Size(75, 31);
             label3.TabIndex = 2;
             label3.Text = "Name";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(50, 278);
+            label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(529, 163);
             label4.Name = "label4";
-            label4.Size = new Size(57, 20);
+            label4.Size = new Size(89, 31);
             label4.TabIndex = 3;
             label4.Text = "Gender";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(50, 333);
+            label5.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(55, 271);
             label5.Name = "label5";
-            label5.Size = new Size(38, 20);
+            label5.Size = new Size(56, 31);
             label5.TabIndex = 4;
             label5.Text = "DoB";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(55, 154);
+            label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(55, 160);
             label2.Name = "label2";
-            label2.Size = new Size(42, 20);
+            label2.Size = new Size(66, 31);
             label2.TabIndex = 5;
             label2.Text = "Point";
             // 
             // txtPhone
             // 
-            txtPhone.Location = new Point(145, 71);
+            txtPhone.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPhone.Location = new Point(145, 65);
             txtPhone.Margin = new Padding(3, 4, 3, 4);
             txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(333, 27);
+            txtPhone.Size = new Size(333, 38);
             txtPhone.TabIndex = 6;
             txtPhone.KeyPress += txtPhone_KeyPress;
             // 
             // txtPoint
             // 
-            txtPoint.Location = new Point(145, 143);
+            txtPoint.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPoint.Location = new Point(145, 160);
             txtPoint.Margin = new Padding(3, 4, 3, 4);
             txtPoint.Name = "txtPoint";
-            txtPoint.Size = new Size(195, 27);
+            txtPoint.Size = new Size(195, 38);
             txtPoint.TabIndex = 7;
             // 
             // txtName
             // 
-            txtName.Location = new Point(145, 203);
+            txtName.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            txtName.Location = new Point(642, 61);
             txtName.Margin = new Padding(3, 4, 3, 4);
             txtName.Name = "txtName";
-            txtName.Size = new Size(333, 27);
+            txtName.Size = new Size(333, 38);
             txtName.TabIndex = 8;
             // 
             // dtDoB
             // 
-            dtDoB.Location = new Point(145, 325);
+            dtDoB.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            dtDoB.Location = new Point(145, 264);
             dtDoB.Margin = new Padding(3, 4, 3, 4);
             dtDoB.Name = "dtDoB";
-            dtDoB.Size = new Size(285, 27);
+            dtDoB.Size = new Size(285, 38);
             dtDoB.TabIndex = 10;
-            // 
-            // cbGender
-            // 
-            cbGender.FormattingEnabled = true;
-            cbGender.Items.AddRange(new object[] { "Male", "Female" });
-            cbGender.Location = new Point(145, 267);
-            cbGender.Margin = new Padding(2, 3, 2, 3);
-            cbGender.Name = "cbGender";
-            cbGender.Size = new Size(107, 28);
-            cbGender.TabIndex = 17;
             // 
             // sqlCommandBuilder1
             // 
@@ -159,37 +155,27 @@
             // 
             // btAdd
             // 
-            btAdd.Location = new Point(402, 363);
+            btAdd.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btAdd.Location = new Point(545, 359);
             btAdd.Margin = new Padding(3, 4, 3, 4);
             btAdd.Name = "btAdd";
-            btAdd.Size = new Size(86, 31);
+            btAdd.Size = new Size(111, 44);
             btAdd.TabIndex = 18;
             btAdd.Text = "Add";
             btAdd.UseVisualStyleBackColor = true;
             btAdd.Click += btAdd_Click;
             // 
-            // btClose
-            // 
-            btClose.Location = new Point(759, 574);
-            btClose.Margin = new Padding(3, 4, 3, 4);
-            btClose.Name = "btClose";
-            btClose.Size = new Size(86, 31);
-            btClose.TabIndex = 19;
-            btClose.Text = "Close";
-            btClose.UseVisualStyleBackColor = true;
-            btClose.Click += btClose_Click;
-            // 
             // LABEL
             // 
             LABEL.AutoSize = true;
-            LABEL.BackColor = SystemColors.ButtonFace;
-            LABEL.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            LABEL.ForeColor = Color.Red;
-            LABEL.Location = new Point(12, 9);
+            LABEL.BackColor = Color.Transparent;
+            LABEL.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+            LABEL.ForeColor = Color.Black;
+            LABEL.Location = new Point(9, 6);
             LABEL.Name = "LABEL";
-            LABEL.Size = new Size(199, 32);
+            LABEL.Size = new Size(301, 38);
             LABEL.TabIndex = 20;
-            LABEL.Text = "Manage Member";
+            LABEL.Text = "Member of MiniStore";
             // 
             // sqlCommand1
             // 
@@ -200,10 +186,11 @@
             // 
             // btUpdate
             // 
-            btUpdate.Location = new Point(310, 363);
+            btUpdate.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btUpdate.Location = new Point(426, 360);
             btUpdate.Margin = new Padding(3, 4, 3, 4);
             btUpdate.Name = "btUpdate";
-            btUpdate.Size = new Size(86, 31);
+            btUpdate.Size = new Size(111, 44);
             btUpdate.TabIndex = 21;
             btUpdate.Text = "Update";
             btUpdate.UseVisualStyleBackColor = false;
@@ -211,10 +198,11 @@
             // 
             // btSearch
             // 
-            btSearch.Location = new Point(402, 402);
+            btSearch.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            btSearch.Location = new Point(305, 362);
             btSearch.Margin = new Padding(3, 4, 3, 4);
             btSearch.Name = "btSearch";
-            btSearch.Size = new Size(86, 31);
+            btSearch.Size = new Size(111, 44);
             btSearch.TabIndex = 22;
             btSearch.Text = "Search";
             btSearch.UseVisualStyleBackColor = true;
@@ -222,10 +210,11 @@
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(145, 402);
+            txtSearch.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            txtSearch.Location = new Point(48, 366);
             txtSearch.Margin = new Padding(3, 4, 3, 4);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(251, 27);
+            txtSearch.Size = new Size(251, 38);
             txtSearch.TabIndex = 23;
             // 
             // employeeBindingSource
@@ -239,121 +228,104 @@
             // dgvMember
             // 
             dgvMember.AutoGenerateColumns = false;
+            dgvMember.BackgroundColor = Color.White;
             dgvMember.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMember.Columns.AddRange(new DataGridViewColumn[] { phoneMemberDataGridViewTextBoxColumn, pointDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, genderDataGridViewTextBoxColumn, doBDataGridViewTextBoxColumn, ordersDataGridViewTextBoxColumn });
+            dgvMember.Columns.AddRange(new DataGridViewColumn[] { phoneMemberDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn });
             dgvMember.DataSource = memberBindingSource;
-            dgvMember.Location = new Point(15, 437);
+            dgvMember.Dock = DockStyle.Fill;
+            dgvMember.Location = new Point(3, 434);
             dgvMember.Margin = new Padding(3, 4, 3, 4);
             dgvMember.Name = "dgvMember";
             dgvMember.RowHeadersWidth = 51;
             dgvMember.RowTemplate.Height = 25;
-            dgvMember.Size = new Size(738, 200);
+            dgvMember.Size = new Size(1318, 231);
             dgvMember.TabIndex = 24;
             dgvMember.CellClick += dgvMember_CellClick;
             // 
             // phoneMemberDataGridViewTextBoxColumn
             // 
+            phoneMemberDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             phoneMemberDataGridViewTextBoxColumn.DataPropertyName = "PhoneMember";
             phoneMemberDataGridViewTextBoxColumn.HeaderText = "PhoneMember";
             phoneMemberDataGridViewTextBoxColumn.MinimumWidth = 6;
             phoneMemberDataGridViewTextBoxColumn.Name = "phoneMemberDataGridViewTextBoxColumn";
-            phoneMemberDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // pointDataGridViewTextBoxColumn
-            // 
-            pointDataGridViewTextBoxColumn.DataPropertyName = "Point";
-            pointDataGridViewTextBoxColumn.HeaderText = "Point";
-            pointDataGridViewTextBoxColumn.MinimumWidth = 6;
-            pointDataGridViewTextBoxColumn.Name = "pointDataGridViewTextBoxColumn";
-            pointDataGridViewTextBoxColumn.Width = 125;
             // 
             // nameDataGridViewTextBoxColumn
             // 
+            nameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             nameDataGridViewTextBoxColumn.HeaderText = "Name";
             nameDataGridViewTextBoxColumn.MinimumWidth = 6;
             nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            nameDataGridViewTextBoxColumn.Width = 125;
             // 
-            // genderDataGridViewTextBoxColumn
+            // panel1
             // 
-            genderDataGridViewTextBoxColumn.DataPropertyName = "Gender";
-            genderDataGridViewTextBoxColumn.HeaderText = "Gender";
-            genderDataGridViewTextBoxColumn.MinimumWidth = 6;
-            genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
-            genderDataGridViewTextBoxColumn.Width = 125;
+            panel1.Controls.Add(txtPhone);
+            panel1.Controls.Add(LABEL);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(txtSearch);
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(btSearch);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(btUpdate);
+            panel1.Controls.Add(txtPoint);
+            panel1.Controls.Add(txtName);
+            panel1.Controls.Add(dtDoB);
+            panel1.Controls.Add(btAdd);
+            panel1.Controls.Add(cbGender);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(3, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1318, 424);
+            panel1.TabIndex = 27;
             // 
-            // doBDataGridViewTextBoxColumn
+            // cbGender
             // 
-            doBDataGridViewTextBoxColumn.DataPropertyName = "DoB";
-            doBDataGridViewTextBoxColumn.HeaderText = "DoB";
-            doBDataGridViewTextBoxColumn.MinimumWidth = 6;
-            doBDataGridViewTextBoxColumn.Name = "doBDataGridViewTextBoxColumn";
-            doBDataGridViewTextBoxColumn.Width = 125;
+            cbGender.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            cbGender.FormattingEnabled = true;
+            cbGender.Items.AddRange(new object[] { "Male", "Female" });
+            cbGender.Location = new Point(642, 160);
+            cbGender.Margin = new Padding(2, 3, 2, 3);
+            cbGender.Name = "cbGender";
+            cbGender.Size = new Size(107, 39);
+            cbGender.TabIndex = 17;
             // 
-            // ordersDataGridViewTextBoxColumn
+            // tableLayoutPanel1
             // 
-            ordersDataGridViewTextBoxColumn.DataPropertyName = "Orders";
-            ordersDataGridViewTextBoxColumn.HeaderText = "Orders";
-            ordersDataGridViewTextBoxColumn.MinimumWidth = 6;
-            ordersDataGridViewTextBoxColumn.Name = "ordersDataGridViewTextBoxColumn";
-            ordersDataGridViewTextBoxColumn.Width = 125;
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(panel1, 0, 0);
+            tableLayoutPanel1.Controls.Add(dgvMember, 0, 1);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 64.3322449F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 35.66775F));
+            tableLayoutPanel1.Size = new Size(1324, 669);
+            tableLayoutPanel1.TabIndex = 28;
+            tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
             // 
-            // btDelete
-            // 
-            btDelete.Location = new Point(759, 496);
-            btDelete.Margin = new Padding(3, 4, 3, 4);
-            btDelete.Name = "btDelete";
-            btDelete.Size = new Size(86, 31);
-            btDelete.TabIndex = 25;
-            btDelete.Text = "Delete";
-            btDelete.UseVisualStyleBackColor = true;
-            btDelete.Click += btDelete_Click;
-            // 
-            // txtLoad
-            // 
-            txtLoad.Location = new Point(759, 535);
-            txtLoad.Margin = new Padding(3, 4, 3, 4);
-            txtLoad.Name = "txtLoad";
-            txtLoad.Size = new Size(86, 31);
-            txtLoad.TabIndex = 26;
-            txtLoad.Text = "Load";
-            txtLoad.UseVisualStyleBackColor = true;
-            txtLoad.Click += txtLoad_Click;
-            // 
-            // CreateMember
+            // frmMember
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(878, 728);
-            Controls.Add(txtLoad);
-            Controls.Add(btDelete);
-            Controls.Add(dgvMember);
-            Controls.Add(txtSearch);
-            Controls.Add(btSearch);
-            Controls.Add(btUpdate);
-            Controls.Add(LABEL);
-            Controls.Add(btClose);
-            Controls.Add(btAdd);
-            Controls.Add(cbGender);
-            Controls.Add(dtDoB);
-            Controls.Add(txtName);
-            Controls.Add(txtPoint);
-            Controls.Add(txtPhone);
-            Controls.Add(label2);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label1);
+            BackColor = Color.White;
+            ClientSize = new Size(1324, 669);
+            Controls.Add(tableLayoutPanel1);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "CreateMember";
+            Name = "frmMember";
             Text = "CreateMember";
             Load += CreateMember_Load;
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)memberBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvMember).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -367,10 +339,8 @@
         private TextBox txtPoint;
         private TextBox txtName;
         private DateTimePicker dtDoB;
-        private ComboBox cbGender;
         private Microsoft.Data.SqlClient.SqlCommandBuilder sqlCommandBuilder1;
         private Button btAdd;
-        private Button btClose;
         private Label LABEL;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
         private Button btUpdate;
@@ -379,13 +349,10 @@
         private BindingSource employeeBindingSource;
         private BindingSource memberBindingSource;
         private DataGridView dgvMember;
+        private Panel panel1;
+        private ComboBox cbGender;
         private DataGridViewTextBoxColumn phoneMemberDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn pointDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn doBDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn ordersDataGridViewTextBoxColumn;
-        private Button btDelete;
-        private Button txtLoad;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }

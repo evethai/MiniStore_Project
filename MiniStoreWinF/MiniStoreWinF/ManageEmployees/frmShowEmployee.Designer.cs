@@ -76,8 +76,6 @@
             txtName = new TextBox();
             txtId = new TextBox();
             tableLayoutPanel2 = new TableLayoutPanel();
-            panel1 = new Panel();
-            btShow = new Button();
             label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).BeginInit();
@@ -90,7 +88,6 @@
             ((System.ComponentModel.ISupportInitialize)pbImport).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pBEmp).BeginInit();
             tableLayoutPanel2.SuspendLayout();
-            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -139,10 +136,10 @@
             // 
             // btUpdate
             // 
-            btUpdate.Location = new Point(960, 50);
+            btUpdate.Location = new Point(1147, 2);
             btUpdate.Margin = new Padding(4, 5, 4, 5);
             btUpdate.Name = "btUpdate";
-            btUpdate.Size = new Size(10, 10);
+            btUpdate.Size = new Size(26, 20);
             btUpdate.TabIndex = 20;
             btUpdate.Text = "Update";
             btUpdate.UseVisualStyleBackColor = true;
@@ -185,10 +182,10 @@
             // 
             // btSearch
             // 
-            btSearch.Location = new Point(896, 49);
+            btSearch.Location = new Point(1083, 1);
             btSearch.Margin = new Padding(4, 5, 4, 5);
             btSearch.Name = "btSearch";
-            btSearch.Size = new Size(16, 14);
+            btSearch.Size = new Size(23, 21);
             btSearch.TabIndex = 25;
             btSearch.Text = "Search";
             btSearch.UseVisualStyleBackColor = true;
@@ -206,15 +203,15 @@
             pnButton.Location = new Point(3, 4);
             pnButton.Margin = new Padding(3, 4, 3, 4);
             pnButton.Name = "pnButton";
-            pnButton.Size = new Size(1338, 61);
+            pnButton.Size = new Size(1535, 53);
             pnButton.TabIndex = 27;
             // 
             // pbSearch
             // 
             pbSearch.Image = (Image)resources.GetObject("pbSearch.Image");
-            pbSearch.Location = new Point(249, 4);
+            pbSearch.Location = new Point(244, 3);
             pbSearch.Name = "pbSearch";
-            pbSearch.Size = new Size(54, 50);
+            pbSearch.Size = new Size(45, 46);
             pbSearch.TabIndex = 27;
             pbSearch.TabStop = false;
             pbSearch.Click += btSearch_Click;
@@ -223,7 +220,7 @@
             // 
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(16, 398);
+            pictureBox1.Location = new Point(16, 357);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(66, 46);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -238,12 +235,12 @@
             dgvEmployee.Columns.AddRange(new DataGridViewColumn[] { fullNameEmpDataGridViewTextBoxColumn, sexDataGridViewTextBoxColumn, cccdDataGridViewTextBoxColumn, doBDataGridViewTextBoxColumn, addressEmpDataGridViewTextBoxColumn, phoneEmpDataGridViewTextBoxColumn, dateJoinDataGridViewTextBoxColumn });
             dgvEmployee.DataSource = employeeBindingSource1;
             dgvEmployee.Dock = DockStyle.Fill;
-            dgvEmployee.Location = new Point(4, 74);
+            dgvEmployee.Location = new Point(4, 66);
             dgvEmployee.Margin = new Padding(4, 5, 4, 5);
             dgvEmployee.Name = "dgvEmployee";
             dgvEmployee.RowHeadersWidth = 51;
             dgvEmployee.RowTemplate.Height = 29;
-            dgvEmployee.Size = new Size(1336, 383);
+            dgvEmployee.Size = new Size(1533, 340);
             dgvEmployee.TabIndex = 6;
             dgvEmployee.CellDoubleClick += dgvEmployee_CellDoubleClick;
             dgvEmployee.CellFormatting += dgvEmployee_CellFormatting;
@@ -310,15 +307,15 @@
             tbMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tbMain.Controls.Add(pnInfor, 0, 0);
             tbMain.Controls.Add(tableLayoutPanel2, 0, 1);
-            tbMain.Location = new Point(283, 0);
+            tbMain.Dock = DockStyle.Fill;
+            tbMain.Location = new Point(0, 0);
             tbMain.Margin = new Padding(3, 4, 3, 4);
             tbMain.Name = "tbMain";
             tbMain.RowCount = 2;
             tbMain.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tbMain.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tbMain.Size = new Size(1350, 939);
+            tbMain.Size = new Size(1547, 837);
             tbMain.TabIndex = 54;
-            tbMain.Visible = false;
             // 
             // pnInfor
             // 
@@ -353,16 +350,16 @@
             pnInfor.Location = new Point(3, 4);
             pnInfor.Margin = new Padding(3, 4, 3, 4);
             pnInfor.Name = "pnInfor";
-            pnInfor.Size = new Size(1344, 461);
+            pnInfor.Size = new Size(1541, 410);
             pnInfor.TabIndex = 27;
             // 
             // pbImport
             // 
             pbImport.BackColor = Color.Transparent;
             pbImport.Image = (Image)resources.GetObject("pbImport.Image");
-            pbImport.Location = new Point(809, 290);
+            pbImport.Location = new Point(1128, 307);
             pbImport.Name = "pbImport";
-            pbImport.Size = new Size(94, 50);
+            pbImport.Size = new Size(86, 60);
             pbImport.SizeMode = PictureBoxSizeMode.Zoom;
             pbImport.TabIndex = 54;
             pbImport.TabStop = false;
@@ -370,97 +367,107 @@
             // 
             // txtRole
             // 
-            txtRole.Location = new Point(462, 293);
+            txtRole.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            txtRole.Location = new Point(763, 266);
             txtRole.Margin = new Padding(3, 4, 3, 4);
             txtRole.Name = "txtRole";
             txtRole.ReadOnly = true;
-            txtRole.Size = new Size(195, 34);
+            txtRole.Size = new Size(195, 38);
             txtRole.TabIndex = 53;
             // 
             // dtDoB
             // 
-            dtDoB.Location = new Point(462, 353);
+            dtDoB.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            dtDoB.Location = new Point(763, 329);
             dtDoB.Margin = new Padding(4, 5, 4, 5);
             dtDoB.Name = "dtDoB";
-            dtDoB.Size = new Size(279, 34);
+            dtDoB.Size = new Size(279, 38);
             dtDoB.TabIndex = 47;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(376, 95);
+            label9.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.Location = new Point(642, 58);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(76, 28);
+            label9.Size = new Size(89, 31);
             label9.TabIndex = 52;
             label9.Text = "Gender";
             // 
             // cbGender
             // 
             cbGender.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbGender.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             cbGender.FormattingEnabled = true;
             cbGender.Items.AddRange(new object[] { "Man", "Woman" });
-            cbGender.Location = new Point(462, 82);
+            cbGender.Location = new Point(763, 55);
             cbGender.Margin = new Padding(4, 5, 4, 5);
             cbGender.Name = "cbGender";
-            cbGender.Size = new Size(195, 36);
+            cbGender.Size = new Size(195, 39);
             cbGender.TabIndex = 51;
             // 
             // Status
             // 
             Status.AutoSize = true;
-            Status.Location = new Point(387, 212);
+            Status.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            Status.Location = new Point(655, 199);
             Status.Margin = new Padding(4, 0, 4, 0);
             Status.Name = "Status";
-            Status.Size = new Size(65, 28);
+            Status.Size = new Size(76, 31);
             Status.TabIndex = 50;
             Status.Text = "Status";
             // 
             // cBStatus
             // 
+            cBStatus.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             cBStatus.FormattingEnabled = true;
             cBStatus.Items.AddRange(new object[] { "Active", "Disable" });
-            cBStatus.Location = new Point(462, 208);
+            cBStatus.Location = new Point(763, 191);
             cBStatus.Margin = new Padding(4, 5, 4, 5);
             cBStatus.Name = "cBStatus";
-            cBStatus.Size = new Size(195, 36);
+            cBStatus.Size = new Size(195, 39);
             cBStatus.TabIndex = 49;
             // 
             // lb
             // 
             lb.AutoSize = true;
-            lb.Location = new Point(424, 155);
+            lb.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lb.Location = new Point(697, 125);
             lb.Margin = new Padding(4, 0, 4, 0);
             lb.Name = "lb";
-            lb.Size = new Size(29, 28);
+            lb.Size = new Size(34, 31);
             lb.TabIndex = 48;
             lb.Text = "CI";
             // 
             // txtCccd
             // 
-            txtCccd.Location = new Point(462, 148);
+            txtCccd.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCccd.Location = new Point(763, 118);
             txtCccd.Margin = new Padding(4, 5, 4, 5);
             txtCccd.Name = "txtCccd";
-            txtCccd.Size = new Size(195, 34);
+            txtCccd.Size = new Size(195, 38);
             txtCccd.TabIndex = 46;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(400, 296);
+            label10.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(673, 273);
             label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
-            label10.Size = new Size(50, 28);
+            label10.Size = new Size(58, 31);
             label10.TabIndex = 45;
             label10.Text = "Role";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(61, 222);
+            label8.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(285, 193);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(67, 28);
+            label8.Size = new Size(78, 31);
             label8.TabIndex = 44;
             label8.Text = "Phone";
             label8.TextAlign = ContentAlignment.MiddleCenter;
@@ -468,48 +475,52 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(43, 299);
+            label7.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(267, 270);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(82, 28);
+            label7.Size = new Size(97, 31);
             label7.TabIndex = 43;
             label7.Text = "Address";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(399, 359);
+            label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(669, 336);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(53, 28);
+            label4.Size = new Size(62, 31);
             label4.TabIndex = 42;
             label4.Text = "Birth";
             // 
             // label3
             // 
-            label3.Location = new Point(28, 151);
+            label3.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(247, 121);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(96, 28);
+            label3.Size = new Size(117, 28);
             label3.TabIndex = 41;
             label3.Text = "Full name";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(98, 91);
+            label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(322, 62);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(29, 28);
+            label2.Size = new Size(34, 31);
             label2.TabIndex = 40;
             label2.Text = "Id";
             // 
             // btImport
             // 
-            btImport.Location = new Point(941, 49);
+            btImport.Location = new Point(1128, 1);
             btImport.Margin = new Padding(4, 5, 4, 5);
             btImport.Name = "btImport";
-            btImport.Size = new Size(10, 12);
+            btImport.Size = new Size(11, 21);
             btImport.TabIndex = 39;
             btImport.Text = "Import";
             btImport.UseVisualStyleBackColor = true;
@@ -518,41 +529,45 @@
             // pBEmp
             // 
             pBEmp.Image = (Image)resources.GetObject("pBEmp.Image");
-            pBEmp.Location = new Point(754, 76);
+            pBEmp.Location = new Point(1052, 71);
             pBEmp.Margin = new Padding(4, 5, 4, 5);
             pBEmp.Name = "pBEmp";
-            pBEmp.Size = new Size(212, 206);
+            pBEmp.Size = new Size(228, 228);
             pBEmp.SizeMode = PictureBoxSizeMode.Zoom;
             pBEmp.TabIndex = 38;
             pBEmp.TabStop = false;
             // 
             // txtAddress
             // 
-            txtAddress.Location = new Point(138, 290);
+            txtAddress.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            txtAddress.Location = new Point(362, 261);
             txtAddress.Margin = new Padding(4, 5, 4, 5);
             txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(195, 34);
+            txtAddress.Size = new Size(195, 38);
             txtAddress.TabIndex = 37;
             // 
             // txtPhone
             // 
-            txtPhone.Location = new Point(138, 222);
+            txtPhone.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPhone.Location = new Point(362, 193);
             txtPhone.Margin = new Padding(4, 5, 4, 5);
             txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(195, 34);
+            txtPhone.Size = new Size(195, 38);
             txtPhone.TabIndex = 36;
             // 
             // txtName
             // 
-            txtName.Location = new Point(138, 147);
+            txtName.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            txtName.Location = new Point(362, 118);
             txtName.Margin = new Padding(4, 5, 4, 5);
             txtName.Name = "txtName";
-            txtName.Size = new Size(195, 34);
+            txtName.Size = new Size(195, 38);
             txtName.TabIndex = 35;
             // 
             // txtId
             // 
-            txtId.Location = new Point(138, 87);
+            txtId.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            txtId.Location = new Point(362, 58);
             txtId.Margin = new Padding(4, 5, 4, 5);
             txtId.Multiline = true;
             txtId.Name = "txtId";
@@ -567,34 +582,14 @@
             tableLayoutPanel2.Controls.Add(dgvEmployee, 0, 1);
             tableLayoutPanel2.Controls.Add(pnButton, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(3, 473);
+            tableLayoutPanel2.Location = new Point(3, 422);
             tableLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 85F));
-            tableLayoutPanel2.Size = new Size(1344, 462);
+            tableLayoutPanel2.Size = new Size(1541, 411);
             tableLayoutPanel2.TabIndex = 28;
-            // 
-            // panel1
-            // 
-            panel1.BackColor = Color.White;
-            panel1.Controls.Add(btShow);
-            panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(274, 837);
-            panel1.TabIndex = 55;
-            // 
-            // btShow
-            // 
-            btShow.Location = new Point(7, 4);
-            btShow.Name = "btShow";
-            btShow.Size = new Size(264, 72);
-            btShow.TabIndex = 2;
-            btShow.Text = "Show Employee";
-            btShow.UseVisualStyleBackColor = true;
-            btShow.Click += btShow_Click;
             // 
             // frmShowEmployee
             // 
@@ -602,7 +597,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1547, 837);
-            Controls.Add(panel1);
             Controls.Add(tbMain);
             Controls.Add(txtUrl);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -623,7 +617,6 @@
             ((System.ComponentModel.ISupportInitialize)pbImport).EndInit();
             ((System.ComponentModel.ISupportInitialize)pBEmp).EndInit();
             tableLayoutPanel2.ResumeLayout(false);
-            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -671,10 +664,8 @@
         private DataGridViewTextBoxColumn addressEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn phoneEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dateJoinDataGridViewTextBoxColumn;
-        private Panel panel1;
         private PictureBox pictureBox1;
         private PictureBox pbImport;
         private PictureBox pbSearch;
-        private Button btShow;
     }
 }

@@ -13,12 +13,12 @@ using static Azure.Core.HttpHeader;
 
 namespace MiniStoreWinF.ManageMember
 {
-    public partial class CreateMember : Form
+    public partial class frmMember : Form
     {
         MemberService _memberservice = new MemberService();
         private int rowIndex { get; set; }
 
-        public CreateMember()
+        public frmMember()
         {
             InitializeComponent();
             var memberservice = _memberservice.GetAll();
@@ -45,32 +45,19 @@ namespace MiniStoreWinF.ManageMember
 
         private void btAdd_Click(object sender, EventArgs e)
         {
-            if (txtPhone.Text == "" ||
-                txtPoint.Text == "" ||
-                txtName.Text == "")
-            {
-                MessageBox.Show("Please input all fiels information!");
-            }
-            else
-            {
-                var member = _memberservice.GetAll().ToList().FirstOrDefault();
-                member.PhoneMember = txtPhone.Text.Trim();
-                member.Point = int.Parse(txtPoint.Text);
-                member.Name = txtName.Text.Trim();
-                member.Gender = cbGender.Text;
-                member.DoB = dtDoB.Value;
-                DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.OK)
-                {
-                    _memberservice.Create(member);
-                }
-            }
+
+            Form createMember = new frmCreateMember();
+            createMember.ShowDialog();
+            var memberCreate = _memberservice.GetAll();
+            dgvMember.DataSource = new BindingSource() { DataSource = memberCreate };
+
+
         }
 
         private void btSearch_Click(object sender, EventArgs e)
         {
-            String _name = txtSearch.Text;
-            var nameSe = _memberservice.GetAll().ToList().Where(e => e.Name.Trim().ToUpper().StartsWith(_name.Trim().ToUpper()));
+
+            var nameSe = _memberservice.GetAll().ToList().Where(e => e.Name.Trim().Contains(txtSearch.Text.Trim()) || e.PhoneMember.Contains(txtSearch.Text));
             if (nameSe != null)
             {
                 dgvMember.DataSource = new BindingSource() { DataSource = nameSe };
@@ -87,21 +74,27 @@ namespace MiniStoreWinF.ManageMember
             }
             else
             {
-                memberservice.Point = int.Parse(txtPoint.Text);
-                _memberservice.Update(memberservice);
-            }
-            dgvMember.DataSource = new BindingSource() { DataSource = memberservice };
+                DialogResult result = MessageBox.Show("Have you check all information?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    memberservice.Point = int.Parse(txtPoint.Text);
+                    memberservice.Name = txtName.Text;
+                    memberservice.PhoneMember = txtPhone.Text.Trim();
 
-        }
+                    _memberservice.Update(memberservice);
+                    var memberUpdate = _memberservice.GetAll();
+                    dgvMember.DataSource = new BindingSource() { DataSource = memberUpdate };
 
-        private void btDelete_Click(object sender, EventArgs e)
-        {
-            var removeMem = _memberservice.GetAll().Where(e => e.PhoneMember.Equals(txtPhone.Text.Trim())).FirstOrDefault();
-            if (removeMem != null)
-            {
-                _memberservice.Delete(removeMem);
+                }
+                else
+                {
+                    return;
+                }
+
+
             }
-            dgvMember.DataSource = new BindingSource() { DataSource = removeMem };
+
+
         }
 
         private void txtLoad_Click(object sender, EventArgs e)
@@ -112,16 +105,24 @@ namespace MiniStoreWinF.ManageMember
 
         private void dgvMember_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var phone = dgvMember[0, e.RowIndex].ToString();
-            var showMem = _memberservice.GetAll().Where(p => p.PhoneMember.Equals(txtPhone.Text.Trim())).FirstOrDefault();
-            rowIndex = e.RowIndex;
-            if (showMem != null)
+            try
             {
-                txtPhone.Text = showMem.PhoneMember.ToString();
-                txtPoint.Text = showMem.Point.ToString();
-                txtName.Text = showMem.Name.ToString();
-                cbGender.Text = showMem.Gender.ToString();
-                dtDoB.Text = showMem.DoB.ToString();
+
+                var phone = dgvMember[0, e.RowIndex].Value;
+                var showMem = _memberservice.GetAll().Where(p => p.PhoneMember.Equals(phone)).FirstOrDefault();
+                rowIndex = e.RowIndex;
+                if (showMem != null)
+                {
+                    txtPhone.Text = showMem.PhoneMember.ToString();
+                    txtPoint.Text = showMem.Point.ToString();
+                    txtName.Text = showMem.Name.ToString();
+                    cbGender.Text = showMem.Gender.ToString();
+                    dtDoB.Text = showMem.DoB.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                return;
             }
         }
 
@@ -148,6 +149,11 @@ namespace MiniStoreWinF.ManageMember
 
             }
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
-    
+
