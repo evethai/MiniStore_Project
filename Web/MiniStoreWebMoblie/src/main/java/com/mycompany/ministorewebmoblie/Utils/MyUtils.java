@@ -6,6 +6,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.mycompany.ministorewebmoblie.DTO.SheetTimeSlotDTO;
+import com.mycompany.ministorewebmoblie.DTO.WorksheetDTO;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.ServletException;
 import java.io.BufferedReader;
@@ -15,7 +16,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -26,10 +29,10 @@ import org.json.JSONObject;
 
 public class MyUtils {
 
-    private static final int checkInStart = 5;//minus Minutes
-    private static final int checkInEnd = 5;//minus Minutes
-    private static final int checkOutStart = 6;//hours minus
-    private static final int checkOutEnd = 30;//minus plus
+    private static final int checkInStart = 0;  //minus Minutes
+    private static final int checkInEnd = 0;    //minus Minutes
+    private static final int checkOutStart = 0; //hours minus
+    private static final int checkOutEnd = 0;   //minus plus
 
     // Gửi yêu cầu GET và trả về phản hồi dạng chuỗi JSON
     public static String sendGetRequest(String apiUrl) throws IOException {
@@ -56,10 +59,10 @@ public class MyUtils {
     }
 
     // Lấy danh sách Sheet đã có từ API
-    public static List<String> getSheetAvailable(String date) {
+    public static List<WorksheetDTO> getSheetAvailable(String idemp, String dateStar, String dateEnd) {
         try {
             // Lấy danh sách Sheet từ API
-            String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/fwsd?date=" + date);
+            String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/fwsd?idemp=" + idemp + "&dateStar=" + dateStar + "&dateEnd=" + dateEnd);
             JSONObject json = new JSONObject(jsonResponse);
 
             String jwt = json.optString("jwt");
@@ -72,24 +75,24 @@ public class MyUtils {
             }
 
             Claims claims = JWTUtils.parseJWT(jwt);
-            Object sheetClaimValue = claims.get("Sheet");
 
             // Convert the claim value to a list manually
-            List<String> sheetNumbers = new ArrayList<>();
-            if (sheetClaimValue instanceof List<?>) {
-                List<?> sheetList = (List<?>) sheetClaimValue;
-                for (Object sheet : sheetList) {
-                    if (sheet instanceof String) {
-                        sheetNumbers.add((String) sheet);
-                    }
-                }
-            } else if (sheetClaimValue instanceof String) {
-                // Trường hợp sheetClaimValue là một giá trị duy nhất
-                String sheet = (String) sheetClaimValue;
-                sheetNumbers.add(sheet);
+            List<String> Datejwt = claims.get("Date", List.class);
+            List<String> TimeCheckInjwt = claims.get("TimeCheckIn", List.class);
+            List<String> TimeCheckOutjwt = claims.get("TimeCheckOut", List.class);
+
+            List<WorksheetDTO> sheetTimeSlots = new ArrayList<>();
+
+            for (int i = 0; i < Datejwt.size(); i++) {
+                LocalDate date = LocalDate.parse(Datejwt.get(i), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+                LocalTime timeCheckIn = LocalTime.parse(TimeCheckInjwt.get(i),DateTimeFormatter.ofPattern("HH:mm:ss"));
+                LocalTime timeCheckOut = LocalTime.parse(TimeCheckOutjwt.get(i),DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+                WorksheetDTO sheetTimeSlot = new WorksheetDTO(date, timeCheckIn, timeCheckOut);
+                sheetTimeSlots.add(sheetTimeSlot);
             }
 
-            return sheetNumbers;
+            return sheetTimeSlots;
         } catch (Exception e) {
             // Handle error
             e.printStackTrace();
@@ -124,8 +127,7 @@ public class MyUtils {
         List<String> sheetNumbers = claims.get("Sheet", List.class);
         List<String> shiftStartTimes = claims.get("ShiftStartTime", List.class);
         List<String> shiftEndTimes = claims.get("ShiftEndTime", List.class);
-        
-        
+
         List<SheetTimeSlotDTO> sheetTimeSlots = new ArrayList<>();
 
         for (int i = 0; i < sheetNumbers.size(); i++) {
@@ -151,8 +153,7 @@ public class MyUtils {
         LocalTime endTime;
         LocalTime shiftStartTimeLC;
 //        LocalTime shiftEndTimeLC;
-        
-        
+
         try {
             startTime = LocalTime.parse(shiftStartTime).minusMinutes(checkInStart);
             endTime = LocalTime.parse(shiftEndTime).minusMinutes(checkInEnd);
@@ -167,12 +168,13 @@ public class MyUtils {
         return new SheetTimeSlotDTO(sheetNumber, startTime, endTime, shiftStartTimeLC, null);
     }
 
+    // Tạo đối tượng SheetTimeSlotDTO từ thông tin phiếu và chuỗi thời gian
     private static SheetTimeSlotDTO createSheetTimeSlotCheckOut(String sheetNumber, String shiftStartTime, String shiftEndTime) {
         LocalTime startTime;
         LocalTime endTime;
 //        LocalTime shiftStartTimeLC;
         LocalTime shiftEndTimeLC;
-        
+
         try {
             startTime = LocalTime.parse(shiftStartTime).plusHours(checkOutStart);
             endTime = LocalTime.parse(shiftEndTime).plusMinutes(checkOutEnd);
@@ -198,10 +200,9 @@ public class MyUtils {
         String jwt = "";
         if (check.equals("checkin")) {
             jwt = JWTUtils.generateJWTUWS(idemp, date, update, "TimeCheckIn");
-        } else{
+        } else {
             jwt = JWTUtils.generateJWTUWS(idemp, date, update, "TimeCheckOut");
         }
-        
 
         if (jwt == null || jwt.isEmpty()) {
             return false;

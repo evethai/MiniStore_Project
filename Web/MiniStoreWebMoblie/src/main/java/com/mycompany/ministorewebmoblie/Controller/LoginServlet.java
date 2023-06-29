@@ -35,24 +35,31 @@ public class LoginServlet extends HttpServlet {
             String IdEmpapi = claims.get("IdEmp", String.class);
             String rolesapi = claims.get("Roles", String.class);
             String IsActiveapi = claims.get("IsActive", String.class);
-
+            String TimeCheckinapi = claims.get("TimeCheckIn", String.class);
+            
             if (!IsActiveapi.equals("True")) {
-                request.setAttribute("errorMessage", "Account not active!!!");
+                request.setAttribute("errorMessage", "Tài khoản không hoạt động!!!");
                 request.getRequestDispatcher("Login.jsp").forward(request, response);
                 return;
             }
 
             if (!rolesapi.equals("3")) {
-                request.setAttribute("errorMessage", "Just Guard can join !!!");
+                request.setAttribute("errorMessage", "Chỉ có bảo vệ mới vào được trang này!!!");
+                request.getRequestDispatcher("Login.jsp").forward(request, response);
+                return;
+            }
+            
+            if (TimeCheckinapi.equals("nonsheet")) {
+                request.setAttribute("errorMessage", "Hôm nay bạn không có ca làm !!!");
                 request.getRequestDispatcher("Login.jsp").forward(request, response);
                 return;
             }
 
             HttpSession session = request.getSession();
             session.setAttribute("fullnameemapi", "Welcome " + fullnameemapi);
+            session.setAttribute("TimeCheckInapi", TimeCheckinapi);
             session.setAttribute("IdEmpapi", IdEmpapi);
-            response.sendRedirect("qr-code.jsp");
-
+            request.getRequestDispatcher("ShowList").forward(request, response);
         } catch (Exception e) {
             request.setAttribute("errorMessage", "Tên đăng nhập hoặc mật khẩu không chính xác");
             request.getRequestDispatcher("Login.jsp").forward(request, response);

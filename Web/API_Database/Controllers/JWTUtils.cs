@@ -24,7 +24,8 @@ namespace API_Database.Controllers
                     new Claim("IdEmp", empdto.IdEmp),
                     new Claim("FullNameEmp", empdto.FullNameEmp),
                     new Claim("Roles", empdto.Roles),
-                    new Claim("IsActive", empdto.IsActive.ToString())
+                    new Claim("IsActive", empdto.IsActive.ToString()),
+                    new Claim("TimeCheckIn", empdto.TimeCheckIn)
                 }),
                 Expires = DateTime.UtcNow.AddHours(1), // Thời gian hết hạn của JWT: 1 giờ
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -104,9 +105,10 @@ namespace API_Database.Controllers
             var claims = new List<Claim>();
             foreach (WorkSheetDTO dto in wsdto)
             {
-                claims.Add(new Claim("Sheet", dto.Sheet.ToString()));
-                claims.Add(new Claim("TimeCheckIn", dto.TimeCheckIn.ToString("MM/dd/yyyy HH:mm:ss")));
-                claims.Add(new Claim("TimeCheckOut", dto.TimeCheckOut.ToString("MM/dd/yyyy HH:mm:ss")));
+                /*claims.Add(new Claim("Sheet", dto.Sheet.ToString()));*/
+                claims.Add(new Claim("Date", dto.TimeCheckIn.ToString("MM/dd/yyyy")));
+                claims.Add(new Claim("TimeCheckIn", dto.TimeCheckIn.ToString("HH:mm:ss")));
+                claims.Add(new Claim("TimeCheckOut", dto.TimeCheckOut.ToString("HH:mm:ss")));
 
             }
 

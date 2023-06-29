@@ -217,7 +217,7 @@
             btSearch.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btSearch.Image = (Image)resources.GetObject("btSearch.Image");
             btSearch.ImageAlign = ContentAlignment.MiddleLeft;
-            btSearch.Location = new Point(235, 11);
+            btSearch.Location = new Point(309, 11);
             btSearch.Name = "btSearch";
             btSearch.Size = new Size(93, 42);
             btSearch.TabIndex = 4;
@@ -230,7 +230,7 @@
             // 
             cbTypeProducts.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cbTypeProducts.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            cbTypeProducts.Location = new Point(406, 16);
+            cbTypeProducts.Location = new Point(168, 52);
             cbTypeProducts.Name = "cbTypeProducts";
             cbTypeProducts.Size = new Size(122, 28);
             cbTypeProducts.TabIndex = 11;
@@ -238,7 +238,7 @@
             // 
             // txtSearchName
             // 
-            txtSearchName.Location = new Point(23, 18);
+            txtSearchName.Location = new Point(96, 19);
             txtSearchName.Name = "txtSearchName";
             txtSearchName.Size = new Size(207, 27);
             txtSearchName.TabIndex = 1;
@@ -247,7 +247,7 @@
             // 
             lblType.AutoSize = true;
             lblType.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblType.Location = new Point(344, 19);
+            lblType.Location = new Point(104, 55);
             lblType.Name = "lblType";
             lblType.Size = new Size(49, 20);
             lblType.TabIndex = 7;
@@ -289,7 +289,7 @@
             // 
             panel2.Controls.Add(rdCashpayment);
             panel2.Controls.Add(rdMomopayment);
-            panel2.Location = new Point(190, 142);
+            panel2.Location = new Point(125, 142);
             panel2.Name = "panel2";
             panel2.Size = new Size(173, 79);
             panel2.TabIndex = 21;

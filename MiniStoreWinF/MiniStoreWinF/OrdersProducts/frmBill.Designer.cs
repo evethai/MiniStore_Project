@@ -210,6 +210,7 @@
             Controls.Add(button1);
             Controls.Add(Logo);
             Name = "frmBill";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Bill";
             Load += frmBill_Load;
             Logo.ResumeLayout(false);
