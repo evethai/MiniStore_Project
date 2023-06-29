@@ -32,10 +32,7 @@ namespace MiniStoreWinF.InformationEmployee
         private void frmLastMonthSalary_Load(object sender, EventArgs e)
         {
             string idEmp = ContextScope.currentEmployee.IdEmp;
-            var countSheetAttended = _workSheetService.GetAll().Where(e => e.IdEmp.Equals(idEmp) && e.Date.Value.Month.Equals(dtpWorksheet.Value.Month.ToString()) && e.Status.Equals(1)).ToList().Count;
-            lbAttended.Text = countSheetAttended.ToString();
-            var countSheetAbsent = _workSheetService.GetAll().Where(e => e.IdEmp.Equals(idEmp) && e.Date.Value.Month.Equals(dtpWorksheet.Value.Month.ToString()) && e.Status.Equals(0)).ToList().Count;
-            lbAbsent.Text = countSheetAbsent.ToString();
+            
             if (dtpMonth.Value.Month == 1)
             {
                 gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "st month" + " of " + dtpMonth.Value.Year;
@@ -108,7 +105,7 @@ namespace MiniStoreWinF.InformationEmployee
         {
             string idEmp = ContextScope.currentEmployee.IdEmp;
 
-           
+
             if (dtpMonth.Value.Month == 1)
             {
                 gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "st month" + " of " + dtpMonth.Value.Year;
@@ -128,7 +125,7 @@ namespace MiniStoreWinF.InformationEmployee
                 gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "th month" + " of " + dtpMonth.Value.Year;
 
             }
-           
+
             var salaryService = _salaryService.GetAll().Where(e => e.IdEmp.Equals(idEmp) && e.DateOmonth.Month.Equals(dtpMonth.Value.Month)).FirstOrDefault();
             if (salaryService != null)
             {
@@ -157,11 +154,8 @@ namespace MiniStoreWinF.InformationEmployee
         {
             string idEmp = ContextScope.currentEmployee.IdEmp;
 
-            var countSheetAttended = _workSheetService.GetAll().Where(e => e.IdEmp.Equals(idEmp) && e.Date.Value.Month.Equals(dtpWorksheet.Value.Month.ToString()) && e.Status.Equals(1)).ToList().Count;
-            lbAttended.Text = countSheetAttended.ToString();
-            var countSheetAbsent = _workSheetService.GetAll().Where(e => e.IdEmp.Equals(idEmp) && e.Date.Value.Month.Equals(dtpWorksheet.Value.Month.ToString()) && e.Status.Equals(0)).ToList().Count;
-            lbAbsent.Text = countSheetAbsent.ToString();
-           
+            
+
             if (dtpWorksheet.Value.Month == 1)
             {
                 gbWorksheet.Text = "Worksheet of " + dtpWorksheet.Value.Month.ToString() + "st month" + " of " + dtpWorksheet.Value.Year;
@@ -214,6 +208,8 @@ namespace MiniStoreWinF.InformationEmployee
                 }
             }
         }
+
+     
     }
 
 }

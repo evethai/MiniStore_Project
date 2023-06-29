@@ -36,7 +36,7 @@ namespace MiniStoreWinF.ManageEmployees
             //    var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true);
             //    dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
             //}
-            
+
 
             InitializeComponent();
             var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true);
