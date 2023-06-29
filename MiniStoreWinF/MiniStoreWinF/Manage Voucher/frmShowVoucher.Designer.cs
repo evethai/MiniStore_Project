@@ -35,13 +35,12 @@
             voucherBindingSource1 = new BindingSource(components);
             voucherBindingSource = new BindingSource(components);
             panel1 = new Panel();
-            label10 = new Label();
+            tableLayoutPanel1 = new TableLayoutPanel();
             pnVoucher = new Panel();
             lbName = new Label();
             lbPrice = new Label();
             lbDate = new Label();
             pbVoucher = new PictureBox();
-            rdInUse = new RadioButton();
             pnShow = new Panel();
             label3 = new Label();
             numCondition = new NumericUpDown();
@@ -56,6 +55,8 @@
             label4 = new Label();
             label2 = new Label();
             label1 = new Label();
+            label10 = new Label();
+            rdInUse = new RadioButton();
             rdExpired = new RadioButton();
             btSearch = new Button();
             txtSearch = new TextBox();
@@ -67,6 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)voucherBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)voucherBindingSource).BeginInit();
             panel1.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
             pnVoucher.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbVoucher).BeginInit();
             pnShow.SuspendLayout();
@@ -80,10 +82,9 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(tableLayoutPanel1);
             panel1.Controls.Add(label10);
-            panel1.Controls.Add(pnVoucher);
             panel1.Controls.Add(rdInUse);
-            panel1.Controls.Add(pnShow);
             panel1.Controls.Add(rdExpired);
             panel1.Controls.Add(btSearch);
             panel1.Controls.Add(txtSearch);
@@ -92,30 +93,33 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1334, 690);
+            panel1.Size = new Size(1096, 690);
             panel1.TabIndex = 26;
             // 
-            // label10
+            // tableLayoutPanel1
             // 
-            label10.Anchor = AnchorStyles.Left;
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.Location = new Point(308, 1);
-            label10.Name = "label10";
-            label10.Size = new Size(360, 46);
-            label10.TabIndex = 35;
-            label10.Text = "Voucher of MiniStore";
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(pnVoucher, 0, 0);
+            tableLayoutPanel1.Controls.Add(pnShow, 0, 1);
+            tableLayoutPanel1.Location = new Point(239, 96);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50.18868F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 49.81132F));
+            tableLayoutPanel1.Size = new Size(847, 530);
+            tableLayoutPanel1.TabIndex = 36;
             // 
             // pnVoucher
             // 
-            pnVoucher.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pnVoucher.Controls.Add(lbName);
             pnVoucher.Controls.Add(lbPrice);
             pnVoucher.Controls.Add(lbDate);
             pnVoucher.Controls.Add(pbVoucher);
-            pnVoucher.Location = new Point(308, 117);
+            pnVoucher.Dock = DockStyle.Fill;
+            pnVoucher.Location = new Point(3, 3);
             pnVoucher.Name = "pnVoucher";
-            pnVoucher.Size = new Size(1010, 296);
+            pnVoucher.Size = new Size(841, 260);
             pnVoucher.TabIndex = 34;
             pnVoucher.Click += pnVoucher_Click;
             pnVoucher.DoubleClick += pnVoucher_Click;
@@ -123,68 +127,57 @@
             // 
             // lbName
             // 
+            lbName.Anchor = AnchorStyles.Right;
             lbName.BackColor = Color.Azure;
             lbName.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             lbName.ForeColor = Color.DarkSlateGray;
-            lbName.Location = new Point(239, 175);
+            lbName.Location = new Point(188, 148);
             lbName.Name = "lbName";
-            lbName.Size = new Size(238, 40);
+            lbName.Size = new Size(213, 40);
             lbName.TabIndex = 22;
             lbName.Text = "Name";
             lbName.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lbPrice
             // 
+            lbPrice.Anchor = AnchorStyles.Right;
             lbPrice.BackColor = Color.FromArgb(0, 192, 192);
             lbPrice.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lbPrice.ForeColor = Color.DarkSlateGray;
-            lbPrice.Location = new Point(742, 137);
+            lbPrice.Location = new Point(590, 121);
             lbPrice.Name = "lbPrice";
-            lbPrice.Size = new Size(217, 69);
+            lbPrice.Size = new Size(199, 67);
             lbPrice.TabIndex = 20;
             lbPrice.Text = "Price";
             lbPrice.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lbDate
             // 
+            lbDate.Anchor = AnchorStyles.Right;
             lbDate.BackColor = Color.Azure;
             lbDate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             lbDate.ForeColor = Color.DarkSlateGray;
-            lbDate.Location = new Point(307, 215);
+            lbDate.Location = new Point(241, 197);
             lbDate.Name = "lbDate";
-            lbDate.Size = new Size(91, 38);
+            lbDate.Size = new Size(99, 32);
             lbDate.TabIndex = 21;
             lbDate.Text = "Date";
             lbDate.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pbVoucher
             // 
-            pbVoucher.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pbVoucher.Dock = DockStyle.Fill;
             pbVoucher.Image = (Image)resources.GetObject("pbVoucher.Image");
-            pbVoucher.Location = new Point(3, 0);
+            pbVoucher.Location = new Point(0, 0);
             pbVoucher.Name = "pbVoucher";
-            pbVoucher.Size = new Size(1007, 296);
+            pbVoucher.Size = new Size(841, 260);
             pbVoucher.SizeMode = PictureBoxSizeMode.StretchImage;
             pbVoucher.TabIndex = 19;
             pbVoucher.TabStop = false;
             pbVoucher.Click += pbVoucher_Click;
             // 
-            // rdInUse
-            // 
-            rdInUse.Anchor = AnchorStyles.Left;
-            rdInUse.AutoSize = true;
-            rdInUse.Location = new Point(21, 23);
-            rdInUse.Name = "rdInUse";
-            rdInUse.Size = new Size(70, 24);
-            rdInUse.TabIndex = 32;
-            rdInUse.TabStop = true;
-            rdInUse.Text = "In Use";
-            rdInUse.UseVisualStyleBackColor = true;
-            rdInUse.CheckedChanged += rdInUse_CheckedChanged;
-            // 
             // pnShow
             // 
-            pnShow.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             pnShow.BorderStyle = BorderStyle.Fixed3D;
             pnShow.Controls.Add(label3);
             pnShow.Controls.Add(numCondition);
@@ -199,18 +192,21 @@
             pnShow.Controls.Add(label4);
             pnShow.Controls.Add(label2);
             pnShow.Controls.Add(label1);
-            pnShow.Location = new Point(312, 419);
+            pnShow.Dock = DockStyle.Fill;
+            pnShow.Location = new Point(3, 269);
             pnShow.Name = "pnShow";
-            pnShow.Size = new Size(1010, 207);
+            pnShow.Size = new Size(841, 258);
             pnShow.TabIndex = 28;
             pnShow.Click += pnShow_Click;
+            pnShow.Paint += pnShow_Paint;
             pnShow.MouseClick += pnShow_MouseClick;
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(396, 145);
+            label3.Location = new Point(467, 135);
             label3.Name = "label3";
             label3.Size = new Size(99, 28);
             label3.TabIndex = 15;
@@ -218,24 +214,27 @@
             // 
             // numCondition
             // 
+            numCondition.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             numCondition.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            numCondition.Location = new Point(501, 145);
+            numCondition.Location = new Point(588, 133);
             numCondition.Name = "numCondition";
             numCondition.Size = new Size(149, 34);
             numCondition.TabIndex = 14;
             // 
             // dpkEXP
             // 
+            dpkEXP.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             dpkEXP.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dpkEXP.Location = new Point(423, 96);
+            dpkEXP.Location = new Point(588, 79);
             dpkEXP.Name = "dpkEXP";
             dpkEXP.Size = new Size(227, 34);
             dpkEXP.TabIndex = 13;
             // 
             // btUpdate
             // 
+            btUpdate.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btUpdate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btUpdate.Location = new Point(740, 140);
+            btUpdate.Location = new Point(716, 208);
             btUpdate.Name = "btUpdate";
             btUpdate.Size = new Size(118, 43);
             btUpdate.TabIndex = 12;
@@ -245,32 +244,36 @@
             // 
             // txtQuantity
             // 
+            txtQuantity.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             txtQuantity.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtQuantity.Location = new Point(544, 30);
+            txtQuantity.Location = new Point(588, 18);
             txtQuantity.Name = "txtQuantity";
             txtQuantity.Size = new Size(110, 34);
             txtQuantity.TabIndex = 10;
             // 
             // txtPrice
             // 
+            txtPrice.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             txtPrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPrice.Location = new Point(145, 144);
+            txtPrice.Location = new Point(189, 132);
             txtPrice.Name = "txtPrice";
             txtPrice.Size = new Size(149, 34);
             txtPrice.TabIndex = 9;
             // 
             // txtName
             // 
+            txtName.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             txtName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtName.Location = new Point(142, 88);
+            txtName.Location = new Point(186, 76);
             txtName.Name = "txtName";
             txtName.Size = new Size(149, 34);
             txtName.TabIndex = 7;
             // 
             // txtID
             // 
+            txtID.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             txtID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtID.Location = new Point(145, 33);
+            txtID.Location = new Point(189, 21);
             txtID.Name = "txtID";
             txtID.ReadOnly = true;
             txtID.Size = new Size(149, 34);
@@ -278,9 +281,10 @@
             // 
             // label6
             // 
+            label6.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(329, 94);
+            label6.Location = new Point(464, 82);
             label6.Name = "label6";
             label6.Size = new Size(91, 28);
             label6.TabIndex = 5;
@@ -288,9 +292,10 @@
             // 
             // label5
             // 
+            label5.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(423, 36);
+            label5.Location = new Point(467, 24);
             label5.Name = "label5";
             label5.Size = new Size(88, 28);
             label5.TabIndex = 4;
@@ -298,9 +303,10 @@
             // 
             // label4
             // 
+            label4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(74, 147);
+            label4.Location = new Point(118, 135);
             label4.Name = "label4";
             label4.Size = new Size(54, 28);
             label4.TabIndex = 3;
@@ -308,9 +314,10 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(61, 88);
+            label2.Location = new Point(105, 76);
             label2.Name = "label2";
             label2.Size = new Size(64, 28);
             label2.TabIndex = 1;
@@ -318,19 +325,44 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(32, 40);
+            label1.Location = new Point(76, 28);
             label1.Name = "label1";
             label1.Size = new Size(107, 28);
             label1.TabIndex = 0;
             label1.Text = "ID Voucher";
             // 
+            // label10
+            // 
+            label10.Anchor = AnchorStyles.Left;
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
+            label10.Location = new Point(708, 37);
+            label10.Name = "label10";
+            label10.Size = new Size(360, 46);
+            label10.TabIndex = 35;
+            label10.Text = "Voucher of MiniStore";
+            // 
+            // rdInUse
+            // 
+            rdInUse.Anchor = AnchorStyles.Left;
+            rdInUse.AutoSize = true;
+            rdInUse.Location = new Point(30, 19);
+            rdInUse.Name = "rdInUse";
+            rdInUse.Size = new Size(70, 24);
+            rdInUse.TabIndex = 32;
+            rdInUse.TabStop = true;
+            rdInUse.Text = "In Use";
+            rdInUse.UseVisualStyleBackColor = true;
+            rdInUse.CheckedChanged += rdInUse_CheckedChanged;
+            // 
             // rdExpired
             // 
             rdExpired.Anchor = AnchorStyles.Left;
             rdExpired.AutoSize = true;
-            rdExpired.Location = new Point(107, 23);
+            rdExpired.Location = new Point(116, 19);
             rdExpired.Name = "rdExpired";
             rdExpired.Size = new Size(80, 24);
             rdExpired.TabIndex = 31;
@@ -342,7 +374,7 @@
             // btSearch
             // 
             btSearch.Anchor = AnchorStyles.Left;
-            btSearch.Location = new Point(454, 70);
+            btSearch.Location = new Point(408, 53);
             btSearch.Name = "btSearch";
             btSearch.Size = new Size(136, 29);
             btSearch.TabIndex = 30;
@@ -353,7 +385,7 @@
             // txtSearch
             // 
             txtSearch.Anchor = AnchorStyles.Left;
-            txtSearch.Location = new Point(311, 70);
+            txtSearch.Location = new Point(258, 54);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(136, 27);
             txtSearch.TabIndex = 29;
@@ -361,7 +393,7 @@
             // button1
             // 
             button1.Anchor = AnchorStyles.Left;
-            button1.Location = new Point(598, 70);
+            button1.Location = new Point(550, 56);
             button1.Name = "button1";
             button1.Size = new Size(136, 29);
             button1.TabIndex = 27;
@@ -398,7 +430,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Window;
-            ClientSize = new Size(1334, 690);
+            ClientSize = new Size(1096, 690);
             Controls.Add(panel1);
             Name = "frmShowVoucher";
             Text = "Voucher";
@@ -410,6 +442,7 @@
             ((System.ComponentModel.ISupportInitialize)voucherBindingSource).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
             pnVoucher.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pbVoucher).EndInit();
             pnShow.ResumeLayout(false);
@@ -457,5 +490,6 @@
         private Button button1;
         private DataGridView dgvVoucher;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }

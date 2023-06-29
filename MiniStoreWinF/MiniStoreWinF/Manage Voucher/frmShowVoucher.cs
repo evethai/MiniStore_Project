@@ -34,7 +34,7 @@ namespace MiniStoreWinF.Manage_Voucher
         private void dgvVoucher_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             _voucherService = new VoucherService();
-           
+
             try
             {
                 var name = dgvVoucher[0, e.RowIndex].Value;
@@ -239,8 +239,8 @@ namespace MiniStoreWinF.Manage_Voucher
             dgvVoucher.DataSource = new BindingSource() { DataSource = voucher };
         }
 
-       
-        
+
+
 
         private void frmShowVoucher_DoubleClick(object sender, EventArgs e)
         {
@@ -275,6 +275,11 @@ namespace MiniStoreWinF.Manage_Voucher
         {
 
 
+
+        }
+
+        private void pnShow_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
