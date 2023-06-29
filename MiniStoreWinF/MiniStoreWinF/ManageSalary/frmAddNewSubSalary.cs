@@ -19,13 +19,12 @@ namespace MiniStoreWinF.ManageSalary
         public frmAddNewSubSalary()
         {
             InitializeComponent();
-
+            _detailSubSalaryService = new DetailSubSalaryService();
         }
 
         //button click to add new 
         private void btOKEdit_Click(object sender, EventArgs e)
         {
-            _detailSubSalaryService = new DetailSubSalaryService();
             double subSalary;
             if (txtDis.Text == null || !double.TryParse(txtSalary.Text, out subSalary))
             {

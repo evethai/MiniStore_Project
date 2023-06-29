@@ -22,6 +22,10 @@ namespace MiniStoreWinF.ManageSalary
         public frmSalary()
         {
             InitializeComponent();
+            _subSalaryService = new SubSalaryService();
+            _salaryService = new SalaryService();
+
+
             //auto calculator sub salary
             AutoSubSalary();
 
@@ -59,7 +63,6 @@ namespace MiniStoreWinF.ManageSalary
         }
         public void AutoSubSalary()
         {
-            _subSalaryService = new SubSalaryService();
             //check in last month calculated sub salary?
             var sum = _subSalaryService.GetAll().Count(p => p.Time.Value.Month.Equals(u.GetTime(DateTime.Now).Month));
             if (sum > 0)
@@ -74,7 +77,6 @@ namespace MiniStoreWinF.ManageSalary
         }
         public void AutoSalary()
         {
-            _salaryService = new SalaryService();
             //check in last month calcualted Salary ?
             var sum1 = _salaryService.GetAll().Count(p => p.DateImonth.Month.Equals(u.GetTime(DateTime.Now).Month));
             if (sum1 > 0)

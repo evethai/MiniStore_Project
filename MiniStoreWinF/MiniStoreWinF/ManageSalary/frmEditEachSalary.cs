@@ -21,6 +21,8 @@ namespace MiniStoreWinF.ManageSalary
         public frmEditEachSalary()
         {
             InitializeComponent();
+            _permissionService = new PermissionService();
+
         }
 
         private void frmEditEachSalary_Load(object sender, EventArgs e)
@@ -31,7 +33,6 @@ namespace MiniStoreWinF.ManageSalary
 
         private void btSave_Click(object sender, EventArgs e)
         {
-            _permissionService = new PermissionService();
             if (oldEmpSalary != txtNewEmp.Text || oldGuardSalary != txtNewGuard.Text)
             {
                 var emp = _permissionService.GetAll().Where(p => p.Roles == 2).FirstOrDefault();

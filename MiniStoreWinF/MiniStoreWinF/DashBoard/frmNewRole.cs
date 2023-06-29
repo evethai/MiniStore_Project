@@ -19,11 +19,12 @@ namespace MiniStoreWinF.DashBoard
         public frmNewRole()
         {
             InitializeComponent();
+            _permissionDetailService = new PermissionDetailService();
+            _permissionService = new PermissionService();
+
         }
         private void buOk_Click(object sender, EventArgs e)
         {
-            _permissionService = new PermissionService();
-            _permissionDetailService = new PermissionDetailService();
             Permission p = new Permission();
             if (txtRole.Text.Trim().Length > 0)
             {

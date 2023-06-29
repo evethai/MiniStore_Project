@@ -20,12 +20,13 @@ namespace MiniStoreWinF.ManageSalary
         public frmSalarySetup()
         {
             InitializeComponent();
+            permissionService = new PermissionService();
+            employeeService = new EmployeeService();
+
         }
 
         public void loadform()
         {
-            permissionService = new PermissionService();
-            employeeService = new EmployeeService();
             //
             var SaEmp = permissionService.GetAll().Where(p => p.Roles == 2).FirstOrDefault();
             if (SaEmp != null)
@@ -68,7 +69,6 @@ namespace MiniStoreWinF.ManageSalary
         private void frmSalarySetup_Load(object sender, EventArgs e)
         {
             loadform();
-
         }
 
         private void btEditTax_Click(object sender, EventArgs e)

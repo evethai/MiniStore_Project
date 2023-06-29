@@ -22,6 +22,8 @@ namespace MiniStoreWinF.DashBoard
         public frmMoMo()
         {
             InitializeComponent();
+            _moService = new MoMoService();
+
         }
 
         private void frmMoMo_Load(object sender, EventArgs e)
@@ -30,7 +32,6 @@ namespace MiniStoreWinF.DashBoard
         }
         public void loadPage()
         {
-            _moService = new MoMoService();
             var list = _moService.GetAll().ToList();
             dgvList.DataSource = list;
         }
@@ -85,7 +86,6 @@ namespace MiniStoreWinF.DashBoard
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            _moService = new MoMoService();
             var momo = _moService.GetAll().Where(p => p.Id == Int32.Parse(txtSave.Text)).FirstOrDefault();
             if (momo != null)
             {
@@ -102,7 +102,6 @@ namespace MiniStoreWinF.DashBoard
 
         private void btnUse_Click(object sender, EventArgs e)
         {
-            _moService = new MoMoService();
             DialogResult result = MessageBox.Show("Are you sure you want to change your MoMo account?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {

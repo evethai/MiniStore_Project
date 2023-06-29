@@ -25,13 +25,16 @@ namespace MiniStoreWinF.DashBoard
         public frmAdmin()
         {
             InitializeComponent();
+            _permissionService = new PermissionService();
+            _employeeService = new EmployeeService();
+            _permissionDetailService = new PermissionDetailService();
+
             loadRole();
             numberOfRole();
         }
 
         private void Authorization(string id)
         {
-            _permissionDetailService = new PermissionDetailService();
             var list = _permissionDetailService.GetAll().Where(p => p.IdPer == Int32.Parse(id)).ToList();
             dgvAuthorization.Rows.Clear();
             foreach (var item in list)
@@ -63,8 +66,6 @@ namespace MiniStoreWinF.DashBoard
 
         private void numberOfRole()
         {
-            _permissionService = new PermissionService();
-            _employeeService = new EmployeeService();
             var list = _permissionService.GetAll().ToList();
             dgvPer.Rows.Clear();
             foreach (var item in list)
@@ -85,7 +86,6 @@ namespace MiniStoreWinF.DashBoard
 
         private void loadRole()
         {
-            _permissionService = new PermissionService();
             var list = _permissionService.GetAll().ToList();
             AutoCompleteStringCollection autoCompleteStringCollection = new AutoCompleteStringCollection();
             foreach (var item in list)
@@ -111,8 +111,7 @@ namespace MiniStoreWinF.DashBoard
 
         private void dgvAuthorization_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            _permissionDetailService = new PermissionDetailService();
-            _permissionService = new PermissionService();
+ 
             var id = dgvAuthorization[0, e.RowIndex].Value;
             bool isChecked = (bool)dgvAuthorization.Rows[e.RowIndex].Cells["check"].Value;
 

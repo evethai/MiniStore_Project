@@ -20,7 +20,6 @@ namespace MiniStoreWinF.DashBoard
 {
     public partial class frmQRCode : Form
     {
-        MoMoService _moService;
         public double total;
         public frmQRCode()
         {

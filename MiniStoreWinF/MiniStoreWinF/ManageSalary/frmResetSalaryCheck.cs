@@ -14,16 +14,17 @@ namespace MiniStoreWinF.ManageSalary
     public partial class frmResetSalaryCheck : Form
     {
         SalaryService _salaryService;
+        CalculationAuto ca = new CalculationAuto();
         Utinity u = new Utinity();
         public frmResetSalaryCheck()
         {
             InitializeComponent();
+            _salaryService = new SalaryService();
+
         }
 
         private void btReset_Click(object sender, EventArgs e)
         {
-            _salaryService = new SalaryService();
-            CalculationAuto ca = new CalculationAuto();
             DateTime time = u.GetLastDayOfMonth(dtpTime.Value);
             DialogResult result = MessageBox.Show("Remember choice time to reset salary!", "Messages", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)

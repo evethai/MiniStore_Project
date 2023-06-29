@@ -74,7 +74,7 @@
             btSub.Name = "btSub";
             btSub.Size = new Size(253, 65);
             btSub.TabIndex = 0;
-            btSub.Text = "Allowance&Advanced";
+            btSub.Text = "Allowance && Advanced";
             btSub.UseVisualStyleBackColor = true;
             btSub.Click += btSub_Click;
             // 

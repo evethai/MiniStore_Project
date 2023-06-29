@@ -81,5 +81,15 @@ namespace MiniStoreWinF
         {
             lblname.Visible = false;
         }
+
+        private void lblname_Click(object sender, EventArgs e)
+        {
+            txtUserName.Focus();
+        }
+
+        private void lblpass_Click(object sender, EventArgs e)
+        {
+            txtPassword.Focus();
+        }
     }
 }

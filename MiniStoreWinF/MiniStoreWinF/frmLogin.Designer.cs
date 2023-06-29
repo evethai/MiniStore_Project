@@ -70,6 +70,7 @@
             lblname.Size = new Size(67, 17);
             lblname.TabIndex = 14;
             lblname.Text = "Username";
+            lblname.Click += lblname_Click;
             // 
             // txtUserName
             // 
@@ -77,7 +78,6 @@
             txtUserName.Name = "txtUserName";
             txtUserName.Size = new Size(214, 25);
             txtUserName.TabIndex = 16;
-            txtUserName.TextAlign = HorizontalAlignment.Center;
             txtUserName.Enter += txtUserName_Enter_1;
             // 
             // lblpass
@@ -88,6 +88,7 @@
             lblpass.Size = new Size(64, 17);
             lblpass.TabIndex = 15;
             lblpass.Text = "Password";
+            lblpass.Click += lblpass_Click;
             // 
             // btnLogin
             // 
@@ -147,7 +148,6 @@
             txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(222, 25);
             txtPassword.TabIndex = 17;
-            txtPassword.TextAlign = HorizontalAlignment.Center;
             txtPassword.Enter += txtPassword_Enter;
             // 
             // button1

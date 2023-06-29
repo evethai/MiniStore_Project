@@ -18,11 +18,13 @@ namespace MiniStoreWinF.ManageSalary
         public frmSalaryDetail()
         {
             InitializeComponent();
+            _salaryService = new SalaryService();
 
         }
         private void frmSalaryDetail_Load(object sender, EventArgs e)
         {
             ShowListSalary(DateTime.Now.AddMonths(-1));
+            dtpTime.Value = DateTime.Now.AddMonths(-1);
             u.showListEmp_ALL(cbName);
         }
 
@@ -142,7 +144,6 @@ namespace MiniStoreWinF.ManageSalary
 
         private void dgvSalary_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            _salaryService = new SalaryService();
             var id = dgvSalary[0, e.RowIndex].Value;
             var s_salary = _salaryService.GetAll().Where(p => p.IdSalary.Equals(id)).FirstOrDefault();
             if (s_salary != null)

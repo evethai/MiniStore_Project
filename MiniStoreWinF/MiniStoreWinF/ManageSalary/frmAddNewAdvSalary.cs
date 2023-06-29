@@ -20,7 +20,7 @@ namespace MiniStoreWinF.ManageSalary
         public frmAddNewAdvSalary()
         {
             InitializeComponent();
-
+            _detailAdvanceSalaryService = new DetailAdvanceSalaryService();
         }
 
         //nhấn button để lưu kết quả add new 
@@ -34,7 +34,6 @@ namespace MiniStoreWinF.ManageSalary
             }
             else
             {
-                _detailAdvanceSalaryService = new DetailAdvanceSalaryService();
                 DetailAdvanceSalary detailAdvanceSalary = new DetailAdvanceSalary();
                 int n = _detailAdvanceSalaryService.GetAll().Count();
                 detailAdvanceSalary.IdAdvanceSalary = u.GenerateAutoId(n, "ADV");//auto tạo ID
@@ -69,11 +68,6 @@ namespace MiniStoreWinF.ManageSalary
         private void txtTotal_KeyPress(object sender, KeyPressEventArgs e)
         {
             u.numberOnly(e, txtTotal.Text, 9);
-        }
-
-        private void txtTotal_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

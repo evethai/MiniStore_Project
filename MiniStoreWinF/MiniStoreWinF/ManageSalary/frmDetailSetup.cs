@@ -17,11 +17,12 @@ namespace MiniStoreWinF.ManageSalary
         public frmDetailSetup()
         {
             InitializeComponent();
+            _employeeService = new EmployeeService();
+
         }
 
         private void frmDetailSetup_Load(object sender, EventArgs e)
         {
-            _employeeService = new EmployeeService();
             var list = _employeeService.GetAll()
                 .Where(p => (p.Roles == 2 || p.Roles == 3) && p.IsActive == true).ToList();
             dgvRoles.DataSource = list;

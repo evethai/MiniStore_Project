@@ -23,6 +23,10 @@ namespace MiniStoreWinF.ManageSalary
         public frmDetailSalaryDetail()
         {
             InitializeComponent();
+            _salaryService = new SalaryService();
+            _workSheetService = new WorkSheetService();
+            _employeeService = new EmployeeService();
+            _orderService = new OrderService();
         }
 
         private void frmDetailSalaryDetail_Load(object sender, EventArgs e)
@@ -42,8 +46,7 @@ namespace MiniStoreWinF.ManageSalary
         /*show list worktime in month of each specific employee*/
         public void dataList(string id, DateTime date)
         {
-            _salaryService = new SalaryService();
-            _workSheetService = new WorkSheetService();
+
             var listSa = _salaryService.GetAll().ToList();
             var listWs = _workSheetService.GetAll().Where(p => p.Date.Value.Month.Equals(date.Month)&&p.Status==true).ToList();
 
@@ -129,7 +132,6 @@ namespace MiniStoreWinF.ManageSalary
         public double sumHourinMonth(DateTime time, string id)
         {
             double sum = 0;
-            _workSheetService = new WorkSheetService();
             var list = _workSheetService.GetAll().Where(p => p.Date.Value.Month.Equals(time.Month) && p.IdEmp.Equals(id)&&p.Status==true).ToList();
             foreach (var item in list)
             {
@@ -141,7 +143,6 @@ namespace MiniStoreWinF.ManageSalary
         {
 
             double? total = 0;
-            _orderService = new OrderService();
             var list = _orderService.GetAll().Where(p => p.IdEmp.Equals(id) && p.DateOrders.Value.Month.Equals(time.Month)).ToList();
             foreach (var item in list)
             {
@@ -151,14 +152,12 @@ namespace MiniStoreWinF.ManageSalary
         }
         public int countTotal(DateTime time, string id)
         {
-            _orderService = new OrderService();
             var count = _orderService.GetAll().Count(p => p.IdEmp.Equals(id) && p.DateOrders.Value.Month.Equals(time.Month));
             return count;
         }
         public string name(string id)
         {
             string emp = "";
-            _employeeService = new EmployeeService();
             var list = _employeeService.GetAll().Where(p => p.IdEmp.Equals(id)).FirstOrDefault();
             if (list != null)
             {

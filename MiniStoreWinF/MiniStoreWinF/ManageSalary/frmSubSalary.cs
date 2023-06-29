@@ -13,6 +13,8 @@ namespace MiniStoreWinF.ManageSalary
         DetailSubSalaryService _detailSubSalaryService;
         EmployeeService _employeeService;
         SubSalaryService _subSalaryService;
+        DetailAdvanceSalaryService _detailAdvanceSalaryService;
+
         Utinity u = new Utinity();
         CalculationAuto ca = new CalculationAuto();
         List<SubSalary> _list = null;
@@ -22,7 +24,10 @@ namespace MiniStoreWinF.ManageSalary
         public frmSubSalary()
         {
             InitializeComponent();
-
+            _detailSubSalaryService = new DetailSubSalaryService();
+            _employeeService = new EmployeeService();
+            _subSalaryService = new SubSalaryService();
+            _detailAdvanceSalaryService = new DetailAdvanceSalaryService();
         }
 
         private void frmSubSalary_Load(object sender, EventArgs e)
@@ -38,12 +43,14 @@ namespace MiniStoreWinF.ManageSalary
 
             //Show list Advance Salary  last month
             dgvAdv.DataSource = showAdvanceSalary(DateTime.Now.AddMonths(-1)).ToList();
+
+            dtpList.Value = DateTime.Now.AddMonths(-1);
+
         }
 
         //Show list Sub Salary  last month
         public void showListEmployeHasSubSalary(DateTime time)
         {
-            _subSalaryService = new SubSalaryService();
             var list = _subSalaryService.GetAll().Where(p => p.Time.Value.Month.Equals(time.Month)).ToList();
             dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
             _list = list;
@@ -52,7 +59,6 @@ namespace MiniStoreWinF.ManageSalary
         //Show list SubSalary of MiniStore by Admin create create
         public void showListSub()
         {
-            _detailSubSalaryService = new DetailSubSalaryService();
             var listSub = _detailSubSalaryService.GetAll().Where(p => p.ActiveSub == true).ToList();
             dgvSub.DataSource = listSub;
         }
@@ -84,8 +90,6 @@ namespace MiniStoreWinF.ManageSalary
         {
             try
             {
-
-
                 var id = dgvSub[0, e.RowIndex].Value;
                 var s_salary = _detailSubSalaryService.GetAll().Where(p => p.IdDetailSubSalary.Equals(id) && p.ActiveSub == true).FirstOrDefault();
                 if (s_salary != null)
@@ -126,7 +130,6 @@ namespace MiniStoreWinF.ManageSalary
         //Paging
         List<SubSalary> LoadRecord(int page, int numberRe, List<SubSalary> list)
         {
-            _subSalaryService = new SubSalaryService();
             List<SubSalary> result = new List<SubSalary>();
             result = list.Skip((page - 1) * numberRe).Take(numberRecord).ToList();
             return result;
@@ -136,7 +139,6 @@ namespace MiniStoreWinF.ManageSalary
         //------------------------------------------------------------------------------
         //------Code Advance Salary-----------------------------------------------------
         //------------------------------------------------------------------------------
-        DetailAdvanceSalaryService _detailAdvanceSalaryService;
 
         //Add new Advance salary 
         private void btAddnew_Adv_Click(object sender, EventArgs e)
@@ -159,8 +161,6 @@ namespace MiniStoreWinF.ManageSalary
         //Search Advance salary by name
         public void searchAdvByName(string id)
         {
-            _employeeService = new EmployeeService();
-            _detailAdvanceSalaryService = new DetailAdvanceSalaryService();
             var listAdv = _detailAdvanceSalaryService.GetAll().Where(p => p.DateAs.Value.Month.Equals(dtpList.Value.Month)).ToList();
             var listEmp = _employeeService.GetAll().Where(p => p.IdEmp.Equals(id) && p.IsActive == true).ToList();
 
@@ -176,7 +176,6 @@ namespace MiniStoreWinF.ManageSalary
         //Search Sub salary by name
         public void searchSubByName(string id)
         {
-            _subSalaryService = new SubSalaryService();
             DateTime time = dtpList.Value;
             double total = ca.SubSalary(id, time);
             txtTotal.Text = u.formatDouble(total);
@@ -193,12 +192,15 @@ namespace MiniStoreWinF.ManageSalary
             {
                 showListEmployeHasSubSalary(dtpList.Value);
                 dgvAdv.DataSource = showAdvanceSalary(dtpList.Value).OrderByDescending(p => p.AdvanceSalary).ToList();
+                txtTotal.Text = "";
 
             }
             else if (cbOrderby.Text != "Descending" && id == "-1")
             {
                 showListEmployeHasSubSalary(dtpList.Value);
                 dgvAdv.DataSource = showAdvanceSalary(dtpList.Value).OrderBy(p => p.AdvanceSalary).ToList();
+                txtTotal.Text = "";
+
             }
             else
             {

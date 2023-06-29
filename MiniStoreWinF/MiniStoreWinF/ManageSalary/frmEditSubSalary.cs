@@ -16,19 +16,18 @@ namespace MiniStoreWinF.ManageSalary
     public partial class frmEditSubSalary : Form
     {
         DetailSubSalaryService _detailSubSalaryService;
-        //public string idForm;
-        //public string disForm;
-        //public string saForm;
-        //public string conForm;
+
         public frmEditSubSalary()
         {
             InitializeComponent();
+
+            _detailSubSalaryService = new DetailSubSalaryService();
+
         }
 
 
         private void btUpdate_Click(object sender, EventArgs e)
         {
-            _detailSubSalaryService = new DetailSubSalaryService();
             double subSalary;
             string id = ContextScope.currentSubSalary.IdDetailSubSalary;
             if (txtDis.Text == null || !double.TryParse(txtSalary.Text, out subSalary))
@@ -55,7 +54,6 @@ namespace MiniStoreWinF.ManageSalary
 
         private void btRemove_Click(object sender, EventArgs e)
         {
-            _detailSubSalaryService = new DetailSubSalaryService();
             string id = ContextScope.currentSubSalary.IdDetailSubSalary;
             DialogResult result = MessageBox.Show("Remove SubSalary!", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)

@@ -35,6 +35,12 @@ namespace MiniStoreWinF.DashBoard
         public frmDashBoard()
         {
             InitializeComponent();
+            _orderService = new OrderService();
+            _catalogyService = new CatalogyService();
+            _memberService = new MemberService();
+            _revenueService = new RevenueService();
+            _voucherService = new VoucherService();
+            _productService = new ProductService();
 
         }
 
@@ -48,9 +54,6 @@ namespace MiniStoreWinF.DashBoard
 
         public void ChartProduct(PictureBox p)
         {
-            _orderService = new OrderService();
-            _catalogyService = new CatalogyService();
-            _productService = new ProductService();
             OxyPlot.WindowsForms.PlotView pv = new PlotView();
             pv.Dock = DockStyle.Fill;
             p.Controls.Add(pv);
@@ -88,7 +91,6 @@ namespace MiniStoreWinF.DashBoard
 
         public void ChartMember(PictureBox p)
         {
-            _memberService = new MemberService();
             OxyPlot.WindowsForms.PlotView pv = new PlotView();
             pv.Dock = DockStyle.Fill;
             p.Controls.Add(pv);
@@ -147,7 +149,6 @@ namespace MiniStoreWinF.DashBoard
             try
 
             {
-                _revenueService = new RevenueService();
                 var listRevenues = _revenueService.GetAll().OrderByDescending(p => p.DateRevenue).Take(7).ToList();//7 ngày gần nhất 
 
                 // Tạo danh sách dataPoints cho biểu đồ
@@ -230,7 +231,6 @@ namespace MiniStoreWinF.DashBoard
 
         public void ChartVoucher()
         {
-            _voucherService = new VoucherService();
             var list = _voucherService.GetAll().Where(p => p.Quantity > 0).ToList();
             foreach (var voucher in list)
             {

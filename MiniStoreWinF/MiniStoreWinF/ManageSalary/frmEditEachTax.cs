@@ -23,11 +23,12 @@ namespace MiniStoreWinF.ManageSalary
         public frmEditEachTax()
         {
             InitializeComponent();
+            _permissionService = new PermissionService();
+
         }
 
         private void btSave_Click(object sender, EventArgs e)
         {
-            _permissionService = new PermissionService();
             if (oldTaxEmp != txtNewEmp.Text || oldTaxGuard != txtNewGuard.Text)
             {
                 var emp = _permissionService.GetAll().Where(p => p.Roles == 2).FirstOrDefault();

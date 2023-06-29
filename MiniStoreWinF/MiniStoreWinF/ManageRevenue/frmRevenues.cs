@@ -27,12 +27,15 @@ namespace MiniStoreWinF.ManageRevenue
         public frmRevenues()
         {
             InitializeComponent();
+            _revenueService = new RevenueService();
+            _billOrderService = new BillOrderService();
+            _orderService = new OrderService();
+            _catalogyService = new CatalogyService();
+            _productService = new ProductService();
         }
 
         public void chartRevenues(DateTime time)
         {
-            _revenueService = new RevenueService();
-            _billOrderService = new BillOrderService();
             var listRe = _revenueService.GetAll().Where(p => p.DateRevenue.Month.Equals(time.Month)).ToList();
             var listBill = _billOrderService.GetAll().Where(p => p.DateOfBill.Value.Month.Equals(time.Month)).ToList();
             double? reInMonth = 0;
@@ -99,8 +102,6 @@ namespace MiniStoreWinF.ManageRevenue
         }
         public void sumDetail()
         {
-            _revenueService = new RevenueService();
-            _billOrderService = new BillOrderService();
             var listRe = _revenueService.GetAll().ToList();
             var listBill = _billOrderService.GetAll().Count();
             double? totalRevenue = 0;
@@ -113,9 +114,7 @@ namespace MiniStoreWinF.ManageRevenue
         }
         public void chartReTypeProduct(DateTime time)
         {
-            _orderService = new OrderService();
-            _catalogyService = new CatalogyService();
-            _productService = new ProductService();
+
             var ca = _catalogyService.GetAll().ToList();
             var pro = _productService.GetAll().Where(p => p.StatusP == true).ToList();
             var or = _orderService.GetAll().Where(p => p.DateOrders.Value.Month.Equals(time.Month)).ToList();
@@ -148,14 +147,12 @@ namespace MiniStoreWinF.ManageRevenue
 
         private void dtpRe_ValueChanged(object sender, EventArgs e)
         {
-            _revenueService = new RevenueService();
             var first = _revenueService.GetAll().FirstOrDefault();
             var last = _revenueService.GetAll().LastOrDefault();
-            if (dtpRe.Value.Date < first.DateRevenue || dtpRe.Value.Date > last.DateRevenue)
+            if (dtpRe.Value.Month < first.DateRevenue.Month || dtpRe.Value.Month > last.DateRevenue.Month)
             {
                 MessageBox.Show("No sales this month", "Messages", MessageBoxButtons.OK);
-                dtpRe.Text = DateTime.Now.ToString();
-                return;
+                dtpRe.Value = DateTime.Now;
             }
             else
             {
