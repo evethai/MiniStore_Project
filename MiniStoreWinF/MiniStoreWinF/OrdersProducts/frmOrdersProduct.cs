@@ -107,7 +107,7 @@ namespace MiniStoreWinF.OrdersProducts
 
 
             txtQuantityOrder.Value = 0;
-            
+
         } // button add product => OK
         public void AddItems()
         {

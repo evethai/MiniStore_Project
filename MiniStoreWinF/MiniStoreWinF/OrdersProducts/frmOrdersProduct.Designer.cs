@@ -83,6 +83,7 @@
             btShowBill = new Button();
             lblCustomerProvidesCash = new Label();
             lblTotalBillAmount = new Label();
+            panel3 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvShowListProducts).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productBindingSource).BeginInit();
             pnlAll.SuspendLayout();
@@ -97,6 +98,7 @@
             ((System.ComponentModel.ISupportInitialize)txtQuantityOrder).BeginInit();
             tableLayoutPanel4.SuspendLayout();
             pnlCashPayment.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // dgvShowListProducts
@@ -107,11 +109,11 @@
             dgvShowListProducts.Columns.AddRange(new DataGridViewColumn[] { skuDataGridViewTextBoxColumn, nameProductDataGridViewTextBoxColumn, priceProductDataGridViewTextBoxColumn, mfgDataGridViewTextBoxColumn, expDataGridViewTextBoxColumn });
             dgvShowListProducts.DataSource = productBindingSource;
             dgvShowListProducts.Dock = DockStyle.Fill;
-            dgvShowListProducts.Location = new Point(3, 93);
+            dgvShowListProducts.Location = new Point(3, 79);
             dgvShowListProducts.Name = "dgvShowListProducts";
             dgvShowListProducts.RowHeadersWidth = 51;
             dgvShowListProducts.RowTemplate.Height = 29;
-            dgvShowListProducts.Size = new Size(533, 504);
+            dgvShowListProducts.Size = new Size(465, 427);
             dgvShowListProducts.TabIndex = 2;
             dgvShowListProducts.CellMouseDoubleClick += dgvShowListProducts_CellMouseDoubleClick;
             // 
@@ -165,7 +167,7 @@
             pnlAll.Dock = DockStyle.Fill;
             pnlAll.Location = new Point(0, 0);
             pnlAll.Name = "pnlAll";
-            pnlAll.Size = new Size(1364, 606);
+            pnlAll.Size = new Size(1194, 515);
             pnlAll.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -182,7 +184,7 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1364, 606);
+            tableLayoutPanel1.Size = new Size(1194, 515);
             tableLayoutPanel1.TabIndex = 20;
             // 
             // tableLayoutPanel2
@@ -197,7 +199,7 @@
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 85F));
-            tableLayoutPanel2.Size = new Size(539, 600);
+            tableLayoutPanel2.Size = new Size(471, 509);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // panel1
@@ -209,7 +211,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(533, 84);
+            panel1.Size = new Size(465, 70);
             panel1.TabIndex = 19;
             // 
             // btSearch
@@ -217,9 +219,9 @@
             btSearch.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btSearch.Image = (Image)resources.GetObject("btSearch.Image");
             btSearch.ImageAlign = ContentAlignment.MiddleLeft;
-            btSearch.Location = new Point(309, 11);
+            btSearch.Location = new Point(270, 9);
             btSearch.Name = "btSearch";
-            btSearch.Size = new Size(93, 42);
+            btSearch.Size = new Size(81, 36);
             btSearch.TabIndex = 4;
             btSearch.Text = "Search";
             btSearch.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -230,26 +232,26 @@
             // 
             cbTypeProducts.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cbTypeProducts.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            cbTypeProducts.Location = new Point(168, 52);
+            cbTypeProducts.Location = new Point(147, 44);
             cbTypeProducts.Name = "cbTypeProducts";
-            cbTypeProducts.Size = new Size(122, 28);
+            cbTypeProducts.Size = new Size(107, 25);
             cbTypeProducts.TabIndex = 11;
             cbTypeProducts.SelectedIndexChanged += cbTypeProducts_SelectedIndexChanged;
             // 
             // txtSearchName
             // 
-            txtSearchName.Location = new Point(96, 19);
+            txtSearchName.Location = new Point(84, 16);
             txtSearchName.Name = "txtSearchName";
-            txtSearchName.Size = new Size(207, 27);
+            txtSearchName.Size = new Size(182, 25);
             txtSearchName.TabIndex = 1;
             // 
             // lblType
             // 
             lblType.AutoSize = true;
             lblType.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblType.Location = new Point(104, 55);
+            lblType.Location = new Point(91, 47);
             lblType.Name = "lblType";
-            lblType.Size = new Size(49, 20);
+            lblType.Size = new Size(38, 15);
             lblType.TabIndex = 7;
             lblType.Text = "Type :";
             // 
@@ -260,19 +262,19 @@
             tableLayoutPanel3.Controls.Add(panel5, 0, 1);
             tableLayoutPanel3.Controls.Add(panel6, 0, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(548, 3);
+            tableLayoutPanel3.Location = new Point(480, 3);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            tableLayoutPanel3.Size = new Size(403, 600);
+            tableLayoutPanel3.Size = new Size(352, 509);
             tableLayoutPanel3.TabIndex = 1;
             // 
             // panel5
             // 
+            panel5.Controls.Add(panel3);
             panel5.Controls.Add(panel2);
             panel5.Controls.Add(txtScanVoucher);
-            panel5.Controls.Add(btUsingVoucher);
             panel5.Controls.Add(btCheckMember);
             panel5.Controls.Add(lblPoint);
             panel5.Controls.Add(cbPointUsing);
@@ -280,26 +282,26 @@
             panel5.Controls.Add(lblVoucher);
             panel5.Controls.Add(txtTotalAllOrders);
             panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(3, 363);
+            panel5.Location = new Point(3, 308);
             panel5.Name = "panel5";
-            panel5.Size = new Size(397, 234);
+            panel5.Size = new Size(346, 198);
             panel5.TabIndex = 16;
             // 
             // panel2
             // 
             panel2.Controls.Add(rdCashpayment);
             panel2.Controls.Add(rdMomopayment);
-            panel2.Location = new Point(125, 142);
+            panel2.Location = new Point(109, 121);
             panel2.Name = "panel2";
-            panel2.Size = new Size(173, 79);
+            panel2.Size = new Size(151, 67);
             panel2.TabIndex = 21;
             // 
             // rdCashpayment
             // 
             rdCashpayment.AutoSize = true;
-            rdCashpayment.Location = new Point(14, 44);
+            rdCashpayment.Location = new Point(12, 37);
             rdCashpayment.Name = "rdCashpayment";
-            rdCashpayment.Size = new Size(123, 24);
+            rdCashpayment.Size = new Size(108, 21);
             rdCashpayment.TabIndex = 1;
             rdCashpayment.TabStop = true;
             rdCashpayment.Text = "Cash payment";
@@ -309,9 +311,9 @@
             // rdMomopayment
             // 
             rdMomopayment.AutoSize = true;
-            rdMomopayment.Location = new Point(14, 14);
+            rdMomopayment.Location = new Point(12, 12);
             rdMomopayment.Name = "rdMomopayment";
-            rdMomopayment.Size = new Size(136, 24);
+            rdMomopayment.Size = new Size(119, 21);
             rdMomopayment.TabIndex = 0;
             rdMomopayment.TabStop = true;
             rdMomopayment.Text = "Momo payment";
@@ -320,17 +322,17 @@
             // 
             // txtScanVoucher
             // 
-            txtScanVoucher.Location = new Point(100, 17);
+            txtScanVoucher.Location = new Point(88, 14);
             txtScanVoucher.Name = "txtScanVoucher";
-            txtScanVoucher.Size = new Size(187, 27);
+            txtScanVoucher.Size = new Size(164, 25);
             txtScanVoucher.TabIndex = 20;
             // 
             // btUsingVoucher
             // 
-            btUsingVoucher.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btUsingVoucher.Location = new Point(292, 17);
+            btUsingVoucher.Dock = DockStyle.Fill;
+            btUsingVoucher.Location = new Point(0, 0);
             btUsingVoucher.Name = "btUsingVoucher";
-            btUsingVoucher.Size = new Size(88, 35);
+            btUsingVoucher.Size = new Size(76, 27);
             btUsingVoucher.TabIndex = 19;
             btUsingVoucher.Text = "Use";
             btUsingVoucher.UseVisualStyleBackColor = true;
@@ -341,9 +343,9 @@
             btCheckMember.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btCheckMember.Image = (Image)resources.GetObject("btCheckMember.Image");
             btCheckMember.ImageAlign = ContentAlignment.TopCenter;
-            btCheckMember.Location = new Point(20, 142);
+            btCheckMember.Location = new Point(18, 121);
             btCheckMember.Name = "btCheckMember";
-            btCheckMember.Size = new Size(99, 70);
+            btCheckMember.Size = new Size(87, 60);
             btCheckMember.TabIndex = 6;
             btCheckMember.Text = "Member";
             btCheckMember.TextAlign = ContentAlignment.BottomCenter;
@@ -354,9 +356,9 @@
             // 
             lblPoint.AutoSize = true;
             lblPoint.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPoint.Location = new Point(20, 50);
+            lblPoint.Location = new Point(18, 42);
             lblPoint.Name = "lblPoint";
-            lblPoint.Size = new Size(52, 20);
+            lblPoint.Size = new Size(41, 15);
             lblPoint.TabIndex = 18;
             lblPoint.Text = "Point :";
             // 
@@ -364,9 +366,9 @@
             // 
             cbPointUsing.Enabled = false;
             cbPointUsing.FormattingEnabled = true;
-            cbPointUsing.Location = new Point(100, 50);
+            cbPointUsing.Location = new Point(88, 42);
             cbPointUsing.Name = "cbPointUsing";
-            cbPointUsing.Size = new Size(187, 28);
+            cbPointUsing.Size = new Size(164, 25);
             cbPointUsing.TabIndex = 17;
             cbPointUsing.SelectedIndexChanged += cbPointUsing_SelectedIndexChanged;
             // 
@@ -374,9 +376,9 @@
             // 
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTotal.Location = new Point(22, 87);
+            lblTotal.Location = new Point(19, 74);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(50, 20);
+            lblTotal.Size = new Size(39, 15);
             lblTotal.TabIndex = 15;
             lblTotal.Text = "Total :";
             // 
@@ -384,18 +386,18 @@
             // 
             lblVoucher.AutoSize = true;
             lblVoucher.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblVoucher.Location = new Point(11, 17);
+            lblVoucher.Location = new Point(10, 14);
             lblVoucher.Name = "lblVoucher";
-            lblVoucher.Size = new Size(77, 20);
+            lblVoucher.Size = new Size(58, 15);
             lblVoucher.TabIndex = 13;
             lblVoucher.Text = "Vourcher:";
             // 
             // txtTotalAllOrders
             // 
-            txtTotalAllOrders.Location = new Point(100, 84);
+            txtTotalAllOrders.Location = new Point(88, 71);
             txtTotalAllOrders.Name = "txtTotalAllOrders";
             txtTotalAllOrders.ReadOnly = true;
-            txtTotalAllOrders.Size = new Size(187, 27);
+            txtTotalAllOrders.Size = new Size(164, 25);
             txtTotalAllOrders.TabIndex = 14;
             // 
             // panel6
@@ -412,15 +414,15 @@
             panel6.Controls.Add(lblQuantity);
             panel6.Location = new Point(3, 3);
             panel6.Name = "panel6";
-            panel6.Size = new Size(397, 354);
+            panel6.Size = new Size(346, 299);
             panel6.TabIndex = 17;
             // 
             // pcPictureOrders
             // 
             pcPictureOrders.BorderStyle = BorderStyle.Fixed3D;
-            pcPictureOrders.Location = new Point(83, 133);
+            pcPictureOrders.Location = new Point(73, 113);
             pcPictureOrders.Name = "pcPictureOrders";
-            pcPictureOrders.Size = new Size(208, 176);
+            pcPictureOrders.Size = new Size(182, 150);
             pcPictureOrders.SizeMode = PictureBoxSizeMode.Zoom;
             pcPictureOrders.TabIndex = 0;
             pcPictureOrders.TabStop = false;
@@ -429,9 +431,9 @@
             // 
             lblPicture.AutoSize = true;
             lblPicture.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPicture.Location = new Point(11, 133);
+            lblPicture.Location = new Point(10, 113);
             lblPicture.Name = "lblPicture";
-            lblPicture.Size = new Size(61, 20);
+            lblPicture.Size = new Size(47, 15);
             lblPicture.TabIndex = 12;
             lblPicture.Text = "Picture:";
             // 
@@ -439,55 +441,55 @@
             // 
             btAddOrders.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btAddOrders.Image = (Image)resources.GetObject("btAddOrders.Image");
-            btAddOrders.Location = new Point(187, 315);
+            btAddOrders.Location = new Point(164, 268);
             btAddOrders.Name = "btAddOrders";
-            btAddOrders.Size = new Size(100, 36);
+            btAddOrders.Size = new Size(88, 31);
             btAddOrders.TabIndex = 8;
             btAddOrders.UseVisualStyleBackColor = true;
             btAddOrders.Click += btAddOrders_Click;
             // 
             // txtNameOrder
             // 
-            txtNameOrder.Location = new Point(83, 9);
+            txtNameOrder.Location = new Point(73, 8);
             txtNameOrder.Name = "txtNameOrder";
             txtNameOrder.ReadOnly = true;
-            txtNameOrder.Size = new Size(208, 27);
+            txtNameOrder.Size = new Size(182, 25);
             txtNameOrder.TabIndex = 0;
             // 
             // lblName
             // 
             lblName.AutoSize = true;
             lblName.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblName.Location = new Point(11, 11);
+            lblName.Location = new Point(10, 9);
             lblName.Name = "lblName";
-            lblName.Size = new Size(54, 20);
+            lblName.Size = new Size(42, 15);
             lblName.TabIndex = 1;
             lblName.Text = "Name:";
             // 
             // txtQuantityOrder
             // 
-            txtQuantityOrder.Location = new Point(83, 48);
+            txtQuantityOrder.Location = new Point(73, 41);
             txtQuantityOrder.Name = "txtQuantityOrder";
-            txtQuantityOrder.Size = new Size(207, 27);
+            txtQuantityOrder.Size = new Size(181, 25);
             txtQuantityOrder.TabIndex = 10;
             txtQuantityOrder.TextAlign = HorizontalAlignment.Center;
             txtQuantityOrder.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // txtPriceOrder
             // 
-            txtPriceOrder.Location = new Point(83, 89);
+            txtPriceOrder.Location = new Point(73, 76);
             txtPriceOrder.Name = "txtPriceOrder";
             txtPriceOrder.ReadOnly = true;
-            txtPriceOrder.Size = new Size(208, 27);
+            txtPriceOrder.Size = new Size(182, 25);
             txtPriceOrder.TabIndex = 2;
             // 
             // lblPrice
             // 
             lblPrice.AutoSize = true;
             lblPrice.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblPrice.Location = new Point(11, 95);
+            lblPrice.Location = new Point(10, 81);
             lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(47, 20);
+            lblPrice.Size = new Size(36, 15);
             lblPrice.TabIndex = 3;
             lblPrice.Text = "Price:";
             // 
@@ -495,9 +497,9 @@
             // 
             lblQuantity.AutoSize = true;
             lblQuantity.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblQuantity.Location = new Point(11, 50);
+            lblQuantity.Location = new Point(10, 42);
             lblQuantity.Name = "lblQuantity";
-            lblQuantity.Size = new Size(72, 20);
+            lblQuantity.Size = new Size(56, 15);
             lblQuantity.TabIndex = 4;
             lblQuantity.Text = "Quantity:";
             // 
@@ -508,12 +510,12 @@
             tableLayoutPanel4.Controls.Add(listViewOrders, 0, 0);
             tableLayoutPanel4.Controls.Add(pnlCashPayment, 0, 1);
             tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(957, 3);
+            tableLayoutPanel4.Location = new Point(838, 3);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 2;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            tableLayoutPanel4.Size = new Size(404, 600);
+            tableLayoutPanel4.Size = new Size(353, 509);
             tableLayoutPanel4.TabIndex = 2;
             // 
             // listViewOrders
@@ -527,7 +529,7 @@
             listViewOrders.Name = "listViewOrders";
             listViewOrders.RightToLeft = RightToLeft.No;
             listViewOrders.RightToLeftLayout = true;
-            listViewOrders.Size = new Size(398, 354);
+            listViewOrders.Size = new Size(347, 299);
             listViewOrders.Sorting = SortOrder.Ascending;
             listViewOrders.TabIndex = 9;
             listViewOrders.UseCompatibleStateImageBehavior = false;
@@ -570,42 +572,42 @@
             pnlCashPayment.Controls.Add(lblCustomerProvidesCash);
             pnlCashPayment.Controls.Add(lblTotalBillAmount);
             pnlCashPayment.Dock = DockStyle.Fill;
-            pnlCashPayment.Location = new Point(3, 363);
+            pnlCashPayment.Location = new Point(3, 308);
             pnlCashPayment.Name = "pnlCashPayment";
-            pnlCashPayment.Size = new Size(398, 234);
+            pnlCashPayment.Size = new Size(347, 198);
             pnlCashPayment.TabIndex = 10;
             // 
             // txtReturnPayment
             // 
-            txtReturnPayment.Location = new Point(158, 118);
+            txtReturnPayment.Location = new Point(138, 100);
             txtReturnPayment.Name = "txtReturnPayment";
             txtReturnPayment.ReadOnly = true;
-            txtReturnPayment.Size = new Size(187, 27);
+            txtReturnPayment.Size = new Size(164, 25);
             txtReturnPayment.TabIndex = 22;
             // 
             // txtProvidesCash
             // 
-            txtProvidesCash.Location = new Point(158, 66);
+            txtProvidesCash.Location = new Point(138, 56);
             txtProvidesCash.Name = "txtProvidesCash";
             txtProvidesCash.ReadOnly = true;
-            txtProvidesCash.Size = new Size(187, 27);
+            txtProvidesCash.Size = new Size(164, 25);
             txtProvidesCash.TabIndex = 21;
             // 
             // txtTotalBillPayment
             // 
-            txtTotalBillPayment.Location = new Point(158, 14);
+            txtTotalBillPayment.Location = new Point(138, 12);
             txtTotalBillPayment.Name = "txtTotalBillPayment";
             txtTotalBillPayment.ReadOnly = true;
-            txtTotalBillPayment.Size = new Size(187, 27);
+            txtTotalBillPayment.Size = new Size(164, 25);
             txtTotalBillPayment.TabIndex = 18;
             // 
             // lblReturnChange
             // 
             lblReturnChange.AutoSize = true;
             lblReturnChange.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblReturnChange.Location = new Point(24, 121);
+            lblReturnChange.Location = new Point(21, 103);
             lblReturnChange.Name = "lblReturnChange";
-            lblReturnChange.Size = new Size(123, 20);
+            lblReturnChange.Size = new Size(95, 15);
             lblReturnChange.TabIndex = 17;
             lblReturnChange.Text = "Return Payment:";
             // 
@@ -615,9 +617,9 @@
             btShowBill.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btShowBill.Image = (Image)resources.GetObject("btShowBill.Image");
             btShowBill.ImageAlign = ContentAlignment.TopCenter;
-            btShowBill.Location = new Point(246, 151);
+            btShowBill.Location = new Point(214, 127);
             btShowBill.Name = "btShowBill";
-            btShowBill.Size = new Size(99, 70);
+            btShowBill.Size = new Size(87, 60);
             btShowBill.TabIndex = 11;
             btShowBill.Text = "Bill";
             btShowBill.TextAlign = ContentAlignment.BottomCenter;
@@ -629,9 +631,9 @@
             // 
             lblCustomerProvidesCash.AutoSize = true;
             lblCustomerProvidesCash.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblCustomerProvidesCash.Location = new Point(24, 69);
+            lblCustomerProvidesCash.Location = new Point(21, 59);
             lblCustomerProvidesCash.Name = "lblCustomerProvidesCash";
-            lblCustomerProvidesCash.Size = new Size(106, 20);
+            lblCustomerProvidesCash.Size = new Size(82, 15);
             lblCustomerProvidesCash.TabIndex = 16;
             lblCustomerProvidesCash.Text = "Provides cash:";
             // 
@@ -639,17 +641,25 @@
             // 
             lblTotalBillAmount.AutoSize = true;
             lblTotalBillAmount.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTotalBillAmount.Location = new Point(24, 17);
+            lblTotalBillAmount.Location = new Point(21, 14);
             lblTotalBillAmount.Name = "lblTotalBillAmount";
-            lblTotalBillAmount.Size = new Size(128, 20);
+            lblTotalBillAmount.Size = new Size(100, 15);
             lblTotalBillAmount.TabIndex = 14;
             lblTotalBillAmount.Text = "Total bill amount:";
             // 
+            // panel3
+            // 
+            panel3.Controls.Add(btUsingVoucher);
+            panel3.Location = new Point(267, 12);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(76, 27);
+            panel3.TabIndex = 22;
+            // 
             // OrderProducts
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1364, 606);
+            ClientSize = new Size(1194, 515);
             Controls.Add(pnlAll);
             Name = "OrderProducts";
             StartPosition = FormStartPosition.WindowsDefaultBounds;
@@ -674,6 +684,7 @@
             tableLayoutPanel4.ResumeLayout(false);
             pnlCashPayment.ResumeLayout(false);
             pnlCashPayment.PerformLayout();
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -733,5 +744,6 @@
         private Button btShowBill;
         private Label lblCustomerProvidesCash;
         private Label lblTotalBillAmount;
+        private Panel panel3;
     }
 }

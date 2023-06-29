@@ -105,6 +105,7 @@
             btnNextMonth = new Button();
             btnMonthBack = new Button();
             panel17 = new Panel();
+            panel8 = new Panel();
             pnlMatricDate = new Panel();
             tableLayoutPanel7 = new TableLayoutPanel();
             btMonday = new Button();
@@ -149,6 +150,7 @@
             panel7.SuspendLayout();
             tableLayoutPanel6.SuspendLayout();
             panel17.SuspendLayout();
+            panel8.SuspendLayout();
             tableLayoutPanel7.SuspendLayout();
             panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
@@ -892,7 +894,7 @@
             // 
             // panel17
             // 
-            panel17.Controls.Add(pnlMatricDate);
+            panel17.Controls.Add(panel8);
             panel17.Controls.Add(tableLayoutPanel7);
             panel17.Dock = DockStyle.Fill;
             panel17.Location = new Point(123, 3);
@@ -900,10 +902,19 @@
             panel17.Size = new Size(955, 462);
             panel17.TabIndex = 9;
             // 
+            // panel8
+            // 
+            panel8.Controls.Add(pnlMatricDate);
+            panel8.Dock = DockStyle.Fill;
+            panel8.Location = new Point(0, 66);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(955, 396);
+            panel8.TabIndex = 8;
+            // 
             // pnlMatricDate
             // 
             pnlMatricDate.Dock = DockStyle.Fill;
-            pnlMatricDate.Location = new Point(0, 66);
+            pnlMatricDate.Location = new Point(0, 0);
             pnlMatricDate.Name = "pnlMatricDate";
             pnlMatricDate.Size = new Size(955, 396);
             pnlMatricDate.TabIndex = 1;
@@ -936,9 +947,10 @@
             // btMonday
             // 
             btMonday.Dock = DockStyle.Fill;
-            btMonday.Location = new Point(3, 3);
+            btMonday.Location = new Point(0, 3);
+            btMonday.Margin = new Padding(0, 3, 3, 3);
             btMonday.Name = "btMonday";
-            btMonday.Size = new Size(127, 60);
+            btMonday.Size = new Size(130, 60);
             btMonday.TabIndex = 0;
             btMonday.Text = "Monday";
             btMonday.UseVisualStyleBackColor = true;
@@ -1093,6 +1105,7 @@
             panel7.ResumeLayout(false);
             tableLayoutPanel6.ResumeLayout(false);
             panel17.ResumeLayout(false);
+            panel8.ResumeLayout(false);
             tableLayoutPanel7.ResumeLayout(false);
             panel10.ResumeLayout(false);
             panel10.PerformLayout();
@@ -1191,5 +1204,6 @@
         private TableLayoutPanel tableLayoutPanel6;
         private TableLayoutPanel tableLayoutPanel7;
         private Panel panel17;
+        private Panel panel8;
     }
 }
