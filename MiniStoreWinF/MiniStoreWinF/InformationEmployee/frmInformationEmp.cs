@@ -87,9 +87,8 @@ namespace MiniStoreWinF.InformationEmployee
                     txtSex.Text = "Male";
                 }
                 txtPhone.Text = infoEmployee.PhoneEmp;
-                txtUsername.Text = infoEmployee.Username;
+              
                 txtBoD.Text = infoEmployee.DoB.ToString();
-                txtPassworkShow.Text = infoEmployee.Password;
                 PictureEmp = infoEmployee.PictureEmp;
                 pcPictureEmp.Image = Base64ToImage(PictureEmp);
             }

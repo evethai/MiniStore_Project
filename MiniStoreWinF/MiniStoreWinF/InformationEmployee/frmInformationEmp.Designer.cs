@@ -40,11 +40,7 @@
             txtConfirmNewPassword = new TextBox();
             label2 = new Label();
             btResetPassword = new Button();
-            label1 = new Label();
-            txtPassworkShow = new TextBox();
-            lblUserName = new Label();
             txtPhone = new TextBox();
-            txtUsername = new TextBox();
             lblPhone = new Label();
             txtIdEmp = new TextBox();
             lbl_IdEmp = new Label();
@@ -68,11 +64,7 @@
             // 
             panel1.Controls.Add(pnlShowResetPassword);
             panel1.Controls.Add(btResetPassword);
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(txtPassworkShow);
-            panel1.Controls.Add(lblUserName);
             panel1.Controls.Add(txtPhone);
-            panel1.Controls.Add(txtUsername);
             panel1.Controls.Add(lblPhone);
             panel1.Controls.Add(txtIdEmp);
             panel1.Controls.Add(lbl_IdEmp);
@@ -107,7 +99,7 @@
             pnlShowResetPassword.Controls.Add(txtConfirmNewPassword);
             pnlShowResetPassword.Controls.Add(label2);
             pnlShowResetPassword.Enabled = false;
-            pnlShowResetPassword.Location = new Point(730, 174);
+            pnlShowResetPassword.Location = new Point(793, 222);
             pnlShowResetPassword.Name = "pnlShowResetPassword";
             pnlShowResetPassword.Size = new Size(540, 370);
             pnlShowResetPassword.TabIndex = 26;
@@ -196,61 +188,26 @@
             // 
             // btResetPassword
             // 
-            btResetPassword.Location = new Point(1144, 90);
+            btResetPassword.Location = new Point(933, 177);
             btResetPassword.Name = "btResetPassword";
-            btResetPassword.Size = new Size(126, 39);
+            btResetPassword.Size = new Size(215, 39);
             btResetPassword.TabIndex = 23;
-            btResetPassword.Text = "Reset Password";
+            btResetPassword.Text = "Change Password";
             btResetPassword.UseVisualStyleBackColor = true;
             btResetPassword.Click += btResetPassword_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(804, 90);
-            label1.Name = "label1";
-            label1.Size = new Size(110, 31);
-            label1.TabIndex = 21;
-            label1.Text = "Password";
-            // 
-            // txtPassworkShow
-            // 
-            txtPassworkShow.Location = new Point(951, 90);
-            txtPassworkShow.Name = "txtPassworkShow";
-            txtPassworkShow.PasswordChar = '*';
-            txtPassworkShow.ReadOnly = true;
-            txtPassworkShow.Size = new Size(187, 38);
-            txtPassworkShow.TabIndex = 22;
-            // 
-            // lblUserName
-            // 
-            lblUserName.AutoSize = true;
-            lblUserName.Location = new Point(796, 23);
-            lblUserName.Name = "lblUserName";
-            lblUserName.Size = new Size(127, 31);
-            lblUserName.TabIndex = 18;
-            lblUserName.Text = "User Name";
-            // 
             // txtPhone
             // 
-            txtPhone.Location = new Point(420, 503);
+            txtPhone.Location = new Point(924, 120);
             txtPhone.Name = "txtPhone";
             txtPhone.ReadOnly = true;
             txtPhone.Size = new Size(224, 38);
             txtPhone.TabIndex = 19;
             // 
-            // txtUsername
-            // 
-            txtUsername.Location = new Point(951, 20);
-            txtUsername.Name = "txtUsername";
-            txtUsername.ReadOnly = true;
-            txtUsername.Size = new Size(187, 38);
-            txtUsername.TabIndex = 20;
-            // 
             // lblPhone
             // 
             lblPhone.AutoSize = true;
-            lblPhone.Location = new Point(316, 506);
+            lblPhone.Location = new Point(820, 123);
             lblPhone.Name = "lblPhone";
             lblPhone.Size = new Size(78, 31);
             lblPhone.TabIndex = 17;
@@ -275,7 +232,7 @@
             // 
             // txtAddress
             // 
-            txtAddress.Location = new Point(420, 409);
+            txtAddress.Location = new Point(908, 23);
             txtAddress.Name = "txtAddress";
             txtAddress.ReadOnly = true;
             txtAddress.Size = new Size(277, 38);
@@ -283,7 +240,7 @@
             // 
             // txtBoD
             // 
-            txtBoD.Location = new Point(420, 330);
+            txtBoD.Location = new Point(420, 472);
             txtBoD.Name = "txtBoD";
             txtBoD.ReadOnly = true;
             txtBoD.Size = new Size(141, 38);
@@ -291,7 +248,7 @@
             // 
             // txtCCCD
             // 
-            txtCCCD.Location = new Point(420, 247);
+            txtCCCD.Location = new Point(420, 348);
             txtCCCD.Name = "txtCCCD";
             txtCCCD.ReadOnly = true;
             txtCCCD.Size = new Size(187, 38);
@@ -299,7 +256,7 @@
             // 
             // txtSex
             // 
-            txtSex.Location = new Point(420, 174);
+            txtSex.Location = new Point(420, 232);
             txtSex.Name = "txtSex";
             txtSex.ReadOnly = true;
             txtSex.Size = new Size(106, 38);
@@ -308,7 +265,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(305, 409);
+            label4.Location = new Point(793, 23);
             label4.Name = "label4";
             label4.Size = new Size(97, 31);
             label4.TabIndex = 10;
@@ -317,7 +274,7 @@
             // lbl_DoB
             // 
             lbl_DoB.AutoSize = true;
-            lbl_DoB.Location = new Point(303, 330);
+            lbl_DoB.Location = new Point(303, 472);
             lbl_DoB.Name = "lbl_DoB";
             lbl_DoB.Size = new Size(99, 31);
             lbl_DoB.TabIndex = 9;
@@ -326,7 +283,7 @@
             // lblCCCD
             // 
             lblCCCD.AutoSize = true;
-            lblCCCD.Location = new Point(332, 247);
+            lblCCCD.Location = new Point(332, 348);
             lblCCCD.Name = "lblCCCD";
             lblCCCD.Size = new Size(70, 31);
             lblCCCD.TabIndex = 8;
@@ -335,7 +292,7 @@
             // lbl_Sex
             // 
             lbl_Sex.AutoSize = true;
-            lbl_Sex.Location = new Point(313, 174);
+            lbl_Sex.Location = new Point(313, 232);
             lbl_Sex.Name = "lbl_Sex";
             lbl_Sex.Size = new Size(89, 31);
             lbl_Sex.TabIndex = 7;
@@ -344,7 +301,7 @@
             // lblFullName
             // 
             lblFullName.AutoSize = true;
-            lblFullName.Location = new Point(285, 100);
+            lblFullName.Location = new Point(285, 123);
             lblFullName.Name = "lblFullName";
             lblFullName.Size = new Size(117, 31);
             lblFullName.TabIndex = 6;
@@ -361,7 +318,7 @@
             // 
             // txtFullName
             // 
-            txtFullName.Location = new Point(420, 97);
+            txtFullName.Location = new Point(420, 120);
             txtFullName.Name = "txtFullName";
             txtFullName.ReadOnly = true;
             txtFullName.Size = new Size(187, 38);
@@ -399,11 +356,7 @@
         private TextBox txtConfirmNewPassword;
         private Label label2;
         private Button btResetPassword;
-        private Label label1;
-        private TextBox txtPassworkShow;
-        private Label lblUserName;
         private TextBox txtPhone;
-        private TextBox txtUsername;
         private Label lblPhone;
         private TextBox txtIdEmp;
         private Label lbl_IdEmp;

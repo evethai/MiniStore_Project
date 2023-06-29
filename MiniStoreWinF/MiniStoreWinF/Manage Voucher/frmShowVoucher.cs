@@ -34,8 +34,7 @@ namespace MiniStoreWinF.Manage_Voucher
         private void dgvVoucher_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             _voucherService = new VoucherService();
-            pnVoucher.Visible = true;
-            lbAnnou.Visible = true;
+           
             try
             {
                 var name = dgvVoucher[0, e.RowIndex].Value;
@@ -77,6 +76,26 @@ namespace MiniStoreWinF.Manage_Voucher
 
                     }
                 }
+                if (dpkEXP.Value > DateTime.Now)
+                {
+                    txtID.ReadOnly = true;
+                    txtName.ReadOnly = true;
+                    txtPrice.ReadOnly = true;
+                    txtQuantity.ReadOnly = true;
+                    numCondition.ReadOnly = true;
+                    btUpdate.Visible = false;
+                    dpkEXP.Enabled = false;
+                }
+                else if (dpkEXP.Value <= DateTime.Now)
+                {
+                    txtID.ReadOnly = false;
+                    txtName.ReadOnly = false;
+                    txtPrice.ReadOnly = false;
+                    txtQuantity.ReadOnly = false;
+                    numCondition.ReadOnly = false;
+                    btUpdate.Visible = true;
+                    dpkEXP.Enabled = true;
+                }
 
 
             }
@@ -89,13 +108,14 @@ namespace MiniStoreWinF.Manage_Voucher
         //First load of form
         private void frmShowVoucher_Load(object sender, EventArgs e)
         {
-            pnShow.Visible = false;
+
             rdInUse.Checked = true;
 
         }
         //Update voucher and save it
         private void btUpdate_Click(object sender, EventArgs e)
         {
+
 
             var data = _voucherService.GetAll().Where(e => e.Exp > DateTime.Now);
             var voucher = _voucherService.GetAll().Where(e => e.IdVoucher.Equals(txtID.Text)).FirstOrDefault();
@@ -219,52 +239,43 @@ namespace MiniStoreWinF.Manage_Voucher
             dgvVoucher.DataSource = new BindingSource() { DataSource = voucher };
         }
 
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
+       
+        
 
         private void frmShowVoucher_DoubleClick(object sender, EventArgs e)
         {
 
         }
 
-        private void pnVoucher_DoubleClick(object sender, EventArgs e)
+        private void pnShow_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void pnVoucher_Click(object sender, EventArgs e)
+        {
+
+
 
         }
 
         private void pbVoucher_Click(object sender, EventArgs e)
         {
 
-            lbAnnou.Text = "*Click to see voucher";
-            pbVoucher.Visible = false;
-            lbPrice.Visible = false;
-            lbName.Visible = false;
-            lbDate.Visible = false;
-            pnShow.Visible = true;
-            pnVoucher.Visible = false;
         }
 
-        private void pnShow_Click(object sender, EventArgs e)
+        private void pnVoucher_MouseClick(object sender, MouseEventArgs e)
         {
-            lbAnnou.Text = "*Click to see detail of voucher";
-            pbVoucher.Visible = true;
-            lbPrice.Visible = true;
-            lbName.Visible = true;
-            lbDate.Visible = true;
-            pnShow.Visible = false;
-            pnVoucher.Visible = true;
+
+
+
         }
 
-        private void pnVoucher_Click(object sender, EventArgs e)
+        private void pnShow_MouseClick(object sender, MouseEventArgs e)
         {
-            lbAnnou.Text = "*Click to see voucher";
-            pbVoucher.Visible = false;
-            lbPrice.Visible = false;
-            lbName.Visible = false;
-            lbDate.Visible = false;
-            pnShow.Visible = true;
+
+
+
         }
     }
 }
