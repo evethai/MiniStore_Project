@@ -47,6 +47,7 @@ namespace MiniStoreWinF.ManageSalary
                 }
                 _detailSubSalaryService.Update(detailSub);
                 MessageBox.Show("Update successfull", "Message", MessageBoxButtons.OK);
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

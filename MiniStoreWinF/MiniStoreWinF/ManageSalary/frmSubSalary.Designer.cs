@@ -52,8 +52,8 @@
             detailSubSalaryBindingSource = new BindingSource(components);
             panel2 = new Panel();
             btEdit = new Button();
-            btAdd = new Button();
             txtSaveID = new Label();
+            btAdd = new Button();
             groupBox5 = new GroupBox();
             tableLayoutPanel2 = new TableLayoutPanel();
             dgvTotalSub = new DataGridView();
@@ -143,7 +143,6 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(tableLayoutPanel3);
-            groupBox2.Controls.Add(txtSaveID);
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.Location = new Point(0, 0);
             groupBox2.Margin = new Padding(4, 3, 4, 3);
@@ -197,6 +196,7 @@
             dgvSub.RowTemplate.Height = 27;
             dgvSub.Size = new Size(663, 279);
             dgvSub.TabIndex = 7;
+            dgvSub.CellMouseClick += dgvSub_CellMouseClick_1;
             // 
             // idDetailSubSalaryDataGridViewTextBoxColumn1
             // 
@@ -233,6 +233,7 @@
             // panel2
             // 
             panel2.Controls.Add(btEdit);
+            panel2.Controls.Add(txtSaveID);
             panel2.Controls.Add(btAdd);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 288);
@@ -252,6 +253,16 @@
             btEdit.UseVisualStyleBackColor = true;
             btEdit.Click += btEdit_Click;
             // 
+            // txtSaveID
+            // 
+            txtSaveID.AutoSize = true;
+            txtSaveID.Location = new Point(279, 0);
+            txtSaveID.Margin = new Padding(4, 0, 4, 0);
+            txtSaveID.Name = "txtSaveID";
+            txtSaveID.Size = new Size(0, 21);
+            txtSaveID.TabIndex = 6;
+            txtSaveID.Visible = false;
+            // 
             // btAdd
             // 
             btAdd.Dock = DockStyle.Left;
@@ -263,16 +274,6 @@
             btAdd.Text = "Add new";
             btAdd.UseVisualStyleBackColor = true;
             btAdd.Click += btAdd_Click;
-            // 
-            // txtSaveID
-            // 
-            txtSaveID.AutoSize = true;
-            txtSaveID.Location = new Point(275, 215);
-            txtSaveID.Margin = new Padding(4, 0, 4, 0);
-            txtSaveID.Name = "txtSaveID";
-            txtSaveID.Size = new Size(0, 21);
-            txtSaveID.TabIndex = 6;
-            txtSaveID.Visible = false;
             // 
             // groupBox5
             // 
@@ -418,7 +419,7 @@
             // 
             btFilter.BackgroundImage = (Image)resources.GetObject("btFilter.BackgroundImage");
             btFilter.BackgroundImageLayout = ImageLayout.Zoom;
-            btFilter.Location = new Point(569, 23);
+            btFilter.Location = new Point(601, 27);
             btFilter.Margin = new Padding(4);
             btFilter.Name = "btFilter";
             btFilter.Size = new Size(71, 34);
@@ -619,11 +620,11 @@
             Load += frmSubSalary_Load;
             ((System.ComponentModel.ISupportInitialize)subSalaryBindingSource).EndInit();
             groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
             tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvSub).EndInit();
             ((System.ComponentModel.ISupportInitialize)detailSubSalaryBindingSource).EndInit();
             panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             groupBox5.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvTotalSub).EndInit();
@@ -690,7 +691,7 @@
         private DataGridViewTextBoxColumn idEmpDataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn idDetailSubSalaryDataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn1;
-        private DataGridView dgvSub1;
+        //private DataGridView dgvSub1;
         private DataGridViewTextBoxColumn idDetailSubSalaryDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn descriptionADataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn subsidiesSalaryDataGridViewTextBoxColumn1;

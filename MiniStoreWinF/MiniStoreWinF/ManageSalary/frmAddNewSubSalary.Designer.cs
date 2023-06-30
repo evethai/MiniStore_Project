@@ -59,7 +59,7 @@
             gbAddSub.Size = new Size(396, 368);
             gbAddSub.TabIndex = 3;
             gbAddSub.TabStop = false;
-            gbAddSub.Text = "Add New Subsidized Salary";
+            gbAddSub.Text = "Add new allowance";
             // 
             // btOKEdit
             // 

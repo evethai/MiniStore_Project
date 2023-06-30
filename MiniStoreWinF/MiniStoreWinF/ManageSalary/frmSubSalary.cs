@@ -59,8 +59,31 @@ namespace MiniStoreWinF.ManageSalary
         //Show list SubSalary of MiniStore by Admin create create
         public void showListSub()
         {
+            _detailSubSalaryService = new DetailSubSalaryService();
             var listSub = _detailSubSalaryService.GetAll().Where(p => p.ActiveSub == true).ToList();
-            dgvSub.DataSource = listSub;
+            dgvSub.DataSource = new BindingSource()
+            {
+                DataSource = listSub
+            };
+
+        }
+
+        //click in data
+        private void dgvSub_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                var id = dgvSub[0, e.RowIndex].Value;
+                var s_salary = _detailSubSalaryService.GetAll().Where(p => p.IdDetailSubSalary.Equals(id) && p.ActiveSub == true).FirstOrDefault();
+                if (s_salary != null)
+                {
+                    txtSaveID.Text = s_salary.IdDetailSubSalary.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         //Edit subSalary if this active
@@ -75,31 +98,13 @@ namespace MiniStoreWinF.ManageSalary
                 var sub_salary = _detailSubSalaryService.GetAll().Where(p => p.IdDetailSubSalary.Equals(txtSaveID.Text) && p.ActiveSub == true).FirstOrDefault();
                 if (sub_salary != null)
                 {
-                    frmEditSubSalary form = new frmEditSubSalary();
+                    Form form = new frmEditSubSalary();
                     ContextScope.currentSubSalary = sub_salary;
-                    form.ShowDialog();
-                    if (form.DialogResult == DialogResult.OK)
+                    if (form.ShowDialog() == DialogResult.OK)
                     {
                         showListSub();
                     }
                 }
-            }
-        }
-
-        private void dgvSub_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            try
-            {
-                var id = dgvSub[0, e.RowIndex].Value;
-                var s_salary = _detailSubSalaryService.GetAll().Where(p => p.IdDetailSubSalary.Equals(id) && p.ActiveSub == true).FirstOrDefault();
-                if (s_salary != null)
-                {
-                    txtSaveID.Text = s_salary.IdDetailSubSalary.ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-
             }
         }
 
@@ -208,5 +213,7 @@ namespace MiniStoreWinF.ManageSalary
                 searchSubByName(id);
             }
         }
+
+
     }
 }

@@ -164,20 +164,22 @@
             tabManageWorkSheet.Dock = DockStyle.Fill;
             tabManageWorkSheet.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             tabManageWorkSheet.Location = new Point(0, 0);
+            tabManageWorkSheet.Margin = new Padding(4);
             tabManageWorkSheet.Multiline = true;
             tabManageWorkSheet.Name = "tabManageWorkSheet";
             tabManageWorkSheet.RightToLeft = RightToLeft.No;
             tabManageWorkSheet.SelectedIndex = 0;
-            tabManageWorkSheet.Size = new Size(1222, 568);
+            tabManageWorkSheet.Size = new Size(1571, 702);
             tabManageWorkSheet.TabIndex = 0;
             // 
             // tabWorkSheetHistory
             // 
             tabWorkSheetHistory.Controls.Add(tableLayoutPanel1);
             tabWorkSheetHistory.Location = new Point(4, 28);
+            tabWorkSheetHistory.Margin = new Padding(4);
             tabWorkSheetHistory.Name = "tabWorkSheetHistory";
-            tabWorkSheetHistory.Padding = new Padding(3);
-            tabWorkSheetHistory.Size = new Size(1214, 536);
+            tabWorkSheetHistory.Padding = new Padding(4);
+            tabWorkSheetHistory.Size = new Size(1563, 670);
             tabWorkSheetHistory.TabIndex = 1;
             tabWorkSheetHistory.Text = "History WorkSheet";
             tabWorkSheetHistory.UseVisualStyleBackColor = true;
@@ -190,11 +192,12 @@
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 0);
             tableLayoutPanel1.Controls.Add(panel1, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(3, 3);
+            tableLayoutPanel1.Location = new Point(4, 4);
+            tableLayoutPanel1.Margin = new Padding(4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1208, 530);
+            tableLayoutPanel1.Size = new Size(1555, 662);
             tableLayoutPanel1.TabIndex = 19;
             // 
             // tableLayoutPanel2
@@ -204,12 +207,13 @@
             tableLayoutPanel2.Controls.Add(panel2, 0, 0);
             tableLayoutPanel2.Controls.Add(panel3, 0, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(365, 3);
+            tableLayoutPanel2.Location = new Point(470, 4);
+            tableLayoutPanel2.Margin = new Padding(4);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 80F));
-            tableLayoutPanel2.Size = new Size(840, 524);
+            tableLayoutPanel2.Size = new Size(1081, 654);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // panel2
@@ -220,16 +224,18 @@
             panel2.Controls.Add(dateStart);
             panel2.Controls.Add(btformdate);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(3, 3);
+            panel2.Location = new Point(4, 4);
+            panel2.Margin = new Padding(4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(834, 98);
+            panel2.Size = new Size(1073, 122);
             panel2.TabIndex = 17;
             // 
             // btLoad
             // 
-            btLoad.Location = new Point(626, 23);
+            btLoad.Location = new Point(805, 28);
+            btLoad.Margin = new Padding(4);
             btLoad.Name = "btLoad";
-            btLoad.Size = new Size(82, 25);
+            btLoad.Size = new Size(105, 31);
             btLoad.TabIndex = 7;
             btLoad.Text = "LOAD";
             btLoad.UseVisualStyleBackColor = true;
@@ -238,17 +244,19 @@
             // dateEnd
             // 
             dateEnd.Format = DateTimePickerFormat.Short;
-            dateEnd.Location = new Point(441, 23);
+            dateEnd.Location = new Point(567, 28);
+            dateEnd.Margin = new Padding(4);
             dateEnd.Name = "dateEnd";
-            dateEnd.Size = new Size(164, 26);
+            dateEnd.Size = new Size(210, 26);
             dateEnd.TabIndex = 6;
             dateEnd.Value = new DateTime(2023, 5, 1, 0, 0, 0, 0);
             // 
             // bttodate
             // 
-            bttodate.Location = new Point(318, 23);
+            bttodate.Location = new Point(409, 28);
+            bttodate.Margin = new Padding(4);
             bttodate.Name = "bttodate";
-            bttodate.Size = new Size(103, 26);
+            bttodate.Size = new Size(132, 32);
             bttodate.TabIndex = 5;
             bttodate.Text = "To date :";
             bttodate.UseVisualStyleBackColor = true;
@@ -256,17 +264,19 @@
             // dateStart
             // 
             dateStart.Format = DateTimePickerFormat.Short;
-            dateStart.Location = new Point(128, 23);
+            dateStart.Location = new Point(165, 28);
+            dateStart.Margin = new Padding(4);
             dateStart.Name = "dateStart";
-            dateStart.Size = new Size(164, 26);
+            dateStart.Size = new Size(210, 26);
             dateStart.TabIndex = 4;
             dateStart.Value = new DateTime(2023, 5, 1, 0, 0, 0, 0);
             // 
             // btformdate
             // 
-            btformdate.Location = new Point(19, 23);
+            btformdate.Location = new Point(24, 28);
+            btformdate.Margin = new Padding(4);
             btformdate.Name = "btformdate";
-            btformdate.Size = new Size(103, 26);
+            btformdate.Size = new Size(132, 32);
             btformdate.TabIndex = 3;
             btformdate.Text = "From date :";
             btformdate.UseVisualStyleBackColor = true;
@@ -275,9 +285,10 @@
             // 
             panel3.Controls.Add(tableLayoutPanel3);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(3, 107);
+            panel3.Location = new Point(4, 134);
+            panel3.Margin = new Padding(4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(834, 414);
+            panel3.Size = new Size(1073, 516);
             panel3.TabIndex = 18;
             // 
             // tableLayoutPanel3
@@ -288,11 +299,12 @@
             tableLayoutPanel3.Controls.Add(dgvShowWorkSheet, 0, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new Point(0, 0);
+            tableLayoutPanel3.Margin = new Padding(4);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 85F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
-            tableLayoutPanel3.Size = new Size(834, 414);
+            tableLayoutPanel3.Size = new Size(1073, 516);
             tableLayoutPanel3.TabIndex = 13;
             // 
             // panel6
@@ -300,17 +312,19 @@
             panel6.Controls.Add(btBackList);
             panel6.Controls.Add(btNextList);
             panel6.Dock = DockStyle.Fill;
-            panel6.Location = new Point(3, 354);
+            panel6.Location = new Point(4, 442);
+            panel6.Margin = new Padding(4);
             panel6.Name = "panel6";
-            panel6.Size = new Size(828, 57);
+            panel6.Size = new Size(1065, 70);
             panel6.TabIndex = 15;
             // 
             // btBackList
             // 
             btBackList.Image = (Image)resources.GetObject("btBackList.Image");
-            btBackList.Location = new Point(311, 12);
+            btBackList.Location = new Point(400, 15);
+            btBackList.Margin = new Padding(4);
             btBackList.Name = "btBackList";
-            btBackList.Size = new Size(84, 25);
+            btBackList.Size = new Size(108, 31);
             btBackList.TabIndex = 13;
             btBackList.UseVisualStyleBackColor = true;
             btBackList.Click += btBackList_Click;
@@ -318,9 +332,10 @@
             // btNextList
             // 
             btNextList.Image = (Image)resources.GetObject("btNextList.Image");
-            btNextList.Location = new Point(418, 12);
+            btNextList.Location = new Point(537, 15);
+            btNextList.Margin = new Padding(4);
             btNextList.Name = "btNextList";
-            btNextList.Size = new Size(84, 25);
+            btNextList.Size = new Size(108, 31);
             btNextList.TabIndex = 14;
             btNextList.UseVisualStyleBackColor = true;
             btNextList.Click += btNextList_Click;
@@ -332,11 +347,12 @@
             dgvShowWorkSheet.Columns.AddRange(new DataGridViewColumn[] { idWorkSheetDataGridViewTextBoxColumn, idEmpDataGridViewTextBoxColumn, dateDataGridViewTextBoxColumn, sheetDataGridViewTextBoxColumn, timeCheckInDataGridViewTextBoxColumn, timeCheckOutDataGridViewTextBoxColumn });
             dgvShowWorkSheet.DataSource = workSheetBindingSource;
             dgvShowWorkSheet.Dock = DockStyle.Fill;
-            dgvShowWorkSheet.Location = new Point(3, 3);
+            dgvShowWorkSheet.Location = new Point(4, 4);
+            dgvShowWorkSheet.Margin = new Padding(4);
             dgvShowWorkSheet.Name = "dgvShowWorkSheet";
             dgvShowWorkSheet.RowHeadersWidth = 51;
             dgvShowWorkSheet.RowTemplate.Height = 29;
-            dgvShowWorkSheet.Size = new Size(828, 345);
+            dgvShowWorkSheet.Size = new Size(1065, 430);
             dgvShowWorkSheet.TabIndex = 12;
             dgvShowWorkSheet.CellMouseDoubleClick += dgvShowWorkSheet_CellMouseDoubleClick_1;
             // 
@@ -409,23 +425,26 @@
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 3);
+            panel1.Location = new Point(4, 4);
+            panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(356, 524);
+            panel1.Size = new Size(458, 654);
             panel1.TabIndex = 16;
             // 
             // txtTimeCheckOut
             // 
-            txtTimeCheckOut.Location = new Point(164, 254);
+            txtTimeCheckOut.Location = new Point(211, 314);
+            txtTimeCheckOut.Margin = new Padding(4);
             txtTimeCheckOut.Name = "txtTimeCheckOut";
             txtTimeCheckOut.ReadOnly = true;
-            txtTimeCheckOut.Size = new Size(174, 26);
+            txtTimeCheckOut.Size = new Size(223, 26);
             txtTimeCheckOut.TabIndex = 18;
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(6, 258);
+            label12.Location = new Point(8, 319);
+            label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
             label12.Size = new Size(115, 19);
             label12.TabIndex = 19;
@@ -433,16 +452,18 @@
             // 
             // txtTimeCheckIn
             // 
-            txtTimeCheckIn.Location = new Point(164, 207);
+            txtTimeCheckIn.Location = new Point(211, 256);
+            txtTimeCheckIn.Margin = new Padding(4);
             txtTimeCheckIn.Name = "txtTimeCheckIn";
             txtTimeCheckIn.ReadOnly = true;
-            txtTimeCheckIn.Size = new Size(174, 26);
+            txtTimeCheckIn.Size = new Size(223, 26);
             txtTimeCheckIn.TabIndex = 16;
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(19, 212);
+            label11.Location = new Point(24, 262);
+            label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
             label11.Size = new Size(103, 19);
             label11.TabIndex = 17;
@@ -450,17 +471,19 @@
             // 
             // txtIdWorkSheet
             // 
-            txtIdWorkSheet.Location = new Point(164, 15);
+            txtIdWorkSheet.Location = new Point(211, 19);
+            txtIdWorkSheet.Margin = new Padding(4);
             txtIdWorkSheet.Name = "txtIdWorkSheet";
             txtIdWorkSheet.ReadOnly = true;
-            txtIdWorkSheet.Size = new Size(174, 26);
+            txtIdWorkSheet.Size = new Size(223, 26);
             txtIdWorkSheet.TabIndex = 2;
             // 
             // btReset
             // 
-            btReset.Location = new Point(189, 343);
+            btReset.Location = new Point(243, 424);
+            btReset.Margin = new Padding(4);
             btReset.Name = "btReset";
-            btReset.Size = new Size(148, 35);
+            btReset.Size = new Size(190, 43);
             btReset.TabIndex = 15;
             btReset.Text = "Show All History";
             btReset.UseVisualStyleBackColor = true;
@@ -468,24 +491,27 @@
             // 
             // txtIdEmployees
             // 
-            txtIdEmployees.Location = new Point(164, 62);
+            txtIdEmployees.Location = new Point(211, 77);
+            txtIdEmployees.Margin = new Padding(4);
             txtIdEmployees.Name = "txtIdEmployees";
             txtIdEmployees.ReadOnly = true;
-            txtIdEmployees.Size = new Size(174, 26);
+            txtIdEmployees.Size = new Size(223, 26);
             txtIdEmployees.TabIndex = 14;
             // 
             // cbSheet
             // 
             cbSheet.FormattingEnabled = true;
-            cbSheet.Location = new Point(164, 158);
+            cbSheet.Location = new Point(211, 195);
+            cbSheet.Margin = new Padding(4);
             cbSheet.Name = "cbSheet";
-            cbSheet.Size = new Size(80, 27);
+            cbSheet.Size = new Size(102, 27);
             cbSheet.TabIndex = 13;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(54, 68);
+            label2.Location = new Point(69, 84);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(99, 19);
             label2.TabIndex = 7;
@@ -493,9 +519,10 @@
             // 
             // btUpdateWorkSheet
             // 
-            btUpdateWorkSheet.Location = new Point(255, 290);
+            btUpdateWorkSheet.Location = new Point(328, 358);
+            btUpdateWorkSheet.Margin = new Padding(4);
             btUpdateWorkSheet.Name = "btUpdateWorkSheet";
-            btUpdateWorkSheet.Size = new Size(82, 35);
+            btUpdateWorkSheet.Size = new Size(105, 43);
             btUpdateWorkSheet.TabIndex = 10;
             btUpdateWorkSheet.Text = "Update";
             btUpdateWorkSheet.UseVisualStyleBackColor = true;
@@ -503,16 +530,18 @@
             // 
             // txtDateWorkSheet
             // 
-            txtDateWorkSheet.Location = new Point(164, 110);
+            txtDateWorkSheet.Location = new Point(211, 136);
+            txtDateWorkSheet.Margin = new Padding(4);
             txtDateWorkSheet.Name = "txtDateWorkSheet";
             txtDateWorkSheet.ReadOnly = true;
-            txtDateWorkSheet.Size = new Size(174, 26);
+            txtDateWorkSheet.Size = new Size(223, 26);
             txtDateWorkSheet.TabIndex = 4;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(80, 164);
+            label4.Location = new Point(103, 203);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(46, 19);
             label4.TabIndex = 9;
@@ -521,7 +550,8 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(86, 105);
+            label3.Location = new Point(111, 130);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(40, 19);
             label3.TabIndex = 8;
@@ -530,7 +560,8 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(21, 18);
+            label1.Location = new Point(27, 22);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(101, 19);
             label1.TabIndex = 6;
@@ -541,9 +572,10 @@
             tabDetailWorkSheet.Controls.Add(panel5);
             tabDetailWorkSheet.Controls.Add(panel4);
             tabDetailWorkSheet.Location = new Point(4, 28);
+            tabDetailWorkSheet.Margin = new Padding(4);
             tabDetailWorkSheet.Name = "tabDetailWorkSheet";
-            tabDetailWorkSheet.Padding = new Padding(3);
-            tabDetailWorkSheet.Size = new Size(1214, 536);
+            tabDetailWorkSheet.Padding = new Padding(4);
+            tabDetailWorkSheet.Size = new Size(1563, 670);
             tabDetailWorkSheet.TabIndex = 2;
             tabDetailWorkSheet.Text = "Worksheet Defaut";
             tabDetailWorkSheet.UseVisualStyleBackColor = true;
@@ -552,9 +584,10 @@
             // 
             panel5.Controls.Add(dgvDetailWorksheet);
             panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(3, 3);
+            panel5.Location = new Point(4, 4);
+            panel5.Margin = new Padding(4);
             panel5.Name = "panel5";
-            panel5.Size = new Size(806, 530);
+            panel5.Size = new Size(1038, 662);
             panel5.TabIndex = 21;
             // 
             // dgvDetailWorksheet
@@ -565,10 +598,11 @@
             dgvDetailWorksheet.DataSource = sheetDetailBindingSource;
             dgvDetailWorksheet.Dock = DockStyle.Fill;
             dgvDetailWorksheet.Location = new Point(0, 0);
+            dgvDetailWorksheet.Margin = new Padding(4);
             dgvDetailWorksheet.Name = "dgvDetailWorksheet";
             dgvDetailWorksheet.RowHeadersWidth = 51;
             dgvDetailWorksheet.RowTemplate.Height = 29;
-            dgvDetailWorksheet.Size = new Size(806, 530);
+            dgvDetailWorksheet.Size = new Size(1038, 662);
             dgvDetailWorksheet.TabIndex = 1;
             dgvDetailWorksheet.CellMouseDoubleClick += dgvDetailWorksheet_CellMouseDoubleClick_1;
             // 
@@ -620,9 +654,10 @@
             // 
             panel4.Controls.Add(panel9);
             panel4.Dock = DockStyle.Right;
-            panel4.Location = new Point(809, 3);
+            panel4.Location = new Point(1042, 4);
+            panel4.Margin = new Padding(4);
             panel4.Name = "panel4";
-            panel4.Size = new Size(402, 530);
+            panel4.Size = new Size(517, 662);
             panel4.TabIndex = 20;
             // 
             // panel9
@@ -631,15 +666,17 @@
             panel9.Controls.Add(btUpdateDetailsWorkSheet);
             panel9.Controls.Add(tableLayoutPanel5);
             panel9.Location = new Point(0, 0);
+            panel9.Margin = new Padding(4);
             panel9.Name = "panel9";
-            panel9.Size = new Size(402, 532);
+            panel9.Size = new Size(517, 657);
             panel9.TabIndex = 33;
             // 
             // btCreate
             // 
-            btCreate.Location = new Point(288, 409);
+            btCreate.Location = new Point(370, 505);
+            btCreate.Margin = new Padding(4);
             btCreate.Name = "btCreate";
-            btCreate.Size = new Size(82, 35);
+            btCreate.Size = new Size(105, 43);
             btCreate.TabIndex = 31;
             btCreate.Text = "Create";
             btCreate.UseVisualStyleBackColor = true;
@@ -647,9 +684,10 @@
             // 
             // btUpdateDetailsWorkSheet
             // 
-            btUpdateDetailsWorkSheet.Location = new Point(45, 409);
+            btUpdateDetailsWorkSheet.Location = new Point(58, 505);
+            btUpdateDetailsWorkSheet.Margin = new Padding(4);
             btUpdateDetailsWorkSheet.Name = "btUpdateDetailsWorkSheet";
-            btUpdateDetailsWorkSheet.Size = new Size(82, 35);
+            btUpdateDetailsWorkSheet.Size = new Size(105, 43);
             btUpdateDetailsWorkSheet.TabIndex = 29;
             btUpdateDetailsWorkSheet.Text = "Update";
             btUpdateDetailsWorkSheet.UseVisualStyleBackColor = true;
@@ -666,6 +704,7 @@
             tableLayoutPanel5.Controls.Add(panel15, 0, 4);
             tableLayoutPanel5.Dock = DockStyle.Top;
             tableLayoutPanel5.Location = new Point(0, 0);
+            tableLayoutPanel5.Margin = new Padding(4);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 5;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
@@ -673,7 +712,7 @@
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel5.Size = new Size(402, 372);
+            tableLayoutPanel5.Size = new Size(517, 460);
             tableLayoutPanel5.TabIndex = 33;
             // 
             // panel11
@@ -681,25 +720,28 @@
             panel11.Controls.Add(label6);
             panel11.Controls.Add(txtSheetDetail);
             panel11.Dock = DockStyle.Fill;
-            panel11.Location = new Point(3, 3);
+            panel11.Location = new Point(4, 4);
+            panel11.Margin = new Padding(4);
             panel11.Name = "panel11";
-            panel11.Size = new Size(396, 68);
+            panel11.Size = new Size(509, 84);
             panel11.TabIndex = 0;
             // 
             // label6
             // 
-            label6.Location = new Point(-3, 21);
+            label6.Location = new Point(-4, 26);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(99, 40);
+            label6.Size = new Size(127, 49);
             label6.TabIndex = 21;
             label6.Text = "Sheet";
             label6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txtSheetDetail
             // 
-            txtSheetDetail.Location = new Point(135, 29);
+            txtSheetDetail.Location = new Point(174, 36);
+            txtSheetDetail.Margin = new Padding(4);
             txtSheetDetail.Name = "txtSheetDetail";
-            txtSheetDetail.Size = new Size(172, 26);
+            txtSheetDetail.Size = new Size(220, 26);
             txtSheetDetail.TabIndex = 24;
             txtSheetDetail.KeyPress += txtSheetDetail_KeyPress;
             // 
@@ -708,24 +750,27 @@
             panel12.Controls.Add(txtStartDetails);
             panel12.Controls.Add(label7);
             panel12.Dock = DockStyle.Fill;
-            panel12.Location = new Point(3, 77);
+            panel12.Location = new Point(4, 96);
+            panel12.Margin = new Padding(4);
             panel12.Name = "panel12";
-            panel12.Size = new Size(396, 68);
+            panel12.Size = new Size(509, 84);
             panel12.TabIndex = 0;
             // 
             // txtStartDetails
             // 
-            txtStartDetails.Location = new Point(135, 23);
+            txtStartDetails.Location = new Point(174, 28);
+            txtStartDetails.Margin = new Padding(4);
             txtStartDetails.Name = "txtStartDetails";
-            txtStartDetails.Size = new Size(172, 26);
+            txtStartDetails.Size = new Size(220, 26);
             txtStartDetails.TabIndex = 25;
             txtStartDetails.Leave += txtStartDetails_Leave;
             // 
             // label7
             // 
-            label7.Location = new Point(0, 15);
+            label7.Location = new Point(0, 19);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(99, 40);
+            label7.Size = new Size(127, 49);
             label7.TabIndex = 22;
             label7.Text = "Time Start";
             label7.TextAlign = ContentAlignment.MiddleCenter;
@@ -735,24 +780,27 @@
             panel13.Controls.Add(txtEndDetails);
             panel13.Controls.Add(label8);
             panel13.Dock = DockStyle.Fill;
-            panel13.Location = new Point(3, 151);
+            panel13.Location = new Point(4, 188);
+            panel13.Margin = new Padding(4);
             panel13.Name = "panel13";
-            panel13.Size = new Size(396, 68);
+            panel13.Size = new Size(509, 84);
             panel13.TabIndex = 0;
             // 
             // txtEndDetails
             // 
-            txtEndDetails.Location = new Point(135, 24);
+            txtEndDetails.Location = new Point(174, 30);
+            txtEndDetails.Margin = new Padding(4);
             txtEndDetails.Name = "txtEndDetails";
-            txtEndDetails.Size = new Size(172, 26);
+            txtEndDetails.Size = new Size(220, 26);
             txtEndDetails.TabIndex = 26;
             txtEndDetails.Leave += txtEndDetails_Leave;
             // 
             // label8
             // 
-            label8.Location = new Point(12, 16);
+            label8.Location = new Point(15, 20);
+            label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(99, 40);
+            label8.Size = new Size(127, 49);
             label8.TabIndex = 23;
             label8.Text = "Time End";
             label8.TextAlign = ContentAlignment.MiddleCenter;
@@ -762,24 +810,27 @@
             panel14.Controls.Add(txtDescriptionsDetails);
             panel14.Controls.Add(label5);
             panel14.Dock = DockStyle.Fill;
-            panel14.Location = new Point(3, 225);
+            panel14.Location = new Point(4, 280);
+            panel14.Margin = new Padding(4);
             panel14.Name = "panel14";
-            panel14.Size = new Size(396, 68);
+            panel14.Size = new Size(509, 84);
             panel14.TabIndex = 0;
             // 
             // txtDescriptionsDetails
             // 
-            txtDescriptionsDetails.Location = new Point(135, 12);
+            txtDescriptionsDetails.Location = new Point(174, 15);
+            txtDescriptionsDetails.Margin = new Padding(4);
             txtDescriptionsDetails.Multiline = true;
             txtDescriptionsDetails.Name = "txtDescriptionsDetails";
-            txtDescriptionsDetails.Size = new Size(172, 53);
+            txtDescriptionsDetails.Size = new Size(220, 65);
             txtDescriptionsDetails.TabIndex = 27;
             // 
             // label5
             // 
-            label5.Location = new Point(12, 12);
+            label5.Location = new Point(15, 15);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(99, 40);
+            label5.Size = new Size(127, 49);
             label5.TabIndex = 20;
             label5.Text = "Descriptions";
             label5.TextAlign = ContentAlignment.MiddleCenter;
@@ -789,18 +840,20 @@
             panel15.Controls.Add(panel16);
             panel15.Controls.Add(label9);
             panel15.Dock = DockStyle.Fill;
-            panel15.Location = new Point(3, 299);
+            panel15.Location = new Point(4, 372);
+            panel15.Margin = new Padding(4);
             panel15.Name = "panel15";
-            panel15.Size = new Size(396, 70);
+            panel15.Size = new Size(509, 84);
             panel15.TabIndex = 0;
             // 
             // panel16
             // 
             panel16.Controls.Add(txtCoefficientsSalaryDetails);
             panel16.Dock = DockStyle.Right;
-            panel16.Location = new Point(135, 0);
+            panel16.Location = new Point(173, 0);
+            panel16.Margin = new Padding(4);
             panel16.Name = "panel16";
-            panel16.Size = new Size(261, 70);
+            panel16.Size = new Size(336, 84);
             panel16.TabIndex = 31;
             // 
             // txtCoefficientsSalaryDetails
@@ -813,9 +866,10 @@
             // 
             // label9
             // 
-            label9.Location = new Point(12, 16);
+            label9.Location = new Point(15, 20);
+            label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(99, 40);
+            label9.Size = new Size(127, 49);
             label9.TabIndex = 30;
             label9.Text = "Coefficients salary";
             label9.TextAlign = ContentAlignment.MiddleCenter;
@@ -824,9 +878,10 @@
             // 
             tbMamageWorksheet.Controls.Add(tableLayoutPanel4);
             tbMamageWorksheet.Location = new Point(4, 28);
+            tbMamageWorksheet.Margin = new Padding(4);
             tbMamageWorksheet.Name = "tbMamageWorksheet";
-            tbMamageWorksheet.Padding = new Padding(3);
-            tbMamageWorksheet.Size = new Size(1214, 536);
+            tbMamageWorksheet.Padding = new Padding(4);
+            tbMamageWorksheet.Size = new Size(1563, 670);
             tbMamageWorksheet.TabIndex = 3;
             tbMamageWorksheet.Text = "Manage Worksheet";
             tbMamageWorksheet.UseVisualStyleBackColor = true;
@@ -838,21 +893,23 @@
             tableLayoutPanel4.Controls.Add(panel7, 0, 1);
             tableLayoutPanel4.Controls.Add(panel10, 0, 0);
             tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(3, 3);
+            tableLayoutPanel4.Location = new Point(4, 4);
+            tableLayoutPanel4.Margin = new Padding(4);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 2;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 10.5947952F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 89.4052048F));
-            tableLayoutPanel4.Size = new Size(1208, 530);
+            tableLayoutPanel4.Size = new Size(1555, 662);
             tableLayoutPanel4.TabIndex = 0;
             // 
             // panel7
             // 
             panel7.Controls.Add(tableLayoutPanel6);
             panel7.Dock = DockStyle.Fill;
-            panel7.Location = new Point(3, 59);
+            panel7.Location = new Point(4, 74);
+            panel7.Margin = new Padding(4);
             panel7.Name = "panel7";
-            panel7.Size = new Size(1202, 468);
+            panel7.Size = new Size(1547, 584);
             panel7.TabIndex = 0;
             // 
             // tableLayoutPanel6
@@ -866,17 +923,19 @@
             tableLayoutPanel6.Controls.Add(panel17, 1, 0);
             tableLayoutPanel6.Dock = DockStyle.Fill;
             tableLayoutPanel6.Location = new Point(0, 0);
+            tableLayoutPanel6.Margin = new Padding(4);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
             tableLayoutPanel6.RowCount = 1;
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel6.Size = new Size(1202, 468);
+            tableLayoutPanel6.Size = new Size(1547, 584);
             tableLayoutPanel6.TabIndex = 2;
             // 
             // btnNextMonth
             // 
-            btnNextMonth.Location = new Point(1084, 3);
+            btnNextMonth.Location = new Point(1395, 4);
+            btnNextMonth.Margin = new Padding(4);
             btnNextMonth.Name = "btnNextMonth";
-            btnNextMonth.Size = new Size(97, 36);
+            btnNextMonth.Size = new Size(125, 44);
             btnNextMonth.TabIndex = 8;
             btnNextMonth.Text = "Next month";
             btnNextMonth.UseVisualStyleBackColor = true;
@@ -884,9 +943,10 @@
             // 
             // btnMonthBack
             // 
-            btnMonthBack.Location = new Point(3, 3);
+            btnMonthBack.Location = new Point(4, 4);
+            btnMonthBack.Margin = new Padding(4);
             btnMonthBack.Name = "btnMonthBack";
-            btnMonthBack.Size = new Size(96, 36);
+            btnMonthBack.Size = new Size(123, 44);
             btnMonthBack.TabIndex = 7;
             btnMonthBack.Text = "Last month";
             btnMonthBack.UseVisualStyleBackColor = true;
@@ -897,60 +957,64 @@
             panel17.Controls.Add(panel8);
             panel17.Controls.Add(tableLayoutPanel7);
             panel17.Dock = DockStyle.Fill;
-            panel17.Location = new Point(123, 3);
+            panel17.Location = new Point(158, 4);
+            panel17.Margin = new Padding(4);
             panel17.Name = "panel17";
-            panel17.Size = new Size(955, 462);
+            panel17.Size = new Size(1229, 576);
             panel17.TabIndex = 9;
             // 
             // panel8
             // 
             panel8.Controls.Add(pnlMatricDate);
             panel8.Dock = DockStyle.Fill;
-            panel8.Location = new Point(0, 66);
+            panel8.Location = new Point(0, 82);
+            panel8.Margin = new Padding(4);
             panel8.Name = "panel8";
-            panel8.Size = new Size(955, 396);
+            panel8.Size = new Size(1229, 494);
             panel8.TabIndex = 8;
             // 
             // pnlMatricDate
             // 
             pnlMatricDate.Dock = DockStyle.Fill;
             pnlMatricDate.Location = new Point(0, 0);
+            pnlMatricDate.Margin = new Padding(4);
             pnlMatricDate.Name = "pnlMatricDate";
-            pnlMatricDate.Size = new Size(955, 396);
+            pnlMatricDate.Size = new Size(1229, 494);
             pnlMatricDate.TabIndex = 1;
             // 
             // tableLayoutPanel7
             // 
             tableLayoutPanel7.ColumnCount = 7;
-            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F));
-            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F));
-            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
-            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F));
-            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
-            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F));
-            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
             tableLayoutPanel7.Controls.Add(btMonday, 0, 0);
-            tableLayoutPanel7.Controls.Add(btnSunday, 6, 0);
             tableLayoutPanel7.Controls.Add(btnTuesday, 1, 0);
             tableLayoutPanel7.Controls.Add(btWednesday, 2, 0);
             tableLayoutPanel7.Controls.Add(btnSaturday, 5, 0);
             tableLayoutPanel7.Controls.Add(btnThursday, 3, 0);
             tableLayoutPanel7.Controls.Add(btnFriday, 4, 0);
+            tableLayoutPanel7.Controls.Add(btnSunday, 6, 0);
             tableLayoutPanel7.Dock = DockStyle.Top;
             tableLayoutPanel7.Location = new Point(0, 0);
+            tableLayoutPanel7.Margin = new Padding(4);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             tableLayoutPanel7.RowCount = 1;
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel7.Size = new Size(955, 66);
+            tableLayoutPanel7.Size = new Size(1229, 82);
             tableLayoutPanel7.TabIndex = 7;
             // 
             // btMonday
             // 
             btMonday.Dock = DockStyle.Fill;
-            btMonday.Location = new Point(0, 3);
-            btMonday.Margin = new Padding(0, 3, 3, 3);
+            btMonday.Location = new Point(0, 4);
+            btMonday.Margin = new Padding(0, 4, 4, 4);
             btMonday.Name = "btMonday";
-            btMonday.Size = new Size(130, 60);
+            btMonday.Size = new Size(171, 74);
             btMonday.TabIndex = 0;
             btMonday.Text = "Monday";
             btMonday.UseVisualStyleBackColor = true;
@@ -958,9 +1022,10 @@
             // btnSunday
             // 
             btnSunday.Dock = DockStyle.Fill;
-            btnSunday.Location = new Point(821, 3);
+            btnSunday.Location = new Point(1054, 4);
+            btnSunday.Margin = new Padding(4);
             btnSunday.Name = "btnSunday";
-            btnSunday.Size = new Size(131, 60);
+            btnSunday.Size = new Size(171, 74);
             btnSunday.TabIndex = 6;
             btnSunday.Text = "Sunday";
             btnSunday.UseVisualStyleBackColor = true;
@@ -968,9 +1033,10 @@
             // btnTuesday
             // 
             btnTuesday.Dock = DockStyle.Fill;
-            btnTuesday.Location = new Point(136, 3);
+            btnTuesday.Location = new Point(179, 4);
+            btnTuesday.Margin = new Padding(4);
             btnTuesday.Name = "btnTuesday";
-            btnTuesday.Size = new Size(127, 60);
+            btnTuesday.Size = new Size(167, 74);
             btnTuesday.TabIndex = 1;
             btnTuesday.Text = "Tuesday";
             btnTuesday.UseVisualStyleBackColor = true;
@@ -978,9 +1044,10 @@
             // btWednesday
             // 
             btWednesday.Dock = DockStyle.Fill;
-            btWednesday.Location = new Point(269, 3);
+            btWednesday.Location = new Point(354, 4);
+            btWednesday.Margin = new Padding(4);
             btWednesday.Name = "btWednesday";
-            btWednesday.Size = new Size(137, 60);
+            btWednesday.Size = new Size(167, 74);
             btWednesday.TabIndex = 4;
             btWednesday.Text = "Wednesday ";
             btWednesday.UseVisualStyleBackColor = true;
@@ -988,9 +1055,10 @@
             // btnSaturday
             // 
             btnSaturday.Dock = DockStyle.Fill;
-            btnSaturday.Location = new Point(688, 3);
+            btnSaturday.Location = new Point(879, 4);
+            btnSaturday.Margin = new Padding(4);
             btnSaturday.Name = "btnSaturday";
-            btnSaturday.Size = new Size(127, 60);
+            btnSaturday.Size = new Size(167, 74);
             btnSaturday.TabIndex = 3;
             btnSaturday.Text = "Saturday";
             btnSaturday.UseVisualStyleBackColor = true;
@@ -998,9 +1066,10 @@
             // btnThursday
             // 
             btnThursday.Dock = DockStyle.Fill;
-            btnThursday.Location = new Point(412, 3);
+            btnThursday.Location = new Point(529, 4);
+            btnThursday.Margin = new Padding(4);
             btnThursday.Name = "btnThursday";
-            btnThursday.Size = new Size(127, 60);
+            btnThursday.Size = new Size(167, 74);
             btnThursday.TabIndex = 2;
             btnThursday.Text = "Thursday ";
             btnThursday.UseVisualStyleBackColor = true;
@@ -1008,9 +1077,10 @@
             // btnFriday
             // 
             btnFriday.Dock = DockStyle.Fill;
-            btnFriday.Location = new Point(545, 3);
+            btnFriday.Location = new Point(704, 4);
+            btnFriday.Margin = new Padding(4);
             btnFriday.Name = "btnFriday";
-            btnFriday.Size = new Size(137, 60);
+            btnFriday.Size = new Size(167, 74);
             btnFriday.TabIndex = 5;
             btnFriday.Text = "Friday";
             btnFriday.UseVisualStyleBackColor = true;
@@ -1022,9 +1092,10 @@
             panel10.Controls.Add(btDateNow);
             panel10.Controls.Add(dtpkDate);
             panel10.Dock = DockStyle.Fill;
-            panel10.Location = new Point(3, 3);
+            panel10.Location = new Point(4, 4);
+            panel10.Margin = new Padding(4);
             panel10.Name = "panel10";
-            panel10.Size = new Size(1202, 50);
+            panel10.Size = new Size(1547, 62);
             panel10.TabIndex = 1;
             // 
             // numericUpDown1
@@ -1037,7 +1108,8 @@
             // chbNotification
             // 
             chbNotification.AutoSize = true;
-            chbNotification.Location = new Point(36, 8);
+            chbNotification.Location = new Point(46, 10);
+            chbNotification.Margin = new Padding(4);
             chbNotification.Name = "chbNotification";
             chbNotification.Size = new Size(107, 23);
             chbNotification.TabIndex = 2;
@@ -1046,9 +1118,10 @@
             // 
             // btDateNow
             // 
-            btDateNow.Location = new Point(755, 8);
+            btDateNow.Location = new Point(971, 10);
+            btDateNow.Margin = new Padding(4);
             btDateNow.Name = "btDateNow";
-            btDateNow.Size = new Size(96, 31);
+            btDateNow.Size = new Size(123, 38);
             btDateNow.TabIndex = 1;
             btDateNow.Text = "Date Now";
             btDateNow.UseVisualStyleBackColor = true;
@@ -1056,18 +1129,21 @@
             // 
             // dtpkDate
             // 
-            dtpkDate.Location = new Point(469, 9);
+            dtpkDate.Location = new Point(603, 11);
+            dtpkDate.Margin = new Padding(4);
             dtpkDate.Name = "dtpkDate";
-            dtpkDate.Size = new Size(254, 26);
+            dtpkDate.Size = new Size(325, 26);
             dtpkDate.TabIndex = 0;
             dtpkDate.ValueChanged += dtpkDate_ValueChanged;
             // 
             // frmManageWorkSheetPage
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1222, 568);
+            ClientSize = new Size(1571, 702);
             Controls.Add(tabManageWorkSheet);
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(4);
             Name = "frmManageWorkSheetPage";
             Text = "ManageWorkSheetPage";
             tabManageWorkSheet.ResumeLayout(false);
