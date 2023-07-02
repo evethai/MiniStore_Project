@@ -28,11 +28,11 @@ public class CheckInServlet extends HttpServlet {
         String checkinTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         LocalTime checkTime = LocalTime.now();
         String check = "checkin";
-        if (checkTime.isAfter(LocalTime.MIDNIGHT.minusMinutes(5)) && checkTime.isBefore(LocalTime.MAX)) {
-            LocalDate nextDate = LocalDate.parse(date).plusDays(1);
-            date = nextDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-//            checkOutTime = LocalDateTime.of(previousDate, LocalTime.MAX).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        }
+//        if (checkTime.isAfter(LocalTime.MIDNIGHT.minusMinutes(5)) && checkTime.isBefore(LocalTime.MAX)) {
+//            LocalDate nextDate = LocalDate.parse(date).plusDays(1);
+//            date = nextDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+////            checkOutTime = LocalDateTime.of(previousDate, LocalTime.MAX).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+//        }
         // Check if employee already checked in
         String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/fws?idemp=" + idemp + "&date=" + date);
         JSONObject json = null;
@@ -41,7 +41,7 @@ public class CheckInServlet extends HttpServlet {
         } catch (Exception e) {
             // Handle JSON parsing error
             if (idemp == null || idemp.isEmpty()) {
-                request.setAttribute("errorMessage", "Hãy đăng nhập lại!!!");
+                request.setAttribute("errorMessage", "Đã hết phiên làm việc hãy đăng nhập lại!!!");
                 request.getRequestDispatcher("Login.jsp").forward(request, response);
                 return;
             } else {
@@ -98,7 +98,6 @@ public class CheckInServlet extends HttpServlet {
                     }
                 }
             }
-
             if (!isValidCheckInTime) {
                 request.setAttribute("errorMessage", "không phải giờ check in");
                 request.getRequestDispatcher("qr-code.jsp").forward(request, response);
@@ -110,17 +109,17 @@ public class CheckInServlet extends HttpServlet {
             return;
         }
 
-        if (!checkInTimeapi.equals("01/01/0001 00:00:00")) {
-            request.setAttribute("errorMessage", "đã check In");
-        } else if (isValidCheckInTime) {
-            if (MyUtils.updateWorksheet(idemp, date, checkinTime, check)) {
-                String qrCodeURL = MyUtils.generateQRCodeURL(idemp, checkinTime);
+        if (isValidCheckInTime) {
+            jwt = MyUtils.updateWorksheetQR(idemp, date, checkinTime, check);
+            if (jwt!=null) {
+                String qrCodeURL = MyUtils.generateQRCodeURLG(jwt);
+                session.setAttribute("TimeCheckInapi", checkinTime);
                 request.setAttribute("qrCodeURL", qrCodeURL);
             } else {
                 request.setAttribute("errorMessage", "check in failed");
             }
         }
 
-        request.getRequestDispatcher("qr-code.jsp").forward(request, response);
+        request.getRequestDispatcher("ShowList").forward(request, response);
     }
 }

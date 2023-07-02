@@ -14,5 +14,6 @@ namespace API_Database.Controllers
         public Boolean IsActive { get; set; }
 
         public String TimeCheckIn { get; set; }
+        public String TimeCheckOut { get; set; }
     }
 }

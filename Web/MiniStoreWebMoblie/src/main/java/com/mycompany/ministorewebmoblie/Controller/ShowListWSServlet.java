@@ -25,8 +25,15 @@ public class ShowListWSServlet extends HttpServlet {
         String idemp = (String) session.getAttribute("IdEmpapi");
         String dateStar = (String) request.getParameter("startDate");
         String dateEnd = (String) request.getParameter("endDate");
+        String sortOrder = (String) request.getParameter("sortOrder");
+        boolean type = true;
+        if (idemp == null || idemp.isEmpty()) {
+            request.setAttribute("errorMessage", "Vui lòng đăng nhập để vào trang này!!!");
+            request.getRequestDispatcher("Login.jsp").forward(request, response);
+            return;
+        }
 
-        if (dateStar == null && dateEnd == null) {
+        if (dateStar == null && dateEnd == null && sortOrder == null) {
             // Lấy đầu tháng hiện tại
             LocalDate firstDayOfMonth = LocalDate.now().withDayOfMonth(1);
             // Lấy cuối tháng hiện tại
@@ -34,12 +41,18 @@ public class ShowListWSServlet extends HttpServlet {
 
             dateStar = firstDayOfMonth.toString();
             dateEnd = lastDayOfMonth.toString();
+        } else {
+            if (sortOrder.equals("descending")) {
+                type = false;
+            }
+
         }
 
-        List<WorksheetDTO> ListWS = MyUtils.getSheetAvailable(idemp, dateStar, dateEnd);
+        List<WorksheetDTO> ListWS = MyUtils.getSheetAvailable(idemp, dateStar, dateEnd, type);
 
         session.setAttribute("dateStarS", dateStar);
         session.setAttribute("dateEndS", dateEnd);
+        session.setAttribute("sortOrder", sortOrder);
         session.setAttribute("worksheetList", ListWS);
 //        response.sendRedirect("qr-code.jsp");
         request.getRequestDispatcher("qr-code.jsp").forward(request, response);

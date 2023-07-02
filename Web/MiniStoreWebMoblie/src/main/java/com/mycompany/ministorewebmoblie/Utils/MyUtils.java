@@ -59,7 +59,7 @@ public class MyUtils {
     }
 
     // Lấy danh sách Sheet đã có từ API
-    public static List<WorksheetDTO> getSheetAvailable(String idemp, String dateStar, String dateEnd) {
+    public static List<WorksheetDTO> getSheetAvailable(String idemp, String dateStar, String dateEnd, boolean type) {
         try {
             // Lấy danh sách Sheet từ API
             String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/fwsd?idemp=" + idemp + "&dateStar=" + dateStar + "&dateEnd=" + dateEnd);
@@ -85,11 +85,14 @@ public class MyUtils {
 
             for (int i = 0; i < Datejwt.size(); i++) {
                 LocalDate date = LocalDate.parse(Datejwt.get(i), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
-                LocalTime timeCheckIn = LocalTime.parse(TimeCheckInjwt.get(i),DateTimeFormatter.ofPattern("HH:mm:ss"));
-                LocalTime timeCheckOut = LocalTime.parse(TimeCheckOutjwt.get(i),DateTimeFormatter.ofPattern("HH:mm:ss"));
+                String timeCheckIn = TimeCheckInjwt.get(i);
+                String timeCheckOut = TimeCheckOutjwt.get(i);
 
                 WorksheetDTO sheetTimeSlot = new WorksheetDTO(date, timeCheckIn, timeCheckOut);
                 sheetTimeSlots.add(sheetTimeSlot);
+            }
+            if (!type) {
+                Collections.reverse(sheetTimeSlots);
             }
 
             return sheetTimeSlots;
@@ -190,6 +193,28 @@ public class MyUtils {
     }
 
     //update worksheet
+    public static String updateWorksheetQR(String idemp, String date, String update, String check) throws IOException {
+//        String url = "http://localhost/swp/api/ms/ucoqr";
+//        URL urlObj = new URL(url);
+//        HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
+//        conn.setRequestMethod("PUT");
+//        conn.setRequestProperty("Content-Type", "application/json");
+//        conn.setDoOutput(true);
+        String jwt = "";
+        if (check.equals("checkin")) {
+            jwt = JWTUtils.generateJWTUWS(idemp, date, update, "TimeCheckIn");
+        } else {
+            jwt = JWTUtils.generateJWTUWS(idemp, date, update, "TimeCheckOut");
+        }
+
+        if (jwt == null || jwt.isEmpty()) {
+            return null;
+        }
+
+        return jwt;
+    }
+
+    //update worksheet
     public static boolean updateWorksheet(String idemp, String date, String update, String check) throws IOException {
         String url = "http://localhost/swp/api/ms/uco";
         URL urlObj = new URL(url);
@@ -257,6 +282,33 @@ public class MyUtils {
             // Lỗi HTTP
             return false;
         }
+    }
+
+    public static String generateQRCodeURLG(String jwt) throws ServletException {
+        String qrCodeData = "http://localhost/swp/api/ms/uco/ucoqrG?token=" + jwt;
+
+        int width = 200;
+        int height = 200;
+        String imageFormat = "png";
+
+        BitMatrix bitMatrix;
+        try {
+            bitMatrix = new MultiFormatWriter().encode(qrCodeData, BarcodeFormat.QR_CODE, width, height);
+        } catch (WriterException e) {
+            throw new ServletException("Error generating QR code", e);
+        }
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try {
+            MatrixToImageWriter.writeToStream(bitMatrix, imageFormat, baos);
+        } catch (IOException e) {
+            throw new ServletException("Error writing QR code to stream", e);
+        }
+
+        byte[] qrCodeBytes = baos.toByteArray();
+        String base64Image = Base64.getEncoder().encodeToString(qrCodeBytes);
+
+        return "data:image/" + imageFormat + ";base64," + base64Image;
     }
 
     // tạo qrcode url
