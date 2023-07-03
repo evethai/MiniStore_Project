@@ -13,17 +13,35 @@ import java.time.LocalTime;
  */
 public class WorksheetDTO {
     private LocalDate date;
-    private LocalTime timeCheckIn;
-    private LocalTime timeCheckOut;
+    private String timeCheckIn;
+    private String timeCheckOut;
 
     public WorksheetDTO() {
     }
 
-    public WorksheetDTO(LocalDate date, LocalTime timeCheckIn, LocalTime timeCheckOut) {
+    public String getTimeCheckIn() {
+        return timeCheckIn;
+    }
+
+    public void setTimeCheckIn(String timeCheckIn) {
+        this.timeCheckIn = timeCheckIn;
+    }
+
+    public String getTimeCheckOut() {
+        return timeCheckOut;
+    }
+
+    public void setTimeCheckOut(String timeCheckOut) {
+        this.timeCheckOut = timeCheckOut;
+    }
+
+    public WorksheetDTO(LocalDate date, String timeCheckIn, String timeCheckOut) {
         this.date = date;
         this.timeCheckIn = timeCheckIn;
         this.timeCheckOut = timeCheckOut;
     }
+
+    
 
     public LocalDate getDate() {
         return date;
@@ -33,19 +51,5 @@ public class WorksheetDTO {
         this.date = date;
     }
 
-    public LocalTime getTimeCheckIn() {
-        return timeCheckIn;
-    }
-
-    public void setTimeCheckIn(LocalTime timeCheckIn) {
-        this.timeCheckIn = timeCheckIn;
-    }
-
-    public LocalTime getTimeCheckOut() {
-        return timeCheckOut;
-    }
-
-    public void setTimeCheckOut(LocalTime timeCheckOut) {
-        this.timeCheckOut = timeCheckOut;
-    }
+    
 }

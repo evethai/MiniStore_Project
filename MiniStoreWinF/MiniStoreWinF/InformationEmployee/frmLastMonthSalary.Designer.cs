@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLastMonthSalary));
             lbName = new Label();
             pnSalary = new Panel();
             panel1 = new Panel();
@@ -75,10 +74,6 @@
             txtSalary = new TextBox();
             lbTottal = new Label();
             salaryBindingSource = new BindingSource(components);
-            pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            lbAttended = new Label();
-            lbAbsent = new Label();
             pnSalary.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -88,8 +83,6 @@
             gbSalary.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)salaryBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // lbName
@@ -137,10 +130,6 @@
             // panel2
             // 
             panel2.BackColor = Color.White;
-            panel2.Controls.Add(lbAbsent);
-            panel2.Controls.Add(lbAttended);
-            panel2.Controls.Add(pictureBox2);
-            panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(btSearchSheet);
             panel2.Controls.Add(dtpWorksheet);
             panel2.Controls.Add(gbWorksheet);
@@ -532,44 +521,6 @@
             // 
             salaryBindingSource.DataSource = typeof(Repository.Models.Salary);
             // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(653, 499);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(43, 36);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 26;
-            pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(798, 499);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(43, 36);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 27;
-            pictureBox2.TabStop = false;
-            // 
-            // lbAttended
-            // 
-            lbAttended.AutoSize = true;
-            lbAttended.Location = new Point(702, 507);
-            lbAttended.Name = "lbAttended";
-            lbAttended.Size = new Size(23, 28);
-            lbAttended.TabIndex = 28;
-            lbAttended.Text = "Y";
-            // 
-            // lbAbsent
-            // 
-            lbAbsent.AutoSize = true;
-            lbAbsent.Location = new Point(847, 507);
-            lbAbsent.Name = "lbAbsent";
-            lbAbsent.Size = new Size(27, 28);
-            lbAbsent.TabIndex = 29;
-            lbAbsent.Text = "N";
-            // 
             // frmLastMonthSalary
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
@@ -586,7 +537,6 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             gbWorksheet.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvWorksheet).EndInit();
             ((System.ComponentModel.ISupportInitialize)workSheetBindingSource).EndInit();
@@ -595,8 +545,6 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)salaryBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
         }
 
@@ -648,9 +596,5 @@
         private DataGridViewTextBoxColumn sheetDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn timeCheckInDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn timeCheckOutDataGridViewTextBoxColumn;
-        private Label lbAbsent;
-        private Label lbAttended;
-        private PictureBox pictureBox2;
-        private PictureBox pictureBox1;
     }
 }

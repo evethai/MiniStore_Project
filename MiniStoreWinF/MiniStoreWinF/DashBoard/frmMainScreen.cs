@@ -115,8 +115,7 @@ namespace MiniStoreWinF.DashBoard
 
         private void VOUCHER_Click(object sender, EventArgs e)
         {
-            Form voucher = new Manage_Voucher.frmShowVoucher();
-            voucher.Show();
+            u.openChildForm(new Manage_Voucher.frmMemberVVoucher(), pnMain);
 
         }
 

@@ -36,6 +36,7 @@ public class LoginServlet extends HttpServlet {
             String rolesapi = claims.get("Roles", String.class);
             String IsActiveapi = claims.get("IsActive", String.class);
             String TimeCheckinapi = claims.get("TimeCheckIn", String.class);
+            String TimeCheckoutapi = claims.get("TimeCheckOut", String.class);
             
             if (!IsActiveapi.equals("True")) {
                 request.setAttribute("errorMessage", "Tài khoản không hoạt động!!!");
@@ -49,15 +50,10 @@ public class LoginServlet extends HttpServlet {
                 return;
             }
             
-            if (TimeCheckinapi.equals("nonsheet")) {
-                request.setAttribute("errorMessage", "Hôm nay bạn không có ca làm !!!");
-                request.getRequestDispatcher("Login.jsp").forward(request, response);
-                return;
-            }
-
             HttpSession session = request.getSession();
             session.setAttribute("fullnameemapi", "Welcome " + fullnameemapi);
             session.setAttribute("TimeCheckInapi", TimeCheckinapi);
+            session.setAttribute("TimeCheckOutapi", TimeCheckoutapi);
             session.setAttribute("IdEmpapi", IdEmpapi);
             request.getRequestDispatcher("ShowList").forward(request, response);
         } catch (Exception e) {

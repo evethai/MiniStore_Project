@@ -38,6 +38,57 @@
                 background-position: center;
                 background-size: cover;
             }
+            .dataTables_length {
+                color: white; /* Đổi màu sắc theo ý muốn */
+                margin-bottom: 20px;
+            }
+
+            .dataTables_info {
+                color: white; /* Đổi màu sắc theo ý muốn */
+                margin-top: 10px; /* Đổi khoảng cách theo ý muốn */
+                margin-bottom: 10px;
+            }
+            .dataTables_filter {
+                display: none;
+            }
+
+            .dataTables_paginate .paginate_button.previous,
+            .dataTables_paginate .paginate_button.next {
+                color: #3300ff; /* Đổi màu sắc theo ý muốn */
+                margin: 0 auto; /* Căn giữa */
+                margin-top: 20px;
+                margin-bottom: 30px; /* Khoảng cách dưới */
+                width: fit-content; /* Đóng gói theo nội dung */
+                padding: 5px; /* Khoảng cách giữa nội dung và viền */
+            }
+
+            .paginate_button {
+                color: #3300ff;
+                margin: 0 5px;
+                border-radius: 50%;
+                padding: 5px;
+                background-color: #f0f0f0; /* Màu nền */
+                border: 1px solid #ccc; /* Viền */
+                padding: 5px 10px; /* Khoảng cách giữa nội dung và viền */
+                border-radius: 5px; /* Bo hình nút */
+            }
+
+            .current {
+                color: white;
+                background-color: #0000ff; /* Màu nền */
+                border: 1px solid #ccc; /* Viền */
+                padding: 5px 10px; /* Khoảng cách giữa nội dung và viền */
+                border-radius: 5px; /* Bo hình nút */
+            }
+
+            .disabled
+            {
+                color: #979494 !important;
+                background-color: #ccc  !important; /* Màu nền khi nút "Previous" ở trang đầu */
+            }
+
+
+
         </style>
     </head>
     <body>
@@ -65,6 +116,7 @@
                     var myModal = new bootstrap.Modal(document.getElementById('errorModal'));
                     myModal.show();
                 });
+
             </script>
         </c:if>
 
@@ -73,6 +125,7 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-5 col-sm-10 col-xs-10">
+                            <br>
                             <h2 name="welcome"> ${fullnameemapi}</h2>
                             <div class="row justify-content-center">
                                 <form class="col-md-6" style="width: auto !important;" action="Logout" method="POST" id="logoutForm">
@@ -82,16 +135,31 @@
                             <br>
                             <div class="row justify-content-center">
                                 <div class="col-md-6 col-sm-6 col-xs-6 card border-2 border-white rounded-3 shadow-lg bg-transparent align-items-center" style="width: auto !important;">
-                                    <c:if test="${empty TimeCheckInapi}">
-                                        <form action="CheckIn" method="post">
-                                            <input type="submit" value="Check In" class="loginButton">
-                                        </form>
-                                    </c:if>
-                                    <c:if test="${not empty TimeCheckInapi}">
-                                        <form action="CheckOut" method="post">
-                                            <input type="submit" value="Check Out" class="loginButton">
-                                        </form>
-                                    </c:if>
+
+                                    <c:choose>
+                                        <c:when test="${TimeCheckInapi == 'nonsheet' && TimeCheckOutapi == 'noOut'}">
+                                            <p style="color: white">Hôm nay bạn không có ca làm!!!</p> 
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:if test="${empty TimeCheckInapi}">
+                                                <form action="CheckIn" method="post">
+                                                    <input type="submit" value="Check In" class="loginButton">
+                                                </form>
+                                            </c:if>
+                                            <c:if test="${empty TimeCheckOutapi && not empty TimeCheckInapi}">
+                                                <form action="CheckOut" method="post">
+                                                    <input type="submit" value="Check Out" class="loginButton">
+                                                </form>
+                                            </c:if>
+                                            <c:if test="${not empty TimeCheckOutapi && not empty qrCodeURL || not empty TimeCheckInapi && not empty qrCodeURL}">
+                                                <p style="color: white">Hãy quét mã qr để Check In hoặc Check Out</p>
+                                            </c:if>
+                                            <c:if test="${not empty TimeCheckOutapi && not empty TimeCheckInapi && empty qrCodeURL}">
+                                                <p style="color: white">Đã hoàn thành ca làm</p>
+                                            </c:if>
+                                        </c:otherwise>
+                                    </c:choose>
+
                                 </div>
                             </div>
                             <br>
@@ -103,9 +171,10 @@
                                 </div>
                                 <br>
                             </c:if>
-
+                            <br>
+                            <h3 name="welcome" style="color: white">Bảng công việc</h3>
                             <!-- Trường nhập liệu ngày bắt đầu -->
-                            <form action="ShowList" method="post">
+                            <form action="ShowList" method="post" onsubmit="return validateDates()">
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6 col-xs-6">
                                         <label for="startDate" style="color: white">From:</label>
@@ -115,7 +184,16 @@
                                         <label for="endDate" style="color: white">To:</label>
                                         <input type="date" class="form-control" id="endDate" name="endDate" required="" value="${sessionScope.dateEndS}">
                                     </div>
-
+                                </div>
+                                <br>
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6 col-sm-6 col-xs-6">
+                                        <label for="sortOrder" style="color: white">Sort Order:</label>
+                                        <select class="form-select" id="sortOrder" name="sortOrder">
+                                            <option value="ascending" ${sessionScope.sortOrder == 'ascending' ? 'selected' : ''}>Tăng dần</option>
+                                            <option value="descending" ${sessionScope.sortOrder == 'descending' ? 'selected' : ''}>Giảm dần</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <br>
                                 <div class="col-md-12">
@@ -126,12 +204,13 @@
                             </form>
                             <br>
 
+
                             <c:set var="worksheetList" value="${sessionScope.worksheetList}" />
                             <c:if test="${not empty worksheetList}">
                                 <div id="paginationContainer">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
+                                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                        <thead class="thead-dark">
+                                            <tr class="table-dark">
                                                 <th scope="col">No</th>
                                                 <th scope="col">Date</th>
                                                 <th scope="col">Time Check in</th>
@@ -140,18 +219,28 @@
                                         </thead>
                                         <tbody>
                                             <c:forEach var="worksheet" items="${worksheetList}" varStatus="status">
-                                                <tr>
-                                                    <th scope="row">${status.index + 1}</th>
-                                                    <td>${worksheet.date}</td>
+                                                <tr class="table-success">
+                                                    <th scope="row" class="table-light">${status.index + 1}</th>
+                                                    <td class="table-info">${worksheet.date}</td>
                                                     <td>${worksheet.timeCheckIn}</td>
-                                                    <td>${worksheet.timeCheckOut}</td>
+                                                    <c:if test="${worksheet.timeCheckOut != '00:00:00'}">
+                                                        <td>${worksheet.timeCheckOut}</td>
+                                                    </c:if>
+                                                    <c:if test="${worksheet.timeCheckOut == '00:00:00'}">
+                                                        <td class="table-warning">__-__-__</td>
+                                                    </c:if>
                                                 </tr>
                                             </c:forEach>
                                         </tbody>
                                     </table>
                                 </div>
-
                             </c:if>
+                            <c:if test="${empty worksheetList}">
+                                <div class="col-md-6 col-sm-6 col-xs-6 card border-2 border-white rounded-3 shadow-lg bg-transparent align-items-center" style="width: auto !important; background-color: #ccc !important">
+                                    <h3 style="color: #ff3333">Hiện chưa có dữ liệu của khoảng thời gian này</h3>
+                                </div>
+                            </c:if>
+                            <br>
                         </div>
                     </div>
                 </div>
@@ -187,10 +276,28 @@
                         <h5 class="modal-title text-danger" id="loginModalLabel">Thông báo</h5>
                     </div>
                     <div class="modal-body text-center text-danger">
-                        Vui lòng đăng nhập để truy cập vào trang này!!!
+                        Phiên làm việc đã hết hạn vui lòng đăng nhập lại!!!
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" onclick="redirectToLoginPage()">Đăng nhập</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal mess-->
+        <div class="modal fade" id="messModal" tabindex="-1" role="dialog" aria-labelledby="messModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="messModalLabel">Thông báo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Ngày bắt đầu không thể sau ngày kết thúc.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đóng</button>
                     </div>
                 </div>
             </div>
@@ -203,8 +310,14 @@
                 });
 
                 function redirectToLoginPage() {
-                    window.location.href = "Login.jsp";
+                    var form = document.createElement("form");
+                    form.method = "POST";
+                    form.action = "Logout"; // Thay thế "LogoutServlet" bằng URL của Servlet xử lý logout
+
+                    document.body.appendChild(form);
+                    form.submit();
                 }
+
             </script>
         </c:if>
 
@@ -223,9 +336,29 @@
                     $('#logoutForm').trigger('reset');
                 });
             });
+
+            $(document).ready(function () {
+                $('#example').DataTable();
+            });
+
+            function validateDates() {
+                var startDate = document.getElementById("startDate").value;
+                var endDate = document.getElementById("endDate").value;
+
+                if (startDate > endDate) {
+                    $('#messModal').modal('show'); // Hiển thị modal khi ngày bắt đầu sau ngày kết thúc
+                    return false; // Ngăn không cho form được gửi đi
+                }
+
+                return true; // Cho phép form được gửi đi
+            }
         </script>
-        
-        
+
+
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js" ></script>
+        <script src=https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"" ></script>
         <script src="JavaScript/changetheme.js"></script>
     </body>
 </html>

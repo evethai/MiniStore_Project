@@ -25,7 +25,8 @@ namespace API_Database.Controllers
                     new Claim("FullNameEmp", empdto.FullNameEmp),
                     new Claim("Roles", empdto.Roles),
                     new Claim("IsActive", empdto.IsActive.ToString()),
-                    new Claim("TimeCheckIn", empdto.TimeCheckIn)
+                    new Claim("TimeCheckIn", empdto.TimeCheckIn),
+                    new Claim("TimeCheckOut", empdto.TimeCheckOut)
                 }),
                 Expires = DateTime.UtcNow.AddHours(1), // Thời gian hết hạn của JWT: 1 giờ
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -61,8 +62,8 @@ namespace API_Database.Controllers
                 Subject = new ClaimsIdentity(new[]
                 {
             new Claim("Sheet", wsdto.Sheet.ToString()),
-            new Claim("TimeCheckIn", wsdto.TimeCheckIn.ToString("MM/dd/yyyy HH:mm:ss")),
-            new Claim("TimeCheckOut", wsdto.TimeCheckOut.ToString("MM/dd/yyyy HH:mm:ss")),
+            new Claim("TimeCheckIn", wsdto.TimeCheckIn.ToString()),
+            new Claim("TimeCheckOut", wsdto.TimeCheckOut.ToString()),
             new Claim("Status", wsdto.Status.ToString())
         }),
                 Expires = DateTime.UtcNow.AddHours(1), // Thời gian hết hạn của JWT: 1 giờ
@@ -106,9 +107,9 @@ namespace API_Database.Controllers
             foreach (WorkSheetDTO dto in wsdto)
             {
                 /*claims.Add(new Claim("Sheet", dto.Sheet.ToString()));*/
-                claims.Add(new Claim("Date", dto.TimeCheckIn.ToString("MM/dd/yyyy")));
-                claims.Add(new Claim("TimeCheckIn", dto.TimeCheckIn.ToString("HH:mm:ss")));
-                claims.Add(new Claim("TimeCheckOut", dto.TimeCheckOut.ToString("HH:mm:ss")));
+                claims.Add(new Claim("Date", dto.TimeCheckIn.ToString()));
+                claims.Add(new Claim("TimeCheckIn", dto.TimeCheckIn.ToString()));
+                claims.Add(new Claim("TimeCheckOut", dto.TimeCheckOut.ToString()));
 
             }
 

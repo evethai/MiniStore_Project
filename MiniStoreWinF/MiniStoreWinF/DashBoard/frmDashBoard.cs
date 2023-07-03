@@ -270,17 +270,7 @@ namespace MiniStoreWinF.DashBoard
 
         private void pbVouchers_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Do you want to open Voucher Management window", "MS Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
-
-            if (result == DialogResult.Yes)
-            {
-                Form form = new Manage_Voucher.frmShowVoucher();
-                form.ShowDialog();
-            }
-            else
-            {
-
-            }
+            
         }
 
         private void bntRevenues_Click(object sender, EventArgs e)
