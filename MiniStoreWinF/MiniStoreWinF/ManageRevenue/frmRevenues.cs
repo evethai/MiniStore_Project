@@ -118,7 +118,7 @@ namespace MiniStoreWinF.ManageRevenue
             var ca = _catalogyService.GetAll().ToList();
             var pro = _productService.GetAll().Where(p => p.StatusP == true).ToList();
             var or = _orderService.GetAll().Where(p => p.DateOrders.Value.Month.Equals(time.Month)).ToList();
-            var listType = (from o in or join pr in pro on o.Sku equals pr.Sku select Tuple.Create(pr.ProductType, o.Total)).ToList();
+            var listType = (from o in or join pr in pro on o.IdUnit equals pr.Sku select Tuple.Create(pr.ProductType, o.Total)).ToList();
             foreach (var c in ca)
             {
                 double? total = 0;

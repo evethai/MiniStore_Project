@@ -231,7 +231,7 @@
             // 
             dtpkDate.CalendarTrailingForeColor = Color.Gray;
             dtpkDate.CustomFormat = "";
-            dtpkDate.Location = new Point(252, 3);
+            dtpkDate.Location = new Point(322, 3);
             dtpkDate.Name = "dtpkDate";
             dtpkDate.Size = new Size(269, 27);
             dtpkDate.TabIndex = 1;

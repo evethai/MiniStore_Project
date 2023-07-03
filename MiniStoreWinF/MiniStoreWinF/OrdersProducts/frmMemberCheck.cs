@@ -15,9 +15,8 @@ namespace MiniStoreWinF.OrdersProducts
 {
     public partial class frmMemberCheck : Form
     {
-
         MemberService _memberService = new MemberService();
-
+        RatePointService _ratePointService = new RatePointService();
         public frmMemberCheck()
         {
             InitializeComponent();
@@ -32,6 +31,7 @@ namespace MiniStoreWinF.OrdersProducts
         {
             get { return txtPhoneNewMember.Text; }
         }
+        public int PointHas { get; set; }
         private void btCheckPhoneMember_Click(object sender, EventArgs e)
         {
             string _phoneMember = txtSearchMember.Text;
@@ -47,6 +47,7 @@ namespace MiniStoreWinF.OrdersProducts
                 {
                     DataSource = checkMember
                 };
+                PointHas = checkMember.Point.Value;
             }
             else if (checkMember == null)
             {
@@ -69,50 +70,61 @@ namespace MiniStoreWinF.OrdersProducts
         }
         private void btCreateSusscessMember_Click(object sender, EventArgs e)
         {
-            var newMember = new Member();
-            string _phoneMember = txtPhoneNewMember.Text;
-            string _NameMember = txtNameNewMember.Text;
-            string _GenderMember = cbGenderNewMember.SelectedItem.ToString();
-            var _DoBMember = dtDoBNewMember.Text;
-            int _pointUsing = 0;
-            DateTime _dateUsing = DateTime.Now;
-            var checkMember = _memberService.GetAll().Where(p => p.PhoneMember.Equals(_phoneMember)).FirstOrDefault();
-            bool nonLetterInPhone = false;
-            foreach (char c in txtPhoneNewMember.Text)
+            try 
             {
-                if (Char.IsLetter(c))
+                var newMember = new Member();
+                string _phoneMember = txtPhoneNewMember.Text;
+                string _NameMember = txtNameNewMember.Text;
+                string _GenderMember = cbGenderNewMember.SelectedItem.ToString();
+                var _DoBMember = dtDoBNewMember.Text;
+                int _pointUsing = 0;
+                DateTime _dateUsing = DateTime.Now;
+                var checkMember = _memberService.GetAll().Where(p => p.PhoneMember.Equals(_phoneMember)).FirstOrDefault();
+                bool nonLetterInPhone = false;
+                foreach (char c in txtPhoneNewMember.Text)
                 {
-                    nonLetterInPhone = true;
-                    break;
-                }
-            }
-            if (nonLetterInPhone || txtPhoneNewMember.Text == "" || txtPhoneNewMember.TextLength > 10 || _NameMember == "")
-            {
-                MessageBox.Show("Wrong format to create Member !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                if (checkMember != null)
-                {
-                    MessageBox.Show("You are already a member", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    dgvListMember.Visible = true;
-                    dgvListMember.DataSource = new BindingSource()
+                    if (Char.IsLetter(c))
                     {
-                        DataSource = checkMember
-                    };
+                        nonLetterInPhone = true;
+                        break;
+                    }
+                }
+                if (nonLetterInPhone || txtPhoneNewMember.Text == "" || txtPhoneNewMember.TextLength > 10 || _NameMember == "")
+                {
+                    MessageBox.Show("Wrong format to create Member !", "Notification");
                 }
                 else
                 {
-                    newMember.Name = _NameMember;
-                    newMember.Gender = _GenderMember;
-                    newMember.PhoneMember = _phoneMember;
-                    newMember.Point = _pointUsing;
-                    newMember.DoB = DateTime.Parse(_DoBMember);
-                    newMember.TimeCreate = _dateUsing;
-                    _memberService.Create(newMember);
-                    MessageBox.Show("Create Successfully !", "Notification", MessageBoxButtons.OK);
+                    if (checkMember != null)
+                    {
+                        MessageBox.Show("You are already a member", "Notification");
+                        dgvListMember.Visible = true;
+                        dgvListMember.DataSource = new BindingSource()
+                        {
+                            DataSource = checkMember
+                        };
+                    }
+                    else
+                    {
+                        newMember.Name = _NameMember;
+                        newMember.Gender = _GenderMember;
+                        newMember.PhoneMember = _phoneMember;
+                        newMember.Point = _pointUsing;
+                        newMember.DoB = DateTime.Parse(_DoBMember);
+                        var takeRatePoint =_ratePointService.GetAll().Where(p => p.StatusRp == true).FirstOrDefault();
+                        newMember.IdRate = takeRatePoint.IdRate;
+                        newMember.TimeCreate = _dateUsing;
+                        _memberService.Create(newMember);
+                        MessageBox.Show("Create Successfully !", "Notification");
+                        PointHas = 0;
+                    }
                 }
+            } 
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex + "BUG");
             }
+
         }
     }
 }

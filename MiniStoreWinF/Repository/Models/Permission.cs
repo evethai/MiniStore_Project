@@ -11,6 +11,7 @@ namespace Repository.Models
         {
             Employees = new HashSet<Employee>();
             PermissionDetails = new HashSet<PermissionDetail>();
+            SheetDetails = new HashSet<SheetDetail>();
         }
 
         public int Roles { get; set; }
@@ -20,5 +21,6 @@ namespace Repository.Models
 
         public virtual ICollection<Employee> Employees { get; set; }
         public virtual ICollection<PermissionDetail> PermissionDetails { get; set; }
+        public virtual ICollection<SheetDetail> SheetDetails { get; set; }
     }
 }

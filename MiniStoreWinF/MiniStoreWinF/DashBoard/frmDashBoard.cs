@@ -64,7 +64,7 @@ namespace MiniStoreWinF.DashBoard
             var or = _orderService.GetAll().Where(p => p.DateOrders.Value.Month.Equals(DateTime.Now.AddMonths(-1).Month)).ToList();
             pv.Model = new PlotModel { Title = "Revenue by product type " + DateTime.Now.AddMonths(-1).Month + "/" + DateTime.Now.AddMonths(-1).Year };
 
-            var listType = (from o in or join pr in pro on o.Sku equals pr.Sku select Tuple.Create(pr.ProductType, o.Total)).ToList();
+            var listType = (from o in or join pr in pro on o.IdUnit equals pr.Sku select Tuple.Create(pr.ProductType, o.Total)).ToList();
 
             foreach (var c in ca)
             {

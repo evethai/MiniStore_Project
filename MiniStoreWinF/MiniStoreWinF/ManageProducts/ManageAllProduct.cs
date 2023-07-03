@@ -36,8 +36,8 @@ namespace MiniStoreWinF.ManageProducts
                 p.Sku,
                 p.ProductType,
                 p.NameProduct,
-                p.QuantityProduct,
-                p.PriceProduct,
+                //p.QuantityProduct,
+                //p.PriceProduct,
                 p.Mfg,
                 p.Exp,
                 p.StatusP,
@@ -83,8 +83,8 @@ namespace MiniStoreWinF.ManageProducts
                 {
                     txtIDProduct.Text = showPro.Sku.ToString();
                     txtNameProduct.Text = showPro.NameProduct.ToString();
-                    NumberQuantityProduct.Text = showPro.QuantityProduct.ToString();
-                    txtPriceProduct.Text = showPro.PriceProduct.ToString();
+                    //NumberQuantityProduct.Text = showPro.QuantityProduct.ToString();
+                    //txtPriceProduct.Text = showPro.PriceProduct.ToString();
                     dateTimeNXSProduct.Value = showPro.Mfg.Value;
                     dateTimeHSDProduct.Value = showPro.Exp.Value;
                     txtTypeProductList.Text = showPro.ProductType.ToString();
@@ -244,109 +244,109 @@ namespace MiniStoreWinF.ManageProducts
         private void txtArrange_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            _productList = new ProductService();
-            if (txtArrange.Text == "Price Ascending")
-            {
-                var AscendingPro = _productList.GetAll().ToList().OrderBy(o => o.PriceProduct)
-                    .ThenBy(o => o.QuantityProduct).ThenBy(o => o.NameProduct).ThenBy(o => o.ProductType).Select(p => new
-                    {
-                        p.Sku,
-                        p.ProductType,
-                        p.NameProduct,
-                        p.QuantityProduct,
-                        p.PriceProduct,
-                        p.Mfg,
-                        p.Exp,
-                        p.StatusP,
-                    }).Where(p => p.StatusP == true);
-                this.DgvListProduct.DataSource = new BindingSource() { DataSource = AscendingPro };
-            }
-            if (txtArrange.Text == "Price Decrease ")
-            {
-                var AscendingPro = _productList.GetAll().ToList().OrderByDescending(o => o.PriceProduct)
-                    .ThenBy(o => o.QuantityProduct).ThenBy(o => o.NameProduct).ThenBy(o => o.ProductType).Select(p => new
-                    {
-                        p.Sku,
-                        p.ProductType,
-                        p.NameProduct,
-                        p.QuantityProduct,
-                        p.PriceProduct,
-                        p.Mfg,
-                        p.Exp,
-                        p.StatusP,
-                    }).Where(p => p.StatusP == true);
-                this.DgvListProduct.DataSource = new BindingSource() { DataSource = AscendingPro };
-            }
-            if (txtArrange.Text == "ALL")
-            {
-                var AscendingPro = _productList.GetAll().ToList().Where(p => p.StatusP == true);
-                this.DgvListProduct.DataSource = new BindingSource() { DataSource = AscendingPro };
-            }
+            //_productList = new ProductService();
+            //if (txtArrange.Text == "Price Ascending")
+            //{
+            //    var AscendingPro = _productList.GetAll().ToList().OrderBy(o => o.PriceProduct)
+            //        .ThenBy(o => o.QuantityProduct).ThenBy(o => o.NameProduct).ThenBy(o => o.ProductType).Select(p => new
+            //        {
+            //            p.Sku,
+            //            p.ProductType,
+            //            p.NameProduct,
+            //            p.QuantityProduct,
+            //            p.PriceProduct,
+            //            p.Mfg,
+            //            p.Exp,
+            //            p.StatusP,
+            //        }).Where(p => p.StatusP == true);
+            //    this.DgvListProduct.DataSource = new BindingSource() { DataSource = AscendingPro };
+            //}
+            //if (txtArrange.Text == "Price Decrease ")
+            //{
+            //    var AscendingPro = _productList.GetAll().ToList().OrderByDescending(o => o.PriceProduct)
+            //        .ThenBy(o => o.QuantityProduct).ThenBy(o => o.NameProduct).ThenBy(o => o.ProductType).Select(p => new
+            //        {
+            //            p.Sku,
+            //            p.ProductType,
+            //            p.NameProduct,
+            //            p.QuantityProduct,
+            //            p.PriceProduct,
+            //            p.Mfg,
+            //            p.Exp,
+            //            p.StatusP,
+            //        }).Where(p => p.StatusP == true);
+            //    this.DgvListProduct.DataSource = new BindingSource() { DataSource = AscendingPro };
+            //}
+            //if (txtArrange.Text == "ALL")
+            //{
+            //    var AscendingPro = _productList.GetAll().ToList().Where(p => p.StatusP == true);
+            //    this.DgvListProduct.DataSource = new BindingSource() { DataSource = AscendingPro };
+            //}
         }
         // Add product
         private void btCreateProduct_Click(object sender, EventArgs e)
         {
 
-            _productList = new ProductService();
-            var AddPro = _productList.GetAll().ToList().Where(e => e.Sku.ToUpper()
-            .Equals(txtIDProduct.Text.ToUpper()))
-                .FirstOrDefault();
-            if (txtNameProduct.Text == "" ||
-                float.Parse(txtPriceProduct.Text) < 0 ||
-                txtPriceProduct.Text == "" ||
-                txtPathPictureProduct.Text == ""
+            //_productList = new ProductService();
+            //var AddPro = _productList.GetAll().ToList().Where(e => e.Sku.ToUpper()
+            //.Equals(txtIDProduct.Text.ToUpper()))
+            //    .FirstOrDefault();
+            //if (txtNameProduct.Text == "" ||
+            //    float.Parse(txtPriceProduct.Text) < 0 ||
+            //    txtPriceProduct.Text == "" ||
+            //    txtPathPictureProduct.Text == ""
 
-                )
-            {
-                MessageBox.Show("Not Be Empty");
-            }
-            else
-            {
-                if (AddPro != null)
-                {
-                    MessageBox.Show("ID Duplicated ");
-                }
-                else
-                {
-                    productService = new ProductService();
-                    var _addProduct = productService.GetAll().ToList().FirstOrDefault();
-                    _addProduct.Sku = autoID("SE19");
-                    _addProduct.NameProduct = txtNameProduct.Text;
-                    _addProduct.PriceProduct = float.Parse(txtPriceProduct.Text);
-                    _addProduct.QuantityProduct = Int32.Parse(NumberQuantityProduct.Text);
+            //    )
+            //{
+            //    MessageBox.Show("Not Be Empty");
+            //}
+            //else
+            //{
+            //    if (AddPro != null)
+            //    {
+            //        MessageBox.Show("ID Duplicated ");
+            //    }
+            //    else
+            //    {
+            //        productService = new ProductService();
+            //        var _addProduct = productService.GetAll().ToList().FirstOrDefault();
+            //        _addProduct.Sku = autoID("SE19");
+            //        _addProduct.NameProduct = txtNameProduct.Text;
+            //        _addProduct.PriceProduct = float.Parse(txtPriceProduct.Text);
+            //        _addProduct.QuantityProduct = Int32.Parse(NumberQuantityProduct.Text);
 
-                    _addProduct.Mfg = Convert.ToDateTime(dateTimeNXSProduct.Text);
+            //        _addProduct.Mfg = Convert.ToDateTime(dateTimeNXSProduct.Text);
 
-                    _addProduct.Exp = Convert.ToDateTime(dateTimeNXSProduct.Text);
+            //        _addProduct.Exp = Convert.ToDateTime(dateTimeNXSProduct.Text);
 
-                    _addProduct.Exp = Convert.ToDateTime(dateTimeHSDProduct.Text);
-                    _addProduct.ProductType = txtTypeProductList.Text;
+            //        _addProduct.Exp = Convert.ToDateTime(dateTimeHSDProduct.Text);
+            //        _addProduct.ProductType = txtTypeProductList.Text;
 
-                    if (url == "")
-                    {
-                        _addProduct.PictureProduct = txtPathPictureProduct.Text;
-                    }
-                    else
-                    {
-                        _addProduct.PictureProduct = (txtPathPictureProduct.Text = ImageToBase64(url));
-                    }
+            //        if (url == "")
+            //        {
+            //            _addProduct.PictureProduct = txtPathPictureProduct.Text;
+            //        }
+            //        else
+            //        {
+            //            _addProduct.PictureProduct = (txtPathPictureProduct.Text = ImageToBase64(url));
+            //        }
 
-                    if (txtStatusProduct.Text == "Availability")
-                    {
-                        _addProduct.StatusP = true;
-                    }
-                    else
-                    {
-                        _addProduct.StatusP = false;
-                    }
-                    DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    if (result == DialogResult.OK)
-                    {
-                        productService.Create(_addProduct);
-                        txtLoadPro_Click(sender, new EventArgs());
-                    }
-                }
-            }
+            //        if (txtStatusProduct.Text == "Availability")
+            //        {
+            //            _addProduct.StatusP = true;
+            //        }
+            //        else
+            //        {
+            //            _addProduct.StatusP = false;
+            //        }
+            //        DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            //        if (result == DialogResult.OK)
+            //        {
+            //            productService.Create(_addProduct);
+            //            txtLoadPro_Click(sender, new EventArgs());
+            //        }
+            //    }
+            //}
 
         }
         // Detele Product
@@ -379,74 +379,74 @@ namespace MiniStoreWinF.ManageProducts
         // Update Product
         private void btUpdateProduct_Click(object sender, EventArgs e)
         {
-            _productList = new ProductService();
-            var _UpdatePro = _productList.GetAll().Where(p => p.Sku == txtIDProduct.Text).FirstOrDefault();
-            if (txtNameProduct.Text == "" ||
-                NumberQuantityProduct.Text == "" ||
-                txtPriceProduct.Text == ""
-                )
-            {
-                MessageBox.Show("Not Be Empty");
-            }
-            else
-            {
-                if (txtPathPictureProduct.Text == _UpdatePro.PictureProduct)
-                {
-                    _UpdatePro.Sku = txtIDProduct.Text;
-                    _UpdatePro.QuantityProduct = Int32.Parse(NumberQuantityProduct.Text);
-                    _UpdatePro.PriceProduct = float.Parse(txtPriceProduct.Text);
-                    _UpdatePro.Mfg = Convert.ToDateTime(dateTimeNXSProduct.Text);
-                    _UpdatePro.Exp = Convert.ToDateTime(dateTimeHSDProduct.Text);
+            //_productList = new ProductService();
+            //var _UpdatePro = _productList.GetAll().Where(p => p.Sku == txtIDProduct.Text).FirstOrDefault();
+            //if (txtNameProduct.Text == "" ||
+            //    NumberQuantityProduct.Text == "" ||
+            //    txtPriceProduct.Text == ""
+            //    )
+            //{
+            //    MessageBox.Show("Not Be Empty");
+            //}
+            //else
+            //{
+            //    if (txtPathPictureProduct.Text == _UpdatePro.PictureProduct)
+            //    {
+            //        _UpdatePro.Sku = txtIDProduct.Text;
+            //        _UpdatePro.QuantityProduct = Int32.Parse(NumberQuantityProduct.Text);
+            //        _UpdatePro.PriceProduct = float.Parse(txtPriceProduct.Text);
+            //        _UpdatePro.Mfg = Convert.ToDateTime(dateTimeNXSProduct.Text);
+            //        _UpdatePro.Exp = Convert.ToDateTime(dateTimeHSDProduct.Text);
 
-                    if (txtStatusProduct.Text == "Availability")
-                    {
-                        _UpdatePro.StatusP = true;
-                    }
-                    else
-                    {
-                        _UpdatePro.StatusP = false;
-                    }
-                    _UpdatePro.ProductType = txtTypeProductList.Text;
+            //        if (txtStatusProduct.Text == "Availability")
+            //        {
+            //            _UpdatePro.StatusP = true;
+            //        }
+            //        else
+            //        {
+            //            _UpdatePro.StatusP = false;
+            //        }
+            //        _UpdatePro.ProductType = txtTypeProductList.Text;
 
-                    var proUp = _UpdatePro;
-                    DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    if (result == DialogResult.OK)
-                    {
-                        _productList.Update(proUp);
-                        txtLoadPro_Click(sender, new EventArgs());
-                    }
-                    txtLoadPro_Click(sender, new EventArgs());
-                }
-                else
-                {
-                    _UpdatePro.Sku = txtIDProduct.Text;
-                    _UpdatePro.QuantityProduct = Int32.Parse(NumberQuantityProduct.Text);
-                    _UpdatePro.PriceProduct = float.Parse(txtPriceProduct.Text);
-                    _UpdatePro.Mfg = Convert.ToDateTime(dateTimeNXSProduct.Text);
-                    _UpdatePro.Exp = Convert.ToDateTime(dateTimeHSDProduct.Text);
+            //        var proUp = _UpdatePro;
+            //        DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            //        if (result == DialogResult.OK)
+            //        {
+            //            _productList.Update(proUp);
+            //            txtLoadPro_Click(sender, new EventArgs());
+            //        }
+            //        txtLoadPro_Click(sender, new EventArgs());
+            //    }
+            //    else
+            //    {
+            //        _UpdatePro.Sku = txtIDProduct.Text;
+            //        _UpdatePro.QuantityProduct = Int32.Parse(NumberQuantityProduct.Text);
+            //        _UpdatePro.PriceProduct = float.Parse(txtPriceProduct.Text);
+            //        _UpdatePro.Mfg = Convert.ToDateTime(dateTimeNXSProduct.Text);
+            //        _UpdatePro.Exp = Convert.ToDateTime(dateTimeHSDProduct.Text);
 
-                    if (txtStatusProduct.Text == "Availability")
-                    {
-                        _UpdatePro.StatusP = true;
-                    }
-                    else
-                    {
-                        _UpdatePro.StatusP = false;
-                    }
-                    _UpdatePro.ProductType = txtTypeProductList.Text;
+            //        if (txtStatusProduct.Text == "Availability")
+            //        {
+            //            _UpdatePro.StatusP = true;
+            //        }
+            //        else
+            //        {
+            //            _UpdatePro.StatusP = false;
+            //        }
+            //        _UpdatePro.ProductType = txtTypeProductList.Text;
 
-                    var proUp = _UpdatePro;
-                    DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    if (result == DialogResult.OK)
-                    {
-                        _productList.Update(proUp);
-                        txtLoadPro_Click(sender, new EventArgs());
-                    }
+            //        var proUp = _UpdatePro;
+            //        DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            //        if (result == DialogResult.OK)
+            //        {
+            //            _productList.Update(proUp);
+            //            txtLoadPro_Click(sender, new EventArgs());
+            //        }
 
-                    txtLoadPro_Click(sender, new EventArgs());
+            //        txtLoadPro_Click(sender, new EventArgs());
 
-                }
-            }
+            //    }
+            //}
         }
         //Add Type Product
         private void btCreateTypeProduct_Click(object sender, EventArgs e)
