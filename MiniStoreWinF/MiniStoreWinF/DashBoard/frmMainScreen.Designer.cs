@@ -45,17 +45,17 @@
             label2 = new Label();
             panel12 = new Panel();
             PRODUCT = new Panel();
+            panel11 = new Panel();
             label6 = new Label();
             SHEET = new Panel();
+            panel13 = new Panel();
             label3 = new Label();
             VOUCHER = new Panel();
+            panel18 = new Panel();
             label8 = new Label();
             ORDER = new Panel();
             label1 = new Label();
             panel9 = new Panel();
-            panel18 = new Panel();
-            panel11 = new Panel();
-            panel13 = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
             menuStrip1 = new MenuStrip();
             panel1 = new Panel();
@@ -280,6 +280,18 @@
             PRODUCT.TabIndex = 2;
             PRODUCT.Click += PRODUCT_Click;
             // 
+            // panel11
+            // 
+            panel11.BackgroundImage = Properties.Resources.icons8_product_64;
+            panel11.BackgroundImageLayout = ImageLayout.Zoom;
+            panel11.Dock = DockStyle.Fill;
+            panel11.Location = new Point(0, 0);
+            panel11.Margin = new Padding(4);
+            panel11.Name = "panel11";
+            panel11.Size = new Size(157, 85);
+            panel11.TabIndex = 1;
+            panel11.Click += PRODUCT_Click;
+            // 
             // label6
             // 
             label6.Dock = DockStyle.Bottom;
@@ -304,6 +316,18 @@
             SHEET.TabIndex = 2;
             SHEET.Click += SHEET_Click;
             // 
+            // panel13
+            // 
+            panel13.BackgroundImage = Properties.Resources.Custom_Icon_Design_Pretty_Office_7_Calendar_256;
+            panel13.BackgroundImageLayout = ImageLayout.Zoom;
+            panel13.Dock = DockStyle.Fill;
+            panel13.Location = new Point(0, 0);
+            panel13.Margin = new Padding(4);
+            panel13.Name = "panel13";
+            panel13.Size = new Size(157, 85);
+            panel13.TabIndex = 1;
+            panel13.Click += SHEET_Click;
+            // 
             // label3
             // 
             label3.Dock = DockStyle.Bottom;
@@ -327,6 +351,18 @@
             VOUCHER.Size = new Size(161, 110);
             VOUCHER.TabIndex = 3;
             VOUCHER.Click += VOUCHER_Click;
+            // 
+            // panel18
+            // 
+            panel18.BackgroundImage = Properties.Resources.icons8_voucher_64__1_;
+            panel18.BackgroundImageLayout = ImageLayout.Zoom;
+            panel18.Dock = DockStyle.Fill;
+            panel18.Location = new Point(0, 0);
+            panel18.Margin = new Padding(4);
+            panel18.Name = "panel18";
+            panel18.Size = new Size(157, 85);
+            panel18.TabIndex = 1;
+            panel18.Click += VOUCHER_Click;
             // 
             // label8
             // 
@@ -375,42 +411,6 @@
             panel9.Size = new Size(157, 106);
             panel9.TabIndex = 1;
             panel9.Click += ORDER_Click;
-            // 
-            // panel18
-            // 
-            panel18.BackgroundImage = Properties.Resources.icons8_voucher_64__1_;
-            panel18.BackgroundImageLayout = ImageLayout.Zoom;
-            panel18.Dock = DockStyle.Fill;
-            panel18.Location = new Point(0, 0);
-            panel18.Margin = new Padding(4);
-            panel18.Name = "panel18";
-            panel18.Size = new Size(157, 85);
-            panel18.TabIndex = 1;
-            panel18.Click += VOUCHER_Click;
-            // 
-            // panel11
-            // 
-            panel11.BackgroundImage = Properties.Resources.icons8_product_64;
-            panel11.BackgroundImageLayout = ImageLayout.Zoom;
-            panel11.Dock = DockStyle.Fill;
-            panel11.Location = new Point(0, 0);
-            panel11.Margin = new Padding(4);
-            panel11.Name = "panel11";
-            panel11.Size = new Size(157, 85);
-            panel11.TabIndex = 1;
-            panel11.Click += PRODUCT_Click;
-            // 
-            // panel13
-            // 
-            panel13.BackgroundImage = Properties.Resources.Custom_Icon_Design_Pretty_Office_7_Calendar_256;
-            panel13.BackgroundImageLayout = ImageLayout.Zoom;
-            panel13.Dock = DockStyle.Fill;
-            panel13.Location = new Point(0, 0);
-            panel13.Margin = new Padding(4);
-            panel13.Name = "panel13";
-            panel13.Size = new Size(157, 85);
-            panel13.TabIndex = 1;
-            panel13.Click += SHEET_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -621,7 +621,7 @@
             // 
             // frmMainScreen
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(1638, 1025);
