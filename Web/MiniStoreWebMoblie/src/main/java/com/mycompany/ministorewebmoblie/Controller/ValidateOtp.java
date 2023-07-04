@@ -18,11 +18,16 @@ public class ValidateOtp extends HttpServlet {
         int value = Integer.parseInt(request.getParameter("otp"));
         HttpSession session = request.getSession();
         int otp = (int) session.getAttribute("otp");
-
+        String email = (String) session.getAttribute("email");
+        if (email == null || email.equals("")) {
+            request.setAttribute("errorMessage", "otp đã hết hạn");
+            request.getRequestDispatcher("forgot-password.jsp").forward(request, response);
+            return;
+        }
         RequestDispatcher dispatcher = null;
 
         if (value == otp) {
-            request.setAttribute("status", "success");
+            session.setAttribute("status", "success");
             dispatcher = request.getRequestDispatcher("newPassword.jsp");
             dispatcher.forward(request, response);
         } else {

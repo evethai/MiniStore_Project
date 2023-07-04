@@ -87,7 +87,7 @@
                 color: #979494 !important;
                 background-color: #ccc  !important; /* Màu nền khi nút "Previous" ở trang đầu */
             }
-            
+
 
 
         </style>
@@ -127,7 +127,7 @@
                     <div class="row justify-content-center">
                         <div class="col-md-5 col-sm-10 col-xs-10">
                             <br>
-                            <h2 name="welcome"> ${fullnameemapi}</h2>
+                            <h2 name="welcome">Welcome ${fullnameemapi}</h2>
                             <div class="row justify-content-center">
                                 <form class="col-md-6" style="width: auto !important;" action="Login" method="POST" id="logoutForm">
                                     <input type="button" value="Đăng xuất" class="btn btn-danger loginButton" style="background-color: #dc3545; color: #000000;"  onclick="showLogoutConfirmation()">
@@ -270,7 +270,7 @@
             </div>
         </div>
         <!-- Modal login-->
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header d-flex justify-content-center">
@@ -279,8 +279,8 @@
                     <div class="modal-body text-center text-danger">
                         Phiên làm việc đã hết hạn vui lòng đăng nhập lại!!!
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onclick="redirectToLoginPage()">Đăng nhập</button>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-danger" onclick="redirectToLoginPage()">Đăng nhập</button>
                     </div>
                 </div>
             </div>
@@ -360,6 +360,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js" ></script>
         <script src=https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"" ></script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script src="JavaScript/changetheme.js"></script>
     </body>
 </html>

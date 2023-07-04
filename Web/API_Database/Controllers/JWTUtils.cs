@@ -20,7 +20,7 @@ namespace API_Database.Controllers
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                    new Claim("Email", mail)
+                    new Claim("Password", mail)
                 }),
                 Expires = DateTime.UtcNow.AddHours(1), // Thời gian hết hạn của JWT: 1 giờ
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

@@ -35,7 +35,8 @@ public class ForgotPassword extends HttpServlet {
             dispatcher.forward(request, response);
             return;
         }
-        if (MyUtils.checkEmail(email)) {
+        String oldpassword = MyUtils.checkEmail(email);
+        if (oldpassword.equals("null")) {
             dispatcher = request.getRequestDispatcher("forgot-password.jsp");
             request.setAttribute("error", "Email chưa được đăng ký");
             dispatcher.forward(request, response);
@@ -82,6 +83,7 @@ public class ForgotPassword extends HttpServlet {
             request.setAttribute("message", "OTP đã được gửi đến email của bạn");
             mySession.setAttribute("otp", otpvalue);
             mySession.setAttribute("email", email);
+            mySession.setAttribute("oldpassword", oldpassword);
             dispatcher.forward(request, response);
         } else {
             dispatcher = request.getRequestDispatcher("forgot-password.jsp");

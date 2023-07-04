@@ -58,11 +58,12 @@ public class MyUtils {
 
     }
 
-    //kiểm tra email có tồn tại trong data base hay không
-    public static boolean checkEmail(String Email) throws IOException {
+    //cập nhật mật khẩu
+    public static boolean updatePassword(String email, String password) throws IOException {
         try {
             // Lấy danh sách Sheet từ API
-            String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/gp?mail=" + Email);
+            String token = JWTUtils.generateJWTUpPwd(email, password);
+            String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/uppwd?token=" + token);
             JSONObject json = new JSONObject(jsonResponse);
 
             String jwt = json.optString("jwt");
@@ -77,16 +78,47 @@ public class MyUtils {
             Claims claims = JWTUtils.parseJWT(jwt);
 
             // Convert the claim value to a string manually
-            String mail = claims.get("Email", String.class);
-            if (mail.equals("null") ) {
+            String fin = claims.get("Fin", String.class);
+            if (fin.equals("Successfully")) {
                 return true;
             }
-
             return false;
         } catch (Exception e) {
             // Handle error
             e.printStackTrace();
             return true;
+        }
+    }
+
+    //kiểm tra email có tồn tại trong data base hay không
+    public static String checkEmail(String Email) throws IOException {
+        try {
+            // Lấy danh sách Sheet từ API
+            String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/gp?mail=" + Email);
+            JSONObject json = new JSONObject(jsonResponse);
+
+            String jwt = json.optString("jwt");
+
+            // Check JWT
+            if (jwt.isEmpty() || jwt.equals("Unauthorized")) {
+                // Invalid user
+                System.out.println("Invalid JWT");
+                return "null";
+            }
+
+            Claims claims = JWTUtils.parseJWT(jwt);
+
+            // Convert the claim value to a string manually
+            String Password = claims.get("Password", String.class);
+            if (Password.equals("null")) {
+                return "null";
+            }
+
+            return Password; 
+        } catch (Exception e) {
+            // Handle error
+            e.printStackTrace();
+            return "null";
         }
     }
 

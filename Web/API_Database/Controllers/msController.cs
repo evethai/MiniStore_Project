@@ -112,7 +112,7 @@ namespace API_Database.Controllers
         //find acc had TimeCheckIn
         [HttpGet]
         [Route("api/ms/facct")]
-        public Employee FindAccount(string username, string password)
+        public EmployeeDTO FindAccount(string username, string password)
         {
             Employee emp = db.Employees.SingleOrDefault(acc => acc.Username.Equals(username) && acc.Password.Equals(password));
 
@@ -138,7 +138,7 @@ namespace API_Database.Controllers
                 TimeCheckOut = worksheet != null ? (string)worksheet.TimeCheckOut.ToString() : "noOut"
             };
 
-            return emp;
+            return empDTO;
         }
 
         //get password jwt 
@@ -146,9 +146,9 @@ namespace API_Database.Controllers
         [Route("api/ms/gp")]
         public IHttpActionResult GetPasswordjwt(string mail)
         {
-            string Email = GetPassword(mail);
+            string password = GetPassword(mail);
 
-            string jwt = JWTUtils.GenerateJWTEmail(Email);
+            string jwt = JWTUtils.GenerateJWTEmail(password);
 
             return Ok(new { jwt });
         }
@@ -164,18 +164,18 @@ namespace API_Database.Controllers
                 return "null";
             }
 
-            string email = emp.Email.Trim();
-            return email;
+            string password = emp.Password.Trim();
+            return password;
         }
 
         //update worksheet jwt by qr
         [HttpGet]
-        [Route("api/ms/uco/ucoqrG")]
+        [Route("api/ms/uppwd")]
         public IHttpActionResult UpdatePasswordjwt(string token)
         {
             string fin = UpdatePassword(token);
             string jwt = JWTUtils.GenerateJWTReturn(fin);
-            return Ok(new { fin });
+            return Ok(new { jwt });
         }
 
         public string UpdatePassword(string token)
@@ -185,13 +185,13 @@ namespace API_Database.Controllers
                 var claimsPrincipal = JWTUtils.ValidateJWT(token);
                 var claims = claimsPrincipal.Claims;
                 string password = "";
-                string idEmp = "";
+                string email = "";
 
                 // Lấy các thông tin cần thiết từ JWT
                 if (claims != null)
                 {
                     password = claims.FirstOrDefault(c => c.Type == "password")?.Value;
-                    idEmp = claims.FirstOrDefault(c => c.Type == "idEmp")?.Value;
+                    email = claims.FirstOrDefault(c => c.Type == "Email")?.Value;
                 }
                 else
                 {
@@ -199,13 +199,13 @@ namespace API_Database.Controllers
                 }
 
                 // Kiểm tra thông tin cần thiết
-                if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(idEmp))
+                if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(email))
                 {
                     return "Dữ liệu không hợp lệ từ JWT.";
                 }
 
                 // Kiểm tra sự tồn tại của bản ghi trong cơ sở dữ liệu
-                var existingRecord = db.Employees.SingleOrDefault(wsh => wsh.IdEmp == idEmp);
+                var existingRecord = db.Employees.SingleOrDefault(wsh => wsh.Email.Trim() == email.Trim());
                 if (existingRecord == null)
                 {
                     return "Không tìm thấy bản ghi trong cơ sở dữ liệu.";

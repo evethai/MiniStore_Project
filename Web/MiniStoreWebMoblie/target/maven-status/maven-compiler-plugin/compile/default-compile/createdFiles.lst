@@ -1,12 +1,13 @@
-com\mycompany\ministorewebmoblie\Controller\ForgotPassword$1.class
 com\mycompany\ministorewebmoblie\Controller\LogoutServlet.class
 com\mycompany\ministorewebmoblie\Controller\ForgotPassword.class
 com\mycompany\ministorewebmoblie\DTO\WorksheetDTO.class
-com\mycompany\ministorewebmoblie\Controller\LoginServlet.class
 com\mycompany\ministorewebmoblie\Controller\CheckInServlet.class
+com\mycompany\ministorewebmoblie\Controller\CheckOutServlet.class
+com\mycompany\ministorewebmoblie\Controller\ShowListWSServlet.class
+com\mycompany\ministorewebmoblie\Controller\ForgotPassword$1.class
+com\mycompany\ministorewebmoblie\Controller\LoginServlet.class
 com\mycompany\ministorewebmoblie\Utils\JWTUtils.class
 com\mycompany\ministorewebmoblie\DTO\SheetTimeSlotDTO.class
 com\mycompany\ministorewebmoblie\Utils\MyUtils.class
-com\mycompany\ministorewebmoblie\Controller\CheckOutServlet.class
-com\mycompany\ministorewebmoblie\Controller\ShowListWSServlet.class
+com\mycompany\ministorewebmoblie\Controller\newPassword.class
 com\mycompany\ministorewebmoblie\Controller\ValidateOtp.class

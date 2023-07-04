@@ -15,19 +15,36 @@ public class newPassword extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String password = request.getParameter("password");
-        String confPassword = request.getParameter("confPassword");
+        String password = request.getParameter("password").trim();
+        String confPassword = request.getParameter("confPassword").trim();
         HttpSession session = request.getSession();
-
+        String email = (String) session.getAttribute("email");
+        String oldpassword = (String) session.getAttribute("oldpassword");
+        if (email == null || email.equals("")) {
+            request.setAttribute("error", "otp đã hết hạn");
+            request.getRequestDispatcher("forgot-password.jsp").forward(request, response);
+            return;
+        }
         if (!password.equals(confPassword)) {
-            request.setAttribute("errorMessage", "Mật khẩu nhập lại và mật khẩu mới không giống nhau");
+            request.setAttribute("errorMessage", "Mật khẩu nhập lại và mật khẩu mới không khớp");
+            request.getRequestDispatcher("newPassword.jsp").forward(request, response);
+            return;
+        }
+        if (oldpassword.equals(password)) {
+            request.setAttribute("errorMessage", "Mật khẩu mới trùng với mật khẩu hiện tại");
             request.getRequestDispatcher("newPassword.jsp").forward(request, response);
             return;
         }
         try {
-            
+
+            if (!MyUtils.updatePassword(email, password)) {
+                request.setAttribute("errorMessage", "cập nhật mật khẩu thất bại");
+                request.getRequestDispatcher("newPassword.jsp").forward(request, response);
+                return;
+            }
 //            session.setAttribute("IdEmpapi", IdEmpapi);
-            request.getRequestDispatcher("ShowList").forward(request, response);
+            request.setAttribute("Message", "Hoàn thành đổi mật khẩu");
+            request.getRequestDispatcher("newPassword.jsp").forward(request, response);
         } catch (Exception e) {
             request.setAttribute("errorMessage", "Tên đăng nhập hoặc mật khẩu không chính xác");
             request.getRequestDispatcher("newPassword.jsp").forward(request, response);

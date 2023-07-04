@@ -19,7 +19,7 @@
     </head>
     <body>
         <!-- Modal popup -->
-        <div class="modal fade show d-block" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade show d-block" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="closeWindow1()">Đăng nhập lại</button>
-                        <button type="button" class="btn-info" data-dismiss="modal" onclick="closeWindow2()">Tiếp tục</button>
+                        <button type="button" class="btn btn-info" data-dismiss="modal" onclick="closeWindow2()">Tiếp tục</button>
                     </div>
                 </div>
             </div>
