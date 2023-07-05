@@ -31,6 +31,7 @@ namespace MiniStoreWinF.DashBoard
         MemberService _memberService;
         RevenueService _revenueService;
         VoucherService _voucherService;
+        UnitService _unitService;
         Utinity u = new Utinity();
         public frmDashBoard()
         {
@@ -41,7 +42,7 @@ namespace MiniStoreWinF.DashBoard
             _revenueService = new RevenueService();
             _voucherService = new VoucherService();
             _productService = new ProductService();
-
+            _unitService = new UnitService();
         }
 
         private void frmDashBoard_Load(object sender, EventArgs e)
@@ -63,8 +64,11 @@ namespace MiniStoreWinF.DashBoard
             var pro = _productService.GetAll().Where(p => p.StatusP == true).ToList();
             var or = _orderService.GetAll().Where(p => p.DateOrders.Value.Month.Equals(DateTime.Now.AddMonths(-1).Month)).ToList();
             pv.Model = new PlotModel { Title = "Revenue by product type " + DateTime.Now.AddMonths(-1).Month + "/" + DateTime.Now.AddMonths(-1).Year };
+            var unit = _unitService.GetAll().ToList();
+            var listSku = (from o in or join u in unit on o.IdUnit equals u.IdUnit select Tuple.Create(u.Sku, o.Total)).ToList();
 
-            var listType = (from o in or join pr in pro on o.Sku equals pr.Sku select Tuple.Create(pr.ProductType, o.Total)).ToList();
+            //var listType = (from o in or join pr in pro on o.Sku equals pr.Sku select Tuple.Create(pr.ProductType, o.Total)).ToList();
+            var listType = (from lk in listSku join pr in pro on lk.Item1 equals pr.Sku select Tuple.Create(pr.ProductType, lk.Item2)).ToList();
 
             foreach (var c in ca)
             {
@@ -150,12 +154,14 @@ namespace MiniStoreWinF.DashBoard
 
             {
                 var listRevenues = _revenueService.GetAll().OrderByDescending(p => p.DateRevenue).Take(7).ToList();//7 ngày gần nhất 
+                var listRevenues1 = _revenueService.GetAll().Where(p=>p.DateRevenue.Equals(DateTime.Now.AddMonths(-1))).ToList();//7 ngày gần nhất 
+
 
                 // Tạo danh sách dataPoints cho biểu đồ
                 var dataPoints = new List<DataPoint>();
                 foreach (var revenue in listRevenues)
                 {
-                    var dataPoint = new DataPoint(revenue.DateRevenue.Date.Day, (double)revenue.TotalRevenueOfDay);
+                    var dataPoint = new DataPoint(revenue.DateRevenue.Day, (double)revenue.TotalRevenueOfDay);
                     dataPoints.Add(dataPoint);
                 }
                 // Tạo đối tượng LineSeries
@@ -214,7 +220,7 @@ namespace MiniStoreWinF.DashBoard
                 // Thêm chuỗi dữ liệu vào Model.Series
                 plotModel.Series.Add(revenueSeries);
 
-                // Tạo đối tượng PlotView và thêm vào pictureBox3
+                // Tạo đối tượng PlotView
                 var plotView = new PlotView
                 {
                     Dock = DockStyle.Fill,

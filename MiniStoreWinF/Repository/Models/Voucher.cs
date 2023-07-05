@@ -9,8 +9,8 @@ namespace Repository.Models
     {
         public Voucher()
         {
+            BillOrders = new HashSet<BillOrder>();
             CodeVouchers = new HashSet<CodeVoucher>();
-            Orders = new HashSet<Order>();
         }
 
         public string IdVoucher { get; set; }
@@ -20,7 +20,7 @@ namespace Repository.Models
         public DateTime? Exp { get; set; }
         public double? Conditions { get; set; }
 
+        public virtual ICollection<BillOrder> BillOrders { get; set; }
         public virtual ICollection<CodeVoucher> CodeVouchers { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
     }
 }

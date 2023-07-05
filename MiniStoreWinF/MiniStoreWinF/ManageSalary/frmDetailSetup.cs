@@ -23,9 +23,13 @@ namespace MiniStoreWinF.ManageSalary
 
         private void frmDetailSetup_Load(object sender, EventArgs e)
         {
-            var list = _employeeService.GetAll()
-                .Where(p => (p.Roles == 2 || p.Roles == 3) && p.IsActive == true).ToList();
-            dgvRoles.DataSource = list;
+            var listEmp = _employeeService.GetAll()
+                .Where(p => (p.Roles == 2) && p.IsActive == true).ToList();
+            dgvEmp.DataSource = listEmp;
+
+            var listGuard = _employeeService.GetAll()
+                .Where(p => (p.Roles == 3) && p.IsActive == true).ToList();
+            dgvGuard.DataSource = listGuard;
         }
     }
 }

@@ -86,7 +86,7 @@ namespace MiniStoreWinF.DashBoard
 
         private void loadRole()
         {
-            var list = _permissionService.GetAll().ToList();
+            var list = _permissionService.GetAll().Where(p => p.Roles != 0).ToList();
             AutoCompleteStringCollection autoCompleteStringCollection = new AutoCompleteStringCollection();
             foreach (var item in list)
             {
@@ -111,7 +111,7 @@ namespace MiniStoreWinF.DashBoard
 
         private void dgvAuthorization_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
- 
+
             var id = dgvAuthorization[0, e.RowIndex].Value;
             bool isChecked = (bool)dgvAuthorization.Rows[e.RowIndex].Cells["check"].Value;
 
@@ -169,6 +169,7 @@ namespace MiniStoreWinF.DashBoard
                 if (form.DialogResult == DialogResult.OK)
                 {
                     loadRole();
+                    cbRoles.SelectedValue = ContextScope.newPermission.Roles;
                 }
             }
             else
@@ -181,6 +182,11 @@ namespace MiniStoreWinF.DashBoard
         {
             Form form = new frmMoMo();
             form.ShowDialog();
+        }
+
+        private void cbRoles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Authorization(cbRoles.SelectedValue.ToString());
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Repository.Models
     {
         public Member()
         {
-            Orders = new HashSet<Order>();
+            BillOrders = new HashSet<BillOrder>();
         }
 
         public string PhoneMember { get; set; }
@@ -18,7 +18,9 @@ namespace Repository.Models
         public string Gender { get; set; }
         public DateTime? DoB { get; set; }
         public DateTime? TimeCreate { get; set; }
+        public string IdRate { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual RatePoint IdRateNavigation { get; set; }
+        public virtual ICollection<BillOrder> BillOrders { get; set; }
     }
 }

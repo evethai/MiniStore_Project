@@ -4,6 +4,7 @@ using Repository.Models;
 using Repository.Service;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows.Forms;
 
 
 namespace MiniStoreWinF.ManageSalary
@@ -61,6 +62,7 @@ namespace MiniStoreWinF.ManageSalary
         {
             _detailSubSalaryService = new DetailSubSalaryService();
             var listSub = _detailSubSalaryService.GetAll().Where(p => p.ActiveSub == true).ToList();
+
             dgvSub.DataSource = new BindingSource()
             {
                 DataSource = listSub
@@ -89,7 +91,7 @@ namespace MiniStoreWinF.ManageSalary
         //Edit subSalary if this active
         private void btEdit_Click(object sender, EventArgs e)
         {
-            if (txtSaveID.Text == null)
+            if (txtSaveID.Text == "")
             {
                 MessageBox.Show("Please choise!", "Messages", MessageBoxButtons.OK);
             }
@@ -214,6 +216,18 @@ namespace MiniStoreWinF.ManageSalary
             }
         }
 
+        private void dgvSub_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dgvSub.Rows.Count)
+            {
+                DetailSubSalary item = dgvSub.Rows[e.RowIndex].DataBoundItem as DetailSubSalary; 
 
+                if (item != null && item.DateEffect < DateTime.Now)
+                {
+                    DataGridViewRow row = dgvSub.Rows[e.RowIndex];
+                    row.DefaultCellStyle.BackColor = Color.Brown;
+                }
+            }
+        }
     }
 }

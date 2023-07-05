@@ -55,10 +55,10 @@ namespace MiniStoreWinF.OrdersProducts
         }
         private void OrderProducts_Load(object sender, EventArgs e)
         {
-            var listProductsShow = _productService.GetAll().Select(p => new { p.Sku, p.NameProduct, p.QuantityProduct, p.PriceProduct, p.Mfg, p.Exp, p.PictureProduct }).ToList();
+            //var listProductsShow = _productService.GetAll().Select(p => new { p.Sku, p.NameProduct, p.QuantityProduct, p.PriceProduct, p.Mfg, p.Exp, p.PictureProduct }).ToList();
             dgvShowListProducts.DataSource = new BindingSource()
             {
-                DataSource = listProductsShow
+                //DataSource = listProductsShow
             };
             listViewOrders.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }//Load form => OK
@@ -68,10 +68,10 @@ namespace MiniStoreWinF.OrdersProducts
             var valueSearch = _productService.GetAll().Where(p => p.NameProduct.ToLower().Contains(txtSearch)).ToList();
             if (txtSearch == "")
             {
-                var listProductsShow = _productService.GetAll().Select(p => new { p.Sku, p.NameProduct, p.QuantityProduct, p.PriceProduct, p.Mfg, p.Exp, p.PictureProduct }).ToList();
+                //var listProductsShow = _productService.GetAll().Select(p => new { p.Sku, p.NameProduct, p.QuantityProduct, p.PriceProduct, p.Mfg, p.Exp, p.PictureProduct }).ToList();
                 dgvShowListProducts.DataSource = new BindingSource()
                 {
-                    DataSource = listProductsShow
+                    //DataSource = listProductsShow
                 };
             }
             else
@@ -188,7 +188,7 @@ namespace MiniStoreWinF.OrdersProducts
                 {
                     SKU = OrderChoise.Sku;
                     txtNameOrder.Text = OrderChoise.NameProduct.ToString();
-                    txtPriceOrder.Text = OrderChoise.PriceProduct.ToString();
+                    //txtPriceOrder.Text = OrderChoise.PriceProduct.ToString();
                     imageProducts = OrderChoise.PictureProduct.ToString();
                     pcPictureOrders.Image = Base64ToImage(imageProducts);
                 }
@@ -287,7 +287,8 @@ namespace MiniStoreWinF.OrdersProducts
             revenueCurrent.DateRevenue = currentDateTime.Date;
             _revenueService.Create(revenueCurrent);
         } // function add DateRevenue of Revenue ==> OK
-        private void btShowBill_Click(object sender, EventArgs e)
+        /*
+                 private void btShowBill_Click(object sender, EventArgs e)
         {
             try
             {
@@ -375,7 +376,7 @@ namespace MiniStoreWinF.OrdersProducts
                             //------------------------------------// END Take information of Products
 
                             var UpdateProductQuantity = _productService.GetAll().Where(p => p.Sku == order.Sku).FirstOrDefault();
-                            UpdateProductQuantity.QuantityProduct = UpdateProductQuantity.QuantityProduct - order.QuantityOrders;
+                            //UpdateProductQuantity.QuantityProduct = UpdateProductQuantity.QuantityProduct - order.QuantityOrders;
                             _productService.Update(UpdateProductQuantity);
                             //------------------------------------// END Update Quantity of Products when successfully orders
 
@@ -410,7 +411,8 @@ namespace MiniStoreWinF.OrdersProducts
             {
                 MessageBox.Show("Can not show Bill !", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
-        } // ADD TO CART SHOW BILL => MAYBE OK
+        } // ADD TO CART SHOW BILL => MAYBE OK*/
+
         public void AutoRevenuelUpdateWhenBillOrderDone() // Update Total Revenue in one day  => OK
         {
             var TotalBillOrder = _showBillService.GetAll().Where(p => p.DateOfBill.Equals(DateTime.Now.Date)).Sum(p => p.TotalBill);
