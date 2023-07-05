@@ -27,13 +27,13 @@ namespace MiniStoreWinF.ManageEmployees
         public frmCreateEmployees()
         {
             InitializeComponent();
-            if (ContextScope.currentEmployee.Roles.Equals(0))
-            {
-                var role = new PermissionService().GetAll();
+           
+                var role = new PermissionService().GetAll().Where(e => !e.Roles.Equals(0)).ToList();
                 cbRole.DataSource = role;
 
                 cbRole.DisplayMember = "Permission1";
-            }
+            
+          
 
 
         }
@@ -141,7 +141,15 @@ namespace MiniStoreWinF.ManageEmployees
                 if (result == DialogResult.OK)
                 {
                     Validation employeeService = new Validation();
-                    employeeService.Add(employee);
+                    if(cbIdType.Text == null)
+                    {
+                        employeeService.Add(employee, "SE");
+                    }
+                    else
+                    {
+                        employeeService.Add(employee, cbIdType.Text);
+                    }
+                    
                     this.Close();
                 }
                 else

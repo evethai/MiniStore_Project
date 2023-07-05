@@ -32,7 +32,7 @@ namespace MiniStoreWinF.InformationEmployee
         private void frmLastMonthSalary_Load(object sender, EventArgs e)
         {
             string idEmp = ContextScope.currentEmployee.IdEmp;
-            
+
             if (dtpMonth.Value.Month == 1)
             {
                 gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "st month" + " of " + dtpMonth.Value.Year;
@@ -154,7 +154,7 @@ namespace MiniStoreWinF.InformationEmployee
         {
             string idEmp = ContextScope.currentEmployee.IdEmp;
 
-            
+
 
             if (dtpWorksheet.Value.Month == 1)
             {
@@ -209,7 +209,7 @@ namespace MiniStoreWinF.InformationEmployee
             }
         }
 
-     
+
     }
 
 }

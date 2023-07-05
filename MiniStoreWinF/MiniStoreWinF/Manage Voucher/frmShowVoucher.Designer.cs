@@ -42,6 +42,10 @@
             lbDate = new Label();
             pbVoucher = new PictureBox();
             pnShow = new Panel();
+            txtLeft = new TextBox();
+            label8 = new Label();
+            txtUsed = new TextBox();
+            label7 = new Label();
             label3 = new Label();
             numCondition = new NumericUpDown();
             dpkEXP = new DateTimePicker();
@@ -179,6 +183,10 @@
             // pnShow
             // 
             pnShow.BorderStyle = BorderStyle.Fixed3D;
+            pnShow.Controls.Add(txtLeft);
+            pnShow.Controls.Add(label8);
+            pnShow.Controls.Add(txtUsed);
+            pnShow.Controls.Add(label7);
             pnShow.Controls.Add(label3);
             pnShow.Controls.Add(numCondition);
             pnShow.Controls.Add(dpkEXP);
@@ -201,12 +209,54 @@
             pnShow.Paint += pnShow_Paint;
             pnShow.MouseClick += pnShow_MouseClick;
             // 
+            // txtLeft
+            // 
+            txtLeft.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            txtLeft.Enabled = false;
+            txtLeft.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtLeft.Location = new Point(445, 129);
+            txtLeft.Name = "txtLeft";
+            txtLeft.Size = new Size(110, 34);
+            txtLeft.TabIndex = 19;
+            // 
+            // label8
+            // 
+            label8.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(368, 135);
+            label8.Name = "label8";
+            label8.Size = new Size(44, 28);
+            label8.TabIndex = 18;
+            label8.Text = "Left";
+            // 
+            // txtUsed
+            // 
+            txtUsed.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            txtUsed.Enabled = false;
+            txtUsed.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtUsed.Location = new Point(445, 73);
+            txtUsed.Name = "txtUsed";
+            txtUsed.Size = new Size(110, 34);
+            txtUsed.TabIndex = 17;
+            // 
+            // label7
+            // 
+            label7.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(356, 82);
+            label7.Name = "label7";
+            label7.Size = new Size(56, 28);
+            label7.TabIndex = 16;
+            label7.Text = "Used";
+            // 
             // label3
             // 
             label3.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(467, 135);
+            label3.Location = new Point(13, 190);
             label3.Name = "label3";
             label3.Size = new Size(99, 28);
             label3.TabIndex = 15;
@@ -216,7 +266,7 @@
             // 
             numCondition.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             numCondition.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            numCondition.Location = new Point(588, 133);
+            numCondition.Location = new Point(134, 188);
             numCondition.Name = "numCondition";
             numCondition.Size = new Size(149, 34);
             numCondition.TabIndex = 14;
@@ -225,7 +275,7 @@
             // 
             dpkEXP.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             dpkEXP.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dpkEXP.Location = new Point(588, 79);
+            dpkEXP.Location = new Point(445, 188);
             dpkEXP.Name = "dpkEXP";
             dpkEXP.Size = new Size(227, 34);
             dpkEXP.TabIndex = 13;
@@ -246,7 +296,7 @@
             // 
             txtQuantity.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             txtQuantity.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtQuantity.Location = new Point(588, 18);
+            txtQuantity.Location = new Point(445, 18);
             txtQuantity.Name = "txtQuantity";
             txtQuantity.Size = new Size(110, 34);
             txtQuantity.TabIndex = 10;
@@ -255,7 +305,7 @@
             // 
             txtPrice.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             txtPrice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPrice.Location = new Point(189, 132);
+            txtPrice.Location = new Point(137, 129);
             txtPrice.Name = "txtPrice";
             txtPrice.Size = new Size(149, 34);
             txtPrice.TabIndex = 9;
@@ -264,7 +314,7 @@
             // 
             txtName.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             txtName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtName.Location = new Point(186, 76);
+            txtName.Location = new Point(134, 73);
             txtName.Name = "txtName";
             txtName.Size = new Size(149, 34);
             txtName.TabIndex = 7;
@@ -273,7 +323,7 @@
             // 
             txtID.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             txtID.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txtID.Location = new Point(189, 21);
+            txtID.Location = new Point(137, 18);
             txtID.Name = "txtID";
             txtID.ReadOnly = true;
             txtID.Size = new Size(149, 34);
@@ -284,7 +334,7 @@
             label6.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(464, 82);
+            label6.Location = new Point(324, 194);
             label6.Name = "label6";
             label6.Size = new Size(91, 28);
             label6.TabIndex = 5;
@@ -295,7 +345,7 @@
             label5.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(467, 24);
+            label5.Location = new Point(324, 24);
             label5.Name = "label5";
             label5.Size = new Size(88, 28);
             label5.TabIndex = 4;
@@ -306,7 +356,7 @@
             label4.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(118, 135);
+            label4.Location = new Point(66, 132);
             label4.Name = "label4";
             label4.Size = new Size(54, 28);
             label4.TabIndex = 3;
@@ -317,7 +367,7 @@
             label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(105, 76);
+            label2.Location = new Point(53, 73);
             label2.Name = "label2";
             label2.Size = new Size(64, 28);
             label2.TabIndex = 1;
@@ -328,7 +378,7 @@
             label1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(76, 28);
+            label1.Location = new Point(24, 25);
             label1.Name = "label1";
             label1.Size = new Size(107, 28);
             label1.TabIndex = 0;
@@ -491,5 +541,9 @@
         private DataGridView dgvVoucher;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private TableLayoutPanel tableLayoutPanel1;
+        private TextBox txtLeft;
+        private Label label8;
+        private TextBox txtUsed;
+        private Label label7;
     }
 }

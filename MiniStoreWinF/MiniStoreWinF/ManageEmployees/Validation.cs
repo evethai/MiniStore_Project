@@ -13,34 +13,35 @@ namespace MiniStoreWinF.ManageEmployees
     {
         MiniStoreContext _context;
         DbSet<Employee> _employees;
+        EmployeeService _employeeService = new EmployeeService();
         public Validation()
         {
             _context = new MiniStoreContext();
             _employees = _context.Set<Employee>();
         }
-        public void Add(Employee employee)
+        public void Add(Employee employee, string prefix)
         {
             var lastRecord = _employees.OrderByDescending(record => record.IdEmp).FirstOrDefault();
             if (lastRecord != null)
             {
-                employee.IdEmp = autoID(lastRecord.IdEmp);
+                employee.IdEmp = autoID(lastRecord.IdEmp, prefix);
             }
             else
             {
-                employee.IdEmp = autoID("SE00");
+                employee.IdEmp = autoID(prefix+"00", prefix);
             }
 
             _employees.Add(employee);
             _context.SaveChanges();
         }
-        public string autoID(string id)
+        public string autoID(string id, string prefix)
         {
             //SEXX
             string result = "";
             int cutID = int.Parse(id.Substring(2, 2));
             cutID++;
             int digits = 2;
-            string prefix = "SE";
+            
 
             // Convert the current ID to string with leading zeros
             string idString = cutID.ToString().PadLeft(digits, '0');
@@ -53,11 +54,30 @@ namespace MiniStoreWinF.ManageEmployees
         //Get name from application and compare with database
         public List<Employee> SearchEmployee(string name)
         {
-            var records = _employees.Where(entity => entity.FullNameEmp.Contains(name) || entity.PhoneEmp.Contains(name)).ToList();
+            frmShowEmployee valid = new frmShowEmployee();
+            
+            var records = DataLoad().Where(entity => entity.FullNameEmp.Contains(name) || entity.PhoneEmp.Contains(name)).ToList();
 
             return records;
         }
+        List<Employee> DataLoad()
+        {
+            if (ContextScope.currentEmployee.Roles >= 1)
+            {
+                var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true && e.Roles >= 1).ToList();
+               
+                return employeeService;
 
-        
+            }
+            else
+            {
+                var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true).ToList();
+                
+                return employeeService;
+            }
+
+        }
+
+
     }
 }
