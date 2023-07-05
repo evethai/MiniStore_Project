@@ -42,20 +42,19 @@
             phoneDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             gmailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            moMoBindingSource1 = new BindingSource(components);
+            activeDataGridViewTextBoxColumn = new DataGridViewCheckBoxColumn();
             moMoBindingSource = new BindingSource(components);
             btnUpdate = new Button();
             btnUse = new Button();
             txtSave = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvList).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)moMoBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)moMoBindingSource).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(36, 210);
+            label1.Location = new Point(55, 231);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(54, 21);
@@ -65,7 +64,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(36, 268);
+            label2.Location = new Point(55, 289);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(201, 21);
@@ -75,7 +74,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(36, 313);
+            label3.Location = new Point(55, 334);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(51, 21);
@@ -84,8 +83,8 @@
             // 
             // txtPhone
             // 
-            txtPhone.Location = new Point(278, 214);
-            txtPhone.Margin = new Padding(4, 4, 4, 4);
+            txtPhone.Location = new Point(297, 235);
+            txtPhone.Margin = new Padding(4);
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(274, 29);
             txtPhone.TabIndex = 1;
@@ -94,24 +93,24 @@
             // 
             // txtName
             // 
-            txtName.Location = new Point(278, 262);
-            txtName.Margin = new Padding(4, 4, 4, 4);
+            txtName.Location = new Point(297, 283);
+            txtName.Margin = new Padding(4);
             txtName.Name = "txtName";
             txtName.Size = new Size(274, 29);
             txtName.TabIndex = 2;
             // 
             // txtGmail
             // 
-            txtGmail.Location = new Point(278, 313);
-            txtGmail.Margin = new Padding(4, 4, 4, 4);
+            txtGmail.Location = new Point(297, 334);
+            txtGmail.Margin = new Padding(4);
             txtGmail.Name = "txtGmail";
             txtGmail.Size = new Size(274, 29);
             txtGmail.TabIndex = 3;
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(456, 380);
-            btnAdd.Margin = new Padding(4, 4, 4, 4);
+            btnAdd.Location = new Point(475, 401);
+            btnAdd.Margin = new Padding(4);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(96, 28);
             btnAdd.TabIndex = 2;
@@ -126,47 +125,59 @@
             dgvList.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvList.BackgroundColor = SystemColors.ButtonHighlight;
             dgvList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvList.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, phoneDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, gmailDataGridViewTextBoxColumn });
-            dgvList.DataSource = moMoBindingSource1;
-            dgvList.Location = new Point(15, 15);
-            dgvList.Margin = new Padding(4, 4, 4, 4);
+            dgvList.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, phoneDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, gmailDataGridViewTextBoxColumn, activeDataGridViewTextBoxColumn });
+            dgvList.DataSource = moMoBindingSource;
+            dgvList.Dock = DockStyle.Top;
+            dgvList.Location = new Point(0, 0);
+            dgvList.Margin = new Padding(4);
             dgvList.Name = "dgvList";
+            dgvList.ReadOnly = true;
             dgvList.RowTemplate.Height = 27;
-            dgvList.Size = new Size(517, 157);
+            dgvList.Size = new Size(819, 180);
             dgvList.TabIndex = 3;
             dgvList.CellDoubleClick += dgvList_CellDoubleClick;
             // 
             // idDataGridViewTextBoxColumn
             // 
+            idDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             idDataGridViewTextBoxColumn.DataPropertyName = "Id";
             idDataGridViewTextBoxColumn.HeaderText = "Id";
             idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            idDataGridViewTextBoxColumn.Width = 48;
+            idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // phoneDataGridViewTextBoxColumn
             // 
+            phoneDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
             phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
             phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
-            phoneDataGridViewTextBoxColumn.Width = 79;
+            phoneDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // nameDataGridViewTextBoxColumn
             // 
+            nameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             nameDataGridViewTextBoxColumn.HeaderText = "Name";
             nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            nameDataGridViewTextBoxColumn.Width = 77;
+            nameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // gmailDataGridViewTextBoxColumn
             // 
+            gmailDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             gmailDataGridViewTextBoxColumn.DataPropertyName = "Gmail";
             gmailDataGridViewTextBoxColumn.HeaderText = "Gmail";
             gmailDataGridViewTextBoxColumn.Name = "gmailDataGridViewTextBoxColumn";
-            gmailDataGridViewTextBoxColumn.Width = 76;
+            gmailDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // moMoBindingSource1
+            // activeDataGridViewTextBoxColumn
             // 
-            moMoBindingSource1.DataSource = typeof(Repository.Models.MoMo);
+            activeDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            activeDataGridViewTextBoxColumn.DataPropertyName = "Active";
+            activeDataGridViewTextBoxColumn.HeaderText = "Active";
+            activeDataGridViewTextBoxColumn.Name = "activeDataGridViewTextBoxColumn";
+            activeDataGridViewTextBoxColumn.ReadOnly = true;
+            activeDataGridViewTextBoxColumn.Resizable = DataGridViewTriState.True;
+            activeDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // moMoBindingSource
             // 
@@ -174,8 +185,8 @@
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(278, 380);
-            btnUpdate.Margin = new Padding(4, 4, 4, 4);
+            btnUpdate.Location = new Point(297, 401);
+            btnUpdate.Margin = new Padding(4);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(96, 28);
             btnUpdate.TabIndex = 4;
@@ -186,8 +197,8 @@
             // btnUse
             // 
             btnUse.BackColor = Color.FromArgb(128, 255, 128);
-            btnUse.Location = new Point(604, 214);
-            btnUse.Margin = new Padding(4, 4, 4, 4);
+            btnUse.Location = new Point(623, 235);
+            btnUse.Margin = new Padding(4);
             btnUse.Name = "btnUse";
             btnUse.Size = new Size(144, 130);
             btnUse.TabIndex = 5;
@@ -225,14 +236,13 @@
             Controls.Add(label1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             MaximumSize = new Size(835, 536);
             MinimumSize = new Size(835, 536);
             Name = "frmMoMo";
             StartPosition = FormStartPosition.CenterScreen;
             Load += frmMoMo_Load;
             ((System.ComponentModel.ISupportInitialize)dgvList).EndInit();
-            ((System.ComponentModel.ISupportInitialize)moMoBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)moMoBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -251,11 +261,11 @@
         private BindingSource moMoBindingSource;
         private Button btnUpdate;
         private Button btnUse;
+        private Label txtSave;
         private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn gmailDataGridViewTextBoxColumn;
-        private BindingSource moMoBindingSource1;
-        private Label txtSave;
+        private DataGridViewCheckBoxColumn activeDataGridViewTextBoxColumn;
     }
 }

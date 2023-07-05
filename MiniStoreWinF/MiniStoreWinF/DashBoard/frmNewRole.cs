@@ -25,33 +25,34 @@ namespace MiniStoreWinF.DashBoard
         }
         private void buOk_Click(object sender, EventArgs e)
         {
-            Permission p = new Permission();
+            Permission per = new Permission();
             if (txtRole.Text.Trim().Length > 0)
             {
                 int n = 0;
-                p.Permission1 = txtRole.Text.Trim().ToUpper();
-                p.Tax = 0;
-                p.BasicSalary = 0;
+                per.Permission1 = txtRole.Text.Trim().ToUpper();
+                per.Tax = 0;
+                per.BasicSalary = 0;
                 var sum = _permissionService.GetAll().Last();
                 if (sum != null)
                 {
-                    p.Roles = sum.Roles + 1;
+                    per.Roles = sum.Roles + 1;
                     n = sum.Roles + 1;
                 }
-                _permissionService.Create(p);
+                _permissionService.Create(per);
 
 
                 var PerDetail = _permissionDetailService.GetAll().Where(p => p.IdPer == 0).ToList();
-                foreach (var per in PerDetail)
+                foreach (var item in PerDetail)
                 {
                     PermissionDetail permissionDetail = new PermissionDetail();
                     permissionDetail.IdPer = n;
-                    permissionDetail.ActionName = per.ActionName;
-                    permissionDetail.ActionCode = per.ActionCode;
+                    permissionDetail.ActionName = item.ActionName;
+                    permissionDetail.ActionCode = item.ActionCode;
                     permissionDetail.CheckAction = false;
                     _permissionDetailService.Create(permissionDetail);
                 }
-                MessageBox.Show("Add new Successful", "Messages", MessageBoxButtons.OK);
+                MessageBox.Show("Add new Successful","Messages",MessageBoxButtons.OK);
+                ContextScope.newPermission = per;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

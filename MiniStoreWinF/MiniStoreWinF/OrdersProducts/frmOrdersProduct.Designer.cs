@@ -625,7 +625,7 @@
             btShowBill.TextAlign = ContentAlignment.BottomCenter;
             btShowBill.UseVisualStyleBackColor = true;
             btShowBill.Visible = false;
-            btShowBill.Click += btShowBill_Click;
+
             // 
             // lblCustomerProvidesCash
             // 
