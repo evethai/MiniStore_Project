@@ -68,7 +68,8 @@ namespace API_Database.Controllers
                 IdEmp = (string)emp.IdEmp,
                 Roles = (string)emp.Roles.ToString(),
                 IsActive = (Boolean)emp.IsActive,
-                TimeCheckIn = worksheet != null ? (string)worksheet.TimeCheckIn.ToString() : "nonsheet"
+                TimeCheckIn = worksheet != null ? (string)worksheet.TimeCheckIn.ToString() : "nonsheet",
+                TimeCheckOut = worksheet != null ? (string)worksheet.TimeCheckOut.ToString() : "noOut"
             };
 
             string jwt = JWTUtils.GenerateJWTFAcc(empDTO);
@@ -133,7 +134,8 @@ namespace API_Database.Controllers
                 IdEmp = (string)emp.IdEmp,
                 Roles = (string)emp.Roles.ToString(),
                 IsActive = (Boolean)emp.IsActive,
-                TimeCheckIn = worksheet != null ? (string)worksheet.TimeCheckIn.ToString() : "nonsheet"
+                TimeCheckIn = worksheet != null ? (string)worksheet.TimeCheckIn.ToString() : "nonsheet",
+                TimeCheckOut = worksheet != null ? (string)worksheet.TimeCheckOut.ToString() : "noOut"
             };
 
             return empDTO;
@@ -158,8 +160,8 @@ namespace API_Database.Controllers
             List<WorkSheetDTO> worksheetDTOs = filteredWorksheets.Select(ws => new WorkSheetDTO
             {
                 Date = ws.Date.HasValue ? ws.TimeCheckIn.Value : DateTime.MinValue,
-                TimeCheckIn = ws.TimeCheckIn.HasValue ? ws.TimeCheckIn.Value : DateTime.MinValue,
-                TimeCheckOut = ws.TimeCheckOut.HasValue ? ws.TimeCheckOut.Value : DateTime.MinValue
+                TimeCheckIn = ws.TimeCheckIn.HasValue ? ws.TimeCheckIn.Value.ToString("HH:mm:ss") : string.Empty,
+                TimeCheckOut = ws.TimeCheckOut.HasValue ? ws.TimeCheckOut.Value.ToString("HH:mm:ss") : string.Empty
             }).ToList();
 
             string jwt = JWTUtils.GenerateJWTFLWS(worksheetDTOs);
@@ -184,8 +186,8 @@ namespace API_Database.Controllers
             List<WorkSheetDTO> worksheetDTOs = filteredWorksheets.Select(ws => new WorkSheetDTO
             {
                 Date = ws.Date.HasValue ? ws.TimeCheckIn.Value : DateTime.MinValue,
-                TimeCheckIn = ws.TimeCheckIn.HasValue ? ws.TimeCheckIn.Value : DateTime.MinValue,
-                TimeCheckOut = ws.TimeCheckOut.HasValue ? ws.TimeCheckOut.Value : DateTime.MinValue
+                TimeCheckIn = ws.TimeCheckIn.HasValue ? ws.TimeCheckIn.Value.ToString("HH:mm:ss") : string.Empty,
+                TimeCheckOut = ws.TimeCheckOut.HasValue ? ws.TimeCheckOut.Value.ToString("HH:mm:ss") : string.Empty
             }).ToList();
 
             return worksheetDTOs;
@@ -215,8 +217,8 @@ namespace API_Database.Controllers
             {
                 Status = worksheet.Status.ToString(),
                 Sheet = (int)worksheet.Sheet,
-                TimeCheckIn = worksheet.TimeCheckIn.HasValue ? worksheet.TimeCheckIn.Value : DateTime.MinValue,
-                TimeCheckOut = worksheet.TimeCheckOut.HasValue ? worksheet.TimeCheckOut.Value : DateTime.MinValue
+                TimeCheckIn = worksheet.TimeCheckIn.HasValue ? worksheet.TimeCheckIn.Value.ToString() : string.Empty,
+                TimeCheckOut = worksheet.TimeCheckOut.HasValue ? worksheet.TimeCheckOut.Value.ToString() : string.Empty
             };
 
             string jwt = JWTUtils.GenerateJWTFWS(worksheetDTO);
@@ -245,8 +247,8 @@ namespace API_Database.Controllers
             {
                 Status = worksheet.Status.ToString(),
                 Sheet = (int)worksheet.Sheet,
-                TimeCheckIn = worksheet.TimeCheckIn.HasValue ? worksheet.TimeCheckIn.Value : DateTime.MinValue,
-                TimeCheckOut = worksheet.TimeCheckOut.HasValue ? worksheet.TimeCheckOut.Value : DateTime.MinValue
+                TimeCheckIn = worksheet.TimeCheckIn.HasValue ? worksheet.TimeCheckIn.Value.ToString() : string.Empty,
+                TimeCheckOut = worksheet.TimeCheckOut.HasValue ? worksheet.TimeCheckOut.Value.ToString() : string.Empty
             };
 
             return worksheetDTO;
@@ -311,6 +313,146 @@ namespace API_Database.Controllers
                 }
             }
             return sheetList;
+        }
+
+        [HttpGet]
+        [Route("api/ms/uco/ucoqrG")]
+        public IHttpActionResult UpdateWorksheetQRGet(string token)
+        {
+            try
+            {
+                var claimsPrincipal = JWTUtils.ValidateJWT(token);
+                var claims = claimsPrincipal.Claims;
+                string idEmp = "";
+                string date = "";
+                string update = "";
+                string check = "";
+
+                // Lấy các thông tin cần thiết từ JWT
+                if (claims != null)
+                {
+                    idEmp = claims.FirstOrDefault(c => c.Type == "IdEmp")?.Value;
+                    date = claims.FirstOrDefault(c => c.Type == "Date")?.Value;
+                    check = claims.FirstOrDefault(c => c.Type == "TimeCheckIn" || c.Type == "TimeCheckOut")?.Type;
+                    update = claims.FirstOrDefault(c => c.Type == check)?.Value;
+                }
+                else
+                {
+                    Console.WriteLine("JWT bị null.");
+                    return BadRequest("JWT bị null.");
+                }
+
+                // Kiểm tra thông tin cần thiết
+                if (string.IsNullOrEmpty(idEmp) || string.IsNullOrEmpty(date) || string.IsNullOrEmpty(check) || string.IsNullOrEmpty(update))
+                {
+                    Console.WriteLine("Dữ liệu không hợp lệ từ JWT.");
+                    return BadRequest("Dữ liệu không hợp lệ từ JWT.");
+                }
+
+                // Kiểm tra sự tồn tại của bản ghi trong cơ sở dữ liệu
+                var existingRecord = db.WorkSheets.SingleOrDefault(wsh => wsh.IdEmp == idEmp && wsh.Date.ToString() == date);
+                if (existingRecord == null)
+                {
+                    Console.WriteLine("Không tìm thấy bản ghi trong cơ sở dữ liệu.");
+                    return NotFound();
+                }
+
+                // Cập nhật dữ liệu vào database
+                if (check == "TimeCheckIn")
+                {
+                    existingRecord.TimeCheckIn = DateTime.ParseExact(update, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+                    existingRecord.Status = true;
+                }
+                else
+                {
+                    existingRecord.TimeCheckOut = DateTime.ParseExact(update, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+                }
+
+                // Thực hiện lưu thay đổi vào cơ sở dữ liệu
+                db.SubmitChanges();
+                if (check == "TimeCheckIn")
+                {
+                    return Redirect("http://localhost:9990/MiniStoreWebMoblie/messageSCCI.jsp");
+                }
+                else
+                {
+                    return Redirect("http://localhost:9990/MiniStoreWebMoblie/messageSCCO.jsp");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi: " + ex.Message);
+                return Redirect("http://localhost:9990/MiniStoreWebMoblie/error.jsp");
+            }
+        }
+
+
+        //update worksheet jwt by qr
+        [HttpPut]
+        [Route("api/ms/ucoqr")]
+        public IHttpActionResult UpdateWorksheetQR(string token)
+        {
+            try
+            {
+                var claimsPrincipal = JWTUtils.ValidateJWT(token);
+                var claims = claimsPrincipal.Claims;
+                string idEmp = "";
+                string date = "";
+                string update = "";
+                string check = "";
+
+                // Lấy các thông tin cần thiết từ JWT
+                if (claims != null)
+                {
+                    idEmp = claims.FirstOrDefault(c => c.Type == "IdEmp")?.Value;
+                    date = claims.FirstOrDefault(c => c.Type == "Date")?.Value;
+                    check = claims.FirstOrDefault(c => c.Type == "TimeCheckIn" || c.Type == "TimeCheckOut")?.Type;
+                    update = claims.FirstOrDefault(c => c.Type == check)?.Value;
+                }
+                else
+                {
+                    Console.WriteLine("JWT bị null.");
+                    return BadRequest("JWT bị null.");
+                }
+
+                // Kiểm tra thông tin cần thiết
+                if (string.IsNullOrEmpty(idEmp) || string.IsNullOrEmpty(date) || string.IsNullOrEmpty(check) || string.IsNullOrEmpty(update))
+                {
+                    Console.WriteLine("Dữ liệu không hợp lệ từ JWT.");
+                    return BadRequest("Dữ liệu không hợp lệ từ JWT.");
+                }
+
+                // Kiểm tra sự tồn tại của bản ghi trong cơ sở dữ liệu
+                var existingRecord = db.WorkSheets.SingleOrDefault(wsh => wsh.IdEmp == idEmp && wsh.Date.ToString() == date);
+                if (existingRecord == null)
+                {
+                    Console.WriteLine("Không tìm thấy bản ghi trong cơ sở dữ liệu.");
+                    return NotFound();
+                }
+
+                // Cập nhật dữ liệu vào database
+                if (check == "TimeCheckIn")
+                {
+                    existingRecord.TimeCheckIn = DateTime.ParseExact(update, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+                    existingRecord.Status = true;
+                }
+                else
+                {
+                    existingRecord.TimeCheckOut = DateTime.ParseExact(update, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+                }
+
+                // Thực hiện lưu thay đổi vào cơ sở dữ liệu
+                db.SubmitChanges();
+
+                // Chuyển hướng người dùng đến trang "http://localhost:9990/MiniStoreWebMoblie/messageSCCI.jsp"
+                return Redirect("http://localhost:9990/MiniStoreWebMoblie/messageSCCI.jsp");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi: " + ex.Message);
+                return InternalServerError(ex);
+            }
         }
 
 

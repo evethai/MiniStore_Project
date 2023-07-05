@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            Label label1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmShowEmployee));
             employeeBindingSource = new BindingSource(components);
             btAddEmployee = new Button();
@@ -43,7 +42,6 @@
             btSearch = new Button();
             pnButton = new Panel();
             pbSearch = new PictureBox();
-            pictureBox1 = new PictureBox();
             dgvEmployee = new DataGridView();
             fullNameEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             sexDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -76,12 +74,10 @@
             txtName = new TextBox();
             txtId = new TextBox();
             tableLayoutPanel2 = new TableLayoutPanel();
-            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).BeginInit();
             pnButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbSearch).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvEmployee).BeginInit();
             tbMain.SuspendLayout();
             pnInfor.SuspendLayout();
@@ -89,15 +85,6 @@
             ((System.ComponentModel.ISupportInitialize)pBEmp).BeginInit();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(88, 416);
-            label1.Name = "label1";
-            label1.Size = new Size(77, 28);
-            label1.TabIndex = 55;
-            label1.Text = "Update";
             // 
             // employeeBindingSource
             // 
@@ -136,14 +123,13 @@
             // 
             // btUpdate
             // 
-            btUpdate.Location = new Point(1147, 2);
+            btUpdate.Location = new Point(1128, 371);
             btUpdate.Margin = new Padding(4, 5, 4, 5);
             btUpdate.Name = "btUpdate";
-            btUpdate.Size = new Size(26, 20);
+            btUpdate.Size = new Size(88, 40);
             btUpdate.TabIndex = 20;
             btUpdate.Text = "Update";
             btUpdate.UseVisualStyleBackColor = true;
-            btUpdate.Visible = false;
             btUpdate.Click += btUpdate_Click;
             // 
             // txtSearch
@@ -215,18 +201,6 @@
             pbSearch.TabIndex = 27;
             pbSearch.TabStop = false;
             pbSearch.Click += btSearch_Click;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(16, 357);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(66, 46);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 26;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += btUpdate_Click;
             // 
             // dgvEmployee
             // 
@@ -304,7 +278,7 @@
             // tbMain
             // 
             tbMain.ColumnCount = 1;
-            tbMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tbMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tbMain.Controls.Add(pnInfor, 0, 0);
             tbMain.Controls.Add(tableLayoutPanel2, 0, 1);
             tbMain.Dock = DockStyle.Fill;
@@ -320,10 +294,8 @@
             // pnInfor
             // 
             pnInfor.BorderStyle = BorderStyle.Fixed3D;
-            pnInfor.Controls.Add(label1);
             pnInfor.Controls.Add(btAddEmployee);
             pnInfor.Controls.Add(pbImport);
-            pnInfor.Controls.Add(pictureBox1);
             pnInfor.Controls.Add(btSearch);
             pnInfor.Controls.Add(txtRole);
             pnInfor.Controls.Add(dtDoB);
@@ -609,7 +581,6 @@
             pnButton.ResumeLayout(false);
             pnButton.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pbSearch).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvEmployee).EndInit();
             tbMain.ResumeLayout(false);
             pnInfor.ResumeLayout(false);
@@ -664,7 +635,6 @@
         private DataGridViewTextBoxColumn addressEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn phoneEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dateJoinDataGridViewTextBoxColumn;
-        private PictureBox pictureBox1;
         private PictureBox pbImport;
         private PictureBox pbSearch;
     }

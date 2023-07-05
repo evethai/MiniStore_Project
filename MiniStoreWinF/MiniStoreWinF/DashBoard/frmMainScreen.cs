@@ -100,7 +100,7 @@ namespace MiniStoreWinF.DashBoard
 
         private void PRODUCT_Click(object sender, EventArgs e)
         {
-            u.openChildForm(new ManageProducts.ManageAllProduct(), pnMain);
+            u.openChildForm(new ManageProducts.ManageAll(), pnMain);
         }
 
         private void EMPLOYEE_Click(object sender, EventArgs e)

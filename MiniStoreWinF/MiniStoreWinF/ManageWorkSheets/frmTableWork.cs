@@ -136,7 +136,7 @@ namespace MiniStoreWinF.ManageWorkSheets
                 worksheetOfNow.Status = false;
                 autoID.AddID(worksheetOfNow);
                 MessageBox.Show("Add Emp in sheet to date is Successfull");
-
+                ShowJobByDate(dtpkDate.Value);
             }
             else
             {
@@ -146,6 +146,7 @@ namespace MiniStoreWinF.ManageWorkSheets
 
         private void btRemove_Click_1(object sender, EventArgs e)
         {
+            try {
             var WsheetCheck = _workSheetService.GetAll().Where(p => p.IdWorkSheet.Equals(txtIdWsheet.Text)).FirstOrDefault();
             if (WsheetCheck != null)
             {
@@ -154,46 +155,58 @@ namespace MiniStoreWinF.ManageWorkSheets
                 cbFullNameEmp.SelectedIndex = 0;
                 cbSheetWork.SelectedIndex = 0;
                 MessageBox.Show("Remove Successfull");
+                ShowJobByDate(dtpkDate.Value);
 
             }
             else
             {
                 MessageBox.Show("Can not Remove");
             }
-        }
+        }catch (Exception ex)
+            {
+                MessageBox.Show("Error");
+            }
+}
 
         private void cbFullNameEmp_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             var employee = _employeeService.GetAll().Where(p => p.FullNameEmp.Equals(cbFullNameEmp.Text) && p.Roles == 2).FirstOrDefault();
             if (employee != null)
             {
-                cbSheetWork.DataSource = _sheetDetailService.GetAll().Where(p => p.Sheet <= 4).ToList();
+                cbSheetWork.DataSource = _sheetDetailService.GetAll().Where(p => p.Roles == 2).ToList();
                 cbSheetWork.DisplayMember = "Sheet";
             }
             else
             {
-                cbSheetWork.DataSource = _sheetDetailService.GetAll().Where(p => p.Sheet > 4 && p.Sheet <= 7).ToList();
+                cbSheetWork.DataSource = _sheetDetailService.GetAll().Where(p => p.Roles == 3).ToList();
                 cbSheetWork.DisplayMember = "Sheet";
             }
         }
 
         private void btUpdate_Click(object sender, EventArgs e)
         {
-            var WsheetCheck = _workSheetService.GetAll().Where(p => p.IdWorkSheet.Equals(txtIdWsheet.Text)).FirstOrDefault();
-            if (WsheetCheck != null)
+            try
             {
-                var employee = _employeeService.GetAll().Where(p => p.FullNameEmp.Equals(cbFullNameEmp.Text)).FirstOrDefault();
-                WsheetCheck.Sheet = Convert.ToInt32(cbSheetWork.Text);
-                WsheetCheck.IdEmp = employee.IdEmp;
-                _workSheetService.Update(WsheetCheck);
-                txtIdWsheet.Text = "";
-                cbFullNameEmp.SelectedIndex = 0;
-                cbSheetWork.SelectedIndex = 0;
-                MessageBox.Show("Update Successfull");
-            }
-            else
+                var WsheetCheck = _workSheetService.GetAll().Where(p => p.IdWorkSheet.Equals(txtIdWsheet.Text)).FirstOrDefault();
+                if (WsheetCheck != null)
+                {
+                    var employee = _employeeService.GetAll().Where(p => p.FullNameEmp.Equals(cbFullNameEmp.Text)).FirstOrDefault();
+                    WsheetCheck.Sheet = Convert.ToInt32(cbSheetWork.Text);
+                    WsheetCheck.IdEmp = employee.IdEmp;
+                    _workSheetService.Update(WsheetCheck);
+                    txtIdWsheet.Text = "";
+                    cbFullNameEmp.SelectedIndex = 0;
+                    cbSheetWork.SelectedIndex = 0;
+                    MessageBox.Show("Update Successfull");
+                    ShowJobByDate(dtpkDate.Value);
+                }
+                else
+                {
+                    MessageBox.Show("Can not Remove");
+                }
+            }catch (Exception ex)
             {
-                MessageBox.Show("Can not Remove");
+                MessageBox.Show("Error");
             }
         }
     }

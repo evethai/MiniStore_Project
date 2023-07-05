@@ -22,7 +22,6 @@ public class JWTUtils {
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY.getBytes());
-
         return builder.compact();
     }
     

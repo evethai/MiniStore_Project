@@ -28,11 +28,11 @@ public class CheckOutServlet extends HttpServlet {
         String checkOutTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         LocalTime checkTime = LocalTime.now();
         String check = "checkout";
-        if (checkTime.isAfter(LocalTime.MIDNIGHT) && checkTime.isBefore(LocalTime.MIDNIGHT.plusMinutes(30))) {
-            LocalDate previousDate = LocalDate.parse(checkDay).minusDays(1);
-            checkDay = previousDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-//            checkOutTime = LocalDateTime.of(previousDate, LocalTime.MAX).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        }
+//        if (checkTime.isAfter(LocalTime.MIDNIGHT) && checkTime.isBefore(LocalTime.MIDNIGHT.plusMinutes(30))) {
+//            LocalDate previousDate = LocalDate.parse(checkDay).minusDays(1);
+//            checkDay = previousDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+////            checkOutTime = LocalDateTime.of(previousDate, LocalTime.MAX).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+//        }
         String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/fws?idemp=" + idemp + "&date=" + checkDay);
         JSONObject json = null;
         try {
@@ -40,7 +40,7 @@ public class CheckOutServlet extends HttpServlet {
         } catch (Exception e) {
             // Handle JSON parsing error
             if (idemp == null || idemp.isEmpty()) {
-                request.setAttribute("errorMessage", "Hãy đăng nhập lại!!!");
+                request.setAttribute("errorMessage", "Đã hết phiên làm việc hãy đăng nhập lại!!!");
                 request.getRequestDispatcher("Login.jsp").forward(request, response);
                 return;
             } else {
@@ -122,11 +122,11 @@ public class CheckOutServlet extends HttpServlet {
             return;
         }
 
-        if (!checkoutTimeapi.equals("01/01/0001 00:00:00")) {
-            request.setAttribute("errorMessage", "đã check Out");
-        } else if (isCheckOutTimeValid) {
-            if (MyUtils.updateWorksheet(idemp, checkDay, checkOutTime, check)) {
-                String qrCodeURL = MyUtils.generateQRCodeURL(idemp, checkOutTime);
+        if (isCheckOutTimeValid) {
+            jwt = MyUtils.updateWorksheetQR(idemp, checkDay, checkOutTime, check);
+            if (jwt != null) {
+                String qrCodeURL = MyUtils.generateQRCodeURLG(jwt);
+                session.setAttribute("TimeCheckOutapi", checkOutTime);
                 request.setAttribute("qrCodeURL", qrCodeURL);
             } else {
                 request.setAttribute("errorMessage", "check out failed");
@@ -135,6 +135,6 @@ public class CheckOutServlet extends HttpServlet {
             request.setAttribute("errorMessage", "không phải giờ check out");
         }
 
-        request.getRequestDispatcher("qr-code.jsp").forward(request, response);
+        request.getRequestDispatcher("ShowList").forward(request, response);
     }
 }

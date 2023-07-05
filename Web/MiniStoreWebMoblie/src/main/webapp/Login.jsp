@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="CSS/logincss.css"/>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-        <title>JSP Page</title>
+        <title>Login Page</title>
         <style>
             section {
                 background: url('background/morning.jpg')no-repeat;
@@ -92,6 +92,39 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal login-->
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-center">
+                        <h5 class="modal-title text-danger" id="loginModalLabel">Thông báo</h5>
+                    </div>
+                    <div class="modal-body text-center text-danger">
+                        Hiện đang trong phiên làm việc không thể đăng nhập!!!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="redirectToLoginPage()">Tiếp tục</button>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <c:if test="${not empty fullnameemapi}">
+            <script>
+                $(document).ready(function () {
+                    $('#loginModal').modal('show');
+                });
+
+                function redirectToLoginPage() {
+                    var form = document.createElement("form");
+                    form.method = "POST";
+                    form.action = "ShowList"; // Thay thế "LogoutServlet" bằng URL của Servlet xử lý logout
+
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            </script>
+        </c:if>
 
         <script>
             // Hàm kiểm tra và xác nhận reCAPTCHA trước khi gửi form
