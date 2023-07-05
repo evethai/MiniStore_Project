@@ -57,6 +57,7 @@ namespace MiniStoreWinF.Manage_Voucher
                         codeVoucher.StatusV = true;
                         codeVoucher.IdVoucher = voucher.IdVoucher;
                         createVoucher.AddNewEachVoucher(codeVoucher);
+                        this.Close();
                     }
                 }
                 else

@@ -78,7 +78,7 @@ namespace MiniStoreWinF.Manage_Voucher
         }
         public void AddNewEachVoucher(CodeVoucher voucher)
         {
-            voucher.Id = GenerateRandomString(10);
+            voucher.Id = GenerateRandomString(5);
             _codeVoucher.Add(voucher);
             _context.SaveChanges();
         }
@@ -90,16 +90,26 @@ namespace MiniStoreWinF.Manage_Voucher
             StringBuilder stringBuilder = new StringBuilder();
             Random random = new Random();
 
-            for (int i = 0; i < length; i++)
+            //Check if duplicated
+            bool[] usedIndices = new bool[chars.Length];
+
+            while (stringBuilder.Length < length)
             {
                 int randomIndex = random.Next(0, chars.Length);
+
+                // If duplicated --> continue random until not duplicated
+                if (usedIndices[randomIndex])
+                {
+                    continue;
+                }
+
+                usedIndices[randomIndex] = true;
                 char randomChar = chars[randomIndex];
                 stringBuilder.Append(randomChar);
             }
 
             return stringBuilder.ToString();
         }
-
 
     }
 }

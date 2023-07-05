@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Microsoft.Office.Interop.Excel;
 
 namespace MiniStoreWinF.ManageEmployees
 {
@@ -26,23 +27,32 @@ namespace MiniStoreWinF.ManageEmployees
         private int rowIndex { get; set; }
         public frmShowEmployee()
         {
-            //if (ContextScope.currentEmployee.Roles > 0)
-            //{
-            //    var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true);
-            //    dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
-            //}
-            //else
-            //{
-            //    var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true);
-            //    dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
-            //}
-
-
             InitializeComponent();
-            var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true);
-            dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
+
+            DataLoad();
 
 
+            //var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true);
+            //dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
+
+
+
+        }
+        List<Employee> DataLoad()
+        {
+            if (ContextScope.currentEmployee.Roles >= 1)
+            {
+                var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true && e.Roles >= 1).ToList();
+                dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
+                return employeeService;
+
+            }
+            else
+            {
+                var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true).ToList();
+                dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
+                return employeeService;
+            }
 
         }
 
@@ -75,12 +85,11 @@ namespace MiniStoreWinF.ManageEmployees
         {
             Form form = new frmCreateEmployees();
             form.ShowDialog();
-            var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true); ;
-
-            dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
+            DataLoad();
 
 
         }
+
         //Import to update employee's picture
         private void btImport_Click_1(object sender, EventArgs e)
         {
@@ -101,6 +110,8 @@ namespace MiniStoreWinF.ManageEmployees
         private void ShowEmployees_Load(object sender, EventArgs e)
         {
             rd1.Checked = true;
+            DataLoad();
+
         }
         //Double click to get specific employee's information
         private void dgvEmployee_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -109,8 +120,6 @@ namespace MiniStoreWinF.ManageEmployees
             {
 
                 var id = dgvEmployee[0, e.RowIndex].Value;
-
-
                 var RoleType = _employeeService.GetAll().Where(entity => entity.FullNameEmp.Equals(id)).FirstOrDefault();
                 var roles = RoleType.Roles;
                 var permission = _permissionService.GetAll().Where(entity => entity.Roles.Equals(roles)).FirstOrDefault();
@@ -250,16 +259,7 @@ namespace MiniStoreWinF.ManageEmployees
                 }
 
             }
-            if (ContextScope.currentEmployee.Roles > 0)
-            {
-                var employeeServiceU = _employeeService.GetAll().Where(e => e.IsActive == true);
-                dgvEmployee.DataSource = new BindingSource() { DataSource = employeeServiceU };
-            }
-            else
-            {
-                var employeeServiceU = _employeeService.GetAll().Where(e => e.IsActive == true);
-                dgvEmployee.DataSource = new BindingSource() { DataSource = employeeServiceU };
-            }
+            DataLoad();
 
         }
 
@@ -281,10 +281,10 @@ namespace MiniStoreWinF.ManageEmployees
         //Show disable employee's list
         private void rd2_CheckedChanged(object sender, EventArgs e)
         {
+            DataLoad();
             if (rd2.Checked)
             {
-
-                var employeeService = _employeeService.GetAll().Where(e => e.IsActive == false);
+                var employeeService = DataLoad().Where(e => e.IsActive == false);
                 dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
             }
         }
@@ -293,7 +293,7 @@ namespace MiniStoreWinF.ManageEmployees
         {
             if (rd1.Checked)
             {
-                var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true);
+                var employeeService = DataLoad().Where(e => e.IsActive == true);
                 dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
             }
         }
@@ -303,6 +303,8 @@ namespace MiniStoreWinF.ManageEmployees
         private void btSearch_Click(object sender, EventArgs e)
         {
             string searchName = txtSearch.Text;
+
+
             if (searchName.Length > 0 && rd1.Checked)
             {
                 var listSearchName = _employeeService.SearchEmployee(searchName).Where(e => e.IsActive == true);

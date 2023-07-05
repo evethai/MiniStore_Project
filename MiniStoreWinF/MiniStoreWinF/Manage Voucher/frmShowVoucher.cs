@@ -16,6 +16,7 @@ namespace MiniStoreWinF.Manage_Voucher
     public partial class frmShowVoucher : Form
     {
         VoucherService _voucherService = new VoucherService();
+        CodeVoucherService _codeVoucherService = new CodeVoucherService();
         private int rowIndex { get; set; }
         Validation valid = new Validation();
         public frmShowVoucher()
@@ -30,6 +31,7 @@ namespace MiniStoreWinF.Manage_Voucher
 
         }
 
+
         //Double click to get data of voucher
         private void dgvVoucher_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -38,14 +40,20 @@ namespace MiniStoreWinF.Manage_Voucher
             try
             {
                 var name = dgvVoucher[0, e.RowIndex].Value;
+
                 var voucher = _voucherService.GetAll().Where(entity => entity.Name.Equals(name)).FirstOrDefault();
 
                 if (rdExpired.Checked)
                 {
                     voucher = _voucherService.GetAll().Where(e => e.Exp < DateTime.Now && e.Name.Equals(name)).FirstOrDefault();
                     rowIndex = e.RowIndex;
+
                     if (voucher != null)
                     {
+                        var voucherUsed = _codeVoucherService.GetAll().Where(e => e.StatusV == false && e.IdVoucher.Equals(voucher.IdVoucher)).ToList();
+                        int countUsed = voucherUsed.Count();
+                        var voucherLeft = _codeVoucherService.GetAll().Where(e => e.StatusV == true && e.IdVoucher.Equals(voucher.IdVoucher)).ToList();
+                        int countLeft = voucherLeft.Count();
                         txtID.Text = voucher.IdVoucher.ToString();
                         txtName.Text = voucher.Name;
                         txtPrice.Text = voucher.Price.ToString();
@@ -54,7 +62,8 @@ namespace MiniStoreWinF.Manage_Voucher
                         lbName.Text = voucher.Name;
                         lbDate.Text = voucher.Exp.ToString();
                         dpkEXP.Text = voucher.Exp.ToString();
-
+                        txtUsed.Text = countUsed.ToString();
+                        txtLeft.Text = countLeft.ToString();
 
                     }
                 }
@@ -64,6 +73,10 @@ namespace MiniStoreWinF.Manage_Voucher
                     rowIndex = e.RowIndex;
                     if (voucher != null)
                     {
+                        var voucherUsed = _codeVoucherService.GetAll().Where(e => e.StatusV == false && e.IdVoucher.Equals(voucher.IdVoucher)).ToList();
+                        int countUsed = voucherUsed.Count();
+                        var voucherLeft = _codeVoucherService.GetAll().Where(e => e.StatusV == true && e.IdVoucher.Equals(voucher.IdVoucher)).ToList();
+                        int countLeft = voucherLeft.Count();
                         txtID.Text = voucher.IdVoucher.ToString();
                         txtName.Text = voucher.Name;
                         txtPrice.Text = voucher.Price.ToString();
@@ -72,7 +85,8 @@ namespace MiniStoreWinF.Manage_Voucher
                         lbName.Text = voucher.Name;
                         lbDate.Text = voucher.Exp.ToString();
                         dpkEXP.Text = voucher.Exp.ToString();
-
+                        txtUsed.Text = countUsed.ToString();
+                        txtLeft.Text = countLeft.ToString();
 
                     }
                 }
