@@ -26,7 +26,7 @@ public class ShowListWSServlet extends HttpServlet {
         String dateStar = (String) request.getParameter("startDate");
         String dateEnd = (String) request.getParameter("endDate");
         String sortOrder = (String) request.getParameter("sortOrder");
-        boolean type = true;
+        boolean type = false;
         if (idemp == null || idemp.isEmpty()) {
             request.setAttribute("errorMessage", "Vui lòng đăng nhập để vào trang này!!!");
             request.getRequestDispatcher("Login.jsp").forward(request, response);
@@ -38,14 +38,13 @@ public class ShowListWSServlet extends HttpServlet {
             LocalDate firstDayOfMonth = LocalDate.now().withDayOfMonth(1);
             // Lấy cuối tháng hiện tại
             LocalDate lastDayOfMonth = LocalDate.now().withDayOfMonth(LocalDate.now().lengthOfMonth());
-
+            sortOrder = "descending";
             dateStar = firstDayOfMonth.toString();
             dateEnd = lastDayOfMonth.toString();
         } else {
-            if (sortOrder.equals("descending")) {
-                type = false;
+            if (sortOrder.equals("ascending")) {
+                type = true;
             }
-
         }
 
         List<WorksheetDTO> ListWS = MyUtils.getSheetAvailable(idemp, dateStar, dateEnd, type);

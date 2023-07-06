@@ -112,7 +112,7 @@ namespace API_Database.Controllers
         //find acc had TimeCheckIn
         [HttpGet]
         [Route("api/ms/facct")]
-        public EmployeeDTO FindAccount(string username, string password)
+        public Employee FindAccount(string username, string password)
         {
             Employee emp = db.Employees.SingleOrDefault(acc => acc.Username.Equals(username) && acc.Password.Equals(password));
 
@@ -138,9 +138,92 @@ namespace API_Database.Controllers
                 TimeCheckOut = worksheet != null ? (string)worksheet.TimeCheckOut.ToString() : "noOut"
             };
 
-            return empDTO;
+            return emp;
         }
 
+        //get password jwt 
+        [HttpGet]
+        [Route("api/ms/gp")]
+        public IHttpActionResult GetPasswordjwt(string mail)
+        {
+            string Email = GetPassword(mail);
+
+            string jwt = JWTUtils.GenerateJWTEmail(Email);
+
+            return Ok(new { jwt });
+        }
+        // get password 
+        [HttpGet]
+        [Route("api/ms/gpt")]
+        public string GetPassword(string mail)
+        {
+            Employee emp = db.Employees.SingleOrDefault(acc => acc.Email.Trim().ToLower().Equals(mail.Trim().ToLower()));
+
+            if (emp == null)
+            {
+                return "null";
+            }
+
+            string email = emp.Email.Trim();
+            return email;
+        }
+
+        //update worksheet jwt by qr
+        [HttpGet]
+        [Route("api/ms/uco/ucoqrG")]
+        public IHttpActionResult UpdatePasswordjwt(string token)
+        {
+            string fin = UpdatePassword(token);
+            string jwt = JWTUtils.GenerateJWTReturn(fin);
+            return Ok(new { fin });
+        }
+
+        public string UpdatePassword(string token)
+        {
+            try
+            {
+                var claimsPrincipal = JWTUtils.ValidateJWT(token);
+                var claims = claimsPrincipal.Claims;
+                string password = "";
+                string idEmp = "";
+
+                // Lấy các thông tin cần thiết từ JWT
+                if (claims != null)
+                {
+                    password = claims.FirstOrDefault(c => c.Type == "password")?.Value;
+                    idEmp = claims.FirstOrDefault(c => c.Type == "idEmp")?.Value;
+                }
+                else
+                {
+                    return "JWT bị null.";
+                }
+
+                // Kiểm tra thông tin cần thiết
+                if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(idEmp))
+                {
+                    return "Dữ liệu không hợp lệ từ JWT.";
+                }
+
+                // Kiểm tra sự tồn tại của bản ghi trong cơ sở dữ liệu
+                var existingRecord = db.Employees.SingleOrDefault(wsh => wsh.IdEmp == idEmp);
+                if (existingRecord == null)
+                {
+                    return "Không tìm thấy bản ghi trong cơ sở dữ liệu.";
+                }
+
+                // Cập nhật mật khẩu
+                existingRecord.Password = password;
+
+                // Thực hiện lưu thay đổi vào cơ sở dữ liệu
+                db.SubmitChanges();
+
+                return "Successfully";
+            }
+            catch (Exception ex)
+            {
+                return "catcherror";
+            }
+        }
 
 
         //find list fws by date jwt
@@ -159,7 +242,7 @@ namespace API_Database.Controllers
 
             List<WorkSheetDTO> worksheetDTOs = filteredWorksheets.Select(ws => new WorkSheetDTO
             {
-                Date = ws.Date.HasValue ? ws.TimeCheckIn.Value : DateTime.MinValue,
+                Date = ws.Date.HasValue ? ws.Date.Value.ToString("dd/MM/yyyy") : string.Empty,
                 TimeCheckIn = ws.TimeCheckIn.HasValue ? ws.TimeCheckIn.Value.ToString("HH:mm:ss") : string.Empty,
                 TimeCheckOut = ws.TimeCheckOut.HasValue ? ws.TimeCheckOut.Value.ToString("HH:mm:ss") : string.Empty
             }).ToList();
@@ -185,7 +268,7 @@ namespace API_Database.Controllers
 
             List<WorkSheetDTO> worksheetDTOs = filteredWorksheets.Select(ws => new WorkSheetDTO
             {
-                Date = ws.Date.HasValue ? ws.TimeCheckIn.Value : DateTime.MinValue,
+                Date = ws.Date.HasValue ? ws.Date.Value.ToString("DD/mm/yyyy") : string.Empty,
                 TimeCheckIn = ws.TimeCheckIn.HasValue ? ws.TimeCheckIn.Value.ToString("HH:mm:ss") : string.Empty,
                 TimeCheckOut = ws.TimeCheckOut.HasValue ? ws.TimeCheckOut.Value.ToString("HH:mm:ss") : string.Empty
             }).ToList();
@@ -315,6 +398,7 @@ namespace API_Database.Controllers
             return sheetList;
         }
 
+        //update worksheet jwt by qr
         [HttpGet]
         [Route("api/ms/uco/ucoqrG")]
         public IHttpActionResult UpdateWorksheetQRGet(string token)

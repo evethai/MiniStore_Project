@@ -10,7 +10,6 @@ namespace API_Database.Controllers
         public string IdEmp { get; set; }
         public string FullNameEmp { get; set; }
         public string Roles { get; set; }
-        
         public Boolean IsActive { get; set; }
 
         public String TimeCheckIn { get; set; }

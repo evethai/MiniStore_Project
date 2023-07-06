@@ -21,6 +21,16 @@
                 background-position: center;
                 background-size: cover;
             }
+            a.forgot-password {
+                color: white;
+                text-decoration: none;
+                position: relative;
+            }
+
+            a.forgot-password:hover {
+                text-decoration: underline;
+            }
+
         </style>
     </head>
     <body>
@@ -47,16 +57,19 @@
                                     <div class="mb-3">
                                         <div class="inputbox ">
                                             <ion-icon name="person-outline"></ion-icon>
-                                            <input type="text" name="txtusername" required maxlength="20">
+                                            <input type="text" name="txtusername" required maxlength="20" value="${param.txtusername}>
                                             <label for="">Username:</label>
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <div class="inputbox">
                                             <ion-icon name="lock-closed-outline"></ion-icon>
-                                            <input type="password" name="txtpassword" required maxlength="20">
+                                            <input type="password" name="txtpassword" required maxlength="20" value="${param.txtpassword}>
                                             <label for="">Password</label>
                                         </div>
+                                    </div>
+                                    <div class="mb-3 d-flex justify-content-end">
+                                        <a href="forgot-password.jsp" class="forgot-password">Quên mật khẩu?</a>
                                     </div>
                                     <div class="g-recaptcha mb-3" data-sitekey="6Lcf9XcmAAAAAJjJG3BepTpkCmglEjKSh8HCdMIQ"></div>
                                     <button type="submit" class="btn btn-primary w-100" id="loginButton">Đăng nhập</button>

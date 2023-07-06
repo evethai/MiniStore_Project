@@ -30,7 +30,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
-        <url-pattern>/Logout</url-pattern>
+        <url-pattern>/Login</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>CheckOutServlet</servlet-name>
@@ -39,6 +39,30 @@
     <servlet-mapping>
         <servlet-name>CheckOutServlet</servlet-name>
         <url-pattern>/CheckOut</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ForgotPassword</servlet-name>
+        <servlet-class>com.mycompany.ministorewebmoblie.Controller.ForgotPassword</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ForgotPassword</servlet-name>
+        <url-pattern>/forget</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ValidateOtp</servlet-name>
+        <servlet-class>com.mycompany.ministorewebmoblie.Controller.ValidateOtp</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ValidateOtp</servlet-name>
+        <url-pattern>/ValiOtp</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>newPassword</servlet-name>
+        <servlet-class>com.mycompany.ministorewebmoblie.Controller.newPassword</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>newPassword</servlet-name>
+        <url-pattern>/newPass</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

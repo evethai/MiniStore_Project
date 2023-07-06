@@ -58,6 +58,38 @@ public class MyUtils {
 
     }
 
+    //kiểm tra email có tồn tại trong data base hay không
+    public static boolean checkEmail(String Email) throws IOException {
+        try {
+            // Lấy danh sách Sheet từ API
+            String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/gp?mail=" + Email);
+            JSONObject json = new JSONObject(jsonResponse);
+
+            String jwt = json.optString("jwt");
+
+            // Check JWT
+            if (jwt.isEmpty() || jwt.equals("Unauthorized")) {
+                // Invalid user
+                System.out.println("Invalid JWT");
+                return true;
+            }
+
+            Claims claims = JWTUtils.parseJWT(jwt);
+
+            // Convert the claim value to a string manually
+            String mail = claims.get("Email", String.class);
+            if (mail.equals("null") ) {
+                return true;
+            }
+
+            return false;
+        } catch (Exception e) {
+            // Handle error
+            e.printStackTrace();
+            return true;
+        }
+    }
+
     // Lấy danh sách Sheet đã có từ API
     public static List<WorksheetDTO> getSheetAvailable(String idemp, String dateStar, String dateEnd, boolean type) {
         try {
@@ -84,7 +116,7 @@ public class MyUtils {
             List<WorksheetDTO> sheetTimeSlots = new ArrayList<>();
 
             for (int i = 0; i < Datejwt.size(); i++) {
-                LocalDate date = LocalDate.parse(Datejwt.get(i), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+                String date = Datejwt.get(i);
                 String timeCheckIn = TimeCheckInjwt.get(i);
                 String timeCheckOut = TimeCheckOutjwt.get(i);
 

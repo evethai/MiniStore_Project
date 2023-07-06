@@ -49,7 +49,8 @@
                 margin-bottom: 10px;
             }
             .dataTables_filter {
-                display: none;
+                margin-bottom: 10px;
+                color: white;
             }
 
             .dataTables_paginate .paginate_button.previous,
@@ -86,7 +87,7 @@
                 color: #979494 !important;
                 background-color: #ccc  !important; /* Màu nền khi nút "Previous" ở trang đầu */
             }
-
+            
 
 
         </style>
@@ -128,7 +129,7 @@
                             <br>
                             <h2 name="welcome"> ${fullnameemapi}</h2>
                             <div class="row justify-content-center">
-                                <form class="col-md-6" style="width: auto !important;" action="Logout" method="POST" id="logoutForm">
+                                <form class="col-md-6" style="width: auto !important;" action="Login" method="POST" id="logoutForm">
                                     <input type="button" value="Đăng xuất" class="btn btn-danger loginButton" style="background-color: #dc3545; color: #000000;"  onclick="showLogoutConfirmation()">
                                 </form>
                             </div>
@@ -188,7 +189,7 @@
                                 <br>
                                 <div class="row justify-content-center">
                                     <div class="col-md-6 col-sm-6 col-xs-6">
-                                        <label for="sortOrder" style="color: white">Sort Order:</label>
+                                        <label for="sortOrder" style="color: white">Sort Worksheets:</label>
                                         <select class="form-select" id="sortOrder" name="sortOrder">
                                             <option value="ascending" ${sessionScope.sortOrder == 'ascending' ? 'selected' : ''}>Tăng dần</option>
                                             <option value="descending" ${sessionScope.sortOrder == 'descending' ? 'selected' : ''}>Giảm dần</option>
@@ -312,7 +313,7 @@
                 function redirectToLoginPage() {
                     var form = document.createElement("form");
                     form.method = "POST";
-                    form.action = "Logout"; // Thay thế "LogoutServlet" bằng URL của Servlet xử lý logout
+                    form.action = "Login"; // Thay thế "LogoutServlet" bằng URL của Servlet xử lý logout
 
                     document.body.appendChild(form);
                     form.submit();

@@ -55,7 +55,7 @@
                             function closeWindow1() {
                                 var form = document.createElement("form");
                                 form.method = "POST";
-                                form.action = "Logout"; // Thay thế "LogoutServlet" bằng URL của Servlet xử lý logout
+                                form.action = "Login"; // Thay thế "LogoutServlet" bằng URL của Servlet xử lý logout
 
                                 document.body.appendChild(form);
                                 form.submit();

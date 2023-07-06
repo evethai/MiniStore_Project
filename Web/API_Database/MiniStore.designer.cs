@@ -584,7 +584,7 @@ namespace API_Database
 		
 		private string _PhoneEmp;
 		
-		private System.Nullable<System.DateTime> _DateJoin;
+		private System.DateTime _DateJoin;
 		
 		private string _Username;
 		
@@ -595,6 +595,8 @@ namespace API_Database
 		private System.Nullable<bool> _IsActive;
 		
 		private string _PictureEmp;
+		
+		private string _Email;
 		
 		private EntitySet<WorkSheet> _WorkSheets;
 		
@@ -616,7 +618,7 @@ namespace API_Database
     partial void OnAddressEmpChanged();
     partial void OnPhoneEmpChanging(string value);
     partial void OnPhoneEmpChanged();
-    partial void OnDateJoinChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateJoinChanging(System.DateTime value);
     partial void OnDateJoinChanged();
     partial void OnUsernameChanging(string value);
     partial void OnUsernameChanged();
@@ -628,6 +630,8 @@ namespace API_Database
     partial void OnIsActiveChanged();
     partial void OnPictureEmpChanging(string value);
     partial void OnPictureEmpChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
     #endregion
 		
 		public Employee()
@@ -776,8 +780,8 @@ namespace API_Database
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateJoin", DbType="Date")]
-		public System.Nullable<System.DateTime> DateJoin
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateJoin", DbType="Date NOT NULL")]
+		public System.DateTime DateJoin
 		{
 			get
 			{
@@ -892,6 +896,26 @@ namespace API_Database
 					this._PictureEmp = value;
 					this.SendPropertyChanged("PictureEmp");
 					this.OnPictureEmpChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(30)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
 				}
 			}
 		}

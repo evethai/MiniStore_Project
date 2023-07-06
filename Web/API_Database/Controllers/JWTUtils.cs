@@ -12,6 +12,41 @@ namespace API_Database.Controllers
     public class JWTUtils
     {
         private static readonly string SecretKey = "1Y8NuQTyiWqqXCPiwJeCENE23bJE77ydN92cacjb"; // Thay thế bằng khóa bí mật của bạn
+        public static string GenerateJWTEmail(String mail)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(SecretKey);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new[]
+                {
+                    new Claim("Email", mail)
+                }),
+                Expires = DateTime.UtcNow.AddHours(1), // Thời gian hết hạn của JWT: 1 giờ
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }
+
+        public static string GenerateJWTReturn(String fin)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes(SecretKey);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new[]
+                {
+                    new Claim("Fin", fin)
+                }),
+                Expires = DateTime.UtcNow.AddHours(1), // Thời gian hết hạn của JWT: 1 giờ
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }
 
         public static string GenerateJWTFAcc(EmployeeDTO empdto)
         {
@@ -107,7 +142,7 @@ namespace API_Database.Controllers
             foreach (WorkSheetDTO dto in wsdto)
             {
                 /*claims.Add(new Claim("Sheet", dto.Sheet.ToString()));*/
-                claims.Add(new Claim("Date", dto.TimeCheckIn.ToString()));
+                claims.Add(new Claim("Date", dto.Date.ToString()));
                 claims.Add(new Claim("TimeCheckIn", dto.TimeCheckIn.ToString()));
                 claims.Add(new Claim("TimeCheckOut", dto.TimeCheckOut.ToString()));
 
