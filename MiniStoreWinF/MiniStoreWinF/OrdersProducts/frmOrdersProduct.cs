@@ -408,7 +408,7 @@ namespace MiniStoreWinF.OrdersProducts
                     if (checkPhoneMemb != null)
                     {
                         billOrder.PhoneMember = checkPhoneMemb.PhoneMember;
-                            
+
                         if (txtPointUsing.Text == null || txtPointUsing.Text == "")
                         {
                             checkPhoneMemb.Point = checkPhoneMemb.Point;
@@ -468,7 +468,7 @@ namespace MiniStoreWinF.OrdersProducts
 
                         var checkIdBills = _showBillService.GetAll().Where(p => p.IdBillOrder == billOrder.IdBillOrder).FirstOrDefault();
                         order.IdBillOrder = checkIdBills.IdBillOrder;
-                        
+
                         //------------------------------------// END take BillID in BillOrder
 
                         order.DateOrders = DateTime.Now;
@@ -492,7 +492,7 @@ namespace MiniStoreWinF.OrdersProducts
                     // END Update point when payment successfull
                     AutoRevenuelUpdateWhenBillOrderDone();
                     OpenChildForm();
-                    
+
                 }
             }
         } // ADD TO CART SHOW BILL => MAYBE OK*/

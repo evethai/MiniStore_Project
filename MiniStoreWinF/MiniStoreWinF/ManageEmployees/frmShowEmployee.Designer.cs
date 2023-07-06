@@ -52,8 +52,8 @@
             dateJoinDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             tbMain = new TableLayoutPanel();
             pnInfor = new Panel();
+            cbRole = new ComboBox();
             pbImport = new PictureBox();
-            txtRole = new TextBox();
             dtDoB = new DateTimePicker();
             label9 = new Label();
             cbGender = new ComboBox();
@@ -92,12 +92,15 @@
             // 
             // btAddEmployee
             // 
-            btAddEmployee.Location = new Point(4, 7);
+            btAddEmployee.Image = (Image)resources.GetObject("btAddEmployee.Image");
+            btAddEmployee.ImageAlign = ContentAlignment.MiddleLeft;
+            btAddEmployee.Location = new Point(4, 273);
             btAddEmployee.Margin = new Padding(4, 5, 4, 5);
             btAddEmployee.Name = "btAddEmployee";
-            btAddEmployee.Size = new Size(108, 38);
+            btAddEmployee.Size = new Size(234, 78);
             btAddEmployee.TabIndex = 1;
             btAddEmployee.Text = "Create Employee";
+            btAddEmployee.TextAlign = ContentAlignment.MiddleRight;
             btAddEmployee.UseVisualStyleBackColor = true;
             btAddEmployee.Click += btAddEmployee_Click;
             // 
@@ -123,10 +126,12 @@
             // 
             // btUpdate
             // 
-            btUpdate.Location = new Point(1128, 371);
+            btUpdate.Image = (Image)resources.GetObject("btUpdate.Image");
+            btUpdate.ImageAlign = ContentAlignment.TopLeft;
+            btUpdate.Location = new Point(6, 361);
             btUpdate.Margin = new Padding(4, 5, 4, 5);
             btUpdate.Name = "btUpdate";
-            btUpdate.Size = new Size(88, 40);
+            btUpdate.Size = new Size(234, 78);
             btUpdate.TabIndex = 20;
             btUpdate.Text = "Update";
             btUpdate.UseVisualStyleBackColor = true;
@@ -205,13 +210,17 @@
             // dgvEmployee
             // 
             dgvEmployee.AutoGenerateColumns = false;
+            dgvEmployee.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvEmployee.BackgroundColor = Color.White;
             dgvEmployee.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEmployee.Columns.AddRange(new DataGridViewColumn[] { fullNameEmpDataGridViewTextBoxColumn, sexDataGridViewTextBoxColumn, cccdDataGridViewTextBoxColumn, doBDataGridViewTextBoxColumn, addressEmpDataGridViewTextBoxColumn, phoneEmpDataGridViewTextBoxColumn, dateJoinDataGridViewTextBoxColumn });
             dgvEmployee.DataSource = employeeBindingSource1;
             dgvEmployee.Dock = DockStyle.Fill;
+            dgvEmployee.GridColor = Color.Gray;
             dgvEmployee.Location = new Point(4, 66);
             dgvEmployee.Margin = new Padding(4, 5, 4, 5);
             dgvEmployee.Name = "dgvEmployee";
+            dgvEmployee.ReadOnly = true;
             dgvEmployee.RowHeadersWidth = 51;
             dgvEmployee.RowTemplate.Height = 29;
             dgvEmployee.Size = new Size(1533, 340);
@@ -226,6 +235,7 @@
             fullNameEmpDataGridViewTextBoxColumn.HeaderText = "FullNameEmp";
             fullNameEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
             fullNameEmpDataGridViewTextBoxColumn.Name = "fullNameEmpDataGridViewTextBoxColumn";
+            fullNameEmpDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // sexDataGridViewTextBoxColumn
             // 
@@ -234,6 +244,7 @@
             sexDataGridViewTextBoxColumn.HeaderText = "Sex";
             sexDataGridViewTextBoxColumn.MinimumWidth = 6;
             sexDataGridViewTextBoxColumn.Name = "sexDataGridViewTextBoxColumn";
+            sexDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // cccdDataGridViewTextBoxColumn
             // 
@@ -242,6 +253,7 @@
             cccdDataGridViewTextBoxColumn.HeaderText = "Cccd";
             cccdDataGridViewTextBoxColumn.MinimumWidth = 6;
             cccdDataGridViewTextBoxColumn.Name = "cccdDataGridViewTextBoxColumn";
+            cccdDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // doBDataGridViewTextBoxColumn
             // 
@@ -250,6 +262,7 @@
             doBDataGridViewTextBoxColumn.HeaderText = "DoB";
             doBDataGridViewTextBoxColumn.MinimumWidth = 6;
             doBDataGridViewTextBoxColumn.Name = "doBDataGridViewTextBoxColumn";
+            doBDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // addressEmpDataGridViewTextBoxColumn
             // 
@@ -258,6 +271,7 @@
             addressEmpDataGridViewTextBoxColumn.HeaderText = "AddressEmp";
             addressEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
             addressEmpDataGridViewTextBoxColumn.Name = "addressEmpDataGridViewTextBoxColumn";
+            addressEmpDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // phoneEmpDataGridViewTextBoxColumn
             // 
@@ -266,6 +280,7 @@
             phoneEmpDataGridViewTextBoxColumn.HeaderText = "PhoneEmp";
             phoneEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
             phoneEmpDataGridViewTextBoxColumn.Name = "phoneEmpDataGridViewTextBoxColumn";
+            phoneEmpDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dateJoinDataGridViewTextBoxColumn
             // 
@@ -274,6 +289,7 @@
             dateJoinDataGridViewTextBoxColumn.HeaderText = "DateJoin";
             dateJoinDataGridViewTextBoxColumn.MinimumWidth = 6;
             dateJoinDataGridViewTextBoxColumn.Name = "dateJoinDataGridViewTextBoxColumn";
+            dateJoinDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tbMain
             // 
@@ -294,10 +310,10 @@
             // pnInfor
             // 
             pnInfor.BorderStyle = BorderStyle.Fixed3D;
+            pnInfor.Controls.Add(cbRole);
             pnInfor.Controls.Add(btAddEmployee);
             pnInfor.Controls.Add(pbImport);
             pnInfor.Controls.Add(btSearch);
-            pnInfor.Controls.Add(txtRole);
             pnInfor.Controls.Add(dtDoB);
             pnInfor.Controls.Add(btUpdate);
             pnInfor.Controls.Add(label9);
@@ -325,6 +341,14 @@
             pnInfor.Size = new Size(1541, 410);
             pnInfor.TabIndex = 27;
             // 
+            // cbRole
+            // 
+            cbRole.FormattingEnabled = true;
+            cbRole.Location = new Point(763, 273);
+            cbRole.Name = "cbRole";
+            cbRole.Size = new Size(195, 36);
+            cbRole.TabIndex = 55;
+            // 
             // pbImport
             // 
             pbImport.BackColor = Color.Transparent;
@@ -337,18 +361,9 @@
             pbImport.TabStop = false;
             pbImport.Click += btImport_Click_1;
             // 
-            // txtRole
-            // 
-            txtRole.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtRole.Location = new Point(763, 266);
-            txtRole.Margin = new Padding(3, 4, 3, 4);
-            txtRole.Name = "txtRole";
-            txtRole.ReadOnly = true;
-            txtRole.Size = new Size(195, 38);
-            txtRole.TabIndex = 53;
-            // 
             // dtDoB
             // 
+            dtDoB.Enabled = false;
             dtDoB.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             dtDoB.Location = new Point(763, 329);
             dtDoB.Margin = new Padding(4, 5, 4, 5);
@@ -370,6 +385,7 @@
             // cbGender
             // 
             cbGender.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbGender.Enabled = false;
             cbGender.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             cbGender.FormattingEnabled = true;
             cbGender.Items.AddRange(new object[] { "Man", "Woman" });
@@ -420,6 +436,7 @@
             txtCccd.Name = "txtCccd";
             txtCccd.Size = new Size(195, 38);
             txtCccd.TabIndex = 46;
+            txtCccd.KeyPress += txtCCCD_KeyPress;
             // 
             // label10
             // 
@@ -436,7 +453,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(285, 193);
+            label8.Location = new Point(276, 194);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new Size(78, 31);
@@ -448,7 +465,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(267, 270);
+            label7.Location = new Point(257, 268);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(97, 31);
@@ -526,6 +543,7 @@
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(195, 38);
             txtPhone.TabIndex = 36;
+            txtPhone.KeyPress += txtPhone_KeyPress;
             // 
             // txtName
             // 
@@ -538,6 +556,7 @@
             // 
             // txtId
             // 
+            txtId.Enabled = false;
             txtId.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             txtId.Location = new Point(362, 58);
             txtId.Margin = new Padding(4, 5, 4, 5);
@@ -607,7 +626,6 @@
         private DataGridView dgvEmployee;
         private TableLayoutPanel tbMain;
         private Panel pnInfor;
-        private TextBox txtRole;
         private DateTimePicker dtDoB;
         private Label label9;
         private ComboBox cbGender;
@@ -637,5 +655,6 @@
         private DataGridViewTextBoxColumn dateJoinDataGridViewTextBoxColumn;
         private PictureBox pbImport;
         private PictureBox pbSearch;
+        private ComboBox cbRole;
     }
 }
