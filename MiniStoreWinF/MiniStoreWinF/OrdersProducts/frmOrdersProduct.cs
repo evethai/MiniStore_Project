@@ -54,7 +54,7 @@ namespace MiniStoreWinF.OrdersProducts
             var listProductsShow = _productService.GetAll().Select(p => new { p.Sku, p.NameProduct, p.Mfg, p.Exp, p.PictureProduct }).ToList();
             dgvShowListProducts.DataSource = new BindingSource()
             {
-                //DataSource = listProductsShow
+                DataSource = listProductsShow
             };
             listViewOrders.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }//Load form => OK
@@ -67,7 +67,7 @@ namespace MiniStoreWinF.OrdersProducts
                 var listProductsShow = _productService.GetAll().Select(p => new { p.Sku, p.NameProduct, p.Mfg, p.Exp, p.PictureProduct }).ToList();
                 dgvShowListProducts.DataSource = new BindingSource()
                 {
-                    //DataSource = listProductsShow
+                    DataSource = listProductsShow
                 };
             }
             else

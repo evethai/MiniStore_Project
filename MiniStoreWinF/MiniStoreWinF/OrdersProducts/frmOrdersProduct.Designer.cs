@@ -53,8 +53,8 @@
             label3 = new Label();
             txtLoyaltyPoint = new TextBox();
             lb = new Label();
-            txtScanVoucher = new TextBox();
             btUsingVoucher = new Button();
+            txtScanVoucher = new TextBox();
             btCheckMember = new Button();
             panel2 = new Panel();
             rdCashpayment = new RadioButton();
@@ -288,7 +288,7 @@
             lblType.Location = new Point(24, 94);
             lblType.Margin = new Padding(4, 0, 4, 0);
             lblType.Name = "lblType";
-            lblType.Size = new Size(38, 15);
+            lblType.Size = new Size(49, 20);
             lblType.TabIndex = 7;
             lblType.Text = "Type :";
             // 
@@ -315,6 +315,7 @@
             panel5.Controls.Add(label3);
             panel5.Controls.Add(txtLoyaltyPoint);
             panel5.Controls.Add(lb);
+            panel5.Controls.Add(btUsingVoucher);
             panel5.Controls.Add(txtScanVoucher);
             panel5.Controls.Add(btCheckMember);
             panel5.Controls.Add(panel2);
@@ -382,20 +383,12 @@
             lb.TabIndex = 22;
             lb.Text = "Loyalty points:";
             // 
-            // txtScanVoucher
-            // 
-            txtScanVoucher.Location = new Point(187, 24);
-            txtScanVoucher.Margin = new Padding(4);
-            txtScanVoucher.Name = "txtScanVoucher";
-            txtScanVoucher.Size = new Size(206, 34);
-            txtScanVoucher.TabIndex = 20;
-            // 
             // btUsingVoucher
             // 
             btUsingVoucher.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btUsingVoucher.Image = (Image)resources.GetObject("btUsingVoucher.Image");
             btUsingVoucher.ImageAlign = ContentAlignment.TopCenter;
-            btUsingVoucher.Location = new Point(419, 9);
+            btUsingVoucher.Location = new Point(419, 5);
             btUsingVoucher.Margin = new Padding(4);
             btUsingVoucher.Name = "btUsingVoucher";
             btUsingVoucher.Size = new Size(114, 67);
@@ -404,6 +397,14 @@
             btUsingVoucher.TextAlign = ContentAlignment.BottomCenter;
             btUsingVoucher.UseVisualStyleBackColor = true;
             btUsingVoucher.Click += btUsingVoucher_Click;
+            // 
+            // txtScanVoucher
+            // 
+            txtScanVoucher.Location = new Point(187, 24);
+            txtScanVoucher.Margin = new Padding(4);
+            txtScanVoucher.Name = "txtScanVoucher";
+            txtScanVoucher.Size = new Size(206, 34);
+            txtScanVoucher.TabIndex = 20;
             // 
             // btCheckMember
             // 
@@ -464,7 +465,7 @@
             lblVoucher.Location = new Point(26, 24);
             lblVoucher.Margin = new Padding(4, 0, 4, 0);
             lblVoucher.Name = "lblVoucher";
-            lblVoucher.Size = new Size(58, 15);
+            lblVoucher.Size = new Size(77, 20);
             lblVoucher.TabIndex = 13;
             lblVoucher.Text = "Vourcher:";
             // 
@@ -528,7 +529,7 @@
             lblPicture.Location = new Point(15, 231);
             lblPicture.Margin = new Padding(4, 0, 4, 0);
             lblPicture.Name = "lblPicture";
-            lblPicture.Size = new Size(47, 15);
+            lblPicture.Size = new Size(61, 20);
             lblPicture.TabIndex = 12;
             lblPicture.Text = "Picture:";
             // 
@@ -560,7 +561,7 @@
             lblName.Location = new Point(15, 15);
             lblName.Margin = new Padding(4, 0, 4, 0);
             lblName.Name = "lblName";
-            lblName.Size = new Size(42, 15);
+            lblName.Size = new Size(54, 20);
             lblName.TabIndex = 1;
             lblName.Text = "Name:";
             // 
@@ -590,7 +591,7 @@
             lblPrice.Location = new Point(15, 172);
             lblPrice.Margin = new Padding(4, 0, 4, 0);
             lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(36, 15);
+            lblPrice.Size = new Size(47, 20);
             lblPrice.TabIndex = 3;
             lblPrice.Text = "Price:";
             // 
@@ -601,7 +602,7 @@
             lblQuantity.Location = new Point(15, 70);
             lblQuantity.Margin = new Padding(4, 0, 4, 0);
             lblQuantity.Name = "lblQuantity";
-            lblQuantity.Size = new Size(56, 15);
+            lblQuantity.Size = new Size(72, 20);
             lblQuantity.TabIndex = 4;
             lblQuantity.Text = "Quantity:";
             // 
@@ -748,16 +749,16 @@
             btShowBill.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btShowBill.Image = (Image)resources.GetObject("btShowBill.Image");
             btShowBill.ImageAlign = ContentAlignment.TopCenter;
-            btShowBill.Location = new Point(408, 100);
+            btShowBill.Location = new Point(399, 100);
             btShowBill.Margin = new Padding(4);
             btShowBill.Name = "btShowBill";
-            btShowBill.Size = new Size(114, 67);
+            btShowBill.Size = new Size(123, 67);
             btShowBill.TabIndex = 11;
             btShowBill.Text = "Bill";
             btShowBill.TextAlign = ContentAlignment.BottomCenter;
             btShowBill.UseVisualStyleBackColor = true;
             btShowBill.Visible = false;
-
+            btShowBill.Click += btShowBill_Click;
             // 
             // lblCustomerProvidesCash
             // 
@@ -793,7 +794,7 @@
             panel3.Margin = new Padding(4);
             panel3.Name = "panel3";
             panel3.Size = new Size(618, 175);
-            panel3.TabIndex = 30;
+            panel3.TabIndex = 22;
             // 
             // btCancelBill
             // 
@@ -849,14 +850,6 @@
             label4.Size = new Size(73, 20);
             label4.TabIndex = 27;
             label4.Text = "Discount:";
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(btUsingVoucher);
-            panel3.Location = new Point(267, 12);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(76, 27);
-            panel3.TabIndex = 22;
             // 
             // OrderProducts
             // 

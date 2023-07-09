@@ -124,7 +124,7 @@
   <data name="btAddEmployee.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAAxFJREFUaEPt2TmrFEEYheFB3EVcUAMFU8VEE/UviAquiIoo/gI33MDALbiiKIZi
+        DgAACw4BQL7hQQAAAxFJREFUaEPt2TmrFEEYheFB3EVcUAMFU8VEE/UviAquiIoo/gI33MDALbiiKIZi
         qgYiBioIxqLgnrlr4BK7L4HLe6ALPorPnqqemsuAfeDhDtVV1V091V09fTtt2rRplElYi92VNVXZwGc8
         TuA7/kRUdhyqU5cZOIKH+FJ5UJVNR98yFfcQH3hMdabAi761T/DayUesRl9yA95OPdcRRwf/G1596xeK
         D2IFvJ3VWY4QTZu6Mx/7gKLT6TK8HdW5hBDNb7vtJ/ZgZmVvVWbrHEKxvIftPMVbhDyC3aYDjrMPto4u
@@ -149,7 +149,7 @@
   <data name="btUpdate.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DgAACw4BQL7hQQAAAlFJREFUeF7tm81KHEEUhSfZ6zqQtaL7hLxK1KXoGwQDIRCyChiyiiDoU4g7wRcI
+        DQAACw0B7QfALAAAAlFJREFUeF7tm81KHEEUhSfZ6zqQtaL7hLxK1KXoGwQDIRCyChiyiiDoU4g7wRcI
         eQNdBdzlj2SXQHIOzIVDT/XvVPXctuqDD5yarpp7TwnTw0zNCoVCodCPbXgIjxz5Am7CpGzBa/jPqTcw
         Gc/gDxh6YS8mC2Ad3kF7oT/wAh7Dd058DTdgEl5Ba/4rfAKz4jO0APY5kBu/oAXwiAO5Yc3TLCkBiFlS
         AhCzpAQgToEH8AP8Dd/PHy/FlAJgsydQaz6HD+FgdDHPhJo3lwpBF/JKU/Pm4BB0EY90ad4cFIIu4A02
