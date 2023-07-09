@@ -97,6 +97,8 @@ namespace MiniStoreWinF.OrdersProducts
             txtPointUsing.Text = "";
             btShowBill.Visible = false;
             txtPointUsing.Enabled = false;
+            rdCashpayment.Checked = false;
+            rdMomopayment.Checked = false;
         }
         private void cbTypeProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -524,70 +526,30 @@ namespace MiniStoreWinF.OrdersProducts
         {
             ResetData();
         } //Function clear data in form bill => OK
-        private void rdMomopayment_CheckedChanged(object sender, EventArgs e)
+        private void btReturnMoney_Click(object sender, EventArgs e)
         {
             try
             {
-                double total = 0;
-                MoMoService _moService = new MoMoService();
-                total = Double.Parse(txtTotalAllOrders.Text);
-                var list = _moService.GetAll().Where(p => p.Active == true).FirstOrDefault();
-                if (txtTotalAllOrders.Text != null && list != null)
+                double TotalBill;
+                double TotalDiscount;
+                double TotalProvide;
+                if (txtDiscount.Text == null || txtDiscount.Text == "" || txtTotalAllOrders.Text == "")
                 {
-                    rdMomopayment.Checked = false;
-                    ContextScope.currentMoMo = list;
-                    frmQRCode form = new frmQRCode();
-                    form.total = total;
-                    form.ShowDialog();
-                    btShowBill.Visible = true;
-
-                }
-            }
-            catch (Exception ex)
-            {
-                rdMomopayment.Checked = false;
-                MessageBox.Show("Not find a bill ", "Messages", MessageBoxButtons.OK);
-            }
-        }
-        private void rdCashpayment_CheckedChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (txtTotalAllOrders.Text != "")
-                {
-                    btShowBill.Visible = true;
-                    rdCashpayment.Checked = false;
+                    TotalBill = Convert.ToDouble(txtTotalAllOrders.Text);
+                    TotalDiscount = 0;
+                    TotalProvide = Convert.ToDouble(txtProvidesCash.Text);
+                    txtReturnPayment.Text = (TotalProvide - (TotalBill - TotalDiscount)).ToString();
                 }
                 else
                 {
-                    MessageBox.Show("Not find a bill ", "Messages", MessageBoxButtons.OK);
-                    rdCashpayment.Checked = false;
+                    TotalBill = Convert.ToDouble(txtTotalAllOrders.Text);
+                    TotalProvide = Convert.ToDouble(txtProvidesCash.Text);
+                    txtReturnPayment.Text = (TotalProvide - (TotalBill - Convert.ToDouble(txtDiscount.Text))).ToString();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("BUG" + ex);
-            }
-
-        }
-
-        private void btReturnMoney_Click(object sender, EventArgs e)
-        {
-            double TotalBill;
-            double TotalDiscount;
-            double TotalProvide;
-            if (txtDiscount.Text == null || txtDiscount.Text == "")
-            {
-                TotalBill = Convert.ToDouble(txtTotalAllOrders.Text);
-                TotalDiscount = 0;
-                TotalProvide = Convert.ToDouble(txtProvidesCash.Text);
-                txtReturnPayment.Text = (TotalProvide - (TotalBill - TotalDiscount)).ToString();
-            }
-            else
-            {
-                TotalBill = Convert.ToDouble(txtTotalAllOrders.Text);
-                TotalProvide = Convert.ToDouble(txtProvidesCash.Text);
-                txtReturnPayment.Text = (TotalProvide - (TotalBill - Convert.ToDouble(txtDiscount.Text))).ToString();
+                return;
             }
         }
 
@@ -608,6 +570,42 @@ namespace MiniStoreWinF.OrdersProducts
                 {
                     DataSource = SortByDateEXP_DES
                 };
+            }
+        }
+
+        private void rdCashpayment_Click(object sender, EventArgs e)
+        {
+            if (txtTotalAllOrders.Text == "")
+            {
+                MessageBox.Show("Not find a ORDER ");
+                rdCashpayment.Checked = false;
+            }
+            else
+            {
+                rdCashpayment.Checked = true;
+                btShowBill.Visible = true;
+            }
+        }
+
+        private void rdMomopayment_Click(object sender, EventArgs e)
+        {
+            double total = 0;
+            MoMoService _moService = new MoMoService();
+            var list = _moService.GetAll().Where(p => p.Active == true).FirstOrDefault();
+            if (txtTotalAllOrders.Text == "" || list == null)
+            {
+                MessageBox.Show("Not find a ORDER ", "Messages");
+                rdMomopayment.Checked = false;
+                btShowBill.Visible = false;
+            }
+            else
+            {
+                ContextScope.currentMoMo = list;
+                frmQRCode form = new frmQRCode();
+                form.total = Double.Parse(txtTotalAllOrders.Text);
+                form.ShowDialog();
+                rdMomopayment.Checked = true;
+                btShowBill.Visible = true;
             }
         }
     }
