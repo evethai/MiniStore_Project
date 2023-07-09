@@ -41,7 +41,7 @@
             rd2 = new RadioButton();
             btSearch = new Button();
             pnButton = new Panel();
-            pbSearch = new PictureBox();
+            btSearchButton = new Button();
             dgvEmployee = new DataGridView();
             fullNameEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             sexDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -77,7 +77,6 @@
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).BeginInit();
             pnButton.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbSearch).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvEmployee).BeginInit();
             tbMain.SuspendLayout();
             pnInfor.SuspendLayout();
@@ -94,12 +93,12 @@
             // 
             btAddEmployee.Image = (Image)resources.GetObject("btAddEmployee.Image");
             btAddEmployee.ImageAlign = ContentAlignment.MiddleLeft;
-            btAddEmployee.Location = new Point(4, 273);
+            btAddEmployee.Location = new Point(26, 395);
             btAddEmployee.Margin = new Padding(4, 5, 4, 5);
             btAddEmployee.Name = "btAddEmployee";
-            btAddEmployee.Size = new Size(234, 78);
+            btAddEmployee.Size = new Size(103, 40);
             btAddEmployee.TabIndex = 1;
-            btAddEmployee.Text = "Create Employee";
+            btAddEmployee.Text = "Create";
             btAddEmployee.TextAlign = ContentAlignment.MiddleRight;
             btAddEmployee.UseVisualStyleBackColor = true;
             btAddEmployee.Click += btAddEmployee_Click;
@@ -127,13 +126,14 @@
             // btUpdate
             // 
             btUpdate.Image = (Image)resources.GetObject("btUpdate.Image");
-            btUpdate.ImageAlign = ContentAlignment.TopLeft;
-            btUpdate.Location = new Point(6, 361);
+            btUpdate.ImageAlign = ContentAlignment.MiddleLeft;
+            btUpdate.Location = new Point(1105, 380);
             btUpdate.Margin = new Padding(4, 5, 4, 5);
             btUpdate.Name = "btUpdate";
-            btUpdate.Size = new Size(234, 78);
+            btUpdate.Size = new Size(113, 42);
             btUpdate.TabIndex = 20;
             btUpdate.Text = "Update";
+            btUpdate.TextAlign = ContentAlignment.MiddleRight;
             btUpdate.UseVisualStyleBackColor = true;
             btUpdate.Click += btUpdate_Click;
             // 
@@ -148,7 +148,7 @@
             // rd1
             // 
             rd1.AutoSize = true;
-            rd1.Location = new Point(310, 10);
+            rd1.Location = new Point(368, 9);
             rd1.Margin = new Padding(4, 5, 4, 5);
             rd1.Name = "rd1";
             rd1.Size = new Size(87, 32);
@@ -161,7 +161,7 @@
             // rd2
             // 
             rd2.AutoSize = true;
-            rd2.Location = new Point(397, 10);
+            rd2.Location = new Point(463, 9);
             rd2.Margin = new Padding(4, 5, 4, 5);
             rd2.Name = "rd2";
             rd2.Size = new Size(97, 32);
@@ -186,7 +186,7 @@
             // pnButton
             // 
             pnButton.BorderStyle = BorderStyle.Fixed3D;
-            pnButton.Controls.Add(pbSearch);
+            pnButton.Controls.Add(btSearchButton);
             pnButton.Controls.Add(rd1);
             pnButton.Controls.Add(rd2);
             pnButton.Controls.Add(txtSearch);
@@ -197,15 +197,18 @@
             pnButton.Size = new Size(1535, 53);
             pnButton.TabIndex = 27;
             // 
-            // pbSearch
+            // btSearchButton
             // 
-            pbSearch.Image = (Image)resources.GetObject("pbSearch.Image");
-            pbSearch.Location = new Point(244, 3);
-            pbSearch.Name = "pbSearch";
-            pbSearch.Size = new Size(45, 46);
-            pbSearch.TabIndex = 27;
-            pbSearch.TabStop = false;
-            pbSearch.Click += btSearch_Click;
+            btSearchButton.Image = (Image)resources.GetObject("btSearchButton.Image");
+            btSearchButton.ImageAlign = ContentAlignment.MiddleLeft;
+            btSearchButton.Location = new Point(254, 5);
+            btSearchButton.Name = "btSearchButton";
+            btSearchButton.Size = new Size(107, 37);
+            btSearchButton.TabIndex = 28;
+            btSearchButton.Text = "Search";
+            btSearchButton.TextAlign = ContentAlignment.MiddleRight;
+            btSearchButton.UseVisualStyleBackColor = true;
+            btSearchButton.Click += btSearch_Click;
             // 
             // dgvEmployee
             // 
@@ -355,7 +358,7 @@
             pbImport.Image = (Image)resources.GetObject("pbImport.Image");
             pbImport.Location = new Point(1128, 307);
             pbImport.Name = "pbImport";
-            pbImport.Size = new Size(86, 60);
+            pbImport.Size = new Size(62, 35);
             pbImport.SizeMode = PictureBoxSizeMode.Zoom;
             pbImport.TabIndex = 54;
             pbImport.TabStop = false;
@@ -599,7 +602,6 @@
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).EndInit();
             pnButton.ResumeLayout(false);
             pnButton.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pbSearch).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvEmployee).EndInit();
             tbMain.ResumeLayout(false);
             pnInfor.ResumeLayout(false);
@@ -654,7 +656,7 @@
         private DataGridViewTextBoxColumn phoneEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dateJoinDataGridViewTextBoxColumn;
         private PictureBox pbImport;
-        private PictureBox pbSearch;
         private ComboBox cbRole;
+        private Button btSearchButton;
     }
 }

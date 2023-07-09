@@ -162,6 +162,9 @@ namespace MiniStoreWinF.Manage_Voucher
                     _voucherService.Update(update);
                     dgvVoucher.DataSource = new BindingSource() { DataSource = data };
                     MessageBox.Show("Update successfully!");
+                    this.Invalidate();
+                    this.Update();
+                    rdInUse.Checked = true;
                 }
 
 
