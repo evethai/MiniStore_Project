@@ -49,7 +49,7 @@ public class ForgotPassword extends HttpServlet {
 
             String to = email;
             final String from = "quangbmse160878@fpt.edu.vn"; // Update with your email address
-            final String password = "gkwvxhebcihdurdx"; // Update with your email password
+            final String password = "phrprukcqrazsgla"; // Update with your email password
 
             Properties props = new Properties();
             props.put("mail.smtp.host", "smtp.gmail.com");

@@ -1,5 +1,6 @@
 package com.mycompany.ministorewebmoblie.Controller;
 
+import com.mycompany.ministorewebmoblie.DTO.EmployeeDTO;
 import com.mycompany.ministorewebmoblie.Utils.JWTUtils;
 import com.mycompany.ministorewebmoblie.Utils.MyUtils;
 import io.jsonwebtoken.Claims;
@@ -25,20 +26,21 @@ public class newPassword extends HttpServlet {
             request.getRequestDispatcher("forgot-password.jsp").forward(request, response);
             return;
         }
+        
         if (!password.equals(confPassword)) {
-            request.setAttribute("errorMessage", "Mật khẩu nhập lại và mật khẩu mới không khớp");
+            request.setAttribute("errorMess", "Mật khẩu nhập xác nhận và mật khẩu mới không khớp");
             request.getRequestDispatcher("newPassword.jsp").forward(request, response);
             return;
         }
         if (oldpassword.equals(password)) {
-            request.setAttribute("errorMessage", "Mật khẩu mới trùng với mật khẩu hiện tại");
+            request.setAttribute("errorMess", "Mật khẩu mới trùng với mật khẩu hiện tại");
             request.getRequestDispatcher("newPassword.jsp").forward(request, response);
             return;
         }
         try {
 
             if (!MyUtils.updatePassword(email, password)) {
-                request.setAttribute("errorMessage", "cập nhật mật khẩu thất bại");
+                request.setAttribute("errorMess", "cập nhật mật khẩu thất bại");
                 request.getRequestDispatcher("newPassword.jsp").forward(request, response);
                 return;
             }
@@ -46,7 +48,7 @@ public class newPassword extends HttpServlet {
             request.setAttribute("Message", "Hoàn thành đổi mật khẩu");
             request.getRequestDispatcher("newPassword.jsp").forward(request, response);
         } catch (Exception e) {
-            request.setAttribute("errorMessage", "Tên đăng nhập hoặc mật khẩu không chính xác");
+            request.setAttribute("errorMess", "Tên đăng nhập hoặc mật khẩu không chính xác");
             request.getRequestDispatcher("newPassword.jsp").forward(request, response);
         }
     }

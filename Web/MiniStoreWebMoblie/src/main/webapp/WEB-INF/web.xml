@@ -64,6 +64,22 @@
         <servlet-name>newPassword</servlet-name>
         <url-pattern>/newPass</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ShowInformation</servlet-name>
+        <servlet-class>com.mycompany.ministorewebmoblie.Controller.ShowInformation</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowInformation</servlet-name>
+        <url-pattern>/Info</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ChangePassword</servlet-name>
+        <servlet-class>com.mycompany.ministorewebmoblie.Controller.ChangePassword</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangePassword</servlet-name>
+        <url-pattern>/changePass</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

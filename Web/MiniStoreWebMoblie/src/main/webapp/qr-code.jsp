@@ -129,6 +129,15 @@
                             <br>
                             <h2 name="welcome">Welcome ${fullnameemapi}</h2>
                             <div class="row justify-content-center">
+                                <form class="col-md-6" style="width: auto !important;" action="Info" method="POST">
+                                    <label for="logoutButton" class="btn btn-info" style="background: transparent; color: white">
+                                        <ion-icon name="person-outline"></ion-icon> Thông tin tài khoản
+                                    </label>
+                                    <input type="submit" id="logoutButton" value="Đăng xuất" style="display: none;">
+                                </form>
+                            </div>
+
+                            <div class="row justify-content-center">
                                 <form class="col-md-6" style="width: auto !important;" action="Login" method="POST" id="logoutForm">
                                     <input type="button" value="Đăng xuất" class="btn btn-danger loginButton" style="background-color: #dc3545; color: #000000;"  onclick="showLogoutConfirmation()">
                                 </form>

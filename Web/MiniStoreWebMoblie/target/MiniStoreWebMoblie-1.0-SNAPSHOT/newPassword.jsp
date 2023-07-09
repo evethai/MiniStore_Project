@@ -150,10 +150,10 @@
             </c:otherwise>
         </c:choose>
 
-        <c:if test="${not empty errorMessage}">
+        <c:if test="${not empty errorMess}">
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
-                    var errorMessage = "${errorMessage}";
+                    var errorMessage = "${errorMess}";
                     var myModal = new bootstrap.Modal(document.getElementById('alertModal'));
                     var modalBody = document.getElementById('alertModalBody');
                     modalBody.innerHTML = errorMessage;

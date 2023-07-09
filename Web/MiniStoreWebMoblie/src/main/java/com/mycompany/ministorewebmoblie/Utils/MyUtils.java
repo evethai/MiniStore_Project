@@ -5,6 +5,7 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
+import com.mycompany.ministorewebmoblie.DTO.EmployeeDTO;
 import com.mycompany.ministorewebmoblie.DTO.SheetTimeSlotDTO;
 import com.mycompany.ministorewebmoblie.DTO.WorksheetDTO;
 import io.jsonwebtoken.Claims;
@@ -56,6 +57,45 @@ public class MyUtils {
             conn.disconnect();
         }
 
+    }
+
+    //kiểm tra email có tồn tại trong data base hay không
+    public static EmployeeDTO getInfo(String idemp) throws IOException {
+        try {
+            // Lấy danh sách Sheet từ API
+            String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/faccInfo?idemp=" + idemp);
+            JSONObject json = new JSONObject(jsonResponse);
+
+            String jwt = json.optString("jwt");
+            // Check JWT
+            if (jwt.isEmpty() || jwt.equals("Unauthorized")) {
+                // Invalid user
+                System.out.println("Invalid JWT");
+                return null;
+            }
+
+            Claims claims = JWTUtils.parseJWT(jwt);
+            // Convert the claim value to a string manually
+            String sex = claims.get("Sex", String.class);
+            if (sex.equals("False")) {
+                sex = "Male";
+            } else {
+                sex = "Female";
+            }
+            String cccd = claims.get("CCCD", String.class);
+            String dbo = claims.get("DoB", String.class);
+            String address = claims.get("AddressEmp", String.class);
+            String phone = claims.get("Phone", String.class);
+            String pass = claims.get("password", String.class);
+            String picture = claims.get("Picture", String.class);
+            String email = claims.get("Email", String.class);
+
+            return new EmployeeDTO(sex, cccd, dbo, address, phone, pass, picture, email);
+        } catch (Exception e) {
+            // Handle error
+            e.printStackTrace();
+            return null;
+        }
     }
 
     //cập nhật mật khẩu
@@ -114,7 +154,7 @@ public class MyUtils {
                 return "null";
             }
 
-            return Password; 
+            return Password;
         } catch (Exception e) {
             // Handle error
             e.printStackTrace();

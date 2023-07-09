@@ -60,6 +60,7 @@ namespace API_Database.Controllers
                     new Claim("FullNameEmp", empdto.FullNameEmp),
                     new Claim("Roles", empdto.Roles),
                     new Claim("IsActive", empdto.IsActive.ToString()),
+                    new Claim("Total_working_hours", empdto.Total_working_hours),
                     new Claim("TimeCheckIn", empdto.TimeCheckIn),
                     new Claim("TimeCheckOut", empdto.TimeCheckOut)
                 }),
@@ -70,7 +71,8 @@ namespace API_Database.Controllers
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
-/*        public static string GenerateJWTFWSIWSheet(WorkSheetDTO wsdto)
+
+        public static string GenerateJWTFAccInfo(EmployeeDTO empdto)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(SecretKey);
@@ -78,15 +80,23 @@ namespace API_Database.Controllers
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-            new Claim("IdWorkSheet", wsdto.IdWorkSheet)
-        }),
+                    
+                    new Claim("Sex", empdto.Sex),
+                    new Claim("CCCD", empdto.CCCD),
+                    new Claim("DoB", empdto.DoB),
+                    new Claim("AddressEmp", empdto.AddressEmp),
+                    new Claim("Phone", empdto.Phone),
+                    new Claim("password", empdto.password),
+                    new Claim("Picture", empdto.Picture),
+                    new Claim("Email", empdto.Email)
+                }),
                 Expires = DateTime.UtcNow.AddHours(1), // Thời gian hết hạn của JWT: 1 giờ
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
-        }*/
+        }
 
         public static string GenerateJWTFWS(WorkSheetDTO wsdto)
         {
