@@ -24,7 +24,7 @@ namespace MiniStoreWinF.ManageWorkSheets
         public frmSheetDetails()
         {
             InitializeComponent();
-            var showDetails = _sheetDetailService.GetAll(); // take table
+            var showDetails = _sheetDetailService.GetAll().Where(p => p.Roles != null); // take table
             dgvDetailWorksheet.DataSource = new BindingSource() { DataSource = showDetails }; //end show sheet details tab 5
             var showRole = _permissionService.GetAll().Where(x => x.Roles >= 2).ToList();
             cbRoles.DataSource = showRole;
@@ -79,6 +79,13 @@ namespace MiniStoreWinF.ManageWorkSheets
 
             }
         }
+        public int GenerateAutoId(int currentCount)
+        {
+            int nextCount = currentCount + 1;
+            int id = nextCount;
+            return id;
+        }
+
         private void btUpdateDetailsWorkSheet_Click(object sender, EventArgs e)
         {
             string Empty = "";
@@ -99,11 +106,7 @@ namespace MiniStoreWinF.ManageWorkSheets
                 _sheetDetailService.Update(listUpdate);
                 MessageBox.Show("Successfully Update Worksheet Detail", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 loadData();
-                txtSheetDetail.Text = Empty;
-                txtStartDetails.Text = Empty;
-                txtEndDetails.Text = Empty;
-                txtDescriptionsDetails.Text = Empty;
-                txtCoefficientsSalaryDetails.Text = Empty;
+                ResetData();
             }
 
         }
@@ -111,8 +114,6 @@ namespace MiniStoreWinF.ManageWorkSheets
         private void btCreate_Click(object sender, EventArgs e)
         {
             string Empty = "";
-            int SheetDetails = Convert.ToInt32(txtSheetDetail.Text);
-            var CheckSheet = _sheetDetailService.GetAll().Where(p => p.Sheet == SheetDetails).FirstOrDefault();
             if (txtSheetDetail.Text == Empty ||
                 txtStartDetails.Text == Empty || txtEndDetails.Text == Empty || txtDescriptionsDetails.Text == Empty
                 || txtCoefficientsSalaryDetails.Text == Empty)
@@ -123,19 +124,16 @@ namespace MiniStoreWinF.ManageWorkSheets
             {
                 MessageBox.Show("Coefficients Salary can't 0 !! ", "Fails", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (CheckSheet != null)
-            {
-                MessageBox.Show("Sheet is valid !! ", "Fails", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             else
             {
+                var Count = _sheetDetailService.GetAll().Count();
                 var CreateNewSheet = _sheetDetailService.GetAll().FirstOrDefault();
-                CreateNewSheet.Sheet = SheetDetails;
+                CreateNewSheet.Sheet = GenerateAutoId(Count);
                 CreateNewSheet.ShiftStartTime = TimeSpan.Parse(txtStartDetails.Text);
                 CreateNewSheet.ShiftEndTime = TimeSpan.Parse(txtEndDetails.Text);
                 CreateNewSheet.CoefficientsSalary = float.Parse(txtCoefficientsSalaryDetails.Text);
                 CreateNewSheet.DescriptionS = txtDescriptionsDetails.Text;
-                CreateNewSheet.CheckNight=chbWorkNight.Checked;
+                CreateNewSheet.CheckNight = chbWorkNight.Checked;
                 _sheetDetailService.Create(CreateNewSheet);
                 MessageBox.Show("Successfully Create Sheet", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 loadData();
@@ -191,6 +189,19 @@ namespace MiniStoreWinF.ManageWorkSheets
         private void btReset_Click(object sender, EventArgs e)
         {
             ResetData();
+        }
+
+        private void dgvDetailWorksheet_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 5)
+            {
+                if (e.Value != null && e.Value is bool)
+                {
+                    bool value = (bool)e.Value;
+                    e.Value = value ? "Yes" : "No";
+                    e.FormattingApplied = true;
+                }
+            }
         }
     }
 }

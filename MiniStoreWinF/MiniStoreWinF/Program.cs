@@ -6,6 +6,7 @@ using MiniStoreWinF.ManageProducts;
 using MiniStoreWinF.ManageRevenue;
 using MiniStoreWinF.ManageSalary;
 using MiniStoreWinF.ManageWorkSheet;
+using MiniStoreWinF.ManageWorkSheets;
 using MiniStoreWinF.OrdersProducts;
 
 namespace MiniStoreWinF
@@ -21,7 +22,7 @@ namespace MiniStoreWinF
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new frmLogin ());
+            Application.Run(new frmLogin());
 
         }
     }

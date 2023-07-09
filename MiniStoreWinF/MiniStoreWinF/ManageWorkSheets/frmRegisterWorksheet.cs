@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Repository.Service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +28,9 @@ namespace MiniStoreWinF.ManageWorkSheets
         {
             InitializeComponent();
             LoadDataManage();
+            ShowNotification();
         }
+
         public void LoadDataManage()
         {
             Matrix = new List<List<Button>>();
@@ -37,12 +40,16 @@ namespace MiniStoreWinF.ManageWorkSheets
                 Matrix.Add(new List<Button>());
                 for (int j = 0; j < TableSheet.DayOfWeek; j++)
                 {
-                    Button btn = new Button() { Width = btMonday.Size.Width, Height = btMonday.Size.Height };
+                    btMonday.Dock = DockStyle.Fill;
+
+                    Button btn = new Button() { Width = btMonday.Width, Height = btMonday.Height };
                     btn.Location = new Point(oldBtn.Location.X + oldBtn.Width + TableSheet.DateButtonMagin, oldBtn.Location.Y);
                     btn.Click += bnt_Click;
+                    btn.AutoSize = true;
                     pnlMatrix.Controls.Add(btn);
                     Matrix[i].Add(btn);
                     oldBtn = btn;
+
                 }
                 oldBtn = new Button() { Width = 0, Height = 0, Location = new Point(-TableSheet.DateButtonMagin, oldBtn.Location.Y + TableSheet.DateButtonHeight) };
             }
@@ -138,6 +145,20 @@ namespace MiniStoreWinF.ManageWorkSheets
         private void btnMonthBack_Click_1(object sender, EventArgs e)
         {
             dtpkDate.Value = dtpkDate.Value.AddMonths(-1);
+        }
+        public void ShowNotification()
+        {
+            WorkSheetService workSheetService = new WorkSheetService();
+            var showNotification = workSheetService.GetAll().Where(p => p.Date.Value.Month == dtpkDate.Value.Month && p.Status.Value == false).ToList().Count;
+            if (showNotification > 0)
+            {
+                nmbrNotification.Value = showNotification;
+                chbNotification.Checked = true;
+            }
+            else 
+            {
+                chbNotification.Checked = false;            
+            }
         }
     }
 
