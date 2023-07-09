@@ -30,27 +30,15 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditEachSalary));
-            label6 = new Label();
             btSave = new Button();
-            label5 = new Label();
-            txtNewEmp = new TextBox();
-            txtNewGuard = new TextBox();
+            lblName = new Label();
+            txtSalary = new TextBox();
             notiSave = new NotifyIcon(components);
             SuspendLayout();
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(19, 112);
-            label6.Margin = new Padding(5, 0, 5, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(192, 25);
-            label6.TabIndex = 0;
-            label6.Text = "New Salary for Guard";
-            // 
             // btSave
             // 
-            btSave.Location = new Point(371, 209);
+            btSave.Location = new Point(155, 143);
             btSave.Margin = new Padding(5, 4, 5, 4);
             btSave.Name = "btSave";
             btSave.Size = new Size(118, 34);
@@ -59,33 +47,24 @@
             btSave.UseVisualStyleBackColor = true;
             btSave.Click += btSave_Click;
             // 
-            // label5
+            // lblName
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(19, 53);
-            label5.Margin = new Padding(5, 0, 5, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(222, 25);
-            label5.TabIndex = 0;
-            label5.Text = "New Salary for Employee";
+            lblName.AutoSize = true;
+            lblName.Location = new Point(14, 39);
+            lblName.Margin = new Padding(5, 0, 5, 0);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(135, 25);
+            lblName.TabIndex = 0;
+            lblName.Text = "New Salary for";
             // 
-            // txtNewEmp
+            // txtSalary
             // 
-            txtNewEmp.Location = new Point(332, 53);
-            txtNewEmp.Margin = new Padding(5, 4, 5, 4);
-            txtNewEmp.Name = "txtNewEmp";
-            txtNewEmp.Size = new Size(155, 33);
-            txtNewEmp.TabIndex = 1;
-            txtNewEmp.KeyPress += txtNewEmp_KeyPress;
-            // 
-            // txtNewGuard
-            // 
-            txtNewGuard.Location = new Point(332, 112);
-            txtNewGuard.Margin = new Padding(5, 4, 5, 4);
-            txtNewGuard.Name = "txtNewGuard";
-            txtNewGuard.Size = new Size(155, 33);
-            txtNewGuard.TabIndex = 2;
-            txtNewGuard.KeyPress += txtNewGuard_KeyPress;
+            txtSalary.Location = new Point(277, 31);
+            txtSalary.Margin = new Padding(5, 4, 5, 4);
+            txtSalary.Name = "txtSalary";
+            txtSalary.Size = new Size(155, 33);
+            txtSalary.TabIndex = 2;
+            txtSalary.KeyPress += txtNewGuard_KeyPress;
             // 
             // notiSave
             // 
@@ -96,31 +75,27 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(541, 278);
+            ClientSize = new Size(446, 190);
             Controls.Add(btSave);
-            Controls.Add(label6);
-            Controls.Add(txtNewGuard);
-            Controls.Add(txtNewEmp);
-            Controls.Add(label5);
+            Controls.Add(txtSalary);
+            Controls.Add(lblName);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(5, 4, 5, 4);
-            MaximumSize = new Size(557, 317);
-            MinimumSize = new Size(557, 317);
+            MaximumSize = new Size(462, 229);
+            MinimumSize = new Size(462, 229);
             Name = "frmEditEachSalary";
             StartPosition = FormStartPosition.CenterScreen;
+            Text = "Edit new Salary";
             Load += frmEditEachSalary_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label label6;
         private Button btSave;
-        private Label label5;
-        private TextBox txtNewEmp;
-        private TextBox txtNewGuard;
+        private Label lblName;
+        private TextBox txtSalary;
         private NotifyIcon notiSave;
     }
 }

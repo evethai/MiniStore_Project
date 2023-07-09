@@ -45,32 +45,8 @@ namespace API_Database.Controllers
         [Route("api/ms/facc")]
         public IHttpActionResult FindAccountjwt(string username, string password)
         {
-            // Kiểm tra tài khoản và mật khẩu
-            Employee emp = db.Employees.SingleOrDefault(acc => acc.Username.Equals(username) && acc.Password.Equals(password));
-
-            if (emp == null)
-            {
-                return null;
-            }
-
-            if (!DateTime.TryParse(DateTime.Now.Date.ToString(), out DateTime searchDate))
-            {
-                throw new ArgumentException("Ngày không hợp lệ");
-            }
-
-            WorkSheet worksheet = db.WorkSheets.SingleOrDefault(ws => ws.IdEmp.Equals((string)emp.IdEmp) && ws.Date == searchDate);
-
-
             // Nếu tài khoản hợp lệ
-            EmployeeDTO empDTO = new EmployeeDTO
-            {
-                FullNameEmp = (string)emp.FullNameEmp,
-                IdEmp = (string)emp.IdEmp,
-                Roles = (string)emp.Roles.ToString(),
-                IsActive = (Boolean)emp.IsActive,
-                TimeCheckIn = worksheet != null ? (string)worksheet.TimeCheckIn.ToString() : "nonsheet",
-                TimeCheckOut = worksheet != null ? (string)worksheet.TimeCheckOut.ToString() : "noOut"
-            };
+            EmployeeDTO empDTO = FindAccount(username, password);
 
             string jwt = JWTUtils.GenerateJWTFAcc(empDTO);
 
@@ -134,6 +110,7 @@ namespace API_Database.Controllers
                 IdEmp = (string)emp.IdEmp,
                 Roles = (string)emp.Roles.ToString(),
                 IsActive = (Boolean)emp.IsActive,
+                Total_working_hours = worksheet != null ? (string)worksheet.Total_working_hours.ToString() : "noOut",
                 TimeCheckIn = worksheet != null ? (string)worksheet.TimeCheckIn.ToString() : "nonsheet",
                 TimeCheckOut = worksheet != null ? (string)worksheet.TimeCheckOut.ToString() : "noOut"
             };
@@ -141,6 +118,129 @@ namespace API_Database.Controllers
             return empDTO;
         }
 
+        //find acc had TimeCheckIn
+        [HttpGet]
+        [Route("api/ms/faccInfot")]
+        public EmployeeDTO FindAccountInfo(string idemp)
+        {
+            Employee emp = db.Employees.SingleOrDefault(acc => acc.IdEmp.Equals(idemp));
+
+            if (emp == null)
+            {
+                return null;
+            }
+
+            EmployeeDTO empDTO = new EmployeeDTO
+            {
+                Sex = (string)emp.Sex.ToString(),
+                CCCD = (string)emp.CCCD.ToString(),
+                DoB = emp.DoB.Value.ToString("dd/MM/yyyy"),
+                AddressEmp = (string)emp.AddressEmp.ToString(),
+                Phone = (string)emp.PhoneEmp.ToString(),
+                password = (string)emp.Password.ToString(),
+                Picture = (string)emp.PictureEmp.ToString(),
+                Email = (string)emp.Email.ToString(),
+            };
+
+            return empDTO;
+        }
+
+        //find acc info jwt
+        [HttpGet]
+        [Route("api/ms/faccInfo")]
+        public IHttpActionResult FindAccountInfojwt(string idemp)
+        {
+            // Nếu tài khoản hợp lệ
+            EmployeeDTO empDTO = FindAccountInfo(idemp);
+
+            string jwt = JWTUtils.GenerateJWTFAccInfo(empDTO);
+
+            return Ok(new { jwt });
+        }
+
+        //get password jwt 
+        [HttpGet]
+        [Route("api/ms/gp")]
+        public IHttpActionResult GetPasswordjwt(string mail)
+        {
+            string password = GetPassword(mail);
+
+            string jwt = JWTUtils.GenerateJWTEmail(password);
+
+            return Ok(new { jwt });
+        }
+        // get password 
+        [HttpGet]
+        [Route("api/ms/gpt")]
+        public string GetPassword(string mail)
+        {
+            Employee emp = db.Employees.SingleOrDefault(acc => acc.Email.Trim().ToLower().Equals(mail.Trim().ToLower()));
+
+            if (emp == null)
+            {
+                return "null";
+            }
+
+            string password = emp.Password.Trim();
+            return password;
+        }
+
+        //update worksheet jwt by qr
+        [HttpGet]
+        [Route("api/ms/uppwd")]
+        public IHttpActionResult UpdatePasswordjwt(string token)
+        {
+            string fin = UpdatePassword(token);
+            string jwt = JWTUtils.GenerateJWTReturn(fin);
+            return Ok(new { jwt });
+        }
+
+        public string UpdatePassword(string token)
+        {
+            try
+            {
+                var claimsPrincipal = JWTUtils.ValidateJWT(token);
+                var claims = claimsPrincipal.Claims;
+                string password = "";
+                string email = "";
+
+                // Lấy các thông tin cần thiết từ JWT
+                if (claims != null)
+                {
+                    password = claims.FirstOrDefault(c => c.Type == "password")?.Value;
+                    email = claims.FirstOrDefault(c => c.Type == "Email")?.Value;
+                }
+                else
+                {
+                    return "JWT bị null.";
+                }
+
+                // Kiểm tra thông tin cần thiết
+                if (string.IsNullOrEmpty(password) || string.IsNullOrEmpty(email))
+                {
+                    return "Dữ liệu không hợp lệ từ JWT.";
+                }
+
+                // Kiểm tra sự tồn tại của bản ghi trong cơ sở dữ liệu
+                var existingRecord = db.Employees.SingleOrDefault(wsh => wsh.Email.Trim() == email.Trim());
+                if (existingRecord == null)
+                {
+                    return "Không tìm thấy bản ghi trong cơ sở dữ liệu.";
+                }
+
+                // Cập nhật mật khẩu
+                existingRecord.Password = password;
+
+                // Thực hiện lưu thay đổi vào cơ sở dữ liệu
+                db.SubmitChanges();
+
+                return "Successfully";
+            }
+            catch (Exception ex)
+            {
+                return "catcherror";
+            }
+        }
 
 
         //find list fws by date jwt
@@ -159,7 +259,7 @@ namespace API_Database.Controllers
 
             List<WorkSheetDTO> worksheetDTOs = filteredWorksheets.Select(ws => new WorkSheetDTO
             {
-                Date = ws.Date.HasValue ? ws.TimeCheckIn.Value : DateTime.MinValue,
+                Date = ws.Date.HasValue ? ws.Date.Value.ToString("dd/MM/yyyy") : string.Empty,
                 TimeCheckIn = ws.TimeCheckIn.HasValue ? ws.TimeCheckIn.Value.ToString("HH:mm:ss") : string.Empty,
                 TimeCheckOut = ws.TimeCheckOut.HasValue ? ws.TimeCheckOut.Value.ToString("HH:mm:ss") : string.Empty
             }).ToList();
@@ -185,7 +285,7 @@ namespace API_Database.Controllers
 
             List<WorkSheetDTO> worksheetDTOs = filteredWorksheets.Select(ws => new WorkSheetDTO
             {
-                Date = ws.Date.HasValue ? ws.TimeCheckIn.Value : DateTime.MinValue,
+                Date = ws.Date.HasValue ? ws.Date.Value.ToString("DD/mm/yyyy") : string.Empty,
                 TimeCheckIn = ws.TimeCheckIn.HasValue ? ws.TimeCheckIn.Value.ToString("HH:mm:ss") : string.Empty,
                 TimeCheckOut = ws.TimeCheckOut.HasValue ? ws.TimeCheckOut.Value.ToString("HH:mm:ss") : string.Empty
             }).ToList();
@@ -315,6 +415,7 @@ namespace API_Database.Controllers
             return sheetList;
         }
 
+        //update worksheet jwt by qr
         [HttpGet]
         [Route("api/ms/uco/ucoqrG")]
         public IHttpActionResult UpdateWorksheetQRGet(string token)
@@ -579,38 +680,6 @@ namespace API_Database.Controllers
                 return false;
             }
         }
-
-
-
-
-        //update worksheet
-        //[HttpPut]
-        //[Route("api/ms/uci")]
-        //public bool UpdateWorksheet([FromBody] WorkSheet ws)
-        //{
-        //    try
-        //    {
-        //        WorkSheet old = db.WorkSheets.SingleOrDefault(wsh => wsh.IdEmp == ws.IdEmp && wsh.Date == ws.Date);
-        //        if (ws.TimeCheckIn.HasValue)
-        //        {
-        //            old.TimeCheckIn = ws.TimeCheckIn;
-        //        }
-        //        else
-        //        {
-        //            old.TimeCheckOut = ws.TimeCheckOut;
-        //        }
-
-        //        db.SubmitChanges();
-        //        return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine("Loi o day: " + ex.Message);
-        //        return false;
-        //    }
-        //}
-
-
 
     }
 }

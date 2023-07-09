@@ -120,7 +120,7 @@
             panel2.Location = new Point(4, 4);
             panel2.Margin = new Padding(4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(168, 46);
+            panel2.Size = new Size(159, 46);
             panel2.TabIndex = 2;
             panel2.Click += frmMainScreen_Load;
             // 

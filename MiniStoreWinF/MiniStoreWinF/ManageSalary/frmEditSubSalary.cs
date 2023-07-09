@@ -33,20 +33,27 @@ namespace MiniStoreWinF.ManageSalary
             if (txtDis.Text == null || !double.TryParse(txtSalary.Text, out subSalary))
             {
                 MessageBox.Show("Can not empty Discribe", "Messages", MessageBoxButtons.OK);
+                txtDis.Focus();
+                return;
+            }else if (dtpEffect.Value<DateTime.Now)
+            {
+                MessageBox.Show("Need set time effect more than to day", "Messages", MessageBoxButtons.OK);
+                return;
             }
             else
             {
                 _detailSubSalaryService = new DetailSubSalaryService();
-                //
                 var detailSub = _detailSubSalaryService.GetAll().Where(p => p.IdDetailSubSalary.Equals(id)).FirstOrDefault();
                 if (detailSub != null)
                 {
                     detailSub.DescriptionA = txtDis.Text;
                     detailSub.SubsidiesSalary = subSalary;
                     detailSub.Condition = Int32.Parse(cbCondi.Text);
+                    detailSub.DateEffect = dtpEffect.Value;
                 }
                 _detailSubSalaryService.Update(detailSub);
                 MessageBox.Show("Update successfull", "Message", MessageBoxButtons.OK);
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -80,6 +87,7 @@ namespace MiniStoreWinF.ManageSalary
             txtDis.Text = ContextScope.currentSubSalary.DescriptionA;
             txtSalary.Text = ContextScope.currentSubSalary.SubsidiesSalary.ToString();
             cbCondi.Text = ContextScope.currentSubSalary.Condition.ToString();
+            dtpEffect.Text = ContextScope.currentSubSalary.DateEffect.ToString();
             //
             List<int> num = new List<int>();
             for (int i = 0; i <= 30; i++)

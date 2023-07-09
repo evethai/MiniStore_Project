@@ -19,7 +19,7 @@
     </head>
     <body>
         <!-- Modal popup -->
-        <div class="modal fade show d-block" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade show d-block" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -37,6 +37,7 @@
             </div>
         </div>
 
+
         <!-- Kịch bản JavaScript -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -44,26 +45,26 @@
 
         <script>
 
-                            $(document).ready(function () {
-                                // Hiển thị modal khi trang web được tải
-                                $('#myModal').modal('show');
-                            });
-                            function closeWindow1() {
-                                var form = document.createElement("form");
-                                form.method = "POST";
-                                form.action = "Logout"; // Thay thế "LogoutServlet" bằng URL của Servlet xử lý logout
+                    $(document).ready(function () {
+                        // Hiển thị modal khi trang web được tải
+                        $('#myModal').modal('show');
+                    });
+                    function closeWindow1() {
+                        var form = document.createElement("form");
+                        form.method = "POST";
+                        form.action = "Login"; // Thay thế "LogoutServlet" bằng URL của Servlet xử lý logout
 
-                                document.body.appendChild(form);
-                                form.submit();
-                            }
-                            function closeWindow2() {
-                                var form = document.createElement("form");
-                                form.method = "POST";
-                                form.action = "ShowList"; // Thay thế "LogoutServlet" bằng URL của Servlet xử lý logout
+                        document.body.appendChild(form);
+                        form.submit();
+                    }
+                    function closeWindow2() {
+                        var form = document.createElement("form");
+                        form.method = "POST";
+                        form.action = "ShowList"; // Thay thế "LogoutServlet" bằng URL của Servlet xử lý logout
 
-                                document.body.appendChild(form);
-                                form.submit();
-                            }
+                        document.body.appendChild(form);
+                        form.submit();
+                    }
 
         </script>
     </body>

@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Microsoft.Office.Interop.Excel;
 
 namespace MiniStoreWinF.ManageEmployees
 {
@@ -26,23 +27,54 @@ namespace MiniStoreWinF.ManageEmployees
         private int rowIndex { get; set; }
         public frmShowEmployee()
         {
-            //if (ContextScope.currentEmployee.Roles > 0)
-            //{
-            //    var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true);
-            //    dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
-            //}
-            //else
-            //{
-            //    var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true);
-            //    dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
-            //}
-
-
             InitializeComponent();
-            var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true);
-            dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
+
+            var employeeList = DataLoad().Where(e => e.IsActive == true).ToList();
+            dgvEmployee.DataSource = new BindingSource() { DataSource = employeeList };
+            var permission = DataLoadPermission();
+            if (permission != null)
+            {
+                cbRole.DataSource = permission;
+                cbRole.DisplayMember = "Permission1";
+            }
+
+            //var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true);
+            //dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
 
 
+
+        }
+        List<Permission> DataLoadPermission()
+        {
+            if (ContextScope.currentEmployee.Roles >= 1)
+            {
+                var permissionList = _permissionService.GetAll().Where(e => e.Roles >= 2).ToList();
+                dgvEmployee.DataSource = new BindingSource() { DataSource = permissionList };
+                return permissionList;
+            }
+            else
+            {
+                var permissionList = _permissionService.GetAll().Where(e => e.Roles >= 1).ToList();
+                dgvEmployee.DataSource = new BindingSource() { DataSource = permissionList };
+                return permissionList;
+            }
+
+        }
+        List<Employee> DataLoad()
+        {
+            if (ContextScope.currentEmployee.Roles >= 1)
+            {
+                var employeeList = _employeeService.GetAll().Where(e => e.Roles >= 2).ToList();
+                dgvEmployee.DataSource = new BindingSource() { DataSource = employeeList };
+                return employeeList;
+
+            }
+            else
+            {
+                var employeeList = _employeeService.GetAll().Where(e => e.Roles >= 1).ToList();
+                dgvEmployee.DataSource = new BindingSource() { DataSource = employeeList };
+                return employeeList;
+            }
 
         }
 
@@ -75,12 +107,21 @@ namespace MiniStoreWinF.ManageEmployees
         {
             Form form = new frmCreateEmployees();
             form.ShowDialog();
-            var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true); ;
+            if (rd1.Checked)
+            {
+                var employeeList = DataLoad().Where(e => e.IsActive == true).ToList();
+                dgvEmployee.DataSource = new BindingSource() { DataSource = employeeList };
+            }
+            else if (rd2.Checked)
+            {
+                var employeeList = DataLoad().Where(e => e.IsActive == false).ToList();
+                dgvEmployee.DataSource = new BindingSource() { DataSource = employeeList };
 
-            dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
+            }
 
 
         }
+
         //Import to update employee's picture
         private void btImport_Click_1(object sender, EventArgs e)
         {
@@ -101,6 +142,7 @@ namespace MiniStoreWinF.ManageEmployees
         private void ShowEmployees_Load(object sender, EventArgs e)
         {
             rd1.Checked = true;
+
         }
         //Double click to get specific employee's information
         private void dgvEmployee_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -109,33 +151,32 @@ namespace MiniStoreWinF.ManageEmployees
             {
 
                 var id = dgvEmployee[0, e.RowIndex].Value;
+                var employeeInfo = _employeeService.GetAll().Where(entity => entity.FullNameEmp.Equals(id)).FirstOrDefault();
 
-
-                var RoleType = _employeeService.GetAll().Where(entity => entity.FullNameEmp.Equals(id)).FirstOrDefault();
-                var roles = RoleType.Roles;
-                var permission = _permissionService.GetAll().Where(entity => entity.Roles.Equals(roles)).FirstOrDefault();
                 rowIndex = e.RowIndex;
-                if (RoleType != null)
+                if (employeeInfo != null)
                 {
-                    txtId.Text = RoleType.IdEmp.ToString();
-                    txtName.Text = RoleType.FullNameEmp.ToString();
-                    txtAddress.Text = RoleType.AddressEmp.ToString();
-                    txtPhone.Text = RoleType.PhoneEmp.ToString();
+                    var roles = employeeInfo.Roles;
+                    var permission = _permissionService.GetAll().Where(entity => entity.Roles.Equals(roles)).FirstOrDefault();
+                    txtId.Text = employeeInfo.IdEmp.ToString();
+                    txtName.Text = employeeInfo.FullNameEmp.ToString();
+                    txtAddress.Text = employeeInfo.AddressEmp.ToString();
+                    txtPhone.Text = employeeInfo.PhoneEmp.ToString();
 
-                    dtDoB.Value = RoleType.DoB.Value;
-                    txtCccd.Text = RoleType.Cccd.ToString();
-                    pBEmp.Image = Base64ToImage(RoleType.PictureEmp);
-                    txtUrl.Text = RoleType.PictureEmp.ToString();
-                    txtRole.Text = RoleType.Roles.ToString();
-                    if (RoleType.Sex == false)
+                    dtDoB.Value = employeeInfo.DoB.Value;
+                    txtCccd.Text = employeeInfo.Cccd.ToString();
+                    pBEmp.Image = Base64ToImage(employeeInfo.PictureEmp);
+                    txtUrl.Text = employeeInfo.PictureEmp.ToString();
+                    cbRole.Text = employeeInfo.Roles.ToString();
+                    if (employeeInfo.Sex == false)
                     {
                         cbGender.Text = "Man";
                     }
-                    else if (RoleType.Sex == true)
+                    else if (employeeInfo.Sex == true)
                     {
                         cbGender.Text = "Woman";
                     }
-                    if (RoleType.IsActive == true)
+                    if (employeeInfo.IsActive == true)
                     {
                         cBStatus.Text = "Active";
                     }
@@ -145,17 +186,25 @@ namespace MiniStoreWinF.ManageEmployees
                     }
                     if (permission != null)
                     {
-                        txtRole.Text = permission.Permission1.ToString();
+                        cbRole.Text = permission.Permission1.ToString();
                     }
                     else
                     {
-                        txtRole.Text = "None";
+                        cbRole.Text = "None";
                     }
 
 
                 }
+                else if (employeeInfo == null)
+                {
+                    return;
+                }
             }
-            catch (Exception ex)
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Please choose in the grid!");
+            }
+            catch (Exception)
             {
                 MessageBox.Show("Please choose in the grid!");
             }
@@ -166,17 +215,31 @@ namespace MiniStoreWinF.ManageEmployees
         //Update employee's information
         private void btUpdate_Click(object sender, EventArgs e)
         {
-
+            var duplicatedCI = _employeeService.GetAll().Where(e => e.Cccd.Equals(txtCccd.Text)).FirstOrDefault();
+            var duplicatedPhone = _employeeService.GetAll().Where(e => e.PhoneEmp.Equals(txtPhone.Text)).FirstOrDefault();
 
             var employeeService = _employeeService.GetAll().Where(e => e.IdEmp == txtId.Text).FirstOrDefault();
             if (txtName.Text == "" ||
                 txtPhone.Text == "" ||
-                txtAddress.Text == ""
-
-                )
+                txtAddress.Text == "")
             {
                 MessageBox.Show("Please input all information!");
 
+            }
+
+            else if (duplicatedPhone != null && txtPhone.Text != txtPhone.Text)
+            {
+                MessageBox.Show("Phone already exist!");
+                txtPhone.Focus();
+                txtPhone.SelectAll();
+                txtPhone.Text = "";
+            }
+            else if (duplicatedCI != null && txtCccd.Text != txtCccd.Text)
+            {
+                MessageBox.Show("CI already exist!");
+                txtPhone.Focus();
+                txtPhone.SelectAll();
+                txtPhone.Text = "";
             }
             //Check age > 18
             else if (DateTime.Now.Year - dtDoB.Value.Year < 18)
@@ -212,9 +275,13 @@ namespace MiniStoreWinF.ManageEmployees
                     {
                         employeeService.IsActive = false;
                     }
+                    Permission permission = cbRole.SelectedItem as Permission;
+                    employeeService.Roles = permission.Roles;
+
                     var Update = employeeService;
                     _employeeService.Update(Update);
                     MessageBox.Show("UPDATE SUCCESSFULLY!");
+
                 }
                 else
                 {
@@ -241,6 +308,8 @@ namespace MiniStoreWinF.ManageEmployees
                     {
                         employeeService.IsActive = false;
                     }
+                    Permission permission = cbRole.SelectedItem as Permission;
+                    employeeService.Roles = permission.Roles;
 
 
                     employeeService.Cccd = txtCccd.Text;
@@ -250,16 +319,19 @@ namespace MiniStoreWinF.ManageEmployees
                 }
 
             }
-            if (ContextScope.currentEmployee.Roles > 0)
+            if (rd1.Checked)
             {
-                var employeeServiceU = _employeeService.GetAll().Where(e => e.IsActive == true);
-                dgvEmployee.DataSource = new BindingSource() { DataSource = employeeServiceU };
+                var employeeList = DataLoad().Where(e => e.IsActive == true).ToList();
+                dgvEmployee.DataSource = new BindingSource() { DataSource = employeeList };
             }
-            else
+            else if (rd2.Checked)
             {
-                var employeeServiceU = _employeeService.GetAll().Where(e => e.IsActive == true);
-                dgvEmployee.DataSource = new BindingSource() { DataSource = employeeServiceU };
+                var employeeList = DataLoad().Where(e => e.IsActive == false).ToList();
+                dgvEmployee.DataSource = new BindingSource() { DataSource = employeeList };
+
             }
+
+
 
         }
 
@@ -281,11 +353,11 @@ namespace MiniStoreWinF.ManageEmployees
         //Show disable employee's list
         private void rd2_CheckedChanged(object sender, EventArgs e)
         {
+
             if (rd2.Checked)
             {
-
-                var employeeService = _employeeService.GetAll().Where(e => e.IsActive == false);
-                dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
+                var employeeList = DataLoad().Where(e => e.IsActive == false);
+                dgvEmployee.DataSource = new BindingSource() { DataSource = employeeList };
             }
         }
         //Show active employee's list
@@ -293,8 +365,8 @@ namespace MiniStoreWinF.ManageEmployees
         {
             if (rd1.Checked)
             {
-                var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true);
-                dgvEmployee.DataSource = new BindingSource() { DataSource = employeeService };
+                var employeeList = DataLoad().Where(e => e.IsActive == true);
+                dgvEmployee.DataSource = new BindingSource() { DataSource = employeeList };
             }
         }
 
@@ -303,6 +375,8 @@ namespace MiniStoreWinF.ManageEmployees
         private void btSearch_Click(object sender, EventArgs e)
         {
             string searchName = txtSearch.Text;
+
+
             if (searchName.Length > 0 && rd1.Checked)
             {
                 var listSearchName = _employeeService.SearchEmployee(searchName).Where(e => e.IsActive == true);
@@ -322,7 +396,21 @@ namespace MiniStoreWinF.ManageEmployees
             }
         }
 
+        private void txtCCCD_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Cannot continue input
+            }
 
+            // Check length input
+            if (txtCccd.Text.Length >= 12 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Cannot continue input
+            }
+
+
+        }
         private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))

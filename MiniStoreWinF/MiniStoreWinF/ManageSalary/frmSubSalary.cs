@@ -4,6 +4,7 @@ using Repository.Models;
 using Repository.Service;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows.Forms;
 
 
 namespace MiniStoreWinF.ManageSalary
@@ -59,34 +60,18 @@ namespace MiniStoreWinF.ManageSalary
         //Show list SubSalary of MiniStore by Admin create create
         public void showListSub()
         {
+            _detailSubSalaryService = new DetailSubSalaryService();
             var listSub = _detailSubSalaryService.GetAll().Where(p => p.ActiveSub == true).ToList();
-            dgvSub.DataSource = listSub;
+
+            dgvSub.DataSource = new BindingSource()
+            {
+                DataSource = listSub
+            };
+
         }
 
-        //Edit subSalary if this active
-        private void btEdit_Click(object sender, EventArgs e)
-        {
-            if (txtSaveID.Text == null)
-            {
-                MessageBox.Show("Please choise!", "Messages", MessageBoxButtons.OK);
-            }
-            else
-            {
-                var sub_salary = _detailSubSalaryService.GetAll().Where(p => p.IdDetailSubSalary.Equals(txtSaveID.Text) && p.ActiveSub == true).FirstOrDefault();
-                if (sub_salary != null)
-                {
-                    frmEditSubSalary form = new frmEditSubSalary();
-                    ContextScope.currentSubSalary = sub_salary;
-                    form.ShowDialog();
-                    if (form.DialogResult == DialogResult.OK)
-                    {
-                        showListSub();
-                    }
-                }
-            }
-        }
-
-        private void dgvSub_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        //click in data
+        private void dgvSub_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
             try
             {
@@ -100,6 +85,28 @@ namespace MiniStoreWinF.ManageSalary
             catch (Exception ex)
             {
 
+            }
+        }
+
+        //Edit subSalary if this active
+        private void btEdit_Click(object sender, EventArgs e)
+        {
+            if (txtSaveID.Text == "")
+            {
+                MessageBox.Show("Please choise!", "Messages", MessageBoxButtons.OK);
+            }
+            else
+            {
+                var sub_salary = _detailSubSalaryService.GetAll().Where(p => p.IdDetailSubSalary.Equals(txtSaveID.Text) && p.ActiveSub == true).FirstOrDefault();
+                if (sub_salary != null)
+                {
+                    Form form = new frmEditSubSalary();
+                    ContextScope.currentSubSalary = sub_salary;
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        showListSub();
+                    }
+                }
             }
         }
 
@@ -206,6 +213,20 @@ namespace MiniStoreWinF.ManageSalary
             {
                 searchAdvByName(id);
                 searchSubByName(id);
+            }
+        }
+
+        private void dgvSub_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dgvSub.Rows.Count)
+            {
+                DetailSubSalary item = dgvSub.Rows[e.RowIndex].DataBoundItem as DetailSubSalary; 
+
+                if (item != null && item.DateEffect < DateTime.Now)
+                {
+                    DataGridViewRow row = dgvSub.Rows[e.RowIndex];
+                    row.DefaultCellStyle.BackColor = Color.Brown;
+                }
             }
         }
     }

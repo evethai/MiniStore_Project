@@ -2,6 +2,7 @@
 using Repository.Service;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -67,14 +68,29 @@ namespace MiniStoreWinF.ManageSalary
             if (result.HasValue)
             {
                 tax=salary-result.Value;
+                //
                 if(tax>0 &&tax <= 5000000) {
-                    tax_total = 5 / 100.0;
-                }else if (tax > 5000000 && tax <= 10000000) {
-                    tax_total = 10 / 100.0;
+                    tax_total =salary * 5/100;
+                }else if (tax > 5000000 && tax <= 10000000)
+                {
+                    tax_total = salary * 10/100 - 250000;
                 }else if (tax > 10000000 && tax <= 18000000)
                 {
-                    tax_total = 15 / 100.0;
+                    tax_total = salary * 15/100 -750000;
+                }else if(tax >18000000 && tax <= 32000000)
+                {
+                    tax_total=salary* 20/100 -1650000;
+                }else if(tax>32000000 && tax <= 52000000)
+                {
+                    tax_total = salary * 25/100 - 3250000;
+                }else if(tax > 52000000 && tax < 80000000)
+                {
+                    tax_total = salary * 30/100 - 5850000;
+                }else if(tax > 80000000)
+                {
+                    tax_total = salary * 35/100 - 9850000;
                 }
+                //
                 return tax_total;
             }
             else
@@ -116,7 +132,7 @@ namespace MiniStoreWinF.ManageSalary
             _subSalaryService = new SubSalaryService();
             _detailSubSalaryService = new DetailSubSalaryService();
             var listSub = _subSalaryService.GetAll().ToList();
-            var listDetail = _detailSubSalaryService.GetAll().Where(p=>p.ActiveSub==true).ToList();
+            var listDetail = _detailSubSalaryService.GetAll().Where(p=>p.ActiveSub==true && p.DateEffect>= time).ToList();
 
             var listTotal = (from s in listSub
                              join
@@ -158,7 +174,7 @@ namespace MiniStoreWinF.ManageSalary
         public double sumaryResultTotalSalary(string id, DateTime time)
         {
             double result = 0;
-            result = totalSalry(id, time) - (BasicSalary(id, time, HourSalary(id)) * Tax(id,time,BasicSalary(id, time, HourSalary(id))));
+            result = totalSalry(id, time) - (Tax(id,time,totalSalry(id,time)));
             return result;
         }
 
@@ -197,7 +213,7 @@ namespace MiniStoreWinF.ManageSalary
                     //total basic
                     salary.TotalSalary = totalSalry(employee.IdEmp, time);
                     //tax
-                    salary.Tax = Tax(employee.IdEmp,time, totalSalry(employee.IdEmp, time));
+                    salary.Tax = Tax(employee.IdEmp,time,totalSalry(employee.IdEmp, time));
                     //after tax
                     salary.SalaryAfterTax = sumaryResultTotalSalary(employee.IdEmp, time);
                     //day begin 

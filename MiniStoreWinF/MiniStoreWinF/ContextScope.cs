@@ -14,5 +14,7 @@ namespace MiniStoreWinF
         public static DateTime currentDate { get; set; }
         public static DetailSubSalary currentSubSalary { get; set;}
         public static Order IdOrder { get; set; }
+        public static Permission newPermission { get; set; }
+        public static Permission saPer { get; set; }
     }
 }

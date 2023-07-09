@@ -54,7 +54,7 @@ namespace MiniStoreWinF.OrdersProducts
             var listProductsShow = _productService.GetAll().Select(p => new { p.Sku, p.NameProduct, p.Mfg, p.Exp, p.PictureProduct }).ToList();
             dgvShowListProducts.DataSource = new BindingSource()
             {
-                DataSource = listProductsShow
+                //DataSource = listProductsShow
             };
             listViewOrders.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }//Load form => OK
@@ -67,7 +67,7 @@ namespace MiniStoreWinF.OrdersProducts
                 var listProductsShow = _productService.GetAll().Select(p => new { p.Sku, p.NameProduct, p.Mfg, p.Exp, p.PictureProduct }).ToList();
                 dgvShowListProducts.DataSource = new BindingSource()
                 {
-                    DataSource = listProductsShow
+                    //DataSource = listProductsShow
                 };
             }
             else
@@ -499,7 +499,8 @@ namespace MiniStoreWinF.OrdersProducts
 
                 }
             }
-        } // ADD TO CART SHOW BILL => MAYBE OK
+        } // ADD TO CART SHOW BILL => MAYBE OK*/
+
         public void AutoRevenuelUpdateWhenBillOrderDone() // Update Total Revenue in one day  => OK
         {
             var TotalBillOrder = _showBillService.GetAll().Where(p => p.DateOfBill.Equals(DateTime.Now.Date)).Sum(p => p.TotalBill);

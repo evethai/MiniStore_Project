@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreateEmployees));
             panel1 = new Panel();
+            pbImport = new PictureBox();
             btImport = new Button();
             pbEmployee = new PictureBox();
             cbGender = new ComboBox();
@@ -50,6 +51,8 @@
             panel2 = new Panel();
             label1 = new Label();
             pnAccount = new Panel();
+            label9 = new Label();
+            cbIdType = new ComboBox();
             cbShowPassword = new CheckBox();
             pbInvalid = new PictureBox();
             pbValid = new PictureBox();
@@ -65,23 +68,19 @@
             pnAccount1 = new Label();
             btAddNew = new Button();
             btClose = new Button();
-            pbImport = new PictureBox();
-            pbNext = new PictureBox();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbImport).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbEmployee).BeginInit();
             panel2.SuspendLayout();
             pnAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pbInvalid).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbValid).BeginInit();
             pnAccount2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbImport).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbNext).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(pbNext);
             panel1.Controls.Add(pbImport);
             panel1.Controls.Add(btImport);
             panel1.Controls.Add(pbEmployee);
@@ -104,6 +103,17 @@
             panel1.Size = new Size(405, 538);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
+            // 
+            // pbImport
+            // 
+            pbImport.Image = (Image)resources.GetObject("pbImport.Image");
+            pbImport.Location = new Point(265, 402);
+            pbImport.Name = "pbImport";
+            pbImport.Size = new Size(58, 47);
+            pbImport.SizeMode = PictureBoxSizeMode.Zoom;
+            pbImport.TabIndex = 19;
+            pbImport.TabStop = false;
+            pbImport.Click += btImport_Click;
             // 
             // btImport
             // 
@@ -289,6 +299,8 @@
             // pnAccount
             // 
             pnAccount.BorderStyle = BorderStyle.FixedSingle;
+            pnAccount.Controls.Add(label9);
+            pnAccount.Controls.Add(cbIdType);
             pnAccount.Controls.Add(cbShowPassword);
             pnAccount.Controls.Add(pbInvalid);
             pnAccount.Controls.Add(pbValid);
@@ -304,7 +316,27 @@
             pnAccount.Name = "pnAccount";
             pnAccount.Size = new Size(465, 260);
             pnAccount.TabIndex = 2;
-            pnAccount.Visible = false;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label9.Location = new Point(129, 197);
+            label9.Name = "label9";
+            label9.Size = new Size(51, 17);
+            label9.TabIndex = 13;
+            label9.Text = "Id type";
+            label9.Visible = false;
+            // 
+            // cbIdType
+            // 
+            cbIdType.FormattingEnabled = true;
+            cbIdType.Items.AddRange(new object[] { "SE" });
+            cbIdType.Location = new Point(186, 189);
+            cbIdType.Name = "cbIdType";
+            cbIdType.Size = new Size(165, 28);
+            cbIdType.TabIndex = 12;
+            cbIdType.Visible = false;
             // 
             // cbShowPassword
             // 
@@ -376,7 +408,7 @@
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label13.Location = new Point(89, 153);
+            label13.Location = new Point(112, 155);
             label13.Name = "label13";
             label13.Size = new Size(35, 17);
             label13.TabIndex = 3;
@@ -386,7 +418,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.Location = new Point(89, 110);
+            label12.Location = new Point(97, 110);
             label12.Name = "label12";
             label12.Size = new Size(58, 17);
             label12.TabIndex = 2;
@@ -420,7 +452,6 @@
             pnAccount2.Name = "pnAccount2";
             pnAccount2.Size = new Size(465, 40);
             pnAccount2.TabIndex = 3;
-            pnAccount2.Visible = false;
             // 
             // pnAccount1
             // 
@@ -430,11 +461,10 @@
             pnAccount1.Size = new Size(145, 20);
             pnAccount1.TabIndex = 0;
             pnAccount1.Text = "Account Information";
-            pnAccount1.Visible = false;
             // 
             // btAddNew
             // 
-            btAddNew.Location = new Point(814, 555);
+            btAddNew.Location = new Point(814, 532);
             btAddNew.Name = "btAddNew";
             btAddNew.Size = new Size(94, 29);
             btAddNew.TabIndex = 9;
@@ -444,35 +474,13 @@
             // 
             // btClose
             // 
-            btClose.Location = new Point(714, 556);
+            btClose.Location = new Point(814, 567);
             btClose.Name = "btClose";
             btClose.Size = new Size(94, 29);
             btClose.TabIndex = 10;
             btClose.Text = "Close";
             btClose.UseVisualStyleBackColor = true;
             btClose.Click += btClose_Click;
-            // 
-            // pbImport
-            // 
-            pbImport.Image = (Image)resources.GetObject("pbImport.Image");
-            pbImport.Location = new Point(265, 402);
-            pbImport.Name = "pbImport";
-            pbImport.Size = new Size(58, 47);
-            pbImport.SizeMode = PictureBoxSizeMode.Zoom;
-            pbImport.TabIndex = 19;
-            pbImport.TabStop = false;
-            pbImport.Click += btImport_Click;
-            // 
-            // pbNext
-            // 
-            pbNext.Image = (Image)resources.GetObject("pbNext.Image");
-            pbNext.Location = new Point(326, 496);
-            pbNext.Name = "pbNext";
-            pbNext.Size = new Size(74, 37);
-            pbNext.SizeMode = PictureBoxSizeMode.Zoom;
-            pbNext.TabIndex = 20;
-            pbNext.TabStop = false;
-            pbNext.Click += btNext_Click;
             // 
             // frmCreateEmployees
             // 
@@ -492,6 +500,7 @@
             Load += CreateEmployees_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbImport).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbEmployee).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -501,8 +510,6 @@
             ((System.ComponentModel.ISupportInitialize)pbValid).EndInit();
             pnAccount2.ResumeLayout(false);
             pnAccount2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pbImport).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbNext).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -546,6 +553,7 @@
         private PictureBox pbInvalid;
         private CheckBox cbShowPassword;
         private PictureBox pbImport;
-        private PictureBox pbNext;
+        private Label label9;
+        private ComboBox cbIdType;
     }
 }

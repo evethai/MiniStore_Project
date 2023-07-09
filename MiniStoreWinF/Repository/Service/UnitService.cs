@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Repository.Service
 {
-    public class UnitService : ServiceMiniStore<Unit>
+    public class UnitService:ServiceMiniStore<Unit>
     {
     }
 }

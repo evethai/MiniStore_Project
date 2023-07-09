@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
             }
             
             HttpSession session = request.getSession();
-            session.setAttribute("fullnameemapi", "Welcome " + fullnameemapi);
+            session.setAttribute("fullnameemapi", fullnameemapi);
             session.setAttribute("TimeCheckInapi", TimeCheckinapi);
             session.setAttribute("TimeCheckOutapi", TimeCheckoutapi);
             session.setAttribute("IdEmpapi", IdEmpapi);

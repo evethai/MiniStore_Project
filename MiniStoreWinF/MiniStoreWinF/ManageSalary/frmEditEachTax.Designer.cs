@@ -31,16 +31,14 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditEachTax));
             btSave = new Button();
-            label6 = new Label();
-            txtNewGuard = new TextBox();
-            txtNewEmp = new TextBox();
+            txtTax = new TextBox();
             label5 = new Label();
             notiSave = new NotifyIcon(components);
             SuspendLayout();
             // 
             // btSave
             // 
-            btSave.Location = new Point(372, 184);
+            btSave.Location = new Point(155, 114);
             btSave.Margin = new Padding(5, 4, 5, 4);
             btSave.Name = "btSave";
             btSave.Size = new Size(118, 34);
@@ -49,43 +47,24 @@
             btSave.UseVisualStyleBackColor = true;
             btSave.Click += btSave_Click;
             // 
-            // label6
+            // txtTax
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(20, 87);
-            label6.Margin = new Padding(5, 0, 5, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(173, 25);
-            label6.TabIndex = 3;
-            label6.Text = "New Tax for Guard ";
-            // 
-            // txtNewGuard
-            // 
-            txtNewGuard.Location = new Point(333, 87);
-            txtNewGuard.Margin = new Padding(5, 4, 5, 4);
-            txtNewGuard.Name = "txtNewGuard";
-            txtNewGuard.Size = new Size(155, 33);
-            txtNewGuard.TabIndex = 7;
-            txtNewGuard.KeyPress += txtNewGuard_KeyPress;
-            // 
-            // txtNewEmp
-            // 
-            txtNewEmp.Location = new Point(333, 28);
-            txtNewEmp.Margin = new Padding(5, 4, 5, 4);
-            txtNewEmp.Name = "txtNewEmp";
-            txtNewEmp.Size = new Size(155, 33);
-            txtNewEmp.TabIndex = 5;
-            txtNewEmp.KeyPress += txtNewEmp_KeyPress_1;
+            txtTax.Location = new Point(243, 37);
+            txtTax.Margin = new Padding(5, 4, 5, 4);
+            txtTax.Name = "txtTax";
+            txtTax.Size = new Size(155, 33);
+            txtTax.TabIndex = 5;
+            txtTax.KeyPress += txtNewEmp_KeyPress_1;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(20, 28);
+            label5.Location = new Point(35, 37);
             label5.Margin = new Padding(5, 0, 5, 0);
             label5.Name = "label5";
-            label5.Size = new Size(198, 25);
+            label5.Size = new Size(128, 25);
             label5.TabIndex = 4;
-            label5.Text = "New Tax for Employee";
+            label5.Text = "New basic tax";
             // 
             // notiSave
             // 
@@ -96,18 +75,17 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(528, 240);
+            ClientSize = new Size(446, 190);
             Controls.Add(btSave);
-            Controls.Add(label6);
-            Controls.Add(txtNewGuard);
-            Controls.Add(txtNewEmp);
+            Controls.Add(txtTax);
             Controls.Add(label5);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(5, 4, 5, 4);
-            MaximumSize = new Size(544, 279);
-            MinimumSize = new Size(544, 279);
+            MaximumSize = new Size(462, 229);
+            MinimumSize = new Size(462, 229);
             Name = "frmEditEachTax";
+            Text = "Edit new tax";
             Load += frmEditEachTax_Load;
             ResumeLayout(false);
             PerformLayout();
@@ -116,9 +94,7 @@
         #endregion
 
         private Button btSave;
-        private Label label6;
-        private TextBox txtNewGuard;
-        private TextBox txtNewEmp;
+        private TextBox txtTax;
         private Label label5;
         private NotifyIcon notiSave;
     }

@@ -288,7 +288,7 @@
             lblType.Location = new Point(24, 94);
             lblType.Margin = new Padding(4, 0, 4, 0);
             lblType.Name = "lblType";
-            lblType.Size = new Size(49, 20);
+            lblType.Size = new Size(38, 15);
             lblType.TabIndex = 7;
             lblType.Text = "Type :";
             // 
@@ -316,7 +316,6 @@
             panel5.Controls.Add(txtLoyaltyPoint);
             panel5.Controls.Add(lb);
             panel5.Controls.Add(txtScanVoucher);
-            panel5.Controls.Add(btUsingVoucher);
             panel5.Controls.Add(btCheckMember);
             panel5.Controls.Add(panel2);
             panel5.Controls.Add(lblVoucher);
@@ -465,7 +464,7 @@
             lblVoucher.Location = new Point(26, 24);
             lblVoucher.Margin = new Padding(4, 0, 4, 0);
             lblVoucher.Name = "lblVoucher";
-            lblVoucher.Size = new Size(77, 20);
+            lblVoucher.Size = new Size(58, 15);
             lblVoucher.TabIndex = 13;
             lblVoucher.Text = "Vourcher:";
             // 
@@ -529,7 +528,7 @@
             lblPicture.Location = new Point(15, 231);
             lblPicture.Margin = new Padding(4, 0, 4, 0);
             lblPicture.Name = "lblPicture";
-            lblPicture.Size = new Size(61, 20);
+            lblPicture.Size = new Size(47, 15);
             lblPicture.TabIndex = 12;
             lblPicture.Text = "Picture:";
             // 
@@ -561,7 +560,7 @@
             lblName.Location = new Point(15, 15);
             lblName.Margin = new Padding(4, 0, 4, 0);
             lblName.Name = "lblName";
-            lblName.Size = new Size(54, 20);
+            lblName.Size = new Size(42, 15);
             lblName.TabIndex = 1;
             lblName.Text = "Name:";
             // 
@@ -591,7 +590,7 @@
             lblPrice.Location = new Point(15, 172);
             lblPrice.Margin = new Padding(4, 0, 4, 0);
             lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(47, 20);
+            lblPrice.Size = new Size(36, 15);
             lblPrice.TabIndex = 3;
             lblPrice.Text = "Price:";
             // 
@@ -602,7 +601,7 @@
             lblQuantity.Location = new Point(15, 70);
             lblQuantity.Margin = new Padding(4, 0, 4, 0);
             lblQuantity.Name = "lblQuantity";
-            lblQuantity.Size = new Size(72, 20);
+            lblQuantity.Size = new Size(56, 15);
             lblQuantity.TabIndex = 4;
             lblQuantity.Text = "Quantity:";
             // 
@@ -758,7 +757,7 @@
             btShowBill.TextAlign = ContentAlignment.BottomCenter;
             btShowBill.UseVisualStyleBackColor = true;
             btShowBill.Visible = false;
-            btShowBill.Click += btShowBill_Click;
+
             // 
             // lblCustomerProvidesCash
             // 
@@ -850,6 +849,14 @@
             label4.Size = new Size(73, 20);
             label4.TabIndex = 27;
             label4.Text = "Discount:";
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(btUsingVoucher);
+            panel3.Location = new Point(267, 12);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(76, 27);
+            panel3.TabIndex = 22;
             // 
             // OrderProducts
             // 
