@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCreateNewVoucher));
             pnAdd = new Panel();
+            btBack = new Button();
             label2 = new Label();
             numAddCondition = new NumericUpDown();
             label3 = new Label();
@@ -42,7 +44,6 @@
             label9 = new Label();
             label11 = new Label();
             label1 = new Label();
-            btBack = new Button();
             pnAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numAddCondition).BeginInit();
             SuspendLayout();
@@ -67,6 +68,19 @@
             pnAdd.Name = "pnAdd";
             pnAdd.Size = new Size(338, 421);
             pnAdd.TabIndex = 15;
+            // 
+            // btBack
+            // 
+            btBack.Image = (Image)resources.GetObject("btBack.Image");
+            btBack.ImageAlign = ContentAlignment.MiddleLeft;
+            btBack.Location = new Point(3, 346);
+            btBack.Name = "btBack";
+            btBack.Size = new Size(96, 40);
+            btBack.TabIndex = 17;
+            btBack.Text = "Back";
+            btBack.TextAlign = ContentAlignment.MiddleRight;
+            btBack.UseVisualStyleBackColor = true;
+            btBack.Click += btBack_Click;
             // 
             // label2
             // 
@@ -103,11 +117,14 @@
             // 
             // btAdd
             // 
-            btAdd.Location = new Point(226, 320);
+            btAdd.Image = (Image)resources.GetObject("btAdd.Image");
+            btAdd.ImageAlign = ContentAlignment.MiddleLeft;
+            btAdd.Location = new Point(235, 346);
             btAdd.Name = "btAdd";
-            btAdd.Size = new Size(94, 29);
+            btAdd.Size = new Size(96, 40);
             btAdd.TabIndex = 12;
             btAdd.Text = "Create";
+            btAdd.TextAlign = ContentAlignment.MiddleRight;
             btAdd.UseVisualStyleBackColor = true;
             btAdd.Click += btAdd_Click;
             // 
@@ -177,16 +194,6 @@
             label1.Size = new Size(156, 31);
             label1.TabIndex = 16;
             label1.Text = "New Voucher";
-            // 
-            // btBack
-            // 
-            btBack.Location = new Point(20, 320);
-            btBack.Name = "btBack";
-            btBack.Size = new Size(94, 29);
-            btBack.TabIndex = 17;
-            btBack.Text = "Back";
-            btBack.UseVisualStyleBackColor = true;
-            btBack.Click += btBack_Click;
             // 
             // frmCreateNewVoucher
             // 
