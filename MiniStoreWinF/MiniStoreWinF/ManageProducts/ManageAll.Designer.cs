@@ -28,99 +28,98 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageAll));
             groupBox4 = new GroupBox();
-            pictureBox2 = new PictureBox();
+            button2 = new Button();
             groupBox3 = new GroupBox();
-            pictureBox4 = new PictureBox();
+            button1 = new Button();
             groupBox1 = new GroupBox();
-            pictureBox1 = new PictureBox();
+            AUTHORIZATION = new Button();
             label1 = new Label();
             pnProduct = new TableLayoutPanel();
             tableLayoutPanel1 = new TableLayoutPanel();
             groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox4
             // 
-            groupBox4.Controls.Add(pictureBox2);
+            groupBox4.Controls.Add(button2);
             groupBox4.Dock = DockStyle.Fill;
             groupBox4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox4.ForeColor = Color.Navy;
-            groupBox4.Location = new Point(3, 185);
+            groupBox4.Location = new Point(3, 159);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(62, 85);
+            groupBox4.Size = new Size(276, 73);
             groupBox4.TabIndex = 2;
             groupBox4.TabStop = false;
-            groupBox4.Text = "Supplier";
             // 
-            // pictureBox2
+            // button2
             // 
-            pictureBox2.Dock = DockStyle.Fill;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(3, 23);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(56, 59);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 2;
-            pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
+            button2.Dock = DockStyle.Fill;
+            button2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.ImageAlign = ContentAlignment.MiddleLeft;
+            button2.Location = new Point(3, 23);
+            button2.Margin = new Padding(5, 4, 5, 4);
+            button2.Name = "button2";
+            button2.Size = new Size(270, 47);
+            button2.TabIndex = 1;
+            button2.Text = "Supplier";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(pictureBox4);
+            groupBox3.Controls.Add(button1);
             groupBox3.Dock = DockStyle.Fill;
             groupBox3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox3.ForeColor = Color.Navy;
-            groupBox3.Location = new Point(3, 94);
+            groupBox3.Location = new Point(3, 81);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(62, 85);
+            groupBox3.Size = new Size(276, 72);
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
-            groupBox3.Text = "Unit ";
             // 
-            // pictureBox4
+            // button1
             // 
-            pictureBox4.Dock = DockStyle.Fill;
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(3, 23);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(56, 59);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox4.TabIndex = 0;
-            pictureBox4.TabStop = false;
-            pictureBox4.Click += pictureBox4_Click;
+            button1.Dock = DockStyle.Fill;
+            button1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(3, 23);
+            button1.Margin = new Padding(5, 4, 5, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(270, 46);
+            button1.TabIndex = 1;
+            button1.Text = "Unit";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(pictureBox1);
+            groupBox1.Controls.Add(AUTHORIZATION);
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox1.ForeColor = Color.Navy;
             groupBox1.Location = new Point(3, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(62, 85);
+            groupBox1.Size = new Size(276, 72);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Product";
             // 
-            // pictureBox1
+            // AUTHORIZATION
             // 
-            pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(3, 23);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(56, 59);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
+            AUTHORIZATION.Dock = DockStyle.Fill;
+            AUTHORIZATION.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            AUTHORIZATION.ImageAlign = ContentAlignment.MiddleLeft;
+            AUTHORIZATION.Location = new Point(3, 23);
+            AUTHORIZATION.Margin = new Padding(5, 4, 5, 4);
+            AUTHORIZATION.Name = "AUTHORIZATION";
+            AUTHORIZATION.Size = new Size(270, 46);
+            AUTHORIZATION.TabIndex = 1;
+            AUTHORIZATION.Text = "Product";
+            AUTHORIZATION.UseVisualStyleBackColor = true;
+            AUTHORIZATION.Click += AUTHORIZATION_Click;
             // 
             // label1
             // 
@@ -134,11 +133,11 @@
             // 
             pnProduct.ColumnCount = 1;
             pnProduct.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            pnProduct.Location = new Point(70, 3);
+            pnProduct.Location = new Point(290, 0);
             pnProduct.Name = "pnProduct";
             pnProduct.RowCount = 1;
             pnProduct.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            pnProduct.Size = new Size(1194, 646);
+            pnProduct.Size = new Size(1082, 764);
             pnProduct.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -154,39 +153,36 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.Size = new Size(68, 273);
+            tableLayoutPanel1.Size = new Size(282, 235);
             tableLayoutPanel1.TabIndex = 3;
             // 
             // ManageAll
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1322, 661);
+            ClientSize = new Size(1372, 764);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(pnProduct);
             Controls.Add(label1);
             Name = "ManageAll";
             Text = "ManageAll";
             groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private PictureBox pictureBox1;
         private GroupBox groupBox4;
-        private PictureBox pictureBox2;
         private GroupBox groupBox3;
         private GroupBox groupBox1;
         private Label label1;
-        private PictureBox pictureBox4;
         private TableLayoutPanel pnProduct;
         private TableLayoutPanel tableLayoutPanel1;
+        private Button button2;
+        private Button button1;
+        private Button AUTHORIZATION;
     }
 }

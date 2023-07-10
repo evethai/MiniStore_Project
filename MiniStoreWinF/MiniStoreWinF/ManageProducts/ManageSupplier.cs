@@ -120,12 +120,12 @@ namespace MiniStoreWinF.ManageProducts
             dataGridView1.DataSource = new BindingSource() { DataSource = ShowList };
         }
 
-        
-         private void btSearch_Click(object sender, EventArgs e)
+
+        private void btSearch_Click(object sender, EventArgs e)
         {
             _Update = new SupplierServices();
             string _nam = txtSearch.Text;
-            var nameS = _Update.GetAll().ToList().Where(e=>
+            var nameS = _Update.GetAll().ToList().Where(e =>
              e.NameSupplier.ToLower().StartsWith(_nam.ToLower()));
             if (nameS != null)
             {

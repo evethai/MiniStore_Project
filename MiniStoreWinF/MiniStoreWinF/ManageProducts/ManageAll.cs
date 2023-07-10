@@ -34,5 +34,20 @@ namespace MiniStoreWinF.ManageProducts
         {
             u.openChildForm(new ManageProducts.ManageUnitProduct(), pnProduct);
         }
+
+        private void AUTHORIZATION_Click(object sender, EventArgs e)
+        {
+            u.openChildForm(new ManageProducts.ManageAllProducs(), pnProduct);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            u.openChildForm(new ManageProducts.ManageUnitProduct(), pnProduct);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            u.openChildForm(new ManageProducts.ManageSupplier(), pnProduct);
+        }
     }
 }
