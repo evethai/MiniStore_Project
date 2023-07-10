@@ -36,7 +36,7 @@ namespace MiniStoreWinF.ManageEmployees
         }
         public string autoID(string id, string prefix)
         {
-            //SEXX
+            //(prefix)XX
             string result = "";
             int cutID = int.Parse(id.Substring(2, 2));
             cutID++;
