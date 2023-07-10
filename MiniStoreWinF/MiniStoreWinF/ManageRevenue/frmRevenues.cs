@@ -38,8 +38,8 @@ namespace MiniStoreWinF.ManageRevenue
 
         public void chartRevenues(DateTime time)
         {
-            var listRe = _revenueService.GetAll().Where(p => p.DateRevenue.Month.Equals(time.Month)).ToList();
-            var listBill = _billOrderService.GetAll().Where(p => p.DateOfBill.Value.Month.Equals(time.Month)).ToList();
+            var listRe = _revenueService.GetAll().Where(p => p.DateRevenue.Month.Equals(time.Month) && p.DateRevenue.Year.Equals(time.Year)).ToList();
+            var listBill = _billOrderService.GetAll().Where(p => p.DateOfBill.Value.Month.Equals(time.Month) && p.DateOfBill.Value.Year.Equals(time.Year)).ToList();
             double? reInMonth = 0;
             foreach (var item in listRe)
             {
@@ -69,10 +69,10 @@ namespace MiniStoreWinF.ManageRevenue
             //----------increase------
             //
             //lấy số ngày của tháng này để so sánh nếu trường hợp chưa hết 1 tháng 
-            var n = _revenueService.GetAll().Where(p => p.DateRevenue.Month.Equals(time.Month)).Count();
+            var n = _revenueService.GetAll().Where(p => p.DateRevenue.Month.Equals(time.Month) && p.DateRevenue.Year.Equals(time.Year)).Count();
 
             //tính danh thu tháng trước theo số lượng ngày đã tính tháng này
-            var listlastMonth = _revenueService.GetAll().Where(p => p.DateRevenue.Month.Equals(time.AddMonths(-1).Month)).ToList();
+            var listlastMonth = _revenueService.GetAll().Where(p => p.DateRevenue.Month.Equals(time.AddMonths(-1).Month) && p.DateRevenue.Year.Equals(time.AddMonths(-1).Year)).ToList();
             double? totalLast = 0;
             foreach (var item in listlastMonth)
             {
@@ -119,10 +119,10 @@ namespace MiniStoreWinF.ManageRevenue
 
             var ca = _catalogyService.GetAll().ToList();
             var pro = _productService.GetAll().Where(p => p.StatusP == true).ToList();
-            var or = _orderService.GetAll().Where(p => p.DateOrders.Value.Month.Equals(time.Month)).ToList();
+            var or = _orderService.GetAll().Where(p => p.DateOrders.Value.Month.Equals(time.Month) && p.DateOrders.Value.Year.Equals(time.Year)).ToList();
             var unit = _unitService.GetAll().ToList();
 
-            var listSku = (from o in or join u in unit on o.IdUnit equals u.IdUnit select Tuple.Create(u.Sku,o.Total)).ToList();
+            var listSku = (from o in or join u in unit on o.IdUnit equals u.IdUnit select Tuple.Create(u.Sku, o.Total)).ToList();
 
             var listType = (from lk in listSku join pr in pro on lk.Item1 equals pr.Sku select Tuple.Create(pr.ProductType, lk.Item2)).ToList();
 
@@ -156,7 +156,7 @@ namespace MiniStoreWinF.ManageRevenue
         {
             var first = _revenueService.GetAll().FirstOrDefault();
             var last = _revenueService.GetAll().LastOrDefault();
-            if (dtpRe.Value.Month < first.DateRevenue.Month || dtpRe.Value.Month > last.DateRevenue.Month)
+            if ((dtpRe.Value.Month < first.DateRevenue.Month || dtpRe.Value.Month > last.DateRevenue.Month) && dtpRe.Value.Year == first.DateRevenue.Year && dtpRe.Value.Year == last.DateRevenue.Year)
             {
                 MessageBox.Show("No sales this month", "Messages", MessageBoxButtons.OK);
                 dtpRe.Value = DateTime.Now;

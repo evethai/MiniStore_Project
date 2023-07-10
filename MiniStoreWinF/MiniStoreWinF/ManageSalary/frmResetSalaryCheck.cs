@@ -29,7 +29,7 @@ namespace MiniStoreWinF.ManageSalary
             DialogResult result = MessageBox.Show("Remember choice time to reset salary!", "Messages", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
-                var reset = _salaryService.GetAll().Where(p => p.DateImonth.Month.Equals(time.Month)).ToList();
+                var reset = _salaryService.GetAll().Where(p => p.DateImonth.Month.Equals(time.Month) && p.DateImonth.Year.Equals(time.Year)).ToList();
                 if (reset.Count > 0)
                 {
                     foreach (var item in reset)

@@ -15,6 +15,7 @@ namespace MiniStoreWinF.Manage_Voucher
         public frmMemberVVoucher()
         {
             InitializeComponent();
+            valid.openChildForm(new ManageMember.frmMember(), pnMain);
         }
         Validation valid = new Validation();
 

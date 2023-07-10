@@ -57,11 +57,12 @@ namespace MiniStoreWinF.ManageProducts
                     }
 
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }
-            
+
         }
 
         private void btUpdateProduct_Click(object sender, EventArgs e)
@@ -92,9 +93,9 @@ namespace MiniStoreWinF.ManageProducts
                     {
                         _productList.Update(RemovePro);
                         txtLoadPro_Click(sender, new EventArgs());
-                        
+
                     }
-                    
+
                 }
             }
         }

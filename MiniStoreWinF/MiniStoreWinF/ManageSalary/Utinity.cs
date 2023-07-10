@@ -103,7 +103,7 @@ namespace MiniStoreWinF.ManageSalary
         public int sum(string id, DateTime time)
         {
             _workSheetService = new WorkSheetService();
-            var sum1 = _workSheetService.GetAll().Count(p => p.IdEmp.Equals(id) && p.Date.Value.Month.Equals(time.Month)&& p.Status==true);
+            var sum1 = _workSheetService.GetAll().Count(p => p.IdEmp.Equals(id) && p.Date.Value.Month.Equals(time.Month) && p.Date.Value.Year.Equals(time.Year) && p.Status==true);
             return sum1;
         }
 
@@ -146,8 +146,8 @@ namespace MiniStoreWinF.ManageSalary
         {
             _salaryService = new SalaryService();
             _employeeService = new EmployeeService();
-            var listSal = _salaryService.GetAll().Where(p => p.DateOmonth.Month.Equals(time.Month)).ToList();
-            var listEmp = _employeeService.GetAll().Where(p => p.IsActive == true && p.Roles!=0 && p.Roles!=1).ToList();
+            var listSal = _salaryService.GetAll().Where(p => p.DateOmonth.Month.Equals(time.Month) && p.DateOmonth.Year.Equals(time.Year)).ToList();
+            var listEmp = _employeeService.GetAll().Where(p =>  p.Roles!=0 && p.Roles!=1).ToList();
             List<Salary> listTrue = new List<Salary>();
             foreach (var emp in listEmp)
             {

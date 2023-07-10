@@ -365,6 +365,7 @@
             dgvTotalSub.RowTemplate.Height = 27;
             dgvTotalSub.Size = new Size(836, 278);
             dgvTotalSub.TabIndex = 8;
+            dgvTotalSub.CellMouseEnter += dgvTotalSub_CellMouseEnter;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -532,6 +533,7 @@
             dgvAdv.RowTemplate.Height = 27;
             dgvAdv.Size = new Size(545, 279);
             dgvAdv.TabIndex = 1;
+            dgvAdv.CellMouseEnter += dgvAdv_CellMouseEnter;
             // 
             // idAdvanceSalaryDataGridViewTextBoxColumn
             // 
@@ -748,5 +750,6 @@
         private DataGridViewTextBoxColumn idDetailSubSalaryDataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn1;
         private Panel panel7;
+
     }
 }

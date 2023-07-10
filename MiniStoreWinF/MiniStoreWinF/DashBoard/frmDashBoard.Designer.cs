@@ -32,22 +32,26 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDashBoard));
             panel2 = new Panel();
             label1 = new Label();
             pMain = new Panel();
             tableLayoutPanel2 = new TableLayoutPanel();
-            pbRevenues = new PictureBox();
             pbMember = new PictureBox();
             pbProduct = new PictureBox();
             pbVouchers = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            pbRevenues = new System.Windows.Forms.DataVisualization.Charting.Chart();
             panel2.SuspendLayout();
             pMain.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbRevenues).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbMember).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbProduct).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbVouchers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbRevenues).BeginInit();
             SuspendLayout();
             // 
             // panel2
@@ -90,10 +94,10 @@
             tableLayoutPanel2.ColumnCount = 2;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Controls.Add(pbRevenues, 0, 0);
             tableLayoutPanel2.Controls.Add(pbMember, 0, 1);
             tableLayoutPanel2.Controls.Add(pbProduct, 1, 0);
             tableLayoutPanel2.Controls.Add(pbVouchers, 1, 1);
+            tableLayoutPanel2.Controls.Add(pbRevenues, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(12, 10);
             tableLayoutPanel2.Margin = new Padding(4);
@@ -101,18 +105,9 @@
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Size = new Size(1434, 706);
             tableLayoutPanel2.TabIndex = 3;
-            // 
-            // pbRevenues
-            // 
-            pbRevenues.Dock = DockStyle.Fill;
-            pbRevenues.Location = new Point(4, 4);
-            pbRevenues.Margin = new Padding(4);
-            pbRevenues.Name = "pbRevenues";
-            pbRevenues.Size = new Size(709, 345);
-            pbRevenues.TabIndex = 0;
-            pbRevenues.TabStop = false;
             // 
             // pbMember
             // 
@@ -157,7 +152,30 @@
             title1.Name = "Title1";
             title1.Text = "Number of vouchers still available";
             pbVouchers.Titles.Add(title1);
-            pbVouchers.Click += pbVouchers_Click;
+            // 
+            // pbRevenues
+            // 
+            chartArea2.Name = "ChartArea1";
+            pbRevenues.ChartAreas.Add(chartArea2);
+            pbRevenues.Dock = DockStyle.Fill;
+            legend2.Name = "Legend1";
+            pbRevenues.Legends.Add(legend2);
+            pbRevenues.Location = new Point(3, 3);
+            pbRevenues.Name = "pbRevenues";
+            series2.BorderWidth = 5;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.IsValueShownAsLabel = true;
+            series2.LabelFormat = "#,###,###";
+            series2.Legend = "Legend1";
+            series2.Name = "Revenue";
+            pbRevenues.Series.Add(series2);
+            pbRevenues.Size = new Size(711, 347);
+            pbRevenues.TabIndex = 4;
+            title2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            title2.Name = "Title1";
+            title2.Text = "Sales in the last 7 days";
+            pbRevenues.Titles.Add(title2);
             // 
             // frmDashBoard
             // 
@@ -175,10 +193,10 @@
             panel2.PerformLayout();
             pMain.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pbRevenues).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbMember).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbProduct).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbVouchers).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbRevenues).EndInit();
             ResumeLayout(false);
         }
 
@@ -188,9 +206,9 @@
         private Label label1;
         private Panel pMain;
         private TableLayoutPanel tableLayoutPanel2;
-        private PictureBox pbRevenues;
         private PictureBox pbMember;
         private PictureBox pbProduct;
         private System.Windows.Forms.DataVisualization.Charting.Chart pbVouchers;
+        private System.Windows.Forms.DataVisualization.Charting.Chart pbRevenues;
     }
 }

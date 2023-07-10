@@ -51,7 +51,7 @@ namespace MiniStoreWinF.DashBoard
                     permissionDetail.CheckAction = false;
                     _permissionDetailService.Create(permissionDetail);
                 }
-                MessageBox.Show("Add new Successful","Messages",MessageBoxButtons.OK);
+                MessageBox.Show("Add new Successful", "Messages", MessageBoxButtons.OK);
                 ContextScope.newPermission = per;
                 this.DialogResult = DialogResult.OK;
                 this.Close();

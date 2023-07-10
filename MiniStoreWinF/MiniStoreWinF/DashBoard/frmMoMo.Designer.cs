@@ -241,6 +241,7 @@
             MinimumSize = new Size(835, 536);
             Name = "frmMoMo";
             StartPosition = FormStartPosition.CenterScreen;
+            Text = "MoMo";
             Load += frmMoMo_Load;
             ((System.ComponentModel.ISupportInitialize)dgvList).EndInit();
             ((System.ComponentModel.ISupportInitialize)moMoBindingSource).EndInit();

@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
 using Microsoft.EntityFrameworkCore.ValueGeneration;
+using Repository.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace MiniStoreWinF.ManageProducts
 {
@@ -25,8 +27,10 @@ namespace MiniStoreWinF.ManageProducts
         CatalogyService _comboType;
         SupplierServices _comboIdSup;
         UnitServices _comboUnit;
+        private List<Supplier> _listcomboIdSup1;
         public ManageAllProducs()
         {
+
             InitializeComponent();
 
             // Show Product in Dgv
@@ -48,7 +52,9 @@ namespace MiniStoreWinF.ManageProducts
             //combo id supplier
             _comboIdSup = new SupplierServices();
             var _listcomboIdSup = _comboIdSup.GetAll()
-                .Select(c => c.IdSupplier).ToList();
+                .Select(c => new { c.IdSupplier, c.NameSupplier }).ToList();
+            cbIdSupplier.ValueMember = "IdSupplier";
+            cbIdSupplier.DisplayMember = "NameSupplier";
             cbIdSupplier.DataSource = _listcomboIdSup;
 
             // suggest name product for search
@@ -85,6 +91,12 @@ namespace MiniStoreWinF.ManageProducts
         {
             try
             {
+                _comboIdSup = new SupplierServices();
+                var _listcomboIdSup = _comboIdSup.GetAll()
+                    .Select(c => new { c.IdSupplier, c.NameSupplier }).ToList();
+                cbIdSupplier.ValueMember = "IdSupplier";
+                cbIdSupplier.DisplayMember = "NameSupplier";
+                cbIdSupplier.DataSource = _listcomboIdSup;
                 _ShowList = new ProductService();
                 var id = dataGridView1[0, e.RowIndex].Value;
                 var showPro = _ShowList.GetAll().Where(p => p.Sku.Trim().Equals(id)).FirstOrDefault();
@@ -94,24 +106,11 @@ namespace MiniStoreWinF.ManageProducts
                     txtIDProduct.Text = showPro.Sku.ToString();
                     txtNameProduct.Text = showPro.NameProduct.ToString();
                     cbTypeProduct.Text = showPro.ProductType.ToString();
-                    //numericQuantityPro.Text = showPro.QuantityProduct.ToString();
-                    //txtPriceImport.Text = showPro.PriceProduct.ToString();
-                    //double temp1 = Convert.ToDouble(txtPriceImport.Text);
-                    //txtPriceImport.Text = temp1.ToString("#,###");
-                    //txtPriceToOrders.Text = showPro.PriceToOrders.ToString();
-                    //double temp2 = Convert.ToDouble(txtPriceToOrders.Text);
-                    //txtPriceToOrders.Text = temp2.ToString("#,###");
-
-                    cbIdSupplier.Text = showPro.IdSupplier.ToString();
-                    //cbIdUnit.Text = showPro.IdUnit.ToString();
-                    //numericQuantityUnit.Text = showPro.QuantityUnit.ToString();
-                    //txtPriceUnit.Text = showPro.PriceUnit.ToString();
-                    //double temp3 = Convert.ToDouble(txtPriceUnit.Text);
-                    //txtPriceUnit.Text = temp3.ToString("#,###");
-                    //txtTotalPrice.Text = showPro.TotalPriceUnit.ToString();
-                    //double temp4 = Convert.ToDouble(txtTotalPrice.Text);
-                    //txtTotalPrice.Text = temp4.ToString("#,###");
-
+                    var selectedProduct = _listcomboIdSup.FirstOrDefault(p => p.IdSupplier == showPro.IdSupplier);
+                    if (selectedProduct != null)
+                    {
+                        cbIdSupplier.SelectedValue = selectedProduct.IdSupplier;
+                    }
                     dateMFG.Value = showPro.Mfg.Value;
                     dateEXP.Value = showPro.Exp.Value;
                     dateDateImport.Value = showPro.DateImport.Value;
@@ -218,78 +217,81 @@ namespace MiniStoreWinF.ManageProducts
         // Create Product
         private void button1_Click(object sender, EventArgs e)
         {
-            _ShowList = new ProductService();
-            var AddPro = _ShowList.GetAll().ToList().Where(e => e.Sku.ToUpper()
-            .Equals(txtIDProduct.Text.ToUpper()))
-                .FirstOrDefault();
-            if (txtNameProduct.Text == "" ||
-                txtPathPicture.Text == ""
+            Form form = new frmCreate();
+            form.ShowDialog();
+            //_ShowList = new ProductService();
+            //var AddPro = _ShowList.GetAll().ToList().Where(e => e.Sku.ToUpper()
+            //.Equals(txtIDProduct.Text.ToUpper()))
+            //    .FirstOrDefault();
+            //if (txtNameProduct.Text == "" ||
+            //    txtPathPicture.Text == ""
 
-                )
-            {
-                MessageBox.Show("Not Be Empty or Invalid Value");
-            }
-            else
-            {
-                if (AddPro != null)
-                {
-                    MessageBox.Show("ID Duplicated ");
-                }
-                else
-                {
-                    _id = new ProductService();
-                    var _autoID = _id.GetAll().ToList().Select(c => c.Sku).Max();
-                    string nextID = autoID(_autoID);
-                    _ShowList1 = new ProductService();
-                    var _addProduct = _ShowList1.GetAll().ToList().FirstOrDefault();
-                    _addProduct.Sku = nextID;
-                    _addProduct.NameProduct = txtNameProduct.Text;
-                    _addProduct.ProductType = cbTypeProduct.Text;
-                    //_addProduct.QuantityProduct = Int32.Parse(numericQuantityPro.Text);
-                    //_addProduct.PriceProduct = price;
-                    //_addProduct.PriceToOrders = float.Parse(txtPriceToOrders.Text);
+            //    )
+            //{
+            //    MessageBox.Show("Not Be Empty or Invalid Value");
+            //}
+            //else
+            //{
+            //    if (AddPro != null)
+            //    {
+            //        MessageBox.Show("ID Duplicated ");
+            //    }
+            //    else
+            //    {
+            //        _id = new ProductService();
+            //        var _autoID = _id.GetAll().ToList().Select(c => c.Sku).Max();
+            //        string nextID = autoID(_autoID);
+            //        _ShowList1 = new ProductService();
+            //        var _addProduct = _ShowList1.GetAll().ToList().FirstOrDefault();
+            //        _addProduct.Sku = nextID;
+            //        _addProduct.NameProduct = txtNameProduct.Text;
+            //        _addProduct.ProductType = cbTypeProduct.Text;
+            //        //_addProduct.QuantityProduct = Int32.Parse(numericQuantityPro.Text);
+            //        //_addProduct.PriceProduct = price;
+            //        //_addProduct.PriceToOrders = float.Parse(txtPriceToOrders.Text);
 
-                    _addProduct.IdSupplier = cbIdSupplier.Text;
-                    //_addProduct.IdUnit = cbIdUnit.Text;
-                    //_addProduct.QuantityUnit = Int32.Parse(numericQuantityUnit.Text);
-                    //_addProduct.PriceUnit = float.Parse(txtPriceUnit.Text);
-                    //_addProduct.TotalPriceUnit = float.Parse(txtTotalPrice.Text);
+            //        _addProduct.IdSupplier = cbIdSupplier.Text;
+            //        //_addProduct.IdUnit = cbIdUnit.Text;
+            //        //_addProduct.QuantityUnit = Int32.Parse(numericQuantityUnit.Text);
+            //        //_addProduct.PriceUnit = float.Parse(txtPriceUnit.Text);
+            //        //_addProduct.TotalPriceUnit = float.Parse(txtTotalPrice.Text);
 
-                    _addProduct.Mfg = Convert.ToDateTime(dateMFG.Text);
-                    _addProduct.Exp = Convert.ToDateTime(dateEXP.Text);
-                    _addProduct.DateImport = Convert.ToDateTime(dateDateImport.Text);
+            //        _addProduct.Mfg = Convert.ToDateTime(dateMFG.Text);
+            //        _addProduct.Exp = Convert.ToDateTime(dateEXP.Text);
+            //        _addProduct.DateImport = Convert.ToDateTime(dateDateImport.Text);
 
-                    if (url == "")
-                    {
-                        _addProduct.PictureProduct = txtPathPicture.Text;
-                    }
-                    else
-                    {
-                        _addProduct.PictureProduct = (txtPathPicture.Text = ImageToBase64(url));
-                    }
+            //        if (url == "")
+            //        {
+            //            _addProduct.PictureProduct = txtPathPicture.Text;
+            //        }
+            //        else
+            //        {
+            //            _addProduct.PictureProduct = (txtPathPicture.Text = ImageToBase64(url));
+            //        }
 
-                    if (cbStatus.Text == "Availability")
-                    {
-                        _addProduct.StatusP = true;
-                    }
-                    else
-                    {
-                        _addProduct.StatusP = false;
-                    }
-                    DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    if (result == DialogResult.OK)
-                    {
-                        _ShowList1.Create(_addProduct);
-                        button4_Click(sender, e);
-                        button2_Click(sender, e);
-                    }
-                }
-            }
+            //        if (cbStatus.Text == "Availability")
+            //        {
+            //            _addProduct.StatusP = true;
+            //        }
+            //        else
+            //        {
+            //            _addProduct.StatusP = false;
+            //        }
+            //        DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            //        if (result == DialogResult.OK)
+            //        {
+            //            _ShowList1.Create(_addProduct);
+            //            button4_Click(sender, e);
+            //            button2_Click(sender, e);
+            //        }
+            //    }
+            //}
         }
         // update product
         private void btUpdate_Click(object sender, EventArgs e)
         {
             _ShowList = new ProductService();
+            _comboIdSup = new SupplierServices();
             var _UpdatePro = _ShowList.GetAll().Where(p => p.Sku == txtIDProduct.Text).FirstOrDefault();
             if (txtNameProduct.Text == "" ||
                 txtPathPicture.Text == ""
@@ -297,25 +299,19 @@ namespace MiniStoreWinF.ManageProducts
             {
                 MessageBox.Show("Not Be Empty");
             }
+
             else
             {
                 if (txtPathPicture.Text == _UpdatePro.PictureProduct)
                 {
                     _UpdatePro.ProductType = cbTypeProduct.Text;
                     _UpdatePro.NameProduct = txtNameProduct.Text;
-                    //_UpdatePro.QuantityProduct = Int32.Parse(numericQuantityPro.Text);
-                    //_UpdatePro.PriceProduct = float.Parse(txtPriceImport.Text);
-                    //_UpdatePro.PriceToOrders = float.Parse(txtPriceToOrders.Text);
-
-                    _UpdatePro.IdSupplier = cbIdSupplier.Text;
-                    //_UpdatePro.IdUnit = cbIdUnit.Text;
-                    //_UpdatePro.QuantityUnit = Int32.Parse(numericQuantityUnit.Text);
-                    //_UpdatePro.PriceUnit = float.Parse(txtPriceUnit.Text);
-                    //_UpdatePro.TotalPriceUnit = float.Parse(txtTotalPrice.Text);
-
-                    _UpdatePro.Mfg = Convert.ToDateTime(dateMFG.Text);
-                    _UpdatePro.Exp = Convert.ToDateTime(dateEXP.Text);
-                    _UpdatePro.DateImport = Convert.ToDateTime(dateDateImport.Text);
+                    if (cbIdSupplier.SelectedItem != null)
+                    {
+                        var selectedSupplier = (dynamic)cbIdSupplier.SelectedItem;
+                        string selectedIdSupplier = selectedSupplier.IdSupplier;
+                        _UpdatePro.IdSupplier = selectedIdSupplier;
+                    }
                     if (cbStatus.Text == "Availability")
                     {
                         _UpdatePro.StatusP = true;
@@ -338,19 +334,12 @@ namespace MiniStoreWinF.ManageProducts
                 {
                     _UpdatePro.ProductType = cbTypeProduct.Text;
                     _UpdatePro.NameProduct = txtNameProduct.Text;
-                    //_UpdatePro.QuantityProduct = Int32.Parse(numericQuantityPro.Text);
-                    //_UpdatePro.PriceProduct = float.Parse(txtPriceImport.Text);
-                    //_UpdatePro.PriceToOrders = float.Parse(txtPriceToOrders.Text);
-
-                    _UpdatePro.IdSupplier = cbIdSupplier.Text;
-                    //_UpdatePro.IdUnit = cbIdUnit.Text;
-                    //_UpdatePro.QuantityUnit = Int32.Parse(numericQuantityUnit.Text);
-                    //_UpdatePro.PriceUnit = float.Parse(txtPriceUnit.Text);
-                    //_UpdatePro.TotalPriceUnit = float.Parse(txtTotalPrice.Text);
-
-                    _UpdatePro.Mfg = Convert.ToDateTime(dateMFG.Text);
-                    _UpdatePro.Exp = Convert.ToDateTime(dateEXP.Text);
-                    _UpdatePro.DateImport = Convert.ToDateTime(dateDateImport.Text);
+                    if (cbIdSupplier.SelectedItem != null)
+                    {
+                        var selectedSupplier = (dynamic)cbIdSupplier.SelectedItem;
+                        string selectedIdSupplier = selectedSupplier.IdSupplier;
+                        _UpdatePro.IdSupplier = selectedIdSupplier;
+                    }
                     _UpdatePro.PictureProduct = (txtPathPicture.Text = ImageToBase64(url));
                     if (cbStatus.Text == "Availability")
                     {
@@ -415,7 +404,7 @@ namespace MiniStoreWinF.ManageProducts
                 }
             }
         }
-        // arrange name product
+        // Search name product
         private void btSearch_Click(object sender, EventArgs e)
         {
             if (rd1.Checked == true)
@@ -424,7 +413,7 @@ namespace MiniStoreWinF.ManageProducts
                 {
                     _Search = new ProductService();
                     string _nam = txtName.Text;
-                    var nameS = _Search.GetAll().ToList().Where(entity => entity.StatusP==true 
+                    var nameS = _Search.GetAll().ToList().Where(entity => entity.StatusP == true
                     && entity.NameProduct.ToLower().StartsWith(_nam.ToLower()));
                     if (nameS != null)
                     {
@@ -436,7 +425,7 @@ namespace MiniStoreWinF.ManageProducts
                 {
                     _Search = new ProductService();
                     string _type = txtComboType.Text;
-                    var typeProduct = _Search.GetAll().ToList().Where(e => e.ProductType == _type && e.StatusP ==true);
+                    var typeProduct = _Search.GetAll().ToList().Where(e => e.ProductType == _type && e.StatusP == true);
                     if (typeProduct != null)
                     {
                         dataGridView1.DataSource = new BindingSource() { DataSource = typeProduct };
@@ -449,7 +438,7 @@ namespace MiniStoreWinF.ManageProducts
                     _Search = new ProductService();
                     string _TypePro = txtComboType.Text;
                     string _NamePro = txtName.Text;
-                    var TypeAndName = _Search.GetAll().ToList().Where(e => e.ProductType == _TypePro 
+                    var TypeAndName = _Search.GetAll().ToList().Where(e => e.ProductType == _TypePro
                     && e.NameProduct.ToLower().StartsWith(_NamePro.ToLower())
                     && e.StatusP == true);
                     if (TypeAndName != null)
@@ -462,7 +451,7 @@ namespace MiniStoreWinF.ManageProducts
                     MessageBox.Show("Do not leave blank Check");
                 }
             }
-            else if(rd2.Checked ==true)
+            else if (rd2.Checked == true)
             {
                 if (txtCheckName.Checked == true && txtCheckType.Checked == false)
                 {
@@ -493,7 +482,7 @@ namespace MiniStoreWinF.ManageProducts
                     _Search = new ProductService();
                     string _TypePro = txtComboType.Text;
                     string _NamePro = txtName.Text;
-                    var TypeAndName = _Search.GetAll().ToList().Where(e => e.StatusP ==false &&
+                    var TypeAndName = _Search.GetAll().ToList().Where(e => e.StatusP == false &&
                     e.ProductType == _TypePro && e.NameProduct.ToLower().StartsWith(_NamePro.ToLower()));
                     if (TypeAndName != null)
                     {
@@ -549,7 +538,7 @@ namespace MiniStoreWinF.ManageProducts
                     MessageBox.Show("Do not leave blank Check");
                 }
             }
-            
+
         }
         // arrange Name
         private void txtArrange_SelectedIndexChanged(object sender, EventArgs e)
@@ -573,12 +562,12 @@ namespace MiniStoreWinF.ManageProducts
                         .Where(p => p.StatusP == true);
                     this.dataGridView1.DataSource = new BindingSource() { DataSource = ascendingpro };
                 }
-                if (txtArrange.Text == "All")
+                if (txtArrange.Text == "ALL")
                 {
                     var ascendingpro = _Search.GetAll().ToList().Where(p => p.StatusP == true);
                     this.dataGridView1.DataSource = new BindingSource() { DataSource = ascendingpro };
                 }
-                
+
             }
             else if (rd2.Checked == true)
             {
@@ -599,7 +588,7 @@ namespace MiniStoreWinF.ManageProducts
                         .Where(p => p.StatusP == false);
                     this.dataGridView1.DataSource = new BindingSource() { DataSource = ascendingpro };
                 }
-                if (txtArrange.Text == "All")
+                if (txtArrange.Text == "ALL")
                 {
                     var ascendingpro = _Search.GetAll().ToList().Where(p => p.StatusP == false);
                     this.dataGridView1.DataSource = new BindingSource() { DataSource = ascendingpro };
@@ -639,27 +628,27 @@ namespace MiniStoreWinF.ManageProducts
             txtPathPicture.Clear();
         }
         // select file to import Products
-        private void txtSelectFile_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
-            openFileDialog.Title = "Select Excel File";
+        //private void txtSelectFile_Click(object sender, EventArgs e)
+        //{
+        //    OpenFileDialog openFileDialog = new OpenFileDialog();
+        //    openFileDialog.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm";
+        //    openFileDialog.Title = "Select Excel File";
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                txtPathToImport.Text = openFileDialog.FileName;
-            }
-        }
+        //    if (openFileDialog.ShowDialog() == DialogResult.OK)
+        //    {
+        //        txtPathToImport.Text = openFileDialog.FileName;
+        //    }
+        //}
         //import Product
-        private void button5_Click(object sender, EventArgs e)
-        {
-            var filePath = txtPathToImport.Text;
+        //private void button5_Click(object sender, EventArgs e)
+        //{
+        //    var filePath = txtPathToImport.Text;
 
-            var dataImporter = new ImportProducts();
-            dataImporter.ImportDataFromExcel(filePath);
-            txtPathToImport.Clear();
-            button4_Click(sender, e);
-        }
+        //    var dataImporter = new ImportProducts();
+        //    dataImporter.ImportDataFromExcel(filePath);
+        //    txtPathToImport.Clear();
+        //    button4_Click(sender, e);
+        //}
 
         private void btExport_Click(object sender, EventArgs e)
         {
@@ -705,6 +694,12 @@ namespace MiniStoreWinF.ManageProducts
             {
                 dataGridView1.DataSource = new BindingSource() { DataSource = ProductExp };
             }
+        }
+
+        private void btImportProduct_Click(object sender, EventArgs e)
+        {
+            Form form = new FrmToImport();
+            form.ShowDialog();
         }
     }
 }
