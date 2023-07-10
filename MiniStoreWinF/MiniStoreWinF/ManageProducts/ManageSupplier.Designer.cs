@@ -30,194 +30,45 @@
         {
             components = new System.ComponentModel.Container();
             tableLayoutPanel1 = new TableLayoutPanel();
-            groupBox1 = new GroupBox();
-            btClear = new Button();
-            btLoad = new Button();
-            btUpdate = new Button();
-            btAdd = new Button();
-            txtNoteSupplier = new TextBox();
-            txtAdressSupplier = new TextBox();
-            txtNameSupplier = new TextBox();
-            txtIDSupplier = new TextBox();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
             groupBox2 = new GroupBox();
             dataGridView1 = new DataGridView();
-            supplierBindingSource = new BindingSource(components);
             idSupplierDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nameSupplierDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             addressSupplierDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             noteDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            supplierBindingSource = new BindingSource(components);
+            groupBox1 = new GroupBox();
+            btSearch = new Button();
+            txtSearch = new TextBox();
             tableLayoutPanel1.SuspendLayout();
-            groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)supplierBindingSource).BeginInit();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34.720993F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65.27901F));
+            tableLayoutPanel1.Controls.Add(groupBox2, 0, 1);
             tableLayoutPanel1.Controls.Add(groupBox1, 0, 0);
-            tableLayoutPanel1.Controls.Add(groupBox2, 1, 0);
             tableLayoutPanel1.Location = new Point(1, 43);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 520F));
             tableLayoutPanel1.Size = new Size(1129, 595);
             tableLayoutPanel1.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(btClear);
-            groupBox1.Controls.Add(btLoad);
-            groupBox1.Controls.Add(btUpdate);
-            groupBox1.Controls.Add(btAdd);
-            groupBox1.Controls.Add(txtNoteSupplier);
-            groupBox1.Controls.Add(txtAdressSupplier);
-            groupBox1.Controls.Add(txtNameSupplier);
-            groupBox1.Controls.Add(txtIDSupplier);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Dock = DockStyle.Fill;
-            groupBox1.ForeColor = Color.Navy;
-            groupBox1.Location = new Point(3, 3);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(386, 589);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Information Of Supplier";
-            // 
-            // btClear
-            // 
-            btClear.BackColor = Color.FromArgb(255, 128, 0);
-            btClear.ForeColor = SystemColors.ControlLightLight;
-            btClear.Location = new Point(78, 338);
-            btClear.Name = "btClear";
-            btClear.Size = new Size(96, 32);
-            btClear.TabIndex = 11;
-            btClear.Text = "Clear";
-            btClear.UseVisualStyleBackColor = false;
-            btClear.Click += btClear_Click;
-            // 
-            // btLoad
-            // 
-            btLoad.BackColor = Color.FromArgb(255, 128, 0);
-            btLoad.ForeColor = SystemColors.ControlLightLight;
-            btLoad.Location = new Point(230, 338);
-            btLoad.Name = "btLoad";
-            btLoad.Size = new Size(96, 32);
-            btLoad.TabIndex = 10;
-            btLoad.Text = "Load";
-            btLoad.UseVisualStyleBackColor = false;
-            btLoad.Click += btLoad_Click;
-            // 
-            // btUpdate
-            // 
-            btUpdate.BackColor = Color.FromArgb(255, 128, 0);
-            btUpdate.ForeColor = SystemColors.ControlLightLight;
-            btUpdate.Location = new Point(230, 266);
-            btUpdate.Name = "btUpdate";
-            btUpdate.Size = new Size(96, 32);
-            btUpdate.TabIndex = 9;
-            btUpdate.Text = "Update";
-            btUpdate.UseVisualStyleBackColor = false;
-            btUpdate.Click += btUpdate_Click;
-            // 
-            // btAdd
-            // 
-            btAdd.BackColor = Color.FromArgb(255, 128, 0);
-            btAdd.ForeColor = SystemColors.ControlLightLight;
-            btAdd.Location = new Point(78, 266);
-            btAdd.Name = "btAdd";
-            btAdd.Size = new Size(96, 32);
-            btAdd.TabIndex = 8;
-            btAdd.Text = "Add";
-            btAdd.UseVisualStyleBackColor = false;
-            btAdd.Click += btAdd_Click;
-            // 
-            // txtNoteSupplier
-            // 
-            txtNoteSupplier.Location = new Point(105, 208);
-            txtNoteSupplier.Name = "txtNoteSupplier";
-            txtNoteSupplier.Size = new Size(272, 27);
-            txtNoteSupplier.TabIndex = 7;
-            // 
-            // txtAdressSupplier
-            // 
-            txtAdressSupplier.Location = new Point(105, 152);
-            txtAdressSupplier.Name = "txtAdressSupplier";
-            txtAdressSupplier.Size = new Size(272, 27);
-            txtAdressSupplier.TabIndex = 6;
-            // 
-            // txtNameSupplier
-            // 
-            txtNameSupplier.Location = new Point(105, 104);
-            txtNameSupplier.Name = "txtNameSupplier";
-            txtNameSupplier.Size = new Size(272, 27);
-            txtNameSupplier.TabIndex = 5;
-            // 
-            // txtIDSupplier
-            // 
-            txtIDSupplier.Location = new Point(105, 56);
-            txtIDSupplier.Name = "txtIDSupplier";
-            txtIDSupplier.Size = new Size(272, 27);
-            txtIDSupplier.TabIndex = 4;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(9, 208);
-            label4.Name = "label4";
-            label4.Size = new Size(64, 31);
-            label4.TabIndex = 3;
-            label4.Text = "Note";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(9, 152);
-            label3.Name = "label3";
-            label3.Size = new Size(97, 31);
-            label3.TabIndex = 2;
-            label3.Text = "Address";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(9, 96);
-            label2.Name = "label2";
-            label2.Size = new Size(75, 31);
-            label2.TabIndex = 1;
-            label2.Text = "Name";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(9, 56);
-            label1.Name = "label1";
-            label1.Size = new Size(36, 31);
-            label1.TabIndex = 0;
-            label1.Text = "ID";
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(dataGridView1);
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.ForeColor = Color.Navy;
-            groupBox2.Location = new Point(395, 3);
+            groupBox2.Location = new Point(3, 78);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(731, 589);
+            groupBox2.Size = new Size(1123, 514);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "List Of Supplier";
@@ -233,13 +84,9 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(725, 563);
+            dataGridView1.Size = new Size(1117, 488);
             dataGridView1.TabIndex = 1;
             dataGridView1.CellClick += dataGridView1_CellClick;
-            // 
-            // supplierBindingSource
-            // 
-            supplierBindingSource.DataSource = typeof(Repository.Models.Supplier);
             // 
             // idSupplierDataGridViewTextBoxColumn
             // 
@@ -273,6 +120,41 @@
             noteDataGridViewTextBoxColumn.MinimumWidth = 6;
             noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
             // 
+            // supplierBindingSource
+            // 
+            supplierBindingSource.DataSource = typeof(Repository.Models.Supplier);
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(txtSearch);
+            groupBox1.Controls.Add(btSearch);
+            groupBox1.Dock = DockStyle.Fill;
+            groupBox1.Location = new Point(3, 3);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(1123, 69);
+            groupBox1.TabIndex = 2;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Operation";
+            // 
+            // btSearch
+            // 
+            btSearch.BackColor = SystemColors.ButtonShadow;
+            btSearch.ForeColor = SystemColors.ActiveCaptionText;
+            btSearch.Location = new Point(239, 28);
+            btSearch.Name = "btSearch";
+            btSearch.Size = new Size(96, 29);
+            btSearch.TabIndex = 36;
+            btSearch.Text = "Search";
+            btSearch.UseVisualStyleBackColor = false;
+            btSearch.Click += btSearch_Click;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Location = new Point(90, 28);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(125, 27);
+            txtSearch.TabIndex = 37;
+            // 
             // ManageSupplier
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -282,36 +164,26 @@
             Name = "ManageSupplier";
             Text = "ManageSupplier";
             tableLayoutPanel1.ResumeLayout(false);
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)supplierBindingSource).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private TableLayoutPanel tableLayoutPanel1;
-        private GroupBox groupBox1;
-        private TextBox txtNoteSupplier;
-        private TextBox txtAdressSupplier;
-        private TextBox txtNameSupplier;
-        private TextBox txtIDSupplier;
-        private Label label4;
-        private Label label3;
-        private Label label2;
-        private Label label1;
         private DataGridView dataGridView1;
         private BindingSource supplierBindingSource;
         private GroupBox groupBox2;
-        private Button btLoad;
-        private Button btUpdate;
-        private Button btAdd;
-        private Button btClear;
         private DataGridViewTextBoxColumn idSupplierDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nameSupplierDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn addressSupplierDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn noteDataGridViewTextBoxColumn;
+        private GroupBox groupBox1;
+        private TextBox txtSearch;
+        private Button btSearch;
     }
 }

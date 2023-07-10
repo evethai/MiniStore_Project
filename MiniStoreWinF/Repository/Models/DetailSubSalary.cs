@@ -17,6 +17,8 @@ namespace Repository.Models
         public double? SubsidiesSalary { get; set; }
         public int? Condition { get; set; }
         public bool? ActiveSub { get; set; }
+        public DateTime? DateCreate { get; set; }
+        public DateTime? DateEffect { get; set; }
 
         public virtual ICollection<SubSalary> SubSalaries { get; set; }
     }

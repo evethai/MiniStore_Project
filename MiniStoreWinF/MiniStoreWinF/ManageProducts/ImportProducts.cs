@@ -27,22 +27,23 @@ namespace MiniStoreWinF.ManageProducts
                     });
 
                     // Truy cập bảng "Product"  trong dataSet
-                    var productsTable = dataSet.Tables["Sheet1"];
+                    var productsTable = dataSet.Tables["Product Data"];
 
                     using (var context = new MiniStoreContext())
                     {
-                        string lastID = context.Products.Select(p => p.Sku).Max();
-                        string prefix = lastID.Substring(0, 1);
-                        int count = int.Parse(lastID.Substring(1));
+                        //string lastID = context.Products.Select(p => p.Sku).Max();
+                        //string prefix = lastID.Substring(0, 1);
+                        //int count = int.Parse(lastID.Substring(1));
                         
                         // Import dữ liệu vào cơ sở dữ liệu
                         foreach (DataRow row in productsTable.Rows)
                         {
-                            count++;
-                            string nextId = prefix + count.ToString().PadLeft(2, '0');
+                            //count++;
+                            //string nextId = prefix + count.ToString().PadLeft(2, '0');
                             var product = new Product
                             {
-                                Sku = nextId.ToString(),
+                                //Sku = nextId.ToString(),
+                                Sku = row["SKU"].ToString(),
                                 ProductType = row["ProductType"].ToString(),
                                 NameProduct = row["NameProduct"].ToString(),
                                 //QuantityProduct = int.Parse(row["QuantityProduct"].ToString()),
@@ -95,7 +96,7 @@ namespace MiniStoreWinF.ManageProducts
                     });
 
                     // Truy cập bảng "Product"  trong dataSet
-                    var productsTable = dataSet.Tables["Sheet1"];
+                    var productsTable = dataSet.Tables["Unit Data"];
 
                     using (var context = new MiniStoreContext())
                     {
@@ -125,6 +126,59 @@ namespace MiniStoreWinF.ManageProducts
                             }
 
                             context.Units.Add(_unit);
+
+
+                        }
+
+                        // Lưu các thay đổi vào cơ sở dữ liệu
+                        context.SaveChanges();
+
+                    }
+                }
+            }
+        }
+        public void ImportDataFromExcelSupplier(string filePath)
+        {
+            using (var stream = File.Open(filePath, FileMode.Open, FileAccess.Read))
+            {
+                using (var reader = ExcelReaderFactory.CreateReader(stream))
+                {
+                    // Đọc dữ liệu từ file Excel
+                    var dataSet = reader.AsDataSet(new ExcelDataSetConfiguration()
+                    {
+                        ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { UseHeaderRow = true }
+                    });
+
+                    // Truy cập bảng "Product"  trong dataSet
+                    var productsTable = dataSet.Tables["Supplier Data"];
+
+                    using (var context = new MiniStoreContext())
+                    {
+                        //autoID
+                        //string lastID = context.Units.Select(p => p.IdUnit).Max();
+                        //string prefix = lastID.Substring(0, 3);
+                        //int count = int.Parse(lastID.Substring(1));
+
+                        // Import dữ liệu vào cơ sở dữ liệu
+                        foreach (DataRow row in productsTable.Rows)
+                        {
+                            //count++;
+                            //string nextId = prefix + count.ToString().PadLeft(2, '0');
+                            var _supplier = new Supplier
+                            {
+                                //IdUnit = nextId.ToString(),
+                                IdSupplier = row["IDSupplier"].ToString(),
+                                NameSupplier = row["NameSupplier"].ToString(),
+                                AddressSupplier = row["Address"].ToString(),
+                                Note = row["Note"].ToString(),
+                            };
+                            var existingProduct = context.Suppliers.Local.FirstOrDefault(p => p.IdSupplier == _supplier.IdSupplier);
+                            if (existingProduct != null)
+                            {
+                                context.Entry(existingProduct).State = EntityState.Detached;
+                            }
+
+                            context.Suppliers.Add(_supplier);
 
 
                         }

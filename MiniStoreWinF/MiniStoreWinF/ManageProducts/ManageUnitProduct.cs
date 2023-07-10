@@ -32,8 +32,22 @@ namespace MiniStoreWinF.ManageProducts
 
             //Show List SKU
             _showlistPro = new ProductService();
-            var showlistPro = _showlistPro.GetAll().Select(c => c.Sku).ToList();
-            cbSku.DataSource = showlistPro.ToList();
+            //var showlistPro = _showlistPro.GetAll().Select(c => c.Sku).ToList();
+            //cbSku.DataSource = showlistPro.ToList();
+            var showlistpro = _showlistPro.GetAll()
+                .Select(c => new { c.Sku, c.NameProduct }).ToList();
+            cbSku.ValueMember = "Sku";
+            cbSku.DisplayMember = "NameProduct";
+            cbSku.DataSource = showlistpro;
+
+            //_comboType = new CatalogyService();
+            //var _listComboProduct = _comboType.GetAll()
+            //    .Select(c => new { c.IdCa, c.ProductType }).ToList();
+            //txtTypeProductList.ValueMember = "IdCa";
+            //txtTypeProductList.DisplayMember = "ProductType";
+            //txtTypeProductList.DataSource = _listComboProduct;
+
+            cbSku.Enabled = false;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -41,6 +55,12 @@ namespace MiniStoreWinF.ManageProducts
             try
             {
                 _showListUnit = new UnitServices();
+                _showlistPro = new ProductService();
+                var showlistpro = _showlistPro.GetAll()
+               .Select(c => new { c.Sku, c.NameProduct }).ToList();
+                cbSku.ValueMember = "Sku";
+                cbSku.DisplayMember = "NameProduct";
+                cbSku.DataSource = showlistpro;
                 var id = dataGridView1[0, e.RowIndex].Value;
                 var showPro = _showListUnit.GetAll().Where(p => p.IdUnit.Trim().Equals(id)).FirstOrDefault();
                 rowindex = e.RowIndex;
@@ -49,7 +69,12 @@ namespace MiniStoreWinF.ManageProducts
                     txtIDUnit.Text = showPro.IdUnit.ToString();
                     numericQuantity.Text = showPro.QuantityUnit.ToString();
                     txtNameUnit.Text = showPro.UnitName.ToString();
-                    cbSku.Text = showPro.Sku.ToString();
+                    //cbSku.Text = showPro.Sku.ToString();
+                    var selectedProduct = showlistpro.FirstOrDefault(p => p.Sku == showPro.Sku);
+                    if (selectedProduct != null)
+                    {
+                        cbSku.SelectedValue = selectedProduct.Sku;
+                    }
                     txtPriceExport.Text = showPro.PriceExport.ToString();
                     double temp1 = Convert.ToDouble(txtPriceExport.Text);
                     txtPriceExport.Text = temp1.ToString("#,###");
@@ -99,57 +124,57 @@ namespace MiniStoreWinF.ManageProducts
             return nextID;
         }
         // Add unit
-        private void button1_Click(object sender, EventArgs e)
-        {
-            double temp = Convert.ToDouble(txtPriceImport.Text);
-            txtPriceImport.Text = temp.ToString("#,###");
-            double temp2 = Convert.ToDouble(txtPriceExport.Text);
-            txtPriceExport.Text = temp2.ToString("#,###");
-            _showListUnit = new UnitServices();
-            var AddPro = _showListUnit.GetAll().ToList().Where(e => e.IdUnit.ToUpper()
-            .Equals(txtIDUnit.Text.ToUpper()))
-                .FirstOrDefault();
-            if (txtNameUnit.Text == "" ||
-                txtPriceImport.Text == "" ||
-                txtPriceExport.Text == "" ||
-                !float.TryParse(txtPriceImport.Text = temp.ToString("#,###"), out float price) ||
-                price < 0 ||
-                !float.TryParse(txtPriceExport.Text = temp2.ToString("#,###"), out float price1) ||
-                price1 < 0
-                )
-            {
-                MessageBox.Show("Not Be Empty or Invalid Value");
-            }
-            else
-            {
-                if (AddPro != null)
-                {
-                    MessageBox.Show("ID Duplicated ");
-                }
-                else
-                {
-                    _IdUnit = new UnitServices();
-                    var _autoid = _IdUnit.GetAll().ToList().Select(c => c.IdUnit).Max();
-                    string nextid = autoID(_autoid);
-                    _showListUnit1 = new UnitServices();
-                    var _addUnit = _showListUnit1.GetAll().ToList().FirstOrDefault();
-                    _addUnit.IdUnit = nextid;
-                    _addUnit.UnitName = txtNameUnit.Text;
-                    _addUnit.QuantityUnit = Int32.Parse(numericQuantity.Text);
-                    _addUnit.PriceImport = price;
-                    _addUnit.PriceExport = price1;
-                    _addUnit.Sku = cbSku.Text;
-                    DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    if (result == DialogResult.OK)
-                    {
-                        _showListUnit1.Create(_addUnit);
-                        btLoad_Click(sender, e);
-                        btClear_Click(sender, e);
-                    }
-                }
-            }
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    double temp = Convert.ToDouble(txtPriceImport.Text);
+        //    txtPriceImport.Text = temp.ToString("#,###");
+        //    double temp2 = Convert.ToDouble(txtPriceExport.Text);
+        //    txtPriceExport.Text = temp2.ToString("#,###");
+        //    _showListUnit = new UnitServices();
+        //    var AddPro = _showListUnit.GetAll().ToList().Where(e => e.IdUnit.ToUpper()
+        //    .Equals(txtIDUnit.Text.ToUpper()))
+        //        .FirstOrDefault();
+        //    if (txtNameUnit.Text == "" ||
+        //        txtPriceImport.Text == "" ||
+        //        txtPriceExport.Text == "" ||
+        //        !float.TryParse(txtPriceImport.Text = temp.ToString("#,###"), out float price) ||
+        //        price < 0 ||
+        //        !float.TryParse(txtPriceExport.Text = temp2.ToString("#,###"), out float price1) ||
+        //        price1 < 0
+        //        )
+        //    {
+        //        MessageBox.Show("Not Be Empty or Invalid Value");
+        //    }
+        //    else
+        //    {
+        //        if (AddPro != null)
+        //        {
+        //            MessageBox.Show("ID Duplicated ");
+        //        }
+        //        else
+        //        {
+        //            _IdUnit = new UnitServices();
+        //            var _autoid = _IdUnit.GetAll().ToList().Select(c => c.IdUnit).Max();
+        //            string nextid = autoID(_autoid);
+        //            _showListUnit1 = new UnitServices();
+        //            var _addUnit = _showListUnit1.GetAll().ToList().FirstOrDefault();
+        //            _addUnit.IdUnit = nextid;
+        //            _addUnit.UnitName = txtNameUnit.Text;
+        //            _addUnit.QuantityUnit = Int32.Parse(numericQuantity.Text);
+        //            _addUnit.PriceImport = price;
+        //            _addUnit.PriceExport = price1;
+        //            _addUnit.Sku = cbSku.Text;
+        //            DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        //            if (result == DialogResult.OK)
+        //            {
+        //                _showListUnit1.Create(_addUnit);
+        //                btLoad_Click(sender, e);
+        //                btClear_Click(sender, e);
+        //            }
+        //        }
+        //    }
 
-        }
+        //}
         // Form Price Export .000
         private void txtPriceExport_Leave(object sender, EventArgs e)
         {
@@ -213,36 +238,38 @@ namespace MiniStoreWinF.ManageProducts
         // Sort Price import
         private void btSort_Click(object sender, EventArgs e)
         {
-            double temp = Convert.ToDouble(txtPriceFilter1.Text);
-            txtPriceFilter1.Text = temp.ToString("#,###");
-            double temp2 = Convert.ToDouble(txtPriceFilter2.Text);
-            txtPriceFilter2.Text = temp2.ToString("#,###");
-            if (txtPriceFilter1.Text == "" || txtPriceFilter2.Text == "")
+            try
             {
-                MessageBox.Show("Do Not Leave Blank");
-            }
-            else if (float.TryParse(txtPriceFilter1.Text = temp.ToString("#,###"), out float filterPrice)
-                && float.TryParse(txtPriceFilter2.Text = temp2.ToString("#,###"), out float filterPrice2))
-            {
-                _showListUnit = new UnitServices();
-                var PriceProduct = _showListUnit.GetAll().ToList().Where(p =>
-                 (filterPrice <= p.PriceImport && p.PriceImport <= filterPrice2));
-                if (PriceProduct != null)
+                double temp = Convert.ToDouble(txtPriceFilter1.Text);
+                //txtPriceFilter1.Text = temp.ToString("#,###");
+                double temp2 = Convert.ToDouble(txtPriceFilter2.Text);
+                //txtPriceFilter2.Text = temp2.ToString("#,###");
+                if (txtPriceFilter1.Text == "" || txtPriceFilter2.Text == "")
                 {
+                    MessageBox.Show("Do Not Leave Blank");
+                }
+                else if (float.TryParse(txtPriceFilter1.Text = temp.ToString("#,###"), out float filterPrice)
+                    && float.TryParse(txtPriceFilter2.Text = temp2.ToString("#,###"), out float filterPrice2))
+                {
+                    _showListUnit = new UnitServices();
+                    var PriceProduct = _showListUnit.GetAll().ToList().Where(p =>
+                     (filterPrice <= p.PriceImport && p.PriceImport <= filterPrice2));
+                    if (PriceProduct != null)
+                    {
 
-                    dataGridView1.DataSource = new BindingSource() { DataSource = PriceProduct };
+                        dataGridView1.DataSource = new BindingSource() { DataSource = PriceProduct };
+                    }
                 }
             }
 
-            else
+            catch
             {
-                MessageBox.Show("Value column value is not a valid integer!");
-
-
+                MessageBox.Show("Value is not a valid integer! Or Value is Blank ");
             }
+
         }
 
-        private void btLoad_Click(object sender, EventArgs e)
+        private void btload_click(object sender, EventArgs e)
         {
             _showListUnit = new UnitServices();
             var showlist = _showListUnit.GetAll().ToList();
@@ -282,18 +309,20 @@ namespace MiniStoreWinF.ManageProducts
             }
             else
             {
+
                 AddPro.IdUnit = txtIDUnit.Text;
-                AddPro.UnitName = txtNameUnit.Text;
+
                 AddPro.QuantityUnit = Int32.Parse(numericQuantity.Text);
-                AddPro.PriceImport = price;
+
                 AddPro.PriceExport = price1;
-                AddPro.Sku = cbSku.Text;
+
                 DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
                     _showListUnit.Update(AddPro);
-                    btLoad_Click(sender, e);
+                    btload_click(sender, e);
                     btClear_Click(sender, e);
+
                 }
 
             }
@@ -318,7 +347,7 @@ namespace MiniStoreWinF.ManageProducts
             var dataImporter = new ImportProducts();
             dataImporter.ImportDataFromExcelUnit(filePath);
             txtPathToImport.Clear();
-            btLoad_Click(sender, e);
+            //btLoad_Click(sender, e);
         }
 
         private void btExport_Click(object sender, EventArgs e)
@@ -340,7 +369,7 @@ namespace MiniStoreWinF.ManageProducts
                     xlWsheet.Cells[1, 3].Value = "QuantityUnit";
                     xlWsheet.Cells[1, 4].Value = "PriceImport";
                     xlWsheet.Cells[1, 5].Value = "PriceExport";
-                    
+
                 }
                 catch (Exception ex)
                 {

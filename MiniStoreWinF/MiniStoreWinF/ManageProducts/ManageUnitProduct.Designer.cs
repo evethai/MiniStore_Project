@@ -42,10 +42,6 @@
             priceExportDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             unitBindingSource = new BindingSource(components);
             groupBox2 = new GroupBox();
-            btExport = new Button();
-            txtImportUnit = new Button();
-            txtPathToImport = new TextBox();
-            txtSelectFile = new Button();
             label8 = new Label();
             label7 = new Label();
             btSort = new Button();
@@ -53,10 +49,7 @@
             txtPriceFilter1 = new TextBox();
             label12 = new Label();
             txtArrange = new ComboBox();
-            btLoad = new Button();
-            btClear = new Button();
             btUpdate = new Button();
-            button1 = new Button();
             tableLayoutPanel2 = new TableLayoutPanel();
             groupBox3 = new GroupBox();
             numericQuantity = new NumericUpDown();
@@ -94,9 +87,9 @@
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 72.0430145F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 27.95699F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 287F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 69.93865F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 30.06135F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 310F));
             tableLayoutPanel1.Size = new Size(1216, 474);
             tableLayoutPanel1.TabIndex = 0;
             // 
@@ -104,9 +97,9 @@
             // 
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.Dock = DockStyle.Fill;
-            groupBox1.Location = new Point(3, 189);
+            groupBox1.Location = new Point(3, 166);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1210, 282);
+            groupBox1.Size = new Size(1210, 305);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "List Of Unit Product";
@@ -122,7 +115,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1204, 256);
+            dataGridView1.Size = new Size(1204, 279);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
@@ -186,10 +179,6 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(btExport);
-            groupBox2.Controls.Add(txtImportUnit);
-            groupBox2.Controls.Add(txtPathToImport);
-            groupBox2.Controls.Add(txtSelectFile);
             groupBox2.Controls.Add(label8);
             groupBox2.Controls.Add(label7);
             groupBox2.Controls.Add(btSort);
@@ -197,65 +186,19 @@
             groupBox2.Controls.Add(txtPriceFilter1);
             groupBox2.Controls.Add(label12);
             groupBox2.Controls.Add(txtArrange);
-            groupBox2.Controls.Add(btLoad);
-            groupBox2.Controls.Add(btClear);
             groupBox2.Controls.Add(btUpdate);
-            groupBox2.Controls.Add(button1);
             groupBox2.Dock = DockStyle.Fill;
-            groupBox2.Location = new Point(3, 137);
+            groupBox2.Location = new Point(3, 117);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1210, 46);
+            groupBox2.Size = new Size(1210, 43);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Operation";
             // 
-            // btExport
-            // 
-            btExport.BackColor = SystemColors.ButtonShadow;
-            btExport.ForeColor = SystemColors.ActiveCaptionText;
-            btExport.Location = new Point(857, 19);
-            btExport.Name = "btExport";
-            btExport.Size = new Size(96, 64);
-            btExport.TabIndex = 43;
-            btExport.Text = "Export Form";
-            btExport.UseVisualStyleBackColor = false;
-            btExport.Click += btExport_Click;
-            // 
-            // txtImportUnit
-            // 
-            txtImportUnit.BackColor = SystemColors.ButtonShadow;
-            txtImportUnit.ForeColor = SystemColors.ActiveCaptionText;
-            txtImportUnit.Location = new Point(1061, 51);
-            txtImportUnit.Name = "txtImportUnit";
-            txtImportUnit.Size = new Size(96, 32);
-            txtImportUnit.TabIndex = 42;
-            txtImportUnit.Text = "Import";
-            txtImportUnit.UseVisualStyleBackColor = false;
-            txtImportUnit.Click += txtImportUnit_Click;
-            // 
-            // txtPathToImport
-            // 
-            txtPathToImport.Location = new Point(961, 19);
-            txtPathToImport.Name = "txtPathToImport";
-            txtPathToImport.Size = new Size(196, 27);
-            txtPathToImport.TabIndex = 41;
-            // 
-            // txtSelectFile
-            // 
-            txtSelectFile.BackColor = SystemColors.ButtonShadow;
-            txtSelectFile.ForeColor = SystemColors.ActiveCaptionText;
-            txtSelectFile.Location = new Point(959, 51);
-            txtSelectFile.Name = "txtSelectFile";
-            txtSelectFile.Size = new Size(96, 32);
-            txtSelectFile.TabIndex = 40;
-            txtSelectFile.Text = "Select File";
-            txtSelectFile.UseVisualStyleBackColor = false;
-            txtSelectFile.Click += txtSelectFile_Click;
-            // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(595, 58);
+            label8.Location = new Point(357, 61);
             label8.Name = "label8";
             label8.Size = new Size(73, 20);
             label8.TabIndex = 37;
@@ -264,7 +207,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(493, 58);
+            label7.Location = new Point(255, 61);
             label7.Name = "label7";
             label7.Size = new Size(70, 20);
             label7.TabIndex = 36;
@@ -274,17 +217,17 @@
             // 
             btSort.BackColor = SystemColors.ButtonShadow;
             btSort.ForeColor = SystemColors.ActiveCaptionText;
-            btSort.Location = new Point(671, 21);
+            btSort.Location = new Point(433, 24);
             btSort.Name = "btSort";
             btSort.Size = new Size(96, 62);
             btSort.TabIndex = 35;
-            btSort.Text = "Sort ";
+            btSort.Text = "Filter Price Import";
             btSort.UseVisualStyleBackColor = false;
             btSort.Click += btSort_Click;
             // 
             // txtPriceFilter2
             // 
-            txtPriceFilter2.Location = new Point(595, 21);
+            txtPriceFilter2.Location = new Point(357, 24);
             txtPriceFilter2.Name = "txtPriceFilter2";
             txtPriceFilter2.Size = new Size(70, 27);
             txtPriceFilter2.TabIndex = 34;
@@ -292,7 +235,7 @@
             // 
             // txtPriceFilter1
             // 
-            txtPriceFilter1.Location = new Point(493, 21);
+            txtPriceFilter1.Location = new Point(255, 24);
             txtPriceFilter1.Name = "txtPriceFilter1";
             txtPriceFilter1.Size = new Size(70, 27);
             txtPriceFilter1.TabIndex = 33;
@@ -301,7 +244,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(560, 24);
+            label12.Location = new Point(322, 27);
             label12.Name = "label12";
             label12.Size = new Size(43, 20);
             label12.TabIndex = 32;
@@ -313,59 +256,23 @@
             txtArrange.DropDownStyle = ComboBoxStyle.DropDownList;
             txtArrange.FormattingEnabled = true;
             txtArrange.Items.AddRange(new object[] { "ALL", "Price Ascending", "Price Decrease " });
-            txtArrange.Location = new Point(39, 53);
+            txtArrange.Location = new Point(90, 24);
             txtArrange.Name = "txtArrange";
             txtArrange.Size = new Size(147, 28);
             txtArrange.TabIndex = 31;
             txtArrange.SelectedIndexChanged += txtArrange_SelectedIndexChanged;
             // 
-            // btLoad
-            // 
-            btLoad.BackColor = SystemColors.ButtonShadow;
-            btLoad.ForeColor = SystemColors.ActiveCaptionText;
-            btLoad.Location = new Point(294, 50);
-            btLoad.Name = "btLoad";
-            btLoad.Size = new Size(96, 32);
-            btLoad.TabIndex = 30;
-            btLoad.Text = "Load";
-            btLoad.UseVisualStyleBackColor = false;
-            btLoad.Click += btLoad_Click;
-            // 
-            // btClear
-            // 
-            btClear.BackColor = SystemColors.ButtonShadow;
-            btClear.ForeColor = SystemColors.ActiveCaptionText;
-            btClear.Location = new Point(294, 19);
-            btClear.Name = "btClear";
-            btClear.Size = new Size(96, 32);
-            btClear.TabIndex = 29;
-            btClear.Text = "Clear";
-            btClear.UseVisualStyleBackColor = false;
-            btClear.Click += btClear_Click;
-            // 
             // btUpdate
             // 
             btUpdate.BackColor = SystemColors.ButtonShadow;
             btUpdate.ForeColor = SystemColors.ActiveCaptionText;
-            btUpdate.Location = new Point(192, 50);
+            btUpdate.Location = new Point(545, 27);
             btUpdate.Name = "btUpdate";
-            btUpdate.Size = new Size(96, 32);
+            btUpdate.Size = new Size(96, 59);
             btUpdate.TabIndex = 28;
             btUpdate.Text = "Update";
             btUpdate.UseVisualStyleBackColor = false;
             btUpdate.Click += btUpdate_Click;
-            // 
-            // button1
-            // 
-            button1.BackColor = SystemColors.ButtonShadow;
-            button1.ForeColor = SystemColors.ActiveCaptionText;
-            button1.Location = new Point(192, 19);
-            button1.Name = "button1";
-            button1.Size = new Size(96, 32);
-            button1.TabIndex = 27;
-            button1.Text = "Create";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
             // 
             // tableLayoutPanel2
             // 
@@ -379,7 +286,7 @@
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(1210, 128);
+            tableLayoutPanel2.Size = new Size(1210, 108);
             tableLayoutPanel2.TabIndex = 2;
             // 
             // groupBox3
@@ -393,7 +300,7 @@
             groupBox3.Dock = DockStyle.Fill;
             groupBox3.Location = new Point(3, 3);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(599, 122);
+            groupBox3.Size = new Size(599, 102);
             groupBox3.TabIndex = 0;
             groupBox3.TabStop = false;
             groupBox3.Text = "Information Of Unit";
@@ -401,6 +308,7 @@
             // numericQuantity
             // 
             numericQuantity.Location = new Point(178, 76);
+            numericQuantity.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
             numericQuantity.Name = "numericQuantity";
             numericQuantity.Size = new Size(150, 27);
             numericQuantity.TabIndex = 11;
@@ -417,17 +325,21 @@
             // 
             // txtNameUnit
             // 
+            txtNameUnit.BackColor = SystemColors.ScrollBar;
             txtNameUnit.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtNameUnit.Location = new Point(178, 125);
             txtNameUnit.Name = "txtNameUnit";
+            txtNameUnit.ReadOnly = true;
             txtNameUnit.Size = new Size(209, 27);
             txtNameUnit.TabIndex = 4;
             // 
             // txtIDUnit
             // 
+            txtIDUnit.BackColor = SystemColors.ScrollBar;
             txtIDUnit.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtIDUnit.Location = new Point(178, 30);
             txtIDUnit.Name = "txtIDUnit";
+            txtIDUnit.ReadOnly = true;
             txtIDUnit.Size = new Size(209, 27);
             txtIDUnit.TabIndex = 3;
             // 
@@ -462,18 +374,18 @@
             groupBox4.Dock = DockStyle.Fill;
             groupBox4.Location = new Point(608, 3);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(599, 122);
+            groupBox4.Size = new Size(599, 102);
             groupBox4.TabIndex = 1;
             groupBox4.TabStop = false;
             // 
             // cbSku
             // 
-            cbSku.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            cbSku.DropDownStyle = ComboBoxStyle.Simple;
             cbSku.FormattingEnabled = true;
-            cbSku.Location = new Point(209, 29);
+            cbSku.Location = new Point(209, 26);
             cbSku.Name = "cbSku";
-            cbSku.Size = new Size(202, 28);
-            cbSku.TabIndex = 5;
+            cbSku.Size = new Size(151, 35);
+            cbSku.TabIndex = 16;
             // 
             // txtPriceExport
             // 
@@ -486,9 +398,11 @@
             // 
             // txtPriceImport
             // 
+            txtPriceImport.BackColor = SystemColors.ScrollBar;
             txtPriceImport.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             txtPriceImport.Location = new Point(209, 81);
             txtPriceImport.Name = "txtPriceImport";
+            txtPriceImport.ReadOnly = true;
             txtPriceImport.Size = new Size(202, 27);
             txtPriceImport.TabIndex = 13;
             txtPriceImport.Leave += txtPriceImport_Leave;
@@ -509,9 +423,9 @@
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(43, 32);
             label2.Name = "label2";
-            label2.Size = new Size(49, 28);
+            label2.Size = new Size(138, 28);
             label2.TabIndex = 1;
-            label2.Text = "SKU";
+            label2.Text = "Name Product";
             // 
             // label5
             // 
@@ -561,7 +475,6 @@
         private GroupBox groupBox2;
         private TableLayoutPanel tableLayoutPanel2;
         private GroupBox groupBox3;
-        private ComboBox cbSku;
         private TextBox txtNameUnit;
         private TextBox txtIDUnit;
         private Label label3;
@@ -589,5 +502,6 @@
         private Button txtImportUnit;
         private TextBox txtPathToImport;
         private Button txtSelectFile;
+        private ComboBox cbSku;
     }
 }
