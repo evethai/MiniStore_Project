@@ -5,6 +5,7 @@ using Repository.Service;
 using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace MiniStoreWinF.ManageSalary
@@ -52,7 +53,7 @@ namespace MiniStoreWinF.ManageSalary
         //Show list Sub Salary  last month
         public void showListEmployeHasSubSalary(DateTime time)
         {
-            var list = _subSalaryService.GetAll().Where(p => p.Time.Value.Month.Equals(time.Month)).ToList();
+            var list = _subSalaryService.GetAll().Where(p => p.Time.Value.Month.Equals(time.Month) && p.Time.Value.Year.Equals(time.Year)).ToList();
             dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
             _list = list;
         }
@@ -161,14 +162,14 @@ namespace MiniStoreWinF.ManageSalary
         public List<DetailAdvanceSalary> showAdvanceSalary(DateTime time)
         {
             _detailAdvanceSalaryService = new DetailAdvanceSalaryService();
-            var list = _detailAdvanceSalaryService.GetAll().Where(p => p.DateAs.Value.Month.Equals(time.Month)).ToList();
+            var list = _detailAdvanceSalaryService.GetAll().Where(p => p.DateAs.Value.Month.Equals(time.Month) && p.DateAs.Value.Year.Equals(time.Year)).ToList();
             return list;
         }
 
         //Search Advance salary by name
         public void searchAdvByName(string id)
         {
-            var listAdv = _detailAdvanceSalaryService.GetAll().Where(p => p.DateAs.Value.Month.Equals(dtpList.Value.Month)).ToList();
+            var listAdv = _detailAdvanceSalaryService.GetAll().Where(p => p.DateAs.Value.Month.Equals(dtpList.Value.Month) && p.DateAs.Value.Year.Equals(dtpList.Value.Year)).ToList();
             var listEmp = _employeeService.GetAll().Where(p => p.IdEmp.Equals(id) && p.IsActive == true).ToList();
 
             //
@@ -186,7 +187,7 @@ namespace MiniStoreWinF.ManageSalary
             DateTime time = dtpList.Value;
             double total = ca.SubSalary(id, time);
             txtTotal.Text = u.formatDouble(total);
-            var list = _subSalaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.Time.Value.Month.Equals(time.Month)).ToList();
+            var list = _subSalaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.Time.Value.Month.Equals(time.Month) && p.Time.Value.Year.Equals(time.Year)).ToList();
             dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
         }
 
@@ -220,13 +221,43 @@ namespace MiniStoreWinF.ManageSalary
         {
             if (e.RowIndex >= 0 && e.RowIndex < dgvSub.Rows.Count)
             {
-                DetailSubSalary item = dgvSub.Rows[e.RowIndex].DataBoundItem as DetailSubSalary; 
+                DetailSubSalary item = dgvSub.Rows[e.RowIndex].DataBoundItem as DetailSubSalary;
 
                 if (item != null && item.DateEffect < DateTime.Now)
                 {
                     DataGridViewRow row = dgvSub.Rows[e.RowIndex];
                     row.DefaultCellStyle.BackColor = Color.Brown;
                 }
+            }
+        }
+
+        private void dgvAdv_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            _employeeService = new EmployeeService();
+            if (e.RowIndex >= 0 && e.ColumnIndex == 1)
+            {
+                DataGridViewCell cell = dgvAdv.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                string cellValue = cell.Value?.ToString();
+                var emp = _employeeService.GetAll().Where(p => p.IdEmp.Equals(cellValue)).FirstOrDefault();
+                string name = emp.FullNameEmp;
+
+                // Gán giá trị của ô vào thuộc tính ToolTipText
+                cell.ToolTipText = name;
+            }
+        }
+
+        private void dgvTotalSub_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            _employeeService = new EmployeeService();
+            if (e.RowIndex >= 0 && e.ColumnIndex == 1)
+            {
+                DataGridViewCell cell = dgvTotalSub.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                string cellValue = cell.Value?.ToString();
+                var emp = _employeeService.GetAll().Where(p => p.IdEmp.Equals(cellValue)).FirstOrDefault();
+                string name = emp.FullNameEmp;
+
+                // Gán giá trị của ô vào thuộc tính ToolTipText
+                cell.ToolTipText = name;
             }
         }
     }

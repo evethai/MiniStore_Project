@@ -48,7 +48,7 @@ namespace MiniStoreWinF.ManageSalary
         {
 
             var listSa = _salaryService.GetAll().ToList();
-            var listWs = _workSheetService.GetAll().Where(p => p.Date.Value.Month.Equals(date.Month)&&p.Status==true).ToList();
+            var listWs = _workSheetService.GetAll().Where(p => p.Date.Value.Month.Equals(date.Month)&& p.Date.Value.Year.Equals(date.Year) && p.Status==true).ToList();
 
             var data = (from sa in listSa
                         join ws in listWs on sa.IdEmp equals ws.IdEmp
@@ -132,7 +132,7 @@ namespace MiniStoreWinF.ManageSalary
         public double sumHourinMonth(DateTime time, string id)
         {
             double sum = 0;
-            var list = _workSheetService.GetAll().Where(p => p.Date.Value.Month.Equals(time.Month) && p.IdEmp.Equals(id)&&p.Status==true).ToList();
+            var list = _workSheetService.GetAll().Where(p => p.Date.Value.Month.Equals(time.Month) && p.Date.Value.Year.Equals(time.Year) && p.IdEmp.Equals(id)&&p.Status==true).ToList();
             foreach (var item in list)
             {
                 sum += (item.TimeCheckOut.Value.TimeOfDay - item.TimeCheckIn.Value.TimeOfDay).TotalHours;
@@ -143,7 +143,7 @@ namespace MiniStoreWinF.ManageSalary
         {
 
             double? total = 0;
-            var list = _orderService.GetAll().Where(p => p.IdEmp.Equals(id) && p.DateOrders.Value.Month.Equals(time.Month)).ToList();
+            var list = _orderService.GetAll().Where(p => p.IdEmp.Equals(id) && p.DateOrders.Value.Month.Equals(time.Month) && p.DateOrders.Value.Year.Equals(time.Year)).ToList();
             foreach (var item in list)
             {
                 total += item.Total;
@@ -152,7 +152,7 @@ namespace MiniStoreWinF.ManageSalary
         }
         public int countTotal(DateTime time, string id)
         {
-            var count = _orderService.GetAll().Count(p => p.IdEmp.Equals(id) && p.DateOrders.Value.Month.Equals(time.Month));
+            var count = _orderService.GetAll().Count(p => p.IdEmp.Equals(id) && p.DateOrders.Value.Month.Equals(time.Month) && p.DateOrders.Value.Year.Equals(time.Year));
             return count;
         }
         public string name(string id)

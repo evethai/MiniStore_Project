@@ -85,6 +85,7 @@
             MaximumSize = new Size(364, 170);
             MinimumSize = new Size(364, 170);
             Name = "frmNewRole";
+            Text = "Add new role";
             pRole.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

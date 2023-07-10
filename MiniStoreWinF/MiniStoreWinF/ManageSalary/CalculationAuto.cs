@@ -113,7 +113,7 @@ namespace MiniStoreWinF.ManageSalary
             var listCon = (from ws in listWS
                            join sd in listDetail
                            on ws.Sheet equals sd.Sheet
-                           where ws.IdEmp == id && ws.Date.Value.Month == time.Month
+                           where ws.IdEmp == id && ws.Date.Value.Month == time.Month && ws.Date.Value.Year == time.Year
                            select Tuple.Create(sd.CoefficientsSalary, (ws.TimeCheckOut.Value.TimeOfDay - ws.TimeCheckIn.Value.TimeOfDay))).ToList();
             foreach (var c in listCon)
             {
@@ -137,7 +137,7 @@ namespace MiniStoreWinF.ManageSalary
             var listTotal = (from s in listSub
                              join
                              d in listDetail on s.IdDetailSubSalary equals d.IdDetailSubSalary
-                             where s.IdEmp == id && s.Time.Value.Month == time.Month
+                             where s.IdEmp == id && s.Time.Value.Month == time.Month && s.Time.Value.Year == time.Year
                              select d.SubsidiesSalary).ToList();
             foreach (var lt in listTotal)
             {
@@ -152,7 +152,7 @@ namespace MiniStoreWinF.ManageSalary
             Double? total = 0;
             _detailAdvanceSalaryService = new DetailAdvanceSalaryService();
             var list = _detailAdvanceSalaryService.GetAll().Where(p => p.IdEmp.Equals(id)
-            && p.DateAs.Value.Month == time.Month);
+            && p.DateAs.Value.Month == time.Month && p.DateAs.Value.Year == time.Year).ToList();
             foreach (var adv in list)
             {
                 total += adv.AdvanceSalary;

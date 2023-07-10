@@ -26,6 +26,7 @@ namespace MiniStoreWinF.ManageSalary
             ShowListSalary(DateTime.Now.AddMonths(-1));
             dtpTime.Value = DateTime.Now.AddMonths(-1);
             u.showListEmp_ALL(cbName);
+            lblTotal.Text = "Total salary need to pay for employee : " + u.formatDouble(TotalSalaryNeedInMonth(dtpTime.Value)) + " VND";
         }
 
         List<Salary> LoadRecord(int page, int numberRe, List<Salary> list)
@@ -46,31 +47,40 @@ namespace MiniStoreWinF.ManageSalary
 
         private void btFilter_Click(object sender, EventArgs e)
         {
+            _salaryService = new SalaryService();
             string id = cbName.SelectedValue.ToString();
+            DateTime time = dtpTime.Value;
+            lblTotal.Text = "Total salary need to pay for employee : " + u.formatDouble(TotalSalaryNeedInMonth(time)) + " VND";
             if (cbOrderby.Text == "Descending" && id == "-1")
             {
-                _salaryService = new SalaryService();
-                DateTime time = dtpTime.Value;
                 var list = u.salary(time).OrderByDescending(p => p.SalaryAfterTax).ToList();
                 dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
                 listSa = list;
             }
             else if (cbOrderby.Text != "Descending" && id == "-1")
             {
-                _salaryService = new SalaryService();
-                DateTime time = dtpTime.Value;
                 var list = u.salary(time).OrderBy(p => p.SalaryAfterTax).ToList();
                 dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
                 listSa = list;
             }
             else
             {
-                _salaryService = new SalaryService();
-                DateTime time = dtpTime.Value;
-                var list = _salaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.DateImonth.Month.Equals(time.Month)).ToList();
+                var list = _salaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.DateImonth.Month.Equals(time.Month)&& p.DateImonth.Year.Equals(time.Year)).ToList();
                 dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
                 listSa = list;
             }
+        }
+
+        private double TotalSalaryNeedInMonth(DateTime time)
+        {
+            double total = 0;
+            _salaryService = new SalaryService();
+            var list = u.salary(time).ToList();
+            foreach (var item in list)
+            {
+                total += item.SalaryAfterTax;
+            }
+            return total;
         }
 
         private void btReset_Click(object sender, EventArgs e)
@@ -158,6 +168,21 @@ namespace MiniStoreWinF.ManageSalary
                 }
             }
 
+        }
+
+        private void dgvSalary_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            EmployeeService _employeeService = new EmployeeService();
+            if (e.RowIndex >= 0 && e.ColumnIndex == 1)
+            {
+                DataGridViewCell cell = dgvSalary.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                string cellValue = cell.Value?.ToString();
+                var emp = _employeeService.GetAll().Where(p => p.IdEmp.Equals(cellValue)).FirstOrDefault();
+                string name = emp.FullNameEmp;
+
+                // Gán giá trị của ô vào thuộc tính ToolTipText
+                cell.ToolTipText = name;
+            }
         }
     }
 }

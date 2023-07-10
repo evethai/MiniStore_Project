@@ -64,12 +64,15 @@
             txtS = new TextBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel3 = new Panel();
+            panel1 = new Panel();
+            lblTotal = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvSalary).BeginInit();
             ((System.ComponentModel.ISupportInitialize)salaryBindingSource).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             panel3.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // dgvSalary
@@ -112,6 +115,7 @@
             dgvSalary.Size = new Size(1229, 395);
             dgvSalary.TabIndex = 0;
             dgvSalary.CellMouseDoubleClick += dgvSalary_CellMouseDoubleClick;
+            dgvSalary.CellMouseEnter += dgvSalary_CellMouseEnter;
             // 
             // idSalaryDataGridViewTextBoxColumn
             // 
@@ -333,12 +337,34 @@
             // 
             // panel3
             // 
+            panel3.Controls.Add(panel1);
             panel3.Controls.Add(dgvSalary);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(3, 103);
             panel3.Name = "panel3";
             panel3.Size = new Size(1229, 395);
             panel3.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(lblTotal);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 343);
+            panel1.MaximumSize = new Size(0, 52);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1229, 52);
+            panel1.TabIndex = 1;
+            // 
+            // lblTotal
+            // 
+            lblTotal.Dock = DockStyle.Fill;
+            lblTotal.ForeColor = Color.Blue;
+            lblTotal.Location = new Point(0, 0);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(1229, 52);
+            lblTotal.TabIndex = 0;
+            lblTotal.Text = "label1";
+            lblTotal.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // frmSalaryDetail
             // 
@@ -361,6 +387,7 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             panel3.ResumeLayout(false);
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -391,5 +418,7 @@
         private DataGridViewTextBoxColumn salaryAfterTaxDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn DateOmonth;
         private ComboBox cbOrderby;
+        private Panel panel1;
+        private Label lblTotal;
     }
 }

@@ -72,6 +72,7 @@ namespace MiniStoreWinF.DashBoard
             u.numberOnly(e, txtPhone.Text, 10);
         }
 
+        private bool choise = false;
         private void dgvList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var id = dgvList[0, e.RowIndex].Value;
@@ -82,49 +83,67 @@ namespace MiniStoreWinF.DashBoard
                 txtName.Text = s.Name;
                 txtGmail.Text = s.Gmail;
                 txtSave.Text = s.Id.ToString();
+                choise = true;
             }
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            var momo = _moService.GetAll().Where(p => p.Id == Int32.Parse(txtSave.Text)).FirstOrDefault();
-            if (momo != null)
+            if(choise==true)
             {
-                momo.Phone = txtPhone.Text;
-                momo.Name = txtName.Text;
-                momo.Gmail = txtGmail.Text;
-                _moService.Update(momo);
+                var momo = _moService.GetAll().Where(p => p.Id == Int32.Parse(txtSave.Text)).FirstOrDefault();
+                if (momo != null)
+                {
+                    momo.Phone = txtPhone.Text;
+                    momo.Name = txtName.Text;
+                    momo.Gmail = txtGmail.Text;
+                    _moService.Update(momo);
+                }
+                loadPage();
+                txtName.Text = "";
+                txtPhone.Text = "";
+                txtGmail.Text = "";
             }
-            loadPage();
-            txtName.Text = "";
-            txtPhone.Text = "";
-            txtGmail.Text = "";
+            else
+            {
+                MessageBox.Show("Please choise account MoMo to use!");
+            }
+            
         }
 
         private void btnUse_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to change your MoMo account?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            if (choise == false)
             {
-                var list = _moService.GetAll().Where(p => p.Id == Int32.Parse(txtSave.Text)).FirstOrDefault();
-                if (list != null)
-                {
-                    list.Active = true;
-                    _moService.Update(list);
-                }
-                var listFalse = _moService.GetAll().Where(p => p.Id != Int32.Parse(txtSave.Text)).ToList();
-                foreach (var item in listFalse)
-                {
-                    item.Active = false;
-                    _moService.Update(item);
-                }
-                MessageBox.Show("Chang Successful " + list.Phone, "Messages", MessageBoxButtons.OK);
-                loadPage();
+                MessageBox.Show("Please choise account MoMo to use!");
             }
             else
             {
-                return;
+                DialogResult result = MessageBox.Show("Are you sure you want to change your MoMo account?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    var list = _moService.GetAll().Where(p => p.Id == Int32.Parse(txtSave.Text)).FirstOrDefault();
+                    if (list != null)
+                    {
+                        list.Active = true;
+                        _moService.Update(list);
+                    }
+                    var listFalse = _moService.GetAll().Where(p => p.Id != Int32.Parse(txtSave.Text)).ToList();
+                    foreach (var item in listFalse)
+                    {
+                        item.Active = false;
+                        _moService.Update(item);
+                    }
+                    MessageBox.Show("Chang Successful " + list.Phone, "Messages", MessageBoxButtons.OK);
+                    txtName.Text = "";
+                    txtPhone.Text = "";
+                    txtGmail.Text = "";
+                    loadPage();
+                }
+                else
+                {
+                    return;
+                }
             }
-
         }
     }
 }
