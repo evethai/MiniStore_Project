@@ -15,8 +15,6 @@ namespace MiniStoreWinF.ManageSalary
     public partial class frmEditEachSalary : Form
     {
         PermissionService _permissionService;
-        public string oldEmpSalary;
-        public string oldGuardSalary;
         Utinity u = new Utinity();
         public frmEditEachSalary()
         {
@@ -27,30 +25,21 @@ namespace MiniStoreWinF.ManageSalary
 
         private void frmEditEachSalary_Load(object sender, EventArgs e)
         {
-            txtNewEmp.Text = oldEmpSalary;
-            txtNewGuard.Text = oldGuardSalary;
+            lblName.Text = lblName.Text + " " + ContextScope.saPer.Permission1;
+            txtSalary.Text = ContextScope.saPer.BasicSalary.ToString();
         }
 
         private void btSave_Click(object sender, EventArgs e)
         {
-            if (oldEmpSalary != txtNewEmp.Text || oldGuardSalary != txtNewGuard.Text)
+            if (ContextScope.saPer.BasicSalary.ToString() != txtSalary.Text)
             {
-                var emp = _permissionService.GetAll().Where(p => p.Roles == 2).FirstOrDefault();
+                var emp = _permissionService.GetAll().Where(p => p.Roles == ContextScope.saPer.Roles).FirstOrDefault();
                 if (emp != null)
                 {
-                    emp.BasicSalary = Double.Parse(txtNewEmp.Text);
+                    emp.BasicSalary = Double.Parse(txtSalary.Text);
                 }
                 _permissionService.Update(emp);
 
-                //
-                var guard = _permissionService.GetAll().Where(p => p.Roles == 3).FirstOrDefault();
-                if (guard != null)
-                {
-                    guard.BasicSalary = Double.Parse(txtNewGuard.Text);
-                }
-                _permissionService.Update(guard);
-
-                //MessageBox.Show("Save Successfull.", "messages", MessageBoxButtons.OK);
                 notiSave.BalloonTipText = "Save Successfull";
                 notiSave.BalloonTipTitle = "Change Success";
                 notiSave.Icon = SystemIcons.Hand;
@@ -67,15 +56,9 @@ namespace MiniStoreWinF.ManageSalary
                 this.Close();
             }
         }
-
-        private void txtNewEmp_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            u.numberOnly(e, txtNewEmp.Text, 9);
-        }
-
         private void txtNewGuard_KeyPress(object sender, KeyPressEventArgs e)
         {
-            u.numberOnly(e, txtNewGuard.Text, 9);
+            u.numberOnly(e, txtSalary.Text, 9);
         }
     }
 }

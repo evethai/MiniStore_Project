@@ -28,7 +28,6 @@ namespace MiniStoreWinF.OrdersProducts
         CatalogyService _catalogyService = new CatalogyService();
         MemberService _memberService = new MemberService();
         VoucherService _voucherService = new VoucherService();
-        EmployeeService _employeeService = new EmployeeService();
         BillOrderService _showBillService = new BillOrderService();
         RevenueService _revenueService = new RevenueService();
         OrderService _orderService = new OrderService();
@@ -47,13 +46,15 @@ namespace MiniStoreWinF.OrdersProducts
             var showType = _catalogyService.GetAll();
             cbTypeProducts.DataSource = showType;
             cbTypeProducts.DisplayMember = "ProductType";
+            cbSort.Items.Add("Ascending");
+            cbSort.Items.Add("Decreasing");
         }
         private void OrderProducts_Load(object sender, EventArgs e)
         {
             var listProductsShow = _productService.GetAll().Select(p => new { p.Sku, p.NameProduct, p.Mfg, p.Exp, p.PictureProduct }).ToList();
             dgvShowListProducts.DataSource = new BindingSource()
             {
-                DataSource = listProductsShow
+                //DataSource = listProductsShow
             };
             listViewOrders.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }//Load form => OK
@@ -66,7 +67,7 @@ namespace MiniStoreWinF.OrdersProducts
                 var listProductsShow = _productService.GetAll().Select(p => new { p.Sku, p.NameProduct, p.Mfg, p.Exp, p.PictureProduct }).ToList();
                 dgvShowListProducts.DataSource = new BindingSource()
                 {
-                    DataSource = listProductsShow
+                    //DataSource = listProductsShow
                 };
             }
             else
@@ -83,7 +84,7 @@ namespace MiniStoreWinF.OrdersProducts
             CheckMemberNewCreate = "";
             CheckMemberSuccessfully = "";
             txtNameOrder.Text = "";
-            txtQuantityOrder.Value = 0;
+            txtQuantityOrder.Value = 1;
             txtTotalAllOrders.Text = "";
             txtPriceOrder.Text = "";
             pcPictureOrders.Image = null;
@@ -95,7 +96,7 @@ namespace MiniStoreWinF.OrdersProducts
             txtLoyaltyPoint.Text = "";
             txtPointUsing.Text = "";
             btShowBill.Visible = false;
-
+            txtPointUsing.Enabled = false;
         }
         private void cbTypeProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -136,6 +137,7 @@ namespace MiniStoreWinF.OrdersProducts
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex + "BUG");
             }
         }
         private void dgvShowListProducts_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -164,7 +166,6 @@ namespace MiniStoreWinF.OrdersProducts
         {
             AddItems();
             txtQuantityOrder.Value = 1;
-
         } // button add product => OK
         public void AddItems()
         {
@@ -279,6 +280,7 @@ namespace MiniStoreWinF.OrdersProducts
             CheckMemberSuccessfully = memberCheckcs.TextBoxValue.ToString();
             CheckMemberNewCreate = memberCheckcs.TextBoxValueMemberNew.ToString();
             txtLoyaltyPoint.Text = memberCheckcs.PointHas.ToString();
+            txtPointUsing.Enabled = true;
         } // button check member and create new member ==> OK 
         private void txtPointUsing_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -291,19 +293,23 @@ namespace MiniStoreWinF.OrdersProducts
         {
             try
             {
-
-
+                var checkusingPoint = _ratePointService.GetAll().Where(p => p.StatusRp == true).FirstOrDefault();
                 if (txtPointUsing.Text == "" || txtPointUsing.Text == null)
                 {
                     MessageBox.Show("Point Using is empty");
                     txtPointUsing.Text = string.Empty;
                 }
-                else if (Convert.ToInt32(txtPointUsing.Text) < Convert.ToInt32(txtLoyaltyPoint.Text))
+                else if (Convert.ToInt32(txtPointUsing.Text) <= Convert.ToInt32(txtLoyaltyPoint.Text) && checkusingPoint != null)
                 {
-                    var checkusingPoint = _ratePointService.GetAll().Where(p => p.StatusRp == true).FirstOrDefault();
-                    if (checkusingPoint != null)
+                    if (txtDiscount.TextLength <= 0)
                     {
                         txtDiscount.Text = (Convert.ToDouble(txtPointUsing.Text) * checkusingPoint.RateUsing).ToString();
+                        txtLoyaltyPoint.Text = (Convert.ToInt32(txtLoyaltyPoint.Text) - Convert.ToInt32(txtPointUsing.Text)).ToString();
+                    }
+                    else
+                    {
+                        txtDiscount.Text = (Convert.ToInt32(txtDiscount.Text) + (Convert.ToDouble(txtPointUsing.Text) * checkusingPoint.RateUsing)).ToString();
+                        txtLoyaltyPoint.Text = (Convert.ToInt32(txtLoyaltyPoint.Text) - Convert.ToInt32(txtPointUsing.Text)).ToString();
                     }
                 }
                 else
@@ -408,7 +414,7 @@ namespace MiniStoreWinF.OrdersProducts
                     if (checkPhoneMemb != null)
                     {
                         billOrder.PhoneMember = checkPhoneMemb.PhoneMember;
-                            
+
                         if (txtPointUsing.Text == null || txtPointUsing.Text == "")
                         {
                             checkPhoneMemb.Point = checkPhoneMemb.Point;
@@ -416,8 +422,7 @@ namespace MiniStoreWinF.OrdersProducts
                         }
                         else
                         {
-
-                            checkPhoneMemb.Point = checkPhoneMemb.Point - Convert.ToInt32(txtPointUsing.Text);
+                            checkPhoneMemb.Point = Convert.ToInt32(txtLoyaltyPoint.Text);
                             _memberService.Update(checkPhoneMemb);
                         }
                     }
@@ -468,7 +473,7 @@ namespace MiniStoreWinF.OrdersProducts
 
                         var checkIdBills = _showBillService.GetAll().Where(p => p.IdBillOrder == billOrder.IdBillOrder).FirstOrDefault();
                         order.IdBillOrder = checkIdBills.IdBillOrder;
-                        
+
                         //------------------------------------// END take BillID in BillOrder
 
                         order.DateOrders = DateTime.Now;
@@ -476,7 +481,6 @@ namespace MiniStoreWinF.OrdersProducts
 
                         autoOrdersID.AddBill(order);
                         //------------------------------------// END add all information of all data 
-
                     }
                     ScopeBill.currentBill = billOrder;
                     // END Update TotalBill of BillOrders
@@ -492,10 +496,11 @@ namespace MiniStoreWinF.OrdersProducts
                     // END Update point when payment successfull
                     AutoRevenuelUpdateWhenBillOrderDone();
                     OpenChildForm();
-                    
+
                 }
             }
-        } // ADD TO CART SHOW BILL => MAYBE OK
+        } // ADD TO CART SHOW BILL => MAYBE OK*/
+
         public void AutoRevenuelUpdateWhenBillOrderDone() // Update Total Revenue in one day  => OK
         {
             var TotalBillOrder = _showBillService.GetAll().Where(p => p.DateOfBill.Equals(DateTime.Now.Date)).Sum(p => p.TotalBill);
@@ -583,6 +588,26 @@ namespace MiniStoreWinF.OrdersProducts
                 TotalBill = Convert.ToDouble(txtTotalAllOrders.Text);
                 TotalProvide = Convert.ToDouble(txtProvidesCash.Text);
                 txtReturnPayment.Text = (TotalProvide - (TotalBill - Convert.ToDouble(txtDiscount.Text))).ToString();
+            }
+        }
+
+        private void cbSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbSort.SelectedIndex == 0)
+            {
+                var SortByDateEXP_ASC = _productService.GetAll().OrderBy(p => p.Exp).Select(p => new { p.Sku, p.NameProduct, p.Mfg, p.Exp, p.PictureProduct }).ToList();
+                dgvShowListProducts.DataSource = new BindingSource()
+                {
+                    DataSource = SortByDateEXP_ASC
+                };
+            }
+            else
+            {
+                var SortByDateEXP_DES = _productService.GetAll().OrderByDescending(p => p.Exp).Select(p => new { p.Sku, p.NameProduct, p.Mfg, p.Exp, p.PictureProduct }).ToList();
+                dgvShowListProducts.DataSource = new BindingSource()
+                {
+                    DataSource = SortByDateEXP_DES
+                };
             }
         }
     }

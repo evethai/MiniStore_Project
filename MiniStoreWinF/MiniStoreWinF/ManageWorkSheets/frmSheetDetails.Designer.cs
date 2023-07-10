@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSheetDetails));
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
             btReset = new Button();
@@ -55,7 +56,6 @@
             coefficientsSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             shiftStartTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             shiftEndTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            Roles = new DataGridViewTextBoxColumn();
             CheckNight = new DataGridViewTextBoxColumn();
             sheetDetailBindingSource = new BindingSource(components);
             tableLayoutPanel1.SuspendLayout();
@@ -108,18 +108,22 @@
             // 
             // btReset
             // 
+            btReset.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btReset.Image = (Image)resources.GetObject("btReset.Image");
+            btReset.ImageAlign = ContentAlignment.TopCenter;
             btReset.Location = new Point(231, 517);
             btReset.Margin = new Padding(3, 4, 3, 4);
             btReset.Name = "btReset";
-            btReset.Size = new Size(94, 41);
+            btReset.Size = new Size(94, 63);
             btReset.TabIndex = 61;
             btReset.Text = "Reset";
+            btReset.TextAlign = ContentAlignment.BottomCenter;
             btReset.UseVisualStyleBackColor = true;
             btReset.Click += btReset_Click;
             // 
             // label2
             // 
-            label2.Location = new Point(9, 384);
+            label2.Location = new Point(9, 374);
             label2.Name = "label2";
             label2.Size = new Size(113, 47);
             label2.TabIndex = 60;
@@ -128,7 +132,7 @@
             // 
             // label1
             // 
-            label1.Location = new Point(10, 338);
+            label1.Location = new Point(10, 304);
             label1.Name = "label1";
             label1.Size = new Size(113, 47);
             label1.TabIndex = 59;
@@ -137,30 +141,37 @@
             // 
             // chbWorkNight
             // 
-            chbWorkNight.AutoSize = true;
-            chbWorkNight.Location = new Point(169, 396);
+            chbWorkNight.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            chbWorkNight.Image = (Image)resources.GetObject("chbWorkNight.Image");
+            chbWorkNight.ImageAlign = ContentAlignment.TopCenter;
+            chbWorkNight.Location = new Point(128, 374);
             chbWorkNight.Name = "chbWorkNight";
-            chbWorkNight.Size = new Size(68, 24);
+            chbWorkNight.Size = new Size(109, 61);
             chbWorkNight.TabIndex = 58;
             chbWorkNight.Text = "Night";
+            chbWorkNight.TextAlign = ContentAlignment.BottomCenter;
             chbWorkNight.UseVisualStyleBackColor = true;
             // 
             // cbRoles
             // 
             cbRoles.FormattingEnabled = true;
-            cbRoles.Location = new Point(129, 348);
+            cbRoles.Location = new Point(129, 314);
             cbRoles.Name = "cbRoles";
             cbRoles.Size = new Size(196, 28);
             cbRoles.TabIndex = 57;
             // 
             // btCreate
             // 
+            btCreate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btCreate.Image = (Image)resources.GetObject("btCreate.Image");
+            btCreate.ImageAlign = ContentAlignment.TopCenter;
             btCreate.Location = new Point(10, 517);
             btCreate.Margin = new Padding(3, 4, 3, 4);
             btCreate.Name = "btCreate";
-            btCreate.Size = new Size(94, 41);
+            btCreate.Size = new Size(94, 63);
             btCreate.TabIndex = 55;
             btCreate.Text = "Create";
+            btCreate.TextAlign = ContentAlignment.BottomCenter;
             btCreate.UseVisualStyleBackColor = true;
             btCreate.Click += btCreate_Click;
             // 
@@ -184,7 +195,7 @@
             // 
             // label7
             // 
-            label7.Location = new Point(10, 102);
+            label7.Location = new Point(10, 94);
             label7.Name = "label7";
             label7.Size = new Size(113, 47);
             label7.TabIndex = 47;
@@ -202,7 +213,7 @@
             // 
             // label8
             // 
-            label8.Location = new Point(10, 180);
+            label8.Location = new Point(10, 164);
             label8.Name = "label8";
             label8.Size = new Size(113, 47);
             label8.TabIndex = 48;
@@ -211,16 +222,16 @@
             // 
             // txtDescriptionsDetails
             // 
-            txtDescriptionsDetails.Location = new Point(129, 244);
+            txtDescriptionsDetails.Location = new Point(129, 230);
             txtDescriptionsDetails.Margin = new Padding(3, 4, 3, 4);
             txtDescriptionsDetails.Multiline = true;
             txtDescriptionsDetails.Name = "txtDescriptionsDetails";
-            txtDescriptionsDetails.Size = new Size(196, 62);
+            txtDescriptionsDetails.Size = new Size(196, 51);
             txtDescriptionsDetails.TabIndex = 52;
             // 
             // label5
             // 
-            label5.Location = new Point(10, 258);
+            label5.Location = new Point(10, 234);
             label5.Name = "label5";
             label5.Size = new Size(113, 47);
             label5.TabIndex = 45;
@@ -231,7 +242,7 @@
             // 
             txtCoefficientsSalaryDetails.DecimalPlaces = 1;
             txtCoefficientsSalaryDetails.Increment = new decimal(new int[] { 5, 0, 0, 65536 });
-            txtCoefficientsSalaryDetails.Location = new Point(145, 457);
+            txtCoefficientsSalaryDetails.Location = new Point(129, 455);
             txtCoefficientsSalaryDetails.Margin = new Padding(3, 5, 3, 5);
             txtCoefficientsSalaryDetails.Name = "txtCoefficientsSalaryDetails";
             txtCoefficientsSalaryDetails.Size = new Size(126, 27);
@@ -239,7 +250,7 @@
             // 
             // label9
             // 
-            label9.Location = new Point(9, 446);
+            label9.Location = new Point(9, 444);
             label9.Name = "label9";
             label9.Size = new Size(113, 47);
             label9.TabIndex = 54;
@@ -248,21 +259,26 @@
             // 
             // btUpdateDetailsWorkSheet
             // 
+            btUpdateDetailsWorkSheet.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btUpdateDetailsWorkSheet.Image = (Image)resources.GetObject("btUpdateDetailsWorkSheet.Image");
+            btUpdateDetailsWorkSheet.ImageAlign = ContentAlignment.TopCenter;
             btUpdateDetailsWorkSheet.Location = new Point(120, 517);
             btUpdateDetailsWorkSheet.Margin = new Padding(3, 4, 3, 4);
             btUpdateDetailsWorkSheet.Name = "btUpdateDetailsWorkSheet";
-            btUpdateDetailsWorkSheet.Size = new Size(94, 41);
+            btUpdateDetailsWorkSheet.Size = new Size(94, 63);
             btUpdateDetailsWorkSheet.TabIndex = 53;
             btUpdateDetailsWorkSheet.Text = "Update";
+            btUpdateDetailsWorkSheet.TextAlign = ContentAlignment.BottomCenter;
             btUpdateDetailsWorkSheet.UseVisualStyleBackColor = true;
             btUpdateDetailsWorkSheet.Click += btUpdateDetailsWorkSheet_Click;
             // 
             // txtSheetDetail
             // 
-            txtSheetDetail.Location = new Point(129, 34);
+            txtSheetDetail.Location = new Point(160, 34);
             txtSheetDetail.Margin = new Padding(3, 4, 3, 4);
             txtSheetDetail.Name = "txtSheetDetail";
-            txtSheetDetail.Size = new Size(196, 27);
+            txtSheetDetail.ReadOnly = true;
+            txtSheetDetail.Size = new Size(126, 27);
             txtSheetDetail.TabIndex = 49;
             txtSheetDetail.KeyPress += txtSheetDetail_KeyPress;
             // 
@@ -280,7 +296,7 @@
             dgvDetailWorksheet.AutoGenerateColumns = false;
             dgvDetailWorksheet.BackgroundColor = SystemColors.Control;
             dgvDetailWorksheet.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDetailWorksheet.Columns.AddRange(new DataGridViewColumn[] { sheetDataGridViewTextBoxColumn, descriptionSDataGridViewTextBoxColumn, coefficientsSalaryDataGridViewTextBoxColumn, shiftStartTimeDataGridViewTextBoxColumn, shiftEndTimeDataGridViewTextBoxColumn, Roles, CheckNight });
+            dgvDetailWorksheet.Columns.AddRange(new DataGridViewColumn[] { sheetDataGridViewTextBoxColumn, descriptionSDataGridViewTextBoxColumn, coefficientsSalaryDataGridViewTextBoxColumn, shiftStartTimeDataGridViewTextBoxColumn, shiftEndTimeDataGridViewTextBoxColumn, CheckNight });
             dgvDetailWorksheet.DataSource = sheetDetailBindingSource;
             dgvDetailWorksheet.Dock = DockStyle.Fill;
             dgvDetailWorksheet.GridColor = SystemColors.ActiveBorder;
@@ -291,6 +307,7 @@
             dgvDetailWorksheet.RowTemplate.Height = 29;
             dgvDetailWorksheet.Size = new Size(790, 590);
             dgvDetailWorksheet.TabIndex = 43;
+            dgvDetailWorksheet.CellFormatting += dgvDetailWorksheet_CellFormatting;
             dgvDetailWorksheet.CellMouseDoubleClick += dgvDetailWorksheet_CellMouseDoubleClick;
             // 
             // sheetDataGridViewTextBoxColumn
@@ -333,14 +350,6 @@
             shiftEndTimeDataGridViewTextBoxColumn.MinimumWidth = 6;
             shiftEndTimeDataGridViewTextBoxColumn.Name = "shiftEndTimeDataGridViewTextBoxColumn";
             // 
-            // Roles
-            // 
-            Roles.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Roles.DataPropertyName = "Roles";
-            Roles.HeaderText = "Roles";
-            Roles.MinimumWidth = 6;
-            Roles.Name = "Roles";
-            // 
             // CheckNight
             // 
             CheckNight.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -360,7 +369,7 @@
             ClientSize = new Size(1136, 596);
             Controls.Add(tableLayoutPanel1);
             Name = "frmSheetDetails";
-            Text = "frmSheetDetails";
+            Text = "Sheet Details";
             tableLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -375,7 +384,6 @@
 
         private TableLayoutPanel tableLayoutPanel1;
         private Panel panel1;
-        private Button btCreate;
         private Label label6;
         private TextBox txtStartDetails;
         private Label label7;
@@ -390,17 +398,17 @@
         private Panel panel2;
         private DataGridView dgvDetailWorksheet;
         private BindingSource sheetDetailBindingSource;
-        private DataGridViewTextBoxColumn sheetDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn descriptionSDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn coefficientsSalaryDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn shiftStartTimeDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn shiftEndTimeDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn Roles;
-        private DataGridViewTextBoxColumn CheckNight;
         private Label label2;
         private Label label1;
         private CheckBox chbWorkNight;
         private ComboBox cbRoles;
         private Button btReset;
+        private DataGridViewTextBoxColumn sheetDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionSDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn coefficientsSalaryDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn shiftStartTimeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn shiftEndTimeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn CheckNight;
+        private Button btCreate;
     }
 }

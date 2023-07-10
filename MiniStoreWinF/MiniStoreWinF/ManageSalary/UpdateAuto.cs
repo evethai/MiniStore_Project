@@ -23,7 +23,7 @@ namespace MiniStoreWinF.ManageSalary
             List<Employee> employees = new List<Employee>();
             double? total = 0;
             var listEmp = _employeeService.GetAll().Where(p => p.IsActive == true).ToList();
-            var listSub = _detailSubSalaryService.GetAll().Where(p=>p.ActiveSub==true).ToList();
+            var listSub = _detailSubSalaryService.GetAll().Where(p=>p.ActiveSub==true && p.DateEffect>= time).ToList();
             foreach (var emp in listEmp)
             {
                 int n = u.sum(emp.IdEmp, time);

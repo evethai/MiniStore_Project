@@ -118,6 +118,7 @@ namespace MiniStoreWinF.DashBoard
                     _moService.Update(item);
                 }
                 MessageBox.Show("Chang Successful " + list.Phone, "Messages", MessageBoxButtons.OK);
+                loadPage();
             }
             else
             {

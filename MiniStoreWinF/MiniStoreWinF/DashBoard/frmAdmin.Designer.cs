@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel2 = new Panel();
-            btnAdd = new Button();
-            btnView = new Button();
+            panel3 = new Panel();
             cbRoles = new ComboBox();
+            label1 = new Label();
+            btMoMo = new Button();
+            btnAdd = new Button();
             tableLayoutPanel2 = new TableLayoutPanel();
             dgvAuthorization = new DataGridView();
             id = new DataGridViewTextBoxColumn();
@@ -47,9 +49,9 @@
             num = new DataGridViewTextBoxColumn();
             permissionBindingSource = new BindingSource(components);
             permissionDetailBindingSource = new BindingSource(components);
-            btMoMo = new Button();
             tableLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
+            panel3.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAuthorization).BeginInit();
             panel1.SuspendLayout();
@@ -77,15 +79,52 @@
             // panel2
             // 
             panel2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            panel2.Controls.Add(panel3);
             panel2.Controls.Add(btMoMo);
             panel2.Controls.Add(btnAdd);
-            panel2.Controls.Add(btnView);
-            panel2.Controls.Add(cbRoles);
             panel2.Location = new Point(4, 4);
             panel2.Margin = new Padding(4);
             panel2.Name = "panel2";
             panel2.Size = new Size(1169, 134);
             panel2.TabIndex = 0;
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(cbRoles);
+            panel3.Controls.Add(label1);
+            panel3.Location = new Point(8, 36);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(320, 58);
+            panel3.TabIndex = 7;
+            // 
+            // cbRoles
+            // 
+            cbRoles.FormattingEnabled = true;
+            cbRoles.Location = new Point(119, 15);
+            cbRoles.Name = "cbRoles";
+            cbRoles.Size = new Size(198, 29);
+            cbRoles.TabIndex = 0;
+            cbRoles.SelectedIndexChanged += cbRoles_SelectedIndexChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(15, 18);
+            label1.Name = "label1";
+            label1.Size = new Size(62, 21);
+            label1.TabIndex = 6;
+            label1.Text = "Choose";
+            // 
+            // btMoMo
+            // 
+            btMoMo.BackgroundImageLayout = ImageLayout.Center;
+            btMoMo.Location = new Point(1003, 16);
+            btMoMo.Name = "btMoMo";
+            btMoMo.Size = new Size(158, 36);
+            btMoMo.TabIndex = 5;
+            btMoMo.Text = "MoMo";
+            btMoMo.UseVisualStyleBackColor = true;
+            btMoMo.Click += btMoMo_Click;
             // 
             // btnAdd
             // 
@@ -97,24 +136,6 @@
             btnAdd.Text = "Add New Role";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
-            // 
-            // btnView
-            // 
-            btnView.Location = new Point(228, 16);
-            btnView.Name = "btnView";
-            btnView.Size = new Size(75, 29);
-            btnView.TabIndex = 3;
-            btnView.Text = "View";
-            btnView.UseVisualStyleBackColor = true;
-            btnView.Click += btnView_Click;
-            // 
-            // cbRoles
-            // 
-            cbRoles.FormattingEnabled = true;
-            cbRoles.Location = new Point(8, 16);
-            cbRoles.Name = "cbRoles";
-            cbRoles.Size = new Size(198, 29);
-            cbRoles.TabIndex = 0;
             // 
             // tableLayoutPanel2
             // 
@@ -141,15 +162,15 @@
             dgvAuthorization.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvAuthorization.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAuthorization.Columns.AddRange(new DataGridViewColumn[] { id, name, check });
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.Padding = new Padding(0, 0, 100, 30);
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgvAuthorization.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.Padding = new Padding(0, 0, 100, 30);
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvAuthorization.DefaultCellStyle = dataGridViewCellStyle1;
             dgvAuthorization.Dock = DockStyle.Fill;
             dgvAuthorization.Location = new Point(0, 0);
             dgvAuthorization.Margin = new Padding(0);
@@ -201,15 +222,15 @@
             dgvPer.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvPer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPer.Columns.AddRange(new DataGridViewColumn[] { role, num });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.Padding = new Padding(0, 0, 100, 30);
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.ControlLightLight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgvPer.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.Padding = new Padding(0, 0, 100, 30);
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.ControlLightLight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvPer.DefaultCellStyle = dataGridViewCellStyle2;
             dgvPer.Dock = DockStyle.Top;
             dgvPer.Location = new Point(0, 0);
             dgvPer.Margin = new Padding(0);
@@ -243,17 +264,6 @@
             // 
             permissionDetailBindingSource.DataSource = typeof(Repository.Models.PermissionDetail);
             // 
-            // btMoMo
-            // 
-            btMoMo.BackgroundImageLayout = ImageLayout.Center;
-            btMoMo.Location = new Point(1003, 16);
-            btMoMo.Name = "btMoMo";
-            btMoMo.Size = new Size(158, 36);
-            btMoMo.TabIndex = 5;
-            btMoMo.Text = "MoMo";
-            btMoMo.UseVisualStyleBackColor = true;
-            btMoMo.Click += btMoMo_Click;
-            // 
             // frmAdmin
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
@@ -268,6 +278,8 @@
             Load += frmAdmin_Load;
             tableLayoutPanel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvAuthorization).EndInit();
             panel1.ResumeLayout(false);
@@ -287,7 +299,6 @@
         private DataGridViewTextBoxColumn name;
         private DataGridViewCheckBoxColumn check;
         private ComboBox cbRoles;
-        private Button btnView;
         private Button btnAdd;
         private TableLayoutPanel tableLayoutPanel2;
         private Panel panel1;
@@ -296,5 +307,7 @@
         private DataGridViewTextBoxColumn role;
         private DataGridViewTextBoxColumn num;
         private Button btMoMo;
+        private Panel panel3;
+        private Label label1;
     }
 }

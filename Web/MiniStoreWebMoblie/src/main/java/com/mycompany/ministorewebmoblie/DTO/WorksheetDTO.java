@@ -4,15 +4,13 @@
  */
 package com.mycompany.ministorewebmoblie.DTO;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 /**
  *
  * @author nanat
  */
 public class WorksheetDTO {
-    private LocalDate date;
+    private String date;
     private String timeCheckIn;
     private String timeCheckOut;
 
@@ -35,21 +33,21 @@ public class WorksheetDTO {
         this.timeCheckOut = timeCheckOut;
     }
 
-    public WorksheetDTO(LocalDate date, String timeCheckIn, String timeCheckOut) {
+    public WorksheetDTO(String date, String timeCheckIn, String timeCheckOut) {
         this.date = date;
         this.timeCheckIn = timeCheckIn;
         this.timeCheckOut = timeCheckOut;
     }
 
-    
-
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
+
+   
 
     
 }

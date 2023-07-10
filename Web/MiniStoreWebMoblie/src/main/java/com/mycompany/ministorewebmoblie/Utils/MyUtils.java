@@ -5,6 +5,7 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
+import com.mycompany.ministorewebmoblie.DTO.EmployeeDTO;
 import com.mycompany.ministorewebmoblie.DTO.SheetTimeSlotDTO;
 import com.mycompany.ministorewebmoblie.DTO.WorksheetDTO;
 import io.jsonwebtoken.Claims;
@@ -58,6 +59,109 @@ public class MyUtils {
 
     }
 
+    //kiểm tra email có tồn tại trong data base hay không
+    public static EmployeeDTO getInfo(String idemp) throws IOException {
+        try {
+            // Lấy danh sách Sheet từ API
+            String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/faccInfo?idemp=" + idemp);
+            JSONObject json = new JSONObject(jsonResponse);
+
+            String jwt = json.optString("jwt");
+            // Check JWT
+            if (jwt.isEmpty() || jwt.equals("Unauthorized")) {
+                // Invalid user
+                System.out.println("Invalid JWT");
+                return null;
+            }
+
+            Claims claims = JWTUtils.parseJWT(jwt);
+            // Convert the claim value to a string manually
+            String sex = claims.get("Sex", String.class);
+            if (sex.equals("False")) {
+                sex = "Male";
+            } else {
+                sex = "Female";
+            }
+            String cccd = claims.get("CCCD", String.class);
+            String dbo = claims.get("DoB", String.class);
+            String address = claims.get("AddressEmp", String.class);
+            String phone = claims.get("Phone", String.class);
+            String pass = claims.get("password", String.class);
+            String picture = claims.get("Picture", String.class);
+            String email = claims.get("Email", String.class);
+
+            return new EmployeeDTO(sex, cccd, dbo, address, phone, pass, picture, email);
+        } catch (Exception e) {
+            // Handle error
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    //cập nhật mật khẩu
+    public static boolean updatePassword(String email, String password) throws IOException {
+        try {
+            // Lấy danh sách Sheet từ API
+            String token = JWTUtils.generateJWTUpPwd(email, password);
+            String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/uppwd?token=" + token);
+            JSONObject json = new JSONObject(jsonResponse);
+
+            String jwt = json.optString("jwt");
+
+            // Check JWT
+            if (jwt.isEmpty() || jwt.equals("Unauthorized")) {
+                // Invalid user
+                System.out.println("Invalid JWT");
+                return true;
+            }
+
+            Claims claims = JWTUtils.parseJWT(jwt);
+
+            // Convert the claim value to a string manually
+            String fin = claims.get("Fin", String.class);
+            if (fin.equals("Successfully")) {
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            // Handle error
+            e.printStackTrace();
+            return true;
+        }
+    }
+
+    //kiểm tra email có tồn tại trong data base hay không
+    public static String checkEmail(String Email) throws IOException {
+        try {
+            // Lấy danh sách Sheet từ API
+            String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/gp?mail=" + Email);
+            JSONObject json = new JSONObject(jsonResponse);
+
+            String jwt = json.optString("jwt");
+
+            // Check JWT
+            if (jwt.isEmpty() || jwt.equals("Unauthorized")) {
+                // Invalid user
+                System.out.println("Invalid JWT");
+                return "null";
+            }
+
+            Claims claims = JWTUtils.parseJWT(jwt);
+
+            // Convert the claim value to a string manually
+            String Password = claims.get("Password", String.class);
+            if (Password.equals("null")) {
+                return "null";
+            }
+
+            return Password;
+        } catch (Exception e) {
+            // Handle error
+            e.printStackTrace();
+            return "null";
+        }
+    }
+
     // Lấy danh sách Sheet đã có từ API
     public static List<WorksheetDTO> getSheetAvailable(String idemp, String dateStar, String dateEnd, boolean type) {
         try {
@@ -84,7 +188,7 @@ public class MyUtils {
             List<WorksheetDTO> sheetTimeSlots = new ArrayList<>();
 
             for (int i = 0; i < Datejwt.size(); i++) {
-                LocalDate date = LocalDate.parse(Datejwt.get(i), DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+                String date = Datejwt.get(i);
                 String timeCheckIn = TimeCheckInjwt.get(i);
                 String timeCheckOut = TimeCheckOutjwt.get(i);
 

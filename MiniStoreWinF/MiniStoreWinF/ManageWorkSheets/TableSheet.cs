@@ -10,7 +10,7 @@ namespace MiniStoreWinF.ManageWorkSheets
     {
         public static int DayOfWeek = 7;
         public static int DayOfColumn = 6;
-        public static double DateButtonWidth = 0.1;
+        public static int DateButtonWidth = 30;
         public static int DateButtonHeight = 80;
         public static int DateButtonMagin = 6;
     }

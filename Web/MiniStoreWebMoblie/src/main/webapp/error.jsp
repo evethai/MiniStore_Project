@@ -24,7 +24,7 @@
     </head>
     <body>
         <!-- Modal popup -->
-        <div class="modal fade show d-block" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal fade show d-block" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header  d-flex justify-content-center">
@@ -55,7 +55,7 @@
                             function closeWindow1() {
                                 var form = document.createElement("form");
                                 form.method = "POST";
-                                form.action = "Logout"; // Thay thế "LogoutServlet" bằng URL của Servlet xử lý logout
+                                form.action = "Login"; // Thay thế "LogoutServlet" bằng URL của Servlet xử lý logout
 
                                 document.body.appendChild(form);
                                 form.submit();

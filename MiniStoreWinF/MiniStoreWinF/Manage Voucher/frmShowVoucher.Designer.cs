@@ -284,11 +284,14 @@
             // 
             btUpdate.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btUpdate.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btUpdate.Image = (Image)resources.GetObject("btUpdate.Image");
+            btUpdate.ImageAlign = ContentAlignment.MiddleLeft;
             btUpdate.Location = new Point(716, 208);
             btUpdate.Name = "btUpdate";
             btUpdate.Size = new Size(118, 43);
             btUpdate.TabIndex = 12;
             btUpdate.Text = "Update";
+            btUpdate.TextAlign = ContentAlignment.MiddleRight;
             btUpdate.UseVisualStyleBackColor = true;
             btUpdate.Click += btUpdate_Click;
             // 
@@ -424,18 +427,22 @@
             // btSearch
             // 
             btSearch.Anchor = AnchorStyles.Left;
-            btSearch.Location = new Point(408, 53);
+            btSearch.ForeColor = SystemColors.ActiveCaptionText;
+            btSearch.Image = (Image)resources.GetObject("btSearch.Image");
+            btSearch.ImageAlign = ContentAlignment.MiddleLeft;
+            btSearch.Location = new Point(392, 36);
             btSearch.Name = "btSearch";
-            btSearch.Size = new Size(136, 29);
+            btSearch.Size = new Size(94, 30);
             btSearch.TabIndex = 30;
             btSearch.Text = "Search";
+            btSearch.TextAlign = ContentAlignment.MiddleRight;
             btSearch.UseVisualStyleBackColor = true;
             btSearch.Click += btSearch_Click;
             // 
             // txtSearch
             // 
             txtSearch.Anchor = AnchorStyles.Left;
-            txtSearch.Location = new Point(258, 54);
+            txtSearch.Location = new Point(250, 37);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(136, 27);
             txtSearch.TabIndex = 29;
@@ -443,11 +450,14 @@
             // button1
             // 
             button1.Anchor = AnchorStyles.Left;
-            button1.Location = new Point(550, 56);
+            button1.Image = (Image)resources.GetObject("button1.Image");
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(492, 37);
             button1.Name = "button1";
-            button1.Size = new Size(136, 29);
+            button1.Size = new Size(129, 29);
             button1.TabIndex = 27;
             button1.Text = "New Voucher";
+            button1.TextAlign = ContentAlignment.MiddleRight;
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 

@@ -120,7 +120,7 @@
             panel2.Location = new Point(4, 4);
             panel2.Margin = new Padding(4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(168, 46);
+            panel2.Size = new Size(159, 46);
             panel2.TabIndex = 2;
             panel2.Click += frmMainScreen_Load;
             // 
@@ -613,6 +613,7 @@
             // 
             pnMain.BorderStyle = BorderStyle.Fixed3D;
             pnMain.Dock = DockStyle.Fill;
+            pnMain.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             pnMain.Location = new Point(172, 49);
             pnMain.Margin = new Padding(4);
             pnMain.Name = "pnMain";

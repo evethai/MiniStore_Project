@@ -181,8 +181,11 @@
             Controls.Add(button1);
             Controls.Add(panel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximumSize = new Size(457, 481);
+            MinimumSize = new Size(457, 481);
             Name = "frmLogin";
             StartPosition = FormStartPosition.CenterScreen;
+            Text = "Login";
             Load += frmLogin_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();

@@ -23,6 +23,7 @@ namespace MiniStoreWinF.ManageRevenue
         ProductService _productService;
         CatalogyService _catalogyService;
         OrderService _orderService;
+        UnitService _unitService;
         Utinity u = new Utinity();
         public frmRevenues()
         {
@@ -32,6 +33,7 @@ namespace MiniStoreWinF.ManageRevenue
             _orderService = new OrderService();
             _catalogyService = new CatalogyService();
             _productService = new ProductService();
+            _unitService = new UnitService();
         }
 
         public void chartRevenues(DateTime time)
@@ -118,7 +120,12 @@ namespace MiniStoreWinF.ManageRevenue
             var ca = _catalogyService.GetAll().ToList();
             var pro = _productService.GetAll().Where(p => p.StatusP == true).ToList();
             var or = _orderService.GetAll().Where(p => p.DateOrders.Value.Month.Equals(time.Month)).ToList();
-            var listType = (from o in or join pr in pro on o.IdUnit equals pr.Sku select Tuple.Create(pr.ProductType, o.Total)).ToList();
+            var unit = _unitService.GetAll().ToList();
+
+            var listSku = (from o in or join u in unit on o.IdUnit equals u.IdUnit select Tuple.Create(u.Sku,o.Total)).ToList();
+
+            var listType = (from lk in listSku join pr in pro on lk.Item1 equals pr.Sku select Tuple.Create(pr.ProductType, lk.Item2)).ToList();
+
             foreach (var c in ca)
             {
                 double? total = 0;
