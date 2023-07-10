@@ -110,7 +110,7 @@ namespace MiniStoreWinF.ManageWorkSheets
             frmTableWork daily = new frmTableWork((sender as Button).Text, dtpkDate.Value);
             daily.ShowDialog();
         }
-        int DayOfMonth(DateTime date)
+       public int DayOfMonth(DateTime date)
         {
             switch (date.Month)
             {
@@ -159,6 +159,34 @@ namespace MiniStoreWinF.ManageWorkSheets
             {
                 chbNotification.Checked = false;            
             }
+        }
+        public int DayOfMonths(DateTime date , int month)
+        {
+            if(month>=1 && month <= 12) {
+                switch (month)
+                {
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                    case 8:
+                    case 10:
+                    case 12:
+                        return 31;
+                    case 2:
+                        if ((date.Year % 4 == 0 && date.Year % 100 != 0) || date.Year % 400 == 0)
+                            return 29;
+                        else
+                            return 28;
+                    default:
+                        return 30;
+                }
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
+            
         }
     }
 
