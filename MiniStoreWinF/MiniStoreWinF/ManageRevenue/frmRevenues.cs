@@ -38,8 +38,8 @@ namespace MiniStoreWinF.ManageRevenue
 
         public void chartRevenues(DateTime time)
         {
-            var listRe = _revenueService.GetAll().Where(p => p.DateRevenue.Month.Equals(time.Month)&& p.DateRevenue.Year.Equals(time.Year)).ToList();
-            var listBill = _billOrderService.GetAll().Where(p => p.DateOfBill.Value.Month.Equals(time.Month)&& p.DateOfBill.Value.Year.Equals(time.Year)).ToList();
+            var listRe = _revenueService.GetAll().Where(p => p.DateRevenue.Month.Equals(time.Month) && p.DateRevenue.Year.Equals(time.Year)).ToList();
+            var listBill = _billOrderService.GetAll().Where(p => p.DateOfBill.Value.Month.Equals(time.Month) && p.DateOfBill.Value.Year.Equals(time.Year)).ToList();
             double? reInMonth = 0;
             foreach (var item in listRe)
             {
@@ -122,7 +122,7 @@ namespace MiniStoreWinF.ManageRevenue
             var or = _orderService.GetAll().Where(p => p.DateOrders.Value.Month.Equals(time.Month) && p.DateOrders.Value.Year.Equals(time.Year)).ToList();
             var unit = _unitService.GetAll().ToList();
 
-            var listSku = (from o in or join u in unit on o.IdUnit equals u.IdUnit select Tuple.Create(u.Sku,o.Total)).ToList();
+            var listSku = (from o in or join u in unit on o.IdUnit equals u.IdUnit select Tuple.Create(u.Sku, o.Total)).ToList();
 
             var listType = (from lk in listSku join pr in pro on lk.Item1 equals pr.Sku select Tuple.Create(pr.ProductType, lk.Item2)).ToList();
 

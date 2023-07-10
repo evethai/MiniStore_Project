@@ -32,18 +32,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageWorkSheetPage));
             workSheetBindingSource = new BindingSource(components);
             sheetDetailBindingSource = new BindingSource(components);
-            tableLayoutPanel2 = new TableLayoutPanel();
             btRegisterWorksheet = new Button();
             btSheetDetails = new Button();
             btHistory = new Button();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            panel1 = new Panel();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             pnlManageWorksheet = new Panel();
             ((System.ComponentModel.ISupportInitialize)workSheetBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)sheetDetailBindingSource).BeginInit();
-            tableLayoutPanel2.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
-            panel1.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // workSheetBindingSource
@@ -54,32 +50,15 @@
             // 
             sheetDetailBindingSource.DataSource = typeof(Repository.Models.SheetDetail);
             // 
-            // tableLayoutPanel2
-            // 
-            tableLayoutPanel2.ColumnCount = 1;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Controls.Add(btRegisterWorksheet, 0, 2);
-            tableLayoutPanel2.Controls.Add(btSheetDetails, 0, 1);
-            tableLayoutPanel2.Controls.Add(btHistory, 0, 0);
-            tableLayoutPanel2.Dock = DockStyle.Top;
-            tableLayoutPanel2.Location = new Point(3, 3);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 3;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel2.Size = new Size(273, 211);
-            tableLayoutPanel2.TabIndex = 0;
-            // 
             // btRegisterWorksheet
             // 
-            btRegisterWorksheet.Dock = DockStyle.Fill;
             btRegisterWorksheet.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btRegisterWorksheet.Image = (Image)resources.GetObject("btRegisterWorksheet.Image");
             btRegisterWorksheet.ImageAlign = ContentAlignment.MiddleLeft;
-            btRegisterWorksheet.Location = new Point(3, 143);
+            btRegisterWorksheet.Location = new Point(5, 150);
+            btRegisterWorksheet.Margin = new Padding(5, 4, 5, 4);
             btRegisterWorksheet.Name = "btRegisterWorksheet";
-            btRegisterWorksheet.Size = new Size(267, 65);
+            btRegisterWorksheet.Size = new Size(253, 65);
             btRegisterWorksheet.TabIndex = 2;
             btRegisterWorksheet.Text = "Register";
             btRegisterWorksheet.TextAlign = ContentAlignment.MiddleRight;
@@ -88,13 +67,13 @@
             // 
             // btSheetDetails
             // 
-            btSheetDetails.Dock = DockStyle.Fill;
             btSheetDetails.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btSheetDetails.Image = (Image)resources.GetObject("btSheetDetails.Image");
             btSheetDetails.ImageAlign = ContentAlignment.MiddleLeft;
-            btSheetDetails.Location = new Point(3, 73);
+            btSheetDetails.Location = new Point(5, 77);
+            btSheetDetails.Margin = new Padding(5, 4, 5, 4);
             btSheetDetails.Name = "btSheetDetails";
-            btSheetDetails.Size = new Size(267, 64);
+            btSheetDetails.Size = new Size(253, 65);
             btSheetDetails.TabIndex = 1;
             btSheetDetails.Text = "Details";
             btSheetDetails.TextAlign = ContentAlignment.MiddleRight;
@@ -103,66 +82,58 @@
             // 
             // btHistory
             // 
-            btHistory.Dock = DockStyle.Fill;
             btHistory.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             btHistory.Image = (Image)resources.GetObject("btHistory.Image");
             btHistory.ImageAlign = ContentAlignment.MiddleLeft;
-            btHistory.Location = new Point(3, 3);
+            btHistory.Location = new Point(5, 4);
+            btHistory.Margin = new Padding(5, 4, 5, 4);
             btHistory.Name = "btHistory";
-            btHistory.Size = new Size(267, 64);
+            btHistory.Size = new Size(253, 65);
             btHistory.TabIndex = 0;
             btHistory.Text = "History";
             btHistory.TextAlign = ContentAlignment.MiddleRight;
             btHistory.UseVisualStyleBackColor = true;
             btHistory.Click += btHistory_Click;
             // 
-            // tableLayoutPanel1
+            // flowLayoutPanel1
             // 
-            tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
-            tableLayoutPanel1.Controls.Add(panel1, 1, 0);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1397, 668);
-            tableLayoutPanel1.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(pnlManageWorksheet);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(282, 3);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1112, 662);
-            panel1.TabIndex = 1;
+            flowLayoutPanel1.BorderStyle = BorderStyle.Fixed3D;
+            flowLayoutPanel1.Controls.Add(btHistory);
+            flowLayoutPanel1.Controls.Add(btSheetDetails);
+            flowLayoutPanel1.Controls.Add(btRegisterWorksheet);
+            flowLayoutPanel1.Dock = DockStyle.Left;
+            flowLayoutPanel1.Location = new Point(0, 0);
+            flowLayoutPanel1.Margin = new Padding(5, 4, 5, 4);
+            flowLayoutPanel1.MaximumSize = new Size(267, 0);
+            flowLayoutPanel1.MinimumSize = new Size(267, 0);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new Size(267, 835);
+            flowLayoutPanel1.TabIndex = 1;
             // 
             // pnlManageWorksheet
             // 
+            pnlManageWorksheet.BorderStyle = BorderStyle.Fixed3D;
             pnlManageWorksheet.Dock = DockStyle.Fill;
-            pnlManageWorksheet.Location = new Point(0, 0);
+            pnlManageWorksheet.Location = new Point(267, 0);
             pnlManageWorksheet.Name = "pnlManageWorksheet";
-            pnlManageWorksheet.Size = new Size(1112, 662);
-            pnlManageWorksheet.TabIndex = 0;
+            pnlManageWorksheet.Size = new Size(1653, 835);
+            pnlManageWorksheet.TabIndex = 2;
             // 
             // frmManageWorkSheetPage
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1397, 668);
-            Controls.Add(tableLayoutPanel1);
+            ClientSize = new Size(1920, 835);
+            Controls.Add(pnlManageWorksheet);
+            Controls.Add(flowLayoutPanel1);
+            Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
+            Margin = new Padding(5, 4, 5, 4);
             Name = "frmManageWorkSheetPage";
             Text = "Manage WorkSheet Page";
             ((System.ComponentModel.ISupportInitialize)workSheetBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)sheetDetailBindingSource).EndInit();
-            tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel1.ResumeLayout(false);
-            panel1.ResumeLayout(false);
+            flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -171,10 +142,9 @@
         private BindingSource sheetDetailBindingSource;
         private TableLayoutPanel tableLayoutPanel2;
         private Button btHistory;
-        private TableLayoutPanel tableLayoutPanel1;
-        private Panel panel1;
-        private Panel pnlManageWorksheet;
         private Button btRegisterWorksheet;
         private Button btSheetDetails;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Panel pnlManageWorksheet;
     }
 }

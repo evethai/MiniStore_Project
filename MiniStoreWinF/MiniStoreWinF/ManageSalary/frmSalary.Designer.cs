@@ -86,8 +86,10 @@
             flplow.Controls.Add(btSub);
             flplow.Dock = DockStyle.Left;
             flplow.Location = new Point(0, 0);
+            flplow.MaximumSize = new Size(267, 0);
+            flplow.MinimumSize = new Size(267, 0);
             flplow.Name = "flplow";
-            flplow.Size = new Size(264, 884);
+            flplow.Size = new Size(267, 884);
             flplow.TabIndex = 3;
             // 
             // panel1
@@ -104,9 +106,9 @@
             // 
             pMain.BorderStyle = BorderStyle.Fixed3D;
             pMain.Dock = DockStyle.Fill;
-            pMain.Location = new Point(264, 0);
+            pMain.Location = new Point(267, 0);
             pMain.Name = "pMain";
-            pMain.Size = new Size(1499, 884);
+            pMain.Size = new Size(1496, 884);
             pMain.TabIndex = 4;
             // 
             // frmSalary

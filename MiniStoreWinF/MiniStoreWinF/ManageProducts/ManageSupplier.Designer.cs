@@ -53,12 +53,13 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34.720993F));
             tableLayoutPanel1.Controls.Add(groupBox2, 0, 1);
             tableLayoutPanel1.Controls.Add(groupBox1, 0, 0);
-            tableLayoutPanel1.Location = new Point(1, 43);
+            tableLayoutPanel1.Location = new Point(2, 54);
+            tableLayoutPanel1.Margin = new Padding(5, 4, 5, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 520F));
-            tableLayoutPanel1.Size = new Size(1074, 595);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 650F));
+            tableLayoutPanel1.Size = new Size(1477, 744);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // groupBox2
@@ -66,9 +67,11 @@
             groupBox2.Controls.Add(dataGridView1);
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.ForeColor = Color.Navy;
-            groupBox2.Location = new Point(3, 78);
+            groupBox2.Location = new Point(5, 98);
+            groupBox2.Margin = new Padding(5, 4, 5, 4);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1068, 514);
+            groupBox2.Padding = new Padding(5, 4, 5, 4);
+            groupBox2.Size = new Size(1467, 642);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "List Of Supplier";
@@ -76,15 +79,17 @@
             // dataGridView1
             // 
             dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.BackgroundColor = SystemColors.Window;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idSupplierDataGridViewTextBoxColumn, nameSupplierDataGridViewTextBoxColumn, addressSupplierDataGridViewTextBoxColumn, noteDataGridViewTextBoxColumn });
             dataGridView1.DataSource = supplierBindingSource;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 23);
+            dataGridView1.Location = new Point(5, 30);
+            dataGridView1.Margin = new Padding(5, 4, 5, 4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1062, 488);
+            dataGridView1.Size = new Size(1457, 608);
             dataGridView1.TabIndex = 1;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
@@ -129,27 +134,31 @@
             groupBox1.Controls.Add(txtSearch);
             groupBox1.Controls.Add(btSearch);
             groupBox1.Dock = DockStyle.Fill;
-            groupBox1.Location = new Point(3, 3);
+            groupBox1.Location = new Point(5, 4);
+            groupBox1.Margin = new Padding(5, 4, 5, 4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1068, 69);
+            groupBox1.Padding = new Padding(5, 4, 5, 4);
+            groupBox1.Size = new Size(1467, 86);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Operation";
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(90, 28);
+            txtSearch.Location = new Point(124, 35);
+            txtSearch.Margin = new Padding(5, 4, 5, 4);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(125, 27);
+            txtSearch.Size = new Size(171, 33);
             txtSearch.TabIndex = 37;
             // 
             // btSearch
             // 
             btSearch.BackColor = SystemColors.ButtonShadow;
             btSearch.ForeColor = SystemColors.ActiveCaptionText;
-            btSearch.Location = new Point(239, 28);
+            btSearch.Location = new Point(328, 35);
+            btSearch.Margin = new Padding(5, 4, 5, 4);
             btSearch.Name = "btSearch";
-            btSearch.Size = new Size(96, 29);
+            btSearch.Size = new Size(132, 37);
             btSearch.TabIndex = 36;
             btSearch.Text = "Search";
             btSearch.UseVisualStyleBackColor = false;
@@ -157,10 +166,13 @@
             // 
             // ManageSupplier
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1089, 636);
+            BackColor = SystemColors.Window;
+            ClientSize = new Size(1498, 796);
             Controls.Add(tableLayoutPanel1);
+            Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(5, 4, 5, 4);
             Name = "ManageSupplier";
             Text = "ManageSupplier";
             tableLayoutPanel1.ResumeLayout(false);

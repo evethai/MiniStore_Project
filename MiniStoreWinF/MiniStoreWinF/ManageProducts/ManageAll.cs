@@ -19,20 +19,7 @@ namespace MiniStoreWinF.ManageProducts
         public ManageAll()
         {
             InitializeComponent();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
             u.openChildForm(new ManageProducts.ManageAllProducs(), pnProduct);
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            u.openChildForm(new ManageProducts.ManageSupplier(), pnProduct);
-        }
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-            u.openChildForm(new ManageProducts.ManageUnitProduct(), pnProduct);
         }
 
         private void AUTHORIZATION_Click(object sender, EventArgs e)
