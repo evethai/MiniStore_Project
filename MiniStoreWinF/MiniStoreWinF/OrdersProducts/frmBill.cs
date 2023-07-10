@@ -64,6 +64,7 @@ namespace MiniStoreWinF.OrdersProducts
             else
             {
                 txtPhoneMember.Text = "";
+                txtLoyaltyPoint.Text = "";
             }
             if (ScopeBill.currentBill.DiscountPrice != null)
             {
@@ -76,7 +77,7 @@ namespace MiniStoreWinF.OrdersProducts
             if (ScopeBill.currentBill.TotalBill != null)
             {
                 txtPayMent.Text = ScopeBill.currentBill.TotalBill.ToString();
-                txtTotalBill.Text = ScopeBill.currentBill.TotalBill + ScopeBill.currentBill.DiscountPrice.ToString();
+                txtTotalBill.Text = (ScopeBill.currentBill.TotalBill + ScopeBill.currentBill.DiscountPrice).ToString();
             }
             else
             {
@@ -84,7 +85,7 @@ namespace MiniStoreWinF.OrdersProducts
             }
             if (ScopeBill.currentBill.DateOfBill != null)
             {
-                txtTimeCheckOut.Text = ScopeBill.currentBill.DateOfBill.ToString();
+                txtTimeCheckOut.Text = DateTime.Now.ToString();
             }
             else
             {

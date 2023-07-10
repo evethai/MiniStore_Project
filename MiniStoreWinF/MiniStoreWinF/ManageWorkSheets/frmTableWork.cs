@@ -146,27 +146,29 @@ namespace MiniStoreWinF.ManageWorkSheets
 
         private void btRemove_Click_1(object sender, EventArgs e)
         {
-            try {
-            var WsheetCheck = _workSheetService.GetAll().Where(p => p.IdWorkSheet.Equals(txtIdWsheet.Text)).FirstOrDefault();
-            if (WsheetCheck != null)
+            try
             {
-                _workSheetService.Delete(WsheetCheck);
-                txtIdWsheet.Text = "";
-                cbFullNameEmp.SelectedIndex = 0;
-                cbSheetWork.SelectedIndex = 0;
-                MessageBox.Show("Remove Successfull");
-                ShowJobByDate(dtpkDate.Value);
+                var WsheetCheck = _workSheetService.GetAll().Where(p => p.IdWorkSheet.Equals(txtIdWsheet.Text)).FirstOrDefault();
+                if (WsheetCheck != null)
+                {
+                    _workSheetService.Delete(WsheetCheck);
+                    txtIdWsheet.Text = "";
+                    cbFullNameEmp.SelectedIndex = 0;
+                    cbSheetWork.SelectedIndex = 0;
+                    MessageBox.Show("Remove Successfull");
+                    ShowJobByDate(dtpkDate.Value);
 
+                }
+                else
+                {
+                    MessageBox.Show("Can not Remove");
+                }
             }
-            else
-            {
-                MessageBox.Show("Can not Remove");
-            }
-        }catch (Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error");
             }
-}
+        }
 
         private void cbFullNameEmp_SelectedIndexChanged_1(object sender, EventArgs e)
         {
@@ -204,7 +206,8 @@ namespace MiniStoreWinF.ManageWorkSheets
                 {
                     MessageBox.Show("Can not Remove");
                 }
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Error");
             }

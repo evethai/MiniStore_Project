@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHistoryWorksheet));
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel1 = new Panel();
@@ -41,6 +42,14 @@
             nbrPagination = new NumericUpDown();
             panel3 = new Panel();
             dgvShowWorkSheet = new DataGridView();
+            idWorkSheetDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            idEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            sheetDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            timeCheckInDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            timeCheckOutDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            statusDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            TotalWorkingHours = new DataGridViewTextBoxColumn();
             workSheetBindingSource = new BindingSource(components);
             panel4 = new Panel();
             txtTimeCheckOut = new TextBox();
@@ -57,14 +66,6 @@
             label8 = new Label();
             label9 = new Label();
             label10 = new Label();
-            idWorkSheetDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            idEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            dateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            sheetDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            timeCheckInDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            timeCheckOutDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            statusDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            TotalWorkingHours = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             panel1.SuspendLayout();
@@ -123,19 +124,19 @@
             // 
             // btLoad
             // 
-            btLoad.Location = new Point(652, 26);
+            btLoad.Image = (Image)resources.GetObject("btLoad.Image");
+            btLoad.Location = new Point(652, 8);
             btLoad.Margin = new Padding(3, 4, 3, 4);
             btLoad.Name = "btLoad";
-            btLoad.Size = new Size(94, 29);
+            btLoad.Size = new Size(95, 59);
             btLoad.TabIndex = 43;
-            btLoad.Text = "LOAD";
             btLoad.UseVisualStyleBackColor = true;
             btLoad.Click += btLoad_Click;
             // 
             // dtpkEnd
             // 
             dtpkEnd.Format = DateTimePickerFormat.Short;
-            dtpkEnd.Location = new Point(459, 26);
+            dtpkEnd.Location = new Point(459, 22);
             dtpkEnd.Margin = new Padding(3, 4, 3, 4);
             dtpkEnd.Name = "dtpkEnd";
             dtpkEnd.Size = new Size(187, 27);
@@ -144,7 +145,7 @@
             // 
             // button4
             // 
-            button4.Location = new Point(335, 23);
+            button4.Location = new Point(335, 22);
             button4.Margin = new Padding(3, 4, 3, 4);
             button4.Name = "button4";
             button4.Size = new Size(118, 31);
@@ -155,7 +156,7 @@
             // dtpkStart
             // 
             dtpkStart.Format = DateTimePickerFormat.Short;
-            dtpkStart.Location = new Point(123, 26);
+            dtpkStart.Location = new Point(127, 22);
             dtpkStart.Margin = new Padding(3, 4, 3, 4);
             dtpkStart.Name = "dtpkStart";
             dtpkStart.Size = new Size(187, 27);
@@ -183,11 +184,11 @@
             // 
             // nbrPagination
             // 
-            nbrPagination.Location = new Point(314, 5);
+            nbrPagination.Location = new Point(335, 5);
             nbrPagination.Maximum = new decimal(new int[] { 9000, 0, 0, 0 });
             nbrPagination.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nbrPagination.Name = "nbrPagination";
-            nbrPagination.Size = new Size(163, 27);
+            nbrPagination.Size = new Size(104, 27);
             nbrPagination.TabIndex = 43;
             nbrPagination.Value = new decimal(new int[] { 1, 0, 0, 0 });
             nbrPagination.ValueChanged += nbrPagination_ValueChanged;
@@ -217,7 +218,72 @@
             dgvShowWorkSheet.RowTemplate.Height = 29;
             dgvShowWorkSheet.Size = new Size(784, 466);
             dgvShowWorkSheet.TabIndex = 42;
+            dgvShowWorkSheet.CellFormatting += dgvShowWorkSheet_CellFormatting;
             dgvShowWorkSheet.CellMouseDoubleClick += dgvShowWorkSheet_CellMouseDoubleClick;
+            // 
+            // idWorkSheetDataGridViewTextBoxColumn
+            // 
+            idWorkSheetDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            idWorkSheetDataGridViewTextBoxColumn.DataPropertyName = "IdWorkSheet";
+            idWorkSheetDataGridViewTextBoxColumn.HeaderText = "ID";
+            idWorkSheetDataGridViewTextBoxColumn.MinimumWidth = 6;
+            idWorkSheetDataGridViewTextBoxColumn.Name = "idWorkSheetDataGridViewTextBoxColumn";
+            // 
+            // idEmpDataGridViewTextBoxColumn
+            // 
+            idEmpDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            idEmpDataGridViewTextBoxColumn.DataPropertyName = "IdEmp";
+            idEmpDataGridViewTextBoxColumn.HeaderText = "Id Employee";
+            idEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
+            idEmpDataGridViewTextBoxColumn.Name = "idEmpDataGridViewTextBoxColumn";
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            dateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            dateDataGridViewTextBoxColumn.MinimumWidth = 6;
+            dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            // 
+            // sheetDataGridViewTextBoxColumn
+            // 
+            sheetDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            sheetDataGridViewTextBoxColumn.DataPropertyName = "Sheet";
+            sheetDataGridViewTextBoxColumn.HeaderText = "Sheet";
+            sheetDataGridViewTextBoxColumn.MinimumWidth = 6;
+            sheetDataGridViewTextBoxColumn.Name = "sheetDataGridViewTextBoxColumn";
+            // 
+            // timeCheckInDataGridViewTextBoxColumn
+            // 
+            timeCheckInDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            timeCheckInDataGridViewTextBoxColumn.DataPropertyName = "TimeCheckIn";
+            timeCheckInDataGridViewTextBoxColumn.HeaderText = "Time Check In";
+            timeCheckInDataGridViewTextBoxColumn.MinimumWidth = 6;
+            timeCheckInDataGridViewTextBoxColumn.Name = "timeCheckInDataGridViewTextBoxColumn";
+            // 
+            // timeCheckOutDataGridViewTextBoxColumn
+            // 
+            timeCheckOutDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            timeCheckOutDataGridViewTextBoxColumn.DataPropertyName = "TimeCheckOut";
+            timeCheckOutDataGridViewTextBoxColumn.HeaderText = "Time Check Out";
+            timeCheckOutDataGridViewTextBoxColumn.MinimumWidth = 6;
+            timeCheckOutDataGridViewTextBoxColumn.Name = "timeCheckOutDataGridViewTextBoxColumn";
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            statusDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            statusDataGridViewTextBoxColumn.MinimumWidth = 6;
+            statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            // 
+            // TotalWorkingHours
+            // 
+            TotalWorkingHours.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            TotalWorkingHours.DataPropertyName = "TotalWorkingHours";
+            TotalWorkingHours.HeaderText = "Working Hours";
+            TotalWorkingHours.MinimumWidth = 6;
+            TotalWorkingHours.Name = "TotalWorkingHours";
             // 
             // workSheetBindingSource
             // 
@@ -292,12 +358,16 @@
             // 
             // btResetAllHistory
             // 
-            btResetAllHistory.Location = new Point(153, 493);
+            btResetAllHistory.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btResetAllHistory.Image = (Image)resources.GetObject("btResetAllHistory.Image");
+            btResetAllHistory.ImageAlign = ContentAlignment.TopCenter;
+            btResetAllHistory.Location = new Point(200, 488);
             btResetAllHistory.Margin = new Padding(3, 4, 3, 4);
             btResetAllHistory.Name = "btResetAllHistory";
-            btResetAllHistory.Size = new Size(169, 41);
+            btResetAllHistory.Size = new Size(120, 88);
             btResetAllHistory.TabIndex = 43;
             btResetAllHistory.Text = "Show All History";
+            btResetAllHistory.TextAlign = ContentAlignment.BottomCenter;
             btResetAllHistory.UseVisualStyleBackColor = true;
             btResetAllHistory.Click += btResetAllHistory_Click;
             // 
@@ -330,12 +400,15 @@
             // 
             // btUpdate
             // 
-            btUpdate.Location = new Point(228, 444);
+            btUpdate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btUpdate.Image = (Image)resources.GetObject("btUpdate.Image");
+            btUpdate.Location = new Point(202, 395);
             btUpdate.Margin = new Padding(3, 4, 3, 4);
             btUpdate.Name = "btUpdate";
-            btUpdate.Size = new Size(94, 41);
+            btUpdate.Size = new Size(120, 88);
             btUpdate.TabIndex = 40;
             btUpdate.Text = "Update";
+            btUpdate.TextAlign = ContentAlignment.BottomCenter;
             btUpdate.UseVisualStyleBackColor = true;
             btUpdate.Click += btUpdate_Click;
             // 
@@ -351,7 +424,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(2, 254);
+            label8.Location = new Point(27, 251);
             label8.Name = "label8";
             label8.Size = new Size(46, 20);
             label8.TabIndex = 39;
@@ -360,7 +433,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(2, 185);
+            label9.Location = new Point(32, 190);
             label9.Name = "label9";
             label9.Size = new Size(41, 20);
             label9.TabIndex = 38;
@@ -375,78 +448,15 @@
             label10.TabIndex = 36;
             label10.Text = "ID WorkSheet";
             // 
-            // idWorkSheetDataGridViewTextBoxColumn
-            // 
-            idWorkSheetDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            idWorkSheetDataGridViewTextBoxColumn.DataPropertyName = "IdWorkSheet";
-            idWorkSheetDataGridViewTextBoxColumn.HeaderText = "ID";
-            idWorkSheetDataGridViewTextBoxColumn.MinimumWidth = 6;
-            idWorkSheetDataGridViewTextBoxColumn.Name = "idWorkSheetDataGridViewTextBoxColumn";
-            // 
-            // idEmpDataGridViewTextBoxColumn
-            // 
-            idEmpDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            idEmpDataGridViewTextBoxColumn.DataPropertyName = "IdEmp";
-            idEmpDataGridViewTextBoxColumn.HeaderText = "Id Employee";
-            idEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
-            idEmpDataGridViewTextBoxColumn.Name = "idEmpDataGridViewTextBoxColumn";
-            // 
-            // dateDataGridViewTextBoxColumn
-            // 
-            dateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
-            dateDataGridViewTextBoxColumn.HeaderText = "Date";
-            dateDataGridViewTextBoxColumn.MinimumWidth = 6;
-            dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
-            // 
-            // sheetDataGridViewTextBoxColumn
-            // 
-            sheetDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            sheetDataGridViewTextBoxColumn.DataPropertyName = "Sheet";
-            sheetDataGridViewTextBoxColumn.HeaderText = "Sheet";
-            sheetDataGridViewTextBoxColumn.MinimumWidth = 6;
-            sheetDataGridViewTextBoxColumn.Name = "sheetDataGridViewTextBoxColumn";
-            // 
-            // timeCheckInDataGridViewTextBoxColumn
-            // 
-            timeCheckInDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            timeCheckInDataGridViewTextBoxColumn.DataPropertyName = "TimeCheckIn";
-            timeCheckInDataGridViewTextBoxColumn.HeaderText = "Time Check In";
-            timeCheckInDataGridViewTextBoxColumn.MinimumWidth = 6;
-            timeCheckInDataGridViewTextBoxColumn.Name = "timeCheckInDataGridViewTextBoxColumn";
-            // 
-            // timeCheckOutDataGridViewTextBoxColumn
-            // 
-            timeCheckOutDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            timeCheckOutDataGridViewTextBoxColumn.DataPropertyName = "TimeCheckOut";
-            timeCheckOutDataGridViewTextBoxColumn.HeaderText = "Time Check Out";
-            timeCheckOutDataGridViewTextBoxColumn.MinimumWidth = 6;
-            timeCheckOutDataGridViewTextBoxColumn.Name = "timeCheckOutDataGridViewTextBoxColumn";
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            statusDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            statusDataGridViewTextBoxColumn.MinimumWidth = 6;
-            statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            // 
-            // TotalWorkingHours
-            // 
-            TotalWorkingHours.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            TotalWorkingHours.DataPropertyName = "TotalWorkingHours";
-            TotalWorkingHours.HeaderText = "Working Hours";
-            TotalWorkingHours.MinimumWidth = 6;
-            TotalWorkingHours.Name = "TotalWorkingHours";
-            // 
             // frmHistoryWorksheet
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1136, 596);
             Controls.Add(tableLayoutPanel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmHistoryWorksheet";
-            Text = "frmHistoryWorksheet";
+            Text = "History Worksheet";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             panel1.ResumeLayout(false);

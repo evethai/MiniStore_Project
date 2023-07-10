@@ -27,29 +27,35 @@ namespace MiniStoreWinF.ManageEmployees
         public frmCreateEmployees()
         {
             InitializeComponent();
-           
-                var role = new PermissionService().GetAll().Where(e => !e.Roles.Equals(0)).ToList();
+            if (ContextScope.currentEmployee.Roles == 0)
+            {
+                var role = new PermissionService().GetAll().Where(e => e.Roles > 0).ToList();
                 cbRole.DataSource = role;
 
                 cbRole.DisplayMember = "Permission1";
-            
-          
+            }
+            else
+            {
+                var role = new PermissionService().GetAll().Where(e => e.Roles > 1).ToList();
+                cbRole.DataSource = role;
+
+                cbRole.DisplayMember = "Permission1";
+            }
+
+
+
 
 
         }
         private void CreateEmployees_Load(object sender, EventArgs e)
         {
-            pnAccount.Visible = false;
-            pnAccount1.Visible = false;
-            pnAccount2.Visible = true;
+
         }
         private void btNext_Click(object sender, EventArgs e)
         {
 
 
-            pnAccount.Visible = true;
-            pnAccount1.Visible = true;
-            pnAccount2.Visible = true;
+
 
         }
         public string ImageToBase64(string path)
@@ -70,7 +76,9 @@ namespace MiniStoreWinF.ManageEmployees
         {
 
             //Check existed username
-            var duplicated = employeeService.GetAll().Where(entity => entity.Username.Equals(txtUsername.Text)).FirstOrDefault();
+            var duplicatedUsername = employeeService.GetAll().Where(entity => entity.Username.Equals(txtUsername.Text)).FirstOrDefault();
+            var duplicatedCI = employeeService.GetAll().Where(e => e.Cccd.Equals(txtAddCCCD.Text)).FirstOrDefault();
+            var duplicatedPhone = employeeService.GetAll().Where(e => e.PhoneEmp.Equals(txtAddPhone.Text)).FirstOrDefault();
             if (txtAddName.Text == "" ||
                 txtAddPhone.Text == "" ||
                 txtAddAddress.Text == "" ||
@@ -96,12 +104,26 @@ namespace MiniStoreWinF.ManageEmployees
             }
 
 
-            else if (duplicated != null)
+            else if (duplicatedUsername != null)
             {
                 MessageBox.Show("Username already exist!");
                 txtUsername.Focus();
                 txtUsername.SelectAll();
                 txtUsername.Text = "";
+            }
+            else if (duplicatedPhone != null)
+            {
+                MessageBox.Show("Phone already exist!");
+                txtAddPhone.Focus();
+                txtAddPhone.SelectAll();
+                txtAddPhone.Text = "";
+            }
+            else if (duplicatedCI != null)
+            {
+                MessageBox.Show("CI already exist!");
+                txtAddCCCD.Focus();
+                txtAddCCCD.SelectAll();
+                txtAddCCCD.Text = "";
             }
 
             //Check age > 18
@@ -141,7 +163,7 @@ namespace MiniStoreWinF.ManageEmployees
                 if (result == DialogResult.OK)
                 {
                     Validation employeeService = new Validation();
-                    if(cbIdType.Text == null)
+                    if (cbIdType.Text == null)
                     {
                         employeeService.Add(employee, "SE");
                     }
@@ -149,7 +171,7 @@ namespace MiniStoreWinF.ManageEmployees
                     {
                         employeeService.Add(employee, cbIdType.Text);
                     }
-                    
+
                     this.Close();
                 }
                 else

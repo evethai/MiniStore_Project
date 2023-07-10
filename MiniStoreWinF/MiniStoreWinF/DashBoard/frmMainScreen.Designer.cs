@@ -613,6 +613,7 @@
             // 
             pnMain.BorderStyle = BorderStyle.Fixed3D;
             pnMain.Dock = DockStyle.Fill;
+            pnMain.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             pnMain.Location = new Point(172, 49);
             pnMain.Margin = new Padding(4);
             pnMain.Name = "pnMain";

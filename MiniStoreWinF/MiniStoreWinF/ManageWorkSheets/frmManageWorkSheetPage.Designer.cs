@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageWorkSheetPage));
             workSheetBindingSource = new BindingSource(components);
             sheetDetailBindingSource = new BindingSource(components);
             tableLayoutPanel2 = new TableLayoutPanel();
@@ -72,35 +73,46 @@
             // 
             // btRegisterWorksheet
             // 
-            btRegisterWorksheet.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btRegisterWorksheet.Dock = DockStyle.Fill;
+            btRegisterWorksheet.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btRegisterWorksheet.Image = (Image)resources.GetObject("btRegisterWorksheet.Image");
+            btRegisterWorksheet.ImageAlign = ContentAlignment.MiddleLeft;
             btRegisterWorksheet.Location = new Point(3, 143);
             btRegisterWorksheet.Name = "btRegisterWorksheet";
             btRegisterWorksheet.Size = new Size(267, 65);
             btRegisterWorksheet.TabIndex = 2;
-            btRegisterWorksheet.Text = "Register WorkSheet";
+            btRegisterWorksheet.Text = "Register";
+            btRegisterWorksheet.TextAlign = ContentAlignment.MiddleRight;
             btRegisterWorksheet.UseVisualStyleBackColor = true;
             btRegisterWorksheet.Click += btRegisterWorksheet_Click;
             // 
             // btSheetDetails
             // 
-            btSheetDetails.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btSheetDetails.Dock = DockStyle.Fill;
+            btSheetDetails.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btSheetDetails.Image = (Image)resources.GetObject("btSheetDetails.Image");
+            btSheetDetails.ImageAlign = ContentAlignment.MiddleLeft;
             btSheetDetails.Location = new Point(3, 73);
             btSheetDetails.Name = "btSheetDetails";
             btSheetDetails.Size = new Size(267, 64);
             btSheetDetails.TabIndex = 1;
-            btSheetDetails.Text = "Details Worksheet";
+            btSheetDetails.Text = "Details";
+            btSheetDetails.TextAlign = ContentAlignment.MiddleRight;
             btSheetDetails.UseVisualStyleBackColor = true;
             btSheetDetails.Click += btSheetDetails_Click;
             // 
             // btHistory
             // 
             btHistory.Dock = DockStyle.Fill;
-            btHistory.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btHistory.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            btHistory.Image = (Image)resources.GetObject("btHistory.Image");
+            btHistory.ImageAlign = ContentAlignment.MiddleLeft;
             btHistory.Location = new Point(3, 3);
             btHistory.Name = "btHistory";
             btHistory.Size = new Size(267, 64);
             btHistory.TabIndex = 0;
-            btHistory.Text = "History WorkSheet";
+            btHistory.Text = "History";
+            btHistory.TextAlign = ContentAlignment.MiddleRight;
             btHistory.UseVisualStyleBackColor = true;
             btHistory.Click += btHistory_Click;
             // 
@@ -142,9 +154,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1397, 668);
             Controls.Add(tableLayoutPanel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             Name = "frmManageWorkSheetPage";
-            Text = "ManageWorkSheetPage";
+            Text = "Manage WorkSheet Page";
             ((System.ComponentModel.ISupportInitialize)workSheetBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)sheetDetailBindingSource).EndInit();
             tableLayoutPanel2.ResumeLayout(false);

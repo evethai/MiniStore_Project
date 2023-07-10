@@ -40,6 +40,8 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel1 = new Panel();
+            cbSort = new ComboBox();
+            label2 = new Label();
             btSearch = new Button();
             cbTypeProducts = new ComboBox();
             txtSearchName = new TextBox();
@@ -211,6 +213,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(cbSort);
+            panel1.Controls.Add(label2);
             panel1.Controls.Add(btSearch);
             panel1.Controls.Add(cbTypeProducts);
             panel1.Controls.Add(txtSearchName);
@@ -222,18 +226,39 @@
             panel1.Size = new Size(625, 147);
             panel1.TabIndex = 19;
             // 
+            // cbSort
+            // 
+            cbSort.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbSort.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            cbSort.Location = new Point(317, 84);
+            cbSort.Margin = new Padding(4);
+            cbSort.Name = "cbSort";
+            cbSort.Size = new Size(202, 36);
+            cbSort.TabIndex = 13;
+            cbSort.SelectedIndexChanged += cbSort_SelectedIndexChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(234, 94);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(75, 20);
+            label2.TabIndex = 12;
+            label2.Text = "Sort  EXP:";
+            // 
             // btSearch
             // 
             btSearch.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btSearch.Image = (Image)resources.GetObject("btSearch.Image");
             btSearch.ImageAlign = ContentAlignment.MiddleLeft;
-            btSearch.Location = new Point(425, 15);
+            btSearch.Location = new Point(437, 15);
             btSearch.Margin = new Padding(4);
             btSearch.Name = "btSearch";
-            btSearch.Size = new Size(128, 59);
+            btSearch.Size = new Size(82, 48);
             btSearch.TabIndex = 4;
-            btSearch.Text = "Search";
-            btSearch.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btSearch.TextAlign = ContentAlignment.MiddleRight;
             btSearch.UseVisualStyleBackColor = true;
             btSearch.Click += btSearch_Click;
             // 
@@ -241,16 +266,16 @@
             // 
             cbTypeProducts.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cbTypeProducts.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            cbTypeProducts.Location = new Point(231, 73);
+            cbTypeProducts.Location = new Point(81, 84);
             cbTypeProducts.Margin = new Padding(4);
             cbTypeProducts.Name = "cbTypeProducts";
-            cbTypeProducts.Size = new Size(166, 36);
+            cbTypeProducts.Size = new Size(135, 36);
             cbTypeProducts.TabIndex = 11;
             cbTypeProducts.SelectedIndexChanged += cbTypeProducts_SelectedIndexChanged;
             // 
             // txtSearchName
             // 
-            txtSearchName.Location = new Point(132, 27);
+            txtSearchName.Location = new Point(146, 19);
             txtSearchName.Margin = new Padding(4);
             txtSearchName.Name = "txtSearchName";
             txtSearchName.Size = new Size(283, 34);
@@ -260,7 +285,7 @@
             // 
             lblType.AutoSize = true;
             lblType.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblType.Location = new Point(143, 77);
+            lblType.Location = new Point(24, 94);
             lblType.Margin = new Padding(4, 0, 4, 0);
             lblType.Name = "lblType";
             lblType.Size = new Size(38, 15);
@@ -303,17 +328,22 @@
             // 
             // btUsingPoint
             // 
-            btUsingPoint.Location = new Point(439, 185);
+            btUsingPoint.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btUsingPoint.Image = (Image)resources.GetObject("btUsingPoint.Image");
+            btUsingPoint.ImageAlign = ContentAlignment.TopCenter;
+            btUsingPoint.Location = new Point(419, 160);
             btUsingPoint.Margin = new Padding(4);
             btUsingPoint.Name = "btUsingPoint";
-            btUsingPoint.Size = new Size(129, 41);
+            btUsingPoint.Size = new Size(114, 67);
             btUsingPoint.TabIndex = 28;
-            btUsingPoint.Text = "Use";
+            btUsingPoint.Text = "Use point";
+            btUsingPoint.TextAlign = ContentAlignment.BottomCenter;
             btUsingPoint.UseVisualStyleBackColor = true;
             btUsingPoint.Click += btUsingPoint_Click;
             // 
             // txtPointUsing
             // 
+            txtPointUsing.Enabled = false;
             txtPointUsing.Location = new Point(187, 182);
             txtPointUsing.Margin = new Padding(4);
             txtPointUsing.Name = "txtPointUsing";
@@ -354,20 +384,24 @@
             // 
             // txtScanVoucher
             // 
-            txtScanVoucher.Location = new Point(160, 24);
+            txtScanVoucher.Location = new Point(187, 24);
             txtScanVoucher.Margin = new Padding(4);
             txtScanVoucher.Name = "txtScanVoucher";
-            txtScanVoucher.Size = new Size(256, 34);
+            txtScanVoucher.Size = new Size(206, 34);
             txtScanVoucher.TabIndex = 20;
             // 
             // btUsingVoucher
             // 
-            btUsingVoucher.Location = new Point(439, 24);
+            btUsingVoucher.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btUsingVoucher.Image = (Image)resources.GetObject("btUsingVoucher.Image");
+            btUsingVoucher.ImageAlign = ContentAlignment.TopCenter;
+            btUsingVoucher.Location = new Point(419, 9);
             btUsingVoucher.Margin = new Padding(4);
             btUsingVoucher.Name = "btUsingVoucher";
-            btUsingVoucher.Size = new Size(138, 38);
+            btUsingVoucher.Size = new Size(114, 67);
             btUsingVoucher.TabIndex = 19;
-            btUsingVoucher.Text = "Use";
+            btUsingVoucher.Text = "Use voucher";
+            btUsingVoucher.TextAlign = ContentAlignment.BottomCenter;
             btUsingVoucher.UseVisualStyleBackColor = true;
             btUsingVoucher.Click += btUsingVoucher_Click;
             // 
@@ -376,10 +410,10 @@
             btCheckMember.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btCheckMember.Image = (Image)resources.GetObject("btCheckMember.Image");
             btCheckMember.ImageAlign = ContentAlignment.TopCenter;
-            btCheckMember.Location = new Point(439, 70);
+            btCheckMember.Location = new Point(419, 85);
             btCheckMember.Margin = new Padding(4);
             btCheckMember.Name = "btCheckMember";
-            btCheckMember.Size = new Size(136, 98);
+            btCheckMember.Size = new Size(114, 67);
             btCheckMember.TabIndex = 6;
             btCheckMember.Text = "Member";
             btCheckMember.TextAlign = ContentAlignment.BottomCenter;
@@ -427,7 +461,7 @@
             // 
             lblVoucher.AutoSize = true;
             lblVoucher.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblVoucher.Location = new Point(15, 24);
+            lblVoucher.Location = new Point(26, 24);
             lblVoucher.Margin = new Padding(4, 0, 4, 0);
             lblVoucher.Name = "lblVoucher";
             lblVoucher.Size = new Size(58, 15);
@@ -502,10 +536,10 @@
             // 
             btAddOrders.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btAddOrders.Image = (Image)resources.GetObject("btAddOrders.Image");
-            btAddOrders.Location = new Point(279, 546);
+            btAddOrders.Location = new Point(423, 450);
             btAddOrders.Margin = new Padding(4);
             btAddOrders.Name = "btAddOrders";
-            btAddOrders.Size = new Size(138, 50);
+            btAddOrders.Size = new Size(114, 64);
             btAddOrders.TabIndex = 8;
             btAddOrders.UseVisualStyleBackColor = true;
             btAddOrders.Click += btAddOrders_Click;
@@ -679,12 +713,16 @@
             // 
             // btReturnMoney
             // 
-            btReturnMoney.Location = new Point(447, 55);
+            btReturnMoney.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btReturnMoney.Image = (Image)resources.GetObject("btReturnMoney.Image");
+            btReturnMoney.ImageAlign = ContentAlignment.TopCenter;
+            btReturnMoney.Location = new Point(399, 25);
             btReturnMoney.Margin = new Padding(4);
             btReturnMoney.Name = "btReturnMoney";
-            btReturnMoney.Size = new Size(136, 41);
+            btReturnMoney.Size = new Size(123, 67);
             btReturnMoney.TabIndex = 29;
-            btReturnMoney.Text = "Payment";
+            btReturnMoney.Text = "Return change";
+            btReturnMoney.TextAlign = ContentAlignment.BottomCenter;
             btReturnMoney.UseVisualStyleBackColor = true;
             btReturnMoney.Click += btReturnMoney_Click;
             // 
@@ -693,7 +731,7 @@
             txtProvidesCash.Location = new Point(183, 16);
             txtProvidesCash.Margin = new Padding(4);
             txtProvidesCash.Name = "txtProvidesCash";
-            txtProvidesCash.Size = new Size(256, 34);
+            txtProvidesCash.Size = new Size(208, 34);
             txtProvidesCash.TabIndex = 25;
             // 
             // txtReturnPayment
@@ -702,7 +740,7 @@
             txtReturnPayment.Margin = new Padding(4);
             txtReturnPayment.Name = "txtReturnPayment";
             txtReturnPayment.ReadOnly = true;
-            txtReturnPayment.Size = new Size(256, 34);
+            txtReturnPayment.Size = new Size(208, 34);
             txtReturnPayment.TabIndex = 26;
             // 
             // btShowBill
@@ -710,10 +748,10 @@
             btShowBill.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btShowBill.Image = (Image)resources.GetObject("btShowBill.Image");
             btShowBill.ImageAlign = ContentAlignment.TopCenter;
-            btShowBill.Location = new Point(15, 93);
+            btShowBill.Location = new Point(408, 100);
             btShowBill.Margin = new Padding(4);
             btShowBill.Name = "btShowBill";
-            btShowBill.Size = new Size(136, 98);
+            btShowBill.Size = new Size(114, 67);
             btShowBill.TabIndex = 11;
             btShowBill.Text = "Bill";
             btShowBill.TextAlign = ContentAlignment.BottomCenter;
@@ -762,10 +800,10 @@
             btCancelBill.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btCancelBill.Image = (Image)resources.GetObject("btCancelBill.Image");
             btCancelBill.ImageAlign = ContentAlignment.TopCenter;
-            btCancelBill.Location = new Point(457, 48);
+            btCancelBill.Location = new Point(399, 65);
             btCancelBill.Margin = new Padding(4);
             btCancelBill.Name = "btCancelBill";
-            btCancelBill.Size = new Size(136, 98);
+            btCancelBill.Size = new Size(123, 67);
             btCancelBill.TabIndex = 23;
             btCancelBill.Text = "Cancel";
             btCancelBill.TextAlign = ContentAlignment.BottomCenter;
@@ -778,7 +816,7 @@
             txtDiscount.Margin = new Padding(4);
             txtDiscount.Name = "txtDiscount";
             txtDiscount.ReadOnly = true;
-            txtDiscount.Size = new Size(256, 34);
+            txtDiscount.Size = new Size(208, 34);
             txtDiscount.TabIndex = 28;
             // 
             // lblTotal
@@ -798,7 +836,7 @@
             txtTotalAllOrders.Margin = new Padding(4);
             txtTotalAllOrders.Name = "txtTotalAllOrders";
             txtTotalAllOrders.ReadOnly = true;
-            txtTotalAllOrders.Size = new Size(256, 34);
+            txtTotalAllOrders.Size = new Size(208, 34);
             txtTotalAllOrders.TabIndex = 14;
             // 
             // label4
@@ -830,7 +868,7 @@
             Margin = new Padding(4);
             Name = "OrderProducts";
             StartPosition = FormStartPosition.WindowsDefaultBounds;
-            Text = "OrderProducts";
+            Text = "Order Products";
             Load += OrderProducts_Load;
             ((System.ComponentModel.ISupportInitialize)dgvShowListProducts).EndInit();
             ((System.ComponentModel.ISupportInitialize)productBindingSource).EndInit();
@@ -925,5 +963,7 @@
         private TableLayoutPanel tableLayoutPanel5;
         private Panel panel4;
         private Panel panel3;
+        private ComboBox cbSort;
+        private Label label2;
     }
 }

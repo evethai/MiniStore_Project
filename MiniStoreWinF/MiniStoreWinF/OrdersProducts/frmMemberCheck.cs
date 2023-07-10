@@ -70,7 +70,7 @@ namespace MiniStoreWinF.OrdersProducts
         }
         private void btCreateSusscessMember_Click(object sender, EventArgs e)
         {
-            try 
+            try
             {
                 var newMember = new Member();
                 string _phoneMember = txtPhoneNewMember.Text;
@@ -111,7 +111,7 @@ namespace MiniStoreWinF.OrdersProducts
                         newMember.PhoneMember = _phoneMember;
                         newMember.Point = _pointUsing;
                         newMember.DoB = DateTime.Parse(_DoBMember);
-                        var takeRatePoint =_ratePointService.GetAll().Where(p => p.StatusRp == true).FirstOrDefault();
+                        var takeRatePoint = _ratePointService.GetAll().Where(p => p.StatusRp == true).FirstOrDefault();
                         newMember.IdRate = takeRatePoint.IdRate;
                         newMember.TimeCreate = _dateUsing;
                         _memberService.Create(newMember);
@@ -119,8 +119,8 @@ namespace MiniStoreWinF.OrdersProducts
                         PointHas = 0;
                     }
                 }
-            } 
-            catch (Exception ex) 
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex + "BUG");
             }

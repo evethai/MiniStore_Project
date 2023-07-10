@@ -49,7 +49,8 @@
                 margin-bottom: 10px;
             }
             .dataTables_filter {
-                display: none;
+                margin-bottom: 10px;
+                color: white;
             }
 
             .dataTables_paginate .paginate_button.previous,
@@ -126,9 +127,18 @@
                     <div class="row justify-content-center">
                         <div class="col-md-5 col-sm-10 col-xs-10">
                             <br>
-                            <h2 name="welcome"> ${fullnameemapi}</h2>
+                            <h2 name="welcome">Welcome ${fullnameemapi}</h2>
                             <div class="row justify-content-center">
-                                <form class="col-md-6" style="width: auto !important;" action="Logout" method="POST" id="logoutForm">
+                                <form class="col-md-6" style="width: auto !important;" action="Info" method="POST">
+                                    <label for="logoutButton" class="btn btn-info" style="background: transparent; color: white">
+                                        <ion-icon name="person-outline"></ion-icon> Thông tin tài khoản
+                                    </label>
+                                    <input type="submit" id="logoutButton" value="Đăng xuất" style="display: none;">
+                                </form>
+                            </div>
+
+                            <div class="row justify-content-center">
+                                <form class="col-md-6" style="width: auto !important;" action="Login" method="POST" id="logoutForm">
                                     <input type="button" value="Đăng xuất" class="btn btn-danger loginButton" style="background-color: #dc3545; color: #000000;"  onclick="showLogoutConfirmation()">
                                 </form>
                             </div>
@@ -188,7 +198,7 @@
                                 <br>
                                 <div class="row justify-content-center">
                                     <div class="col-md-6 col-sm-6 col-xs-6">
-                                        <label for="sortOrder" style="color: white">Sort Order:</label>
+                                        <label for="sortOrder" style="color: white">Sort Worksheets:</label>
                                         <select class="form-select" id="sortOrder" name="sortOrder">
                                             <option value="ascending" ${sessionScope.sortOrder == 'ascending' ? 'selected' : ''}>Tăng dần</option>
                                             <option value="descending" ${sessionScope.sortOrder == 'descending' ? 'selected' : ''}>Giảm dần</option>
@@ -269,7 +279,7 @@
             </div>
         </div>
         <!-- Modal login-->
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header d-flex justify-content-center">
@@ -278,8 +288,8 @@
                     <div class="modal-body text-center text-danger">
                         Phiên làm việc đã hết hạn vui lòng đăng nhập lại!!!
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onclick="redirectToLoginPage()">Đăng nhập</button>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-danger" onclick="redirectToLoginPage()">Đăng nhập</button>
                     </div>
                 </div>
             </div>
@@ -312,7 +322,7 @@
                 function redirectToLoginPage() {
                     var form = document.createElement("form");
                     form.method = "POST";
-                    form.action = "Logout"; // Thay thế "LogoutServlet" bằng URL của Servlet xử lý logout
+                    form.action = "Login"; // Thay thế "LogoutServlet" bằng URL của Servlet xử lý logout
 
                     document.body.appendChild(form);
                     form.submit();
@@ -359,6 +369,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.js" ></script>
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js" ></script>
         <script src=https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"" ></script>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script src="JavaScript/changetheme.js"></script>
     </body>
 </html>

@@ -36,7 +36,7 @@ namespace MiniStoreWinF.ManageEmployees
         }
         public string autoID(string id, string prefix)
         {
-            //SEXX
+            //(prefix)XX
             string result = "";
             int cutID = int.Parse(id.Substring(2, 2));
             cutID++;
@@ -56,7 +56,7 @@ namespace MiniStoreWinF.ManageEmployees
         {
             frmShowEmployee valid = new frmShowEmployee();
             
-            var records = DataLoad().Where(entity => entity.FullNameEmp.Contains(name) || entity.PhoneEmp.Contains(name)).ToList();
+            var records = DataLoad().Where(entity => entity.FullNameEmp.Contains(name, StringComparison.OrdinalIgnoreCase) || entity.PhoneEmp.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList();
 
             return records;
         }
@@ -64,14 +64,14 @@ namespace MiniStoreWinF.ManageEmployees
         {
             if (ContextScope.currentEmployee.Roles >= 1)
             {
-                var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true && e.Roles >= 1).ToList();
+                var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true && e.Roles >= 2).ToList();
                
                 return employeeService;
 
             }
             else
             {
-                var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true).ToList();
+                var employeeService = _employeeService.GetAll().Where(e => e.IsActive == true && e.Roles >= 1).ToList();
                 
                 return employeeService;
             }

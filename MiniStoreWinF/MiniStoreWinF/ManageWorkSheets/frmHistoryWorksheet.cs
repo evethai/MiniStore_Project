@@ -161,6 +161,17 @@ namespace MiniStoreWinF.ManageWorkSheets
             }
         }
 
-
+        private void dgvShowWorkSheet_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 6)
+            {
+                if (e.Value != null && e.Value is bool)
+                {
+                    bool value = (bool)e.Value;
+                    e.Value = value ? "Present" : "Absent";
+                    e.FormattingApplied = true;
+                }
+            }
+        }
     }
 }

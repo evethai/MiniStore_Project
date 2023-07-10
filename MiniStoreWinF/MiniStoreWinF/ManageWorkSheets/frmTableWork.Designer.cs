@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTableWork));
             panel1 = new Panel();
             panel2 = new Panel();
             pnlJobSheet = new Panel();
@@ -105,11 +106,15 @@
             // 
             // btUpdate
             // 
-            btUpdate.Location = new Point(800, 71);
+            btUpdate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btUpdate.Image = (Image)resources.GetObject("btUpdate.Image");
+            btUpdate.ImageAlign = ContentAlignment.TopCenter;
+            btUpdate.Location = new Point(800, 62);
             btUpdate.Name = "btUpdate";
-            btUpdate.Size = new Size(94, 29);
+            btUpdate.Size = new Size(94, 67);
             btUpdate.TabIndex = 9;
             btUpdate.Text = "Update";
+            btUpdate.TextAlign = ContentAlignment.BottomCenter;
             btUpdate.UseVisualStyleBackColor = true;
             btUpdate.Click += btUpdate_Click;
             // 
@@ -132,21 +137,28 @@
             // 
             // btRemove
             // 
-            btRemove.Location = new Point(685, 71);
+            btRemove.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btRemove.Image = (Image)resources.GetObject("btRemove.Image");
+            btRemove.Location = new Point(685, 62);
             btRemove.Name = "btRemove";
-            btRemove.Size = new Size(94, 29);
+            btRemove.Size = new Size(94, 67);
             btRemove.TabIndex = 6;
             btRemove.Text = "Remove";
+            btRemove.TextAlign = ContentAlignment.BottomCenter;
             btRemove.UseVisualStyleBackColor = true;
             btRemove.Click += btRemove_Click_1;
             // 
             // btCreate
             // 
-            btCreate.Location = new Point(569, 71);
+            btCreate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btCreate.Image = (Image)resources.GetObject("btCreate.Image");
+            btCreate.ImageAlign = ContentAlignment.TopCenter;
+            btCreate.Location = new Point(576, 62);
             btCreate.Name = "btCreate";
-            btCreate.Size = new Size(94, 29);
+            btCreate.Size = new Size(94, 67);
             btCreate.TabIndex = 4;
             btCreate.Text = "Create";
+            btCreate.TextAlign = ContentAlignment.BottomCenter;
             btCreate.UseVisualStyleBackColor = true;
             btCreate.Click += btCreate_Click;
             // 
@@ -187,6 +199,7 @@
             // 
             // dtgvListWorkDate
             // 
+            dtgvListWorkDate.BackgroundColor = SystemColors.Control;
             dtgvListWorkDate.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvListWorkDate.Dock = DockStyle.Top;
             dtgvListWorkDate.Location = new Point(0, 0);
@@ -209,21 +222,29 @@
             // 
             // btNextday
             // 
-            btNextday.Location = new Point(762, 1);
+            btNextday.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btNextday.Image = (Image)resources.GetObject("btNextday.Image");
+            btNextday.ImageAlign = ContentAlignment.MiddleLeft;
+            btNextday.Location = new Point(739, 1);
             btNextday.Name = "btNextday";
-            btNextday.Size = new Size(94, 29);
+            btNextday.Size = new Size(117, 29);
             btNextday.TabIndex = 3;
             btNextday.Text = "Next day";
+            btNextday.TextAlign = ContentAlignment.MiddleRight;
             btNextday.UseVisualStyleBackColor = true;
             btNextday.Click += btNextday_Click;
             // 
             // btLastday
             // 
+            btLastday.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btLastday.Image = (Image)resources.GetObject("btLastday.Image");
+            btLastday.ImageAlign = ContentAlignment.MiddleRight;
             btLastday.Location = new Point(39, 3);
             btLastday.Name = "btLastday";
-            btLastday.Size = new Size(94, 29);
+            btLastday.Size = new Size(117, 29);
             btLastday.TabIndex = 2;
             btLastday.Text = "Last day";
+            btLastday.TextAlign = ContentAlignment.MiddleLeft;
             btLastday.UseVisualStyleBackColor = true;
             btLastday.Click += btLastday_Click;
             // 
@@ -249,7 +270,7 @@
             Controls.Add(panel1);
             Name = "frmTableWork";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "frmTableWork";
+            Text = "Table Working";
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             pnlJobSheet.ResumeLayout(false);

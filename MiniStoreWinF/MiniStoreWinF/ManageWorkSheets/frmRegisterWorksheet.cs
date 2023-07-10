@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Repository.Service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +28,9 @@ namespace MiniStoreWinF.ManageWorkSheets
         {
             InitializeComponent();
             LoadDataManage();
+            ShowNotification();
         }
+
         public void LoadDataManage()
         {
             Matrix = new List<List<Button>>();
@@ -37,12 +40,16 @@ namespace MiniStoreWinF.ManageWorkSheets
                 Matrix.Add(new List<Button>());
                 for (int j = 0; j < TableSheet.DayOfWeek; j++)
                 {
-                    Button btn = new Button() { Width = btMonday.Size.Width, Height = btMonday.Size.Height };
+                    btMonday.Dock = DockStyle.Fill;
+
+                    Button btn = new Button() { Width = btMonday.Width, Height = btMonday.Height };
                     btn.Location = new Point(oldBtn.Location.X + oldBtn.Width + TableSheet.DateButtonMagin, oldBtn.Location.Y);
                     btn.Click += bnt_Click;
+                    btn.AutoSize = true;
                     pnlMatrix.Controls.Add(btn);
                     Matrix[i].Add(btn);
                     oldBtn = btn;
+
                 }
                 oldBtn = new Button() { Width = 0, Height = 0, Location = new Point(-TableSheet.DateButtonMagin, oldBtn.Location.Y + TableSheet.DateButtonHeight) };
             }
@@ -103,7 +110,7 @@ namespace MiniStoreWinF.ManageWorkSheets
             frmTableWork daily = new frmTableWork((sender as Button).Text, dtpkDate.Value);
             daily.ShowDialog();
         }
-        int DayOfMonth(DateTime date)
+       public int DayOfMonth(DateTime date)
         {
             switch (date.Month)
             {
@@ -138,6 +145,48 @@ namespace MiniStoreWinF.ManageWorkSheets
         private void btnMonthBack_Click_1(object sender, EventArgs e)
         {
             dtpkDate.Value = dtpkDate.Value.AddMonths(-1);
+        }
+        public void ShowNotification()
+        {
+            WorkSheetService workSheetService = new WorkSheetService();
+            var showNotification = workSheetService.GetAll().Where(p => p.Date.Value.Month == dtpkDate.Value.Month && p.Status.Value == false).ToList().Count;
+            if (showNotification > 0)
+            {
+                nmbrNotification.Value = showNotification;
+                chbNotification.Checked = true;
+            }
+            else 
+            {
+                chbNotification.Checked = false;            
+            }
+        }
+        public int DayOfMonths(DateTime date , int month)
+        {
+            if(month>=1 && month <= 12) {
+                switch (month)
+                {
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                    case 8:
+                    case 10:
+                    case 12:
+                        return 31;
+                    case 2:
+                        if ((date.Year % 4 == 0 && date.Year % 100 != 0) || date.Year % 400 == 0)
+                            return 29;
+                        else
+                            return 28;
+                    default:
+                        return 30;
+                }
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
+            
         }
     }
 

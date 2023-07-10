@@ -110,6 +110,8 @@ namespace API_Database
 		
 		private System.Nullable<bool> _Status;
 		
+		private System.Nullable<System.TimeSpan> _Total_working_hours;
+		
 		private EntityRef<SheetDetail> _SheetDetail;
 		
 		private EntityRef<Employee> _Employee;
@@ -132,6 +134,8 @@ namespace API_Database
     partial void OnTimeCheckOutChanged();
     partial void OnStatusChanging(System.Nullable<bool> value);
     partial void OnStatusChanged();
+    partial void OnTotal_working_hoursChanging(System.Nullable<System.TimeSpan> value);
+    partial void OnTotal_working_hoursChanged();
     #endregion
 		
 		public WorkSheet()
@@ -289,6 +293,26 @@ namespace API_Database
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total_working_hours", DbType="Time")]
+		public System.Nullable<System.TimeSpan> Total_working_hours
+		{
+			get
+			{
+				return this._Total_working_hours;
+			}
+			set
+			{
+				if ((this._Total_working_hours != value))
+				{
+					this.OnTotal_working_hoursChanging(value);
+					this.SendPropertyChanging();
+					this._Total_working_hours = value;
+					this.SendPropertyChanged("Total_working_hours");
+					this.OnTotal_working_hoursChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SheetDetail_WorkSheet", Storage="_SheetDetail", ThisKey="Sheet", OtherKey="Sheet", IsForeignKey=true)]
 		public SheetDetail SheetDetail
 		{
@@ -394,6 +418,10 @@ namespace API_Database
 		
 		private System.Nullable<System.TimeSpan> _ShiftEndTime;
 		
+		private System.Nullable<int> _Roles;
+		
+		private System.Nullable<bool> _CheckNight;
+		
 		private EntitySet<WorkSheet> _WorkSheets;
 		
     #region Extensibility Method Definitions
@@ -410,6 +438,10 @@ namespace API_Database
     partial void OnShiftStartTimeChanged();
     partial void OnShiftEndTimeChanging(System.Nullable<System.TimeSpan> value);
     partial void OnShiftEndTimeChanged();
+    partial void OnRolesChanging(System.Nullable<int> value);
+    partial void OnRolesChanged();
+    partial void OnCheckNightChanging(System.Nullable<bool> value);
+    partial void OnCheckNightChanged();
     #endregion
 		
 		public SheetDetail()
@@ -518,6 +550,46 @@ namespace API_Database
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Roles", DbType="Int")]
+		public System.Nullable<int> Roles
+		{
+			get
+			{
+				return this._Roles;
+			}
+			set
+			{
+				if ((this._Roles != value))
+				{
+					this.OnRolesChanging(value);
+					this.SendPropertyChanging();
+					this._Roles = value;
+					this.SendPropertyChanged("Roles");
+					this.OnRolesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckNight", DbType="Bit")]
+		public System.Nullable<bool> CheckNight
+		{
+			get
+			{
+				return this._CheckNight;
+			}
+			set
+			{
+				if ((this._CheckNight != value))
+				{
+					this.OnCheckNightChanging(value);
+					this.SendPropertyChanging();
+					this._CheckNight = value;
+					this.SendPropertyChanged("CheckNight");
+					this.OnCheckNightChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SheetDetail_WorkSheet", Storage="_WorkSheets", ThisKey="Sheet", OtherKey="Sheet")]
 		public EntitySet<WorkSheet> WorkSheets
 		{
@@ -596,6 +668,8 @@ namespace API_Database
 		
 		private string _PictureEmp;
 		
+		private string _Email;
+		
 		private EntitySet<WorkSheet> _WorkSheets;
 		
     #region Extensibility Method Definitions
@@ -628,6 +702,8 @@ namespace API_Database
     partial void OnIsActiveChanged();
     partial void OnPictureEmpChanging(string value);
     partial void OnPictureEmpChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
     #endregion
 		
 		public Employee()
@@ -892,6 +968,26 @@ namespace API_Database
 					this._PictureEmp = value;
 					this.SendPropertyChanged("PictureEmp");
 					this.OnPictureEmpChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(50)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
 				}
 			}
 		}

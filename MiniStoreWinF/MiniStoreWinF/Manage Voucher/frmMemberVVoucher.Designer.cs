@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMemberVVoucher));
             panel1 = new Panel();
             btMember = new Button();
             btVoucher = new Button();
@@ -48,21 +49,27 @@
             // 
             // btMember
             // 
+            btMember.Image = (Image)resources.GetObject("btMember.Image");
+            btMember.ImageAlign = ContentAlignment.MiddleLeft;
             btMember.Location = new Point(3, 102);
             btMember.Name = "btMember";
             btMember.Size = new Size(148, 73);
             btMember.TabIndex = 1;
             btMember.Text = "Member";
+            btMember.TextAlign = ContentAlignment.MiddleRight;
             btMember.UseVisualStyleBackColor = true;
             btMember.Click += btMember_Click;
             // 
             // btVoucher
             // 
+            btVoucher.Image = (Image)resources.GetObject("btVoucher.Image");
+            btVoucher.ImageAlign = ContentAlignment.MiddleLeft;
             btVoucher.Location = new Point(3, 12);
             btVoucher.Name = "btVoucher";
             btVoucher.Size = new Size(148, 73);
             btVoucher.TabIndex = 0;
             btVoucher.Text = "Voucher";
+            btVoucher.TextAlign = ContentAlignment.MiddleRight;
             btVoucher.UseVisualStyleBackColor = true;
             btVoucher.Click += btVoucher_Click;
             // 

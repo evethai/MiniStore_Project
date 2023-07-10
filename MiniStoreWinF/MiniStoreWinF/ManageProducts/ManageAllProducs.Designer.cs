@@ -41,7 +41,6 @@
             label1 = new Label();
             txtIDProduct = new TextBox();
             groupBox5 = new GroupBox();
-            txtExpProduct = new Button();
             label12 = new Label();
             label11 = new Label();
             dateDateImport = new DateTimePicker();
@@ -51,7 +50,6 @@
             label9 = new Label();
             dateMFG = new DateTimePicker();
             groupBox2 = new GroupBox();
-            btClearPic = new Button();
             txtPathPicture = new TextBox();
             btImportPictureProduct = new Button();
             PictureProduct = new PictureBox();
@@ -65,24 +63,21 @@
             expDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
             productBindingSource = new BindingSource(components);
-            groupBox6 = new GroupBox();
-            btExport = new Button();
-            button5 = new Button();
-            txtPathToImport = new TextBox();
-            txtSelectFile = new Button();
-            txtArrange = new ComboBox();
-            btSearch = new Button();
-            txtComboType = new ComboBox();
-            txtName = new TextBox();
-            txtCheckType = new CheckBox();
-            txtCheckName = new CheckBox();
-            button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            groupBox4 = new GroupBox();
+            btImportProduct = new Button();
+            txtExpProduct = new Button();
             btUpdate = new Button();
-            rd2 = new RadioButton();
             rd1 = new RadioButton();
+            rd2 = new RadioButton();
+            button1 = new Button();
+            groupBox6 = new GroupBox();
+            txtArrange = new ComboBox();
+            txtCheckName = new CheckBox();
+            txtCheckType = new CheckBox();
+            txtName = new TextBox();
+            txtComboType = new ComboBox();
+            btSearch = new Button();
             sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -93,6 +88,8 @@
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productBindingSource).BeginInit();
+            tableLayoutPanel3.SuspendLayout();
+            groupBox4.SuspendLayout();
             groupBox6.SuspendLayout();
             SuspendLayout();
             // 
@@ -102,23 +99,23 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
             tableLayoutPanel1.Controls.Add(groupBox1, 0, 2);
-            tableLayoutPanel1.Controls.Add(groupBox6, 0, 1);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel3, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 89F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 269F));
-            tableLayoutPanel1.Size = new Size(1435, 645);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 109F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 315F));
+            tableLayoutPanel1.Size = new Size(1395, 645);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.ColumnCount = 3;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.9104271F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35.89923F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32.0503845F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.7652969F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 36.7170639F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 29.4456444F));
             tableLayoutPanel2.Controls.Add(groupBox3, 0, 0);
             tableLayoutPanel2.Controls.Add(groupBox5, 1, 0);
             tableLayoutPanel2.Controls.Add(groupBox2, 2, 0);
@@ -127,7 +124,7 @@
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(1429, 281);
+            tableLayoutPanel2.Size = new Size(1389, 215);
             tableLayoutPanel2.TabIndex = 1;
             // 
             // groupBox3
@@ -143,7 +140,7 @@
             groupBox3.Dock = DockStyle.Fill;
             groupBox3.Location = new Point(3, 3);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(450, 275);
+            groupBox3.Size = new Size(463, 209);
             groupBox3.TabIndex = 1;
             groupBox3.TabStop = false;
             groupBox3.Text = "Information Of Product";
@@ -201,7 +198,7 @@
             txtNameProduct.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             txtNameProduct.Location = new Point(132, 132);
             txtNameProduct.Name = "txtNameProduct";
-            txtNameProduct.Size = new Size(210, 31);
+            txtNameProduct.Size = new Size(191, 31);
             txtNameProduct.TabIndex = 2;
             // 
             // label1
@@ -216,10 +213,12 @@
             // 
             // txtIDProduct
             // 
+            txtIDProduct.BackColor = SystemColors.ScrollBar;
             txtIDProduct.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             txtIDProduct.Location = new Point(132, 54);
             txtIDProduct.Name = "txtIDProduct";
-            txtIDProduct.Size = new Size(210, 31);
+            txtIDProduct.ReadOnly = true;
+            txtIDProduct.Size = new Size(191, 31);
             txtIDProduct.TabIndex = 0;
             // 
             // groupBox5
@@ -233,24 +232,12 @@
             groupBox5.Controls.Add(label9);
             groupBox5.Controls.Add(dateMFG);
             groupBox5.Dock = DockStyle.Fill;
-            groupBox5.Location = new Point(459, 3);
+            groupBox5.Location = new Point(472, 3);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(507, 275);
+            groupBox5.Size = new Size(504, 209);
             groupBox5.TabIndex = 3;
             groupBox5.TabStop = false;
             groupBox5.Text = "Date Import/MFG/EXP";
-            // 
-            // txtExpProduct
-            // 
-            txtExpProduct.BackColor = SystemColors.ButtonShadow;
-            txtExpProduct.ForeColor = SystemColors.ActiveCaptionText;
-            txtExpProduct.Location = new Point(360, 51);
-            txtExpProduct.Name = "txtExpProduct";
-            txtExpProduct.Size = new Size(96, 32);
-            txtExpProduct.TabIndex = 28;
-            txtExpProduct.Text = "EXP ";
-            txtExpProduct.UseVisualStyleBackColor = false;
-            txtExpProduct.Click += txtExpProduct_Click;
             // 
             // label12
             // 
@@ -274,10 +261,11 @@
             // 
             // dateDateImport
             // 
+            dateDateImport.Enabled = false;
             dateDateImport.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             dateDateImport.Location = new Point(145, 130);
             dateDateImport.Name = "dateDateImport";
-            dateDateImport.Size = new Size(249, 31);
+            dateDateImport.Size = new Size(228, 31);
             dateDateImport.TabIndex = 22;
             // 
             // label10
@@ -292,10 +280,11 @@
             // 
             // dateEXP
             // 
+            dateEXP.Enabled = false;
             dateEXP.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             dateEXP.Location = new Point(145, 89);
             dateEXP.Name = "dateEXP";
-            dateEXP.Size = new Size(249, 31);
+            dateEXP.Size = new Size(228, 31);
             dateEXP.TabIndex = 20;
             // 
             // cbStatus
@@ -320,50 +309,39 @@
             // 
             // dateMFG
             // 
+            dateMFG.Enabled = false;
             dateMFG.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             dateMFG.Location = new Point(145, 49);
             dateMFG.Name = "dateMFG";
-            dateMFG.Size = new Size(249, 31);
+            dateMFG.Size = new Size(228, 31);
             dateMFG.TabIndex = 17;
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(btClearPic);
             groupBox2.Controls.Add(txtPathPicture);
             groupBox2.Controls.Add(btImportPictureProduct);
             groupBox2.Controls.Add(PictureProduct);
             groupBox2.Dock = DockStyle.Fill;
-            groupBox2.Location = new Point(972, 3);
+            groupBox2.Location = new Point(982, 3);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(454, 275);
+            groupBox2.Size = new Size(404, 209);
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             groupBox2.Text = "Picture Product";
             // 
-            // btClearPic
-            // 
-            btClearPic.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            btClearPic.ForeColor = SystemColors.ActiveCaptionText;
-            btClearPic.Location = new Point(204, 196);
-            btClearPic.Name = "btClearPic";
-            btClearPic.Size = new Size(94, 31);
-            btClearPic.TabIndex = 7;
-            btClearPic.Text = "Clear";
-            btClearPic.UseVisualStyleBackColor = true;
-            btClearPic.Click += btClearPic_Click;
-            // 
             // txtPathPicture
             // 
-            txtPathPicture.Location = new Point(139, 237);
+            txtPathPicture.Location = new Point(137, 246);
             txtPathPicture.Name = "txtPathPicture";
             txtPathPicture.Size = new Size(125, 27);
             txtPathPicture.TabIndex = 1;
+            txtPathPicture.Visible = false;
             // 
             // btImportPictureProduct
             // 
             btImportPictureProduct.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             btImportPictureProduct.ForeColor = SystemColors.ActiveCaptionText;
-            btImportPictureProduct.Location = new Point(104, 196);
+            btImportPictureProduct.Location = new Point(106, 199);
             btImportPictureProduct.Name = "btImportPictureProduct";
             btImportPictureProduct.Size = new Size(94, 31);
             btImportPictureProduct.TabIndex = 6;
@@ -374,7 +352,7 @@
             // PictureProduct
             // 
             PictureProduct.BackColor = SystemColors.Info;
-            PictureProduct.Location = new Point(104, 40);
+            PictureProduct.Location = new Point(51, 49);
             PictureProduct.Name = "PictureProduct";
             PictureProduct.Size = new Size(194, 144);
             PictureProduct.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -385,9 +363,9 @@
             // 
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.Dock = DockStyle.Fill;
-            groupBox1.Location = new Point(3, 379);
+            groupBox1.Location = new Point(3, 333);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1429, 263);
+            groupBox1.Size = new Size(1389, 309);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "List Of Product";
@@ -403,7 +381,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1423, 237);
+            dataGridView1.Size = new Size(1383, 283);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
@@ -467,192 +445,66 @@
             // 
             productBindingSource.DataSource = typeof(Repository.Models.Product);
             // 
-            // groupBox6
+            // tableLayoutPanel3
             // 
-            groupBox6.Controls.Add(txtExpProduct);
-            groupBox6.Controls.Add(btExport);
-            groupBox6.Controls.Add(button5);
-            groupBox6.Controls.Add(txtPathToImport);
-            groupBox6.Controls.Add(txtSelectFile);
-            groupBox6.Controls.Add(txtArrange);
-            groupBox6.Controls.Add(btSearch);
-            groupBox6.Controls.Add(txtComboType);
-            groupBox6.Controls.Add(txtName);
-            groupBox6.Controls.Add(txtCheckType);
-            groupBox6.Controls.Add(txtCheckName);
-            groupBox6.Controls.Add(button4);
-            groupBox6.Controls.Add(button3);
-            groupBox6.Controls.Add(button2);
-            groupBox6.Controls.Add(button1);
-            groupBox6.Controls.Add(btUpdate);
-            groupBox6.Controls.Add(rd2);
-            groupBox6.Controls.Add(rd1);
-            groupBox6.Dock = DockStyle.Fill;
-            groupBox6.Location = new Point(3, 290);
-            groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(1429, 83);
-            groupBox6.TabIndex = 2;
-            groupBox6.TabStop = false;
-            groupBox6.Text = "Operation";
+            tableLayoutPanel3.ColumnCount = 2;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.Controls.Add(groupBox4, 0, 0);
+            tableLayoutPanel3.Controls.Add(groupBox6, 1, 0);
+            tableLayoutPanel3.Dock = DockStyle.Fill;
+            tableLayoutPanel3.Location = new Point(3, 224);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 1;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel3.Size = new Size(1389, 103);
+            tableLayoutPanel3.TabIndex = 2;
             // 
-            // btExport
+            // groupBox4
             // 
-            btExport.BackColor = SystemColors.ButtonShadow;
-            btExport.ForeColor = SystemColors.ActiveCaptionText;
-            btExport.Location = new Point(860, 16);
-            btExport.Name = "btExport";
-            btExport.Size = new Size(96, 67);
-            btExport.TabIndex = 39;
-            btExport.Text = "Export Form";
-            btExport.UseVisualStyleBackColor = false;
-            btExport.Click += btExport_Click;
+            groupBox4.Controls.Add(btImportProduct);
+            groupBox4.Controls.Add(txtExpProduct);
+            groupBox4.Controls.Add(btUpdate);
+            groupBox4.Controls.Add(rd1);
+            groupBox4.Controls.Add(rd2);
+            groupBox4.Controls.Add(button1);
+            groupBox4.Dock = DockStyle.Fill;
+            groupBox4.Location = new Point(3, 3);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(688, 97);
+            groupBox4.TabIndex = 0;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Operation";
             // 
-            // button5
+            // btImportProduct
             // 
-            button5.BackColor = SystemColors.ButtonShadow;
-            button5.ForeColor = SystemColors.ActiveCaptionText;
-            button5.Location = new Point(1064, 51);
-            button5.Name = "button5";
-            button5.Size = new Size(96, 32);
-            button5.TabIndex = 38;
-            button5.Text = "Import";
-            button5.UseVisualStyleBackColor = false;
-            button5.Click += button5_Click;
+            btImportProduct.BackColor = SystemColors.ButtonShadow;
+            btImportProduct.ForeColor = SystemColors.ActiveCaptionText;
+            btImportProduct.Location = new Point(383, 22);
+            btImportProduct.Name = "btImportProduct";
+            btImportProduct.Size = new Size(96, 67);
+            btImportProduct.TabIndex = 29;
+            btImportProduct.Text = "Import Products";
+            btImportProduct.UseVisualStyleBackColor = false;
+            btImportProduct.Click += btImportProduct_Click;
             // 
-            // txtPathToImport
+            // txtExpProduct
             // 
-            txtPathToImport.Location = new Point(964, 19);
-            txtPathToImport.Name = "txtPathToImport";
-            txtPathToImport.Size = new Size(196, 27);
-            txtPathToImport.TabIndex = 37;
-            // 
-            // txtSelectFile
-            // 
-            txtSelectFile.BackColor = SystemColors.ButtonShadow;
-            txtSelectFile.ForeColor = SystemColors.ActiveCaptionText;
-            txtSelectFile.Location = new Point(962, 51);
-            txtSelectFile.Name = "txtSelectFile";
-            txtSelectFile.Size = new Size(96, 32);
-            txtSelectFile.TabIndex = 36;
-            txtSelectFile.Text = "Select File";
-            txtSelectFile.UseVisualStyleBackColor = false;
-            txtSelectFile.Click += txtSelectFile_Click;
-            // 
-            // txtArrange
-            // 
-            txtArrange.DisplayMember = "ALL";
-            txtArrange.DropDownStyle = ComboBoxStyle.DropDownList;
-            txtArrange.FormattingEnabled = true;
-            txtArrange.Items.AddRange(new object[] { "ALL", "Name Ascending", "Name Decrease" });
-            txtArrange.Location = new Point(712, 51);
-            txtArrange.Name = "txtArrange";
-            txtArrange.Size = new Size(124, 28);
-            txtArrange.TabIndex = 35;
-            txtArrange.SelectedIndexChanged += txtArrange_SelectedIndexChanged;
-            // 
-            // btSearch
-            // 
-            btSearch.BackColor = SystemColors.ButtonShadow;
-            btSearch.ForeColor = SystemColors.ActiveCaptionText;
-            btSearch.Location = new Point(712, 16);
-            btSearch.Name = "btSearch";
-            btSearch.Size = new Size(124, 32);
-            btSearch.TabIndex = 34;
-            btSearch.Text = "Search";
-            btSearch.UseVisualStyleBackColor = false;
-            btSearch.Click += btSearch_Click;
-            // 
-            // txtComboType
-            // 
-            txtComboType.DropDownStyle = ComboBoxStyle.DropDownList;
-            txtComboType.FormattingEnabled = true;
-            txtComboType.Location = new Point(613, 51);
-            txtComboType.Name = "txtComboType";
-            txtComboType.Size = new Size(79, 28);
-            txtComboType.TabIndex = 33;
-            // 
-            // txtName
-            // 
-            txtName.Location = new Point(613, 16);
-            txtName.Name = "txtName";
-            txtName.Size = new Size(79, 27);
-            txtName.TabIndex = 32;
-            // 
-            // txtCheckType
-            // 
-            txtCheckType.AutoSize = true;
-            txtCheckType.ForeColor = SystemColors.ActiveCaptionText;
-            txtCheckType.Location = new Point(481, 56);
-            txtCheckType.Name = "txtCheckType";
-            txtCheckType.Size = new Size(117, 24);
-            txtCheckType.TabIndex = 31;
-            txtCheckType.Text = "Type Product";
-            txtCheckType.UseVisualStyleBackColor = true;
-            // 
-            // txtCheckName
-            // 
-            txtCheckName.AutoSize = true;
-            txtCheckName.ForeColor = SystemColors.ActiveCaptionText;
-            txtCheckName.Location = new Point(481, 19);
-            txtCheckName.Name = "txtCheckName";
-            txtCheckName.Size = new Size(126, 24);
-            txtCheckName.TabIndex = 30;
-            txtCheckName.Text = "Name Product";
-            txtCheckName.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            button4.BackColor = SystemColors.ButtonShadow;
-            button4.ForeColor = SystemColors.ActiveCaptionText;
-            button4.Location = new Point(360, 16);
-            button4.Name = "button4";
-            button4.Size = new Size(96, 32);
-            button4.TabIndex = 29;
-            button4.Text = "Load";
-            button4.UseVisualStyleBackColor = false;
-            button4.Click += button4_Click;
-            // 
-            // button3
-            // 
-            button3.BackColor = SystemColors.ButtonShadow;
-            button3.ForeColor = SystemColors.ActiveCaptionText;
-            button3.Location = new Point(249, 51);
-            button3.Name = "button3";
-            button3.Size = new Size(96, 32);
-            button3.TabIndex = 28;
-            button3.Text = "Remove";
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click;
-            // 
-            // button2
-            // 
-            button2.BackColor = SystemColors.ButtonShadow;
-            button2.ForeColor = SystemColors.ActiveCaptionText;
-            button2.Location = new Point(249, 16);
-            button2.Name = "button2";
-            button2.Size = new Size(96, 32);
-            button2.TabIndex = 27;
-            button2.Text = "Clear";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
-            // 
-            // button1
-            // 
-            button1.BackColor = SystemColors.ButtonShadow;
-            button1.ForeColor = SystemColors.ActiveCaptionText;
-            button1.Location = new Point(135, 16);
-            button1.Name = "button1";
-            button1.Size = new Size(96, 32);
-            button1.TabIndex = 26;
-            button1.Text = "Create";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            txtExpProduct.BackColor = SystemColors.ButtonShadow;
+            txtExpProduct.ForeColor = SystemColors.ActiveCaptionText;
+            txtExpProduct.Location = new Point(266, 22);
+            txtExpProduct.Name = "txtExpProduct";
+            txtExpProduct.Size = new Size(96, 67);
+            txtExpProduct.TabIndex = 28;
+            txtExpProduct.Text = "Expired Products";
+            txtExpProduct.UseVisualStyleBackColor = false;
+            txtExpProduct.Click += txtExpProduct_Click;
             // 
             // btUpdate
             // 
             btUpdate.BackColor = SystemColors.ButtonShadow;
             btUpdate.ForeColor = SystemColors.ActiveCaptionText;
-            btUpdate.Location = new Point(135, 51);
+            btUpdate.Location = new Point(152, 57);
             btUpdate.Name = "btUpdate";
             btUpdate.Size = new Size(96, 32);
             btUpdate.TabIndex = 25;
@@ -660,23 +512,11 @@
             btUpdate.UseVisualStyleBackColor = false;
             btUpdate.Click += btUpdate_Click;
             // 
-            // rd2
-            // 
-            rd2.AutoSize = true;
-            rd2.Location = new Point(19, 59);
-            rd2.Margin = new Padding(4, 5, 4, 5);
-            rd2.Name = "rd2";
-            rd2.Size = new Size(88, 24);
-            rd2.TabIndex = 24;
-            rd2.TabStop = true;
-            rd2.Text = "Sold Out";
-            rd2.UseVisualStyleBackColor = true;
-            rd2.CheckedChanged += rd2_CheckedChanged;
-            // 
             // rd1
             // 
             rd1.AutoSize = true;
-            rd1.Location = new Point(19, 24);
+            rd1.Checked = true;
+            rd1.Location = new Point(36, 30);
             rd1.Margin = new Padding(4, 5, 4, 5);
             rd1.Name = "rd1";
             rd1.Size = new Size(104, 24);
@@ -685,6 +525,108 @@
             rd1.Text = "Availability";
             rd1.UseVisualStyleBackColor = true;
             rd1.CheckedChanged += rd1_CheckedChanged;
+            // 
+            // rd2
+            // 
+            rd2.AutoSize = true;
+            rd2.Location = new Point(36, 65);
+            rd2.Margin = new Padding(4, 5, 4, 5);
+            rd2.Name = "rd2";
+            rd2.Size = new Size(88, 24);
+            rd2.TabIndex = 24;
+            rd2.Text = "Sold Out";
+            rd2.UseVisualStyleBackColor = true;
+            rd2.CheckedChanged += rd2_CheckedChanged;
+            // 
+            // button1
+            // 
+            button1.BackColor = SystemColors.ButtonShadow;
+            button1.ForeColor = SystemColors.ActiveCaptionText;
+            button1.Location = new Point(152, 22);
+            button1.Name = "button1";
+            button1.Size = new Size(96, 32);
+            button1.TabIndex = 26;
+            button1.Text = "Create";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // groupBox6
+            // 
+            groupBox6.Controls.Add(txtArrange);
+            groupBox6.Controls.Add(txtCheckName);
+            groupBox6.Controls.Add(txtCheckType);
+            groupBox6.Controls.Add(txtName);
+            groupBox6.Controls.Add(txtComboType);
+            groupBox6.Controls.Add(btSearch);
+            groupBox6.Dock = DockStyle.Fill;
+            groupBox6.Location = new Point(697, 3);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Size = new Size(689, 97);
+            groupBox6.TabIndex = 1;
+            groupBox6.TabStop = false;
+            groupBox6.Text = "Filter Products";
+            // 
+            // txtArrange
+            // 
+            txtArrange.DisplayMember = "ALL";
+            txtArrange.DropDownStyle = ComboBoxStyle.DropDownList;
+            txtArrange.FormattingEnabled = true;
+            txtArrange.Items.AddRange(new object[] { "ALL", "Name Ascending", "Name Decrease" });
+            txtArrange.Location = new Point(262, 61);
+            txtArrange.Name = "txtArrange";
+            txtArrange.Size = new Size(124, 28);
+            txtArrange.TabIndex = 35;
+            txtArrange.SelectedIndexChanged += txtArrange_SelectedIndexChanged;
+            // 
+            // txtCheckName
+            // 
+            txtCheckName.AutoSize = true;
+            txtCheckName.ForeColor = SystemColors.ActiveCaptionText;
+            txtCheckName.Location = new Point(31, 29);
+            txtCheckName.Name = "txtCheckName";
+            txtCheckName.Size = new Size(126, 24);
+            txtCheckName.TabIndex = 30;
+            txtCheckName.Text = "Name Product";
+            txtCheckName.UseVisualStyleBackColor = true;
+            // 
+            // txtCheckType
+            // 
+            txtCheckType.AutoSize = true;
+            txtCheckType.ForeColor = SystemColors.ActiveCaptionText;
+            txtCheckType.Location = new Point(31, 66);
+            txtCheckType.Name = "txtCheckType";
+            txtCheckType.Size = new Size(117, 24);
+            txtCheckType.TabIndex = 31;
+            txtCheckType.Text = "Type Product";
+            txtCheckType.UseVisualStyleBackColor = true;
+            // 
+            // txtName
+            // 
+            txtName.Location = new Point(163, 26);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(79, 27);
+            txtName.TabIndex = 32;
+            // 
+            // txtComboType
+            // 
+            txtComboType.DropDownStyle = ComboBoxStyle.DropDownList;
+            txtComboType.FormattingEnabled = true;
+            txtComboType.Location = new Point(163, 61);
+            txtComboType.Name = "txtComboType";
+            txtComboType.Size = new Size(79, 28);
+            txtComboType.TabIndex = 33;
+            // 
+            // btSearch
+            // 
+            btSearch.BackColor = SystemColors.ButtonShadow;
+            btSearch.ForeColor = SystemColors.ActiveCaptionText;
+            btSearch.Location = new Point(262, 26);
+            btSearch.Name = "btSearch";
+            btSearch.Size = new Size(124, 32);
+            btSearch.TabIndex = 34;
+            btSearch.Text = "Search";
+            btSearch.UseVisualStyleBackColor = false;
+            btSearch.Click += btSearch_Click;
             // 
             // sqlCommandBuilder1
             // 
@@ -696,7 +638,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1435, 645);
+            ClientSize = new Size(1395, 645);
             Controls.Add(tableLayoutPanel1);
             Name = "ManageAllProducs";
             Text = "ManageAllProducs";
@@ -712,6 +654,9 @@
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)productBindingSource).EndInit();
+            tableLayoutPanel3.ResumeLayout(false);
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             groupBox6.ResumeLayout(false);
             groupBox6.PerformLayout();
             ResumeLayout(false);
@@ -758,7 +703,6 @@
         private DateTimePicker dateMFG;
         private Label label12;
         private ComboBox cbStatus;
-        private GroupBox groupBox6;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
@@ -787,10 +731,10 @@
         private DataGridViewTextBoxColumn mfgDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn expDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private TextBox txtPathToImport;
-        private Button txtSelectFile;
-        private Button button5;
-        private Button btExport;
         private Button txtExpProduct;
+        private TableLayoutPanel tableLayoutPanel3;
+        private GroupBox groupBox4;
+        private GroupBox groupBox6;
+        private Button btImportProduct;
     }
 }

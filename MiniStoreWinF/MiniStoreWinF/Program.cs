@@ -6,6 +6,7 @@ using MiniStoreWinF.ManageProducts;
 using MiniStoreWinF.ManageRevenue;
 using MiniStoreWinF.ManageSalary;
 using MiniStoreWinF.ManageWorkSheet;
+using MiniStoreWinF.ManageWorkSheets;
 using MiniStoreWinF.OrdersProducts;
 
 namespace MiniStoreWinF

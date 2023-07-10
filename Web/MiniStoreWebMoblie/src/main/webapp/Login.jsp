@@ -21,6 +21,16 @@
                 background-position: center;
                 background-size: cover;
             }
+            a.forgot-password {
+                color: white;
+                text-decoration: none;
+                position: relative;
+            }
+
+            a.forgot-password:hover {
+                text-decoration: underline;
+            }
+
         </style>
     </head>
     <body>
@@ -54,9 +64,12 @@
                                     <div class="mb-3">
                                         <div class="inputbox">
                                             <ion-icon name="lock-closed-outline"></ion-icon>
-                                            <input type="password" name="txtpassword" required maxlength="20">
+                                            <input type="password" name="txtpassword" required maxlength="20" >
                                             <label for="">Password</label>
                                         </div>
+                                    </div>
+                                    <div class="mb-3 d-flex justify-content-end">
+                                        <a href="forgot-password.jsp" class="forgot-password">Quên mật khẩu?</a>
                                     </div>
                                     <div class="g-recaptcha mb-3" data-sitekey="6Lcf9XcmAAAAAJjJG3BepTpkCmglEjKSh8HCdMIQ"></div>
                                     <button type="submit" class="btn btn-primary w-100" id="loginButton">Đăng nhập</button>
@@ -94,7 +107,7 @@
         </div>
 
         <!-- Modal login-->
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header d-flex justify-content-center">
@@ -109,6 +122,7 @@
                 </div> 
             </div>
         </div>
+
         <c:if test="${not empty fullnameemapi}">
             <script>
                 $(document).ready(function () {
@@ -141,9 +155,10 @@
 
         </script>
 
-        <script src="JavaScript/changetheme.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="JavaScript/changetheme.js"></script>
+
     </body>
 </html>
