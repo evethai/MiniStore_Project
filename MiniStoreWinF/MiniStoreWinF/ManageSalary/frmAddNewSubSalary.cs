@@ -56,9 +56,9 @@ namespace MiniStoreWinF.ManageSalary
                             detailSubSalary.SubsidiesSalary = subSalary;
                             detailSubSalary.Condition = Int32.Parse(cbCondi.Text);
                             detailSubSalary.ActiveSub = true;
-                            detailSubSalary.DateCreate = DateTime.Now;
-                            detailSubSalary.DateEffect = dtpEffect.Value;
-                            _detailSubSalaryService.Create(detailSubSalary);
+                    detailSubSalary.DateCreate = DateTime.Now;
+                    detailSubSalary.DateEffect = dtpEffect.Value;
+                    _detailSubSalaryService.Create(detailSubSalary);
                             MessageBox.Show("Add successfull", "Message", MessageBoxButtons.OK);
 
                             this.DialogResult = DialogResult.OK;

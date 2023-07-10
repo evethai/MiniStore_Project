@@ -57,6 +57,8 @@
             lb = new Label();
             panel7 = new Panel();
             txtScanVoucher = new TextBox();
+            btUsingVoucher = new Button();
+            txtScanVoucher = new TextBox();
             lblVoucher = new Label();
             btUsingPoint = new Button();
             btCheckMember = new Button();
@@ -269,7 +271,7 @@
             // btSearch
             // 
             btSearch.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btSearch.Image = (Image)resources.GetObject("btSearch.Image");
+            btSearch.Image = Properties.Resources.icons8_search_products_78;
             btSearch.ImageAlign = ContentAlignment.MiddleLeft;
             btSearch.Location = new Point(437, 15);
             btSearch.Margin = new Padding(4);
@@ -306,7 +308,7 @@
             lblType.Location = new Point(24, 94);
             lblType.Margin = new Padding(4, 0, 4, 0);
             lblType.Name = "lblType";
-            lblType.Size = new Size(38, 15);
+            lblType.Size = new Size(49, 20);
             lblType.TabIndex = 7;
             lblType.Text = "Type :";
             // 
@@ -328,6 +330,14 @@
             // 
             // panel5
             // 
+            panel5.Controls.Add(btUsingPoint);
+            panel5.Controls.Add(txtPointUsing);
+            panel5.Controls.Add(label3);
+            panel5.Controls.Add(txtLoyaltyPoint);
+            panel5.Controls.Add(lb);
+            panel5.Controls.Add(btUsingVoucher);
+            panel5.Controls.Add(txtScanVoucher);
+            panel5.Controls.Add(btCheckMember);
             panel5.Controls.Add(tableLayoutPanel6);
             panel5.Controls.Add(panel2);
             panel5.Dock = DockStyle.Fill;
@@ -418,6 +428,7 @@
             lb.TabIndex = 22;
             lb.Text = "Loyalty points:";
             // 
+            // btUsingVoucher
             // panel7
             // 
             panel7.Controls.Add(txtScanVoucher);
@@ -438,6 +449,18 @@
             // 
             // lblVoucher
             // 
+            btUsingVoucher.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btUsingVoucher.Image = (Image)resources.GetObject("btUsingVoucher.Image");
+            btUsingVoucher.ImageAlign = ContentAlignment.TopCenter;
+            btUsingVoucher.Location = new Point(419, 5);
+            btUsingVoucher.Margin = new Padding(4);
+            btUsingVoucher.Name = "btUsingVoucher";
+            btUsingVoucher.Size = new Size(114, 67);
+            btUsingVoucher.TabIndex = 19;
+            btUsingVoucher.Text = "Use voucher";
+            btUsingVoucher.TextAlign = ContentAlignment.BottomCenter;
+            btUsingVoucher.UseVisualStyleBackColor = true;
+            btUsingVoucher.Click += btUsingVoucher_Click;
             lblVoucher.AutoSize = true;
             lblVoucher.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             lblVoucher.Location = new Point(28, 47);
@@ -446,6 +469,14 @@
             lblVoucher.Size = new Size(58, 15);
             lblVoucher.TabIndex = 13;
             lblVoucher.Text = "Vourcher:";
+            // 
+            // txtScanVoucher
+            // 
+            txtScanVoucher.Location = new Point(187, 24);
+            txtScanVoucher.Margin = new Padding(4);
+            txtScanVoucher.Name = "txtScanVoucher";
+            txtScanVoucher.Size = new Size(206, 34);
+            txtScanVoucher.TabIndex = 20;
             // 
             // btUsingPoint
             // 
@@ -501,7 +532,7 @@
             rdCashpayment.TabStop = true;
             rdCashpayment.Text = "Cash payment";
             rdCashpayment.UseVisualStyleBackColor = true;
-            rdCashpayment.CheckedChanged += rdCashpayment_CheckedChanged;
+            rdCashpayment.Click += rdCashpayment_Click;
             // 
             // rdMomopayment
             // 
@@ -514,7 +545,7 @@
             rdMomopayment.TabStop = true;
             rdMomopayment.Text = "Momo payment";
             rdMomopayment.UseVisualStyleBackColor = true;
-            rdMomopayment.CheckedChanged += rdMomopayment_CheckedChanged;
+            rdMomopayment.Click += rdMomopayment_Click;
             // 
             // panel6
             // 
@@ -576,7 +607,7 @@
             lblPicture.Location = new Point(15, 231);
             lblPicture.Margin = new Padding(4, 0, 4, 0);
             lblPicture.Name = "lblPicture";
-            lblPicture.Size = new Size(47, 15);
+            lblPicture.Size = new Size(61, 20);
             lblPicture.TabIndex = 12;
             lblPicture.Text = "Picture:";
             // 
@@ -608,7 +639,7 @@
             lblName.Location = new Point(15, 15);
             lblName.Margin = new Padding(4, 0, 4, 0);
             lblName.Name = "lblName";
-            lblName.Size = new Size(42, 15);
+            lblName.Size = new Size(54, 20);
             lblName.TabIndex = 1;
             lblName.Text = "Name:";
             // 
@@ -638,7 +669,7 @@
             lblPrice.Location = new Point(15, 172);
             lblPrice.Margin = new Padding(4, 0, 4, 0);
             lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(36, 15);
+            lblPrice.Size = new Size(47, 20);
             lblPrice.TabIndex = 3;
             lblPrice.Text = "Price:";
             // 
@@ -649,7 +680,7 @@
             lblQuantity.Location = new Point(15, 70);
             lblQuantity.Margin = new Padding(4, 0, 4, 0);
             lblQuantity.Name = "lblQuantity";
-            lblQuantity.Size = new Size(56, 15);
+            lblQuantity.Size = new Size(72, 20);
             lblQuantity.TabIndex = 4;
             lblQuantity.Text = "Quantity:";
             // 
@@ -793,6 +824,7 @@
             btShowBill.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btShowBill.Image = (Image)resources.GetObject("btShowBill.Image");
             btShowBill.ImageAlign = ContentAlignment.TopCenter;
+            btShowBill.Location = new Point(399, 100);
             btShowBill.Location = new Point(491, 128);
             btShowBill.Margin = new Padding(4);
             btShowBill.Name = "btShowBill";

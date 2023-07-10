@@ -24,7 +24,7 @@ namespace MiniStoreWinF.ManageWorkSheets
         public frmSheetDetails()
         {
             InitializeComponent();
-            var showDetails = _sheetDetailService.GetAll().Where(p => p.Roles != null); // take table
+            var showDetails = _sheetDetailService.GetAll()/*.Where(p => p.Roles != null)*/; // take table
             dgvDetailWorksheet.DataSource = new BindingSource() { DataSource = showDetails }; //end show sheet details tab 5
             var showRole = _permissionService.GetAll().Where(x => x.Roles >= 2).ToList();
             cbRoles.DataSource = showRole;
