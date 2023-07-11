@@ -173,7 +173,7 @@
             // 
             // btSearch
             // 
-            btSearch.Location = new Point(1083, 1);
+            btSearch.Location = new Point(1097, 1);
             btSearch.Margin = new Padding(4, 5, 4, 5);
             btSearch.Name = "btSearch";
             btSearch.Size = new Size(23, 21);

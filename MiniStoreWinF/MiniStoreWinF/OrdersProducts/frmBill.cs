@@ -76,12 +76,22 @@ namespace MiniStoreWinF.OrdersProducts
             }
             if (ScopeBill.currentBill.TotalBill != null)
             {
-                txtPayMent.Text = ScopeBill.currentBill.TotalBill.ToString();
-                txtTotalBill.Text = (ScopeBill.currentBill.TotalBill + ScopeBill.currentBill.DiscountPrice).ToString();
+                if(ScopeBill.currentBill.DiscountPrice != null)
+                {
+                    txtPayMent.Text = ScopeBill.currentBill.TotalBill.ToString();
+                    txtTotalBill.Text = (ScopeBill.currentBill.TotalBill + ScopeBill.currentBill.DiscountPrice).ToString();
+                }
+                else
+                {
+                    txtPayMent.Text = ScopeBill.currentBill.TotalBill.ToString();
+                    txtTotalBill.Text = (ScopeBill.currentBill.TotalBill).ToString();
+                }
+
             }
             else
             {
                 txtPayMent.Text = "";
+
             }
             if (ScopeBill.currentBill.DateOfBill != null)
             {
