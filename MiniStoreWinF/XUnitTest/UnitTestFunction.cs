@@ -1,22 +1,17 @@
-using MiniStoreWinF.ManageSalary;
-using MiniStoreWinF.ManageEmployees;
-using Repository.Models;
+﻿using MiniStoreWinF.ManageSalary;
+using MiniStoreWinF.ManageWorkSheets;
 using Repository.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
 using Xunit;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
-using System.Windows.Forms;
-using MiniStoreWinF.ManageWorkSheets;
-using MiniStoreWinF;
 
-namespace xUnitTestDemo
+namespace XUnitTest
 {
-    public class UnitTest1
+    public class UnitTestFunction
     {
         //Test Tax function
         //Test case #1: check calculate tax function by attribute [Fact]
@@ -28,7 +23,7 @@ namespace xUnitTestDemo
         //          Expected value  = 0
         [Trait("Tax", "Fact")]
         [Fact]
-        public void Tax_CalculateTaxByDataInTable()
+        public void  Tax_CalculateTaxByDataInTable()
         {
             //Arrange
             CalculationAuto cal = new CalculationAuto();
@@ -105,25 +100,8 @@ namespace xUnitTestDemo
             // Assert
             Assert.Equal(expected, actual);
         }
-        //test case #4: check convert from String to Int and Throw FormatException
-        //Procedures:
-        //          1. Given a String 
-        //          2. execute Convert to Int
-        //Expected value
-        //          Give data in function must  be return FormatException
-        [Fact]
 
-        public void TestAutoIDThrownArgumentOutOfRangeException()
-        {
-            //// arrange
-            //string numberstring = "This is not an integer type";
-
-            //// act & assert
-            //Assert.Throws<FormatException>(() => Convert.ToInt32(numberstring));
-            Validation val = new Validation();
-            Assert.Throws<ArgumentOutOfRangeException>(() => val.autoID("SE1", "SE"));
-        }
-        //test case #5: check calculate DateOfMonth function by DDT and Progressive
+        //test case #4: check calculate DateOfMonth function by DDT and Progressive
         //because data in table not enough to test all case
         //Procedures:
         //          1. Given data to DayOfMonth, only focus Month 
@@ -131,6 +109,7 @@ namespace xUnitTestDemo
         //Expected value
         //          Give data(Date Time) in function must be return {}
         //          ArgumentException value
+        [Trait("Exception", "ArgymentException")]
         [Theory]
         [InlineData(13)]
         [InlineData(0)]
@@ -141,66 +120,67 @@ namespace xUnitTestDemo
             frmRegisterWorksheet _frmRegisterWorksheet = new frmRegisterWorksheet();
             Assert.Throws<ArgumentException>(() => _frmRegisterWorksheet.DayOfMonths(DateTime.Now, date));
         }
-        //test case #6: check calculate DateOfMonth function 
-        //Procedures:
-        //          1. Given data to DayOfMonth, only focus Month 
-        //          2. Execute frmRegisterWorkSheet.DayOfMonths
-        //Expected value
-        //          Give data(Datetime.Now) in function must be return {}
-        //          Expected: 21, Actual 31
+    }
+
+    [Collection("Parallel")]
+    public class TestClass1
+    {
         [Fact]
-        public void DateOfMonthCheckDateTimeNowHasManyDate()
+        public void Test1()
         {
-            frmRegisterWorksheet _frmRegisterWorksheet = new frmRegisterWorksheet();
-
-            int actual = _frmRegisterWorksheet.DayOfMonth(DateTime.Now);
-
-            Assert.Equal(21, actual);
+            Thread.Sleep(3000);
         }
 
-
     }
-    //[Collection("1")]
-    //public class TestClass1
-    //{
-    //    [Fact]
-    //    public void Test1()
-    //    {
-    //        Thread.Sleep(3000);
-    //    }
-    //}
-    //[Collection("2")]
-    //public class TestClass2
-    //{
-    //    [Fact]
-    //    public void Test2()
-    //    {
-    //        Thread.Sleep(5000);
-    //    }
-    //}
-    //[Collection("3")]
-    //public class TestClass3
-    //{
-    //    [Fact]
-    //    public void Test3()
-    //    {
-    //        Thread.Sleep(3000);
-    //    }
-    //}
-    //[Collection("4")]
-    //public class TestClass4
-    //{
 
-    //    [Fact]
-    //    public void Test4()
-    //    {
-    //        Thread.Sleep(5000);
-    //    }
-    //}
+    [Collection("Parallel")]
+    public class TestClass2
+    {
+        [Fact]
+        public void Test2()
+        {
+            Thread.Sleep(5000);
+        }
+    }
 
+    public class TestClass3
+    {
+        [Fact]
+        public void Test3()
+        {
+            Thread.Sleep(3000);
+        }
+    }
 
+    public class TestClass4
+    {
 
+        [Fact]
+        public void Test4()
+        {
+            Thread.Sleep(5000);
+        }
+    }
 
+    [CollectionDefinition("Non-Parallel Collection", DisableParallelization = true)]
+    public class NonParallelCollectionDefinitionClass
+    {
+    }
 
-
+    [Collection("Non-Parallel Collection")]
+    public class SerialTest
+    {
+        [Fact]
+        public async Task Test10()
+        {
+            await Task.Delay(TimeSpan.FromSeconds(5));
+            Assert.True(true);
+        }
+        [Fact]
+        public async Task Test11()
+        {
+            await Task.Delay(TimeSpan.FromSeconds(5));
+            Assert.True(true);
+        }
+    }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlTypes;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -32,6 +33,7 @@ namespace MiniStoreWinF.ManageRevenue
         {
             ChartImport(new DateTime(2023, 04, 01));
             ChartSalary(new DateTime(2023, 04, 01));
+            SumOfNumberOrderEachUnit();
         }
 
         private double RevenusOfMonth(DateTime time)
@@ -110,6 +112,74 @@ namespace MiniStoreWinF.ManageRevenue
             chImport.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
             // Tắt hiển thị lưới trục y
             chImport.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+        }
+
+        private void SumOfNumberOrderEachUnit()
+        {
+            List<Unit> listOrderProduct = new List<Unit>();
+            List<Unit> listAllProductImport = new List<Unit>();
+            _orderService = new OrderService();
+            _unitService = new UnitService();
+            var listOr = _orderService.GetAll().ToList();
+            var listUnit = _unitService.GetAll().ToList();
+            int? quantity = 0;
+
+            var listTrue = (from u in listUnit
+                            join o in listOr on u.IdUnit equals o.IdUnit
+                            select Tuple.Create(u.IdUnit, o.QuantityOrders)).ToList();
+
+
+            //số lượng sản phẩm bán ra ngoài theo từng loại unit
+            foreach (var item in listUnit)
+            {
+                Unit unit = new Unit();
+                foreach (var item2 in listTrue)
+                {
+                    if (item.IdUnit.Equals(item2.Item1.ToString()))
+                    {
+                        quantity += item2.Item2;
+                    }
+                }
+                unit.IdUnit = item.IdUnit;
+                unit.QuantityUnit = quantity;
+                unit.PriceImport = item.PriceImport;
+                listOrderProduct.Add(unit);
+                quantity = 0;
+            }
+
+            //số lượng sản phẩm nhập kho theo từng loại unit
+            foreach (var item in listOrderProduct)
+            {
+                Unit unit = new Unit();
+                foreach (var item2 in listUnit)
+                {
+                    if (item.IdUnit.Equals(item2.IdUnit))
+                    {
+                        quantity = item.QuantityUnit + item2.QuantityUnit;
+                    }
+                }
+                unit.IdUnit = item.IdUnit;
+                unit.QuantityUnit = quantity;
+                unit.PriceImport = item.PriceImport;
+                listAllProductImport.Add(unit);
+                quantity = 0;
+            }
+
+            //tính tổng số tiền cần để nhập hàng từ khi nào ?
+
+            double? price = 0;
+            foreach (var item in listAllProductImport)
+            {
+                price += item.PriceImport*item.QuantityUnit; 
+            }
+
+
+            label1.Text = u.formatDouble(price);
+            dataGridView1.DataSource = listOrderProduct;
+            dataGridView2.DataSource = listAllProductImport;
+            dataGridView3.DataSource = listUnit;
+
+
         }
 
     }

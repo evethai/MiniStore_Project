@@ -41,12 +41,20 @@
             tableLayoutPanel3 = new TableLayoutPanel();
             chImport = new System.Windows.Forms.DataVisualization.Charting.Chart();
             chSalary = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            panel1 = new Panel();
+            dataGridView2 = new DataGridView();
+            dataGridView1 = new DataGridView();
             label1 = new Label();
+            dataGridView3 = new DataGridView();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)chImport).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chSalary).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -71,6 +79,7 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 0, 0);
+            tableLayoutPanel2.Controls.Add(panel1, 1, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(3, 60);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -137,6 +146,34 @@
             title2.Text = "Amount to be paid to the employee every month";
             chSalary.Titles.Add(title2);
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(dataGridView3);
+            panel1.Controls.Add(dataGridView2);
+            panel1.Controls.Add(dataGridView1);
+            panel1.Location = new Point(608, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(593, 449);
+            panel1.TabIndex = 2;
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Location = new Point(29, 159);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.RowTemplate.Height = 27;
+            dataGridView2.Size = new Size(538, 129);
+            dataGridView2.TabIndex = 1;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(29, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 27;
+            dataGridView1.Size = new Size(538, 126);
+            dataGridView1.TabIndex = 0;
+            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -145,6 +182,15 @@
             label1.Size = new Size(43, 17);
             label1.TabIndex = 1;
             label1.Text = "label1";
+            // 
+            // dataGridView3
+            // 
+            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView3.Location = new Point(29, 315);
+            dataGridView3.Name = "dataGridView3";
+            dataGridView3.RowTemplate.Height = 27;
+            dataGridView3.Size = new Size(538, 119);
+            dataGridView3.TabIndex = 2;
             // 
             // frmProfit
             // 
@@ -161,6 +207,10 @@
             tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)chImport).EndInit();
             ((System.ComponentModel.ISupportInitialize)chSalary).EndInit();
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             ResumeLayout(false);
         }
 
@@ -172,5 +222,9 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chImport;
         private System.Windows.Forms.DataVisualization.Charting.Chart chSalary;
         private Label label1;
+        private Panel panel1;
+        private DataGridView dataGridView2;
+        private DataGridView dataGridView1;
+        private DataGridView dataGridView3;
     }
 }
