@@ -1,12 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-
-    <IsPackable>false</IsPackable>
-    <EnableWindowsTargeting>true</EnableWindowsTargeting>
-  </PropertyGroup>
+  <TargetFramework>net6.0</TargetFramework>
+  <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  <Nullable>enable</Nullable>
+  <IsPackable>false</IsPackable>
+</PropertyGroup>
 
 
   <ItemGroup>
