@@ -18,14 +18,14 @@ jobs:
       - name: Set up .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: '6.0'
 
       - name: Restore dependencies
-        working-directory: ./MiniStoreWinF/MiniStoreWinF/MiniStoreWinF.csproj
+        working-directory: ./MiniStoreWinF/MiniStoreWinF
         run: dotnet restore
 
       - name: Build
-        working-directory: ./MiniStoreWinF/MiniStoreWinF/MiniStoreWinF.csproj
+        working-directory: ./MiniStoreWinF/MiniStoreWinF
         run: dotnet build --configuration Release
 
       - name: Run NUnit tests
