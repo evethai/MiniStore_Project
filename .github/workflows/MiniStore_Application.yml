@@ -1,4 +1,4 @@
-name: .NET Core xUnit
+name: CI With GitHub Action using xUnit - MiniStore Application
 
 on:
   push:
@@ -9,17 +9,23 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-    - name: Set up .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '6.0'
+ 
 
-    - name: Build and test
+    - name: Restore NuGet packages
+      working-directory: ./MiniStoreWinF/MiniStoreWinF
+      run: dotnet restore
+
+    - name: Build
+      working-directory: ./MiniStoreWinF/MiniStoreWinF
+      run: dotnet build --configuration Release
+
+    - name: Run xUnit tests
       working-directory: ./MiniStoreWinF/XUnitTest
-      run: dotnet test
+      run: dotnet test --configuration Release --no-build
