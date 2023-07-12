@@ -22,11 +22,11 @@ jobs:
         dotnet-version: '6.0.x'
 
     - name: Restore NuGet packages
-      working-directory: ./MiniStoreWinF
+      working-directory: ./MiniStoreWinF/XUnitTest
       run: dotnet restore
 
     - name: Build
-      working-directory: ./MiniStoreWinF
+      working-directory: ./MiniStoreWinF/XUnitTest
       run: dotnet build --configuration Release
 
     - name: Run xUnit tests
