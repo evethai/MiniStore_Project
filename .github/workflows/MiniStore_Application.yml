@@ -19,11 +19,11 @@ jobs:
  
 
     - name: Restore NuGet packages
-      working-directory: ./MiniStoreWinF/XUnitTest
+      working-directory: ./MiniStoreWinF/MiniStoreWinF
       run: dotnet restore
 
     - name: Build
-      working-directory: ./MiniStoreWinF/XUnitTest
+      working-directory: ./MiniStoreWinF/MiniStoreWinF
       run: dotnet build --configuration Release
 
     - name: Run xUnit tests
