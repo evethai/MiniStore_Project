@@ -23,7 +23,7 @@ jobs:
       run: dotnet restore
 
     - name: Build
-      working-directory: ./MiniStoreWinF/MiniStoreWinF
+      working-directory: ./MiniStoreWinF/XUnitTest
       run: dotnet build --configuration Release
 
     - name: Run xUnit tests
