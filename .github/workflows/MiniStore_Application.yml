@@ -27,7 +27,7 @@ jobs:
 
     - name: Build
       working-directory: ./MiniStoreWinF/MiniStoreWinF
-      run: dotnet build --configuration Release
+      run: msbuild build --configuration Release
 
     - name: Run xUnit tests
       working-directory: ./MiniStoreWinF/XUnitTest
