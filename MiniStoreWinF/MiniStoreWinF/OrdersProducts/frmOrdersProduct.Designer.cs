@@ -265,7 +265,7 @@
             // btSearch
             // 
             btSearch.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btSearch.Image = Properties.Resources.icons8_search_products_78;
+
             btSearch.ImageAlign = ContentAlignment.MiddleLeft;
             btSearch.Location = new Point(437, 15);
             btSearch.Margin = new Padding(4);
@@ -542,7 +542,7 @@
             rdCashpayment.TabStop = true;
             rdCashpayment.Text = "Cash payment";
             rdCashpayment.UseVisualStyleBackColor = true;
-            rdCashpayment.Click += rdCashpayment_Click;
+
             // 
             // rdMomopayment
             // 
@@ -555,7 +555,6 @@
             rdMomopayment.TabStop = true;
             rdMomopayment.Text = "Momo payment";
             rdMomopayment.UseVisualStyleBackColor = true;
-            rdMomopayment.Click += rdMomopayment_Click;
             // 
             // panel6
             // 

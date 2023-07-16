@@ -66,7 +66,7 @@ namespace MiniStoreWinF.DashBoard
 
         private void numberOfRole()
         {
-            var list = _permissionService.GetAll().ToList();
+            var list = _permissionService.GetAll().Where(p => p.Roles != 0).ToList();
             dgvPer.Rows.Clear();
             foreach (var item in list)
             {
@@ -75,7 +75,7 @@ namespace MiniStoreWinF.DashBoard
                 row.Cells[dgvPer.Columns["role"].Index].Value = item.Permission1.ToString();
 
                 var num = _employeeService.GetAll().Count(p => p.Roles == item.Roles);
-                if (num > 0)
+                if (num >= 0)
                 {
                     row.Cells[dgvPer.Columns["num"].Index].Value = num.ToString();
                 }
@@ -104,10 +104,6 @@ namespace MiniStoreWinF.DashBoard
 
         }
 
-        private void btnView_Click(object sender, EventArgs e)
-        {
-            Authorization(cbRoles.SelectedValue.ToString());
-        }
 
         private void dgvAuthorization_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -169,6 +165,7 @@ namespace MiniStoreWinF.DashBoard
                 if (form.DialogResult == DialogResult.OK)
                 {
                     loadRole();
+                    numberOfRole();
                     cbRoles.SelectedValue = ContextScope.newPermission.Roles;
                 }
             }

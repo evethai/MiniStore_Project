@@ -231,7 +231,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dgvPer.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvPer.Dock = DockStyle.Top;
+            dgvPer.Dock = DockStyle.Fill;
             dgvPer.Location = new Point(0, 0);
             dgvPer.Margin = new Padding(0);
             dgvPer.Name = "dgvPer";
@@ -241,7 +241,7 @@
             dgvPer.ShowCellToolTips = false;
             dgvPer.ShowEditingIcon = false;
             dgvPer.ShowRowErrors = false;
-            dgvPer.Size = new Size(580, 317);
+            dgvPer.Size = new Size(580, 558);
             dgvPer.TabIndex = 1;
             // 
             // role

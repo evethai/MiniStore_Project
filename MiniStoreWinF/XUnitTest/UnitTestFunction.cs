@@ -68,7 +68,7 @@ namespace XUnitTest
             Assert.Equal(expected, actual);
         }
 
-        //test case #3: check calculate tax function by DDT and Progressive
+        //test case #3: check calculating tax function by DDT and Progressive
         //because data in table sql not enough to test all case
         //Procedures:
         //          1. Given data to CalculationAuto.Tax, only focus Salary 
@@ -122,65 +122,65 @@ namespace XUnitTest
         }
     }
 
-    [Collection("Parallel")]
-    public class TestClass1
-    {
-        [Fact]
-        public void Test1()
-        {
-            Thread.Sleep(3000);
-        }
+    //[Collection("Parallel")]
+    //public class TestClass1
+    //{
+    //    [Fact]
+    //    public void Test1()
+    //    {
+    //        Thread.Sleep(3000);
+    //    }
 
-    }
+    //}
 
-    [Collection("Parallel")]
-    public class TestClass2
-    {
-        [Fact]
-        public void Test2()
-        {
-            Thread.Sleep(5000);
-        }
-    }
+    //[Collection("Parallel")]
+    //public class TestClass2
+    //{
+    //    [Fact]
+    //    public void Test2()
+    //    {
+    //        Thread.Sleep(5000);
+    //    }
+    //}
 
-    public class TestClass3
-    {
-        [Fact]
-        public void Test3()
-        {
-            Thread.Sleep(3000);
-        }
-    }
+    //public class TestClass3
+    //{
+    //    [Fact]
+    //    public void Test3()
+    //    {
+    //        Thread.Sleep(3000);
+    //    }
+    //}
 
-    public class TestClass4
-    {
+    //public class TestClass4
+    //{
 
-        [Fact]
-        public void Test4()
-        {
-            Thread.Sleep(5000);
-        }
-    }
+    //    [Fact]
+    //    public void Test4()
+    //    {
+    //        Thread.Sleep(5000);
+    //    }
+    //}
 
-    [CollectionDefinition("Non-Parallel Collection", DisableParallelization = true)]
-    public class NonParallelCollectionDefinitionClass
-    {
-    }
+    //[CollectionDefinition("Non-Parallel Collection", DisableParallelization = true)]
+    //public class NonParallelCollectionDefinitionClass
+    //{
+    //}
 
-    [Collection("Non-Parallel Collection")]
-    public class SerialTest
-    {
-        [Fact]
-        public async Task Test10()
-        {
-            await Task.Delay(TimeSpan.FromSeconds(5));
-            Assert.True(true);
-        }
-        [Fact]
-        public async Task Test11()
-        {
-            await Task.Delay(TimeSpan.FromSeconds(5));
-            Assert.True(true);
-        }
-    }
+    //[Collection("Non-Parallel Collection")]
+    //public class SerialTest
+    //{
+    //    [Fact]
+    //    public async Task Test10()
+    //    {
+    //        await Task.Delay(TimeSpan.FromSeconds(5));
+    //        Assert.True(true);
+    //    }
+    //    [Fact]
+    //    public async Task Test11()
+    //    {
+    //        await Task.Delay(TimeSpan.FromSeconds(5));
+    //        Assert.True(true);
+    //    }
+    //}
 }
