@@ -82,6 +82,7 @@
             ClientSize = new Size(348, 131);
             Controls.Add(pRole);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             MaximumSize = new Size(364, 170);
             MinimumSize = new Size(364, 170);
             Name = "frmNewRole";

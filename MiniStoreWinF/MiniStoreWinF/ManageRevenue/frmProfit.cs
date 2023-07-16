@@ -48,17 +48,17 @@ namespace MiniStoreWinF.ManageRevenue
             return (double)reInMonth;
         }
 
-        private double TotalSalaryNeedInMonth(DateTime time)
-        {
-            double total = 0;
-            _salaryService = new SalaryService();
-            var list = u.salary(time).ToList();
-            foreach (var item in list)
-            {
-                total += item.SalaryAfterTax;
-            }
-            return total;
-        }
+        //private double TotalSalaryNeedInMonth(DateTime time)
+        //{
+        //    //double total = 0;
+        //    //_salaryService = new SalaryService();
+        //    //var list = u.salary(time).ToList();
+        //    //foreach (var item in list)
+        //    //{
+        //    //    total += item.SalaryAfterTax;
+        //    //}
+        //    //return total;
+        //}
 
         private void ChartImport(DateTime time)
         {
@@ -93,25 +93,25 @@ namespace MiniStoreWinF.ManageRevenue
 
         private void ChartSalary(DateTime time)
         {
-            double total = 0;
-            _salaryService = new SalaryService();
-            var list = _salaryService.GetAll().Where(p => p.DateOmonth.Year == time.Year).ToList();
-            for (int i = 1; i < 12; i++)
-            {
-                foreach (var item in list)
-                {
-                    if (item.DateImonth.Month == i)
-                    {
-                        total += item.SalaryAfterTax;
-                    }
-                }
-                chSalary.Series["VND"].Points.AddXY(i, total);
-                total = 0;
-            }
-            // Tắt hiển thị lưới trục x
-            chImport.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
-            // Tắt hiển thị lưới trục y
-            chImport.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+            //double total = 0;
+            //_salaryService = new SalaryService();
+            //var list = _salaryService.GetAll().Where(p => p.DateOmonth.Year == time.Year).ToList();
+            //for (int i = 1; i < 12; i++)
+            //{
+            //    foreach (var item in list)
+            //    {
+            //        if (item.DateImonth.Month == i)
+            //        {
+            //            total += item.SalaryAfterTax;
+            //        }
+            //    }
+            //    chSalary.Series["VND"].Points.AddXY(i, total);
+            //    total = 0;
+            //}
+            //// Tắt hiển thị lưới trục x
+            //chImport.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+            //// Tắt hiển thị lưới trục y
+            //chImport.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
         }
 
         private void SumOfNumberOrderEachUnit()

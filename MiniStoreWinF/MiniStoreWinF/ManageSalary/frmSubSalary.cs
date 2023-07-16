@@ -12,24 +12,21 @@ namespace MiniStoreWinF.ManageSalary
 {
     public partial class frmSubSalary : Form
     {
-        DetailSubSalaryService _detailSubSalaryService;
+
+        SubDetailService _subDetailService;
         EmployeeService _employeeService;
         SubSalaryService _subSalaryService;
         DetailAdvanceSalaryService _detailAdvanceSalaryService;
 
         Utinity u = new Utinity();
         CalculationAuto ca = new CalculationAuto();
-        List<SubSalary> _list = null;
+        List<SubDetail> _list = null;
         int pageNumber = 1;
         int numberRecord = 7;
 
         public frmSubSalary()
         {
             InitializeComponent();
-            _detailSubSalaryService = new DetailSubSalaryService();
-            _employeeService = new EmployeeService();
-            _subSalaryService = new SubSalaryService();
-            _detailAdvanceSalaryService = new DetailAdvanceSalaryService();
         }
 
         private void frmSubSalary_Load(object sender, EventArgs e)
@@ -41,7 +38,7 @@ namespace MiniStoreWinF.ManageSalary
             u.showListEmp_ALL(cbName);
 
             //Show list Sub Salary  last month
-            showListEmployeHasSubSalary(DateTime.Now.AddMonths(-1));
+            showListEmployeHasSubSalary();
 
             //Show list Advance Salary  last month
             dgvAdv.DataSource = showAdvanceSalary(DateTime.Now.AddMonths(-1)).ToList();
@@ -50,55 +47,38 @@ namespace MiniStoreWinF.ManageSalary
 
         }
 
-        //Show list Sub Salary  last month
-        public void showListEmployeHasSubSalary(DateTime time)
+
+        public void showListEmployeHasSubSalary()
         {
-            var list = _subSalaryService.GetAll().Where(p => p.Time.Value.Month.Equals(time.Month) && p.Time.Value.Year.Equals(time.Year)).ToList();
-            dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
+            _subDetailService = new SubDetailService();
+            var list = _subDetailService.GetAll().Where(p => p.Check == true).ToList();
+
+            dgvSubDetail.DataSource = LoadRecord(pageNumber, numberRecord, list);
             _list = list;
+
         }
 
         //Show list SubSalary of MiniStore by Admin create create
         public void showListSub()
         {
-            _detailSubSalaryService = new DetailSubSalaryService();
-            var listSub = _detailSubSalaryService.GetAll().Where(p => p.ActiveSub == true).ToList();
-
-            dgvSub.DataSource = new BindingSource()
-            {
-                DataSource = listSub
-            };
+            _subSalaryService = new SubSalaryService();
+            var listSub = _subSalaryService.GetAll().Where(p => p.IsActive == true).ToList();
+            dgvSub.DataSource = listSub;
 
         }
 
-        //click in data
-        private void dgvSub_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            try
-            {
-                var id = dgvSub[0, e.RowIndex].Value;
-                var s_salary = _detailSubSalaryService.GetAll().Where(p => p.IdDetailSubSalary.Equals(id) && p.ActiveSub == true).FirstOrDefault();
-                if (s_salary != null)
-                {
-                    txtSaveID.Text = s_salary.IdDetailSubSalary.ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
 
         //Edit subSalary if this active
         private void btEdit_Click(object sender, EventArgs e)
         {
+            _subSalaryService = new SubSalaryService();
             if (txtSaveID.Text == "")
             {
                 MessageBox.Show("Please choise!", "Messages", MessageBoxButtons.OK);
             }
             else
             {
-                var sub_salary = _detailSubSalaryService.GetAll().Where(p => p.IdDetailSubSalary.Equals(txtSaveID.Text) && p.ActiveSub == true).FirstOrDefault();
+                var sub_salary = _subSalaryService.GetAll().Where(p => p.IdSub.Equals(txtSaveID.Text)).FirstOrDefault();
                 if (sub_salary != null)
                 {
                     Form form = new frmEditSubSalary();
@@ -127,18 +107,18 @@ namespace MiniStoreWinF.ManageSalary
             if (_list != null)
             {
                 NumericUpDown num = sender as NumericUpDown;
-                List<SubSalary> list = _list;
+                List<SubDetail> list = _list;
                 int total = list.Count();
                 num.Maximum = total / numberRecord + 1;
                 pageNumber = (int)num.Value;
-                dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
+                dgvSubDetail.DataSource = LoadRecord(pageNumber, numberRecord, list);
             }
 
         }
         //Paging
-        List<SubSalary> LoadRecord(int page, int numberRe, List<SubSalary> list)
+        List<SubDetail> LoadRecord(int page, int numberRe, List<SubDetail> list)
         {
-            List<SubSalary> result = new List<SubSalary>();
+            List<SubDetail> result = new List<SubDetail>();
             result = list.Skip((page - 1) * numberRe).Take(numberRecord).ToList();
             return result;
         }
@@ -184,11 +164,9 @@ namespace MiniStoreWinF.ManageSalary
         //Search Sub salary by name
         public void searchSubByName(string id)
         {
-            DateTime time = dtpList.Value;
-            double total = ca.SubSalary(id, time);
-            txtTotal.Text = u.formatDouble(total);
-            var list = _subSalaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.Time.Value.Month.Equals(time.Month) && p.Time.Value.Year.Equals(time.Year)).ToList();
-            dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
+            _subDetailService = new SubDetailService();
+            var list = _subDetailService.GetAll().Where(p => p.IdEmp.Equals(id)).ToList();
+            dgvSubDetail.DataSource = LoadRecord(pageNumber, numberRecord, list);
         }
 
 
@@ -198,17 +176,13 @@ namespace MiniStoreWinF.ManageSalary
             string id = cbName.SelectedValue.ToString();
             if (cbOrderby.Text == "Descending" && id == "-1")
             {
-                showListEmployeHasSubSalary(dtpList.Value);
+                showListEmployeHasSubSalary();
                 dgvAdv.DataSource = showAdvanceSalary(dtpList.Value).OrderByDescending(p => p.AdvanceSalary).ToList();
-                txtTotal.Text = "";
-
             }
             else if (cbOrderby.Text != "Descending" && id == "-1")
             {
-                showListEmployeHasSubSalary(dtpList.Value);
+                showListEmployeHasSubSalary();
                 dgvAdv.DataSource = showAdvanceSalary(dtpList.Value).OrderBy(p => p.AdvanceSalary).ToList();
-                txtTotal.Text = "";
-
             }
             else
             {
@@ -221,9 +195,9 @@ namespace MiniStoreWinF.ManageSalary
         {
             if (e.RowIndex >= 0 && e.RowIndex < dgvSub.Rows.Count)
             {
-                DetailSubSalary item = dgvSub.Rows[e.RowIndex].DataBoundItem as DetailSubSalary;
+                SubSalary item = dgvSub.Rows[e.RowIndex].DataBoundItem as SubSalary;
 
-                if (item != null && item.DateEffect < DateTime.Now)
+                if (item != null && item.TimeEnd < DateTime.Now)
                 {
                     DataGridViewRow row = dgvSub.Rows[e.RowIndex];
                     row.DefaultCellStyle.BackColor = Color.Brown;
@@ -231,34 +205,58 @@ namespace MiniStoreWinF.ManageSalary
             }
         }
 
-        private void dgvAdv_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        private void dgvAdv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             _employeeService = new EmployeeService();
-            if (e.RowIndex >= 0 && e.ColumnIndex == 1)
+            if (dgvAdv.Columns[e.ColumnIndex].Name == "IdEmp")
             {
-                DataGridViewCell cell = dgvAdv.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                string cellValue = cell.Value?.ToString();
-                var emp = _employeeService.GetAll().Where(p => p.IdEmp.Equals(cellValue)).FirstOrDefault();
-                string name = emp.FullNameEmp;
 
-                // Gán giá trị của ô vào thuộc tính ToolTipText
-                cell.ToolTipText = name;
+                if (e.Value != null)
+                {
+                    string idEmp = e.Value.ToString();
+                    var nameEmp = _employeeService.GetAll().Where(p => p.IdEmp.Equals(idEmp)).FirstOrDefault();
+                    string name = nameEmp.FullNameEmp;
+                    e.Value = name;
+                    e.FormattingApplied = true;
+                }
             }
         }
 
-        private void dgvTotalSub_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        private void dgvSubDetail_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             _employeeService = new EmployeeService();
-            if (e.RowIndex >= 0 && e.ColumnIndex == 1)
+            if (dgvSubDetail.Columns[e.ColumnIndex].Name == "IdEmpSub")
             {
-                DataGridViewCell cell = dgvTotalSub.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                string cellValue = cell.Value?.ToString();
-                var emp = _employeeService.GetAll().Where(p => p.IdEmp.Equals(cellValue)).FirstOrDefault();
-                string name = emp.FullNameEmp;
 
-                // Gán giá trị của ô vào thuộc tính ToolTipText
-                cell.ToolTipText = name;
+                if (e.Value != null)
+                {
+                    string idEmp = e.Value.ToString();
+                    var nameEmp = _employeeService.GetAll().Where(p => p.IdEmp.Equals(idEmp)).FirstOrDefault();
+                    string name = nameEmp.FullNameEmp;
+                    e.Value = name;
+                    e.FormattingApplied = true;
+                }
             }
+            _subSalaryService = new SubSalaryService();
+            if (dgvSubDetail.Columns[e.ColumnIndex].Name == "Sub")
+            {
+
+                if (e.Value != null)
+                {
+                    string sub = e.Value.ToString();
+                    var nameSub = _subSalaryService.GetAll().Where(p => p.IdSub.Equals(sub)).FirstOrDefault();
+                    string name = nameSub.Describe;
+                    e.Value = name;
+                    e.FormattingApplied = true;
+                }
+            }
+
+        }
+
+        private void dgvSub_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var id = dgvSub[0, e.RowIndex].Value;
+            txtSaveID.Text = id.ToString();
         }
     }
 }

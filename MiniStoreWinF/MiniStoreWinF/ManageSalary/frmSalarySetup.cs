@@ -16,6 +16,7 @@ namespace MiniStoreWinF.ManageSalary
     {
         EmployeeService _employeeService;
         PermissionService _permissionService;
+        HeSoTinhLuongService _heSoTinhLuongService;
         Utinity u = new Utinity();
         public frmSalarySetup()
         {
@@ -26,7 +27,7 @@ namespace MiniStoreWinF.ManageSalary
 
         public void loadform()
         {
-            //
+
             _permissionService = new PermissionService();
             _employeeService = new EmployeeService();
             var SaEmp = _permissionService.GetAll().Where(p => p.Roles != 0).ToList();
@@ -37,8 +38,10 @@ namespace MiniStoreWinF.ManageSalary
             txtEmp.Text = nEmp.ToString();
             txtGuard.Text = nGuard.ToString();
             //
-            var tax = _permissionService.GetAll().Where(p => p.Roles == 2).FirstOrDefault();
-            txtTax.Text = tax.Tax.ToString();
+            _heSoTinhLuongService = new HeSoTinhLuongService();
+            var hstl = _heSoTinhLuongService.GetAll().ToList();
+            dgvHstl.DataSource = hstl;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -69,20 +72,8 @@ namespace MiniStoreWinF.ManageSalary
             loadform();
         }
 
-        private void btEditTax_Click(object sender, EventArgs e)
-        {
-            frmEditEachTax form = new frmEditEachTax();
-            form.ShowDialog();
-            if (form.DialogResult == DialogResult.OK)
-            {
-                loadform();
-            }
-        }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void dgvPer_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -99,6 +90,16 @@ namespace MiniStoreWinF.ManageSalary
             catch (Exception ex)
             {
 
+            }
+        }
+
+        private void btnEditHstl_Click(object sender, EventArgs e)
+        {
+            Form form = new frmHstl();
+            form.ShowDialog();
+            if (form.DialogResult == DialogResult.OK)
+            {
+                loadform();
             }
         }
     }

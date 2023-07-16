@@ -15,43 +15,54 @@ namespace MiniStoreWinF.ManageSalary
 {
     public partial class frmEditSubSalary : Form
     {
-        DetailSubSalaryService _detailSubSalaryService;
+        SubSalaryService _subSalaryService;
 
         public frmEditSubSalary()
         {
             InitializeComponent();
 
-            _detailSubSalaryService = new DetailSubSalaryService();
+            _subSalaryService = new SubSalaryService();
 
         }
 
 
         private void btUpdate_Click(object sender, EventArgs e)
         {
+            string type;
+            if (cbType.SelectedItem.ToString() == "Day")
+            {
+                type = "D";
+            }
+            else
+            {
+                type = "M";
+            }
             double subSalary;
-            string id = ContextScope.currentSubSalary.IdDetailSubSalary;
+            string id = ContextScope.currentSubSalary.IdSub;
             if (txtDis.Text == null || !double.TryParse(txtSalary.Text, out subSalary))
             {
                 MessageBox.Show("Can not empty Discribe", "Messages", MessageBoxButtons.OK);
                 txtDis.Focus();
                 return;
-            }else if (dtpEffect.Value<DateTime.Now)
+            }
+            else if (dtpEffect.Value < DateTime.Now)
             {
                 MessageBox.Show("Need set time effect more than to day", "Messages", MessageBoxButtons.OK);
                 return;
             }
             else
             {
-                _detailSubSalaryService = new DetailSubSalaryService();
-                var detailSub = _detailSubSalaryService.GetAll().Where(p => p.IdDetailSubSalary.Equals(id)).FirstOrDefault();
+                _subSalaryService = new SubSalaryService();
+                var detailSub = _subSalaryService.GetAll().Where(p => p.IdSub.Equals(id)).FirstOrDefault();
                 if (detailSub != null)
                 {
-                    detailSub.DescriptionA = txtDis.Text;
-                    detailSub.SubsidiesSalary = subSalary;
+                    detailSub.Describe = txtDis.Text;
+                    detailSub.Money = subSalary;
+                    detailSub.Type = type;
                     detailSub.Condition = Int32.Parse(cbCondi.Text);
-                    detailSub.DateEffect = dtpEffect.Value;
+                    detailSub.TimeEnd = dtpEffect.Value;
                 }
-                _detailSubSalaryService.Update(detailSub);
+                _subSalaryService.Update(detailSub);
                 MessageBox.Show("Update successfull", "Message", MessageBoxButtons.OK);
 
                 this.DialogResult = DialogResult.OK;
@@ -61,16 +72,16 @@ namespace MiniStoreWinF.ManageSalary
 
         private void btRemove_Click(object sender, EventArgs e)
         {
-            string id = ContextScope.currentSubSalary.IdDetailSubSalary;
+            string id = ContextScope.currentSubSalary.IdSub;
             DialogResult result = MessageBox.Show("Remove SubSalary!", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.Yes)
             {
-                var sub_salary = _detailSubSalaryService.GetAll().Where(p => p.IdDetailSubSalary.Equals(id)).FirstOrDefault();
+                var sub_salary = _subSalaryService.GetAll().Where(p => p.IdSub.Equals(id)).FirstOrDefault();
                 if (sub_salary != null)
                 {
-                    sub_salary.ActiveSub = false;
-                    _detailSubSalaryService.Update(sub_salary);
-                    MessageBox.Show("Remove Subsitive Salary " + sub_salary.DescriptionA, "Messages");
+                    sub_salary.IsActive = false;
+                    _subSalaryService.Update(sub_salary);
+                    MessageBox.Show("Remove Subsitive Salary " + sub_salary.Describe, "Messages");
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
@@ -84,25 +95,57 @@ namespace MiniStoreWinF.ManageSalary
 
         private void frmEditSubSalary_Load(object sender, EventArgs e)
         {
-            txtDis.Text = ContextScope.currentSubSalary.DescriptionA;
-            txtSalary.Text = ContextScope.currentSubSalary.SubsidiesSalary.ToString();
+            txtDis.Text = ContextScope.currentSubSalary.Describe.Trim().ToString();
+            txtSalary.Text = ContextScope.currentSubSalary.Money.ToString();
             cbCondi.Text = ContextScope.currentSubSalary.Condition.ToString();
-            dtpEffect.Text = ContextScope.currentSubSalary.DateEffect.ToString();
+            dtpEffect.Text = ContextScope.currentSubSalary.TimeEnd.ToString();
+
+            List<string> type = new List<string>();
+            type.Add("Day");
+            type.Add("Month");
+            cbType.DataSource = type;
             //
             List<int> num = new List<int>();
-            for (int i = 0; i <= 30; i++)
+            for (int i = 1; i <= 30; i++)
             {
                 num.Add(i);
             }
             cbCondi.DataSource = num;
+
+
+            if (ContextScope.currentSubSalary.Type.Equals("M"))
+            {
+                cbType.SelectedIndex = 1;
+                cbCondi.SelectedItem = ContextScope.currentSubSalary.Condition;
+            }
+            else
+            {
+                cbType.SelectedIndex = 0;
+            }
+
+
+
         }
 
-        private void txtSalary_KeyPress_1(object sender, KeyPressEventArgs e)
+        private void txtSalary_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != '\b')
             {
                 // Loại bỏ ký tự không hợp lệ
                 e.Handled = true;
+            }
+        }
+
+        private void cbType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbType.SelectedItem.ToString() == "Day")
+            {
+                cbCondi.Enabled = false;
+                cbCondi.Text = "1";
+            }
+            else
+            {
+                cbCondi.Enabled = true;
             }
         }
     }

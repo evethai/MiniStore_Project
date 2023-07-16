@@ -30,10 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddNewSubSalary));
             gbAddSub = new GroupBox();
+            label6 = new Label();
             dtpEffect = new DateTimePicker();
             label5 = new Label();
             label4 = new Label();
             btOKEdit = new Button();
+            cbType = new ComboBox();
             cbCondi = new ComboBox();
             txtSalary = new TextBox();
             txtDis = new TextBox();
@@ -46,10 +48,12 @@
             // gbAddSub
             // 
             gbAddSub.BackColor = SystemColors.ButtonHighlight;
+            gbAddSub.Controls.Add(label6);
             gbAddSub.Controls.Add(dtpEffect);
             gbAddSub.Controls.Add(label5);
             gbAddSub.Controls.Add(label4);
             gbAddSub.Controls.Add(btOKEdit);
+            gbAddSub.Controls.Add(cbType);
             gbAddSub.Controls.Add(cbCondi);
             gbAddSub.Controls.Add(txtSalary);
             gbAddSub.Controls.Add(txtDis);
@@ -65,10 +69,19 @@
             gbAddSub.TabStop = false;
             gbAddSub.Text = "Add new allowance";
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(25, 213);
+            label6.Name = "label6";
+            label6.Size = new Size(51, 25);
+            label6.TabIndex = 7;
+            label6.Text = "Type";
+            // 
             // dtpEffect
             // 
             dtpEffect.Format = DateTimePickerFormat.Short;
-            dtpEffect.Location = new Point(278, 291);
+            dtpEffect.Location = new Point(278, 375);
             dtpEffect.Name = "dtpEffect";
             dtpEffect.Size = new Size(200, 33);
             dtpEffect.TabIndex = 6;
@@ -76,7 +89,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(25, 291);
+            label5.Location = new Point(25, 375);
             label5.Name = "label5";
             label5.Size = new Size(161, 25);
             label5.TabIndex = 5;
@@ -101,12 +114,25 @@
             btOKEdit.UseVisualStyleBackColor = true;
             btOKEdit.Click += btOKEdit_Click;
             // 
+            // cbType
+            // 
+            cbType.DropDownHeight = 50;
+            cbType.FormattingEnabled = true;
+            cbType.IntegralHeight = false;
+            cbType.Items.AddRange(new object[] { "Month", "Day" });
+            cbType.Location = new Point(278, 205);
+            cbType.Margin = new Padding(5, 4, 5, 4);
+            cbType.Name = "cbType";
+            cbType.Size = new Size(200, 33);
+            cbType.TabIndex = 3;
+            cbType.SelectedIndexChanged += cbType_SelectedIndexChanged;
+            // 
             // cbCondi
             // 
             cbCondi.DropDownHeight = 50;
             cbCondi.FormattingEnabled = true;
             cbCondi.IntegralHeight = false;
-            cbCondi.Location = new Point(278, 195);
+            cbCondi.Location = new Point(278, 287);
             cbCondi.Margin = new Padding(5, 4, 5, 4);
             cbCondi.Name = "cbCondi";
             cbCondi.Size = new Size(200, 33);
@@ -132,7 +158,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(25, 198);
+            label3.Location = new Point(25, 295);
             label3.Margin = new Padding(5, 0, 5, 0);
             label3.Name = "label3";
             label3.Size = new Size(95, 25);
@@ -164,11 +190,14 @@
             AcceptButton = btOKEdit;
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(651, 534);
+            ClientSize = new Size(559, 534);
             Controls.Add(gbAddSub);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(5, 4, 5, 4);
+            MaximizeBox = false;
+            MaximumSize = new Size(575, 573);
+            MinimumSize = new Size(575, 573);
             Name = "frmAddNewSubSalary";
             StartPosition = FormStartPosition.CenterScreen;
             Load += frmAddNewSubSalary_Load;
@@ -190,5 +219,7 @@
         private DateTimePicker dtpEffect;
         private Label label5;
         private Label label4;
+        private Label label6;
+        private ComboBox cbType;
     }
 }

@@ -59,13 +59,13 @@ namespace MiniStoreWinF.InformationEmployee
             var salaryService = _salaryService.GetAll().Where(e => e.IdEmp.Equals(idEmp) && e.DateOmonth.Month.Equals(dtpMonth.Value.Month.ToString())).FirstOrDefault();
             if (salaryService != null)
             {
-                txtBasicHours.Text = salaryService.BasicSalary.ToString();
-                txtBeforeTax.Text = salaryService.TotalSalary.ToString();
-                txtSalaryHours.Text = salaryService.SalaryHour.ToString();
-                txtSumAdvanceSalary.Text = salaryService.SumAdvanceSalary.ToString();
-                txtTax.Text = salaryService.Tax.ToString();
-                txtSumSubSalary.Text = salaryService.SumSubSalary.ToString();
-                txtTotal.Text = salaryService.SalaryAfterTax.ToString();
+                //txtBasicHours.Text = salaryService.BasicSalary.ToString();
+                //txtBeforeTax.Text = salaryService.TotalSalary.ToString();
+                //txtSalaryHours.Text = salaryService.SalaryHour.ToString();
+                //txtSumAdvanceSalary.Text = salaryService.SumAdvanceSalary.ToString();
+                //txtTax.Text = salaryService.Tax.ToString();
+                //txtSumSubSalary.Text = salaryService.SumSubSalary.ToString();
+                //txtTotal.Text = salaryService.SalaryAfterTax.ToString();
             }
             else
             {
@@ -129,13 +129,13 @@ namespace MiniStoreWinF.InformationEmployee
             var salaryService = _salaryService.GetAll().Where(e => e.IdEmp.Equals(idEmp) && e.DateOmonth.Month.Equals(dtpMonth.Value.Month)).FirstOrDefault();
             if (salaryService != null)
             {
-                txtBasicHours.Text = salaryService.BasicSalary.ToString();
-                txtBeforeTax.Text = salaryService.TotalSalary.ToString();
-                txtSalaryHours.Text = salaryService.SalaryHour.ToString();
-                txtSumAdvanceSalary.Text = salaryService.SumAdvanceSalary.ToString();
-                txtTax.Text = salaryService.Tax.ToString();
-                txtSumSubSalary.Text = salaryService.SumSubSalary.ToString();
-                txtTotal.Text = salaryService.SalaryAfterTax.ToString();
+                //txtBasicHours.Text = salaryService.BasicSalary.ToString();
+                //txtBeforeTax.Text = salaryService.TotalSalary.ToString();
+                //txtSalaryHours.Text = salaryService.SalaryHour.ToString();
+                //txtSumAdvanceSalary.Text = salaryService.SumAdvanceSalary.ToString();
+                //txtTax.Text = salaryService.Tax.ToString();
+                //txtSumSubSalary.Text = salaryService.SumSubSalary.ToString();
+                //txtTotal.Text = salaryService.SalaryAfterTax.ToString();
             }
             else
             {
