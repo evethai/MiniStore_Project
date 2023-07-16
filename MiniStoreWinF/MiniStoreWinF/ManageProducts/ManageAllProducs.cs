@@ -26,6 +26,7 @@ namespace MiniStoreWinF.ManageProducts
         ProductService _id;
         CatalogyService _comboType;
         SupplierServices _comboIdSup;
+        SupplierServices _comboIdSup1;
         UnitServices _comboUnit;
         private List<Supplier> _listcomboIdSup1;
         public ManageAllProducs()
@@ -71,6 +72,23 @@ namespace MiniStoreWinF.ManageProducts
             //var _listcomboUnit = _comboUnit.GetAll()
             //    .Select(c => c.IdUnit).ToList();
             //cbIdUnit.DataSource = _listcomboUnit;
+
+            _ShowList = new ProductService();
+            _comboIdSup1 = new SupplierServices();
+            var produc = _ShowList.GetAll().ToList().Where(p => p.StatusP == true);
+            var supp = _comboIdSup1.GetAll().ToList();
+            foreach (var item in supp)
+            {
+                foreach (var item2 in produc)
+                {
+                    if (item.IdSupplier == item2.IdSupplier)
+                    {
+
+                        item2.IdSupplier = item.NameSupplier;
+                        dataGridView1.DataSource = new BindingSource() { DataSource = produc };
+                    }
+                }
+            }
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -155,6 +173,20 @@ namespace MiniStoreWinF.ManageProducts
         {
             _ShowList = new ProductService();
             var showlist = _ShowList.GetAll().ToList().Where(p => p.StatusP == true);
+            _comboIdSup1 = new SupplierServices();
+            var supp = _comboIdSup1.GetAll().ToList();
+            foreach (var item in supp)
+            {
+                foreach (var item2 in showlist)
+                {
+                    if (item.IdSupplier == item2.IdSupplier)
+                    {
+
+                        item2.IdSupplier = item.NameSupplier;
+
+                    }
+                }
+            }
             dataGridView1.DataSource = new BindingSource() { DataSource = showlist };
         }
         // product sold out
@@ -162,6 +194,20 @@ namespace MiniStoreWinF.ManageProducts
         {
             _ShowList = new ProductService();
             var showlist = _ShowList.GetAll().ToList().Where(p => p.StatusP == false);
+            _comboIdSup1 = new SupplierServices();
+            var supp = _comboIdSup1.GetAll().ToList();
+            foreach (var item in supp)
+            {
+                foreach (var item2 in showlist)
+                {
+                    if (item.IdSupplier == item2.IdSupplier)
+                    {
+
+                        item2.IdSupplier = item.NameSupplier;
+
+                    }
+                }
+            }
             dataGridView1.DataSource = new BindingSource() { DataSource = showlist };
         }
         // Load datagridview
@@ -171,6 +217,20 @@ namespace MiniStoreWinF.ManageProducts
             {
                 _ShowList = new ProductService();
                 var showlist = _ShowList.GetAll().ToList().Where(p => p.StatusP == true);
+                _comboIdSup1 = new SupplierServices();
+                var supp = _comboIdSup1.GetAll().ToList();
+                foreach (var item in supp)
+                {
+                    foreach (var item2 in showlist)
+                    {
+                        if (item.IdSupplier == item2.IdSupplier)
+                        {
+
+                            item2.IdSupplier = item.NameSupplier;
+
+                        }
+                    }
+                }
                 dataGridView1.DataSource = new BindingSource() { DataSource = showlist };
                 button2_Click(sender, e);
 
@@ -179,6 +239,20 @@ namespace MiniStoreWinF.ManageProducts
             {
                 _ShowList = new ProductService();
                 var showlist = _ShowList.GetAll().ToList().Where(p => p.StatusP == false);
+                _comboIdSup1 = new SupplierServices();
+                var supp = _comboIdSup1.GetAll().ToList();
+                foreach (var item in supp)
+                {
+                    foreach (var item2 in showlist)
+                    {
+                        if (item.IdSupplier == item2.IdSupplier)
+                        {
+
+                            item2.IdSupplier = item.NameSupplier;
+
+                        }
+                    }
+                }
                 dataGridView1.DataSource = new BindingSource() { DataSource = showlist };
                 button2_Click(sender, e);
             }
@@ -186,6 +260,20 @@ namespace MiniStoreWinF.ManageProducts
             {
                 _ShowList = new ProductService();
                 var showlist = _ShowList.GetAll().ToList().Where(p => p.StatusP == true);
+                _comboIdSup1 = new SupplierServices();
+                var supp = _comboIdSup1.GetAll().ToList();
+                foreach (var item in supp)
+                {
+                    foreach (var item2 in showlist)
+                    {
+                        if (item.IdSupplier == item2.IdSupplier)
+                        {
+
+                            item2.IdSupplier = item.NameSupplier;
+
+                        }
+                    }
+                }
                 dataGridView1.DataSource = new BindingSource() { DataSource = showlist };
                 button2_Click(sender, e);
             }
@@ -324,6 +412,7 @@ namespace MiniStoreWinF.ManageProducts
                     DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.OK)
                     {
+
                         _ShowList.Update(proUp);
                         button4_Click(sender, e);
                         button2_Click(sender, e);
@@ -417,7 +506,20 @@ namespace MiniStoreWinF.ManageProducts
                     && entity.NameProduct.ToLower().StartsWith(_nam.ToLower()));
                     if (nameS != null)
                     {
+                        _comboIdSup1 = new SupplierServices();
+                        var supp = _comboIdSup1.GetAll().ToList();
+                        foreach (var item in supp)
+                        {
+                            foreach (var item2 in nameS)
+                            {
+                                if (item.IdSupplier == item2.IdSupplier)
+                                {
 
+                                    item2.IdSupplier = item.NameSupplier;
+
+                                }
+                            }
+                        }
                         dataGridView1.DataSource = new BindingSource() { DataSource = nameS };
                     }
                 }
@@ -428,6 +530,20 @@ namespace MiniStoreWinF.ManageProducts
                     var typeProduct = _Search.GetAll().ToList().Where(e => e.ProductType == _type && e.StatusP == true);
                     if (typeProduct != null)
                     {
+                        _comboIdSup1 = new SupplierServices();
+                        var supp = _comboIdSup1.GetAll().ToList();
+                        foreach (var item in supp)
+                        {
+                            foreach (var item2 in typeProduct)
+                            {
+                                if (item.IdSupplier == item2.IdSupplier)
+                                {
+
+                                    item2.IdSupplier = item.NameSupplier;
+
+                                }
+                            }
+                        }
                         dataGridView1.DataSource = new BindingSource() { DataSource = typeProduct };
                     }
 
@@ -443,6 +559,20 @@ namespace MiniStoreWinF.ManageProducts
                     && e.StatusP == true);
                     if (TypeAndName != null)
                     {
+                        _comboIdSup1 = new SupplierServices();
+                        var supp = _comboIdSup1.GetAll().ToList();
+                        foreach (var item in supp)
+                        {
+                            foreach (var item2 in TypeAndName)
+                            {
+                                if (item.IdSupplier == item2.IdSupplier)
+                                {
+
+                                    item2.IdSupplier = item.NameSupplier;
+
+                                }
+                            }
+                        }
                         dataGridView1.DataSource = new BindingSource() { DataSource = TypeAndName };
                     }
                 }
@@ -461,7 +591,20 @@ namespace MiniStoreWinF.ManageProducts
                     entity.NameProduct.ToLower().StartsWith(_nam.ToLower()));
                     if (nameS != null)
                     {
+                        _comboIdSup1 = new SupplierServices();
+                        var supp = _comboIdSup1.GetAll().ToList();
+                        foreach (var item in supp)
+                        {
+                            foreach (var item2 in nameS)
+                            {
+                                if (item.IdSupplier == item2.IdSupplier)
+                                {
 
+                                    item2.IdSupplier = item.NameSupplier;
+
+                                }
+                            }
+                        }
                         dataGridView1.DataSource = new BindingSource() { DataSource = nameS };
                     }
                 }
@@ -472,6 +615,20 @@ namespace MiniStoreWinF.ManageProducts
                     var typeProduct = _Search.GetAll().ToList().Where(e => e.ProductType == _type && e.StatusP == false);
                     if (typeProduct != null)
                     {
+                        _comboIdSup1 = new SupplierServices();
+                        var supp = _comboIdSup1.GetAll().ToList();
+                        foreach (var item in supp)
+                        {
+                            foreach (var item2 in typeProduct)
+                            {
+                                if (item.IdSupplier == item2.IdSupplier)
+                                {
+
+                                    item2.IdSupplier = item.NameSupplier;
+
+                                }
+                            }
+                        }
                         dataGridView1.DataSource = new BindingSource() { DataSource = typeProduct };
                     }
 
@@ -486,6 +643,20 @@ namespace MiniStoreWinF.ManageProducts
                     e.ProductType == _TypePro && e.NameProduct.ToLower().StartsWith(_NamePro.ToLower()));
                     if (TypeAndName != null)
                     {
+                        _comboIdSup1 = new SupplierServices();
+                        var supp = _comboIdSup1.GetAll().ToList();
+                        foreach (var item in supp)
+                        {
+                            foreach (var item2 in TypeAndName)
+                            {
+                                if (item.IdSupplier == item2.IdSupplier)
+                                {
+
+                                    item2.IdSupplier = item.NameSupplier;
+
+                                }
+                            }
+                        }
                         dataGridView1.DataSource = new BindingSource() { DataSource = TypeAndName };
                     }
                 }
@@ -504,7 +675,20 @@ namespace MiniStoreWinF.ManageProducts
                     && entity.NameProduct.ToLower().StartsWith(_nam.ToLower()));
                     if (nameS != null)
                     {
+                        _comboIdSup1 = new SupplierServices();
+                        var supp = _comboIdSup1.GetAll().ToList();
+                        foreach (var item in supp)
+                        {
+                            foreach (var item2 in nameS)
+                            {
+                                if (item.IdSupplier == item2.IdSupplier)
+                                {
 
+                                    item2.IdSupplier = item.NameSupplier;
+
+                                }
+                            }
+                        }
                         dataGridView1.DataSource = new BindingSource() { DataSource = nameS };
                     }
                 }
@@ -515,6 +699,20 @@ namespace MiniStoreWinF.ManageProducts
                     var typeProduct = _Search.GetAll().ToList().Where(e => e.ProductType == _type && e.StatusP == true);
                     if (typeProduct != null)
                     {
+                        _comboIdSup1 = new SupplierServices();
+                        var supp = _comboIdSup1.GetAll().ToList();
+                        foreach (var item in supp)
+                        {
+                            foreach (var item2 in typeProduct)
+                            {
+                                if (item.IdSupplier == item2.IdSupplier)
+                                {
+
+                                    item2.IdSupplier = item.NameSupplier;
+
+                                }
+                            }
+                        }
                         dataGridView1.DataSource = new BindingSource() { DataSource = typeProduct };
                     }
 
@@ -530,6 +728,20 @@ namespace MiniStoreWinF.ManageProducts
                     && e.StatusP == true);
                     if (TypeAndName != null)
                     {
+                        _comboIdSup1 = new SupplierServices();
+                        var supp = _comboIdSup1.GetAll().ToList();
+                        foreach (var item in supp)
+                        {
+                            foreach (var item2 in TypeAndName)
+                            {
+                                if (item.IdSupplier == item2.IdSupplier)
+                                {
+
+                                    item2.IdSupplier = item.NameSupplier;
+
+                                }
+                            }
+                        }
                         dataGridView1.DataSource = new BindingSource() { DataSource = TypeAndName };
                     }
                 }
@@ -552,6 +764,20 @@ namespace MiniStoreWinF.ManageProducts
                         .OrderBy(o => o.NameProduct.Length)
                         .ThenBy(o => o.ProductType).ThenBy(o => o.IdSupplier).ThenBy(o => o.DateImport)
                         .Where(p => p.StatusP == true);
+                    _comboIdSup1 = new SupplierServices();
+                    var supp = _comboIdSup1.GetAll().ToList();
+                    foreach (var item in supp)
+                    {
+                        foreach (var item2 in ascendingpro)
+                        {
+                            if (item.IdSupplier == item2.IdSupplier)
+                            {
+
+                                item2.IdSupplier = item.NameSupplier;
+
+                            }
+                        }
+                    }
                     this.dataGridView1.DataSource = new BindingSource() { DataSource = ascendingpro };
                 }
                 if (txtArrange.Text == "Name Decrease")
@@ -560,11 +786,39 @@ namespace MiniStoreWinF.ManageProducts
                         .OrderByDescending(o => o.NameProduct.Length)
                         .ThenBy(o => o.ProductType).ThenBy(o => o.IdSupplier).ThenBy(o => o.DateImport)
                         .Where(p => p.StatusP == true);
+                    _comboIdSup1 = new SupplierServices();
+                    var supp = _comboIdSup1.GetAll().ToList();
+                    foreach (var item in supp)
+                    {
+                        foreach (var item2 in ascendingpro)
+                        {
+                            if (item.IdSupplier == item2.IdSupplier)
+                            {
+
+                                item2.IdSupplier = item.NameSupplier;
+
+                            }
+                        }
+                    }
                     this.dataGridView1.DataSource = new BindingSource() { DataSource = ascendingpro };
                 }
                 if (txtArrange.Text == "ALL")
                 {
                     var ascendingpro = _Search.GetAll().ToList().Where(p => p.StatusP == true);
+                    _comboIdSup1 = new SupplierServices();
+                    var supp = _comboIdSup1.GetAll().ToList();
+                    foreach (var item in supp)
+                    {
+                        foreach (var item2 in ascendingpro)
+                        {
+                            if (item.IdSupplier == item2.IdSupplier)
+                            {
+
+                                item2.IdSupplier = item.NameSupplier;
+
+                            }
+                        }
+                    }
                     this.dataGridView1.DataSource = new BindingSource() { DataSource = ascendingpro };
                 }
 
@@ -578,6 +832,20 @@ namespace MiniStoreWinF.ManageProducts
                         .OrderBy(o => o.NameProduct.Length)
                         .ThenBy(o => o.ProductType).ThenBy(o => o.IdSupplier).ThenBy(o => o.DateImport)
                         .Where(p => p.StatusP == false);
+                    _comboIdSup1 = new SupplierServices();
+                    var supp = _comboIdSup1.GetAll().ToList();
+                    foreach (var item in supp)
+                    {
+                        foreach (var item2 in ascendingpro)
+                        {
+                            if (item.IdSupplier == item2.IdSupplier)
+                            {
+
+                                item2.IdSupplier = item.NameSupplier;
+
+                            }
+                        }
+                    }
                     this.dataGridView1.DataSource = new BindingSource() { DataSource = ascendingpro };
                 }
                 if (txtArrange.Text == "Name Decrease")
@@ -586,11 +854,39 @@ namespace MiniStoreWinF.ManageProducts
                         .OrderByDescending(o => o.NameProduct.Length)
                         .ThenBy(o => o.ProductType).ThenBy(o => o.IdSupplier).ThenBy(o => o.DateImport)
                         .Where(p => p.StatusP == false);
+                    _comboIdSup1 = new SupplierServices();
+                    var supp = _comboIdSup1.GetAll().ToList();
+                    foreach (var item in supp)
+                    {
+                        foreach (var item2 in ascendingpro)
+                        {
+                            if (item.IdSupplier == item2.IdSupplier)
+                            {
+
+                                item2.IdSupplier = item.NameSupplier;
+
+                            }
+                        }
+                    }
                     this.dataGridView1.DataSource = new BindingSource() { DataSource = ascendingpro };
                 }
                 if (txtArrange.Text == "ALL")
                 {
                     var ascendingpro = _Search.GetAll().ToList().Where(p => p.StatusP == false);
+                    _comboIdSup1 = new SupplierServices();
+                    var supp = _comboIdSup1.GetAll().ToList();
+                    foreach (var item in supp)
+                    {
+                        foreach (var item2 in ascendingpro)
+                        {
+                            if (item.IdSupplier == item2.IdSupplier)
+                            {
+
+                                item2.IdSupplier = item.NameSupplier;
+
+                            }
+                        }
+                    }
                     this.dataGridView1.DataSource = new BindingSource() { DataSource = ascendingpro };
                 }
             }
@@ -603,6 +899,20 @@ namespace MiniStoreWinF.ManageProducts
                         .OrderBy(o => o.NameProduct.Length)
                         .ThenBy(o => o.ProductType).ThenBy(o => o.IdSupplier).ThenBy(o => o.DateImport)
                         .Where(p => p.StatusP == true);
+                    _comboIdSup1 = new SupplierServices();
+                    var supp = _comboIdSup1.GetAll().ToList();
+                    foreach (var item in supp)
+                    {
+                        foreach (var item2 in ascendingpro)
+                        {
+                            if (item.IdSupplier == item2.IdSupplier)
+                            {
+
+                                item2.IdSupplier = item.NameSupplier;
+
+                            }
+                        }
+                    }
                     this.dataGridView1.DataSource = new BindingSource() { DataSource = ascendingpro };
                 }
                 if (txtArrange.Text == "Name Decrease")
@@ -611,11 +921,39 @@ namespace MiniStoreWinF.ManageProducts
                         .OrderByDescending(o => o.NameProduct.Length)
                         .ThenBy(o => o.ProductType).ThenBy(o => o.IdSupplier).ThenBy(o => o.DateImport)
                         .Where(p => p.StatusP == true);
+                    _comboIdSup1 = new SupplierServices();
+                    var supp = _comboIdSup1.GetAll().ToList();
+                    foreach (var item in supp)
+                    {
+                        foreach (var item2 in ascendingpro)
+                        {
+                            if (item.IdSupplier == item2.IdSupplier)
+                            {
+
+                                item2.IdSupplier = item.NameSupplier;
+
+                            }
+                        }
+                    }
                     this.dataGridView1.DataSource = new BindingSource() { DataSource = ascendingpro };
                 }
                 if (txtArrange.Text == "All")
                 {
                     var ascendingpro = _Search.GetAll().ToList().Where(p => p.StatusP == true);
+                    _comboIdSup1 = new SupplierServices();
+                    var supp = _comboIdSup1.GetAll().ToList();
+                    foreach (var item in supp)
+                    {
+                        foreach (var item2 in ascendingpro)
+                        {
+                            if (item.IdSupplier == item2.IdSupplier)
+                            {
+
+                                item2.IdSupplier = item.NameSupplier;
+
+                            }
+                        }
+                    }
                     this.dataGridView1.DataSource = new BindingSource() { DataSource = ascendingpro };
                 }
             }
@@ -692,6 +1030,20 @@ namespace MiniStoreWinF.ManageProducts
              p.Exp <= DateTime.Today.AddDays(30));
             if (ProductExp != null)
             {
+                _comboIdSup1 = new SupplierServices();
+                var supp = _comboIdSup1.GetAll().ToList();
+                foreach (var item in supp)
+                {
+                    foreach (var item2 in ProductExp)
+                    {
+                        if (item.IdSupplier == item2.IdSupplier)
+                        {
+
+                            item2.IdSupplier = item.NameSupplier;
+
+                        }
+                    }
+                }
                 dataGridView1.DataSource = new BindingSource() { DataSource = ProductExp };
             }
         }

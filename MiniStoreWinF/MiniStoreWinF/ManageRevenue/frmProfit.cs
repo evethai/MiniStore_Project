@@ -48,17 +48,17 @@ namespace MiniStoreWinF.ManageRevenue
             return (double)reInMonth;
         }
 
-        private double TotalSalaryNeedInMonth(DateTime time)
-        {
-            double total = 0;
-            _salaryService = new SalaryService();
-            var list = u.salary(time).ToList();
-            foreach (var item in list)
-            {
-                //total += item.SalaryAfterTax;
-            }
-            return total;
-        }
+        //private double TotalSalaryNeedInMonth(DateTime time)
+        //{
+        //    double total = 0;
+        //    _salaryService = new SalaryService();
+        //    var list = u.salary(time).ToList();
+        //    foreach (var item in list)
+        //    {
+        //        //total += item.SalaryAfterTax;
+        //    }
+        //    return total;
+        //}
 
         private void ChartImport(DateTime time)
         {
