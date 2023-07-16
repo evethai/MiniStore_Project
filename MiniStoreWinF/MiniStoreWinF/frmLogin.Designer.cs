@@ -181,6 +181,7 @@
             Controls.Add(button1);
             Controls.Add(panel2);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             MaximumSize = new Size(457, 481);
             MinimumSize = new Size(457, 481);
             Name = "frmLogin";

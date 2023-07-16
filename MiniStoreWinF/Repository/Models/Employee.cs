@@ -12,7 +12,7 @@ namespace Repository.Models
             DetailAdvanceSalaries = new HashSet<DetailAdvanceSalary>();
             Orders = new HashSet<Order>();
             Salaries = new HashSet<Salary>();
-            SubSalaries = new HashSet<SubSalary>();
+            SubDetails = new HashSet<SubDetail>();
             WorkSheets = new HashSet<WorkSheet>();
         }
 
@@ -29,12 +29,13 @@ namespace Repository.Models
         public int? Roles { get; set; }
         public bool? IsActive { get; set; }
         public string PictureEmp { get; set; }
+        public int? Snpt { get; set; }
 
         public virtual Permission RolesNavigation { get; set; }
         public virtual ICollection<DetailAdvanceSalary> DetailAdvanceSalaries { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Salary> Salaries { get; set; }
-        public virtual ICollection<SubSalary> SubSalaries { get; set; }
+        public virtual ICollection<SubDetail> SubDetails { get; set; }
         public virtual ICollection<WorkSheet> WorkSheets { get; set; }
     }
 }

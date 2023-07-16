@@ -57,7 +57,7 @@ namespace MiniStoreWinF.ManageWorkSheets
                 txtSheetDetail.Text = sheetDetails.Sheet.ToString();
                 txtStartDetails.Text = sheetDetails.ShiftStartTime.ToString();
                 txtEndDetails.Text = sheetDetails.ShiftEndTime.ToString();
-                txtDescriptionsDetails.Text = sheetDetails.DescriptionS.ToString();
+                //txtDescriptionsDetails.Text = sheetDetails.DescriptionS.ToString();
                 txtCoefficientsSalaryDetails.Text = sheetDetails.CoefficientsSalary.ToString();
                 if (sheetDetails != null)
                 {
@@ -100,7 +100,7 @@ namespace MiniStoreWinF.ManageWorkSheets
                 updateDetailsSheet[rowIndex].Sheet = Int32.Parse(txtSheetDetail.Text);
                 updateDetailsSheet[rowIndex].ShiftStartTime = TimeSpan.Parse(txtStartDetails.Text);
                 updateDetailsSheet[rowIndex].ShiftEndTime = TimeSpan.Parse(txtEndDetails.Text);
-                updateDetailsSheet[rowIndex].DescriptionS = txtDescriptionsDetails.Text;
+                //updateDetailsSheet[rowIndex].DescriptionS = txtDescriptionsDetails.Text;
                 updateDetailsSheet[rowIndex].CoefficientsSalary = float.Parse(txtCoefficientsSalaryDetails.Text);
                 var listUpdate = updateDetailsSheet[rowIndex];
                 _sheetDetailService.Update(listUpdate);
@@ -132,7 +132,7 @@ namespace MiniStoreWinF.ManageWorkSheets
                 CreateNewSheet.ShiftStartTime = TimeSpan.Parse(txtStartDetails.Text);
                 CreateNewSheet.ShiftEndTime = TimeSpan.Parse(txtEndDetails.Text);
                 CreateNewSheet.CoefficientsSalary = float.Parse(txtCoefficientsSalaryDetails.Text);
-                CreateNewSheet.DescriptionS = txtDescriptionsDetails.Text;
+                //CreateNewSheet.DescriptionS = txtDescriptionsDetails.Text;
                 CreateNewSheet.CheckNight = chbWorkNight.Checked;
                 _sheetDetailService.Create(CreateNewSheet);
                 MessageBox.Show("Successfully Create Sheet", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);

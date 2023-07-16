@@ -137,7 +137,10 @@
             Controls.Add(tableLayoutPanel1);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Location = new Point(862, 513);
             Margin = new Padding(5, 4, 5, 4);
+            MaximumSize = new Size(862, 513);
+            MinimizeBox = false;
             Name = "frmDetailSetup";
             StartPosition = FormStartPosition.CenterScreen;
             Load += frmDetailSetup_Load;

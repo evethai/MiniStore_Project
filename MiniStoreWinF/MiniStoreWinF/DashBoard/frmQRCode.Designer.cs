@@ -74,8 +74,11 @@
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             MaximumSize = new Size(450, 489);
+            MinimumSize = new Size(450, 489);
             Name = "frmQRCode";
+            StartPosition = FormStartPosition.CenterScreen;
             Load += frmQRCode_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

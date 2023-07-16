@@ -34,14 +34,12 @@ namespace MiniStoreWinF.ManageSalary
                 {
                     foreach (var item in reset)
                     {
-                        //delete data salary in selected month 
                         _salaryService.Delete(item);
-
                     }
-                    //
+
                     ca.CalculatorSalary(time);
                     MessageBox.Show("Reset Salary in " + time.Month + "/" + time.Year, "Messages", MessageBoxButtons.OK);
-                    ContextScope.currentDate= time;
+                    ContextScope.currentDate = time;
                     this.DialogResult = DialogResult.Yes;
                     this.Close();
                 }

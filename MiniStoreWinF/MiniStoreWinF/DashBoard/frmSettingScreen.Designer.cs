@@ -42,18 +42,18 @@
             // lbSetting
             // 
             lbSetting.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            lbSetting.Location = new Point(12, 9);
+            lbSetting.Location = new Point(10, 8);
             lbSetting.Name = "lbSetting";
-            lbSetting.Size = new Size(150, 56);
+            lbSetting.Size = new Size(131, 48);
             lbSetting.TabIndex = 0;
             lbSetting.Text = "Setting";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(21, 80);
+            label1.Location = new Point(18, 68);
             label1.Name = "label1";
-            label1.Size = new Size(75, 20);
+            label1.Size = new Size(66, 17);
             label1.TabIndex = 1;
             label1.Text = "App color";
             // 
@@ -61,34 +61,34 @@
             // 
             cbColor.FormattingEnabled = true;
             cbColor.Items.AddRange(new object[] { "White", "Black" });
-            cbColor.Location = new Point(112, 77);
+            cbColor.Location = new Point(98, 65);
             cbColor.Name = "cbColor";
-            cbColor.Size = new Size(159, 28);
+            cbColor.Size = new Size(140, 25);
             cbColor.TabIndex = 2;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(58, 130);
+            label2.Location = new Point(51, 110);
             label2.Name = "label2";
-            label2.Size = new Size(38, 20);
+            label2.Size = new Size(33, 17);
             label2.TabIndex = 3;
             label2.Text = "Font";
             // 
             // cbFont
             // 
             cbFont.FormattingEnabled = true;
-            cbFont.Location = new Point(112, 127);
+            cbFont.Location = new Point(98, 108);
             cbFont.Name = "cbFont";
-            cbFont.Size = new Size(159, 28);
+            cbFont.Size = new Size(140, 25);
             cbFont.TabIndex = 4;
             cbFont.SelectedIndexChanged += cbFont_SelectedIndexChanged;
             // 
             // btApply
             // 
-            btApply.Location = new Point(177, 279);
+            btApply.Location = new Point(155, 237);
             btApply.Name = "btApply";
-            btApply.Size = new Size(94, 29);
+            btApply.Size = new Size(82, 25);
             btApply.TabIndex = 5;
             btApply.Text = "Apply";
             btApply.UseVisualStyleBackColor = true;
@@ -96,26 +96,26 @@
             // 
             // numSize
             // 
-            numSize.Location = new Point(112, 174);
+            numSize.Location = new Point(98, 148);
             numSize.Name = "numSize";
-            numSize.Size = new Size(150, 27);
+            numSize.Size = new Size(131, 25);
             numSize.TabIndex = 6;
             numSize.ValueChanged += numSize_ValueChanged;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(46, 176);
+            label3.Location = new Point(40, 150);
             label3.Name = "label3";
-            label3.Size = new Size(36, 20);
+            label3.Size = new Size(31, 17);
             label3.TabIndex = 7;
             label3.Text = "Size";
             // 
             // frmSettingScreen
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(307, 648);
+            ClientSize = new Size(269, 551);
             Controls.Add(label3);
             Controls.Add(numSize);
             Controls.Add(btApply);
@@ -125,7 +125,6 @@
             Controls.Add(label1);
             Controls.Add(lbSetting);
             Name = "frmSettingScreen";
-            Text = "frmSettingScreen";
             Load += frmSettingScreen_Load;
             ((System.ComponentModel.ISupportInitialize)numSize).EndInit();
             ResumeLayout(false);

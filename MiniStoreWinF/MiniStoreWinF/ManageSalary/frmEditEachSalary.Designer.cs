@@ -38,7 +38,7 @@
             // 
             // btSave
             // 
-            btSave.Location = new Point(155, 143);
+            btSave.Location = new Point(147, 143);
             btSave.Margin = new Padding(5, 4, 5, 4);
             btSave.Name = "btSave";
             btSave.Size = new Size(118, 34);
@@ -59,7 +59,7 @@
             // 
             // txtSalary
             // 
-            txtSalary.Location = new Point(277, 31);
+            txtSalary.Location = new Point(258, 39);
             txtSalary.Margin = new Padding(5, 4, 5, 4);
             txtSalary.Name = "txtSalary";
             txtSalary.Size = new Size(155, 33);
@@ -82,7 +82,9 @@
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(5, 4, 5, 4);
+            MaximizeBox = false;
             MaximumSize = new Size(462, 229);
+            MinimizeBox = false;
             MinimumSize = new Size(462, 229);
             Name = "frmEditEachSalary";
             StartPosition = FormStartPosition.CenterScreen;

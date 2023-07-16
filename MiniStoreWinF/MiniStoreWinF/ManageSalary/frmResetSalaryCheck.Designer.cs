@@ -45,7 +45,7 @@
             // 
             // btReset
             // 
-            btReset.Location = new Point(91, 178);
+            btReset.Location = new Point(96, 182);
             btReset.Margin = new Padding(5, 4, 5, 4);
             btReset.Name = "btReset";
             btReset.Size = new Size(118, 34);
@@ -67,6 +67,7 @@
             ForeColor = Color.Red;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(5, 4, 5, 4);
+            MaximizeBox = false;
             MaximumSize = new Size(330, 268);
             MinimumSize = new Size(330, 268);
             Name = "frmResetSalaryCheck";

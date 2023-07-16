@@ -15,6 +15,8 @@ namespace Repository.Models
         public DateTime? TimeCheckOut { get; set; }
         public bool? Status { get; set; }
         public TimeSpan? TotalWorkingHours { get; set; }
+        public double? DefaultCoefficient { get; set; }
+        public double? SundayCoefficient { get; set; }
 
         public virtual Employee IdEmpNavigation { get; set; }
         public virtual SheetDetail SheetNavigation { get; set; }

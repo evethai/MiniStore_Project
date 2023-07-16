@@ -29,53 +29,57 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSubSalary));
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            subSalaryBindingSource = new BindingSource(components);
-            txtTotal = new TextBox();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSubSalary));
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
             cbName = new ComboBox();
             dtpList = new DateTimePicker();
             groupBox2 = new GroupBox();
             tableLayoutPanel3 = new TableLayoutPanel();
             dgvSub = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dateCreateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            dateEffectDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            detailSubSalaryBindingSource = new BindingSource(components);
+            idSubDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            describeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            moneyDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            timeBeginDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            timeEndDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            typeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            conditionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            subSalaryBindingSource = new BindingSource(components);
             panel2 = new Panel();
             btEdit = new Button();
             txtSaveID = new Label();
             btAdd = new Button();
             groupBox5 = new GroupBox();
             tableLayoutPanel2 = new TableLayoutPanel();
-            dgvTotalSub = new DataGridView();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            idEmpDataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            idDetailSubSalaryDataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            timeDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dgvSubDetail = new DataGridView();
+            idDetailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            IdEmpSub = new DataGridViewTextBoxColumn();
+            Sub = new DataGridViewTextBoxColumn();
+            timeBeginDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            timeEndDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            subDetailBindingSource = new BindingSource(components);
             numericUpDown1 = new NumericUpDown();
             detailAdvanceSalaryBindingSource = new BindingSource(components);
             groupBox3 = new GroupBox();
             panel7 = new Panel();
             cbOrderby = new ComboBox();
             btFilter = new Button();
-            panel1 = new Panel();
-            label1 = new Label();
             groupBox4 = new GroupBox();
             tableLayoutPanel4 = new TableLayoutPanel();
             dgvAdv = new DataGridView();
             idAdvanceSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            idEmpDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            IdEmp = new DataGridViewTextBoxColumn();
             dateAsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             descriptionADataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             advanceSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -85,20 +89,19 @@
             panel4 = new Panel();
             panel5 = new Panel();
             panel6 = new Panel();
-            ((System.ComponentModel.ISupportInitialize)subSalaryBindingSource).BeginInit();
             groupBox2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSub).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)detailSubSalaryBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)subSalaryBindingSource).BeginInit();
             panel2.SuspendLayout();
             groupBox5.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvTotalSub).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSubDetail).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)subDetailBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)detailAdvanceSalaryBindingSource).BeginInit();
             groupBox3.SuspendLayout();
             panel7.SuspendLayout();
-            panel1.SuspendLayout();
             groupBox4.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAdv).BeginInit();
@@ -108,20 +111,6 @@
             panel5.SuspendLayout();
             panel6.SuspendLayout();
             SuspendLayout();
-            // 
-            // subSalaryBindingSource
-            // 
-            subSalaryBindingSource.DataSource = typeof(Repository.Models.SubSalary);
-            // 
-            // txtTotal
-            // 
-            txtTotal.Enabled = false;
-            txtTotal.Location = new Point(227, 15);
-            txtTotal.Margin = new Padding(4, 3, 4, 3);
-            txtTotal.Name = "txtTotal";
-            txtTotal.Size = new Size(158, 29);
-            txtTotal.TabIndex = 5;
-            txtTotal.Text = "0";
             // 
             // cbName
             // 
@@ -180,81 +169,95 @@
             dgvSub.BackgroundColor = SystemColors.ButtonHighlight;
             dgvSub.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvSub.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSub.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dateCreateDataGridViewTextBoxColumn, dateEffectDataGridViewTextBoxColumn });
-            dgvSub.DataSource = detailSubSalaryBindingSource;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.Padding = new Padding(0, 0, 20, 0);
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dgvSub.DefaultCellStyle = dataGridViewCellStyle1;
+            dgvSub.Columns.AddRange(new DataGridViewColumn[] { idSubDataGridViewTextBoxColumn, describeDataGridViewTextBoxColumn, moneyDataGridViewTextBoxColumn, timeBeginDataGridViewTextBoxColumn1, timeEndDataGridViewTextBoxColumn1, typeDataGridViewTextBoxColumn, conditionDataGridViewTextBoxColumn });
+            dgvSub.DataSource = subSalaryBindingSource;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.Padding = new Padding(0, 0, 20, 0);
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvSub.DefaultCellStyle = dataGridViewCellStyle3;
             dgvSub.Dock = DockStyle.Fill;
             dgvSub.Location = new Point(4, 3);
             dgvSub.Margin = new Padding(4, 3, 4, 3);
             dgvSub.Name = "dgvSub";
             dgvSub.ReadOnly = true;
-            dataGridViewCellStyle2.Padding = new Padding(0, 0, 20, 20);
-            dgvSub.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Padding = new Padding(0, 0, 20, 20);
+            dgvSub.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvSub.RowTemplate.Height = 27;
             dgvSub.Size = new Size(834, 279);
             dgvSub.TabIndex = 7;
-            dgvSub.CellMouseClick += dgvSub_CellMouseClick_1;
+            dgvSub.CellClick += dgvSub_CellClick;
             dgvSub.RowPrePaint += dgvSub_RowPrePaint;
             // 
-            // dataGridViewTextBoxColumn1
+            // idSubDataGridViewTextBoxColumn
             // 
-            dataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn1.DataPropertyName = "IdDetailSubSalary";
-            dataGridViewTextBoxColumn1.HeaderText = "Id";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
+            idSubDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            idSubDataGridViewTextBoxColumn.DataPropertyName = "IdSub";
+            idSubDataGridViewTextBoxColumn.HeaderText = "Id";
+            idSubDataGridViewTextBoxColumn.Name = "idSubDataGridViewTextBoxColumn";
+            idSubDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn3
+            // describeDataGridViewTextBoxColumn
             // 
-            dataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn3.DataPropertyName = "DescriptionA";
-            dataGridViewTextBoxColumn3.HeaderText = "Description";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
+            describeDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            describeDataGridViewTextBoxColumn.DataPropertyName = "Describe";
+            describeDataGridViewTextBoxColumn.HeaderText = "Describe";
+            describeDataGridViewTextBoxColumn.Name = "describeDataGridViewTextBoxColumn";
+            describeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn4
+            // moneyDataGridViewTextBoxColumn
             // 
-            dataGridViewTextBoxColumn4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn4.DataPropertyName = "SubsidiesSalary";
-            dataGridViewTextBoxColumn4.HeaderText = "Amount";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
+            moneyDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            moneyDataGridViewTextBoxColumn.DataPropertyName = "Money";
+            moneyDataGridViewTextBoxColumn.HeaderText = "Money";
+            moneyDataGridViewTextBoxColumn.Name = "moneyDataGridViewTextBoxColumn";
+            moneyDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn5
+            // timeBeginDataGridViewTextBoxColumn1
             // 
-            dataGridViewTextBoxColumn5.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn5.DataPropertyName = "Condition";
-            dataGridViewTextBoxColumn5.HeaderText = "Condition(number of sheet)";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
+            timeBeginDataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            timeBeginDataGridViewTextBoxColumn1.DataPropertyName = "TimeBegin";
+            dataGridViewCellStyle1.Format = "D";
+            dataGridViewCellStyle1.NullValue = null;
+            timeBeginDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle1;
+            timeBeginDataGridViewTextBoxColumn1.HeaderText = "Time begin";
+            timeBeginDataGridViewTextBoxColumn1.Name = "timeBeginDataGridViewTextBoxColumn1";
+            timeBeginDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // dateCreateDataGridViewTextBoxColumn
+            // timeEndDataGridViewTextBoxColumn1
             // 
-            dateCreateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dateCreateDataGridViewTextBoxColumn.DataPropertyName = "DateCreate";
-            dateCreateDataGridViewTextBoxColumn.HeaderText = "Date create";
-            dateCreateDataGridViewTextBoxColumn.Name = "dateCreateDataGridViewTextBoxColumn";
-            dateCreateDataGridViewTextBoxColumn.ReadOnly = true;
+            timeEndDataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            timeEndDataGridViewTextBoxColumn1.DataPropertyName = "TimeEnd";
+            dataGridViewCellStyle2.Format = "D";
+            dataGridViewCellStyle2.NullValue = null;
+            timeEndDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
+            timeEndDataGridViewTextBoxColumn1.HeaderText = "Time end";
+            timeEndDataGridViewTextBoxColumn1.Name = "timeEndDataGridViewTextBoxColumn1";
+            timeEndDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // dateEffectDataGridViewTextBoxColumn
+            // typeDataGridViewTextBoxColumn
             // 
-            dateEffectDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dateEffectDataGridViewTextBoxColumn.DataPropertyName = "DateEffect";
-            dateEffectDataGridViewTextBoxColumn.HeaderText = "Date effect";
-            dateEffectDataGridViewTextBoxColumn.Name = "dateEffectDataGridViewTextBoxColumn";
-            dateEffectDataGridViewTextBoxColumn.ReadOnly = true;
+            typeDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
+            typeDataGridViewTextBoxColumn.HeaderText = "Type";
+            typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            typeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // detailSubSalaryBindingSource
+            // conditionDataGridViewTextBoxColumn
             // 
-            detailSubSalaryBindingSource.DataSource = typeof(Repository.Models.DetailSubSalary);
+            conditionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            conditionDataGridViewTextBoxColumn.DataPropertyName = "Condition";
+            conditionDataGridViewTextBoxColumn.HeaderText = "Condition";
+            conditionDataGridViewTextBoxColumn.Name = "conditionDataGridViewTextBoxColumn";
+            conditionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // subSalaryBindingSource
+            // 
+            subSalaryBindingSource.DataSource = typeof(Repository.Models.SubSalary);
             // 
             // panel2
             // 
@@ -316,7 +319,7 @@
             // 
             tableLayoutPanel2.ColumnCount = 1;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Controls.Add(dgvTotalSub, 0, 0);
+            tableLayoutPanel2.Controls.Add(dgvSubDetail, 0, 0);
             tableLayoutPanel2.Controls.Add(numericUpDown1, 0, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(3, 25);
@@ -327,77 +330,95 @@
             tableLayoutPanel2.Size = new Size(844, 316);
             tableLayoutPanel2.TabIndex = 9;
             // 
-            // dgvTotalSub
+            // dgvSubDetail
             // 
-            dgvTotalSub.AutoGenerateColumns = false;
-            dgvTotalSub.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvTotalSub.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvTotalSub.BackgroundColor = SystemColors.ButtonHighlight;
-            dgvTotalSub.CellBorderStyle = DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.Padding = new Padding(0, 0, 30, 0);
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvTotalSub.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dgvTotalSub.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTotalSub.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn2, idEmpDataGridViewTextBoxColumn2, idDetailSubSalaryDataGridViewTextBoxColumn2, timeDataGridViewTextBoxColumn1 });
-            dgvTotalSub.DataSource = subSalaryBindingSource;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.Padding = new Padding(0, 0, 20, 0);
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvTotalSub.DefaultCellStyle = dataGridViewCellStyle4;
-            dgvTotalSub.Dock = DockStyle.Fill;
-            dgvTotalSub.Location = new Point(4, 3);
-            dgvTotalSub.Margin = new Padding(4, 3, 4, 3);
-            dgvTotalSub.Name = "dgvTotalSub";
-            dgvTotalSub.ReadOnly = true;
-            dataGridViewCellStyle5.Padding = new Padding(0, 0, 20, 20);
-            dgvTotalSub.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            dgvTotalSub.RowTemplate.Height = 27;
-            dgvTotalSub.Size = new Size(836, 278);
-            dgvTotalSub.TabIndex = 8;
-            dgvTotalSub.CellMouseEnter += dgvTotalSub_CellMouseEnter;
+            dgvSubDetail.AutoGenerateColumns = false;
+            dgvSubDetail.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvSubDetail.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvSubDetail.BackgroundColor = SystemColors.ButtonHighlight;
+            dgvSubDetail.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Control;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle5.Padding = new Padding(0, 0, 30, 0);
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvSubDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dgvSubDetail.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSubDetail.Columns.AddRange(new DataGridViewColumn[] { idDetailDataGridViewTextBoxColumn, IdEmpSub, Sub, timeBeginDataGridViewTextBoxColumn, timeEndDataGridViewTextBoxColumn });
+            dgvSubDetail.DataSource = subDetailBindingSource;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.Padding = new Padding(0, 0, 20, 0);
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgvSubDetail.DefaultCellStyle = dataGridViewCellStyle8;
+            dgvSubDetail.Dock = DockStyle.Fill;
+            dgvSubDetail.Location = new Point(4, 3);
+            dgvSubDetail.Margin = new Padding(4, 3, 4, 3);
+            dgvSubDetail.Name = "dgvSubDetail";
+            dgvSubDetail.ReadOnly = true;
+            dataGridViewCellStyle9.Padding = new Padding(0, 0, 20, 20);
+            dgvSubDetail.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dgvSubDetail.RowTemplate.Height = 27;
+            dgvSubDetail.Size = new Size(836, 278);
+            dgvSubDetail.TabIndex = 8;
+            dgvSubDetail.CellFormatting += dgvSubDetail_CellFormatting;
             // 
-            // dataGridViewTextBoxColumn2
+            // idDetailDataGridViewTextBoxColumn
             // 
-            dataGridViewTextBoxColumn2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn2.DataPropertyName = "IdSubSalary";
-            dataGridViewTextBoxColumn2.HeaderText = "Id";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
+            idDetailDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            idDetailDataGridViewTextBoxColumn.DataPropertyName = "IdDetail";
+            idDetailDataGridViewTextBoxColumn.HeaderText = "Id";
+            idDetailDataGridViewTextBoxColumn.Name = "idDetailDataGridViewTextBoxColumn";
+            idDetailDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // idEmpDataGridViewTextBoxColumn2
+            // IdEmpSub
             // 
-            idEmpDataGridViewTextBoxColumn2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            idEmpDataGridViewTextBoxColumn2.DataPropertyName = "IdEmp";
-            idEmpDataGridViewTextBoxColumn2.HeaderText = "Id Employee";
-            idEmpDataGridViewTextBoxColumn2.Name = "idEmpDataGridViewTextBoxColumn2";
-            idEmpDataGridViewTextBoxColumn2.ReadOnly = true;
+            IdEmpSub.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            IdEmpSub.DataPropertyName = "IdEmp";
+            IdEmpSub.HeaderText = "Employee";
+            IdEmpSub.Name = "IdEmpSub";
+            IdEmpSub.ReadOnly = true;
             // 
-            // idDetailSubSalaryDataGridViewTextBoxColumn2
+            // Sub
             // 
-            idDetailSubSalaryDataGridViewTextBoxColumn2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            idDetailSubSalaryDataGridViewTextBoxColumn2.DataPropertyName = "IdDetailSubSalary";
-            idDetailSubSalaryDataGridViewTextBoxColumn2.HeaderText = "Id Detail";
-            idDetailSubSalaryDataGridViewTextBoxColumn2.Name = "idDetailSubSalaryDataGridViewTextBoxColumn2";
-            idDetailSubSalaryDataGridViewTextBoxColumn2.ReadOnly = true;
+            Sub.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Sub.DataPropertyName = "IdSub";
+            Sub.HeaderText = "Allowance";
+            Sub.Name = "Sub";
+            Sub.ReadOnly = true;
             // 
-            // timeDataGridViewTextBoxColumn1
+            // timeBeginDataGridViewTextBoxColumn
             // 
-            timeDataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            timeDataGridViewTextBoxColumn1.DataPropertyName = "Time";
-            timeDataGridViewTextBoxColumn1.HeaderText = "Time";
-            timeDataGridViewTextBoxColumn1.Name = "timeDataGridViewTextBoxColumn1";
-            timeDataGridViewTextBoxColumn1.ReadOnly = true;
+            timeBeginDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            timeBeginDataGridViewTextBoxColumn.DataPropertyName = "TimeBegin";
+            dataGridViewCellStyle6.Format = "D";
+            dataGridViewCellStyle6.NullValue = null;
+            timeBeginDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            timeBeginDataGridViewTextBoxColumn.HeaderText = "Time begin";
+            timeBeginDataGridViewTextBoxColumn.Name = "timeBeginDataGridViewTextBoxColumn";
+            timeBeginDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // timeEndDataGridViewTextBoxColumn
+            // 
+            timeEndDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            timeEndDataGridViewTextBoxColumn.DataPropertyName = "TimeEnd";
+            dataGridViewCellStyle7.Format = "D";
+            dataGridViewCellStyle7.NullValue = null;
+            timeEndDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            timeEndDataGridViewTextBoxColumn.HeaderText = "Time end";
+            timeEndDataGridViewTextBoxColumn.Name = "timeEndDataGridViewTextBoxColumn";
+            timeEndDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // subDetailBindingSource
+            // 
+            subDetailBindingSource.DataSource = typeof(Repository.Models.SubDetail);
             // 
             // numericUpDown1
             // 
@@ -417,7 +438,6 @@
             // groupBox3
             // 
             groupBox3.Controls.Add(panel7);
-            groupBox3.Controls.Add(panel1);
             groupBox3.Dock = DockStyle.Fill;
             groupBox3.Location = new Point(0, 0);
             groupBox3.Name = "groupBox3";
@@ -431,10 +451,10 @@
             panel7.Controls.Add(btFilter);
             panel7.Controls.Add(dtpList);
             panel7.Controls.Add(cbName);
-            panel7.Dock = DockStyle.Top;
+            panel7.Dock = DockStyle.Fill;
             panel7.Location = new Point(3, 25);
             panel7.Name = "panel7";
-            panel7.Size = new Size(553, 100);
+            panel7.Size = new Size(553, 316);
             panel7.TabIndex = 23;
             // 
             // cbOrderby
@@ -458,25 +478,6 @@
             btFilter.TabIndex = 20;
             btFilter.UseVisualStyleBackColor = true;
             btFilter.Click += btFilter_Click;
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(txtTotal);
-            panel1.Controls.Add(label1);
-            panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(3, 284);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(553, 57);
-            panel1.TabIndex = 22;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(10, 23);
-            label1.Name = "label1";
-            label1.Size = new Size(115, 21);
-            label1.TabIndex = 21;
-            label1.Text = "Total allowance";
             // 
             // groupBox4
             // 
@@ -512,71 +513,74 @@
             dgvAdv.BackgroundColor = SystemColors.ButtonHighlight;
             dgvAdv.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dgvAdv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAdv.Columns.AddRange(new DataGridViewColumn[] { idAdvanceSalaryDataGridViewTextBoxColumn, idEmpDataGridViewTextBoxColumn1, dateAsDataGridViewTextBoxColumn, descriptionADataGridViewTextBoxColumn1, advanceSalaryDataGridViewTextBoxColumn });
+            dgvAdv.Columns.AddRange(new DataGridViewColumn[] { idAdvanceSalaryDataGridViewTextBoxColumn, IdEmp, dateAsDataGridViewTextBoxColumn, descriptionADataGridViewTextBoxColumn1, advanceSalaryDataGridViewTextBoxColumn });
             dgvAdv.DataSource = detailAdvanceSalaryBindingSource;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.Window;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle7.Padding = new Padding(0, 0, 20, 0);
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-            dgvAdv.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = SystemColors.Window;
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle12.Padding = new Padding(0, 0, 20, 0);
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
+            dgvAdv.DefaultCellStyle = dataGridViewCellStyle12;
             dgvAdv.Dock = DockStyle.Fill;
             dgvAdv.Location = new Point(4, 3);
             dgvAdv.Margin = new Padding(4, 3, 4, 3);
             dgvAdv.Name = "dgvAdv";
             dgvAdv.ReadOnly = true;
-            dataGridViewCellStyle8.Padding = new Padding(0, 0, 20, 20);
-            dgvAdv.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle13.Padding = new Padding(0, 0, 20, 20);
+            dgvAdv.RowsDefaultCellStyle = dataGridViewCellStyle13;
             dgvAdv.RowTemplate.Height = 27;
             dgvAdv.Size = new Size(545, 279);
             dgvAdv.TabIndex = 1;
-            dgvAdv.CellMouseEnter += dgvAdv_CellMouseEnter;
+            dgvAdv.CellFormatting += dgvAdv_CellFormatting;
             // 
             // idAdvanceSalaryDataGridViewTextBoxColumn
             // 
+            idAdvanceSalaryDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             idAdvanceSalaryDataGridViewTextBoxColumn.DataPropertyName = "IdAdvanceSalary";
             idAdvanceSalaryDataGridViewTextBoxColumn.HeaderText = "ID";
             idAdvanceSalaryDataGridViewTextBoxColumn.Name = "idAdvanceSalaryDataGridViewTextBoxColumn";
             idAdvanceSalaryDataGridViewTextBoxColumn.ReadOnly = true;
-            idAdvanceSalaryDataGridViewTextBoxColumn.Width = 70;
             // 
-            // idEmpDataGridViewTextBoxColumn1
+            // IdEmp
             // 
-            idEmpDataGridViewTextBoxColumn1.DataPropertyName = "IdEmp";
-            idEmpDataGridViewTextBoxColumn1.HeaderText = "Id Employee";
-            idEmpDataGridViewTextBoxColumn1.Name = "idEmpDataGridViewTextBoxColumn1";
-            idEmpDataGridViewTextBoxColumn1.ReadOnly = true;
-            idEmpDataGridViewTextBoxColumn1.Width = 140;
+            IdEmp.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            IdEmp.DataPropertyName = "IdEmp";
+            IdEmp.HeaderText = "Employee";
+            IdEmp.Name = "IdEmp";
+            IdEmp.ReadOnly = true;
             // 
             // dateAsDataGridViewTextBoxColumn
             // 
+            dateAsDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dateAsDataGridViewTextBoxColumn.DataPropertyName = "DateAs";
+            dataGridViewCellStyle10.Format = "D";
+            dataGridViewCellStyle10.NullValue = null;
+            dateAsDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
             dateAsDataGridViewTextBoxColumn.HeaderText = "Date";
             dateAsDataGridViewTextBoxColumn.Name = "dateAsDataGridViewTextBoxColumn";
             dateAsDataGridViewTextBoxColumn.ReadOnly = true;
-            dateAsDataGridViewTextBoxColumn.Width = 87;
             // 
             // descriptionADataGridViewTextBoxColumn1
             // 
+            descriptionADataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             descriptionADataGridViewTextBoxColumn1.DataPropertyName = "DescriptionA";
-            descriptionADataGridViewTextBoxColumn1.HeaderText = "Description/note";
+            descriptionADataGridViewTextBoxColumn1.HeaderText = "Description";
             descriptionADataGridViewTextBoxColumn1.Name = "descriptionADataGridViewTextBoxColumn1";
             descriptionADataGridViewTextBoxColumn1.ReadOnly = true;
-            descriptionADataGridViewTextBoxColumn1.Width = 171;
             // 
             // advanceSalaryDataGridViewTextBoxColumn
             // 
+            advanceSalaryDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             advanceSalaryDataGridViewTextBoxColumn.DataPropertyName = "AdvanceSalary";
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            advanceSalaryDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle11.Format = "#,###,###";
+            dataGridViewCellStyle11.NullValue = null;
+            advanceSalaryDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
             advanceSalaryDataGridViewTextBoxColumn.HeaderText = "Money";
             advanceSalaryDataGridViewTextBoxColumn.Name = "advanceSalaryDataGridViewTextBoxColumn";
             advanceSalaryDataGridViewTextBoxColumn.ReadOnly = true;
-            advanceSalaryDataGridViewTextBoxColumn.Width = 103;
             // 
             // btAddnew_Adv
             // 
@@ -666,22 +670,20 @@
             StartPosition = FormStartPosition.CenterParent;
             Text = "frmSubSalary";
             Load += frmSubSalary_Load;
-            ((System.ComponentModel.ISupportInitialize)subSalaryBindingSource).EndInit();
             groupBox2.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvSub).EndInit();
-            ((System.ComponentModel.ISupportInitialize)detailSubSalaryBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)subSalaryBindingSource).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             groupBox5.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvTotalSub).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvSubDetail).EndInit();
+            ((System.ComponentModel.ISupportInitialize)subDetailBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ((System.ComponentModel.ISupportInitialize)detailAdvanceSalaryBindingSource).EndInit();
             groupBox3.ResumeLayout(false);
             panel7.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             groupBox4.ResumeLayout(false);
             tableLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvAdv).EndInit();
@@ -703,13 +705,9 @@
         private DataGridViewTextBoxColumn descriptionSDataGridViewTextBoxColumn;
         private DateTimePicker dtpList;
         private Label txtSaveID;
-        private TextBox txtTotal;
         private ComboBox cbName;
         private DataGridViewTextBoxColumn idSubSalaryDataGridViewTextBoxColumn;
-        private BindingSource detailSubSalaryBindingSource;
-        private BindingSource subSalaryBindingSource;
         private NumericUpDown nmPaging;
-        private Panel panel1;
         private Panel panel2;
         private DataGridView dgvAdv;
         private BindingSource detailAdvanceSalaryBindingSource;
@@ -726,16 +724,9 @@
         private DataGridViewTextBoxColumn idDetailSubSalaryDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn descriptionADataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn subsidiesSalaryDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn conditionDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn idAdvanceSalaryDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn idEmpDataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dateAsDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn descriptionADataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn advanceSalaryDataGridViewTextBoxColumn;
         private ComboBox cbOrderby;
         private Button btFilter;
-        private Label label1;
-        private DataGridView dgvTotalSub;
+        private DataGridView dgvSubDetail;
         private TableLayoutPanel tableLayoutPanel3;
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tableLayoutPanel4;
@@ -750,6 +741,24 @@
         private DataGridViewTextBoxColumn idDetailSubSalaryDataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn timeDataGridViewTextBoxColumn1;
         private Panel panel7;
-
+        private DataGridViewTextBoxColumn idAdvanceSalaryDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn IdEmp;
+        private DataGridViewTextBoxColumn dateAsDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionADataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn advanceSalaryDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn idSubDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn describeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn moneyDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn timeBeginDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn timeEndDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn conditionDataGridViewTextBoxColumn;
+        private BindingSource subSalaryBindingSource;
+        private BindingSource subDetailBindingSource;
+        private DataGridViewTextBoxColumn idDetailDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn IdEmpSub;
+        private DataGridViewTextBoxColumn Sub;
+        private DataGridViewTextBoxColumn timeBeginDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn timeEndDataGridViewTextBoxColumn;
     }
 }

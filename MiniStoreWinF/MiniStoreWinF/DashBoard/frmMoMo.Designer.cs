@@ -237,6 +237,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
+            MaximizeBox = false;
             MaximumSize = new Size(835, 536);
             MinimumSize = new Size(835, 536);
             Name = "frmMoMo";

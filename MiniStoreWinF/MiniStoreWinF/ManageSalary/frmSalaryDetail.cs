@@ -1,6 +1,7 @@
 ﻿using Repository.Models;
 using Repository.Service;
 using System.Data;
+using System.Windows.Forms;
 
 
 namespace MiniStoreWinF.ManageSalary
@@ -26,7 +27,7 @@ namespace MiniStoreWinF.ManageSalary
             ShowListSalary(DateTime.Now.AddMonths(-1));
             dtpTime.Value = DateTime.Now.AddMonths(-1);
             u.showListEmp_ALL(cbName);
-            lblTotal.Text = "Total salary need to pay for employee : " + u.formatDouble(TotalSalaryNeedInMonth(dtpTime.Value)) + " VND";
+
         }
 
         List<Salary> LoadRecord(int page, int numberRe, List<Salary> list)
@@ -40,7 +41,7 @@ namespace MiniStoreWinF.ManageSalary
 
         public void ShowListSalary(DateTime time)
         {
-            var list = u.salary(time).OrderByDescending(p => p.SalaryAfterTax).ToList();
+            var list = u.listSalaryByTime(time).OrderByDescending(p => p.FinalSalary).ToList();
             dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
             listSa = list;
         }
@@ -50,22 +51,21 @@ namespace MiniStoreWinF.ManageSalary
             _salaryService = new SalaryService();
             string id = cbName.SelectedValue.ToString();
             DateTime time = dtpTime.Value;
-            lblTotal.Text = "Total salary need to pay for employee : " + u.formatDouble(TotalSalaryNeedInMonth(time)) + " VND";
             if (cbOrderby.Text == "Descending" && id == "-1")
             {
-                var list = u.salary(time).OrderByDescending(p => p.SalaryAfterTax).ToList();
+                var list = u.listSalaryByTime(time).OrderByDescending(p => p.FinalSalary).ToList();
                 dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
                 listSa = list;
             }
             else if (cbOrderby.Text != "Descending" && id == "-1")
             {
-                var list = u.salary(time).OrderBy(p => p.SalaryAfterTax).ToList();
+                var list = u.listSalaryByTime(time).OrderBy(p => p.FinalSalary).ToList();
                 dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
                 listSa = list;
             }
             else
             {
-                var list = _salaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.DateImonth.Month.Equals(time.Month)&& p.DateImonth.Year.Equals(time.Year)).ToList();
+                var list = _salaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.DateImonth.Month.Equals(time.Month) && p.DateImonth.Year.Equals(time.Year)).ToList();
                 dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
                 listSa = list;
             }
@@ -75,10 +75,10 @@ namespace MiniStoreWinF.ManageSalary
         {
             double total = 0;
             _salaryService = new SalaryService();
-            var list = u.salary(time).ToList();
+            var list = u.listSalaryByTime(time).ToList();
             foreach (var item in list)
             {
-                total += item.SalaryAfterTax;
+                //total += item.SalaryAfterTax;
             }
             return total;
         }
@@ -162,26 +162,27 @@ namespace MiniStoreWinF.ManageSalary
                 if (result == DialogResult.Yes)
                 {
                     frmDetailSalaryDetail form = new frmDetailSalaryDetail();
-                    form.id = s_salary.IdEmp;
-                    form.time = s_salary.DateImonth;
+                    ContextScope.currentSalary = s_salary;
                     form.ShowDialog();
                 }
             }
 
         }
 
-        private void dgvSalary_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        private void dgvSalary_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             EmployeeService _employeeService = new EmployeeService();
-            if (e.RowIndex >= 0 && e.ColumnIndex == 1)
+            if (dgvSalary.Columns[e.ColumnIndex].Name == "idEmp")
             {
-                DataGridViewCell cell = dgvSalary.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                string cellValue = cell.Value?.ToString();
-                var emp = _employeeService.GetAll().Where(p => p.IdEmp.Equals(cellValue)).FirstOrDefault();
-                string name = emp.FullNameEmp;
 
-                // Gán giá trị của ô vào thuộc tính ToolTipText
-                cell.ToolTipText = name;
+                if (e.Value != null)
+                {
+                    string idEmp = e.Value.ToString();
+                    var nameEmp = _employeeService.GetAll().Where(p => p.IdEmp.Equals(idEmp)).FirstOrDefault();
+                    string name = nameEmp.FullNameEmp;
+                    e.Value = name;
+                    e.FormattingApplied = true;
+                }
             }
         }
     }

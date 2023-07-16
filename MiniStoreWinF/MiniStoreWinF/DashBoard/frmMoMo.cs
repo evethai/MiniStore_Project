@@ -88,7 +88,7 @@ namespace MiniStoreWinF.DashBoard
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if(choise==true)
+            if (choise == true)
             {
                 var momo = _moService.GetAll().Where(p => p.Id == Int32.Parse(txtSave.Text)).FirstOrDefault();
                 if (momo != null)
@@ -107,7 +107,7 @@ namespace MiniStoreWinF.DashBoard
             {
                 MessageBox.Show("Please choise account MoMo to use!");
             }
-            
+
         }
 
         private void btnUse_Click(object sender, EventArgs e)

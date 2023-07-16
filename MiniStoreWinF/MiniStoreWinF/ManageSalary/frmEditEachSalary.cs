@@ -42,7 +42,7 @@ namespace MiniStoreWinF.ManageSalary
 
                 notiSave.BalloonTipText = "Save Successfull";
                 notiSave.BalloonTipTitle = "Change Success";
-                notiSave.Icon = SystemIcons.Hand;
+                notiSave.Icon = SystemIcons.Exclamation;
                 notiSave.ShowBalloonTip(1000);
                 this.DialogResult = DialogResult.OK;
                 this.Close();

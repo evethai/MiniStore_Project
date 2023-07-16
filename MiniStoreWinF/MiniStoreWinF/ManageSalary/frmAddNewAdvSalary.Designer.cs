@@ -160,6 +160,7 @@
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(5, 4, 5, 4);
+            MaximizeBox = false;
             MaximumSize = new Size(541, 455);
             MinimumSize = new Size(541, 455);
             Name = "frmAddNewAdvSalary";

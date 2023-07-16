@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Repository.Service
 {
-    public class DetailSubSalaryService:ServiceMiniStore<DetailSubSalary>
+    public class SubDetailService:ServiceMiniStore<SubDetail>
     {
     }
 }

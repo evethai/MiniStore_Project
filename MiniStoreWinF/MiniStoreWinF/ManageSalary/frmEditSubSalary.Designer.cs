@@ -30,10 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditSubSalary));
             gbAddSub = new GroupBox();
+            label5 = new Label();
             label4 = new Label();
             dtpEffect = new DateTimePicker();
             btRemove = new Button();
             btUpdate = new Button();
+            cbType = new ComboBox();
             cbCondi = new ComboBox();
             txtSalary = new TextBox();
             txtDis = new TextBox();
@@ -46,10 +48,12 @@
             // gbAddSub
             // 
             gbAddSub.BackColor = SystemColors.ButtonHighlight;
+            gbAddSub.Controls.Add(label5);
             gbAddSub.Controls.Add(label4);
             gbAddSub.Controls.Add(dtpEffect);
             gbAddSub.Controls.Add(btRemove);
             gbAddSub.Controls.Add(btUpdate);
+            gbAddSub.Controls.Add(cbType);
             gbAddSub.Controls.Add(cbCondi);
             gbAddSub.Controls.Add(txtSalary);
             gbAddSub.Controls.Add(txtDis);
@@ -65,10 +69,19 @@
             gbAddSub.TabStop = false;
             gbAddSub.Text = "Edit Subsidized Salary";
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(34, 200);
+            label5.Name = "label5";
+            label5.Size = new Size(51, 25);
+            label5.TabIndex = 7;
+            label5.Text = "Type";
+            // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(25, 296);
+            label4.Location = new Point(25, 354);
             label4.Name = "label4";
             label4.Size = new Size(105, 25);
             label4.TabIndex = 6;
@@ -77,7 +90,7 @@
             // dtpEffect
             // 
             dtpEffect.Format = DateTimePickerFormat.Short;
-            dtpEffect.Location = new Point(348, 296);
+            dtpEffect.Location = new Point(348, 346);
             dtpEffect.Name = "dtpEffect";
             dtpEffect.Size = new Size(200, 33);
             dtpEffect.TabIndex = 5;
@@ -108,12 +121,24 @@
             btUpdate.UseVisualStyleBackColor = false;
             btUpdate.Click += btUpdate_Click;
             // 
+            // cbType
+            // 
+            cbType.DropDownHeight = 50;
+            cbType.FormattingEnabled = true;
+            cbType.IntegralHeight = false;
+            cbType.Location = new Point(348, 192);
+            cbType.Margin = new Padding(5, 4, 5, 4);
+            cbType.Name = "cbType";
+            cbType.Size = new Size(200, 33);
+            cbType.TabIndex = 3;
+            cbType.SelectedIndexChanged += cbType_SelectedIndexChanged;
+            // 
             // cbCondi
             // 
             cbCondi.DropDownHeight = 50;
             cbCondi.FormattingEnabled = true;
             cbCondi.IntegralHeight = false;
-            cbCondi.Location = new Point(348, 207);
+            cbCondi.Location = new Point(348, 274);
             cbCondi.Margin = new Padding(5, 4, 5, 4);
             cbCondi.Name = "cbCondi";
             cbCondi.Size = new Size(200, 33);
@@ -126,7 +151,7 @@
             txtSalary.Name = "txtSalary";
             txtSalary.Size = new Size(200, 33);
             txtSalary.TabIndex = 2;
-            txtSalary.KeyPress += txtSalary_KeyPress_1;
+            txtSalary.KeyPress += txtSalary_KeyPress;
             // 
             // txtDis
             // 
@@ -139,7 +164,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(25, 219);
+            label3.Location = new Point(25, 274);
             label3.Margin = new Padding(5, 0, 5, 0);
             label3.Name = "label3";
             label3.Size = new Size(250, 25);
@@ -175,6 +200,9 @@
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(5, 4, 5, 4);
+            MaximumSize = new Size(598, 536);
+            MinimizeBox = false;
+            MinimumSize = new Size(598, 536);
             Name = "frmEditSubSalary";
             Load += frmEditSubSalary_Load;
             gbAddSub.ResumeLayout(false);
@@ -195,5 +223,7 @@
         private Label label1;
         private Label label4;
         private DateTimePicker dtpEffect;
+        private Label label5;
+        private ComboBox cbType;
     }
 }

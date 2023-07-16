@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace MiniStoreWinF.ManageSalary
 {
@@ -18,8 +19,7 @@ namespace MiniStoreWinF.ManageSalary
         SalaryService _salaryService;
         OrderService _orderService;
         EmployeeService _employeeService;
-        public string id;
-        public DateTime time;
+
         public frmDetailSalaryDetail()
         {
             InitializeComponent();
@@ -27,112 +27,26 @@ namespace MiniStoreWinF.ManageSalary
             _workSheetService = new WorkSheetService();
             _employeeService = new EmployeeService();
             _orderService = new OrderService();
+
         }
 
         private void frmDetailSalaryDetail_Load(object sender, EventArgs e)
         {
-            dataList(id, time);
+            string id = ContextScope.currentSalary.IdEmp;
+            DateTime time = ContextScope.currentSalary.DateImonth;
             txtTime.Text = time.Month + "/" + time.Year;
             txtHour.Text = sumHourinMonth(time, id).ToString();
             txtRevenus.Text = sumOrdersInMonth(time, id).ToString();
             txtOrder.Text = countTotal(time, id).ToString();
             txtName.Text = name(id);
-        }
-        //Paging
-        private int currentPage = 1;
-        private int pageSize = 7;
-        private DataTable dt;
-
-        /*show list worktime in month of each specific employee*/
-        public void dataList(string id, DateTime date)
-        {
-
-            var listSa = _salaryService.GetAll().ToList();
-            var listWs = _workSheetService.GetAll().Where(p => p.Date.Value.Month.Equals(date.Month)&& p.Date.Value.Year.Equals(date.Year) && p.Status==true).ToList();
-
-            var data = (from sa in listSa
-                        join ws in listWs on sa.IdEmp equals ws.IdEmp
-                        where sa.IdEmp.Equals(id)
-                        select Tuple.Create(ws.TimeCheckIn, ws.TimeCheckOut)).ToList();
-
-            dt = new DataTable();
-            DataRow newRow1 = dt.NewRow();
-            DataRow newRow2 = dt.NewRow();
-
-            for (int i = 0; i < data.Count; i++)
-            {
-                string row = data[i].Item1.Value.Day.ToString();
-                dt.Columns.Add(row, typeof(string));
-                newRow1[row] = data[i].Item1.Value.TimeOfDay;
-                newRow2[row] = data[i].Item2.Value.TimeOfDay;
-            }
-            //LoadDataByPage(currentPage);
-            dt.Rows.Add(newRow1);
-            dt.Rows.Add(newRow2);
-
-            LoadDataByPage(currentPage);
+            Info_DeTail_Salary(id, time);
         }
 
-        /*Paging*/
-        private void LoadDataByPage(int page)
-        {
-            int startIndex = (page - 1) * pageSize;
-            int endIndex = startIndex + pageSize - 1;
 
-            // Xóa các cột hiện tại trong DataGridView
-            dataGridView1.Columns.Clear();
-
-            // Tạo và thêm cột cho trang hiện tại
-            for (int i = startIndex; i <= endIndex && i < dt.Columns.Count; i++)
-            {
-                string columnName = dt.Columns[i].ColumnName;
-                dataGridView1.Columns.Add(columnName, columnName);
-            }
-
-            // Xóa các dòng hiện tại trong DataGridView
-            dataGridView1.Rows.Clear();
-
-            // Thêm dữ liệu vào các dòng của trang hiện tại
-            for (int rowIndex = 0; rowIndex < 2; rowIndex++) // Số dòng cố định là 2
-            {
-                DataGridViewRow dataGridViewRow = new DataGridViewRow();
-
-                for (int i = startIndex; i <= endIndex && i < dt.Columns.Count; i++)
-                {
-                    string columnName = dt.Columns[i].ColumnName;
-                    dataGridViewRow.Cells.Add(new DataGridViewTextBoxCell
-                    {
-                        Value = dt.Rows[rowIndex][columnName].ToString()
-                    });
-                }
-
-                dataGridView1.Rows.Add(dataGridViewRow);
-            }
-        }
-
-        private void btPre_Click(object sender, EventArgs e)
-        {
-            if (currentPage > 1)
-            {
-                currentPage--;
-                LoadDataByPage(currentPage);
-            }
-        }
-
-        private void btNext_Click(object sender, EventArgs e)
-        {
-            if (currentPage < (int)Math.Ceiling((double)dt.Columns.Count / pageSize))
-            {
-                currentPage++;
-                LoadDataByPage(currentPage);
-            }
-        }
-
-        
         public double sumHourinMonth(DateTime time, string id)
         {
             double sum = 0;
-            var list = _workSheetService.GetAll().Where(p => p.Date.Value.Month.Equals(time.Month) && p.Date.Value.Year.Equals(time.Year) && p.IdEmp.Equals(id)&&p.Status==true).ToList();
+            var list = _workSheetService.GetAll().Where(p => p.Date.Value.Month.Equals(time.Month) && p.Date.Value.Year.Equals(time.Year) && p.IdEmp.Equals(id) && p.Status == true).ToList();
             foreach (var item in list)
             {
                 sum += (item.TimeCheckOut.Value.TimeOfDay - item.TimeCheckIn.Value.TimeOfDay).TotalHours;
@@ -165,6 +79,132 @@ namespace MiniStoreWinF.ManageSalary
             }
             return emp;
         }
+
+        ////////////////////////////
+
+        Utinity u = new Utinity();
+        public void Info_DeTail_Salary(string id, DateTime time)
+        {
+            var emp = _employeeService.GetAll().Where(p => p.IdEmp.Equals(id)).FirstOrDefault();
+
+            HeSoTinhLuongService _heSoTinhLuongService = new HeSoTinhLuongService();
+            var hstl = _heSoTinhLuongService.GetAll().FirstOrDefault();
+
+            bhxh.Text = bhxh.Text + "(" + hstl.Bhxh * 100 + "%)";
+            bhyt.Text = bhyt.Text + "(" + hstl.Bhyt * 100 + "%)";
+            bhtn.Text = bhtn.Text + "(" + hstl.Bhtn * 100 + "%)";
+            gtgcnpt.Text = gtgcnpt.Text + "(" + emp.Snpt + ")";
+
+            SalaryService _salaryService = new SalaryService();
+            var salary = _salaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.DateImonth.Month.Equals(time.Month) && p.DateImonth.Year.Equals(time.Year)).FirstOrDefault();
+
+
+            _luongcb.Text = u.formatDouble(salary.BasicSalary);
+            if (salary.BasicSalary >= hstl.MucBhToiDa)
+            {
+                _bhxh.Text = "- " + u.formatDouble(hstl.MucBhToiDa * hstl.Bhxh);
+                _bhyt.Text = "- " + u.formatDouble(hstl.MucBhToiDa * hstl.Bhyt);
+                _bhtn.Text = "- " + u.formatDouble(salary.BasicSalary * hstl.Bhtn);
+                _tntt.Text = u.formatDouble(salary.BasicSalary - (hstl.MucBhToiDa * hstl.Bhxh) - (hstl.MucBhToiDa * hstl.Bhyt) - (salary.BasicSalary * hstl.Bhtn));
+                _gtgccn.Text = "- " + u.formatDouble(hstl.GtgcBanthan);
+
+                _gtgcnpt.Text = "- " + (emp.Snpt * hstl.GtgcNpt).ToString();
+
+                if (salary.SalaryBeforTax - hstl.GtgcBanthan - (emp.Snpt * hstl.GtgcNpt) < 0)
+                {
+                    _tnct.Text = "0";
+                }
+                else
+                {
+                    _tnct.Text = u.formatDouble(salary.SalaryBeforTax - hstl.GtgcBanthan - (emp.Snpt * hstl.GtgcNpt));
+                }
+
+                _ttncn.Text = "- " + (salary.Tax).ToString();
+                _luong.Text = u.formatDouble(salary.FinalSalary);
+            }
+            else
+            {
+                _bhxh.Text = "- " + u.formatDouble(salary.BasicSalary * hstl.Bhxh);
+                _bhyt.Text = "- " + u.formatDouble(salary.BasicSalary * hstl.Bhyt);
+                _bhtn.Text = "- " + u.formatDouble(salary.BasicSalary * hstl.Bhtn);
+                _tntt.Text = u.formatDouble(salary.BasicSalary - (salary.BasicSalary * hstl.Bhxh) - (salary.BasicSalary * hstl.Bhyt) - (salary.BasicSalary * hstl.Bhtn));
+                _gtgccn.Text = "- " + u.formatDouble(hstl.GtgcBanthan);
+
+                _gtgcnpt.Text = "- " + (emp.Snpt * hstl.GtgcNpt).ToString();
+
+                if (salary.SalaryBeforTax - hstl.GtgcBanthan - (emp.Snpt * hstl.GtgcNpt) < 0)
+                {
+                    _tnct.Text = "0";
+                }
+                else
+                {
+                    _tnct.Text = u.formatDouble(salary.SalaryBeforTax - hstl.GtgcBanthan - (emp.Snpt * hstl.GtgcNpt));
+                }
+
+                _ttncn.Text = "- " + (salary.Tax).ToString();
+                _luong.Text = u.formatDouble(salary.FinalSalary);
+            }
+            double? thu_nhap_chiu_thue = salary.SalaryBeforTax - hstl.GtgcBanthan - (emp.Snpt * hstl.GtgcNpt);
+            if (thu_nhap_chiu_thue > 0 && thu_nhap_chiu_thue <= 5000000)
+            {
+                lbl5p.Text = u.formatDouble(thu_nhap_chiu_thue * 5 / 100);
+            }
+            else if (thu_nhap_chiu_thue > 5000000 && thu_nhap_chiu_thue <= 10000000)
+            {
+                lbl5p.Text = u.formatDouble(250000);
+                thu_nhap_chiu_thue = thu_nhap_chiu_thue - 5000000;
+                lbl10p.Text = u.formatDouble(thu_nhap_chiu_thue * 10 / 100);
+            }
+            else if (thu_nhap_chiu_thue > 10000000 && thu_nhap_chiu_thue <= 18000000)
+            {
+                lbl5p.Text = u.formatDouble(250000);
+                lbl10p.Text = u.formatDouble(500000);
+                thu_nhap_chiu_thue = thu_nhap_chiu_thue - 10000000;
+                lbl15p.Text = u.formatDouble(thu_nhap_chiu_thue * 15 / 100);
+            }
+            else if (thu_nhap_chiu_thue > 18000000 && thu_nhap_chiu_thue <= 32000000)
+            {
+                lbl5p.Text = u.formatDouble(250000);
+                lbl10p.Text = u.formatDouble(500000);
+                lbl15p.Text = u.formatDouble(1200000);
+                thu_nhap_chiu_thue = thu_nhap_chiu_thue - 18000000;
+                lbl20p.Text = u.formatDouble(thu_nhap_chiu_thue * 20 / 100);
+            }
+            else if (thu_nhap_chiu_thue > 32000000 && thu_nhap_chiu_thue <= 52000000)
+            {
+                lbl5p.Text = u.formatDouble(250000);
+                lbl10p.Text = u.formatDouble(500000);
+                lbl15p.Text = u.formatDouble(1200000);
+                lbl20p.Text = u.formatDouble(2800000);
+                thu_nhap_chiu_thue = thu_nhap_chiu_thue - 32000000;
+                lbl25p.Text = u.formatDouble(thu_nhap_chiu_thue * 25 / 100);
+            }
+            else if (thu_nhap_chiu_thue > 52000000 && thu_nhap_chiu_thue < 80000000)
+            {
+                lbl5p.Text = u.formatDouble(250000);
+                lbl10p.Text = u.formatDouble(500000);
+                lbl15p.Text = u.formatDouble(1200000);
+                lbl20p.Text = u.formatDouble(2800000);
+                lbl25p.Text = u.formatDouble(5000000);
+                thu_nhap_chiu_thue = thu_nhap_chiu_thue - 52000000;
+                lbl30p.Text = u.formatDouble(thu_nhap_chiu_thue * 30 / 100);
+            }
+            else if (thu_nhap_chiu_thue > 80000000)
+            {
+                lbl5p.Text = u.formatDouble(250000);
+                lbl10p.Text = u.formatDouble(500000);
+                lbl15p.Text = u.formatDouble(1200000);
+                lbl20p.Text = u.formatDouble(2800000);
+                lbl25p.Text = u.formatDouble(5000000);
+                lbl30p.Text = u.formatDouble(8400000);
+                thu_nhap_chiu_thue = thu_nhap_chiu_thue - 80000000;
+                lbl35p.Text = u.formatDouble(thu_nhap_chiu_thue * 35 / 100);
+            }
+
+        }
+
+
+
     }
 
 }

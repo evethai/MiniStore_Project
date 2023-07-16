@@ -142,12 +142,12 @@ namespace MiniStoreWinF.ManageSalary
         }
 
         /*show list salary with specifically month and not have admin*/
-        public List<Salary> salary(DateTime time)
+        public List<Salary> listSalaryByTime(DateTime time)
         {
             _salaryService = new SalaryService();
             _employeeService = new EmployeeService();
             var listSal = _salaryService.GetAll().Where(p => p.DateOmonth.Month.Equals(time.Month) && p.DateOmonth.Year.Equals(time.Year)).ToList();
-            var listEmp = _employeeService.GetAll().Where(p =>  p.Roles!=0 && p.Roles!=1).ToList();
+            var listEmp = _employeeService.GetAll().Where(p =>  p.Roles!=0 && p.Roles!=1 && p.IsActive == true).ToList();
             List<Salary> listTrue = new List<Salary>();
             foreach (var emp in listEmp)
             {
