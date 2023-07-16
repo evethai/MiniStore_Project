@@ -1,4 +1,5 @@
-﻿using Microsoft.Office.Interop.Excel;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Office.Interop.Excel;
 using Repository.Models;
 using Repository.Service;
 using System;
@@ -11,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MiniStoreWinF.ManageWorkSheets
 {
@@ -20,64 +22,52 @@ namespace MiniStoreWinF.ManageWorkSheets
         SheetDetailService _sheetDetailService = new SheetDetailService();
         EmployeeService _employeeService = new EmployeeService();
         PermissionService _permissionService = new PermissionService();
-
         public DateTime dateTime { get; set; }
-
-
-        public frmTableWork(string Date, DateTime timer)
+        public frmTableWork(int Date, DateTime timer)
         {
             InitializeComponent();
-            string DateButton = Date;
+            int DateButton = Date;
             string Year = timer.Year.ToString();
             string Month = timer.Month.ToString();
             var OneDay = (DateButton + "/" + Month + "/" + Year).ToString();
             dtpkDate.Value = Convert.ToDateTime(OneDay);
             dateTime = dtpkDate.Value;
-            ShowJobByDate(Convert.ToDateTime(OneDay));
+            loadData(dateTime);
             LoadCombobox();
 
         }
-        public class CombinedData
+        public void loadData(DateTime dateTime)
         {
-            public string IdWorksheet { get; set; }
-            public bool Status { get; set; }
-            public int Sheet { get; set; }
-            public string EmployeeName { get; set; }
-        }
-        public void ShowJobByDate(DateTime date)
-        {
-            var WorksheetByDate = _workSheetService.GetAll().Where(p => p.Date == date).ToList();
-            var combinedDataList = new List<CombinedData>();
-            foreach (var worksheet in WorksheetByDate)
+            using (MiniStoreContext dt = new MiniStoreContext())
             {
-                var Emp = _employeeService.GetAll().Where(p => p.IdEmp == worksheet.IdEmp).FirstOrDefault();
-
-                var combinedData = new CombinedData
-                {
-                    IdWorksheet = worksheet.IdWorkSheet,
-                    Status = worksheet.Status.Value,
-                    Sheet = worksheet.Sheet.Value,
-                    EmployeeName = Emp?.FullNameEmp
-                };
-
-                combinedDataList.Add(combinedData);
+                DateTime desiredDate = dateTime;
+                var query = dt.WorkSheets
+                    .Join(dt.Employees,
+                        ws => ws.IdEmp,
+                        e => e.IdEmp,
+                        (ws, e) => new { WorkSheet = ws, Employee = e })
+                    .Where(result => result.WorkSheet.Date == desiredDate)
+                    .Select(result => new
+                    {
+                        result.WorkSheet.IdWorkSheet,
+                        result.Employee.FullNameEmp,
+                        result.WorkSheet.Sheet,
+                    });
+                var results = query.ToList();
+                dtgvListWorkDate.DataSource = new BindingSource { DataSource = results };
+                dtgvListWorkDate.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
-            dtgvListWorkDate.DataSource = combinedDataList;
-            dtgvListWorkDate.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            if (date >= DateTime.Now)
+            if(DateTime.Now <= dateTime)
             {
-                btCreate.Enabled = true;
-
-                btRemove.Enabled = true;
+                btCreate.Enabled = false;
+                btRemove.Enabled = false;
             }
             else
             {
-                btCreate.Enabled = false;
-
-                btRemove.Enabled = false;
+                btRemove.Enabled = true;
             }
-        }
 
+        }
         public void LoadCombobox()
         {
             cbSheetWork.DataSource = _sheetDetailService.GetAll().Where(p => p.Sheet >= 1).ToList();
@@ -87,9 +77,30 @@ namespace MiniStoreWinF.ManageWorkSheets
             cbFullNameEmp.DisplayMember = "FullNameEmp";
             cbFullNameEmp.SelectedIndex = -1;
         }
+        private void dtgvListWorkDate_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                var RowOrder = dtgvListWorkDate[0, e.RowIndex].Value;
+                var ListChoise = _workSheetService.GetAll().Where(entity => entity.IdWorkSheet.Equals(RowOrder)).FirstOrDefault();
+                if (ListChoise != null)
+                {
+                    var checkemp = _employeeService.GetAll().Where(_emp => _emp.IdEmp.Equals(ListChoise.IdEmp)).FirstOrDefault();
+                    cbFullNameEmp.Text = checkemp.FullNameEmp;
+                    cbSheetWork.Text = ListChoise.Sheet.ToString();
+                    txtIdWsheet.Text = ListChoise.IdWorkSheet;
+                }
+            }
+            catch
+            {
+                return;
+            }
+
+
+        }
         private void dtpkDate_ValueChanged(object sender, EventArgs e)
         {
-            ShowJobByDate((sender as DateTimePicker).Value);
+            loadData((sender as DateTimePicker).Value);
         }
 
         private void btLastday_Click(object sender, EventArgs e)
@@ -100,47 +111,29 @@ namespace MiniStoreWinF.ManageWorkSheets
         {
             dtpkDate.Value = dtpkDate.Value.AddDays(1);
         }
-
-        private void dtgvListWorkDate_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            try
-            {
-                var RowOrder = dtgvListWorkDate[0, e.RowIndex].Value;
-                var ListChoise = _workSheetService.GetAll().Where(entity => entity.IdWorkSheet.Equals(RowOrder)).FirstOrDefault();
-                if (ListChoise != null)
-                {
-                    var CheckEmployee = _employeeService.GetAll().Where(entity => entity.IdEmp.Equals(ListChoise.IdEmp)).FirstOrDefault();
-                    cbFullNameEmp.Text = CheckEmployee.FullNameEmp;
-                    cbSheetWork.Text = ListChoise.Sheet.ToString();
-                    txtIdWsheet.Text = ListChoise.IdWorkSheet;
-                }
-            }
-            catch
-            {
-                return;
-            }
-
-        }
         private void btCreate_Click(object sender, EventArgs e)
         {
-            AutoWorkSheetID autoID = new AutoWorkSheetID();
-            var worksheetOfNow = _workSheetService.GetAll().FirstOrDefault();
             var checkEmp = _employeeService.GetAll().Where(p => p.FullNameEmp.Equals(cbFullNameEmp.Text) && p.Roles >= 2).FirstOrDefault();
             if (checkEmp != null)
             {
+                
+                AutoWorkSheetID news = new AutoWorkSheetID();
+                var worksheetOfNow = _workSheetService.GetAll().FirstOrDefault();
                 worksheetOfNow.Sheet = Convert.ToInt32(cbSheetWork.Text);
                 worksheetOfNow.IdEmp = checkEmp.IdEmp;
                 worksheetOfNow.Date = dtpkDate.Value;
+                var checksheet = _sheetDetailService.GetAll().Where(p => p.Sheet == worksheetOfNow.Sheet).FirstOrDefault();
+                worksheetOfNow.DefaultCoefficient = checksheet.CoefficientsSalary;
                 worksheetOfNow.TimeCheckIn = null;
                 worksheetOfNow.TimeCheckOut = null;
                 worksheetOfNow.Status = false;
-                autoID.AddID(worksheetOfNow);
-                MessageBox.Show("Add Emp in sheet to date is Successfull");
-                ShowJobByDate(dtpkDate.Value);
+                news.AddID(worksheetOfNow);
+                MessageBox.Show("Create Successful!");
+                loadData(dtpkDate.Value);
             }
             else
             {
-                MessageBox.Show("BUG");
+                MessageBox.Show("Insufficient information to Create");
             }
         }
 
@@ -155,19 +148,18 @@ namespace MiniStoreWinF.ManageWorkSheets
                     txtIdWsheet.Text = "";
                     cbFullNameEmp.SelectedIndex = 0;
                     cbSheetWork.SelectedIndex = 0;
-                    MessageBox.Show("Remove Successfull");
-                    ShowJobByDate(dtpkDate.Value);
-
+                    loadData(dtpkDate.Value);
                 }
                 else
                 {
-                    MessageBox.Show("Can not Remove");
+                    MessageBox.Show("Can not Remove Insufficient information ");
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Error");
+                MessageBox.Show("Can not Remove when you create new ");
             }
+
         }
 
         private void cbFullNameEmp_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -199,17 +191,16 @@ namespace MiniStoreWinF.ManageWorkSheets
                     txtIdWsheet.Text = "";
                     cbFullNameEmp.SelectedIndex = 0;
                     cbSheetWork.SelectedIndex = 0;
-                    MessageBox.Show("Update Successfull");
-                    ShowJobByDate(dtpkDate.Value);
+                    loadData(dtpkDate.Value);
                 }
                 else
                 {
-                    MessageBox.Show("Can not Remove");
+                    MessageBox.Show("Can not Update by Insufficient information ");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error");
+                MessageBox.Show("Can not Update when you new create");
             }
         }
     }

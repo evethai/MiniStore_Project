@@ -99,6 +99,7 @@ namespace MiniStoreWinF.OrdersProducts
             txtPointUsing.Enabled = false;
             rdCashpayment.Checked = false;
             rdMomopayment.Checked = false;
+            btUsingVoucher.Enabled = true;
         }
         private void cbTypeProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -233,47 +234,48 @@ namespace MiniStoreWinF.OrdersProducts
         } // function add to cart   ==> OK
         private void btUsingVoucher_Click(object sender, EventArgs e)
         {
-            try
+            string CheckCodeVoucher = txtScanVoucher.Text;
+            var codeVouchers = _codeVoucherService.GetAll().Where(p => p.Id.Equals(CheckCodeVoucher) && p.StatusV == true).FirstOrDefault();
+            if (codeVouchers == null || txtScanVoucher.TextLength <= 0)
             {
-                string CheckCodeVoucher = txtScanVoucher.Text;
-                var codeVouchers = _codeVoucherService.GetAll().Where(p => p.Id.Equals(CheckCodeVoucher) && p.StatusV == true).FirstOrDefault();
-                if (codeVouchers == null || txtScanVoucher.TextLength <= 0)
+                MessageBox.Show("Voucher is incorrect or used !", "Notification");
+            }
+            else if (txtTotalAllOrders.TextLength <= 0)
+            {
+                MessageBox.Show(" Can't using voucher when price bill is empty !", "Notification");
+            }
+            else if (codeVouchers != null)
+            {
+                var Voucher = _voucherService.GetAll().Where(p => p.IdVoucher.Equals(codeVouchers.IdVoucher)).FirstOrDefault();
+                if (Voucher.Exp < DateTime.Now || Voucher.Conditions > TotalBill)
                 {
-                    MessageBox.Show("Voucher is incorrect or used !", "Notification");
+                    MessageBox.Show("Voucher has expired or Voucher more than Bill !", "Notification");
                 }
                 else
                 {
-                    var Voucher = _voucherService.GetAll().Where(p => p.IdVoucher.Equals(codeVouchers.IdVoucher)).FirstOrDefault();
-                    if (Voucher.Exp < DateTime.Now)
+                    if (txtDiscount.TextLength > 0)
                     {
-                        MessageBox.Show("Voucher has expired !", "Notification");
-                    }
-                    else if (Voucher.Conditions > TotalBill)
-                    {
-                        MessageBox.Show("You are not eligible to use this voucher!", "Notification");
-                    }
-                    else
-                    {
-                        MessageBox.Show("You use " + Voucher.Name + " Voucher Successfully !");
-                        if (txtDiscount.TextLength <= 0)
+                        if ((Convert.ToInt32(txtDiscount.Text) + Voucher.Price) >= Convert.ToInt32(txtTotalAllOrders.Text))
                         {
-                            txtDiscount.Text = Voucher.Price.ToString();
-                            txtScanVoucher.Enabled = false;
+                            MessageBox.Show("Point Using is more than price Bill");
                         }
                         else
                         {
                             txtDiscount.Text = (Convert.ToInt32(txtDiscount.Text) + Voucher.Price).ToString();
                             txtScanVoucher.Enabled = false;
+                            btUsingVoucher.Enabled = false;
+                            MessageBox.Show("You use " + Voucher.Name + " Voucher Successfully !");
                         }
-
+                    }
+                    else
+                    {
+                        txtDiscount.Text = Voucher.Price.ToString();
+                        txtScanVoucher.Enabled = false;
+                        btUsingVoucher.Enabled = false;
+                        MessageBox.Show("You use " + Voucher.Name + " Voucher Successfully !");
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("BUG " + ex); ;
-            }
-
         }
         private void btCheckMember_Click(object sender, EventArgs e)
         {
@@ -293,36 +295,34 @@ namespace MiniStoreWinF.OrdersProducts
         }
         private void btUsingPoint_Click(object sender, EventArgs e)
         {
-            try
+            var checkusingPoint = _ratePointService.GetAll().Where(p => p.StatusRp == true).FirstOrDefault();
+
+            if (txtPointUsing.Text == "" || txtPointUsing.Text == null || txtTotalAllOrders.TextLength <= 0)
             {
-                var checkusingPoint = _ratePointService.GetAll().Where(p => p.StatusRp == true).FirstOrDefault();
-                if (txtPointUsing.Text == "" || txtPointUsing.Text == null)
+                MessageBox.Show("Point Using is empty");
+            }
+            else if (Convert.ToInt32(txtPointUsing.Text) > Convert.ToInt32(txtLoyaltyPoint.Text))
+            {
+                MessageBox.Show("Point Using is more than LoyaltyPoint");
+            }
+            else if (txtDiscount.TextLength > 0)
+            {
+                if ((Convert.ToInt32(txtDiscount.Text) + (Convert.ToDouble(txtPointUsing.Text) * checkusingPoint.RateUsing)) >= Convert.ToInt32(txtTotalAllOrders.Text))
                 {
-                    MessageBox.Show("Point Using is empty");
-                    txtPointUsing.Text = string.Empty;
-                }
-                else if (Convert.ToInt32(txtPointUsing.Text) <= Convert.ToInt32(txtLoyaltyPoint.Text) && checkusingPoint != null)
-                {
-                    if (txtDiscount.TextLength <= 0)
-                    {
-                        txtDiscount.Text = (Convert.ToDouble(txtPointUsing.Text) * checkusingPoint.RateUsing).ToString();
-                        txtLoyaltyPoint.Text = (Convert.ToInt32(txtLoyaltyPoint.Text) - Convert.ToInt32(txtPointUsing.Text)).ToString();
-                    }
-                    else
-                    {
-                        txtDiscount.Text = (Convert.ToInt32(txtDiscount.Text) + (Convert.ToDouble(txtPointUsing.Text) * checkusingPoint.RateUsing)).ToString();
-                        txtLoyaltyPoint.Text = (Convert.ToInt32(txtLoyaltyPoint.Text) - Convert.ToInt32(txtPointUsing.Text)).ToString();
-                    }
+                    MessageBox.Show("Point Using is more than price Bill");
                 }
                 else
                 {
-                    MessageBox.Show("Point Using is not enought");
+                    txtDiscount.Text = (Convert.ToInt32(txtDiscount.Text) + (Convert.ToDouble(txtPointUsing.Text) * checkusingPoint.RateUsing)).ToString();
+                    txtLoyaltyPoint.Text = (Convert.ToInt32(txtLoyaltyPoint.Text) - Convert.ToInt32(txtPointUsing.Text)).ToString();
                 }
             }
-            catch (Exception ex)
+            else if (txtDiscount.TextLength <= 0 && (Convert.ToDouble(txtPointUsing.Text) * checkusingPoint.RateUsing) <= Convert.ToDouble(txtTotalAllOrders.Text))
             {
-                MessageBox.Show("BUG" + ex);
+                txtDiscount.Text = (Convert.ToDouble(txtPointUsing.Text) * checkusingPoint.RateUsing).ToString();
+                txtLoyaltyPoint.Text = (Convert.ToInt32(txtLoyaltyPoint.Text) - Convert.ToInt32(txtPointUsing.Text)).ToString();
             }
+
         }
         private void listViewOrders_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -586,26 +586,24 @@ namespace MiniStoreWinF.OrdersProducts
                 btShowBill.Visible = true;
             }
         }
-
-        private void rdMomopayment_Click(object sender, EventArgs e)
+        private void rdMomopayment_Click(object sender, MouseEventArgs e)
         {
             double total = 0;
             MoMoService _moService = new MoMoService();
             var list = _moService.GetAll().Where(p => p.Active == true).FirstOrDefault();
-            if (txtTotalAllOrders.Text == "" || list == null)
-            {
-                MessageBox.Show("Not find a ORDER ", "Messages");
-                rdMomopayment.Checked = false;
-                btShowBill.Visible = false;
-            }
-            else
+            if (txtTotalAllOrders.Text != "" || list != null)
             {
                 ContextScope.currentMoMo = list;
                 frmQRCode form = new frmQRCode();
                 form.total = Double.Parse(txtTotalAllOrders.Text);
                 form.ShowDialog();
-                rdMomopayment.Checked = true;
                 btShowBill.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Not find a ORDER ", "Messages");
+                rdMomopayment.Checked = false;
+                btShowBill.Visible = false;
             }
         }
     }

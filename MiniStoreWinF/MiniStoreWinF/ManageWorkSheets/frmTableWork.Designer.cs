@@ -129,9 +129,10 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(22, 18);
+            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Location = new Point(27, 22);
             label7.Name = "label7";
-            label7.Size = new Size(97, 20);
+            label7.Size = new Size(104, 20);
             label7.TabIndex = 7;
             label7.Text = "Id WorkSheet";
             // 
@@ -173,9 +174,10 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(655, 22);
+            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Location = new Point(655, 25);
             label5.Name = "label5";
-            label5.Size = new Size(46, 20);
+            label5.Size = new Size(48, 20);
             label5.TabIndex = 2;
             label5.Text = "Sheet";
             // 
@@ -191,9 +193,10 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(296, 22);
+            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Location = new Point(301, 25);
             label6.Name = "label6";
-            label6.Size = new Size(119, 20);
+            label6.Size = new Size(123, 20);
             label6.TabIndex = 0;
             label6.Text = "Name Employee";
             // 
@@ -268,9 +271,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(906, 492);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmTableWork";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Table Working";
+            Text = "Register Worksheet";
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             pnlJobSheet.ResumeLayout(false);

@@ -43,8 +43,6 @@
             label7 = new Label();
             txtEndDetails = new TextBox();
             label8 = new Label();
-            txtDescriptionsDetails = new TextBox();
-            label5 = new Label();
             txtCoefficientsSalaryDetails = new NumericUpDown();
             label9 = new Label();
             btUpdateDetailsWorkSheet = new Button();
@@ -52,7 +50,6 @@
             panel2 = new Panel();
             dgvDetailWorksheet = new DataGridView();
             sheetDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            descriptionSDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             coefficientsSalaryDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             shiftStartTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             shiftEndTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -94,8 +91,6 @@
             panel1.Controls.Add(label7);
             panel1.Controls.Add(txtEndDetails);
             panel1.Controls.Add(label8);
-            panel1.Controls.Add(txtDescriptionsDetails);
-            panel1.Controls.Add(label5);
             panel1.Controls.Add(txtCoefficientsSalaryDetails);
             panel1.Controls.Add(label9);
             panel1.Controls.Add(btUpdateDetailsWorkSheet);
@@ -111,7 +106,7 @@
             btReset.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btReset.Image = (Image)resources.GetObject("btReset.Image");
             btReset.ImageAlign = ContentAlignment.TopCenter;
-            btReset.Location = new Point(231, 517);
+            btReset.Location = new Point(231, 470);
             btReset.Margin = new Padding(3, 4, 3, 4);
             btReset.Name = "btReset";
             btReset.Size = new Size(94, 63);
@@ -123,7 +118,8 @@
             // 
             // label2
             // 
-            label2.Location = new Point(9, 374);
+            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(9, 287);
             label2.Name = "label2";
             label2.Size = new Size(113, 47);
             label2.TabIndex = 60;
@@ -132,7 +128,8 @@
             // 
             // label1
             // 
-            label1.Location = new Point(10, 304);
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(10, 217);
             label1.Name = "label1";
             label1.Size = new Size(113, 47);
             label1.TabIndex = 59;
@@ -144,7 +141,7 @@
             chbWorkNight.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             chbWorkNight.Image = (Image)resources.GetObject("chbWorkNight.Image");
             chbWorkNight.ImageAlign = ContentAlignment.TopCenter;
-            chbWorkNight.Location = new Point(128, 374);
+            chbWorkNight.Location = new Point(128, 287);
             chbWorkNight.Name = "chbWorkNight";
             chbWorkNight.Size = new Size(109, 61);
             chbWorkNight.TabIndex = 58;
@@ -155,7 +152,7 @@
             // cbRoles
             // 
             cbRoles.FormattingEnabled = true;
-            cbRoles.Location = new Point(129, 314);
+            cbRoles.Location = new Point(129, 227);
             cbRoles.Name = "cbRoles";
             cbRoles.Size = new Size(196, 28);
             cbRoles.TabIndex = 57;
@@ -165,7 +162,7 @@
             btCreate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btCreate.Image = (Image)resources.GetObject("btCreate.Image");
             btCreate.ImageAlign = ContentAlignment.TopCenter;
-            btCreate.Location = new Point(10, 517);
+            btCreate.Location = new Point(10, 470);
             btCreate.Margin = new Padding(3, 4, 3, 4);
             btCreate.Name = "btCreate";
             btCreate.Size = new Size(94, 63);
@@ -177,6 +174,7 @@
             // 
             // label6
             // 
+            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label6.Location = new Point(10, 24);
             label6.Name = "label6";
             label6.Size = new Size(113, 47);
@@ -191,10 +189,12 @@
             txtStartDetails.Name = "txtStartDetails";
             txtStartDetails.Size = new Size(196, 27);
             txtStartDetails.TabIndex = 50;
+            txtStartDetails.TextChanged += txtStartDetails_TextChanged;
             txtStartDetails.KeyPress += txtStartDetails_KeyPress;
             // 
             // label7
             // 
+            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label7.Location = new Point(10, 94);
             label7.Name = "label7";
             label7.Size = new Size(113, 47);
@@ -209,10 +209,12 @@
             txtEndDetails.Name = "txtEndDetails";
             txtEndDetails.Size = new Size(196, 27);
             txtEndDetails.TabIndex = 51;
-            txtEndDetails.KeyPress += txtEndDetails_KeyPress;
+            txtEndDetails.TextChanged += txtStartDetails_TextChanged;
+            txtEndDetails.KeyPress += txtStartDetails_KeyPress;
             // 
             // label8
             // 
+            label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label8.Location = new Point(10, 164);
             label8.Name = "label8";
             label8.Size = new Size(113, 47);
@@ -220,29 +222,11 @@
             label8.Text = "Time End";
             label8.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // txtDescriptionsDetails
-            // 
-            txtDescriptionsDetails.Location = new Point(129, 230);
-            txtDescriptionsDetails.Margin = new Padding(3, 4, 3, 4);
-            txtDescriptionsDetails.Multiline = true;
-            txtDescriptionsDetails.Name = "txtDescriptionsDetails";
-            txtDescriptionsDetails.Size = new Size(196, 51);
-            txtDescriptionsDetails.TabIndex = 52;
-            // 
-            // label5
-            // 
-            label5.Location = new Point(10, 234);
-            label5.Name = "label5";
-            label5.Size = new Size(113, 47);
-            label5.TabIndex = 45;
-            label5.Text = "Descriptions";
-            label5.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // txtCoefficientsSalaryDetails
             // 
             txtCoefficientsSalaryDetails.DecimalPlaces = 1;
             txtCoefficientsSalaryDetails.Increment = new decimal(new int[] { 5, 0, 0, 65536 });
-            txtCoefficientsSalaryDetails.Location = new Point(129, 455);
+            txtCoefficientsSalaryDetails.Location = new Point(129, 368);
             txtCoefficientsSalaryDetails.Margin = new Padding(3, 5, 3, 5);
             txtCoefficientsSalaryDetails.Name = "txtCoefficientsSalaryDetails";
             txtCoefficientsSalaryDetails.Size = new Size(126, 27);
@@ -250,7 +234,8 @@
             // 
             // label9
             // 
-            label9.Location = new Point(9, 444);
+            label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label9.Location = new Point(9, 357);
             label9.Name = "label9";
             label9.Size = new Size(113, 47);
             label9.TabIndex = 54;
@@ -262,7 +247,7 @@
             btUpdateDetailsWorkSheet.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btUpdateDetailsWorkSheet.Image = (Image)resources.GetObject("btUpdateDetailsWorkSheet.Image");
             btUpdateDetailsWorkSheet.ImageAlign = ContentAlignment.TopCenter;
-            btUpdateDetailsWorkSheet.Location = new Point(120, 517);
+            btUpdateDetailsWorkSheet.Location = new Point(120, 470);
             btUpdateDetailsWorkSheet.Margin = new Padding(3, 4, 3, 4);
             btUpdateDetailsWorkSheet.Name = "btUpdateDetailsWorkSheet";
             btUpdateDetailsWorkSheet.Size = new Size(94, 63);
@@ -296,7 +281,7 @@
             dgvDetailWorksheet.AutoGenerateColumns = false;
             dgvDetailWorksheet.BackgroundColor = SystemColors.Control;
             dgvDetailWorksheet.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDetailWorksheet.Columns.AddRange(new DataGridViewColumn[] { sheetDataGridViewTextBoxColumn, descriptionSDataGridViewTextBoxColumn, coefficientsSalaryDataGridViewTextBoxColumn, shiftStartTimeDataGridViewTextBoxColumn, shiftEndTimeDataGridViewTextBoxColumn, CheckNight });
+            dgvDetailWorksheet.Columns.AddRange(new DataGridViewColumn[] { sheetDataGridViewTextBoxColumn, coefficientsSalaryDataGridViewTextBoxColumn, shiftStartTimeDataGridViewTextBoxColumn, shiftEndTimeDataGridViewTextBoxColumn, CheckNight });
             dgvDetailWorksheet.DataSource = sheetDetailBindingSource;
             dgvDetailWorksheet.Dock = DockStyle.Fill;
             dgvDetailWorksheet.GridColor = SystemColors.ActiveBorder;
@@ -317,14 +302,6 @@
             sheetDataGridViewTextBoxColumn.HeaderText = "Sheet";
             sheetDataGridViewTextBoxColumn.MinimumWidth = 6;
             sheetDataGridViewTextBoxColumn.Name = "sheetDataGridViewTextBoxColumn";
-            // 
-            // descriptionSDataGridViewTextBoxColumn
-            // 
-            descriptionSDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            descriptionSDataGridViewTextBoxColumn.DataPropertyName = "DescriptionS";
-            descriptionSDataGridViewTextBoxColumn.HeaderText = "Description";
-            descriptionSDataGridViewTextBoxColumn.MinimumWidth = 6;
-            descriptionSDataGridViewTextBoxColumn.Name = "descriptionSDataGridViewTextBoxColumn";
             // 
             // coefficientsSalaryDataGridViewTextBoxColumn
             // 
@@ -389,8 +366,6 @@
         private Label label7;
         private TextBox txtEndDetails;
         private Label label8;
-        private TextBox txtDescriptionsDetails;
-        private Label label5;
         private NumericUpDown txtCoefficientsSalaryDetails;
         private Label label9;
         private Button btUpdateDetailsWorkSheet;

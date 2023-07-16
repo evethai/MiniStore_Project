@@ -20,7 +20,7 @@ namespace MiniStoreWinF.ManageWorkSheets
 
         private int rowIndex { get; set; } // create row click
         int loadrecord = 0;
-        int numberRecord = 7;
+        int numberRecord = 14;
         int pagenumber = 1;
         public frmHistoryWorksheet()
         {
@@ -29,6 +29,8 @@ namespace MiniStoreWinF.ManageWorkSheets
             var sheetDetails = _sheetDetailService.GetAll();
             cbSheet.DataSource = sheetDetails;
             cbSheet.DisplayMember = "Sheet";//end code lấy sheet
+            dtpkStart.Value = DateTime.Now;
+            dtpkEnd.Value = DateTime.Now;
         }
         List<WorkSheet> Loadrecord(int page, int recordnumber)
         {
@@ -115,9 +117,9 @@ namespace MiniStoreWinF.ManageWorkSheets
             string Empty = "";
             if (txtIDWorksheet.Text == Empty || txtIdEmp.Text == Empty ||
                 txtDateWork.Text == Empty || txtDateWork.Text == Empty || txtTimeCheckOut.Text == Empty
-                || txtTimeCheckIn.Text == Empty)
+                || txtTimeCheckIn.Text == Empty || txtHours.Text == Empty || nbrSunday.Text == Empty || chbStatus.Text == Empty)
             {
-                MessageBox.Show("Cant Not Update when you dont choise !! ", "Fails", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Insufficient information to update !! ", "Fails", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -130,11 +132,7 @@ namespace MiniStoreWinF.ManageWorkSheets
                 _workSheetService.Update(listUpdate);
                 MessageBox.Show("Successfully Update Worksheet History", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 loadData();
-                txtIDWorksheet.Text = Empty;
-                txtIdEmp.Text = Empty;
-                txtDateWork.Text = Empty;
-                txtTimeCheckOut.Text = Empty;
-                txtTimeCheckIn.Text = Empty;
+                Reset();
             }
         }
 
@@ -154,6 +152,9 @@ namespace MiniStoreWinF.ManageWorkSheets
                 txtDateWork.Text = IdWorkSheet.Date.ToString();
                 txtTimeCheckIn.Text = IdWorkSheet.TimeCheckIn.ToString();
                 txtTimeCheckOut.Text = IdWorkSheet.TimeCheckOut.ToString();
+                txtHours.Text = IdWorkSheet.TotalWorkingHours.ToString();
+                chbStatus.Checked = IdWorkSheet.Status.Value;
+                nbrSunday.Text = IdWorkSheet.SundayCoefficient.ToString();
             }
             catch
             {
@@ -172,6 +173,23 @@ namespace MiniStoreWinF.ManageWorkSheets
                     e.FormattingApplied = true;
                 }
             }
+        }
+
+        private void btReset_Click(object sender, EventArgs e)
+        {
+            Reset();
+        }
+        public void Reset()
+        {
+            string Empty = "";
+            txtIDWorksheet.Text = Empty;
+            txtIdEmp.Text = Empty;
+            txtDateWork.Text = Empty;
+            txtTimeCheckOut.Text = Empty;
+            txtTimeCheckIn.Text = Empty;
+            txtHours.Text = Empty;
+            chbStatus.Text = Empty;
+            nbrSunday.Text = Empty;
         }
     }
 }

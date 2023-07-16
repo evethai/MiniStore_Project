@@ -114,6 +114,7 @@
             // 
             pnlManageWorksheet.BorderStyle = BorderStyle.Fixed3D;
             pnlManageWorksheet.Dock = DockStyle.Fill;
+            pnlManageWorksheet.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             pnlManageWorksheet.Location = new Point(267, 0);
             pnlManageWorksheet.Name = "pnlManageWorksheet";
             pnlManageWorksheet.Size = new Size(1653, 835);
@@ -121,7 +122,7 @@
             // 
             // frmManageWorkSheetPage
             // 
-            AutoScaleDimensions = new SizeF(11F, 25F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 835);
             Controls.Add(pnlManageWorksheet);
