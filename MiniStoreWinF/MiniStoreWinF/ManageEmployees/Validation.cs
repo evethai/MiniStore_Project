@@ -13,11 +13,14 @@ namespace MiniStoreWinF.ManageEmployees
     {
         MiniStoreContext _context;
         DbSet<Employee> _employees;
+        DbSet<SubDetail> _subDetail;
         EmployeeService _employeeService = new EmployeeService();
+        SubDetailService _subDetailService = new SubDetailService();
         public Validation()
         {
             _context = new MiniStoreContext();
             _employees = _context.Set<Employee>();
+            _subDetail = _context.Set<SubDetail>();
         }
         public void Add(Employee employee, string prefix)
         {
@@ -34,6 +37,21 @@ namespace MiniStoreWinF.ManageEmployees
             _employees.Add(employee);
             _context.SaveChanges();
         }
+        public void AddSub(SubDetail subDetail, string prefix)
+        {
+            var lastRecord = _subDetail.OrderByDescending(record => record.IdDetail).FirstOrDefault();
+            if (lastRecord != null)
+            {
+                subDetail.IdDetail = autoSubId(lastRecord.IdDetail, prefix);
+            }
+            else
+            {
+                subDetail.IdDetail = autoSubId(prefix + "000", prefix);
+            }
+
+            _subDetail.Add(subDetail);
+            _context.SaveChanges();
+        }
         public string autoID(string id, string prefix)
         {
             //(prefix)XX
@@ -42,6 +60,23 @@ namespace MiniStoreWinF.ManageEmployees
             cutID++;
             int digits = 2;
             
+
+            // Convert the current ID to string with leading zeros
+            string idString = cutID.ToString().PadLeft(digits, '0');
+            result = prefix + idString;
+
+            // Combine the prefix and the formatted ID
+            return result;
+
+        }
+        public string autoSubId(string id, string prefix)
+        {
+            //(prefix)XXX
+            string result = "";
+            int cutID = int.Parse(id.Substring(5, 3));
+            cutID++;
+            int digits = 3;
+
 
             // Convert the current ID to string with leading zeros
             string idString = cutID.ToString().PadLeft(digits, '0');

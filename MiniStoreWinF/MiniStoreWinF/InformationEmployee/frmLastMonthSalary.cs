@@ -31,123 +31,123 @@ namespace MiniStoreWinF.InformationEmployee
 
         private void frmLastMonthSalary_Load(object sender, EventArgs e)
         {
-            string idEmp = ContextScope.currentEmployee.IdEmp;
+            //string idEmp = ContextScope.currentEmployee.IdEmp;
 
-            if (dtpMonth.Value.Month == 1)
-            {
-                gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "st month" + " of " + dtpMonth.Value.Year;
-            }
-            else if (dtpMonth.Value.Month == 2)
-            {
-                gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "nd month" + " of " + dtpMonth.Value.Year;
+            //if (dtpMonth.Value.Month == 1)
+            //{
+            //    gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "st month" + " of " + dtpMonth.Value.Year;
+            //}
+            //else if (dtpMonth.Value.Month == 2)
+            //{
+            //    gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "nd month" + " of " + dtpMonth.Value.Year;
 
-            }
-            else if (dtpMonth.Value.Day == 3)
-            {
-                gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "rd month" + " of " + dtpMonth.Value.Year;
+            //}
+            //else if (dtpMonth.Value.Day == 3)
+            //{
+            //    gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "rd month" + " of " + dtpMonth.Value.Year;
 
-            }
-            else
-            {
-                gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "th month" + " of " + dtpMonth.Value.Year;
+            //}
+            //else
+            //{
+            //    gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "th month" + " of " + dtpMonth.Value.Year;
 
-            }
-
-
-            lbNameE.Text = "Employee " + ContextScope.currentEmployee.FullNameEmp;
-
-            var salaryService = _salaryService.GetAll().Where(e => e.IdEmp.Equals(idEmp) && e.DateOmonth.Month.Equals(dtpMonth.Value.Month.ToString())).FirstOrDefault();
-            if (salaryService != null)
-            {
-                //txtBasicHours.Text = salaryService.BasicSalary.ToString();
-                //txtBeforeTax.Text = salaryService.TotalSalary.ToString();
-                //txtSalaryHours.Text = salaryService.SalaryHour.ToString();
-                //txtSumAdvanceSalary.Text = salaryService.SumAdvanceSalary.ToString();
-                //txtTax.Text = salaryService.Tax.ToString();
-                //txtSumSubSalary.Text = salaryService.SumSubSalary.ToString();
-                //txtTotal.Text = salaryService.SalaryAfterTax.ToString();
-            }
-            else
-            {
-                txtTotal.Text = "Salary of this month is not available!";
-            }
-            if (dtpWorksheet.Value.Month == 1)
-            {
-                gbWorksheet.Text = "Worksheet of " + dtpWorksheet.Value.Month.ToString() + "st month" + " of " + dtpWorksheet.Value.Year;
-            }
-            else if (dtpWorksheet.Value.Month == 2)
-            {
-                gbWorksheet.Text = "Worksheet of " + dtpWorksheet.Value.Month.ToString() + "nd month" + " of " + dtpWorksheet.Value.Year;
-
-            }
-            else if (dtpWorksheet.Value.Day == 3)
-            {
-                gbWorksheet.Text = "Worksheet of " + dtpWorksheet.Value.Month.ToString() + "rd month" + " of " + dtpWorksheet.Value.Year;
-
-            }
-            else
-            {
-                gbWorksheet.Text = "Worksheet of " + dtpWorksheet.Value.Month.ToString() + "th month" + " of " + dtpWorksheet.Value.Year;
-
-            }
+            //}
 
 
-            var worksheetService = _workSheetService.GetAll().Where(e => e.IdEmp.Equals(idEmp) && e.Date.Value.Month.Equals(dtpWorksheet.Value.Month)).ToList();
-            if (worksheetService != null)
-            {
-                dgvWorksheet.DataSource = new BindingSource() { DataSource = worksheetService };
-            }
+            //lbNameE.Text = "Employee " + ContextScope.currentEmployee.FullNameEmp;
+
+            //var salaryService = _salaryService.GetAll().Where(e => e.IdEmp.Equals(idEmp) && e.DateOmonth.Month.Equals(dtpMonth.Value.Month.ToString())).FirstOrDefault();
+            //if (salaryService != null)
+            //{
+            //    txtBasicHours.Text = salaryService.BasicSalary.ToString();
+            //    txtBeforeTax.Text = salaryService.TotalSalary.ToString();
+            //    txtSalaryHours.Text = salaryService.SalaryHour.ToString();
+            //    txtSumAdvanceSalary.Text = salaryService.SumAdvanceSalary.ToString();
+            //    txtTax.Text = salaryService.Tax.ToString();
+            //    txtSumSubSalary.Text = salaryService.SumSubSalary.ToString();
+            //    txtTotal.Text = salaryService.SalaryAfterTax.ToString();
+            //}
+            //else
+            //{
+            //    txtTotal.Text = "Salary of this month is not available!";
+            //}
+            //if (dtpWorksheet.Value.Month == 1)
+            //{
+            //    gbWorksheet.Text = "Worksheet of " + dtpWorksheet.Value.Month.ToString() + "st month" + " of " + dtpWorksheet.Value.Year;
+            //}
+            //else if (dtpWorksheet.Value.Month == 2)
+            //{
+            //    gbWorksheet.Text = "Worksheet of " + dtpWorksheet.Value.Month.ToString() + "nd month" + " of " + dtpWorksheet.Value.Year;
+
+            //}
+            //else if (dtpWorksheet.Value.Day == 3)
+            //{
+            //    gbWorksheet.Text = "Worksheet of " + dtpWorksheet.Value.Month.ToString() + "rd month" + " of " + dtpWorksheet.Value.Year;
+
+            //}
+            //else
+            //{
+            //    gbWorksheet.Text = "Worksheet of " + dtpWorksheet.Value.Month.ToString() + "th month" + " of " + dtpWorksheet.Value.Year;
+
+            //}
+
+
+            //var worksheetService = _workSheetService.GetAll().Where(e => e.IdEmp.Equals(idEmp) && e.Date.Value.Month.Equals(dtpWorksheet.Value.Month)).ToList();
+            //if (worksheetService != null)
+            //{
+            //    dgvWorksheet.DataSource = new BindingSource() { DataSource = worksheetService };
+            //}
 
 
         }
 
         private void btSearch_Click(object sender, EventArgs e)
         {
-            string idEmp = ContextScope.currentEmployee.IdEmp;
+            //string idEmp = ContextScope.currentEmployee.IdEmp;
 
 
-            if (dtpMonth.Value.Month == 1)
-            {
-                gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "st month" + " of " + dtpMonth.Value.Year;
-            }
-            else if (dtpMonth.Value.Month == 2)
-            {
-                gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "nd month" + " of " + dtpMonth.Value.Year;
+            //if (dtpMonth.Value.Month == 1)
+            //{
+            //    gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "st month" + " of " + dtpMonth.Value.Year;
+            //}
+            //else if (dtpMonth.Value.Month == 2)
+            //{
+            //    gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "nd month" + " of " + dtpMonth.Value.Year;
 
-            }
-            else if (dtpMonth.Value.Day == 3)
-            {
-                gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "rd month" + " of " + dtpMonth.Value.Year;
+            //}
+            //else if (dtpMonth.Value.Day == 3)
+            //{
+            //    gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "rd month" + " of " + dtpMonth.Value.Year;
 
-            }
-            else
-            {
-                gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "th month" + " of " + dtpMonth.Value.Year;
+            //}
+            //else
+            //{
+            //    gbSalary.Text = "Salary of " + dtpMonth.Value.Month.ToString() + "th month" + " of " + dtpMonth.Value.Year;
 
-            }
+            //}
 
-            var salaryService = _salaryService.GetAll().Where(e => e.IdEmp.Equals(idEmp) && e.DateOmonth.Month.Equals(dtpMonth.Value.Month)).FirstOrDefault();
-            if (salaryService != null)
-            {
-                //txtBasicHours.Text = salaryService.BasicSalary.ToString();
-                //txtBeforeTax.Text = salaryService.TotalSalary.ToString();
-                //txtSalaryHours.Text = salaryService.SalaryHour.ToString();
-                //txtSumAdvanceSalary.Text = salaryService.SumAdvanceSalary.ToString();
-                //txtTax.Text = salaryService.Tax.ToString();
-                //txtSumSubSalary.Text = salaryService.SumSubSalary.ToString();
-                //txtTotal.Text = salaryService.SalaryAfterTax.ToString();
-            }
-            else
-            {
-                txtTotal.Text = "Salary of this month is not available!";
-                txtBasicHours.Text = "";
-                txtBeforeTax.Text = "";
-                txtSalary.Text = "";
-                txtSalaryHours.Text = "";
-                txtSumAdvanceSalary.Text = "";
-                txtTax.Text = "";
-                txtSumSubSalary.Text = "";
-            }
+            //var salaryService = _salaryService.GetAll().Where(e => e.IdEmp.Equals(idEmp) && e.DateOmonth.Month.Equals(dtpMonth.Value.Month)).FirstOrDefault();
+            //if (salaryService != null)
+            //{
+            //    txtBasicHours.Text = salaryService.BasicSalary.ToString();
+            //    txtBeforeTax.Text = salaryService.TotalSalary.ToString();
+            //    txtSalaryHours.Text = salaryService.SalaryHour.ToString();
+            //    txtSumAdvanceSalary.Text = salaryService.SumAdvanceSalary.ToString();
+            //    txtTax.Text = salaryService.Tax.ToString();
+            //    txtSumSubSalary.Text = salaryService.SumSubSalary.ToString();
+            //    txtTotal.Text = salaryService.SalaryAfterTax.ToString();
+            //}
+            //else
+            //{
+            //    txtTotal.Text = "Salary of this month is not available!";
+            //    txtBasicHours.Text = "";
+            //    txtBeforeTax.Text = "";
+            //    txtSalary.Text = "";
+            //    txtSalaryHours.Text = "";
+            //    txtSumAdvanceSalary.Text = "";
+            //    txtTax.Text = "";
+            //    txtSumSubSalary.Text = "";
+            //}
         }
 
         private void btSearchSheet_Click(object sender, EventArgs e)

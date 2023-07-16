@@ -21,6 +21,7 @@ namespace MiniStoreWinF.ManageProducts
         UnitServices _showListUnit;
         UnitServices _showListUnit1;
         ProductService _showlistPro;
+        ProductService _showlistPro1;
         UnitServices _IdUnit;
         public ManageUnitProduct()
         {
@@ -48,6 +49,22 @@ namespace MiniStoreWinF.ManageProducts
             //txtTypeProductList.DataSource = _listComboProduct;
 
             cbSku.Enabled = false;
+            _showlistPro1 = new ProductService();
+            _showListUnit1 = new UnitServices();
+            var product = _showlistPro1.GetAll().ToList();
+            var unitli = _showListUnit1.GetAll().ToList();
+            foreach (var item in product)
+            {
+                foreach (var item2 in unitli)
+                {
+                    if (item.Sku == item2.Sku)
+                    {
+
+                        item2.Sku = item.NameProduct;
+                        dataGridView1.DataSource = new BindingSource() { DataSource = unitli };
+                    }
+                }
+            }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -97,7 +114,20 @@ namespace MiniStoreWinF.ManageProducts
             {
                 var AscendingPro = _showListUnit.GetAll().ToList().OrderBy(o => o.PriceImport)
                     .OrderBy(o => o.PriceExport).ThenBy(o => o.QuantityUnit).ThenBy(o => o.UnitName.Length);
+                _showlistPro1 = new ProductService();
+                var product = _showlistPro1.GetAll().ToList();
+                foreach (var item in product)
+                {
+                    foreach (var item2 in AscendingPro)
+                    {
+                        if (item.Sku == item2.Sku)
+                        {
 
+                            item2.Sku = item.NameProduct;
+
+                        }
+                    }
+                }
                 this.dataGridView1.DataSource = new BindingSource() { DataSource = AscendingPro };
             }
             if (txtArrange.Text == "Price Decrease ")
@@ -105,11 +135,39 @@ namespace MiniStoreWinF.ManageProducts
                 var AscendingPro = _showListUnit.GetAll().ToList().OrderByDescending(o => o.PriceImport)
                     .OrderByDescending(o => o.PriceExport).ThenBy(o => o.QuantityUnit)
                     .ThenBy(o => o.UnitName.Length);
+                _showlistPro1 = new ProductService();
+                var product = _showlistPro1.GetAll().ToList();
+                foreach (var item in product)
+                {
+                    foreach (var item2 in AscendingPro)
+                    {
+                        if (item.Sku == item2.Sku)
+                        {
+
+                            item2.Sku = item.NameProduct;
+
+                        }
+                    }
+                }
                 this.dataGridView1.DataSource = new BindingSource() { DataSource = AscendingPro };
             }
             if (txtArrange.Text == "ALL")
             {
                 var AscendingPro = _showListUnit.GetAll().ToList();
+                _showlistPro1 = new ProductService();
+                var product = _showlistPro1.GetAll().ToList();
+                foreach (var item in product)
+                {
+                    foreach (var item2 in AscendingPro)
+                    {
+                        if (item.Sku == item2.Sku)
+                        {
+
+                            item2.Sku = item.NameProduct;
+
+                        }
+                    }
+                }
                 this.dataGridView1.DataSource = new BindingSource() { DataSource = AscendingPro };
             }
         }
@@ -182,7 +240,7 @@ namespace MiniStoreWinF.ManageProducts
             {
                 if (txtPriceExport.Text.Equals("0"))
                     return;
-                double temp = Convert.ToDouble(txtPriceImport.Text);
+                double temp = Convert.ToDouble(txtPriceExport.Text);
                 txtPriceExport.Text = temp.ToString("#,###");
             }
             catch (Exception ex)
@@ -256,7 +314,20 @@ namespace MiniStoreWinF.ManageProducts
                      (filterPrice <= p.PriceImport && p.PriceImport <= filterPrice2));
                     if (PriceProduct != null)
                     {
+                        _showlistPro1 = new ProductService();
+                        var product = _showlistPro1.GetAll().ToList();
+                        foreach (var item in product)
+                        {
+                            foreach (var item2 in PriceProduct)
+                            {
+                                if (item.Sku == item2.Sku)
+                                {
 
+                                    item2.Sku = item.NameProduct;
+
+                                }
+                            }
+                        }
                         dataGridView1.DataSource = new BindingSource() { DataSource = PriceProduct };
                     }
                 }
@@ -273,6 +344,20 @@ namespace MiniStoreWinF.ManageProducts
         {
             _showListUnit = new UnitServices();
             var showlist = _showListUnit.GetAll().ToList();
+            _showlistPro1 = new ProductService();
+            var product = _showlistPro1.GetAll().ToList();
+            foreach (var item in product)
+            {
+                foreach (var item2 in showlist)
+                {
+                    if (item.Sku == item2.Sku)
+                    {
+
+                        item2.Sku = item.NameProduct;
+
+                    }
+                }
+            }
             dataGridView1.DataSource = new BindingSource() { DataSource = showlist };
         }
 
@@ -289,9 +374,9 @@ namespace MiniStoreWinF.ManageProducts
         private void btUpdate_Click(object sender, EventArgs e)
         {
             double temp = Convert.ToDouble(txtPriceImport.Text);
-            txtPriceImport.Text = temp.ToString("#,###");
+            //txtPriceImport.Text = temp.ToString("#,###");
             double temp2 = Convert.ToDouble(txtPriceExport.Text);
-            txtPriceExport.Text = temp2.ToString("#,###");
+            //txtPriceExport.Text = temp2.ToString("#,###");
             _showListUnit = new UnitServices();
             var AddPro = _showListUnit.GetAll().ToList().Where(e => e.IdUnit.ToUpper()
             .Equals(txtIDUnit.Text.ToUpper()))

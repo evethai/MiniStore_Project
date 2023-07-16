@@ -102,13 +102,12 @@
             tableLayoutPanel1.Controls.Add(tableLayoutPanel3, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Margin = new Padding(5, 4, 5, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 137F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 394F));
-            tableLayoutPanel1.Size = new Size(1919, 806);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 109F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 315F));
+            tableLayoutPanel1.Size = new Size(1395, 645);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -121,12 +120,11 @@
             tableLayoutPanel2.Controls.Add(groupBox5, 1, 0);
             tableLayoutPanel2.Controls.Add(groupBox2, 2, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(5, 4);
-            tableLayoutPanel2.Margin = new Padding(5, 4, 5, 4);
+            tableLayoutPanel2.Location = new Point(3, 3);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(1909, 267);
+            tableLayoutPanel2.Size = new Size(1389, 215);
             tableLayoutPanel2.TabIndex = 1;
             // 
             // groupBox3
@@ -140,11 +138,9 @@
             groupBox3.Controls.Add(label1);
             groupBox3.Controls.Add(txtIDProduct);
             groupBox3.Dock = DockStyle.Fill;
-            groupBox3.Location = new Point(5, 4);
-            groupBox3.Margin = new Padding(5, 4, 5, 4);
+            groupBox3.Location = new Point(3, 3);
             groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(5, 4, 5, 4);
-            groupBox3.Size = new Size(635, 259);
+            groupBox3.Size = new Size(463, 209);
             groupBox3.TabIndex = 1;
             groupBox3.TabStop = false;
             groupBox3.Text = "Information Of Product";
@@ -153,10 +149,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(22, 125);
-            label3.Margin = new Padding(5, 0, 5, 0);
+            label3.Location = new Point(16, 100);
             label3.Name = "label3";
-            label3.Size = new Size(40, 20);
+            label3.Size = new Size(49, 25);
             label3.TabIndex = 5;
             label3.Text = "Type";
             // 
@@ -164,10 +159,9 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(22, 225);
-            label4.Margin = new Padding(5, 0, 5, 0);
+            label4.Location = new Point(16, 180);
             label4.Name = "label4";
-            label4.Size = new Size(83, 20);
+            label4.Size = new Size(100, 25);
             label4.TabIndex = 7;
             label4.Text = "ID Supplier";
             // 
@@ -175,50 +169,45 @@
             // 
             cbTypeProduct.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             cbTypeProduct.FormattingEnabled = true;
-            cbTypeProduct.Location = new Point(182, 115);
-            cbTypeProduct.Margin = new Padding(5, 4, 5, 4);
+            cbTypeProduct.Location = new Point(132, 92);
             cbTypeProduct.Name = "cbTypeProduct";
-            cbTypeProduct.Size = new Size(158, 27);
+            cbTypeProduct.Size = new Size(116, 33);
             cbTypeProduct.TabIndex = 4;
             // 
             // cbIdSupplier
             // 
             cbIdSupplier.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             cbIdSupplier.FormattingEnabled = true;
-            cbIdSupplier.Location = new Point(182, 215);
-            cbIdSupplier.Margin = new Padding(5, 4, 5, 4);
+            cbIdSupplier.Location = new Point(132, 172);
             cbIdSupplier.Name = "cbIdSupplier";
-            cbIdSupplier.Size = new Size(158, 27);
+            cbIdSupplier.Size = new Size(116, 33);
             cbIdSupplier.TabIndex = 6;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(22, 175);
-            label2.Margin = new Padding(5, 0, 5, 0);
+            label2.Location = new Point(16, 140);
             label2.Name = "label2";
-            label2.Size = new Size(49, 20);
+            label2.Size = new Size(59, 25);
             label2.TabIndex = 3;
             label2.Text = "Name";
             // 
             // txtNameProduct
             // 
             txtNameProduct.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtNameProduct.Location = new Point(182, 165);
-            txtNameProduct.Margin = new Padding(5, 4, 5, 4);
+            txtNameProduct.Location = new Point(132, 132);
             txtNameProduct.Name = "txtNameProduct";
-            txtNameProduct.Size = new Size(262, 27);
+            txtNameProduct.Size = new Size(191, 31);
             txtNameProduct.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(22, 75);
-            label1.Margin = new Padding(5, 0, 5, 0);
+            label1.Location = new Point(16, 60);
             label1.Name = "label1";
-            label1.Size = new Size(79, 20);
+            label1.Size = new Size(97, 25);
             label1.TabIndex = 1;
             label1.Text = "ID Product";
             // 
@@ -226,11 +215,10 @@
             // 
             txtIDProduct.BackColor = SystemColors.ScrollBar;
             txtIDProduct.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtIDProduct.Location = new Point(182, 68);
-            txtIDProduct.Margin = new Padding(5, 4, 5, 4);
+            txtIDProduct.Location = new Point(132, 54);
             txtIDProduct.Name = "txtIDProduct";
             txtIDProduct.ReadOnly = true;
-            txtIDProduct.Size = new Size(262, 27);
+            txtIDProduct.Size = new Size(191, 31);
             txtIDProduct.TabIndex = 0;
             // 
             // groupBox5
@@ -244,11 +232,9 @@
             groupBox5.Controls.Add(label9);
             groupBox5.Controls.Add(dateMFG);
             groupBox5.Dock = DockStyle.Fill;
-            groupBox5.Location = new Point(650, 4);
-            groupBox5.Margin = new Padding(5, 4, 5, 4);
+            groupBox5.Location = new Point(472, 3);
             groupBox5.Name = "groupBox5";
-            groupBox5.Padding = new Padding(5, 4, 5, 4);
-            groupBox5.Size = new Size(691, 259);
+            groupBox5.Size = new Size(504, 209);
             groupBox5.TabIndex = 3;
             groupBox5.TabStop = false;
             groupBox5.Text = "Date Import/MFG/EXP";
@@ -257,10 +243,9 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(33, 219);
-            label12.Margin = new Padding(5, 0, 5, 0);
+            label12.Location = new Point(24, 175);
             label12.Name = "label12";
-            label12.Size = new Size(49, 20);
+            label12.Size = new Size(60, 25);
             label12.TabIndex = 25;
             label12.Text = "Status";
             // 
@@ -268,10 +253,9 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.Location = new Point(33, 169);
-            label11.Margin = new Padding(5, 0, 5, 0);
+            label11.Location = new Point(24, 135);
             label11.Name = "label11";
-            label11.Size = new Size(90, 20);
+            label11.Size = new Size(109, 25);
             label11.TabIndex = 23;
             label11.Text = "Date Import";
             // 
@@ -279,20 +263,18 @@
             // 
             dateDateImport.Enabled = false;
             dateDateImport.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dateDateImport.Location = new Point(200, 162);
-            dateDateImport.Margin = new Padding(5, 4, 5, 4);
+            dateDateImport.Location = new Point(145, 130);
             dateDateImport.Name = "dateDateImport";
-            dateDateImport.Size = new Size(312, 27);
+            dateDateImport.Size = new Size(228, 31);
             dateDateImport.TabIndex = 22;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(33, 119);
-            label10.Margin = new Padding(5, 0, 5, 0);
+            label10.Location = new Point(24, 95);
             label10.Name = "label10";
-            label10.Size = new Size(34, 20);
+            label10.Size = new Size(42, 25);
             label10.TabIndex = 21;
             label10.Text = "EXP";
             // 
@@ -300,10 +282,9 @@
             // 
             dateEXP.Enabled = false;
             dateEXP.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dateEXP.Location = new Point(200, 112);
-            dateEXP.Margin = new Padding(5, 4, 5, 4);
+            dateEXP.Location = new Point(145, 89);
             dateEXP.Name = "dateEXP";
-            dateEXP.Size = new Size(312, 27);
+            dateEXP.Size = new Size(228, 31);
             dateEXP.TabIndex = 20;
             // 
             // cbStatus
@@ -311,20 +292,18 @@
             cbStatus.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             cbStatus.FormattingEnabled = true;
             cbStatus.Items.AddRange(new object[] { "Availability", "Sold Out" });
-            cbStatus.Location = new Point(200, 215);
-            cbStatus.Margin = new Padding(5, 4, 5, 4);
+            cbStatus.Location = new Point(145, 172);
             cbStatus.Name = "cbStatus";
-            cbStatus.Size = new Size(183, 27);
+            cbStatus.Size = new Size(134, 33);
             cbStatus.TabIndex = 24;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(33, 69);
-            label9.Margin = new Padding(5, 0, 5, 0);
+            label9.Location = new Point(24, 55);
             label9.Name = "label9";
-            label9.Size = new Size(39, 20);
+            label9.Size = new Size(49, 25);
             label9.TabIndex = 19;
             label9.Text = "MFG";
             // 
@@ -332,10 +311,9 @@
             // 
             dateMFG.Enabled = false;
             dateMFG.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dateMFG.Location = new Point(200, 62);
-            dateMFG.Margin = new Padding(5, 4, 5, 4);
+            dateMFG.Location = new Point(145, 49);
             dateMFG.Name = "dateMFG";
-            dateMFG.Size = new Size(312, 27);
+            dateMFG.Size = new Size(228, 31);
             dateMFG.TabIndex = 17;
             // 
             // groupBox2
@@ -344,21 +322,18 @@
             groupBox2.Controls.Add(btImportPictureProduct);
             groupBox2.Controls.Add(PictureProduct);
             groupBox2.Dock = DockStyle.Fill;
-            groupBox2.Location = new Point(1351, 4);
-            groupBox2.Margin = new Padding(5, 4, 5, 4);
+            groupBox2.Location = new Point(982, 3);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(5, 4, 5, 4);
-            groupBox2.Size = new Size(553, 259);
+            groupBox2.Size = new Size(404, 209);
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             groupBox2.Text = "Picture Product";
             // 
             // txtPathPicture
             // 
-            txtPathPicture.Location = new Point(189, 307);
-            txtPathPicture.Margin = new Padding(5, 4, 5, 4);
+            txtPathPicture.Location = new Point(137, 246);
             txtPathPicture.Name = "txtPathPicture";
-            txtPathPicture.Size = new Size(171, 33);
+            txtPathPicture.Size = new Size(125, 27);
             txtPathPicture.TabIndex = 1;
             txtPathPicture.Visible = false;
             // 
@@ -366,22 +341,20 @@
             // 
             btImportPictureProduct.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             btImportPictureProduct.ForeColor = SystemColors.ActiveCaptionText;
-            btImportPictureProduct.Location = new Point(146, 249);
-            btImportPictureProduct.Margin = new Padding(5, 4, 5, 4);
+            btImportPictureProduct.Location = new Point(106, 199);
             btImportPictureProduct.Name = "btImportPictureProduct";
-            btImportPictureProduct.Size = new Size(129, 38);
+            btImportPictureProduct.Size = new Size(94, 31);
             btImportPictureProduct.TabIndex = 6;
-            btImportPictureProduct.Text = "Import";
+            btImportPictureProduct.Text = "Select";
             btImportPictureProduct.UseVisualStyleBackColor = true;
             btImportPictureProduct.Click += btImportPictureProduct_Click;
             // 
             // PictureProduct
             // 
             PictureProduct.BackColor = SystemColors.Info;
-            PictureProduct.Location = new Point(71, 62);
-            PictureProduct.Margin = new Padding(5, 4, 5, 4);
+            PictureProduct.Location = new Point(51, 49);
             PictureProduct.Name = "PictureProduct";
-            PictureProduct.Size = new Size(267, 179);
+            PictureProduct.Size = new Size(194, 144);
             PictureProduct.SizeMode = PictureBoxSizeMode.StretchImage;
             PictureProduct.TabIndex = 0;
             PictureProduct.TabStop = false;
@@ -390,11 +363,9 @@
             // 
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.Dock = DockStyle.Fill;
-            groupBox1.Location = new Point(5, 416);
-            groupBox1.Margin = new Padding(5, 4, 5, 4);
+            groupBox1.Location = new Point(3, 333);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(5, 4, 5, 4);
-            groupBox1.Size = new Size(1909, 386);
+            groupBox1.Size = new Size(1389, 309);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "List Of Product";
@@ -406,12 +377,11 @@
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { skuDataGridViewTextBoxColumn, dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, mfgDataGridViewTextBoxColumn, expDataGridViewTextBoxColumn, dataGridViewTextBoxColumn11 });
             dataGridView1.DataSource = productBindingSource;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(5, 30);
-            dataGridView1.Margin = new Padding(5, 4, 5, 4);
+            dataGridView1.Location = new Point(3, 23);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1899, 352);
+            dataGridView1.Size = new Size(1383, 283);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
@@ -483,12 +453,11 @@
             tableLayoutPanel3.Controls.Add(groupBox4, 0, 0);
             tableLayoutPanel3.Controls.Add(groupBox6, 1, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(5, 279);
-            tableLayoutPanel3.Margin = new Padding(5, 4, 5, 4);
+            tableLayoutPanel3.Location = new Point(3, 224);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Size = new Size(1909, 129);
+            tableLayoutPanel3.Size = new Size(1389, 103);
             tableLayoutPanel3.TabIndex = 2;
             // 
             // groupBox4
@@ -500,11 +469,9 @@
             groupBox4.Controls.Add(rd2);
             groupBox4.Controls.Add(button1);
             groupBox4.Dock = DockStyle.Fill;
-            groupBox4.Location = new Point(5, 4);
-            groupBox4.Margin = new Padding(5, 4, 5, 4);
+            groupBox4.Location = new Point(3, 3);
             groupBox4.Name = "groupBox4";
-            groupBox4.Padding = new Padding(5, 4, 5, 4);
-            groupBox4.Size = new Size(944, 121);
+            groupBox4.Size = new Size(688, 97);
             groupBox4.TabIndex = 0;
             groupBox4.TabStop = false;
             groupBox4.Text = "Operation";
@@ -513,10 +480,9 @@
             // 
             btImportProduct.BackColor = SystemColors.ButtonShadow;
             btImportProduct.ForeColor = SystemColors.ActiveCaptionText;
-            btImportProduct.Location = new Point(526, 28);
-            btImportProduct.Margin = new Padding(5, 4, 5, 4);
+            btImportProduct.Location = new Point(383, 22);
             btImportProduct.Name = "btImportProduct";
-            btImportProduct.Size = new Size(132, 84);
+            btImportProduct.Size = new Size(96, 67);
             btImportProduct.TabIndex = 29;
             btImportProduct.Text = "Import Products";
             btImportProduct.UseVisualStyleBackColor = false;
@@ -526,10 +492,9 @@
             // 
             txtExpProduct.BackColor = SystemColors.ButtonShadow;
             txtExpProduct.ForeColor = SystemColors.ActiveCaptionText;
-            txtExpProduct.Location = new Point(366, 28);
-            txtExpProduct.Margin = new Padding(5, 4, 5, 4);
+            txtExpProduct.Location = new Point(266, 22);
             txtExpProduct.Name = "txtExpProduct";
-            txtExpProduct.Size = new Size(132, 84);
+            txtExpProduct.Size = new Size(96, 67);
             txtExpProduct.TabIndex = 28;
             txtExpProduct.Text = "Expired Products";
             txtExpProduct.UseVisualStyleBackColor = false;
@@ -539,10 +504,9 @@
             // 
             btUpdate.BackColor = SystemColors.ButtonShadow;
             btUpdate.ForeColor = SystemColors.ActiveCaptionText;
-            btUpdate.Location = new Point(209, 71);
-            btUpdate.Margin = new Padding(5, 4, 5, 4);
+            btUpdate.Location = new Point(152, 57);
             btUpdate.Name = "btUpdate";
-            btUpdate.Size = new Size(132, 40);
+            btUpdate.Size = new Size(96, 32);
             btUpdate.TabIndex = 25;
             btUpdate.Text = "Update";
             btUpdate.UseVisualStyleBackColor = false;
@@ -552,10 +516,10 @@
             // 
             rd1.AutoSize = true;
             rd1.Checked = true;
-            rd1.Location = new Point(50, 38);
-            rd1.Margin = new Padding(6);
+            rd1.Location = new Point(36, 30);
+            rd1.Margin = new Padding(4, 5, 4, 5);
             rd1.Name = "rd1";
-            rd1.Size = new Size(122, 29);
+            rd1.Size = new Size(104, 24);
             rd1.TabIndex = 23;
             rd1.TabStop = true;
             rd1.Text = "Availability";
@@ -565,10 +529,10 @@
             // rd2
             // 
             rd2.AutoSize = true;
-            rd2.Location = new Point(50, 81);
-            rd2.Margin = new Padding(6);
+            rd2.Location = new Point(36, 65);
+            rd2.Margin = new Padding(4, 5, 4, 5);
             rd2.Name = "rd2";
-            rd2.Size = new Size(103, 29);
+            rd2.Size = new Size(88, 24);
             rd2.TabIndex = 24;
             rd2.Text = "Sold Out";
             rd2.UseVisualStyleBackColor = true;
@@ -578,10 +542,9 @@
             // 
             button1.BackColor = SystemColors.ButtonShadow;
             button1.ForeColor = SystemColors.ActiveCaptionText;
-            button1.Location = new Point(209, 28);
-            button1.Margin = new Padding(5, 4, 5, 4);
+            button1.Location = new Point(152, 22);
             button1.Name = "button1";
-            button1.Size = new Size(132, 40);
+            button1.Size = new Size(96, 32);
             button1.TabIndex = 26;
             button1.Text = "Create";
             button1.UseVisualStyleBackColor = false;
@@ -596,11 +559,9 @@
             groupBox6.Controls.Add(txtComboType);
             groupBox6.Controls.Add(btSearch);
             groupBox6.Dock = DockStyle.Fill;
-            groupBox6.Location = new Point(959, 4);
-            groupBox6.Margin = new Padding(5, 4, 5, 4);
+            groupBox6.Location = new Point(697, 3);
             groupBox6.Name = "groupBox6";
-            groupBox6.Padding = new Padding(5, 4, 5, 4);
-            groupBox6.Size = new Size(945, 121);
+            groupBox6.Size = new Size(689, 97);
             groupBox6.TabIndex = 1;
             groupBox6.TabStop = false;
             groupBox6.Text = "Filter Products";
@@ -611,10 +572,9 @@
             txtArrange.DropDownStyle = ComboBoxStyle.DropDownList;
             txtArrange.FormattingEnabled = true;
             txtArrange.Items.AddRange(new object[] { "ALL", "Name Ascending", "Name Decrease" });
-            txtArrange.Location = new Point(360, 76);
-            txtArrange.Margin = new Padding(5, 4, 5, 4);
+            txtArrange.Location = new Point(262, 61);
             txtArrange.Name = "txtArrange";
-            txtArrange.Size = new Size(169, 33);
+            txtArrange.Size = new Size(124, 28);
             txtArrange.TabIndex = 35;
             txtArrange.SelectedIndexChanged += txtArrange_SelectedIndexChanged;
             // 
@@ -622,10 +582,9 @@
             // 
             txtCheckName.AutoSize = true;
             txtCheckName.ForeColor = SystemColors.ActiveCaptionText;
-            txtCheckName.Location = new Point(42, 37);
-            txtCheckName.Margin = new Padding(5, 4, 5, 4);
+            txtCheckName.Location = new Point(31, 29);
             txtCheckName.Name = "txtCheckName";
-            txtCheckName.Size = new Size(152, 29);
+            txtCheckName.Size = new Size(126, 24);
             txtCheckName.TabIndex = 30;
             txtCheckName.Text = "Name Product";
             txtCheckName.UseVisualStyleBackColor = true;
@@ -634,40 +593,36 @@
             // 
             txtCheckType.AutoSize = true;
             txtCheckType.ForeColor = SystemColors.ActiveCaptionText;
-            txtCheckType.Location = new Point(42, 82);
-            txtCheckType.Margin = new Padding(5, 4, 5, 4);
+            txtCheckType.Location = new Point(31, 66);
             txtCheckType.Name = "txtCheckType";
-            txtCheckType.Size = new Size(141, 29);
+            txtCheckType.Size = new Size(117, 24);
             txtCheckType.TabIndex = 31;
             txtCheckType.Text = "Type Product";
             txtCheckType.UseVisualStyleBackColor = true;
             // 
             // txtName
             // 
-            txtName.Location = new Point(225, 32);
-            txtName.Margin = new Padding(5, 4, 5, 4);
+            txtName.Location = new Point(163, 26);
             txtName.Name = "txtName";
-            txtName.Size = new Size(108, 33);
+            txtName.Size = new Size(79, 27);
             txtName.TabIndex = 32;
             // 
             // txtComboType
             // 
             txtComboType.DropDownStyle = ComboBoxStyle.DropDownList;
             txtComboType.FormattingEnabled = true;
-            txtComboType.Location = new Point(225, 76);
-            txtComboType.Margin = new Padding(5, 4, 5, 4);
+            txtComboType.Location = new Point(163, 61);
             txtComboType.Name = "txtComboType";
-            txtComboType.Size = new Size(108, 33);
+            txtComboType.Size = new Size(79, 28);
             txtComboType.TabIndex = 33;
             // 
             // btSearch
             // 
             btSearch.BackColor = SystemColors.ButtonShadow;
             btSearch.ForeColor = SystemColors.ActiveCaptionText;
-            btSearch.Location = new Point(360, 32);
-            btSearch.Margin = new Padding(5, 4, 5, 4);
+            btSearch.Location = new Point(262, 26);
             btSearch.Name = "btSearch";
-            btSearch.Size = new Size(170, 40);
+            btSearch.Size = new Size(124, 32);
             btSearch.TabIndex = 34;
             btSearch.Text = "Search";
             btSearch.UseVisualStyleBackColor = false;
@@ -681,14 +636,10 @@
             // 
             // ManageAllProducs
             // 
-            AutoScaleDimensions = new SizeF(11F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Window;
-            ClientSize = new Size(1919, 806);
+            ClientSize = new Size(1395, 645);
             Controls.Add(tableLayoutPanel1);
-            Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            ForeColor = SystemColors.ControlText;
-            Margin = new Padding(5, 4, 5, 4);
             Name = "ManageAllProducs";
             Text = "ManageAllProducs";
             tableLayoutPanel1.ResumeLayout(false);
