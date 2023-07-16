@@ -34,25 +34,29 @@ namespace MiniStoreWinF.ManageSalary
                         //list employee over conditon to entitled sub salary
                         employees.Add(emp);
                     }
-                    foreach (var item in employees)
-                    {
-                        _subSalaryService = new SubSalaryService();
-                        SubSalary subSalary = new SubSalary();
-                        int id = _subSalaryService.GetAll().Count();
-                        subSalary.IdSubSalary = u.GenerateAutoId(id,"SUB");
-                        var nId = _subSalaryService.GetAll().Count(p => p.IdSubSalary.Equals(subSalary.IdSubSalary));
-                        if (nId > 0)
-                        {
-                            id++;
-                        }
-                        else
-                        {
-                            subSalary.IdEmp=item.IdEmp;
-                            subSalary.Time=time;
-                            subSalary.IdDetailSubSalary = subDetail.IdDetailSubSalary;
-                            _subSalaryService.Create(subSalary);
-                        }
-                    }
+                    //foreach (var item in employees)
+                    //{
+                    //    _subSalaryService = new SubSalaryService();
+                    //    //SubSalary subSalary = new SubSalary();
+                    //    //int id = _subSalaryService.GetAll().Count();
+                    //    //subSalary.IdSubSalary = u.GenerateAutoId(id,"SUB");
+                    //    //var nId = _subSalaryService.GetAll().Count(p => p.IdSubSalary.Equals(subSalary.IdSubSalary));
+                    //    //if (nId > 0)
+                    //    //{
+                    //    //    id++;
+                    //    //}
+                    //    //else
+                    //    //{
+                    //    //    //subSalary.IdEmp=item.IdEmp;
+                    //    //    //subSalary.Time=time;
+                    //    //    //subSalary.IdDetailSubSalary = subDetail.IdDetailSubSalary;
+                    //    //    _subSalaryService.Create(subSalary);
+                    //    //}                    //salary.TotalSalary = totalSalry(employee.IdEmp, time);
+                    ////tax
+                    //salary.Tax = Tax(employee.IdEmp,time,totalSalry(employee.IdEmp, time));
+                    ////after tax
+                    //salary.SalaryAfterTax = sumaryResultTotalSalary(employee.IdEmp, time);
+                    //}
                     employees.Clear();
                 }
             }

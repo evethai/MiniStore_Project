@@ -21,6 +21,9 @@ namespace MiniStoreWinF.ManageEmployees
         Validation _employeeService = new Validation();
         Permission _permission = new Permission();
         PermissionService _permissionService = new PermissionService();
+        SubTypeService _subTypeService = new SubTypeService();
+        SubDetailService _subDetailService = new SubDetailService();
+        SubSalaryService _subSalaryService = new SubSalaryService();
         public string url = "";
 
 
@@ -158,16 +161,20 @@ namespace MiniStoreWinF.ManageEmployees
                 {
                     var roles = employeeInfo.Roles;
                     var permission = _permissionService.GetAll().Where(entity => entity.Roles.Equals(roles)).FirstOrDefault();
+
+                    
+
+
                     txtId.Text = employeeInfo.IdEmp.ToString();
                     txtName.Text = employeeInfo.FullNameEmp.ToString();
                     txtAddress.Text = employeeInfo.AddressEmp.ToString();
                     txtPhone.Text = employeeInfo.PhoneEmp.ToString();
-
                     dtDoB.Value = employeeInfo.DoB.Value;
                     txtCccd.Text = employeeInfo.Cccd.ToString();
                     pBEmp.Image = Base64ToImage(employeeInfo.PictureEmp);
                     txtUrl.Text = employeeInfo.PictureEmp.ToString();
                     cbRole.Text = employeeInfo.Roles.ToString();
+
                     if (employeeInfo.Sex == false)
                     {
                         cbGender.Text = "Man";
@@ -528,6 +535,11 @@ namespace MiniStoreWinF.ManageEmployees
                     MessageBox.Show("UPDATE SUCCESSFULLY!");
                 }
             }
+        }
+
+        private void btShowSubSalary_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

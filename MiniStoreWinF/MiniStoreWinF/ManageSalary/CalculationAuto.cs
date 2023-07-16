@@ -48,56 +48,56 @@ namespace MiniStoreWinF.ManageSalary
         }
 
         //tính thuế thu nhập cá nhân đối với mỗi nhân viên theo lũy tuyến 
-        public double Tax(string id, DateTime time, double salary)
-        {
-            _employeeService = new EmployeeService();
-            _permissionService = new PermissionService();
+        //public double Tax(string id, DateTime time, double salary)
+        //{
+        //    _employeeService = new EmployeeService();
+        //    _permissionService = new PermissionService();
 
-            double tax=0;
-            double tax_total = 0;
+        //    double tax=0;
+        //    double tax_total = 0;
 
-            var listEmp = _employeeService.GetAll().Where(p => p.IsActive == true).ToList();
-            var listPer = _permissionService.GetAll().ToList();
+        //    var listEmp = _employeeService.GetAll().Where(p => p.IsActive == true).ToList();
+        //    var listPer = _permissionService.GetAll().ToList();
 
             
-            var result = (from emp in listEmp
-                          join perm in listPer
-                         on emp.Roles equals perm.Roles
-                          where emp.IdEmp == id
-                          select perm.Tax).FirstOrDefault();
-            if (result.HasValue)
-            {
-                tax=salary-result.Value;
-                //
-                if(tax>0 &&tax <= 5000000) {
-                    tax_total =salary * 5/100;
-                }else if (tax > 5000000 && tax <= 10000000)
-                {
-                    tax_total = salary * 10/100 - 250000;
-                }else if (tax > 10000000 && tax <= 18000000)
-                {
-                    tax_total = salary * 15/100 -750000;
-                }else if(tax >18000000 && tax <= 32000000)
-                {
-                    tax_total=salary* 20/100 -1650000;
-                }else if(tax>32000000 && tax <= 52000000)
-                {
-                    tax_total = salary * 25/100 - 3250000;
-                }else if(tax > 52000000 && tax < 80000000)
-                {
-                    tax_total = salary * 30/100 - 5850000;
-                }else if(tax > 80000000)
-                {
-                    tax_total = salary * 35/100 - 9850000;
-                }
-                //
-                return tax_total;
-            }
-            else
-            {
-                return tax_total;
-            }
-        }
+            //var result = (from emp in listEmp
+            //              join perm in listPer
+            //             on emp.Roles equals perm.Roles
+            //              where emp.IdEmp == id
+            //              select perm.Tax).FirstOrDefault();
+            //if (result.HasValue)
+            //{
+            //    tax=salary-result.Value;
+            //    //
+            //    if(tax>0 &&tax <= 5000000) {
+            //        tax_total =salary * 5/100;
+            //    }else if (tax > 5000000 && tax <= 10000000)
+            //    {
+            //        tax_total = salary * 10/100 - 250000;
+            //    }else if (tax > 10000000 && tax <= 18000000)
+            //    {
+            //        tax_total = salary * 15/100 -750000;
+            //    }else if(tax >18000000 && tax <= 32000000)
+            //    {
+            //        tax_total=salary* 20/100 -1650000;
+            //    }else if(tax>32000000 && tax <= 52000000)
+            //    {
+            //        tax_total = salary * 25/100 - 3250000;
+            //    }else if(tax > 52000000 && tax < 80000000)
+            //    {
+            //        tax_total = salary * 30/100 - 5850000;
+            //    }else if(tax > 80000000)
+            //    {
+            //        tax_total = salary * 35/100 - 9850000;
+            //    }
+            //    //
+            //    return tax_total;
+            //}
+            //else
+            //{
+            //    return tax_total;
+            //}
+        //}
 
         //tính lương cơ bản của mỗi nhân viên theo giờ làm việc và hệ số cộng thêm 
         public double BasicSalary(string id, DateTime time, double h_salary)
@@ -126,25 +126,25 @@ namespace MiniStoreWinF.ManageSalary
         }
 
         //tính tổng số sub salary của mỗi nhân viên
-        public double SubSalary(string id, DateTime time)
-        {
-            double total = 0;
-            _subSalaryService = new SubSalaryService();
-            _detailSubSalaryService = new DetailSubSalaryService();
-            var listSub = _subSalaryService.GetAll().ToList();
-            var listDetail = _detailSubSalaryService.GetAll().Where(p=>p.ActiveSub==true && p.DateEffect>= time).ToList();
+        //public double SubSalary(string id, DateTime time)
+        //{
+        //    double total = 0;
+        //    _subSalaryService = new SubSalaryService();
+        //    _detailSubSalaryService = new DetailSubSalaryService();
+        //    var listSub = _subSalaryService.GetAll().ToList();
+        //    var listDetail = _detailSubSalaryService.GetAll().Where(p=>p.ActiveSub==true && p.DateEffect>= time).ToList();
 
-            var listTotal = (from s in listSub
-                             join
-                             d in listDetail on s.IdDetailSubSalary equals d.IdDetailSubSalary
-                             where s.IdEmp == id && s.Time.Value.Month == time.Month && s.Time.Value.Year == time.Year
-                             select d.SubsidiesSalary).ToList();
-            foreach (var lt in listTotal)
-            {
-                total += lt.Value;
-            }
-            return total;
-        }
+        //    //var listTotal = (from s in listSub
+        //    //                 join
+        //    //                 d in listDetail on s.IdDetailSubSalary equals d.IdDetailSubSalary
+        //    //                 where s.IdEmp == id && s.Time.Value.Month == time.Month && s.Time.Value.Year == time.Year
+        //    //                 select d.SubsidiesSalary).ToList();
+        //    //foreach (var lt in listTotal)
+        //    //{
+        //    //    total += lt.Value;
+        //    //}
+        //    //return total;
+        //}
 
         //tổng số tiền lương ứng trong tháng của nhân viên
         public double AdvSalary(string id, DateTime time)
@@ -161,22 +161,22 @@ namespace MiniStoreWinF.ManageSalary
         }
 
         //kết quả lương của mỗi nhân viên khi chưa tính thuế thu nhập cá nhân 
-        public double totalSalry(string id, DateTime time)
-        {
-            double total = 0;
-            total = BasicSalary(id, time, HourSalary(id))
-                + SubSalary(id, time)
-                - AdvSalary(id, time);
-            return total;
-        }
+        //public double totalSalry(string id, DateTime time)
+        //{
+        //    double total = 0;
+        //    total = BasicSalary(id, time, HourSalary(id))
+        //        + SubSalary(id, time)
+        //        - AdvSalary(id, time);
+        //    return total;
+        //}
 
         //số tiền lương cuối cùng sau khi đã trừ thuế
-        public double sumaryResultTotalSalary(string id, DateTime time)
-        {
-            double result = 0;
-            result = totalSalry(id, time) - (Tax(id,time,totalSalry(id,time)));
-            return result;
-        }
+        //public double sumaryResultTotalSalary(string id, DateTime time)
+        //{
+        //    double result = 0;
+        //    result = totalSalry(id, time) - (Tax(id,time,totalSalry(id,time)));
+        //    return result;
+        //}
 
 
         //tính toàn bộ và add vào database
@@ -203,19 +203,19 @@ namespace MiniStoreWinF.ManageSalary
                     //id
                     salary.IdEmp = employee.IdEmp;
                     //salary hour
-                    salary.SalaryHour = HourSalary(employee.IdEmp);
+                    //salary.SalaryHour = HourSalary(employee.IdEmp);
                     //basic salary
                     salary.BasicSalary = BasicSalary(employee.IdEmp,time, HourSalary(employee.IdEmp));
                     //sub salary
-                    salary.SumSubSalary = SubSalary(employee.IdEmp, time);
+                    //salary.SumSubSalary = SubSalary(employee.IdEmp, time);
                     //advance salary
-                    salary.SumAdvanceSalary = AdvSalary(employee.IdEmp, time);
+                    //salary.SumAdvanceSalary = AdvSalary(employee.IdEmp, time);
                     //total basic
-                    salary.TotalSalary = totalSalry(employee.IdEmp, time);
-                    //tax
-                    salary.Tax = Tax(employee.IdEmp,time,totalSalry(employee.IdEmp, time));
-                    //after tax
-                    salary.SalaryAfterTax = sumaryResultTotalSalary(employee.IdEmp, time);
+                    //salary.TotalSalary = totalSalry(employee.IdEmp, time);
+                    ////tax
+                    //salary.Tax = Tax(employee.IdEmp,time,totalSalry(employee.IdEmp, time));
+                    ////after tax
+                    //salary.SalaryAfterTax = sumaryResultTotalSalary(employee.IdEmp, time);
                     //day begin 
                     salary.DateImonth = u.GetFirstDayofMonth(time);
                     //day close month

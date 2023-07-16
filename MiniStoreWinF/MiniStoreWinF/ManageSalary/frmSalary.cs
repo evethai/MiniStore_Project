@@ -27,7 +27,7 @@ namespace MiniStoreWinF.ManageSalary
 
 
             //auto calculator sub salary
-            AutoSubSalary();
+            //AutoSubSalary();
 
             //auto calculaotor salary
             AutoSalary();
@@ -61,20 +61,20 @@ namespace MiniStoreWinF.ManageSalary
             return listDetail;
 
         }
-        public void AutoSubSalary()
-        {
-            //check in last month calculated sub salary?
-            var sum = _subSalaryService.GetAll().Count(p => p.Time.Value.Month.Equals(u.GetTime(DateTime.Now).Month) && p.Time.Value.Year.Equals(u.GetTime(DateTime.Now).Year));
-            if (sum > 0)
-            {
-                return;
-            }
-            else
-            {
-                //the final day of last month 
-                ua.save(u.GetLastDayOfMonth(u.GetTime(DateTime.Now)));
-            }
-        }
+        //public void AutoSubSalary()
+        //{
+        //    check in last month calculated sub salary?
+        //    var sum = _subSalaryService.GetAll().Count(p => p.Time.Value.Month.Equals(u.GetTime(DateTime.Now).Month) && p.Time.Value.Year.Equals(u.GetTime(DateTime.Now).Year));
+        //    if (sum > 0)
+        //    {
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        //the final day of last month 
+        //        ua.save(u.GetLastDayOfMonth(u.GetTime(DateTime.Now)));
+        //    }
+        //}
         public void AutoSalary()
         {
             //check in last month calcualted Salary ?

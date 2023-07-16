@@ -86,7 +86,7 @@
             MinimumSize = new Size(462, 229);
             Name = "frmEditEachTax";
             Text = "Edit new tax";
-            Load += frmEditEachTax_Load;
+            //Load += frmEditEachTax_Load;
             ResumeLayout(false);
             PerformLayout();
         }

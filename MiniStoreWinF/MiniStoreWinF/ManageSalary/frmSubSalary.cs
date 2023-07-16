@@ -41,7 +41,7 @@ namespace MiniStoreWinF.ManageSalary
             u.showListEmp_ALL(cbName);
 
             //Show list Sub Salary  last month
-            showListEmployeHasSubSalary(DateTime.Now.AddMonths(-1));
+            //showListEmployeHasSubSalary(DateTime.Now.AddMonths(-1));
 
             //Show list Advance Salary  last month
             dgvAdv.DataSource = showAdvanceSalary(DateTime.Now.AddMonths(-1)).ToList();
@@ -51,12 +51,12 @@ namespace MiniStoreWinF.ManageSalary
         }
 
         //Show list Sub Salary  last month
-        public void showListEmployeHasSubSalary(DateTime time)
-        {
-            var list = _subSalaryService.GetAll().Where(p => p.Time.Value.Month.Equals(time.Month) && p.Time.Value.Year.Equals(time.Year)).ToList();
-            dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
-            _list = list;
-        }
+        //public void showListEmployeHasSubSalary(DateTime time)
+        //{
+        //    //var list = _subSalaryService.GetAll().Where(p => p.Time.Value.Month.Equals(time.Month) && p.Time.Value.Year.Equals(time.Year)).ToList();
+        //    //dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
+        //    //_list = list;
+        //}
 
         //Show list SubSalary of MiniStore by Admin create create
         public void showListSub()
@@ -182,39 +182,39 @@ namespace MiniStoreWinF.ManageSalary
         }
 
         //Search Sub salary by name
-        public void searchSubByName(string id)
-        {
-            DateTime time = dtpList.Value;
-            double total = ca.SubSalary(id, time);
-            txtTotal.Text = u.formatDouble(total);
-            var list = _subSalaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.Time.Value.Month.Equals(time.Month) && p.Time.Value.Year.Equals(time.Year)).ToList();
-            dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
-        }
+        //public void searchSubByName(string id)
+        //{
+        //    //DateTime time = dtpList.Value;
+        //    //double total = ca.SubSalary(id, time);
+        //    //txtTotal.Text = u.formatDouble(total);
+        //    //var list = _subSalaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.Time.Value.Month.Equals(time.Month) && p.Time.Value.Year.Equals(time.Year)).ToList();
+        //    //dgvTotalSub.DataSource = LoadRecord(pageNumber, numberRecord, list);
+        //}
 
 
         //filter
         private void btFilter_Click(object sender, EventArgs e)
         {
             string id = cbName.SelectedValue.ToString();
-            if (cbOrderby.Text == "Descending" && id == "-1")
-            {
-                showListEmployeHasSubSalary(dtpList.Value);
-                dgvAdv.DataSource = showAdvanceSalary(dtpList.Value).OrderByDescending(p => p.AdvanceSalary).ToList();
-                txtTotal.Text = "";
+            //if (cbOrderby.Text == "Descending" && id == "-1")
+            //{
+            //    showListEmployeHasSubSalary(dtpList.Value);
+            //    dgvAdv.DataSource = showAdvanceSalary(dtpList.Value).OrderByDescending(p => p.AdvanceSalary).ToList();
+            //    txtTotal.Text = "";
 
-            }
-            else if (cbOrderby.Text != "Descending" && id == "-1")
-            {
-                showListEmployeHasSubSalary(dtpList.Value);
-                dgvAdv.DataSource = showAdvanceSalary(dtpList.Value).OrderBy(p => p.AdvanceSalary).ToList();
-                txtTotal.Text = "";
+            //}
+            //else if (cbOrderby.Text != "Descending" && id == "-1")
+            //{
+            //    showListEmployeHasSubSalary(dtpList.Value);
+            //    dgvAdv.DataSource = showAdvanceSalary(dtpList.Value).OrderBy(p => p.AdvanceSalary).ToList();
+            //    txtTotal.Text = "";
 
-            }
-            else
-            {
-                searchAdvByName(id);
-                searchSubByName(id);
-            }
+            //}
+            //else
+            //{
+            //    searchAdvByName(id);
+            //    searchSubByName(id);
+            //}
         }
 
         private void dgvSub_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)

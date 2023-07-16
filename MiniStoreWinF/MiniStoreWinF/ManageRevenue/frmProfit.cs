@@ -55,7 +55,7 @@ namespace MiniStoreWinF.ManageRevenue
             var list = u.salary(time).ToList();
             foreach (var item in list)
             {
-                total += item.SalaryAfterTax;
+                //total += item.SalaryAfterTax;
             }
             return total;
         }
@@ -102,7 +102,7 @@ namespace MiniStoreWinF.ManageRevenue
                 {
                     if (item.DateImonth.Month == i)
                     {
-                        total += item.SalaryAfterTax;
+                        //total += item.SalaryAfterTax;
                     }
                 }
                 chSalary.Series["VND"].Points.AddXY(i, total);

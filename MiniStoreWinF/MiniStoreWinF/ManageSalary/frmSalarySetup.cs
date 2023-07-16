@@ -38,7 +38,7 @@ namespace MiniStoreWinF.ManageSalary
             txtGuard.Text = nGuard.ToString();
             //
             var tax = _permissionService.GetAll().Where(p => p.Roles == 2).FirstOrDefault();
-            txtTax.Text = tax.Tax.ToString();
+            //txtTax.Text = tax.Tax.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)

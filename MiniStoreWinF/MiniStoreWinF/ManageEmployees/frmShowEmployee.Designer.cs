@@ -74,6 +74,7 @@
             txtName = new TextBox();
             txtId = new TextBox();
             tableLayoutPanel2 = new TableLayoutPanel();
+            btShowSubSalary = new Button();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).BeginInit();
             pnButton.SuspendLayout();
@@ -119,7 +120,7 @@
             txtUrl.Location = new Point(932, 17);
             txtUrl.Margin = new Padding(4, 5, 4, 5);
             txtUrl.Name = "txtUrl";
-            txtUrl.Size = new Size(326, 34);
+            txtUrl.Size = new Size(326, 29);
             txtUrl.TabIndex = 19;
             txtUrl.Visible = false;
             // 
@@ -142,7 +143,7 @@
             txtSearch.Location = new Point(13, 8);
             txtSearch.Margin = new Padding(4, 5, 4, 5);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(229, 34);
+            txtSearch.Size = new Size(229, 29);
             txtSearch.TabIndex = 21;
             // 
             // rd1
@@ -151,7 +152,7 @@
             rd1.Location = new Point(368, 9);
             rd1.Margin = new Padding(4, 5, 4, 5);
             rd1.Name = "rd1";
-            rd1.Size = new Size(87, 32);
+            rd1.Size = new Size(70, 25);
             rd1.TabIndex = 22;
             rd1.TabStop = true;
             rd1.Text = "Active";
@@ -164,7 +165,7 @@
             rd2.Location = new Point(463, 9);
             rd2.Margin = new Padding(4, 5, 4, 5);
             rd2.Name = "rd2";
-            rd2.Size = new Size(97, 32);
+            rd2.Size = new Size(79, 25);
             rd2.TabIndex = 23;
             rd2.TabStop = true;
             rd2.Text = "Disable";
@@ -313,6 +314,7 @@
             // pnInfor
             // 
             pnInfor.BorderStyle = BorderStyle.Fixed3D;
+            pnInfor.Controls.Add(btShowSubSalary);
             pnInfor.Controls.Add(cbRole);
             pnInfor.Controls.Add(btAddEmployee);
             pnInfor.Controls.Add(pbImport);
@@ -347,9 +349,9 @@
             // cbRole
             // 
             cbRole.FormattingEnabled = true;
-            cbRole.Location = new Point(763, 273);
+            cbRole.Location = new Point(541, 253);
             cbRole.Name = "cbRole";
-            cbRole.Size = new Size(195, 36);
+            cbRole.Size = new Size(195, 29);
             cbRole.TabIndex = 55;
             // 
             // pbImport
@@ -368,20 +370,20 @@
             // 
             dtDoB.Enabled = false;
             dtDoB.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dtDoB.Location = new Point(763, 329);
+            dtDoB.Location = new Point(541, 309);
             dtDoB.Margin = new Padding(4, 5, 4, 5);
             dtDoB.Name = "dtDoB";
-            dtDoB.Size = new Size(279, 38);
+            dtDoB.Size = new Size(279, 32);
             dtDoB.TabIndex = 47;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(642, 58);
+            label9.Location = new Point(420, 38);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(89, 31);
+            label9.Size = new Size(74, 25);
             label9.TabIndex = 52;
             label9.Text = "Gender";
             // 
@@ -392,20 +394,20 @@
             cbGender.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             cbGender.FormattingEnabled = true;
             cbGender.Items.AddRange(new object[] { "Man", "Woman" });
-            cbGender.Location = new Point(763, 55);
+            cbGender.Location = new Point(541, 35);
             cbGender.Margin = new Padding(4, 5, 4, 5);
             cbGender.Name = "cbGender";
-            cbGender.Size = new Size(195, 39);
+            cbGender.Size = new Size(195, 33);
             cbGender.TabIndex = 51;
             // 
             // Status
             // 
             Status.AutoSize = true;
             Status.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            Status.Location = new Point(655, 199);
+            Status.Location = new Point(433, 179);
             Status.Margin = new Padding(4, 0, 4, 0);
             Status.Name = "Status";
-            Status.Size = new Size(76, 31);
+            Status.Size = new Size(62, 25);
             Status.TabIndex = 50;
             Status.Text = "Status";
             // 
@@ -414,30 +416,30 @@
             cBStatus.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             cBStatus.FormattingEnabled = true;
             cBStatus.Items.AddRange(new object[] { "Active", "Disable" });
-            cBStatus.Location = new Point(763, 191);
+            cBStatus.Location = new Point(541, 171);
             cBStatus.Margin = new Padding(4, 5, 4, 5);
             cBStatus.Name = "cBStatus";
-            cBStatus.Size = new Size(195, 39);
+            cBStatus.Size = new Size(195, 33);
             cBStatus.TabIndex = 49;
             // 
             // lb
             // 
             lb.AutoSize = true;
             lb.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            lb.Location = new Point(697, 125);
+            lb.Location = new Point(475, 105);
             lb.Margin = new Padding(4, 0, 4, 0);
             lb.Name = "lb";
-            lb.Size = new Size(34, 31);
+            lb.Size = new Size(29, 25);
             lb.TabIndex = 48;
             lb.Text = "CI";
             // 
             // txtCccd
             // 
             txtCccd.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCccd.Location = new Point(763, 118);
+            txtCccd.Location = new Point(541, 98);
             txtCccd.Margin = new Padding(4, 5, 4, 5);
             txtCccd.Name = "txtCccd";
-            txtCccd.Size = new Size(195, 38);
+            txtCccd.Size = new Size(195, 32);
             txtCccd.TabIndex = 46;
             txtCccd.KeyPress += txtCCCD_KeyPress;
             // 
@@ -445,10 +447,10 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(673, 273);
+            label10.Location = new Point(451, 253);
             label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
-            label10.Size = new Size(58, 31);
+            label10.Size = new Size(48, 25);
             label10.TabIndex = 45;
             label10.Text = "Role";
             // 
@@ -456,10 +458,10 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(276, 194);
+            label8.Location = new Point(54, 174);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(78, 31);
+            label8.Size = new Size(66, 25);
             label8.TabIndex = 44;
             label8.Text = "Phone";
             label8.TextAlign = ContentAlignment.MiddleCenter;
@@ -468,10 +470,10 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(257, 268);
+            label7.Location = new Point(35, 248);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(97, 31);
+            label7.Size = new Size(79, 25);
             label7.TabIndex = 43;
             label7.Text = "Address";
             // 
@@ -479,17 +481,17 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(669, 336);
+            label4.Location = new Point(447, 316);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(62, 31);
+            label4.Size = new Size(52, 25);
             label4.TabIndex = 42;
             label4.Text = "Birth";
             // 
             // label3
             // 
             label3.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(247, 121);
+            label3.Location = new Point(25, 101);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(117, 28);
@@ -500,10 +502,10 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(322, 62);
+            label2.Location = new Point(100, 42);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(34, 31);
+            label2.Size = new Size(28, 25);
             label2.TabIndex = 40;
             label2.Text = "Id";
             // 
@@ -532,36 +534,36 @@
             // txtAddress
             // 
             txtAddress.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtAddress.Location = new Point(362, 261);
+            txtAddress.Location = new Point(140, 241);
             txtAddress.Margin = new Padding(4, 5, 4, 5);
             txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(195, 38);
+            txtAddress.Size = new Size(195, 32);
             txtAddress.TabIndex = 37;
             // 
             // txtPhone
             // 
             txtPhone.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPhone.Location = new Point(362, 193);
+            txtPhone.Location = new Point(140, 173);
             txtPhone.Margin = new Padding(4, 5, 4, 5);
             txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(195, 38);
+            txtPhone.Size = new Size(195, 32);
             txtPhone.TabIndex = 36;
             txtPhone.KeyPress += txtPhone_KeyPress;
             // 
             // txtName
             // 
             txtName.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtName.Location = new Point(362, 118);
+            txtName.Location = new Point(140, 98);
             txtName.Margin = new Padding(4, 5, 4, 5);
             txtName.Name = "txtName";
-            txtName.Size = new Size(195, 38);
+            txtName.Size = new Size(195, 32);
             txtName.TabIndex = 35;
             // 
             // txtId
             // 
             txtId.Enabled = false;
             txtId.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtId.Location = new Point(362, 58);
+            txtId.Location = new Point(140, 38);
             txtId.Margin = new Padding(4, 5, 4, 5);
             txtId.Multiline = true;
             txtId.Name = "txtId";
@@ -585,9 +587,19 @@
             tableLayoutPanel2.Size = new Size(1541, 411);
             tableLayoutPanel2.TabIndex = 28;
             // 
+            // btShowSubSalary
+            // 
+            btShowSubSalary.Location = new Point(845, 35);
+            btShowSubSalary.Name = "btShowSubSalary";
+            btShowSubSalary.Size = new Size(113, 42);
+            btShowSubSalary.TabIndex = 56;
+            btShowSubSalary.Text = "Show Sub Salary";
+            btShowSubSalary.UseVisualStyleBackColor = true;
+            btShowSubSalary.Click += btShowSubSalary_Click;
+            // 
             // frmShowEmployee
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1547, 837);
@@ -658,5 +670,6 @@
         private PictureBox pbImport;
         private ComboBox cbRole;
         private Button btSearchButton;
+        private Button btShowSubSalary;
     }
 }

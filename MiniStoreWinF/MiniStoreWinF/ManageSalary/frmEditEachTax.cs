@@ -28,11 +28,11 @@ namespace MiniStoreWinF.ManageSalary
         private void btSave_Click(object sender, EventArgs e)
         {
             var emp = _permissionService.GetAll().ToList();
-            foreach (var item in emp)
-            {
-                item.Tax = Double.Parse(txtTax.Text);
-                _permissionService.Update(item);
-            }
+            //foreach (var item in emp)
+            //{
+            //    item.Tax = Double.Parse(txtTax.Text);
+            //    _permissionService.Update(item);
+            //}
 
             notiSave.BalloonTipText = "Save Successfull";
             notiSave.BalloonTipTitle = "Change Success";
@@ -42,11 +42,11 @@ namespace MiniStoreWinF.ManageSalary
             this.Close();
         }
 
-        private void frmEditEachTax_Load(object sender, EventArgs e)
-        {
-            var tax = _permissionService.GetAll().Where(p => p.Roles == 2).FirstOrDefault();
-            txtTax.Text = tax.Tax.ToString();
-        }
+        //private void frmEditEachTax_Load(object sender, EventArgs e)
+        //{
+        //    var tax = _permissionService.GetAll().Where(p => p.Roles == 2).FirstOrDefault();
+        //    txtTax.Text = tax.Tax.ToString();
+        //}
 
         private void txtNewEmp_KeyPress_1(object sender, KeyPressEventArgs e)
         {

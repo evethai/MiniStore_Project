@@ -26,7 +26,7 @@ namespace MiniStoreWinF.ManageSalary
             ShowListSalary(DateTime.Now.AddMonths(-1));
             dtpTime.Value = DateTime.Now.AddMonths(-1);
             u.showListEmp_ALL(cbName);
-            lblTotal.Text = "Total salary need to pay for employee : " + u.formatDouble(TotalSalaryNeedInMonth(dtpTime.Value)) + " VND";
+            //lblTotal.Text = "Total salary need to pay for employee : " + u.formatDouble(TotalSalaryNeedInMonth(dtpTime.Value)) + " VND";
         }
 
         List<Salary> LoadRecord(int page, int numberRe, List<Salary> list)
@@ -40,9 +40,9 @@ namespace MiniStoreWinF.ManageSalary
 
         public void ShowListSalary(DateTime time)
         {
-            var list = u.salary(time).OrderByDescending(p => p.SalaryAfterTax).ToList();
-            dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
-            listSa = list;
+            //var list = u.salary(time).OrderByDescending(p => p.SalaryAfterTax).ToList();
+            //dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
+            //listSa = list;
         }
 
         private void btFilter_Click(object sender, EventArgs e)
@@ -50,18 +50,18 @@ namespace MiniStoreWinF.ManageSalary
             _salaryService = new SalaryService();
             string id = cbName.SelectedValue.ToString();
             DateTime time = dtpTime.Value;
-            lblTotal.Text = "Total salary need to pay for employee : " + u.formatDouble(TotalSalaryNeedInMonth(time)) + " VND";
+            //lblTotal.Text = "Total salary need to pay for employee : " + u.formatDouble(TotalSalaryNeedInMonth(time)) + " VND";
             if (cbOrderby.Text == "Descending" && id == "-1")
             {
-                var list = u.salary(time).OrderByDescending(p => p.SalaryAfterTax).ToList();
-                dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
-                listSa = list;
+                //var list = u.salary(time).OrderByDescending(p => p.SalaryAfterTax).ToList();
+                //dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
+                //listSa = list;
             }
             else if (cbOrderby.Text != "Descending" && id == "-1")
             {
-                var list = u.salary(time).OrderBy(p => p.SalaryAfterTax).ToList();
-                dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
-                listSa = list;
+                //var list = u.salary(time).OrderBy(p => p.SalaryAfterTax).ToList();
+                //dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
+                //listSa = list;
             }
             else
             {
@@ -71,17 +71,17 @@ namespace MiniStoreWinF.ManageSalary
             }
         }
 
-        private double TotalSalaryNeedInMonth(DateTime time)
-        {
-            double total = 0;
-            _salaryService = new SalaryService();
-            var list = u.salary(time).ToList();
-            foreach (var item in list)
-            {
-                total += item.SalaryAfterTax;
-            }
-            return total;
-        }
+        //private double TotalSalaryNeedInMonth(DateTime time)
+        //{
+        //    double total = 0;
+        //    _salaryService = new SalaryService();
+        //    var list = u.salary(time).ToList();
+        //    foreach (var item in list)
+        //    {
+        //        total += item.SalaryAfterTax;
+        //    }
+        //    return total;
+        //}
 
         private void btReset_Click(object sender, EventArgs e)
         {
