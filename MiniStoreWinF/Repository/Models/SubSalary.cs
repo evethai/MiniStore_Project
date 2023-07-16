@@ -7,12 +7,20 @@ namespace Repository.Models
 {
     public partial class SubSalary
     {
-        public string IdSubSalary { get; set; }
-        public string IdEmp { get; set; }
-        public string IdDetailSubSalary { get; set; }
-        public DateTime? Time { get; set; }
+        public SubSalary()
+        {
+            SubDetails = new HashSet<SubDetail>();
+        }
 
-        public virtual DetailSubSalary IdDetailSubSalaryNavigation { get; set; }
-        public virtual Employee IdEmpNavigation { get; set; }
+        public string IdSub { get; set; }
+        public string Describe { get; set; }
+        public double? Money { get; set; }
+        public DateTime? TimeBegin { get; set; }
+        public DateTime? TimeEnd { get; set; }
+        public string Type { get; set; }
+        public int? Condition { get; set; }
+        public bool? IsActive { get; set; }
+
+        public virtual ICollection<SubDetail> SubDetails { get; set; }
     }
 }
