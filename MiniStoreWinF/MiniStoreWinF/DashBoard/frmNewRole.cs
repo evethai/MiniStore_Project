@@ -41,20 +41,20 @@ namespace MiniStoreWinF.DashBoard
                 //_permissionService.Create(per);
 
 
-                //var PerDetail = _permissionDetailService.GetAll().Where(p => p.IdPer == 0).ToList();
-                //foreach (var item in PerDetail)
-                //{
-                //    PermissionDetail permissionDetail = new PermissionDetail();
-                //    permissionDetail.IdPer = n;
-                //    permissionDetail.ActionName = item.ActionName;
-                //    permissionDetail.ActionCode = item.ActionCode;
-                //    permissionDetail.CheckAction = false;
-                //    _permissionDetailService.Create(permissionDetail);
-                //}
-                //MessageBox.Show("Add new Successful", "Messages", MessageBoxButtons.OK);
-                //ContextScope.newPermission = per;
-                //this.DialogResult = DialogResult.OK;
-                //this.Close();
+                var PerDetail = _permissionDetailService.GetAll().Where(p => p.IdPer == 0).ToList();
+                foreach (var item in PerDetail)
+                {
+                    PermissionDetail permissionDetail = new PermissionDetail();
+                    //permissionDetail.IdPer = n;
+                    permissionDetail.ActionName = item.ActionName;
+                    permissionDetail.ActionCode = item.ActionCode;
+                    permissionDetail.CheckAction = false;
+                    _permissionDetailService.Create(permissionDetail);
+                }
+                MessageBox.Show("Add new Successful", "Messages", MessageBoxButtons.OK);
+                ContextScope.newPermission = per;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             else
             {

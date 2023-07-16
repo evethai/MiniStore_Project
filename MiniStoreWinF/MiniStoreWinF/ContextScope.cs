@@ -17,6 +17,8 @@ namespace MiniStoreWinF
         public static Order IdOrder { get; set; }
         public static Permission newPermission { get; set; }
         public static Permission saPer { get; set; }
+
+        public static Employee? currentSearchSubSalary { get; set; }
         
         public static Salary currentSalary { get; set; }
     }
