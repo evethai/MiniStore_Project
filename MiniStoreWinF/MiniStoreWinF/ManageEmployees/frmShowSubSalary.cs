@@ -24,12 +24,34 @@ namespace MiniStoreWinF.ManageEmployees
             cbListEmployee.DataSource = employeeList;
             cbListEmployee.DisplayMember = "FullNameEmp";
 
+            
+            
         }
 
         private void btAddSub_Click(object sender, EventArgs e)
         {
-            Form form = new frmAddSubForEmployee();
-            form.ShowDialog();
+            if (ContextScope.currentSearchSubSalary == null)
+            {
+                MessageBox.Show("Please choose an employee!");
+
+            }
+            else
+            {
+                Form form = new frmAddSubForEmployee();
+                form.ShowDialog();
+                var employeeList1 = _employeeService.GetAll().Where(e => e.FullNameEmp.Equals(cbListEmployee.Text)).FirstOrDefault();
+                if (employeeList1 != null)
+                {
+                    var subDetailList1 = _subDetailService.GetAll().Where(e => e.IdEmp.Equals(employeeList1.IdEmp));
+                    dgvSubDetail.DataSource = new BindingSource() { DataSource = subDetailList1 };
+                    ContextScope.currentSearchSubSalary = employeeList1;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
 
 
         }
@@ -117,6 +139,11 @@ namespace MiniStoreWinF.ManageEmployees
             {
                 return;
             }
+        }
+
+        private void cbListEmployee_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
