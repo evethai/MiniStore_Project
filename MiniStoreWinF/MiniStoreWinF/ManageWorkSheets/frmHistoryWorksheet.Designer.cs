@@ -135,10 +135,10 @@
             // btLoad
             // 
             btLoad.Image = (Image)resources.GetObject("btLoad.Image");
-            btLoad.Location = new Point(652, 4);
+            btLoad.Location = new Point(652, 13);
             btLoad.Margin = new Padding(3, 4, 3, 4);
             btLoad.Name = "btLoad";
-            btLoad.Size = new Size(80, 69);
+            btLoad.Size = new Size(79, 49);
             btLoad.TabIndex = 43;
             btLoad.UseVisualStyleBackColor = true;
             btLoad.Click += btLoad_Click;
@@ -347,7 +347,7 @@
             // btReset
             // 
             btReset.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            //btReset.Image = Properties.Resources.;
+            btReset.Image = Properties.Resources.icons8_load_50___Copy;
             btReset.Location = new Point(138, 577);
             btReset.Margin = new Padding(3, 4, 3, 4);
             btReset.Name = "btReset";
