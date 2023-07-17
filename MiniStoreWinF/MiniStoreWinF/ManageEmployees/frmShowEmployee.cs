@@ -162,7 +162,7 @@ namespace MiniStoreWinF.ManageEmployees
                     var roles = employeeInfo.Roles;
                     var permission = _permissionService.GetAll().Where(entity => entity.Roles.Equals(roles)).FirstOrDefault();
 
-                    
+
 
 
                     txtId.Text = employeeInfo.IdEmp.ToString();
@@ -174,7 +174,7 @@ namespace MiniStoreWinF.ManageEmployees
                     pBEmp.Image = Base64ToImage(employeeInfo.PictureEmp);
                     txtUrl.Text = employeeInfo.PictureEmp.ToString();
                     cbRole.Text = employeeInfo.Roles.ToString();
-
+                    txtDependent.Text = employeeInfo.Snpt.ToString();
                     if (employeeInfo.Sex == false)
                     {
                         cbGender.Text = "Man";
@@ -255,6 +255,10 @@ namespace MiniStoreWinF.ManageEmployees
                 dtDoB.Focus();
 
             }
+            else if (int.Parse(txtDependent.Text) < 0 || int.Parse(txtDependent.Text) > 100)
+            {
+                MessageBox.Show("Number of dependents is invalid");
+            }
 
             else
             {
@@ -263,7 +267,7 @@ namespace MiniStoreWinF.ManageEmployees
                     employeeService.FullNameEmp = txtName.Text;
                     employeeService.PhoneEmp = txtPhone.Text;
                     employeeService.AddressEmp = txtAddress.Text;
-
+                    employeeService.Snpt = int.Parse(txtDependent.Text);
                     employeeService.Cccd = txtCccd.Text;
                     if (cbGender.SelectedItem.Equals("Man"))
                     {
@@ -539,7 +543,20 @@ namespace MiniStoreWinF.ManageEmployees
 
         private void btShowSubSalary_Click(object sender, EventArgs e)
         {
+            Form form = new frmShowSubSalary();
+            form.ShowDialog();
+        }
 
+        private void txtDependent_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            else if (e.KeyChar == '-')
+            {
+                e.Handled = true;
+            }
         }
     }
 }
