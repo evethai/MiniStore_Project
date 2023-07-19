@@ -1,4 +1,5 @@
-﻿using Repository.Models;
+﻿using Microsoft.Office.Interop.Excel;
+using Repository.Models;
 using Repository.Service;
 using System;
 using System.Collections.Generic;
@@ -22,22 +23,24 @@ namespace MiniStoreWinF.ManageWorkSheets
         int loadrecord = 0;
         int numberRecord = 14;
         int pagenumber = 1;
-        public frmHistoryWorksheet()
+        public string idEmp { get; set; }
+        public int Month { get; set; }
+        public frmHistoryWorksheet(string id, int month)
         {
             InitializeComponent();
-            dgvShowWorkSheet.DataSource = Loadrecord(pagenumber, numberRecord);  //end show worksheet tab 1
+            dgvShowWorkSheet.DataSource = Loadrecord(pagenumber, numberRecord, id, month);  //end show worksheet tab 1
             var sheetDetails = _sheetDetailService.GetAll();
             cbSheet.DataSource = sheetDetails;
             cbSheet.DisplayMember = "Sheet";//end code lấy sheet
-            dtpkStart.Value = DateTime.Now;
-            dtpkEnd.Value = DateTime.Now;
+            idEmp = id;
+            Month = month;
         }
-        List<WorkSheet> Loadrecord(int page, int recordnumber)
+        List<WorkSheet> Loadrecord(int page, int recordnumber, string id, int month)
         {
             List<WorkSheet> result = new List<WorkSheet>();
             using (MiniStoreContext db = new MiniStoreContext())
             {
-                result = db.WorkSheets.Skip((page - 1) * recordnumber).Take(recordnumber).ToList();
+                result = db.WorkSheets.Where(p => p.IdEmp.Equals(id) && p.Date.Value.Month == month).Skip((page - 1) * recordnumber).Take(recordnumber).ToList();
             }
             return result;
         }
@@ -45,7 +48,7 @@ namespace MiniStoreWinF.ManageWorkSheets
         {
             using (MiniStoreContext dt = new MiniStoreContext())
             {
-                dgvShowWorkSheet.DataSource = dt.WorkSheets.ToList();
+                dgvShowWorkSheet.DataSource = dt.WorkSheets.Where(p => p.IdEmp.Equals(idEmp) && p.Date.Value.Month == Month).ToList();
 
             }
         }
@@ -87,31 +90,8 @@ namespace MiniStoreWinF.ManageWorkSheets
             }
             num.Maximum = totalRecord / numberRecord + 1;
             pagenumber = (int)num.Value;
-            dgvShowWorkSheet.DataSource = Loadrecord(pagenumber, numberRecord);
+            dgvShowWorkSheet.DataSource = Loadrecord(pagenumber, numberRecord, idEmp, Month);
         }
-        private void btLoad_Click(object sender, EventArgs e)
-        {
-            DateTime dateStarts = dtpkStart.Value;
-            DateTime dateEnds = dtpkEnd.Value;
-            try
-            {
-                var getFilterDayTime = _workSheetService.GetAll().Where(p => p.Date >= dateStarts && p.Date <= dateEnds);
-                if (getFilterDayTime == null)
-                {
-                    MessageBox.Show("Time in valid", "Notification", MessageBoxButtons.OK);
-                    getFilterDayTime = _workSheetService.GetAll();
-                }
-                else
-                {
-                    dgvShowWorkSheet.DataSource = new BindingSource { DataSource = getFilterDayTime };
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error day time ", "Confirm", MessageBoxButtons.OK);
-            }
-        }
-
         private void btUpdate_Click(object sender, EventArgs e)
         {
             string Empty = "";

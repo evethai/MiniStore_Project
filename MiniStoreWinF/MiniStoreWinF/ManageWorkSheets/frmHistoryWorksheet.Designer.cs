@@ -33,11 +33,6 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel1 = new Panel();
-            btLoad = new Button();
-            dtpkEnd = new DateTimePicker();
-            button4 = new Button();
-            dtpkStart = new DateTimePicker();
-            button5 = new Button();
             panel2 = new Panel();
             nbrPagination = new NumericUpDown();
             panel3 = new Panel();
@@ -77,7 +72,6 @@
             label10 = new Label();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
-            panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nbrPagination).BeginInit();
             panel3.SuspendLayout();
@@ -121,67 +115,11 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(btLoad);
-            panel1.Controls.Add(dtpkEnd);
-            panel1.Controls.Add(button4);
-            panel1.Controls.Add(dtpkStart);
-            panel1.Controls.Add(button5);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
             panel1.Size = new Size(983, 86);
             panel1.TabIndex = 0;
-            // 
-            // btLoad
-            // 
-            btLoad.Image = (Image)resources.GetObject("btLoad.Image");
-            btLoad.Location = new Point(652, 13);
-            btLoad.Margin = new Padding(3, 4, 3, 4);
-            btLoad.Name = "btLoad";
-            btLoad.Size = new Size(79, 49);
-            btLoad.TabIndex = 43;
-            btLoad.UseVisualStyleBackColor = true;
-            btLoad.Click += btLoad_Click;
-            // 
-            // dtpkEnd
-            // 
-            dtpkEnd.Format = DateTimePickerFormat.Short;
-            dtpkEnd.Location = new Point(459, 22);
-            dtpkEnd.Margin = new Padding(3, 4, 3, 4);
-            dtpkEnd.Name = "dtpkEnd";
-            dtpkEnd.Size = new Size(187, 27);
-            dtpkEnd.TabIndex = 42;
-            dtpkEnd.Value = new DateTime(2023, 5, 1, 0, 0, 0, 0);
-            // 
-            // button4
-            // 
-            button4.Location = new Point(335, 22);
-            button4.Margin = new Padding(3, 4, 3, 4);
-            button4.Name = "button4";
-            button4.Size = new Size(118, 31);
-            button4.TabIndex = 41;
-            button4.Text = "To date :";
-            button4.UseVisualStyleBackColor = true;
-            // 
-            // dtpkStart
-            // 
-            dtpkStart.Format = DateTimePickerFormat.Short;
-            dtpkStart.Location = new Point(127, 22);
-            dtpkStart.Margin = new Padding(3, 4, 3, 4);
-            dtpkStart.Name = "dtpkStart";
-            dtpkStart.Size = new Size(187, 27);
-            dtpkStart.TabIndex = 40;
-            dtpkStart.Value = new DateTime(2023, 5, 1, 0, 0, 0, 0);
-            // 
-            // button5
-            // 
-            button5.Location = new Point(3, 22);
-            button5.Margin = new Padding(3, 4, 3, 4);
-            button5.Name = "button5";
-            button5.Size = new Size(118, 31);
-            button5.TabIndex = 39;
-            button5.Text = "From date :";
-            button5.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -566,11 +504,12 @@
             ClientSize = new Size(1421, 718);
             Controls.Add(tableLayoutPanel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmHistoryWorksheet";
             Text = "History Worksheet";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
-            panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)nbrPagination).EndInit();
             panel3.ResumeLayout(false);
@@ -587,11 +526,6 @@
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel2;
         private Panel panel1;
-        private Button btLoad;
-        private DateTimePicker dtpkEnd;
-        private Button button4;
-        private DateTimePicker dtpkStart;
-        private Button button5;
         private Panel panel2;
         private Panel panel3;
         private DataGridView dgvShowWorkSheet;
@@ -612,6 +546,13 @@
         private Label label10;
         private NumericUpDown nbrPagination;
         private BindingSource workSheetBindingSource;
+        private Label label3;
+        private NumericUpDown nbrSunday;
+        private Label label2;
+        private CheckBox chbStatus;
+        private TextBox txtHours;
+        private Label label1;
+        private Button btReset;
         private DataGridViewTextBoxColumn idWorkSheetDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn idEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
@@ -622,12 +563,5 @@
         private DataGridViewTextBoxColumn totalWorkingHoursDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn defaultCoefficientDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn sundayCoefficientDataGridViewTextBoxColumn;
-        private Label label3;
-        private NumericUpDown nbrSunday;
-        private Label label2;
-        private CheckBox chbStatus;
-        private TextBox txtHours;
-        private Label label1;
-        private Button btReset;
     }
 }

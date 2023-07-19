@@ -27,12 +27,12 @@ namespace MiniStoreWinF.ManageWorkSheet
         public frmManageWorkSheetPage()
         {
             InitializeComponent();
-            u.openChildForm(new frmHistoryWorksheet(), pnlManageWorksheet);
+            u.openChildForm(new frmTimeKeepingDetails(), pnlManageWorksheet);
         }
 
         private void btHistory_Click(object sender, EventArgs e)
         {
-            u.openChildForm(new frmHistoryWorksheet(), pnlManageWorksheet);
+            u.openChildForm(new frmTimeKeepingDetails(), pnlManageWorksheet);
         }
 
         private void btSheetDetails_Click(object sender, EventArgs e)

@@ -57,15 +57,6 @@ namespace MiniStoreWinF.ManageWorkSheets
                 dtgvListWorkDate.DataSource = new BindingSource { DataSource = results };
                 dtgvListWorkDate.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
-            if(DateTime.Now <= dateTime)
-            {
-                btCreate.Enabled = false;
-                btRemove.Enabled = false;
-            }
-            else
-            {
-                btRemove.Enabled = true;
-            }
 
         }
         public void LoadCombobox()
@@ -155,11 +146,11 @@ namespace MiniStoreWinF.ManageWorkSheets
                     MessageBox.Show("Can not Remove Insufficient information ");
                 }
             }
-            catch
+            catch(Exception)
             {
-                MessageBox.Show("Can not Remove when you create new ");
+                MessageBox.Show("Can not Remove when news create");
             }
-
+                
         }
 
         private void cbFullNameEmp_SelectedIndexChanged_1(object sender, EventArgs e)
