@@ -32,5 +32,7 @@ namespace MiniStoreWinF.InformationEmployee
             frmLastMonthSalary frmLastMonthSalary = new frmLastMonthSalary();
             u.openChildForm(frmLastMonthSalary, tlMain);
         }
+
+        
     }
 }

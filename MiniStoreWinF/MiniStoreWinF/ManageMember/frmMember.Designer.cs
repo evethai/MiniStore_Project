@@ -64,9 +64,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(55, 68);
+            label1.Location = new Point(48, 51);
             label1.Name = "label1";
-            label1.Size = new Size(78, 31);
+            label1.Size = new Size(66, 25);
             label1.TabIndex = 0;
             label1.Text = "Phone";
             // 
@@ -74,9 +74,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(548, 64);
+            label3.Location = new Point(480, 48);
             label3.Name = "label3";
-            label3.Size = new Size(75, 31);
+            label3.Size = new Size(62, 25);
             label3.TabIndex = 2;
             label3.Text = "Name";
             // 
@@ -84,9 +84,9 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(529, 163);
+            label4.Location = new Point(463, 122);
             label4.Name = "label4";
-            label4.Size = new Size(89, 31);
+            label4.Size = new Size(74, 25);
             label4.TabIndex = 3;
             label4.Text = "Gender";
             // 
@@ -94,9 +94,9 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(55, 271);
+            label5.Location = new Point(48, 203);
             label5.Name = "label5";
-            label5.Size = new Size(56, 31);
+            label5.Size = new Size(47, 25);
             label5.TabIndex = 4;
             label5.Text = "DoB";
             // 
@@ -104,47 +104,43 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(55, 160);
+            label2.Location = new Point(48, 120);
             label2.Name = "label2";
-            label2.Size = new Size(66, 31);
+            label2.Size = new Size(55, 25);
             label2.TabIndex = 5;
             label2.Text = "Point";
             // 
             // txtPhone
             // 
             txtPhone.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPhone.Location = new Point(145, 65);
-            txtPhone.Margin = new Padding(3, 4, 3, 4);
+            txtPhone.Location = new Point(127, 49);
             txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(333, 38);
+            txtPhone.Size = new Size(292, 32);
             txtPhone.TabIndex = 6;
             txtPhone.KeyPress += txtPhone_KeyPress;
             // 
             // txtPoint
             // 
             txtPoint.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPoint.Location = new Point(145, 160);
-            txtPoint.Margin = new Padding(3, 4, 3, 4);
+            txtPoint.Location = new Point(127, 120);
             txtPoint.Name = "txtPoint";
-            txtPoint.Size = new Size(195, 38);
+            txtPoint.Size = new Size(171, 32);
             txtPoint.TabIndex = 7;
             // 
             // txtName
             // 
             txtName.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtName.Location = new Point(642, 61);
-            txtName.Margin = new Padding(3, 4, 3, 4);
+            txtName.Location = new Point(562, 46);
             txtName.Name = "txtName";
-            txtName.Size = new Size(333, 38);
+            txtName.Size = new Size(292, 32);
             txtName.TabIndex = 8;
             // 
             // dtDoB
             // 
             dtDoB.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dtDoB.Location = new Point(145, 264);
-            dtDoB.Margin = new Padding(3, 4, 3, 4);
+            dtDoB.Location = new Point(127, 198);
             dtDoB.Name = "dtDoB";
-            dtDoB.Size = new Size(285, 38);
+            dtDoB.Size = new Size(250, 32);
             dtDoB.TabIndex = 10;
             // 
             // sqlCommandBuilder1
@@ -156,10 +152,9 @@
             // btAdd
             // 
             btAdd.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            btAdd.Location = new Point(545, 359);
-            btAdd.Margin = new Padding(3, 4, 3, 4);
+            btAdd.Location = new Point(477, 269);
             btAdd.Name = "btAdd";
-            btAdd.Size = new Size(111, 44);
+            btAdd.Size = new Size(97, 33);
             btAdd.TabIndex = 18;
             btAdd.Text = "Add";
             btAdd.UseVisualStyleBackColor = true;
@@ -171,9 +166,9 @@
             LABEL.BackColor = Color.Transparent;
             LABEL.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
             LABEL.ForeColor = Color.Black;
-            LABEL.Location = new Point(9, 6);
+            LABEL.Location = new Point(8, 4);
             LABEL.Name = "LABEL";
-            LABEL.Size = new Size(301, 38);
+            LABEL.Size = new Size(234, 30);
             LABEL.TabIndex = 20;
             LABEL.Text = "Member of MiniStore";
             // 
@@ -187,10 +182,9 @@
             // btUpdate
             // 
             btUpdate.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            btUpdate.Location = new Point(426, 360);
-            btUpdate.Margin = new Padding(3, 4, 3, 4);
+            btUpdate.Location = new Point(373, 270);
             btUpdate.Name = "btUpdate";
-            btUpdate.Size = new Size(111, 44);
+            btUpdate.Size = new Size(97, 33);
             btUpdate.TabIndex = 21;
             btUpdate.Text = "Update";
             btUpdate.UseVisualStyleBackColor = false;
@@ -199,10 +193,9 @@
             // btSearch
             // 
             btSearch.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            btSearch.Location = new Point(305, 362);
-            btSearch.Margin = new Padding(3, 4, 3, 4);
+            btSearch.Location = new Point(267, 272);
             btSearch.Name = "btSearch";
-            btSearch.Size = new Size(111, 44);
+            btSearch.Size = new Size(97, 33);
             btSearch.TabIndex = 22;
             btSearch.Text = "Search";
             btSearch.UseVisualStyleBackColor = true;
@@ -211,10 +204,9 @@
             // txtSearch
             // 
             txtSearch.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSearch.Location = new Point(48, 366);
-            txtSearch.Margin = new Padding(3, 4, 3, 4);
+            txtSearch.Location = new Point(42, 274);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(251, 38);
+            txtSearch.Size = new Size(220, 32);
             txtSearch.TabIndex = 23;
             // 
             // employeeBindingSource
@@ -233,12 +225,11 @@
             dgvMember.Columns.AddRange(new DataGridViewColumn[] { phoneMemberDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn });
             dgvMember.DataSource = memberBindingSource;
             dgvMember.Dock = DockStyle.Fill;
-            dgvMember.Location = new Point(3, 434);
-            dgvMember.Margin = new Padding(3, 4, 3, 4);
+            dgvMember.Location = new Point(3, 325);
             dgvMember.Name = "dgvMember";
             dgvMember.RowHeadersWidth = 51;
             dgvMember.RowTemplate.Height = 25;
-            dgvMember.Size = new Size(1318, 231);
+            dgvMember.Size = new Size(1152, 174);
             dgvMember.TabIndex = 24;
             dgvMember.CellClick += dgvMember_CellClick;
             // 
@@ -276,9 +267,10 @@
             panel1.Controls.Add(btAdd);
             panel1.Controls.Add(cbGender);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 3);
+            panel1.Location = new Point(3, 2);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1318, 424);
+            panel1.Size = new Size(1152, 318);
             panel1.TabIndex = 27;
             // 
             // cbGender
@@ -286,10 +278,10 @@
             cbGender.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             cbGender.FormattingEnabled = true;
             cbGender.Items.AddRange(new object[] { "Male", "Female" });
-            cbGender.Location = new Point(642, 160);
-            cbGender.Margin = new Padding(2, 3, 2, 3);
+            cbGender.Location = new Point(562, 120);
+            cbGender.Margin = new Padding(2, 2, 2, 2);
             cbGender.Name = "cbGender";
-            cbGender.Size = new Size(107, 39);
+            cbGender.Size = new Size(94, 33);
             cbGender.TabIndex = 17;
             // 
             // tableLayoutPanel1
@@ -300,24 +292,24 @@
             tableLayoutPanel1.Controls.Add(dgvMember, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 64.3322449F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 35.66775F));
-            tableLayoutPanel1.Size = new Size(1324, 669);
+            tableLayoutPanel1.Size = new Size(1158, 502);
             tableLayoutPanel1.TabIndex = 28;
             tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
             // 
             // frmMember
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1324, 669);
+            ClientSize = new Size(1158, 502);
             Controls.Add(tableLayoutPanel1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "frmMember";
-            Text = "CreateMember";
+            Text = "Member";
             Load += CreateMember_Load;
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)memberBindingSource).EndInit();

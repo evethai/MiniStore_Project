@@ -157,7 +157,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "frmAddSubForEmployee";
-            Text = "frmAddSubForEmployee";
+            Text = "Add New Allowance";
             ResumeLayout(false);
             PerformLayout();
         }

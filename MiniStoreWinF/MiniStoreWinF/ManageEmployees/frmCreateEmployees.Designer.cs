@@ -546,6 +546,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Margin = new Padding(2);
+            MaximizeBox = false;
             Name = "frmCreateEmployees";
             Text = "CreateEmployees";
             panel1.ResumeLayout(false);

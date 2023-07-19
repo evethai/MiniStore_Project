@@ -33,17 +33,15 @@
             btSearch = new Button();
             btAddSub = new Button();
             dgvSubDetail = new DataGridView();
+            idDetailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            idEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            idSubDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            checkDataGridViewTextBoxColumn = new DataGridViewCheckBoxColumn();
             subDetailBindingSource1 = new BindingSource(components);
             subDetailBindingSource = new BindingSource(components);
             btUpdate = new Button();
             cbCheck = new ComboBox();
             txtId = new TextBox();
-            idDetailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            idEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            idSubDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            timeBeginDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            timeEndDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            checkDataGridViewTextBoxColumn = new DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvSubDetail).BeginInit();
             ((System.ComponentModel.ISupportInitialize)subDetailBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)subDetailBindingSource).BeginInit();
@@ -82,7 +80,7 @@
             // 
             dgvSubDetail.AutoGenerateColumns = false;
             dgvSubDetail.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSubDetail.Columns.AddRange(new DataGridViewColumn[] { idDetailDataGridViewTextBoxColumn, idEmpDataGridViewTextBoxColumn, idSubDataGridViewTextBoxColumn, timeBeginDataGridViewTextBoxColumn, timeEndDataGridViewTextBoxColumn, checkDataGridViewTextBoxColumn });
+            dgvSubDetail.Columns.AddRange(new DataGridViewColumn[] { idDetailDataGridViewTextBoxColumn, idEmpDataGridViewTextBoxColumn, idSubDataGridViewTextBoxColumn, checkDataGridViewTextBoxColumn });
             dgvSubDetail.DataSource = subDetailBindingSource1;
             dgvSubDetail.Location = new Point(3, 51);
             dgvSubDetail.Name = "dgvSubDetail";
@@ -91,6 +89,40 @@
             dgvSubDetail.Size = new Size(797, 284);
             dgvSubDetail.TabIndex = 3;
             dgvSubDetail.CellClick += dgvSubDetail_CellClick;
+            // 
+            // idDetailDataGridViewTextBoxColumn
+            // 
+            idDetailDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            idDetailDataGridViewTextBoxColumn.DataPropertyName = "IdDetail";
+            idDetailDataGridViewTextBoxColumn.HeaderText = "ID";
+            idDetailDataGridViewTextBoxColumn.Name = "idDetailDataGridViewTextBoxColumn";
+            idDetailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idEmpDataGridViewTextBoxColumn
+            // 
+            idEmpDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            idEmpDataGridViewTextBoxColumn.DataPropertyName = "IdEmp";
+            idEmpDataGridViewTextBoxColumn.HeaderText = "ID Employee";
+            idEmpDataGridViewTextBoxColumn.Name = "idEmpDataGridViewTextBoxColumn";
+            idEmpDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idSubDataGridViewTextBoxColumn
+            // 
+            idSubDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            idSubDataGridViewTextBoxColumn.DataPropertyName = "IdSub";
+            idSubDataGridViewTextBoxColumn.HeaderText = "ID Allowance";
+            idSubDataGridViewTextBoxColumn.Name = "idSubDataGridViewTextBoxColumn";
+            idSubDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // checkDataGridViewTextBoxColumn
+            // 
+            checkDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            checkDataGridViewTextBoxColumn.DataPropertyName = "Check";
+            checkDataGridViewTextBoxColumn.HeaderText = "Check";
+            checkDataGridViewTextBoxColumn.Name = "checkDataGridViewTextBoxColumn";
+            checkDataGridViewTextBoxColumn.ReadOnly = true;
+            checkDataGridViewTextBoxColumn.Resizable = DataGridViewTriState.True;
+            checkDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
             // subDetailBindingSource1
             // 
@@ -127,56 +159,6 @@
             txtId.TabIndex = 6;
             txtId.Visible = false;
             // 
-            // idDetailDataGridViewTextBoxColumn
-            // 
-            idDetailDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            idDetailDataGridViewTextBoxColumn.DataPropertyName = "IdDetail";
-            idDetailDataGridViewTextBoxColumn.HeaderText = "ID";
-            idDetailDataGridViewTextBoxColumn.Name = "idDetailDataGridViewTextBoxColumn";
-            idDetailDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idEmpDataGridViewTextBoxColumn
-            // 
-            idEmpDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            idEmpDataGridViewTextBoxColumn.DataPropertyName = "IdEmp";
-            idEmpDataGridViewTextBoxColumn.HeaderText = "ID Employee";
-            idEmpDataGridViewTextBoxColumn.Name = "idEmpDataGridViewTextBoxColumn";
-            idEmpDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idSubDataGridViewTextBoxColumn
-            // 
-            idSubDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            idSubDataGridViewTextBoxColumn.DataPropertyName = "IdSub";
-            idSubDataGridViewTextBoxColumn.HeaderText = "ID Allowance";
-            idSubDataGridViewTextBoxColumn.Name = "idSubDataGridViewTextBoxColumn";
-            idSubDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // timeBeginDataGridViewTextBoxColumn
-            // 
-            timeBeginDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            timeBeginDataGridViewTextBoxColumn.DataPropertyName = "Start";
-            timeBeginDataGridViewTextBoxColumn.HeaderText = "Start";
-            timeBeginDataGridViewTextBoxColumn.Name = "timeBeginDataGridViewTextBoxColumn";
-            timeBeginDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // timeEndDataGridViewTextBoxColumn
-            // 
-            timeEndDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            timeEndDataGridViewTextBoxColumn.DataPropertyName = "End";
-            timeEndDataGridViewTextBoxColumn.HeaderText = "End";
-            timeEndDataGridViewTextBoxColumn.Name = "timeEndDataGridViewTextBoxColumn";
-            timeEndDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // checkDataGridViewTextBoxColumn
-            // 
-            checkDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            checkDataGridViewTextBoxColumn.DataPropertyName = "Check";
-            checkDataGridViewTextBoxColumn.HeaderText = "Check";
-            checkDataGridViewTextBoxColumn.Name = "checkDataGridViewTextBoxColumn";
-            checkDataGridViewTextBoxColumn.ReadOnly = true;
-            checkDataGridViewTextBoxColumn.Resizable = DataGridViewTriState.True;
-            checkDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
             // frmShowSubSalary
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -189,6 +171,7 @@
             Controls.Add(btAddSub);
             Controls.Add(btSearch);
             Controls.Add(cbListEmployee);
+            MaximizeBox = false;
             Name = "frmShowSubSalary";
             Text = "frmShowSubSalary";
             Load += frmShowSubSalary_Load;
