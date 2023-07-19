@@ -108,7 +108,7 @@
             pnSalary.Location = new Point(0, 0);
             pnSalary.Margin = new Padding(4);
             pnSalary.Name = "pnSalary";
-            pnSalary.Size = new Size(1462, 560);
+            pnSalary.Size = new Size(1472, 560);
             pnSalary.TabIndex = 1;
             // 
             // panel1
@@ -124,7 +124,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1462, 560);
+            panel1.Size = new Size(1472, 560);
             panel1.TabIndex = 7;
             // 
             // panel2
@@ -141,12 +141,12 @@
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1462, 560);
+            panel2.Size = new Size(1472, 560);
             panel2.TabIndex = 7;
             // 
             // btSearchSheet
             // 
-            btSearchSheet.Location = new Point(1302, 76);
+            btSearchSheet.Location = new Point(1365, 85);
             btSearchSheet.Name = "btSearchSheet";
             btSearchSheet.Size = new Size(94, 37);
             btSearchSheet.TabIndex = 25;
@@ -158,10 +158,10 @@
             // 
             dtpWorksheet.CustomFormat = "MM/yy";
             dtpWorksheet.Format = DateTimePickerFormat.Custom;
-            dtpWorksheet.Location = new Point(1054, 35);
+            dtpWorksheet.Location = new Point(1117, 44);
             dtpWorksheet.Margin = new Padding(4);
             dtpWorksheet.Name = "dtpWorksheet";
-            dtpWorksheet.Size = new Size(342, 34);
+            dtpWorksheet.Size = new Size(342, 29);
             dtpWorksheet.TabIndex = 24;
             // 
             // gbWorksheet
@@ -181,11 +181,11 @@
             dgvWorksheet.Columns.AddRange(new DataGridViewColumn[] { dateDataGridViewTextBoxColumn, Status, sheetDataGridViewTextBoxColumn, timeCheckInDataGridViewTextBoxColumn, timeCheckOutDataGridViewTextBoxColumn });
             dgvWorksheet.DataSource = workSheetBindingSource;
             dgvWorksheet.Dock = DockStyle.Fill;
-            dgvWorksheet.Location = new Point(3, 30);
+            dgvWorksheet.Location = new Point(3, 25);
             dgvWorksheet.Name = "dgvWorksheet";
             dgvWorksheet.RowHeadersWidth = 51;
             dgvWorksheet.RowTemplate.Height = 29;
-            dgvWorksheet.Size = new Size(809, 337);
+            dgvWorksheet.Size = new Size(809, 342);
             dgvWorksheet.TabIndex = 21;
             dgvWorksheet.CellFormatting += dgvWorksheet_CellFormatting;
             // 
@@ -270,7 +270,7 @@
             txtBasicHours.Location = new Point(189, 101);
             txtBasicHours.Name = "txtBasicHours";
             txtBasicHours.ReadOnly = true;
-            txtBasicHours.Size = new Size(125, 34);
+            txtBasicHours.Size = new Size(125, 29);
             txtBasicHours.TabIndex = 8;
             // 
             // panel3
@@ -289,7 +289,7 @@
             txtTotal.Margin = new Padding(4);
             txtTotal.Name = "txtTotal";
             txtTotal.ReadOnly = true;
-            txtTotal.Size = new Size(352, 34);
+            txtTotal.Size = new Size(352, 29);
             txtTotal.TabIndex = 3;
             // 
             // label6
@@ -299,7 +299,7 @@
             label6.Location = new Point(0, 10);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(112, 28);
+            label6.Size = new Size(89, 21);
             label6.TabIndex = 2;
             label6.Text = "Total Salary";
             // 
@@ -308,7 +308,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(35, 31);
             label5.Name = "label5";
-            label5.Size = new Size(122, 28);
+            label5.Size = new Size(99, 21);
             label5.TabIndex = 5;
             label5.Text = "Salary Hours";
             // 
@@ -317,7 +317,7 @@
             txtSalaryHours.Location = new Point(189, 37);
             txtSalaryHours.Name = "txtSalaryHours";
             txtSalaryHours.ReadOnly = true;
-            txtSalaryHours.Size = new Size(125, 34);
+            txtSalaryHours.Size = new Size(125, 29);
             txtSalaryHours.TabIndex = 6;
             // 
             // label8
@@ -325,16 +325,16 @@
             label8.AutoSize = true;
             label8.Location = new Point(35, 101);
             label8.Name = "label8";
-            label8.Size = new Size(112, 28);
+            label8.Size = new Size(92, 21);
             label8.TabIndex = 7;
-            label8.Text = "Basic Hours";
+            label8.Text = "Basic Salary";
             // 
             // txtTax
             // 
             txtTax.Location = new Point(461, 101);
             txtTax.Name = "txtTax";
             txtTax.ReadOnly = true;
-            txtTax.Size = new Size(125, 34);
+            txtTax.Size = new Size(125, 29);
             txtTax.TabIndex = 16;
             // 
             // label9
@@ -342,16 +342,16 @@
             label9.AutoSize = true;
             label9.Location = new Point(35, 174);
             label9.Name = "label9";
-            label9.Size = new Size(148, 28);
+            label9.Size = new Size(88, 21);
             label9.TabIndex = 9;
-            label9.Text = "Sum Sub Salary";
+            label9.Text = " Sub Salary";
             // 
             // label12
             // 
             label12.AutoSize = true;
             label12.Location = new Point(406, 107);
             label12.Name = "label12";
-            label12.Size = new Size(39, 28);
+            label12.Size = new Size(31, 21);
             label12.TabIndex = 15;
             label12.Text = "Tax";
             // 
@@ -360,7 +360,7 @@
             txtSumSubSalary.Location = new Point(189, 174);
             txtSumSubSalary.Name = "txtSumSubSalary";
             txtSumSubSalary.ReadOnly = true;
-            txtSumSubSalary.Size = new Size(125, 34);
+            txtSumSubSalary.Size = new Size(125, 29);
             txtSumSubSalary.TabIndex = 10;
             // 
             // txtBeforeTax
@@ -368,7 +368,7 @@
             txtBeforeTax.Location = new Point(461, 37);
             txtBeforeTax.Name = "txtBeforeTax";
             txtBeforeTax.ReadOnly = true;
-            txtBeforeTax.Size = new Size(125, 34);
+            txtBeforeTax.Size = new Size(125, 29);
             txtBeforeTax.TabIndex = 14;
             // 
             // label10
@@ -376,25 +376,25 @@
             label10.AutoSize = true;
             label10.Location = new Point(35, 246);
             label10.Name = "label10";
-            label10.Size = new Size(189, 28);
+            label10.Size = new Size(116, 21);
             label10.TabIndex = 11;
-            label10.Text = "Sum Advance Salary";
+            label10.Text = "Advance Salary";
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Location = new Point(345, 37);
             label11.Name = "label11";
-            label11.Size = new Size(100, 28);
+            label11.Size = new Size(80, 21);
             label11.TabIndex = 13;
             label11.Text = "Before Tax";
             // 
             // txtSumAdvanceSalary
             // 
-            txtSumAdvanceSalary.Location = new Point(230, 246);
+            txtSumAdvanceSalary.Location = new Point(189, 243);
             txtSumAdvanceSalary.Name = "txtSumAdvanceSalary";
             txtSumAdvanceSalary.ReadOnly = true;
-            txtSumAdvanceSalary.Size = new Size(125, 34);
+            txtSumAdvanceSalary.Size = new Size(125, 29);
             txtSumAdvanceSalary.TabIndex = 12;
             // 
             // dtpMonth
@@ -404,7 +404,7 @@
             dtpMonth.Location = new Point(299, 35);
             dtpMonth.Margin = new Padding(4);
             dtpMonth.Name = "dtpMonth";
-            dtpMonth.Size = new Size(342, 34);
+            dtpMonth.Size = new Size(342, 29);
             dtpMonth.TabIndex = 4;
             // 
             // lbNameE
@@ -421,7 +421,7 @@
             // 
             textBox2.Location = new Point(144, 85);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 34);
+            textBox2.Size = new Size(125, 29);
             textBox2.TabIndex = 6;
             // 
             // label2
@@ -429,7 +429,7 @@
             label2.AutoSize = true;
             label2.Location = new Point(16, 85);
             label2.Name = "label2";
-            label2.Size = new Size(122, 28);
+            label2.Size = new Size(99, 21);
             label2.TabIndex = 5;
             label2.Text = "Salary Hours";
             // 
@@ -440,7 +440,7 @@
             dateTimePicker1.Location = new Point(892, 85);
             dateTimePicker1.Margin = new Padding(4);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(342, 34);
+            dateTimePicker1.Size = new Size(342, 29);
             dateTimePicker1.TabIndex = 4;
             // 
             // textBox3
@@ -449,7 +449,7 @@
             textBox3.Margin = new Padding(4);
             textBox3.Name = "textBox3";
             textBox3.ReadOnly = true;
-            textBox3.Size = new Size(231, 34);
+            textBox3.Size = new Size(231, 29);
             textBox3.TabIndex = 3;
             // 
             // label3
@@ -458,7 +458,7 @@
             label3.Location = new Point(13, 393);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(112, 28);
+            label3.Size = new Size(89, 21);
             label3.TabIndex = 2;
             label3.Text = "Total Salary";
             // 
@@ -476,7 +476,7 @@
             // 
             textBox1.Location = new Point(144, 85);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 34);
+            textBox1.Size = new Size(125, 29);
             textBox1.TabIndex = 6;
             // 
             // label1
@@ -484,7 +484,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(16, 85);
             label1.Name = "label1";
-            label1.Size = new Size(122, 28);
+            label1.Size = new Size(99, 21);
             label1.TabIndex = 5;
             label1.Text = "Salary Hours";
             // 
@@ -495,7 +495,7 @@
             dtpSalry.Location = new Point(892, 85);
             dtpSalry.Margin = new Padding(4);
             dtpSalry.Name = "dtpSalry";
-            dtpSalry.Size = new Size(342, 34);
+            dtpSalry.Size = new Size(342, 29);
             dtpSalry.TabIndex = 4;
             // 
             // txtSalary
@@ -504,7 +504,7 @@
             txtSalary.Margin = new Padding(4);
             txtSalary.Name = "txtSalary";
             txtSalary.ReadOnly = true;
-            txtSalary.Size = new Size(231, 34);
+            txtSalary.Size = new Size(231, 29);
             txtSalary.TabIndex = 3;
             // 
             // lbTottal
@@ -513,7 +513,7 @@
             lbTottal.Location = new Point(13, 393);
             lbTottal.Margin = new Padding(4, 0, 4, 0);
             lbTottal.Name = "lbTottal";
-            lbTottal.Size = new Size(112, 28);
+            lbTottal.Size = new Size(89, 21);
             lbTottal.TabIndex = 2;
             lbTottal.Text = "Total Salary";
             // 
@@ -523,14 +523,16 @@
             // 
             // frmLastMonthSalary
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1462, 560);
+            ClientSize = new Size(1472, 560);
             Controls.Add(pnSalary);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             Margin = new Padding(4);
+            MaximizeBox = false;
             Name = "frmLastMonthSalary";
-            Text = "frmLastMonthSalary";
+            Text = "Last Month Salary and Worksheet";
             Load += frmLastMonthSalary_Load;
             pnSalary.ResumeLayout(false);
             pnSalary.PerformLayout();
