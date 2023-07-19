@@ -29,9 +29,6 @@ namespace MiniStoreWinF.ManageWorkSheets
         {
             InitializeComponent();
             dgvShowWorkSheet.DataSource = Loadrecord(pagenumber, numberRecord, id, month);  //end show worksheet tab 1
-            var sheetDetails = _sheetDetailService.GetAll();
-            cbSheet.DataSource = sheetDetails;
-            cbSheet.DisplayMember = "Sheet";//end code lấy sheet
             idEmp = id;
             Month = month;
         }
@@ -92,55 +89,6 @@ namespace MiniStoreWinF.ManageWorkSheets
             pagenumber = (int)num.Value;
             dgvShowWorkSheet.DataSource = Loadrecord(pagenumber, numberRecord, idEmp, Month);
         }
-        private void btUpdate_Click(object sender, EventArgs e)
-        {
-            string Empty = "";
-            if (txtIDWorksheet.Text == Empty || txtIdEmp.Text == Empty ||
-                txtDateWork.Text == Empty || txtDateWork.Text == Empty || txtTimeCheckOut.Text == Empty
-                || txtTimeCheckIn.Text == Empty || txtHours.Text == Empty || nbrSunday.Text == Empty || chbStatus.Text == Empty)
-            {
-                MessageBox.Show("Insufficient information to update !! ", "Fails", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                var updateWorkSheet = _workSheetService.GetAll();
-                updateWorkSheet[rowIndex].IdEmp = txtIdEmp.Text;
-                updateWorkSheet[rowIndex].Date = DateTime.Parse(txtDateWork.Text);
-                SheetDetail sheetDetail = cbSheet.SelectedItem as SheetDetail;
-                updateWorkSheet[rowIndex].Sheet = sheetDetail.Sheet;
-                var listUpdate = updateWorkSheet[rowIndex];
-                _workSheetService.Update(listUpdate);
-                MessageBox.Show("Successfully Update Worksheet History", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                loadData();
-                Reset();
-            }
-        }
-
-        private void dgvShowWorkSheet_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            try
-            {
-                var rowWorkSheet = dgvShowWorkSheet[0, e.RowIndex].Value;
-                var IdWorkSheet = _workSheetService.GetAll().Where(entity => entity.IdWorkSheet.Equals(rowWorkSheet)).FirstOrDefault(); // comapare row choise with table in data
-                if (IdWorkSheet == null)
-                { return; }
-                rowIndex = e.RowIndex;
-                var sheet = IdWorkSheet.Sheet;
-                cbSheet.Text = IdWorkSheet.Sheet.ToString();
-                txtIDWorksheet.Text = IdWorkSheet.IdWorkSheet.ToString();
-                txtIdEmp.Text = IdWorkSheet.IdEmp.ToString();
-                txtDateWork.Text = IdWorkSheet.Date.ToString();
-                txtTimeCheckIn.Text = IdWorkSheet.TimeCheckIn.ToString();
-                txtTimeCheckOut.Text = IdWorkSheet.TimeCheckOut.ToString();
-                txtHours.Text = IdWorkSheet.TotalWorkingHours.ToString();
-                chbStatus.Checked = IdWorkSheet.Status.Value;
-                nbrSunday.Text = IdWorkSheet.SundayCoefficient.ToString();
-            }
-            catch
-            {
-                return;
-            }
-        }
 
         private void dgvShowWorkSheet_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -153,23 +101,6 @@ namespace MiniStoreWinF.ManageWorkSheets
                     e.FormattingApplied = true;
                 }
             }
-        }
-
-        private void btReset_Click(object sender, EventArgs e)
-        {
-            Reset();
-        }
-        public void Reset()
-        {
-            string Empty = "";
-            txtIDWorksheet.Text = Empty;
-            txtIdEmp.Text = Empty;
-            txtDateWork.Text = Empty;
-            txtTimeCheckOut.Text = Empty;
-            txtTimeCheckIn.Text = Empty;
-            txtHours.Text = Empty;
-            chbStatus.Text = Empty;
-            nbrSunday.Text = Empty;
         }
     }
 }

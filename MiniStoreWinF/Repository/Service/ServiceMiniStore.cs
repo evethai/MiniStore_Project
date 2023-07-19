@@ -35,13 +35,6 @@ namespace Repository.Service
             _context.SaveChanges ();
             return true;
         }
-        public bool Delete2(T entity)
-        {
-            var tracker = _context.Attach(entity);
-            tracker.State = EntityState.Deleted;
-            _context.SaveChanges();
-            return true;
-        }
         public void Update (T entity)
         {
             var tracker = _context.Attach(entity);

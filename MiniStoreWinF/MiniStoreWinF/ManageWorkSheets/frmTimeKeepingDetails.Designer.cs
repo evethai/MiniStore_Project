@@ -50,7 +50,7 @@
             tableLayoutPanel1.Controls.Add(panel2, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Margin = new Padding(5, 5, 5, 5);
+            tableLayoutPanel1.Margin = new Padding(5);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
@@ -63,7 +63,7 @@
             panel1.Controls.Add(dtpkMothTimeKeeping);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(5, 5);
-            panel1.Margin = new Padding(5, 5, 5, 5);
+            panel1.Margin = new Padding(5);
             panel1.Name = "panel1";
             panel1.Size = new Size(1355, 66);
             panel1.TabIndex = 0;
@@ -73,8 +73,8 @@
             dtpkMothTimeKeeping.CustomFormat = "MM/yyyy";
             dtpkMothTimeKeeping.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             dtpkMothTimeKeeping.Format = DateTimePickerFormat.Custom;
-            dtpkMothTimeKeeping.Location = new Point(530, 9);
-            dtpkMothTimeKeeping.Margin = new Padding(5, 5, 5, 5);
+            dtpkMothTimeKeeping.Location = new Point(570, 9);
+            dtpkMothTimeKeeping.Margin = new Padding(5);
             dtpkMothTimeKeeping.Name = "dtpkMothTimeKeeping";
             dtpkMothTimeKeeping.Size = new Size(210, 38);
             dtpkMothTimeKeeping.TabIndex = 0;
@@ -85,7 +85,7 @@
             panel2.Controls.Add(dgvTimekeeping);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(5, 81);
-            panel2.Margin = new Padding(5, 5, 5, 5);
+            panel2.Margin = new Padding(5);
             panel2.Name = "panel2";
             panel2.Size = new Size(1355, 423);
             panel2.TabIndex = 1;
@@ -96,7 +96,7 @@
             dgvTimekeeping.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvTimekeeping.Dock = DockStyle.Fill;
             dgvTimekeeping.Location = new Point(0, 0);
-            dgvTimekeeping.Margin = new Padding(5, 5, 5, 5);
+            dgvTimekeeping.Margin = new Padding(5);
             dgvTimekeeping.Name = "dgvTimekeeping";
             dgvTimekeeping.RowHeadersWidth = 51;
             dgvTimekeeping.RowTemplate.Height = 29;
@@ -115,7 +115,7 @@
             ClientSize = new Size(1365, 509);
             Controls.Add(tableLayoutPanel1);
             Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             Name = "frmTimeKeepingDetails";
             Text = "frmTimeKeepingDetails";
             tableLayoutPanel1.ResumeLayout(false);
