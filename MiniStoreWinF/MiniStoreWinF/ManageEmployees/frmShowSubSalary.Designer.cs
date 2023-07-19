@@ -36,8 +36,6 @@
             idDetailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             idEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             idSubDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            timeBeginDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            timeEndDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             checkDataGridViewTextBoxColumn = new DataGridViewCheckBoxColumn();
             subDetailBindingSource1 = new BindingSource(components);
             subDetailBindingSource = new BindingSource(components);
@@ -56,6 +54,7 @@
             cbListEmployee.Name = "cbListEmployee";
             cbListEmployee.Size = new Size(121, 23);
             cbListEmployee.TabIndex = 0;
+            cbListEmployee.SelectedIndexChanged += cbListEmployee_SelectedIndexChanged;
             // 
             // btSearch
             // 
@@ -81,7 +80,7 @@
             // 
             dgvSubDetail.AutoGenerateColumns = false;
             dgvSubDetail.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSubDetail.Columns.AddRange(new DataGridViewColumn[] { idDetailDataGridViewTextBoxColumn, idEmpDataGridViewTextBoxColumn, idSubDataGridViewTextBoxColumn, timeBeginDataGridViewTextBoxColumn, timeEndDataGridViewTextBoxColumn, checkDataGridViewTextBoxColumn });
+            dgvSubDetail.Columns.AddRange(new DataGridViewColumn[] { idDetailDataGridViewTextBoxColumn, idEmpDataGridViewTextBoxColumn, idSubDataGridViewTextBoxColumn, checkDataGridViewTextBoxColumn });
             dgvSubDetail.DataSource = subDetailBindingSource1;
             dgvSubDetail.Location = new Point(3, 51);
             dgvSubDetail.Name = "dgvSubDetail";
@@ -95,7 +94,7 @@
             // 
             idDetailDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             idDetailDataGridViewTextBoxColumn.DataPropertyName = "IdDetail";
-            idDetailDataGridViewTextBoxColumn.HeaderText = "IdDetail";
+            idDetailDataGridViewTextBoxColumn.HeaderText = "ID";
             idDetailDataGridViewTextBoxColumn.Name = "idDetailDataGridViewTextBoxColumn";
             idDetailDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -103,7 +102,7 @@
             // 
             idEmpDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             idEmpDataGridViewTextBoxColumn.DataPropertyName = "IdEmp";
-            idEmpDataGridViewTextBoxColumn.HeaderText = "IdEmp";
+            idEmpDataGridViewTextBoxColumn.HeaderText = "ID Employee";
             idEmpDataGridViewTextBoxColumn.Name = "idEmpDataGridViewTextBoxColumn";
             idEmpDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -111,25 +110,9 @@
             // 
             idSubDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             idSubDataGridViewTextBoxColumn.DataPropertyName = "IdSub";
-            idSubDataGridViewTextBoxColumn.HeaderText = "IdSub";
+            idSubDataGridViewTextBoxColumn.HeaderText = "ID Allowance";
             idSubDataGridViewTextBoxColumn.Name = "idSubDataGridViewTextBoxColumn";
             idSubDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // timeBeginDataGridViewTextBoxColumn
-            // 
-            timeBeginDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            timeBeginDataGridViewTextBoxColumn.DataPropertyName = "TimeBegin";
-            timeBeginDataGridViewTextBoxColumn.HeaderText = "TimeBegin";
-            timeBeginDataGridViewTextBoxColumn.Name = "timeBeginDataGridViewTextBoxColumn";
-            timeBeginDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // timeEndDataGridViewTextBoxColumn
-            // 
-            timeEndDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            timeEndDataGridViewTextBoxColumn.DataPropertyName = "TimeEnd";
-            timeEndDataGridViewTextBoxColumn.HeaderText = "TimeEnd";
-            timeEndDataGridViewTextBoxColumn.Name = "timeEndDataGridViewTextBoxColumn";
-            timeEndDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // checkDataGridViewTextBoxColumn
             // 
@@ -188,6 +171,7 @@
             Controls.Add(btAddSub);
             Controls.Add(btSearch);
             Controls.Add(cbListEmployee);
+            MaximizeBox = false;
             Name = "frmShowSubSalary";
             Text = "frmShowSubSalary";
             Load += frmShowSubSalary_Load;
@@ -206,14 +190,14 @@
         private DataGridView dgvSubDetail;
         private BindingSource subDetailBindingSource;
         private BindingSource subDetailBindingSource1;
+        private Button btUpdate;
+        private ComboBox cbCheck;
+        private TextBox txtId;
         private DataGridViewTextBoxColumn idDetailDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn idEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn idSubDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn timeBeginDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn timeEndDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn checkDataGridViewTextBoxColumn;
-        private Button btUpdate;
-        private ComboBox cbCheck;
-        private TextBox txtId;
     }
 }

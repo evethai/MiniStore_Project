@@ -33,8 +33,8 @@ namespace MiniStoreWinF.InformationEmployee
 
         private void btResetPassword_Click(object sender, EventArgs e)
         {
-            pnlShowResetPassword.Enabled = true;
-            pnlShowResetPassword.Visible = true;
+            pnShowReset.Enabled = true;
+            pnShowReset.Visible = true;
         }
 
         private void btChangePassword_Click(object sender, EventArgs e)
@@ -43,17 +43,17 @@ namespace MiniStoreWinF.InformationEmployee
             var CheckPassWork = _employeeService.GetAll().Where(p => p.IdEmp == DataLoadEmployee).FirstOrDefault();
             if (CheckPassWork != null)
             {
-                cbCheckExactly.Checked = true;
-                if (cbCheckExactly.Checked && txtConfirmNewPassword.Text.Equals(txtNewPassword.Text) == true && txtCurrentPassword.Text.Equals(CheckPassWork.Password))
+                cbCheck.Checked = true;
+                if (cbCheck.Checked && txtConfirmm.Text.Equals(txtNewPass.Text) == true && txtCurrent.Text.Equals(CheckPassWork.Password))
                 {
-                    CheckPassWork.Password = txtNewPassword.Text;
-                    chbConfirmSuccess.Checked = true;
+                    CheckPassWork.Password = txtNewPass.Text;
+                    cbCheck2.Checked = true;
                     _employeeService.Update(CheckPassWork);
                     MessageBox.Show("Reset Password Successful", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    pnlShowResetPassword.Visible = false;
-                    txtCurrentPassword.Text = null;
-                    txtConfirmNewPassword.Text = null;
-                    txtNewPassword.Text = null;
+                    pnShowReset.Visible = false;
+                    txtCurrent.Text = null;
+                    txtConfirmm.Text = null;
+                    txtNewPass.Text = null;
                 }
                 else
                 {
@@ -71,26 +71,27 @@ namespace MiniStoreWinF.InformationEmployee
         {
 
             string PictureEmp = "";
-            var infoEmployee = _employeeService.GetAll().Where(p => p.IdEmp == DataLoadEmployee).FirstOrDefault();
+            var infoEmployee = _employeeService.GetAll().Where(p => p.IdEmp == ContextScope.currentEmployee.IdEmp).FirstOrDefault();
             if (infoEmployee != null)
             {
-                txtIdEmp.Text = infoEmployee.IdEmp;
-                txtFullName.Text = infoEmployee.FullNameEmp;
-                txtCCCD.Text = infoEmployee.Cccd;
-                txtAddress.Text = infoEmployee.AddressEmp;
+                txtId.Text = infoEmployee.IdEmp;
+                txtName.Text = infoEmployee.FullNameEmp;
+                txtCI.Text = infoEmployee.Cccd;
+                txtAddresss.Text = infoEmployee.AddressEmp;
+                txtDepen.Text = infoEmployee.Snpt.ToString();
                 if (infoEmployee.Sex == true)
                 {
-                    txtSex.Text = "Female";
+                    txtGender.Text = "Female";
                 }
                 else
                 {
-                    txtSex.Text = "Male";
+                    txtGender.Text = "Male";
                 }
-                txtPhone.Text = infoEmployee.PhoneEmp;
-              
-                txtBoD.Text = infoEmployee.DoB.ToString();
+                txtPhonee.Text = infoEmployee.PhoneEmp;
+
+                txtBirth.Text = infoEmployee.DoB.ToString();
                 PictureEmp = infoEmployee.PictureEmp;
-                pcPictureEmp.Image = Base64ToImage(PictureEmp);
+                pbEmployee.Image = Base64ToImage(PictureEmp);
             }
             else
             {

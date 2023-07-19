@@ -47,7 +47,7 @@ namespace MiniStoreWinF.ManageMember
                 if (result == DialogResult.OK)
                 {
                     _memberservice.Create(member);
-                   
+
                 }
             }
         }
