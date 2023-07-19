@@ -345,6 +345,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1136, 596);
             Controls.Add(tableLayoutPanel1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmSheetDetails";
             Text = "Sheet Details";
             tableLayoutPanel1.ResumeLayout(false);

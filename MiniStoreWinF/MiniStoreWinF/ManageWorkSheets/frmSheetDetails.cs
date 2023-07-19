@@ -115,7 +115,7 @@ namespace MiniStoreWinF.ManageWorkSheets
         {
             string Empty = "";
             if (txtSheetDetail.Text == Empty ||
-                txtStartDetails.Text == Empty || txtEndDetails.Text == Empty 
+                txtStartDetails.Text == Empty || txtEndDetails.Text == Empty
                 || txtCoefficientsSalaryDetails.Text == Empty)
             {
                 MessageBox.Show("Can't Create when empty ", "Fails", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -147,7 +147,7 @@ namespace MiniStoreWinF.ManageWorkSheets
             txtSheetDetail.Text = Empty;
             txtStartDetails.Text = Empty;
             txtEndDetails.Text = Empty;
-            
+
             txtCoefficientsSalaryDetails.Text = Empty;
         }
         private void txtSheetDetail_KeyPress(object sender, KeyPressEventArgs e)

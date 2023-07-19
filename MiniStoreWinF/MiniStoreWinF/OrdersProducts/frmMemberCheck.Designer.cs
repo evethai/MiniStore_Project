@@ -308,6 +308,8 @@
             Controls.Add(pnlCreateMember);
             Controls.Add(pnlCheckMember);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmMemberCheck";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Member Check";

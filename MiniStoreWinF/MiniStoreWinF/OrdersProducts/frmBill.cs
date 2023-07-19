@@ -38,7 +38,7 @@ namespace MiniStoreWinF.OrdersProducts
 
         public class CombinedData
         {
-            public string Name{ get; set; }
+            public string Name { get; set; }
             public string Quantity { get; set; }
             public double Price { get; set; }
             public string Unit { get; set; }
@@ -76,7 +76,7 @@ namespace MiniStoreWinF.OrdersProducts
             }
             if (ScopeBill.currentBill.TotalBill != null)
             {
-                if(ScopeBill.currentBill.DiscountPrice != null)
+                if (ScopeBill.currentBill.DiscountPrice != null)
                 {
                     txtPayMent.Text = ScopeBill.currentBill.TotalBill.ToString();
                     txtTotalBill.Text = (ScopeBill.currentBill.TotalBill + ScopeBill.currentBill.DiscountPrice).ToString();
@@ -106,10 +106,10 @@ namespace MiniStoreWinF.OrdersProducts
         {
             var CheckBill = _orderService.GetAll().Where(p => p.IdBillOrder.Equals(ScopeBill.currentBill.IdBillOrder)).ToList();
             var combinedDataList = new List<CombinedData>();
-            foreach(var order in CheckBill )
+            foreach (var order in CheckBill)
             {
                 var InforProduct = _unitService.GetAll().Where(p => p.IdUnit.Equals(order.IdUnit)).FirstOrDefault();
-                var InforUnit =_productService.GetAll().Where(p => p.Sku.Equals(InforProduct.Sku)).FirstOrDefault();
+                var InforUnit = _productService.GetAll().Where(p => p.Sku.Equals(InforProduct.Sku)).FirstOrDefault();
                 var combineData = new CombinedData
                 {
                     Name = InforUnit.NameProduct.ToString(),
