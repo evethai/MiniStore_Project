@@ -60,7 +60,6 @@
             btFilter = new Button();
             cbName = new ComboBox();
             btReset = new Button();
-            btExport = new Button();
             panel2 = new Panel();
             cbOrderby = new ComboBox();
             numericUpDown1 = new NumericUpDown();
@@ -257,7 +256,7 @@
             // btReset
             // 
             btReset.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btReset.Location = new Point(979, 12);
+            btReset.Location = new Point(1099, 10);
             btReset.Margin = new Padding(4);
             btReset.Name = "btReset";
             btReset.Size = new Size(117, 35);
@@ -266,18 +265,6 @@
             btReset.UseVisualStyleBackColor = true;
             btReset.Click += btReset_Click;
             // 
-            // btExport
-            // 
-            btExport.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btExport.Location = new Point(1104, 12);
-            btExport.Margin = new Padding(4);
-            btExport.Name = "btExport";
-            btExport.Size = new Size(117, 35);
-            btExport.TabIndex = 12;
-            btExport.Text = "Export";
-            btExport.UseVisualStyleBackColor = true;
-            btExport.Click += btExport_Click;
-            // 
             // panel2
             // 
             panel2.BorderStyle = BorderStyle.Fixed3D;
@@ -285,7 +272,6 @@
             panel2.Controls.Add(numericUpDown1);
             panel2.Controls.Add(cbName);
             panel2.Controls.Add(txtS);
-            panel2.Controls.Add(btExport);
             panel2.Controls.Add(dtpTime);
             panel2.Controls.Add(btReset);
             panel2.Controls.Add(btFilter);
@@ -394,7 +380,6 @@
         private Button btFilter;
         private ComboBox cbName;
         private Button btReset;
-        private Button btExport;
         private Panel panel2;
         private NumericUpDown numericUpDown1;
         private TextBox txtS;

@@ -202,7 +202,7 @@ namespace MiniStoreWinF.ManageSalary
             }
 
         }
-
+        CalculationAuto ca = new CalculationAuto();
         private void btnExport_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Only for excel Microsoft offical!", "Messages", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -211,14 +211,45 @@ namespace MiniStoreWinF.ManageSalary
                 try
                 {
                     string id = ContextScope.currentSalary.IdEmp;
+                    double salary = ca.HourSalary(id);
+                    DateTime time = ContextScope.currentSalary.DateImonth;
+                    double hour  = sumHourinMonth(time, id);
+
                     _salaryService = new SalaryService();
-                    var sa = _salaryService.GetAll().Where(p=>p.IdSalary.Equals(id)).FirstOrDefault();
+                    var sa = _salaryService.GetAll().Where(p=>p.IdEmp.Equals(id)).FirstOrDefault();
                     Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
                     excel.Visible = true;
                     Microsoft.Office.Interop.Excel.Workbook xlWbook;
-                    Microsoft.Office.Interop.Excel.Worksheet xlWsheet, xlWsheet2, xlWsheet3;
+                    Microsoft.Office.Interop.Excel.Worksheet xlWsheet, xlWsheet2;
                     object data = System.Reflection.Missing.Value;
                     xlWbook = excel.Workbooks.Add(data);
+
+                    //
+                    xlWsheet2 = (Microsoft.Office.Interop.Excel.Worksheet)xlWbook.Worksheets.Add();
+                    xlWsheet2.Name = "Detail";
+                    xlWsheet2.Cells[1, 1].Value = "Basic salary";
+                    xlWsheet2.Cells[1, 2].Value = "Social insurace";
+                    xlWsheet2.Cells[1, 3].Value = "Health insurace";
+                    xlWsheet2.Cells[1, 4].Value = "Unemployment insurace";
+                    xlWsheet2.Cells[1, 5].Value = "Befor tax";
+                    xlWsheet2.Cells[1, 6].Value = "Reduce your family situation";
+                    xlWsheet2.Cells[1, 7].Value = "Reducing dependents' family circumstances";
+                    xlWsheet2.Cells[1, 8].Value = "Income tax";
+                    xlWsheet2.Cells[1, 9].Value = "Personal income tax";
+                    xlWsheet2.Cells[1, 9].Value = "Final salary";
+                    //
+                    xlWsheet2.Cells[2, 1].Value = sa.BasicSalary;
+                    xlWsheet2.Cells[2, 2].Value = _bhxh.Text;
+                    xlWsheet2.Cells[2, 3].Value = _bhyt.Text;
+                    xlWsheet2.Cells[2, 4].Value = _bhtn.Text;
+                    xlWsheet2.Cells[2, 5].Value = _tntt.Text;
+                    xlWsheet2.Cells[2, 6].Value = _gtgccn.Text;
+                    xlWsheet2.Cells[2, 7].Value = _gtgcnpt.Text;
+                    xlWsheet2.Cells[2, 8].Value = _tnct.Text;
+                    xlWsheet2.Cells[2, 9].Value = _ttncn.Text;
+                    xlWsheet2.Cells[2, 9].Value = _luong.Text;
+                    //
+
 
                     xlWsheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWbook.Worksheets.Add();
                     xlWsheet.Name = "Salary";
@@ -235,8 +266,8 @@ namespace MiniStoreWinF.ManageSalary
                     xlWsheet.Cells[1, 11].Value = "Time";
                     //
                     xlWsheet.Cells[2, 1].Value = sa.IdEmp;
-                    xlWsheet.Cells[2, 2].Value = "Number hour";
-                    xlWsheet.Cells[2, 3].Value = "Money of each(hour)";
+                    xlWsheet.Cells[2, 2].Value = hour;
+                    xlWsheet.Cells[2, 3].Value = salary.ToString();
                     xlWsheet.Cells[2, 4].Value = sa.SalaryByHour;
                     xlWsheet.Cells[2, 5].Value = sa.SubSalary;
                     xlWsheet.Cells[2, 6].Value = sa.BasicSalary;
@@ -245,33 +276,6 @@ namespace MiniStoreWinF.ManageSalary
                     xlWsheet.Cells[2, 9].Value = sa.AdvSalary;
                     xlWsheet.Cells[2, 10].Value = sa.FinalSalary;
                     xlWsheet.Cells[2, 10].Value = sa.DateImonth.Month;
-
-
-
-
-                    xlWsheet2 = (Microsoft.Office.Interop.Excel.Worksheet)xlWbook.Worksheets.Add();
-                    xlWsheet2.Name = "Detail";
-                    xlWsheet2.Cells[1, 1].Value = "Basic salary";
-                    xlWsheet2.Cells[1, 2].Value = "Social insurace";
-                    xlWsheet2.Cells[1, 3].Value = "Health insurace";
-                    xlWsheet2.Cells[1, 4].Value = "Unemployment insurace";
-                    xlWsheet2.Cells[1, 5].Value = "Befor tax";
-                    xlWsheet2.Cells[1, 6].Value = "Reduce your family situation";
-                    xlWsheet2.Cells[1, 7].Value = "Reducing dependents' family circumstances";
-                    xlWsheet2.Cells[1, 8].Value = "Income tax";
-                    xlWsheet2.Cells[1, 9].Value = "Personal income tax";
-                    xlWsheet2.Cells[1, 9].Value = "Final salary";
-
-
-                    xlWsheet3 = (Microsoft.Office.Interop.Excel.Worksheet)xlWbook.Worksheets.Add();
-                    xlWsheet3.Name = "Tax";
-                    xlWsheet3.Cells[1, 1].Value = "0 - 5";
-                    xlWsheet3.Cells[1, 2].Value = "5 - 10";
-                    xlWsheet3.Cells[1, 3].Value = "10 - 18";
-                    xlWsheet3.Cells[1, 4].Value = "18 - 32";
-                    xlWsheet3.Cells[1, 5].Value = "32 - 52";
-                    xlWsheet3.Cells[1, 6].Value = "52 - 80";
-                    xlWsheet3.Cells[1, 7].Value = "80 more";
 
                 }
                 catch (Exception ex)
