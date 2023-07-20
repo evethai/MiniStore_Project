@@ -320,6 +320,8 @@
             BackColor = Color.White;
             ClientSize = new Size(479, 663);
             Controls.Add(tlopBill);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmBill";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Bill";

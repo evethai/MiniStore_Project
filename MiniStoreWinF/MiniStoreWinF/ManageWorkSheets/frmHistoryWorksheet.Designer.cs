@@ -33,11 +33,7 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel1 = new Panel();
-            btLoad = new Button();
-            dtpkEnd = new DateTimePicker();
-            button4 = new Button();
-            dtpkStart = new DateTimePicker();
-            button5 = new Button();
+            btResetAllHistory = new Button();
             panel2 = new Panel();
             nbrPagination = new NumericUpDown();
             panel3 = new Panel();
@@ -53,28 +49,6 @@
             defaultCoefficientDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             sundayCoefficientDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             workSheetBindingSource = new BindingSource(components);
-            panel4 = new Panel();
-            btReset = new Button();
-            label3 = new Label();
-            nbrSunday = new NumericUpDown();
-            label2 = new Label();
-            chbStatus = new CheckBox();
-            txtHours = new TextBox();
-            label1 = new Label();
-            txtTimeCheckOut = new TextBox();
-            label5 = new Label();
-            txtTimeCheckIn = new TextBox();
-            label6 = new Label();
-            txtIDWorksheet = new TextBox();
-            btResetAllHistory = new Button();
-            txtIdEmp = new TextBox();
-            cbSheet = new ComboBox();
-            label7 = new Label();
-            btUpdate = new Button();
-            txtDateWork = new TextBox();
-            label8 = new Label();
-            label9 = new Label();
-            label10 = new Label();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             panel1.SuspendLayout();
@@ -83,17 +57,14 @@
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvShowWorkSheet).BeginInit();
             ((System.ComponentModel.ISupportInitialize)workSheetBindingSource).BeginInit();
-            panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)nbrSunday).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 0);
-            tableLayoutPanel1.Controls.Add(panel4, 0, 0);
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -110,78 +81,38 @@
             tableLayoutPanel2.Controls.Add(panel2, 0, 2);
             tableLayoutPanel2.Controls.Add(panel3, 0, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(429, 3);
+            tableLayoutPanel2.Location = new Point(3, 3);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 3;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 13F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 80F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 7F));
-            tableLayoutPanel2.Size = new Size(989, 712);
+            tableLayoutPanel2.Size = new Size(1415, 712);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // panel1
             // 
-            panel1.Controls.Add(btLoad);
-            panel1.Controls.Add(dtpkEnd);
-            panel1.Controls.Add(button4);
-            panel1.Controls.Add(dtpkStart);
-            panel1.Controls.Add(button5);
+            panel1.Controls.Add(btResetAllHistory);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(983, 86);
+            panel1.Size = new Size(1409, 86);
             panel1.TabIndex = 0;
             // 
-            // btLoad
+            // btResetAllHistory
             // 
-            btLoad.Image = (Image)resources.GetObject("btLoad.Image");
-            btLoad.Location = new Point(652, 13);
-            btLoad.Margin = new Padding(3, 4, 3, 4);
-            btLoad.Name = "btLoad";
-            btLoad.Size = new Size(79, 49);
-            btLoad.TabIndex = 43;
-            btLoad.UseVisualStyleBackColor = true;
-            btLoad.Click += btLoad_Click;
-            // 
-            // dtpkEnd
-            // 
-            dtpkEnd.Format = DateTimePickerFormat.Short;
-            dtpkEnd.Location = new Point(459, 22);
-            dtpkEnd.Margin = new Padding(3, 4, 3, 4);
-            dtpkEnd.Name = "dtpkEnd";
-            dtpkEnd.Size = new Size(187, 27);
-            dtpkEnd.TabIndex = 42;
-            dtpkEnd.Value = new DateTime(2023, 5, 1, 0, 0, 0, 0);
-            // 
-            // button4
-            // 
-            button4.Location = new Point(335, 22);
-            button4.Margin = new Padding(3, 4, 3, 4);
-            button4.Name = "button4";
-            button4.Size = new Size(118, 31);
-            button4.TabIndex = 41;
-            button4.Text = "To date :";
-            button4.UseVisualStyleBackColor = true;
-            // 
-            // dtpkStart
-            // 
-            dtpkStart.Format = DateTimePickerFormat.Short;
-            dtpkStart.Location = new Point(127, 22);
-            dtpkStart.Margin = new Padding(3, 4, 3, 4);
-            dtpkStart.Name = "dtpkStart";
-            dtpkStart.Size = new Size(187, 27);
-            dtpkStart.TabIndex = 40;
-            dtpkStart.Value = new DateTime(2023, 5, 1, 0, 0, 0, 0);
-            // 
-            // button5
-            // 
-            button5.Location = new Point(3, 22);
-            button5.Margin = new Padding(3, 4, 3, 4);
-            button5.Name = "button5";
-            button5.Size = new Size(118, 31);
-            button5.TabIndex = 39;
-            button5.Text = "From date :";
-            button5.UseVisualStyleBackColor = true;
+            btResetAllHistory.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btResetAllHistory.Image = (Image)resources.GetObject("btResetAllHistory.Image");
+            btResetAllHistory.ImageAlign = ContentAlignment.TopCenter;
+            btResetAllHistory.Location = new Point(683, 7);
+            btResetAllHistory.Margin = new Padding(3, 4, 3, 4);
+            btResetAllHistory.Name = "btResetAllHistory";
+            btResetAllHistory.Size = new Size(80, 69);
+            btResetAllHistory.TabIndex = 43;
+            btResetAllHistory.Text = "Show All";
+            btResetAllHistory.TextAlign = ContentAlignment.BottomCenter;
+            btResetAllHistory.UseVisualStyleBackColor = true;
+            btResetAllHistory.Click += btResetAllHistory_Click;
             // 
             // panel2
             // 
@@ -189,12 +120,12 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 664);
             panel2.Name = "panel2";
-            panel2.Size = new Size(983, 45);
+            panel2.Size = new Size(1409, 45);
             panel2.TabIndex = 1;
             // 
             // nbrPagination
             // 
-            nbrPagination.Location = new Point(335, 5);
+            nbrPagination.Location = new Point(674, 15);
             nbrPagination.Maximum = new decimal(new int[] { 9000, 0, 0, 0 });
             nbrPagination.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nbrPagination.Name = "nbrPagination";
@@ -209,7 +140,7 @@
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(3, 95);
             panel3.Name = "panel3";
-            panel3.Size = new Size(983, 563);
+            panel3.Size = new Size(1409, 563);
             panel3.TabIndex = 2;
             // 
             // dgvShowWorkSheet
@@ -226,10 +157,9 @@
             dgvShowWorkSheet.Name = "dgvShowWorkSheet";
             dgvShowWorkSheet.RowHeadersWidth = 51;
             dgvShowWorkSheet.RowTemplate.Height = 29;
-            dgvShowWorkSheet.Size = new Size(983, 563);
+            dgvShowWorkSheet.Size = new Size(1409, 563);
             dgvShowWorkSheet.TabIndex = 42;
             dgvShowWorkSheet.CellFormatting += dgvShowWorkSheet_CellFormatting;
-            dgvShowWorkSheet.CellMouseDoubleClick += dgvShowWorkSheet_CellMouseDoubleClick;
             // 
             // idWorkSheetDataGridViewTextBoxColumn
             // 
@@ -315,250 +245,6 @@
             // 
             workSheetBindingSource.DataSource = typeof(Repository.Models.WorkSheet);
             // 
-            // panel4
-            // 
-            panel4.Controls.Add(btReset);
-            panel4.Controls.Add(label3);
-            panel4.Controls.Add(nbrSunday);
-            panel4.Controls.Add(label2);
-            panel4.Controls.Add(chbStatus);
-            panel4.Controls.Add(txtHours);
-            panel4.Controls.Add(label1);
-            panel4.Controls.Add(txtTimeCheckOut);
-            panel4.Controls.Add(label5);
-            panel4.Controls.Add(txtTimeCheckIn);
-            panel4.Controls.Add(label6);
-            panel4.Controls.Add(txtIDWorksheet);
-            panel4.Controls.Add(btResetAllHistory);
-            panel4.Controls.Add(txtIdEmp);
-            panel4.Controls.Add(cbSheet);
-            panel4.Controls.Add(label7);
-            panel4.Controls.Add(btUpdate);
-            panel4.Controls.Add(txtDateWork);
-            panel4.Controls.Add(label8);
-            panel4.Controls.Add(label9);
-            panel4.Controls.Add(label10);
-            panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(3, 3);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(420, 712);
-            panel4.TabIndex = 1;
-            // 
-            // btReset
-            // 
-            btReset.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btReset.Image = Properties.Resources.icons8_load_50___Copy;
-            btReset.Location = new Point(138, 577);
-            btReset.Margin = new Padding(3, 4, 3, 4);
-            btReset.Name = "btReset";
-            btReset.Size = new Size(80, 69);
-            btReset.TabIndex = 54;
-            btReset.Text = "Reset";
-            btReset.TextAlign = ContentAlignment.BottomCenter;
-            btReset.UseVisualStyleBackColor = true;
-            btReset.Click += btReset_Click;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(2, 521);
-            label3.Name = "label3";
-            label3.Size = new Size(140, 20);
-            label3.TabIndex = 53;
-            label3.Text = "Sunday Coefficient";
-            // 
-            // nbrSunday
-            // 
-            nbrSunday.DecimalPlaces = 1;
-            nbrSunday.Increment = new decimal(new int[] { 5, 0, 0, 65536 });
-            nbrSunday.Location = new Point(166, 521);
-            nbrSunday.Name = "nbrSunday";
-            nbrSunday.Size = new Size(91, 27);
-            nbrSunday.TabIndex = 52;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(32, 471);
-            label2.Name = "label2";
-            label2.Size = new Size(53, 20);
-            label2.TabIndex = 51;
-            label2.Text = "Status";
-            // 
-            // chbStatus
-            // 
-            chbStatus.AutoSize = true;
-            chbStatus.Location = new Point(166, 467);
-            chbStatus.Name = "chbStatus";
-            chbStatus.Size = new Size(79, 24);
-            chbStatus.TabIndex = 50;
-            chbStatus.Text = "Present";
-            chbStatus.UseVisualStyleBackColor = true;
-            // 
-            // txtHours
-            // 
-            txtHours.Location = new Point(124, 421);
-            txtHours.Margin = new Padding(3, 4, 3, 4);
-            txtHours.Name = "txtHours";
-            txtHours.ReadOnly = true;
-            txtHours.Size = new Size(198, 27);
-            txtHours.TabIndex = 48;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(32, 421);
-            label1.Name = "label1";
-            label1.Size = new Size(51, 20);
-            label1.TabIndex = 49;
-            label1.Text = "Hours";
-            // 
-            // txtTimeCheckOut
-            // 
-            txtTimeCheckOut.Location = new Point(124, 360);
-            txtTimeCheckOut.Margin = new Padding(3, 4, 3, 4);
-            txtTimeCheckOut.Name = "txtTimeCheckOut";
-            txtTimeCheckOut.ReadOnly = true;
-            txtTimeCheckOut.Size = new Size(198, 27);
-            txtTimeCheckOut.TabIndex = 46;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(2, 365);
-            label5.Name = "label5";
-            label5.Size = new Size(120, 20);
-            label5.TabIndex = 47;
-            label5.Text = "Time Check-Out";
-            // 
-            // txtTimeCheckIn
-            // 
-            txtTimeCheckIn.Location = new Point(124, 305);
-            txtTimeCheckIn.Margin = new Padding(3, 4, 3, 4);
-            txtTimeCheckIn.Name = "txtTimeCheckIn";
-            txtTimeCheckIn.ReadOnly = true;
-            txtTimeCheckIn.Size = new Size(198, 27);
-            txtTimeCheckIn.TabIndex = 44;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(2, 310);
-            label6.Name = "label6";
-            label6.Size = new Size(108, 20);
-            label6.TabIndex = 45;
-            label6.Text = "Time Check-In";
-            // 
-            // txtIDWorksheet
-            // 
-            txtIDWorksheet.Location = new Point(124, 79);
-            txtIDWorksheet.Margin = new Padding(3, 4, 3, 4);
-            txtIDWorksheet.Name = "txtIDWorksheet";
-            txtIDWorksheet.ReadOnly = true;
-            txtIDWorksheet.Size = new Size(198, 27);
-            txtIDWorksheet.TabIndex = 34;
-            // 
-            // btResetAllHistory
-            // 
-            btResetAllHistory.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btResetAllHistory.Image = (Image)resources.GetObject("btResetAllHistory.Image");
-            btResetAllHistory.ImageAlign = ContentAlignment.TopCenter;
-            btResetAllHistory.Location = new Point(32, 577);
-            btResetAllHistory.Margin = new Padding(3, 4, 3, 4);
-            btResetAllHistory.Name = "btResetAllHistory";
-            btResetAllHistory.Size = new Size(80, 69);
-            btResetAllHistory.TabIndex = 43;
-            btResetAllHistory.Text = "Show All";
-            btResetAllHistory.TextAlign = ContentAlignment.BottomCenter;
-            btResetAllHistory.UseVisualStyleBackColor = true;
-            btResetAllHistory.Click += btResetAllHistory_Click;
-            // 
-            // txtIdEmp
-            // 
-            txtIdEmp.Location = new Point(124, 134);
-            txtIdEmp.Margin = new Padding(3, 4, 3, 4);
-            txtIdEmp.Name = "txtIdEmp";
-            txtIdEmp.ReadOnly = true;
-            txtIdEmp.Size = new Size(198, 27);
-            txtIdEmp.TabIndex = 42;
-            // 
-            // cbSheet
-            // 
-            cbSheet.FormattingEnabled = true;
-            cbSheet.Location = new Point(166, 251);
-            cbSheet.Margin = new Padding(3, 4, 3, 4);
-            cbSheet.Name = "cbSheet";
-            cbSheet.Size = new Size(91, 28);
-            cbSheet.TabIndex = 41;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(2, 141);
-            label7.Name = "label7";
-            label7.Size = new Size(104, 20);
-            label7.TabIndex = 37;
-            label7.Text = "ID Employees";
-            // 
-            // btUpdate
-            // 
-            btUpdate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btUpdate.Image = (Image)resources.GetObject("btUpdate.Image");
-            btUpdate.Location = new Point(242, 577);
-            btUpdate.Margin = new Padding(3, 4, 3, 4);
-            btUpdate.Name = "btUpdate";
-            btUpdate.Size = new Size(80, 69);
-            btUpdate.TabIndex = 40;
-            btUpdate.Text = "Update";
-            btUpdate.TextAlign = ContentAlignment.BottomCenter;
-            btUpdate.UseVisualStyleBackColor = true;
-            btUpdate.Click += btUpdate_Click;
-            // 
-            // txtDateWork
-            // 
-            txtDateWork.Location = new Point(124, 190);
-            txtDateWork.Margin = new Padding(3, 4, 3, 4);
-            txtDateWork.Name = "txtDateWork";
-            txtDateWork.ReadOnly = true;
-            txtDateWork.Size = new Size(198, 27);
-            txtDateWork.TabIndex = 35;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(27, 251);
-            label8.Name = "label8";
-            label8.Size = new Size(48, 20);
-            label8.TabIndex = 39;
-            label8.Text = "Sheet";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label9.Location = new Point(32, 190);
-            label9.Name = "label9";
-            label9.Size = new Size(42, 20);
-            label9.TabIndex = 38;
-            label9.Text = "Date";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.Location = new Point(2, 82);
-            label10.Name = "label10";
-            label10.Size = new Size(106, 20);
-            label10.TabIndex = 36;
-            label10.Text = "ID WorkSheet";
-            // 
             // frmHistoryWorksheet
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -566,6 +252,8 @@
             ClientSize = new Size(1421, 718);
             Controls.Add(tableLayoutPanel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "frmHistoryWorksheet";
             Text = "History Worksheet";
             tableLayoutPanel1.ResumeLayout(false);
@@ -576,9 +264,6 @@
             panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvShowWorkSheet).EndInit();
             ((System.ComponentModel.ISupportInitialize)workSheetBindingSource).EndInit();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)nbrSunday).EndInit();
             ResumeLayout(false);
         }
 
@@ -587,29 +272,10 @@
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel2;
         private Panel panel1;
-        private Button btLoad;
-        private DateTimePicker dtpkEnd;
-        private Button button4;
-        private DateTimePicker dtpkStart;
-        private Button button5;
         private Panel panel2;
         private Panel panel3;
         private DataGridView dgvShowWorkSheet;
-        private Panel panel4;
-        private TextBox txtTimeCheckOut;
-        private Label label5;
-        private TextBox txtTimeCheckIn;
-        private Label label6;
-        private TextBox txtIDWorksheet;
         private Button btResetAllHistory;
-        private TextBox txtIdEmp;
-        private ComboBox cbSheet;
-        private Label label7;
-        private Button btUpdate;
-        private TextBox txtDateWork;
-        private Label label8;
-        private Label label9;
-        private Label label10;
         private NumericUpDown nbrPagination;
         private BindingSource workSheetBindingSource;
         private DataGridViewTextBoxColumn idWorkSheetDataGridViewTextBoxColumn;
@@ -622,12 +288,5 @@
         private DataGridViewTextBoxColumn totalWorkingHoursDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn defaultCoefficientDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn sundayCoefficientDataGridViewTextBoxColumn;
-        private Label label3;
-        private NumericUpDown nbrSunday;
-        private Label label2;
-        private CheckBox chbStatus;
-        private TextBox txtHours;
-        private Label label1;
-        private Button btReset;
     }
 }

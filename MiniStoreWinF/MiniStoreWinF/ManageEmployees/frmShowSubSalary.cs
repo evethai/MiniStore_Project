@@ -24,8 +24,8 @@ namespace MiniStoreWinF.ManageEmployees
             cbListEmployee.DataSource = employeeList;
             cbListEmployee.DisplayMember = "FullNameEmp";
 
-            
-            
+
+
         }
 
         private void btAddSub_Click(object sender, EventArgs e)

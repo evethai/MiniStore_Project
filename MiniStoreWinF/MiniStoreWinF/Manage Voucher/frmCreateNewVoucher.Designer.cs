@@ -64,18 +64,20 @@
             pnAdd.Controls.Add(label8);
             pnAdd.Controls.Add(label9);
             pnAdd.Controls.Add(label11);
-            pnAdd.Location = new Point(12, 85);
+            pnAdd.Location = new Point(13, 90);
+            pnAdd.Margin = new Padding(4, 3, 4, 3);
             pnAdd.Name = "pnAdd";
-            pnAdd.Size = new Size(338, 421);
+            pnAdd.Size = new Size(379, 442);
             pnAdd.TabIndex = 15;
             // 
             // btBack
             // 
             btBack.Image = (Image)resources.GetObject("btBack.Image");
             btBack.ImageAlign = ContentAlignment.MiddleLeft;
-            btBack.Location = new Point(3, 346);
+            btBack.Location = new Point(4, 364);
+            btBack.Margin = new Padding(4, 3, 4, 3);
             btBack.Name = "btBack";
-            btBack.Size = new Size(96, 40);
+            btBack.Size = new Size(108, 42);
             btBack.TabIndex = 17;
             btBack.Text = "Back";
             btBack.TextAlign = ContentAlignment.MiddleRight;
@@ -86,42 +88,47 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(4, 389);
+            label2.Location = new Point(5, 409);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(316, 17);
+            label2.Size = new Size(279, 13);
             label2.TabIndex = 17;
             label2.Text = "*Require all the necessary information to be entered.";
             // 
             // numAddCondition
             // 
-            numAddCondition.Location = new Point(108, 143);
+            numAddCondition.Location = new Point(121, 150);
+            numAddCondition.Margin = new Padding(4, 3, 4, 3);
             numAddCondition.Name = "numAddCondition";
-            numAddCondition.Size = new Size(103, 27);
+            numAddCondition.Size = new Size(116, 29);
             numAddCondition.TabIndex = 15;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(20, 145);
+            label3.Location = new Point(23, 153);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(74, 20);
+            label3.Size = new Size(78, 21);
             label3.TabIndex = 14;
             label3.Text = "Condition";
             // 
             // dpkNewDate
             // 
-            dpkNewDate.Location = new Point(117, 264);
+            dpkNewDate.Location = new Point(131, 277);
+            dpkNewDate.Margin = new Padding(4, 3, 4, 3);
             dpkNewDate.Name = "dpkNewDate";
-            dpkNewDate.Size = new Size(203, 27);
+            dpkNewDate.Size = new Size(228, 29);
             dpkNewDate.TabIndex = 13;
             // 
             // btAdd
             // 
             btAdd.Image = (Image)resources.GetObject("btAdd.Image");
             btAdd.ImageAlign = ContentAlignment.MiddleLeft;
-            btAdd.Location = new Point(235, 346);
+            btAdd.Location = new Point(265, 364);
+            btAdd.Margin = new Padding(4, 3, 4, 3);
             btAdd.Name = "btAdd";
-            btAdd.Size = new Size(96, 40);
+            btAdd.Size = new Size(108, 42);
             btAdd.TabIndex = 12;
             btAdd.Text = "Create";
             btAdd.TextAlign = ContentAlignment.MiddleRight;
@@ -130,79 +137,88 @@
             // 
             // txtNewQuantity
             // 
-            txtNewQuantity.Location = new Point(117, 209);
+            txtNewQuantity.Location = new Point(131, 220);
+            txtNewQuantity.Margin = new Padding(4, 3, 4, 3);
             txtNewQuantity.Name = "txtNewQuantity";
-            txtNewQuantity.Size = new Size(86, 27);
+            txtNewQuantity.Size = new Size(97, 29);
             txtNewQuantity.TabIndex = 10;
             // 
             // txtNewPrice
             // 
-            txtNewPrice.Location = new Point(108, 91);
+            txtNewPrice.Location = new Point(121, 95);
+            txtNewPrice.Margin = new Padding(4, 3, 4, 3);
             txtNewPrice.Name = "txtNewPrice";
-            txtNewPrice.Size = new Size(125, 27);
+            txtNewPrice.Size = new Size(140, 29);
             txtNewPrice.TabIndex = 9;
             // 
             // txtAddName
             // 
-            txtAddName.Location = new Point(108, 33);
+            txtAddName.Location = new Point(121, 35);
+            txtAddName.Margin = new Padding(4, 3, 4, 3);
             txtAddName.Name = "txtAddName";
-            txtAddName.Size = new Size(125, 27);
+            txtAddName.Size = new Size(140, 29);
             txtAddName.TabIndex = 7;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(29, 267);
+            label7.Location = new Point(32, 280);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(70, 20);
+            label7.Size = new Size(72, 21);
             label7.TabIndex = 5;
             label7.Text = "EXP Date";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(34, 209);
+            label8.Location = new Point(39, 220);
+            label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(65, 20);
+            label8.Size = new Size(70, 21);
             label8.TabIndex = 4;
             label8.Text = "Quantity";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(60, 91);
+            label9.Location = new Point(67, 95);
+            label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(41, 20);
+            label9.Size = new Size(44, 21);
             label9.TabIndex = 3;
             label9.Text = "Price";
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(53, 40);
+            label11.Location = new Point(59, 42);
+            label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
-            label11.Size = new Size(49, 20);
+            label11.Size = new Size(52, 21);
             label11.TabIndex = 1;
             label11.Text = "Name";
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(101, 24);
+            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(13, 9);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(156, 31);
+            label1.Size = new Size(168, 55);
             label1.TabIndex = 16;
             label1.Text = "New Voucher";
             // 
             // frmCreateNewVoucher
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(366, 520);
+            ClientSize = new Size(411, 546);
             Controls.Add(label1);
             Controls.Add(pnAdd);
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(4, 3, 4, 3);
             MaximizeBox = false;
             Name = "frmCreateNewVoucher";
             Text = "Create New Voucher";
@@ -210,7 +226,6 @@
             pnAdd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numAddCondition).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
