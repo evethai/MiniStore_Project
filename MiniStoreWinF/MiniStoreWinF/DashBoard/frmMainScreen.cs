@@ -143,6 +143,14 @@ namespace MiniStoreWinF.DashBoard
                         {
                             CheckWorkSheet.TimeCheckOut = now;
                             CheckWorkSheet.Status = true;
+                            if(DateTime.Now.DayOfWeek == DayOfWeek.Sunday)
+                            {
+                                CheckWorkSheet.SundayCoefficient = 0.5;
+                            }
+                            else
+                            {
+                                CheckWorkSheet.SundayCoefficient = 0; 
+                            }
                             _workSheetService.Update(CheckWorkSheet);
                             MessageBox.Show("You have successfully checked-out at " + now, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
@@ -172,7 +180,7 @@ namespace MiniStoreWinF.DashBoard
             }
             catch
             {
-                MessageBox.Show("BUG", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cant not check in and out", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }

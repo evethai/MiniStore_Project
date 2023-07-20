@@ -52,6 +52,9 @@
             dateJoinDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             tbMain = new TableLayoutPanel();
             pnInfor = new Panel();
+            label1 = new Label();
+            txtDependent = new TextBox();
+            btShowSubSalary = new Button();
             cbRole = new ComboBox();
             pbImport = new PictureBox();
             dtDoB = new DateTimePicker();
@@ -74,7 +77,6 @@
             txtName = new TextBox();
             txtId = new TextBox();
             tableLayoutPanel2 = new TableLayoutPanel();
-            btShowSubSalary = new Button();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).BeginInit();
             pnButton.SuspendLayout();
@@ -94,7 +96,7 @@
             // 
             btAddEmployee.Image = (Image)resources.GetObject("btAddEmployee.Image");
             btAddEmployee.ImageAlign = ContentAlignment.MiddleLeft;
-            btAddEmployee.Location = new Point(26, 395);
+            btAddEmployee.Location = new Point(35, 393);
             btAddEmployee.Margin = new Padding(4, 5, 4, 5);
             btAddEmployee.Name = "btAddEmployee";
             btAddEmployee.Size = new Size(103, 40);
@@ -128,7 +130,7 @@
             // 
             btUpdate.Image = (Image)resources.GetObject("btUpdate.Image");
             btUpdate.ImageAlign = ContentAlignment.MiddleLeft;
-            btUpdate.Location = new Point(1105, 380);
+            btUpdate.Location = new Point(1175, 391);
             btUpdate.Margin = new Padding(4, 5, 4, 5);
             btUpdate.Name = "btUpdate";
             btUpdate.Size = new Size(113, 42);
@@ -314,6 +316,8 @@
             // pnInfor
             // 
             pnInfor.BorderStyle = BorderStyle.Fixed3D;
+            pnInfor.Controls.Add(label1);
+            pnInfor.Controls.Add(txtDependent);
             pnInfor.Controls.Add(btShowSubSalary);
             pnInfor.Controls.Add(cbRole);
             pnInfor.Controls.Add(btAddEmployee);
@@ -346,10 +350,42 @@
             pnInfor.Size = new Size(1541, 410);
             pnInfor.TabIndex = 27;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(319, 328);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(207, 25);
+            label1.TabIndex = 58;
+            label1.Text = "Number of dependents";
+            // 
+            // txtDependent
+            // 
+            txtDependent.Location = new Point(538, 327);
+            txtDependent.Name = "txtDependent";
+            txtDependent.Size = new Size(100, 29);
+            txtDependent.TabIndex = 57;
+            txtDependent.KeyPress += txtDependent_KeyPress;
+            // 
+            // btShowSubSalary
+            // 
+            btShowSubSalary.Image = (Image)resources.GetObject("btShowSubSalary.Image");
+            btShowSubSalary.ImageAlign = ContentAlignment.MiddleLeft;
+            btShowSubSalary.Location = new Point(145, 391);
+            btShowSubSalary.Name = "btShowSubSalary";
+            btShowSubSalary.Size = new Size(124, 42);
+            btShowSubSalary.TabIndex = 56;
+            btShowSubSalary.Text = "Allowance";
+            btShowSubSalary.TextAlign = ContentAlignment.MiddleRight;
+            btShowSubSalary.UseVisualStyleBackColor = true;
+            btShowSubSalary.Click += btShowSubSalary_Click;
+            // 
             // cbRole
             // 
             cbRole.FormattingEnabled = true;
-            cbRole.Location = new Point(541, 253);
+            cbRole.Location = new Point(844, 265);
             cbRole.Name = "cbRole";
             cbRole.Size = new Size(195, 29);
             cbRole.TabIndex = 55;
@@ -358,7 +394,7 @@
             // 
             pbImport.BackColor = Color.Transparent;
             pbImport.Image = (Image)resources.GetObject("pbImport.Image");
-            pbImport.Location = new Point(1128, 307);
+            pbImport.Location = new Point(1191, 304);
             pbImport.Name = "pbImport";
             pbImport.Size = new Size(62, 35);
             pbImport.SizeMode = PictureBoxSizeMode.Zoom;
@@ -370,7 +406,7 @@
             // 
             dtDoB.Enabled = false;
             dtDoB.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dtDoB.Location = new Point(541, 309);
+            dtDoB.Location = new Point(844, 321);
             dtDoB.Margin = new Padding(4, 5, 4, 5);
             dtDoB.Name = "dtDoB";
             dtDoB.Size = new Size(279, 32);
@@ -380,7 +416,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(420, 38);
+            label9.Location = new Point(723, 50);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
             label9.Size = new Size(74, 25);
@@ -394,7 +430,7 @@
             cbGender.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             cbGender.FormattingEnabled = true;
             cbGender.Items.AddRange(new object[] { "Man", "Woman" });
-            cbGender.Location = new Point(541, 35);
+            cbGender.Location = new Point(844, 47);
             cbGender.Margin = new Padding(4, 5, 4, 5);
             cbGender.Name = "cbGender";
             cbGender.Size = new Size(195, 33);
@@ -404,7 +440,7 @@
             // 
             Status.AutoSize = true;
             Status.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            Status.Location = new Point(433, 179);
+            Status.Location = new Point(736, 191);
             Status.Margin = new Padding(4, 0, 4, 0);
             Status.Name = "Status";
             Status.Size = new Size(62, 25);
@@ -416,7 +452,7 @@
             cBStatus.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             cBStatus.FormattingEnabled = true;
             cBStatus.Items.AddRange(new object[] { "Active", "Disable" });
-            cBStatus.Location = new Point(541, 171);
+            cBStatus.Location = new Point(844, 183);
             cBStatus.Margin = new Padding(4, 5, 4, 5);
             cBStatus.Name = "cBStatus";
             cBStatus.Size = new Size(195, 33);
@@ -426,7 +462,7 @@
             // 
             lb.AutoSize = true;
             lb.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            lb.Location = new Point(475, 105);
+            lb.Location = new Point(778, 117);
             lb.Margin = new Padding(4, 0, 4, 0);
             lb.Name = "lb";
             lb.Size = new Size(29, 25);
@@ -436,7 +472,7 @@
             // txtCccd
             // 
             txtCccd.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtCccd.Location = new Point(541, 98);
+            txtCccd.Location = new Point(844, 110);
             txtCccd.Margin = new Padding(4, 5, 4, 5);
             txtCccd.Name = "txtCccd";
             txtCccd.Size = new Size(195, 32);
@@ -447,7 +483,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(451, 253);
+            label10.Location = new Point(754, 265);
             label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
             label10.Size = new Size(48, 25);
@@ -458,7 +494,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(54, 174);
+            label8.Location = new Point(357, 186);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new Size(66, 25);
@@ -470,7 +506,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(35, 248);
+            label7.Location = new Point(338, 260);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(79, 25);
@@ -481,7 +517,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(447, 316);
+            label4.Location = new Point(750, 328);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(52, 25);
@@ -491,7 +527,7 @@
             // label3
             // 
             label3.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(25, 101);
+            label3.Location = new Point(328, 113);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(117, 28);
@@ -502,7 +538,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(100, 42);
+            label2.Location = new Point(403, 54);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(28, 25);
@@ -523,7 +559,7 @@
             // pBEmp
             // 
             pBEmp.Image = (Image)resources.GetObject("pBEmp.Image");
-            pBEmp.Location = new Point(1052, 71);
+            pBEmp.Location = new Point(1115, 68);
             pBEmp.Margin = new Padding(4, 5, 4, 5);
             pBEmp.Name = "pBEmp";
             pBEmp.Size = new Size(228, 228);
@@ -534,7 +570,7 @@
             // txtAddress
             // 
             txtAddress.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtAddress.Location = new Point(140, 241);
+            txtAddress.Location = new Point(443, 253);
             txtAddress.Margin = new Padding(4, 5, 4, 5);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(195, 32);
@@ -543,7 +579,7 @@
             // txtPhone
             // 
             txtPhone.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPhone.Location = new Point(140, 173);
+            txtPhone.Location = new Point(443, 185);
             txtPhone.Margin = new Padding(4, 5, 4, 5);
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(195, 32);
@@ -553,7 +589,7 @@
             // txtName
             // 
             txtName.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtName.Location = new Point(140, 98);
+            txtName.Location = new Point(443, 110);
             txtName.Margin = new Padding(4, 5, 4, 5);
             txtName.Name = "txtName";
             txtName.Size = new Size(195, 32);
@@ -563,7 +599,7 @@
             // 
             txtId.Enabled = false;
             txtId.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtId.Location = new Point(140, 38);
+            txtId.Location = new Point(443, 50);
             txtId.Margin = new Padding(4, 5, 4, 5);
             txtId.Multiline = true;
             txtId.Name = "txtId";
@@ -586,16 +622,6 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 85F));
             tableLayoutPanel2.Size = new Size(1541, 411);
             tableLayoutPanel2.TabIndex = 28;
-            // 
-            // btShowSubSalary
-            // 
-            btShowSubSalary.Location = new Point(845, 35);
-            btShowSubSalary.Name = "btShowSubSalary";
-            btShowSubSalary.Size = new Size(113, 42);
-            btShowSubSalary.TabIndex = 56;
-            btShowSubSalary.Text = "Show Sub Salary";
-            btShowSubSalary.UseVisualStyleBackColor = true;
-            btShowSubSalary.Click += btShowSubSalary_Click;
             // 
             // frmShowEmployee
             // 
@@ -671,5 +697,7 @@
         private ComboBox cbRole;
         private Button btSearchButton;
         private Button btShowSubSalary;
+        private Label label1;
+        private TextBox txtDependent;
     }
 }

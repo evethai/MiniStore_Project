@@ -83,6 +83,26 @@ namespace MiniStoreWinF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bell1 {
+            get {
+                object obj = ResourceManager.GetObject("bell1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bell2 {
+            get {
+                object obj = ResourceManager.GetObject("bell2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Custom_Icon_Design_Pretty_Office_7_Calendar_256 {
             get {
                 object obj = ResourceManager.GetObject("Custom_Icon_Design_Pretty_Office_7_Calendar_256", resourceCulture);
@@ -136,6 +156,16 @@ namespace MiniStoreWinF.Properties {
         internal static System.Drawing.Bitmap icons8_home {
             get {
                 object obj = ResourceManager.GetObject("icons8-home", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_load_50___Copy {
+            get {
+                object obj = ResourceManager.GetObject("icons8-load-50 - Copy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

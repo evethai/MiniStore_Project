@@ -90,7 +90,7 @@ namespace MiniStoreWinF.ManageWorkSheets
         {
             string Empty = "";
             if (txtSheetDetail.Text == Empty || txtStartDetails.Text == Empty ||
-                txtEndDetails.Text == Empty || txtDescriptionsDetails.Text == Empty || txtCoefficientsSalaryDetails.Text == Empty)
+                txtEndDetails.Text == Empty || txtCoefficientsSalaryDetails.Text == Empty)
             {
                 MessageBox.Show("Cant Not Update when you dont choise !! ", "Fails", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -115,7 +115,7 @@ namespace MiniStoreWinF.ManageWorkSheets
         {
             string Empty = "";
             if (txtSheetDetail.Text == Empty ||
-                txtStartDetails.Text == Empty || txtEndDetails.Text == Empty || txtDescriptionsDetails.Text == Empty
+                txtStartDetails.Text == Empty || txtEndDetails.Text == Empty 
                 || txtCoefficientsSalaryDetails.Text == Empty)
             {
                 MessageBox.Show("Can't Create when empty ", "Fails", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -147,7 +147,7 @@ namespace MiniStoreWinF.ManageWorkSheets
             txtSheetDetail.Text = Empty;
             txtStartDetails.Text = Empty;
             txtEndDetails.Text = Empty;
-            txtDescriptionsDetails.Text = Empty;
+            
             txtCoefficientsSalaryDetails.Text = Empty;
         }
         private void txtSheetDetail_KeyPress(object sender, KeyPressEventArgs e)
@@ -160,32 +160,11 @@ namespace MiniStoreWinF.ManageWorkSheets
 
         private void txtStartDetails_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsDigit(e.KeyChar) || e.KeyChar == ':' || e.KeyChar == '\b')
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                // Cho phép người dùng nhập giá trị
-                e.Handled = false;
-            }
-            else
-            {
-                // Không cho phép người dùng nhập giá trị
-                e.Handled = true;
+                e.Handled = true; // Ignore non-digit and non-control key presses
             }
         }
-
-        private void txtEndDetails_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsDigit(e.KeyChar) || e.KeyChar == ':' || e.KeyChar == '\b')
-            {
-                // Cho phép người dùng nhập giá trị
-                e.Handled = false;
-            }
-            else
-            {
-                // Không cho phép người dùng nhập giá trị
-                e.Handled = true;
-            }
-        }
-
         private void btReset_Click(object sender, EventArgs e)
         {
             ResetData();
@@ -193,13 +172,43 @@ namespace MiniStoreWinF.ManageWorkSheets
 
         private void dgvDetailWorksheet_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 5)
+            if (e.ColumnIndex == 4)
             {
                 if (e.Value != null && e.Value is bool)
                 {
                     bool value = (bool)e.Value;
                     e.Value = value ? "Yes" : "No";
                     e.FormattingApplied = true;
+                }
+            }
+        }
+
+        private void txtStartDetails_TextChanged(object sender, EventArgs e)
+        {
+            if (txtStartDetails.Text.Length >= 6)
+            {
+                // Extract the hour, minute, and second parts from the TextBox text
+                string hourPart = txtStartDetails.Text.Substring(0, 2);
+                string minutePart = txtStartDetails.Text.Substring(2, 2);
+                string secondPart = txtStartDetails.Text.Substring(4, 2);
+
+                // Combine the parts into a time string
+                string timeString = $"{hourPart}:{minutePart}:{secondPart}";
+
+                // Parse the time string into a TimeSpan
+                if (TimeSpan.TryParse(timeString, out TimeSpan parsedTime))
+                {
+                    // Ensure that the hour value does not exceed 24
+                    if (parsedTime.Hours >= 24)
+                    {
+                        parsedTime = new TimeSpan(23, parsedTime.Minutes, parsedTime.Seconds);
+                    }
+
+                    // Format the TimeSpan in the desired format
+                    string formattedTime = parsedTime.ToString(@"hh\:mm\:ss"); // e.g., 05:30:00
+
+                    // Update the TextBox text with the formatted time
+                    txtStartDetails.Text = formattedTime;
                 }
             }
         }

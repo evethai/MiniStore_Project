@@ -58,8 +58,6 @@
             btUsingVoucher = new Button();
             panel7 = new Panel();
             txtScanVoucher = new TextBox();
-            btUsingVoucher = new Button();
-            txtScanVoucher = new TextBox();
             lblVoucher = new Label();
             btUsingPoint = new Button();
             btCheckMember = new Button();
@@ -247,7 +245,7 @@
             cbSort.Location = new Point(317, 84);
             cbSort.Margin = new Padding(4);
             cbSort.Name = "cbSort";
-            cbSort.Size = new Size(202, 29);
+            cbSort.Size = new Size(202, 36);
             cbSort.TabIndex = 13;
             cbSort.SelectedIndexChanged += cbSort_SelectedIndexChanged;
             // 
@@ -258,7 +256,7 @@
             label2.Location = new Point(234, 94);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(58, 15);
+            label2.Size = new Size(75, 20);
             label2.TabIndex = 12;
             label2.Text = "Sort  EXP:";
             // 
@@ -283,7 +281,7 @@
             cbTypeProducts.Location = new Point(81, 84);
             cbTypeProducts.Margin = new Padding(4);
             cbTypeProducts.Name = "cbTypeProducts";
-            cbTypeProducts.Size = new Size(135, 29);
+            cbTypeProducts.Size = new Size(135, 36);
             cbTypeProducts.TabIndex = 11;
             cbTypeProducts.SelectedIndexChanged += cbTypeProducts_SelectedIndexChanged;
             // 
@@ -292,7 +290,7 @@
             txtSearchName.Location = new Point(146, 19);
             txtSearchName.Margin = new Padding(4);
             txtSearchName.Name = "txtSearchName";
-            txtSearchName.Size = new Size(283, 29);
+            txtSearchName.Size = new Size(283, 34);
             txtSearchName.TabIndex = 1;
             // 
             // lblType
@@ -324,14 +322,6 @@
             // 
             // panel5
             // 
-            panel5.Controls.Add(btUsingPoint);
-            panel5.Controls.Add(txtPointUsing);
-            panel5.Controls.Add(label3);
-            panel5.Controls.Add(txtLoyaltyPoint);
-            panel5.Controls.Add(lb);
-            panel5.Controls.Add(btUsingVoucher);
-            panel5.Controls.Add(txtScanVoucher);
-            panel5.Controls.Add(btCheckMember);
             panel5.Controls.Add(tableLayoutPanel6);
             panel5.Controls.Add(panel2);
             panel5.Dock = DockStyle.Fill;
@@ -378,7 +368,7 @@
             txtPointUsing.Location = new Point(141, 32);
             txtPointUsing.Margin = new Padding(4);
             txtPointUsing.Name = "txtPointUsing";
-            txtPointUsing.Size = new Size(206, 29);
+            txtPointUsing.Size = new Size(206, 34);
             txtPointUsing.TabIndex = 27;
             txtPointUsing.KeyPress += txtPointUsing_KeyPress;
             // 
@@ -389,7 +379,7 @@
             label3.Location = new Point(28, 46);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(71, 15);
+            label3.Size = new Size(91, 20);
             label3.TabIndex = 26;
             label3.Text = "Point Using:";
             // 
@@ -409,7 +399,7 @@
             txtLoyaltyPoint.Margin = new Padding(4);
             txtLoyaltyPoint.Name = "txtLoyaltyPoint";
             txtLoyaltyPoint.ReadOnly = true;
-            txtLoyaltyPoint.Size = new Size(206, 29);
+            txtLoyaltyPoint.Size = new Size(206, 34);
             txtLoyaltyPoint.TabIndex = 23;
             // 
             // lb
@@ -419,7 +409,7 @@
             lb.Location = new Point(28, 45);
             lb.Margin = new Padding(4, 0, 4, 0);
             lb.Name = "lb";
-            lb.Size = new Size(84, 15);
+            lb.Size = new Size(108, 20);
             lb.TabIndex = 22;
             lb.Text = "Loyalty points:";
             // 
@@ -451,42 +441,22 @@
             // 
             // txtScanVoucher
             // 
-            txtScanVoucher.Location = new Point(141, 33);
-            txtScanVoucher.Margin = new Padding(4);
-            txtScanVoucher.Name = "txtScanVoucher";
-            txtScanVoucher.Size = new Size(206, 29);
-            txtScanVoucher.TabIndex = 20;
-            // 
-            // lblVoucher
-            // 
-            btUsingVoucher.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btUsingVoucher.Image = (Image)resources.GetObject("btUsingVoucher.Image");
-            btUsingVoucher.ImageAlign = ContentAlignment.TopCenter;
-            btUsingVoucher.Location = new Point(419, 5);
-            btUsingVoucher.Margin = new Padding(4);
-            btUsingVoucher.Name = "btUsingVoucher";
-            btUsingVoucher.Size = new Size(114, 67);
-            btUsingVoucher.TabIndex = 19;
-            btUsingVoucher.Text = "Use voucher";
-            btUsingVoucher.TextAlign = ContentAlignment.BottomCenter;
-            btUsingVoucher.UseVisualStyleBackColor = true;
-            btUsingVoucher.Click += btUsingVoucher_Click;
-            lblVoucher.AutoSize = true;
-            lblVoucher.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblVoucher.Location = new Point(28, 47);
-            lblVoucher.Margin = new Padding(4, 0, 4, 0);
-            lblVoucher.Name = "lblVoucher";
-            lblVoucher.Size = new Size(58, 15);
-            lblVoucher.TabIndex = 13;
-            lblVoucher.Text = "Vourcher:";
-            // 
-            // txtScanVoucher
-            // 
             txtScanVoucher.Location = new Point(187, 24);
             txtScanVoucher.Margin = new Padding(4);
             txtScanVoucher.Name = "txtScanVoucher";
             txtScanVoucher.Size = new Size(206, 34);
             txtScanVoucher.TabIndex = 20;
+            // 
+            // lblVoucher
+            // 
+            lblVoucher.AutoSize = true;
+            lblVoucher.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            lblVoucher.Location = new Point(28, 47);
+            lblVoucher.Margin = new Padding(4, 0, 4, 0);
+            lblVoucher.Name = "lblVoucher";
+            lblVoucher.Size = new Size(77, 20);
+            lblVoucher.TabIndex = 13;
+            lblVoucher.Text = "Vourcher:";
             // 
             // btUsingPoint
             // 
@@ -537,7 +507,7 @@
             rdCashpayment.Location = new Point(370, 21);
             rdCashpayment.Margin = new Padding(4);
             rdCashpayment.Name = "rdCashpayment";
-            rdCashpayment.Size = new Size(127, 25);
+            rdCashpayment.Size = new Size(156, 32);
             rdCashpayment.TabIndex = 1;
             rdCashpayment.TabStop = true;
             rdCashpayment.Text = "Cash payment";
@@ -550,11 +520,12 @@
             rdMomopayment.Location = new Point(26, 21);
             rdMomopayment.Margin = new Padding(4);
             rdMomopayment.Name = "rdMomopayment";
-            rdMomopayment.Size = new Size(139, 25);
+            rdMomopayment.Size = new Size(174, 32);
             rdMomopayment.TabIndex = 0;
             rdMomopayment.TabStop = true;
             rdMomopayment.Text = "Momo payment";
             rdMomopayment.UseVisualStyleBackColor = true;
+            rdMomopayment.MouseClick += rdMomopayment_Click;
             // 
             // panel6
             // 
@@ -583,7 +554,7 @@
             cbUnitQuantity.Location = new Point(187, 118);
             cbUnitQuantity.Margin = new Padding(4);
             cbUnitQuantity.Name = "cbUnitQuantity";
-            cbUnitQuantity.Size = new Size(166, 29);
+            cbUnitQuantity.Size = new Size(166, 36);
             cbUnitQuantity.TabIndex = 14;
             cbUnitQuantity.SelectedIndexChanged += cbUnitQuantity_SelectedIndexChanged;
             // 
@@ -594,7 +565,7 @@
             label1.Location = new Point(26, 129);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(32, 15);
+            label1.Size = new Size(42, 20);
             label1.TabIndex = 13;
             label1.Text = "Unit:";
             // 
@@ -638,7 +609,7 @@
             txtNameOrder.Margin = new Padding(4);
             txtNameOrder.Name = "txtNameOrder";
             txtNameOrder.ReadOnly = true;
-            txtNameOrder.Size = new Size(284, 29);
+            txtNameOrder.Size = new Size(284, 34);
             txtNameOrder.TabIndex = 0;
             // 
             // lblName
@@ -657,7 +628,7 @@
             txtQuantityOrder.Location = new Point(187, 64);
             txtQuantityOrder.Margin = new Padding(4);
             txtQuantityOrder.Name = "txtQuantityOrder";
-            txtQuantityOrder.Size = new Size(168, 29);
+            txtQuantityOrder.Size = new Size(168, 34);
             txtQuantityOrder.TabIndex = 10;
             txtQuantityOrder.TextAlign = HorizontalAlignment.Center;
             txtQuantityOrder.Value = new decimal(new int[] { 1, 0, 0, 0 });
@@ -668,7 +639,7 @@
             txtPriceOrder.Margin = new Padding(4);
             txtPriceOrder.Name = "txtPriceOrder";
             txtPriceOrder.ReadOnly = true;
-            txtPriceOrder.Size = new Size(284, 29);
+            txtPriceOrder.Size = new Size(284, 34);
             txtPriceOrder.TabIndex = 2;
             // 
             // lblPrice
@@ -761,7 +732,7 @@
             txtReturnPayment.Margin = new Padding(4);
             txtReturnPayment.Name = "txtReturnPayment";
             txtReturnPayment.ReadOnly = true;
-            txtReturnPayment.Size = new Size(238, 29);
+            txtReturnPayment.Size = new Size(238, 34);
             txtReturnPayment.TabIndex = 26;
             // 
             // txtProvidesCash
@@ -770,7 +741,7 @@
             txtProvidesCash.Location = new Point(150, 16);
             txtProvidesCash.Margin = new Padding(4);
             txtProvidesCash.Name = "txtProvidesCash";
-            txtProvidesCash.Size = new Size(238, 29);
+            txtProvidesCash.Size = new Size(238, 34);
             txtProvidesCash.TabIndex = 25;
             // 
             // lblReturnChange
@@ -781,7 +752,7 @@
             lblReturnChange.Location = new Point(25, 72);
             lblReturnChange.Margin = new Padding(4, 0, 4, 0);
             lblReturnChange.Name = "lblReturnChange";
-            lblReturnChange.Size = new Size(95, 15);
+            lblReturnChange.Size = new Size(123, 20);
             lblReturnChange.TabIndex = 24;
             lblReturnChange.Text = "Return Payment:";
             // 
@@ -793,7 +764,7 @@
             lblCustomerProvidesCash.Location = new Point(25, 24);
             lblCustomerProvidesCash.Margin = new Padding(4, 0, 4, 0);
             lblCustomerProvidesCash.Name = "lblCustomerProvidesCash";
-            lblCustomerProvidesCash.Size = new Size(82, 15);
+            lblCustomerProvidesCash.Size = new Size(106, 20);
             lblCustomerProvidesCash.TabIndex = 23;
             lblCustomerProvidesCash.Text = "Provides cash:";
             // 
@@ -879,7 +850,7 @@
             txtDiscount.Margin = new Padding(4);
             txtDiscount.Name = "txtDiscount";
             txtDiscount.ReadOnly = true;
-            txtDiscount.Size = new Size(238, 29);
+            txtDiscount.Size = new Size(238, 34);
             txtDiscount.TabIndex = 28;
             // 
             // label4
@@ -890,7 +861,7 @@
             label4.Location = new Point(25, 36);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(58, 15);
+            label4.Size = new Size(73, 20);
             label4.TabIndex = 27;
             label4.Text = "Discount:";
             // 
@@ -911,7 +882,7 @@
             txtTotalAllOrders.Margin = new Padding(4);
             txtTotalAllOrders.Name = "txtTotalAllOrders";
             txtTotalAllOrders.ReadOnly = true;
-            txtTotalAllOrders.Size = new Size(238, 29);
+            txtTotalAllOrders.Size = new Size(238, 34);
             txtTotalAllOrders.TabIndex = 14;
             // 
             // lblTotal
@@ -922,7 +893,7 @@
             lblTotal.Location = new Point(25, 35);
             lblTotal.Margin = new Padding(4, 0, 4, 0);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(39, 15);
+            lblTotal.Size = new Size(50, 20);
             lblTotal.TabIndex = 15;
             lblTotal.Text = "Total :";
             // 
@@ -977,7 +948,7 @@
             // 
             // OrderProducts
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1924, 1044);
             Controls.Add(pnlAll);
