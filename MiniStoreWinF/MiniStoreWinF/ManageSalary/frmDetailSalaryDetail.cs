@@ -203,7 +203,88 @@ namespace MiniStoreWinF.ManageSalary
 
         }
 
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Only for excel Microsoft offical!", "Messages", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    string id = ContextScope.currentSalary.IdEmp;
+                    _salaryService = new SalaryService();
+                    var sa = _salaryService.GetAll().Where(p=>p.IdSalary.Equals(id)).FirstOrDefault();
+                    Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+                    excel.Visible = true;
+                    Microsoft.Office.Interop.Excel.Workbook xlWbook;
+                    Microsoft.Office.Interop.Excel.Worksheet xlWsheet, xlWsheet2, xlWsheet3;
+                    object data = System.Reflection.Missing.Value;
+                    xlWbook = excel.Workbooks.Add(data);
 
+                    xlWsheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWbook.Worksheets.Add();
+                    xlWsheet.Name = "Salary";
+                    xlWsheet.Cells[1, 1].Value = "Name";
+                    xlWsheet.Cells[1, 2].Value = "Number hour";
+                    xlWsheet.Cells[1, 3].Value = "Money of each(hour)";
+                    xlWsheet.Cells[1, 4].Value = "Salary by hour";
+                    xlWsheet.Cells[1, 5].Value = "Sub salary";
+                    xlWsheet.Cells[1, 6].Value = "Basic salary";
+                    xlWsheet.Cells[1, 7].Value = "Salary befor tax";
+                    xlWsheet.Cells[1, 8].Value = "Income tax";
+                    xlWsheet.Cells[1, 9].Value = "Advance salary";
+                    xlWsheet.Cells[1, 10].Value = "Final salary";
+                    xlWsheet.Cells[1, 11].Value = "Time";
+                    //
+                    xlWsheet.Cells[2, 1].Value = sa.IdEmp;
+                    xlWsheet.Cells[2, 2].Value = "Number hour";
+                    xlWsheet.Cells[2, 3].Value = "Money of each(hour)";
+                    xlWsheet.Cells[2, 4].Value = sa.SalaryByHour;
+                    xlWsheet.Cells[2, 5].Value = sa.SubSalary;
+                    xlWsheet.Cells[2, 6].Value = sa.BasicSalary;
+                    xlWsheet.Cells[2, 7].Value = sa.SalaryBeforTax;
+                    xlWsheet.Cells[2, 8].Value = sa.Tax;
+                    xlWsheet.Cells[2, 9].Value = sa.AdvSalary;
+                    xlWsheet.Cells[2, 10].Value = sa.FinalSalary;
+                    xlWsheet.Cells[2, 10].Value = sa.DateImonth.Month;
+
+
+
+
+                    xlWsheet2 = (Microsoft.Office.Interop.Excel.Worksheet)xlWbook.Worksheets.Add();
+                    xlWsheet2.Name = "Detail";
+                    xlWsheet2.Cells[1, 1].Value = "Basic salary";
+                    xlWsheet2.Cells[1, 2].Value = "Social insurace";
+                    xlWsheet2.Cells[1, 3].Value = "Health insurace";
+                    xlWsheet2.Cells[1, 4].Value = "Unemployment insurace";
+                    xlWsheet2.Cells[1, 5].Value = "Befor tax";
+                    xlWsheet2.Cells[1, 6].Value = "Reduce your family situation";
+                    xlWsheet2.Cells[1, 7].Value = "Reducing dependents' family circumstances";
+                    xlWsheet2.Cells[1, 8].Value = "Income tax";
+                    xlWsheet2.Cells[1, 9].Value = "Personal income tax";
+                    xlWsheet2.Cells[1, 9].Value = "Final salary";
+
+
+                    xlWsheet3 = (Microsoft.Office.Interop.Excel.Worksheet)xlWbook.Worksheets.Add();
+                    xlWsheet3.Name = "Tax";
+                    xlWsheet3.Cells[1, 1].Value = "0 - 5";
+                    xlWsheet3.Cells[1, 2].Value = "5 - 10";
+                    xlWsheet3.Cells[1, 3].Value = "10 - 18";
+                    xlWsheet3.Cells[1, 4].Value = "18 - 32";
+                    xlWsheet3.Cells[1, 5].Value = "32 - 52";
+                    xlWsheet3.Cells[1, 6].Value = "52 - 80";
+                    xlWsheet3.Cells[1, 7].Value = "80 more";
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + "Can not find Microsoft offical in you device!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            else
+            {
+                return;
+            }
+        }
 
     }
 

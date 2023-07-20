@@ -39,6 +39,7 @@
             txtName = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
+            btnExport = new Button();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel2 = new Panel();
             tableLayoutPanel3 = new TableLayoutPanel();
@@ -192,6 +193,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnExport);
             panel1.Controls.Add(txtName);
             panel1.Controls.Add(txtTime);
             panel1.Dock = DockStyle.Fill;
@@ -199,6 +201,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1123, 52);
             panel1.TabIndex = 9;
+            // 
+            // btnExport
+            // 
+            btnExport.Location = new Point(938, 8);
+            btnExport.Name = "btnExport";
+            btnExport.Size = new Size(176, 35);
+            btnExport.TabIndex = 8;
+            btnExport.Text = "Export file";
+            btnExport.UseVisualStyleBackColor = true;
+            btnExport.Click += btnExport_Click;
             // 
             // tableLayoutPanel2
             // 
@@ -353,7 +365,7 @@
             bhyt.Name = "bhyt";
             bhyt.Size = new Size(302, 51);
             bhyt.TabIndex = 0;
-            bhyt.Text = "Health Insurance";
+            bhyt.Text = "Health insurance";
             bhyt.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // bhtn
@@ -857,5 +869,6 @@
         private Label lbl25p;
         private Label lbl30p;
         private Label lbl35p;
+        private Button btnExport;
     }
 }

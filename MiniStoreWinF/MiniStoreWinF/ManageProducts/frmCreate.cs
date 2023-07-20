@@ -30,7 +30,7 @@ namespace MiniStoreWinF.ManageProducts
         public frmCreate()
         {
             InitializeComponent();
-            
+
         }
 
         private int formIndex = 0;
@@ -103,7 +103,7 @@ namespace MiniStoreWinF.ManageProducts
             }
 
             LoadForm();
-            
+
 
         }
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -155,13 +155,13 @@ namespace MiniStoreWinF.ManageProducts
                 pbNext.Visible = true;
                 BtAdd.Visible = false;
             }
-           
+
 
             RestoreFormData();
         }
         private void RestoreFormData()
         {
-            
+
             if (currentForm != null)
             {
                 if (currentForm is ManageProducts.frmCreateProduct)
@@ -188,7 +188,7 @@ namespace MiniStoreWinF.ManageProducts
                     unitForm.textBoxUnitData3.Text = FormDataStorage.CreateUnit.PriceImport.ToString();
                     unitForm.textBoxUnitData4.Text = FormDataStorage.CreateUnit.PriceExport.ToString();
                     unitForm.UpdateSKUComboBox();
-                   
+
                 }
                 else if (currentForm is ManageProducts.frmCreateSupplier)
                 {
@@ -197,7 +197,7 @@ namespace MiniStoreWinF.ManageProducts
                     supplierForm.textBoxSupplierData1.Text = FormDataStorage.CreateSupplier.Address;
                     supplierForm.textBoxSupplierData2.Text = FormDataStorage.CreateSupplier.note;
 
-                    
+
                 }
             }
         }
@@ -223,7 +223,7 @@ namespace MiniStoreWinF.ManageProducts
             FormDataStorage.CreateSupplier.ProductData = null;
             FormDataStorage.CreateSupplier.note = null;
             FormDataStorage.CreateSupplier.Address = null;
-            
+
         }
         public string autoIDSup(string id)
         {
@@ -278,7 +278,7 @@ namespace MiniStoreWinF.ManageProducts
             FormDataStorage.CreateProductData.DateImport = default;
             FormDataStorage.CreateProductData.picture = default;
 
-            
+
             FormDataStorage.CreateUnit.NameUnit = default;
             FormDataStorage.CreateUnit.Quantity = 0;
             FormDataStorage.CreateUnit.PriceImport = default;
@@ -298,7 +298,7 @@ namespace MiniStoreWinF.ManageProducts
             FormDataStorage.CreateSupplier.Address = "";
 
         }
-        
+
         private void BtAdd_Click(object sender, EventArgs e)
         {
             _AddPro = new ProductService();
@@ -316,7 +316,7 @@ namespace MiniStoreWinF.ManageProducts
                 var _autoid2 = _IdUnit.GetAll().ToList().Select(c => c.IdUnit).Max();
                 string nextid = autoIDUnit(_autoid2);
                 newUnit.IdUnit = nextid;
-                
+
                 if (currentForm != null)
                 {
                     if (currentForm is ManageProducts.frmCreateUnit)
@@ -336,10 +336,11 @@ namespace MiniStoreWinF.ManageProducts
                                  )
                         {
                             MessageBox.Show("Not Be Empty or Invalid Value");
-                        }else
+                        }
+                        else
                         {
                             newUnit.QuantityUnit = Convert.ToInt32(supplierunit.textBoxUnitData2.Value);
-                            newUnit.PriceExport = price ;
+                            newUnit.PriceExport = price;
                             newUnit.PriceImport = price1;
                             _AddUnit.Create(newUnit);
                             MessageBox.Show("Data added successfully!");
@@ -360,14 +361,14 @@ namespace MiniStoreWinF.ManageProducts
                                 {
                                     var unitForm1 = (ManageProducts.frmCreateUnit)currentForm;
                                     unitForm1.btClear_Click(sender, e);
-                                    unitForm1.loadUnit(sender,e);
+                                    unitForm1.loadUnit(sender, e);
                                 }
                             }
                         }
-                       
+
                     }
                 }
-                
+
             }
             else if (FormDataStorage.CreateSupplier.ProductData == "" && FormDataStorage.CreateSupplier.note == ""
                 && FormDataStorage.CreateSupplier.Address == "")
@@ -440,7 +441,8 @@ namespace MiniStoreWinF.ManageProducts
                                 )
                         {
                             MessageBox.Show("Not Be Empty or Invalid Value");
-                        }else if (FormDataStorage.CreateProductData.MFG > FormDataStorage.CreateProductData.EXP)
+                        }
+                        else if (FormDataStorage.CreateProductData.MFG > FormDataStorage.CreateProductData.EXP)
                         {
                             MessageBox.Show("EXP must be greater than MFG");
                         }
@@ -480,8 +482,8 @@ namespace MiniStoreWinF.ManageProducts
                 }
 
             }
-            else if (FormDataStorage.CreateSupplier.ProductData != "" && FormDataStorage.CreateSupplier.Address!=""
-                && FormDataStorage.CreateSupplier.note !="")
+            else if (FormDataStorage.CreateSupplier.ProductData != "" && FormDataStorage.CreateSupplier.Address != ""
+                && FormDataStorage.CreateSupplier.note != "")
             {
                 //Thực hiện thêm dữ liệu vào bảng Supplier
                 Supplier newSupplier = new Supplier();
@@ -493,7 +495,7 @@ namespace MiniStoreWinF.ManageProducts
                 newSupplier.AddressSupplier = FormDataStorage.CreateSupplier.Address;
                 newSupplier.Note = FormDataStorage.CreateSupplier.note;
 
-               
+
 
                 //Thêm dữ liệu vào bảng Product
                 Product newProduct = new Product();
@@ -533,7 +535,7 @@ namespace MiniStoreWinF.ManageProducts
                 {
                     newProduct.PictureProduct = ImageToBase64(FormDataStorage.CreateProductData.Path);
                 }
-                 // Thực hiện thêm dữ liệu vào bảng Product
+                // Thực hiện thêm dữ liệu vào bảng Product
 
                 // Thêm dữ liệu vào bảng Unit
 
@@ -603,18 +605,18 @@ namespace MiniStoreWinF.ManageProducts
                     }
                 }
 
-              
+
 
             }
-            else 
+            else
             {
                 MessageBox.Show("Not Created!");
             }
 
-            
-            
+
+
         }
 
-       
+
     }
 }

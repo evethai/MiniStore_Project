@@ -622,7 +622,7 @@
             // 
             // frmMainScreen
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(1638, 1025);
@@ -636,6 +636,7 @@
             Margin = new Padding(4);
             Name = "frmMainScreen";
             StartPosition = FormStartPosition.CenterScreen;
+            Text = "Mini Store";
             WindowState = FormWindowState.Maximized;
             Load += frmMainScreen_Load;
             flowPanel.ResumeLayout(false);

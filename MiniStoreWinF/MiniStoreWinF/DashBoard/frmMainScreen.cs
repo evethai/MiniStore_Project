@@ -143,13 +143,13 @@ namespace MiniStoreWinF.DashBoard
                         {
                             CheckWorkSheet.TimeCheckOut = now;
                             CheckWorkSheet.Status = true;
-                            if(DateTime.Now.DayOfWeek == DayOfWeek.Sunday)
+                            if (DateTime.Now.DayOfWeek == DayOfWeek.Sunday)
                             {
                                 CheckWorkSheet.SundayCoefficient = 0.5;
                             }
                             else
                             {
-                                CheckWorkSheet.SundayCoefficient = 0; 
+                                CheckWorkSheet.SundayCoefficient = 0;
                             }
                             _workSheetService.Update(CheckWorkSheet);
                             MessageBox.Show("You have successfully checked-out at " + now, "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);

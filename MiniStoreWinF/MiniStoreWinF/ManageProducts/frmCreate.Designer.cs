@@ -42,19 +42,21 @@
             // 
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Location = new Point(50, 22);
+            tableLayoutPanel1.Location = new Point(69, 28);
+            tableLayoutPanel1.Margin = new Padding(5, 4, 5, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(407, 554);
+            tableLayoutPanel1.Size = new Size(559, 693);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // pbNext
             // 
             pbNext.Image = (Image)resources.GetObject("pbNext.Image");
-            pbNext.Location = new Point(383, 582);
+            pbNext.Location = new Point(526, 728);
+            pbNext.Margin = new Padding(5, 4, 5, 4);
             pbNext.Name = "pbNext";
-            pbNext.Size = new Size(74, 37);
+            pbNext.Size = new Size(102, 46);
             pbNext.SizeMode = PictureBoxSizeMode.Zoom;
             pbNext.TabIndex = 38;
             pbNext.TabStop = false;
@@ -63,9 +65,10 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(312, 582);
+            pictureBox1.Location = new Point(429, 728);
+            pictureBox1.Margin = new Padding(5, 4, 5, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(74, 37);
+            pictureBox1.Size = new Size(102, 46);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 39;
             pictureBox1.TabStop = false;
@@ -81,9 +84,10 @@
             // 
             // BtAdd
             // 
-            BtAdd.Location = new Point(403, 590);
+            BtAdd.Location = new Point(274, 729);
+            BtAdd.Margin = new Padding(5, 4, 5, 4);
             BtAdd.Name = "BtAdd";
-            BtAdd.Size = new Size(94, 29);
+            BtAdd.Size = new Size(129, 37);
             BtAdd.TabIndex = 40;
             BtAdd.Text = "Create";
             BtAdd.UseVisualStyleBackColor = true;
@@ -92,15 +96,21 @@
             // 
             // frmCreate
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(509, 631);
+            ClientSize = new Size(699, 788);
             Controls.Add(BtAdd);
             Controls.Add(pictureBox1);
             Controls.Add(pbNext);
             Controls.Add(tableLayoutPanel1);
+            Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(5, 4, 5, 4);
+            MaximizeBox = false;
+            MaximumSize = new Size(715, 827);
+            MinimumSize = new Size(715, 827);
             Name = "frmCreate";
-            Text = "frmCreate";
+            Text = "Create";
             FormClosed += frmCreate_FormClosed;
             Load += frmCreate_Load;
             ((System.ComponentModel.ISupportInitialize)pbNext).EndInit();

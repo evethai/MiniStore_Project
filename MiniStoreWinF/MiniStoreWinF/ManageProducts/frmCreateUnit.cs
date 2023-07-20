@@ -35,10 +35,10 @@ namespace MiniStoreWinF.ManageProducts
                 {
                     cbNameUnit.Items.Add(groupName);
                 }
-                
+
             }
         }
-        
+
         public ComboBox textBoxUnitData => cbNameUnit;
         public ComboBox textBoxUnitData1 => cbNameProduct;
         public NumericUpDown textBoxUnitData2 => numericQuantity;
@@ -58,8 +58,8 @@ namespace MiniStoreWinF.ManageProducts
             cbNameProduct.ValueMember = "Sku";
             cbNameProduct.DisplayMember = "NameProduct";
             cbNameProduct.DataSource = showlistpro;
-            txtPriceEx.Text="";
-            txtPriceIm.Text ="";
+            txtPriceEx.Text = "";
+            txtPriceIm.Text = "";
             numericQuantity.Value = 0;
             //cbNameProduct.SelectedIndex = 0;
         }

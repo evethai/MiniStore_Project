@@ -591,11 +591,11 @@ namespace MiniStoreWinF.OrdersProducts
             double total = 0;
             MoMoService _moService = new MoMoService();
             var list = _moService.GetAll().Where(p => p.Active == true).FirstOrDefault();
-            if (txtTotalAllOrders.Text != "" || list != null)
+            if ((txtTotalAllOrders.Text != "" || list != null || txtDiscount.Text != ""))
             {
                 ContextScope.currentMoMo = list;
                 frmQRCode form = new frmQRCode();
-                form.total = Double.Parse(txtTotalAllOrders.Text);
+                form.total = Double.Parse(txtTotalAllOrders.Text) - double.Parse(txtDiscount.Text);
                 form.ShowDialog();
                 btShowBill.Visible = true;
             }

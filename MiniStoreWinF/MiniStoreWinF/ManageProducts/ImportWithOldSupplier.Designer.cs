@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportWithOldSupplier));
             btExport = new Button();
             txtPathToImport = new TextBox();
             btSelect = new Button();
@@ -38,9 +39,10 @@
             // 
             btExport.BackColor = SystemColors.ButtonShadow;
             btExport.ForeColor = SystemColors.ActiveCaptionText;
-            btExport.Location = new Point(12, 23);
+            btExport.Location = new Point(16, 29);
+            btExport.Margin = new Padding(5, 4, 5, 4);
             btExport.Name = "btExport";
-            btExport.Size = new Size(96, 67);
+            btExport.Size = new Size(132, 84);
             btExport.TabIndex = 31;
             btExport.Text = "Export Form";
             btExport.UseVisualStyleBackColor = false;
@@ -48,18 +50,20 @@
             // 
             // txtPathToImport
             // 
-            txtPathToImport.Location = new Point(125, 23);
+            txtPathToImport.Location = new Point(171, 29);
+            txtPathToImport.Margin = new Padding(5, 4, 5, 4);
             txtPathToImport.Name = "txtPathToImport";
-            txtPathToImport.Size = new Size(208, 27);
+            txtPathToImport.Size = new Size(284, 33);
             txtPathToImport.TabIndex = 32;
             // 
             // btSelect
             // 
             btSelect.BackColor = SystemColors.ButtonShadow;
             btSelect.ForeColor = SystemColors.ActiveCaptionText;
-            btSelect.Location = new Point(125, 58);
+            btSelect.Location = new Point(171, 72);
+            btSelect.Margin = new Padding(5, 4, 5, 4);
             btSelect.Name = "btSelect";
-            btSelect.Size = new Size(96, 32);
+            btSelect.Size = new Size(132, 40);
             btSelect.TabIndex = 33;
             btSelect.Text = "Select";
             btSelect.UseVisualStyleBackColor = false;
@@ -69,9 +73,10 @@
             // 
             btImport.BackColor = SystemColors.ButtonShadow;
             btImport.ForeColor = SystemColors.ActiveCaptionText;
-            btImport.Location = new Point(237, 58);
+            btImport.Location = new Point(325, 72);
+            btImport.Margin = new Padding(5, 4, 5, 4);
             btImport.Name = "btImport";
-            btImport.Size = new Size(96, 32);
+            btImport.Size = new Size(132, 40);
             btImport.TabIndex = 34;
             btImport.Text = "Import";
             btImport.UseVisualStyleBackColor = false;
@@ -79,15 +84,21 @@
             // 
             // ImportWithOldSupplier
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(345, 125);
+            ClientSize = new Size(475, 156);
             Controls.Add(btImport);
             Controls.Add(btSelect);
             Controls.Add(txtPathToImport);
             Controls.Add(btExport);
+            Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(5, 4, 5, 4);
+            MaximizeBox = false;
+            MaximumSize = new Size(491, 195);
+            MinimumSize = new Size(491, 195);
             Name = "ImportWithOldSupplier";
-            Text = "ImportWithOldSupplier";
+            Text = "Old supplier";
             ResumeLayout(false);
             PerformLayout();
         }

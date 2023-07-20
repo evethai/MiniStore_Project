@@ -63,7 +63,7 @@ namespace MiniStoreWinF.ManageProducts
                     xlWsheet2.Cells[1, 8].Value = "PictureProduct";
                     xlWsheet2.Cells[1, 9].Value = "StatusP";
 
-                   
+
                 }
                 catch (Exception ex)
                 {
