@@ -36,6 +36,9 @@ namespace API_Database
     partial void InsertSheetDetail(SheetDetail instance);
     partial void UpdateSheetDetail(SheetDetail instance);
     partial void DeleteSheetDetail(SheetDetail instance);
+    partial void InsertSalary(Salary instance);
+    partial void UpdateSalary(Salary instance);
+    partial void DeleteSalary(Salary instance);
     partial void InsertEmployee(Employee instance);
     partial void UpdateEmployee(Employee instance);
     partial void DeleteEmployee(Employee instance);
@@ -81,6 +84,14 @@ namespace API_Database
 			}
 		}
 		
+		public System.Data.Linq.Table<Salary> Salaries
+		{
+			get
+			{
+				return this.GetTable<Salary>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Employee> Employees
 		{
 			get
@@ -112,6 +123,10 @@ namespace API_Database
 		
 		private System.Nullable<System.TimeSpan> _Total_working_hours;
 		
+		private System.Nullable<double> _default_coefficient;
+		
+		private System.Nullable<double> _sunday_coefficient;
+		
 		private EntityRef<SheetDetail> _SheetDetail;
 		
 		private EntityRef<Employee> _Employee;
@@ -136,6 +151,10 @@ namespace API_Database
     partial void OnStatusChanged();
     partial void OnTotal_working_hoursChanging(System.Nullable<System.TimeSpan> value);
     partial void OnTotal_working_hoursChanged();
+    partial void Ondefault_coefficientChanging(System.Nullable<double> value);
+    partial void Ondefault_coefficientChanged();
+    partial void Onsunday_coefficientChanging(System.Nullable<double> value);
+    partial void Onsunday_coefficientChanged();
     #endregion
 		
 		public WorkSheet()
@@ -313,6 +332,46 @@ namespace API_Database
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_default_coefficient", DbType="Float")]
+		public System.Nullable<double> default_coefficient
+		{
+			get
+			{
+				return this._default_coefficient;
+			}
+			set
+			{
+				if ((this._default_coefficient != value))
+				{
+					this.Ondefault_coefficientChanging(value);
+					this.SendPropertyChanging();
+					this._default_coefficient = value;
+					this.SendPropertyChanged("default_coefficient");
+					this.Ondefault_coefficientChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sunday_coefficient", DbType="Float")]
+		public System.Nullable<double> sunday_coefficient
+		{
+			get
+			{
+				return this._sunday_coefficient;
+			}
+			set
+			{
+				if ((this._sunday_coefficient != value))
+				{
+					this.Onsunday_coefficientChanging(value);
+					this.SendPropertyChanging();
+					this._sunday_coefficient = value;
+					this.SendPropertyChanged("sunday_coefficient");
+					this.Onsunday_coefficientChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SheetDetail_WorkSheet", Storage="_SheetDetail", ThisKey="Sheet", OtherKey="Sheet", IsForeignKey=true)]
 		public SheetDetail SheetDetail
 		{
@@ -410,8 +469,6 @@ namespace API_Database
 		
 		private int _Sheet;
 		
-		private string _DescriptionS;
-		
 		private System.Nullable<double> _CoefficientsSalary;
 		
 		private System.Nullable<System.TimeSpan> _ShiftStartTime;
@@ -430,8 +487,6 @@ namespace API_Database
     partial void OnCreated();
     partial void OnSheetChanging(int value);
     partial void OnSheetChanged();
-    partial void OnDescriptionSChanging(string value);
-    partial void OnDescriptionSChanged();
     partial void OnCoefficientsSalaryChanging(System.Nullable<double> value);
     partial void OnCoefficientsSalaryChanged();
     partial void OnShiftStartTimeChanging(System.Nullable<System.TimeSpan> value);
@@ -466,26 +521,6 @@ namespace API_Database
 					this._Sheet = value;
 					this.SendPropertyChanged("Sheet");
 					this.OnSheetChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DescriptionS", DbType="NVarChar(50)")]
-		public string DescriptionS
-		{
-			get
-			{
-				return this._DescriptionS;
-			}
-			set
-			{
-				if ((this._DescriptionS != value))
-				{
-					this.OnDescriptionSChanging(value);
-					this.SendPropertyChanging();
-					this._DescriptionS = value;
-					this.SendPropertyChanged("DescriptionS");
-					this.OnDescriptionSChanged();
 				}
 			}
 		}
@@ -636,6 +671,349 @@ namespace API_Database
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Salary")]
+	public partial class Salary : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _IdSalary;
+		
+		private string _IdEmp;
+		
+		private System.Nullable<double> _SalaryByHour;
+		
+		private System.Nullable<double> _SubSalary;
+		
+		private double _BasicSalary;
+		
+		private double _SalaryBeforTax;
+		
+		private double _Tax;
+		
+		private System.Nullable<double> _AdvSalary;
+		
+		private System.Nullable<double> _FinalSalary;
+		
+		private System.DateTime _DateImonth;
+		
+		private System.DateTime _DateOmonth;
+		
+		private EntityRef<Employee> _Employee;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdSalaryChanging(string value);
+    partial void OnIdSalaryChanged();
+    partial void OnIdEmpChanging(string value);
+    partial void OnIdEmpChanged();
+    partial void OnSalaryByHourChanging(System.Nullable<double> value);
+    partial void OnSalaryByHourChanged();
+    partial void OnSubSalaryChanging(System.Nullable<double> value);
+    partial void OnSubSalaryChanged();
+    partial void OnBasicSalaryChanging(double value);
+    partial void OnBasicSalaryChanged();
+    partial void OnSalaryBeforTaxChanging(double value);
+    partial void OnSalaryBeforTaxChanged();
+    partial void OnTaxChanging(double value);
+    partial void OnTaxChanged();
+    partial void OnAdvSalaryChanging(System.Nullable<double> value);
+    partial void OnAdvSalaryChanged();
+    partial void OnFinalSalaryChanging(System.Nullable<double> value);
+    partial void OnFinalSalaryChanged();
+    partial void OnDateImonthChanging(System.DateTime value);
+    partial void OnDateImonthChanged();
+    partial void OnDateOmonthChanging(System.DateTime value);
+    partial void OnDateOmonthChanged();
+    #endregion
+		
+		public Salary()
+		{
+			this._Employee = default(EntityRef<Employee>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdSalary", DbType="NVarChar(20) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string IdSalary
+		{
+			get
+			{
+				return this._IdSalary;
+			}
+			set
+			{
+				if ((this._IdSalary != value))
+				{
+					this.OnIdSalaryChanging(value);
+					this.SendPropertyChanging();
+					this._IdSalary = value;
+					this.SendPropertyChanged("IdSalary");
+					this.OnIdSalaryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdEmp", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		public string IdEmp
+		{
+			get
+			{
+				return this._IdEmp;
+			}
+			set
+			{
+				if ((this._IdEmp != value))
+				{
+					if (this._Employee.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIdEmpChanging(value);
+					this.SendPropertyChanging();
+					this._IdEmp = value;
+					this.SendPropertyChanged("IdEmp");
+					this.OnIdEmpChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalaryByHour", DbType="Float")]
+		public System.Nullable<double> SalaryByHour
+		{
+			get
+			{
+				return this._SalaryByHour;
+			}
+			set
+			{
+				if ((this._SalaryByHour != value))
+				{
+					this.OnSalaryByHourChanging(value);
+					this.SendPropertyChanging();
+					this._SalaryByHour = value;
+					this.SendPropertyChanged("SalaryByHour");
+					this.OnSalaryByHourChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SubSalary", DbType="Float")]
+		public System.Nullable<double> SubSalary
+		{
+			get
+			{
+				return this._SubSalary;
+			}
+			set
+			{
+				if ((this._SubSalary != value))
+				{
+					this.OnSubSalaryChanging(value);
+					this.SendPropertyChanging();
+					this._SubSalary = value;
+					this.SendPropertyChanged("SubSalary");
+					this.OnSubSalaryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BasicSalary", DbType="Float NOT NULL")]
+		public double BasicSalary
+		{
+			get
+			{
+				return this._BasicSalary;
+			}
+			set
+			{
+				if ((this._BasicSalary != value))
+				{
+					this.OnBasicSalaryChanging(value);
+					this.SendPropertyChanging();
+					this._BasicSalary = value;
+					this.SendPropertyChanged("BasicSalary");
+					this.OnBasicSalaryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalaryBeforTax", DbType="Float NOT NULL")]
+		public double SalaryBeforTax
+		{
+			get
+			{
+				return this._SalaryBeforTax;
+			}
+			set
+			{
+				if ((this._SalaryBeforTax != value))
+				{
+					this.OnSalaryBeforTaxChanging(value);
+					this.SendPropertyChanging();
+					this._SalaryBeforTax = value;
+					this.SendPropertyChanged("SalaryBeforTax");
+					this.OnSalaryBeforTaxChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tax", DbType="Float NOT NULL")]
+		public double Tax
+		{
+			get
+			{
+				return this._Tax;
+			}
+			set
+			{
+				if ((this._Tax != value))
+				{
+					this.OnTaxChanging(value);
+					this.SendPropertyChanging();
+					this._Tax = value;
+					this.SendPropertyChanged("Tax");
+					this.OnTaxChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AdvSalary", DbType="Float")]
+		public System.Nullable<double> AdvSalary
+		{
+			get
+			{
+				return this._AdvSalary;
+			}
+			set
+			{
+				if ((this._AdvSalary != value))
+				{
+					this.OnAdvSalaryChanging(value);
+					this.SendPropertyChanging();
+					this._AdvSalary = value;
+					this.SendPropertyChanged("AdvSalary");
+					this.OnAdvSalaryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FinalSalary", DbType="Float")]
+		public System.Nullable<double> FinalSalary
+		{
+			get
+			{
+				return this._FinalSalary;
+			}
+			set
+			{
+				if ((this._FinalSalary != value))
+				{
+					this.OnFinalSalaryChanging(value);
+					this.SendPropertyChanging();
+					this._FinalSalary = value;
+					this.SendPropertyChanged("FinalSalary");
+					this.OnFinalSalaryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateImonth", DbType="Date NOT NULL")]
+		public System.DateTime DateImonth
+		{
+			get
+			{
+				return this._DateImonth;
+			}
+			set
+			{
+				if ((this._DateImonth != value))
+				{
+					this.OnDateImonthChanging(value);
+					this.SendPropertyChanging();
+					this._DateImonth = value;
+					this.SendPropertyChanged("DateImonth");
+					this.OnDateImonthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateOmonth", DbType="Date NOT NULL")]
+		public System.DateTime DateOmonth
+		{
+			get
+			{
+				return this._DateOmonth;
+			}
+			set
+			{
+				if ((this._DateOmonth != value))
+				{
+					this.OnDateOmonthChanging(value);
+					this.SendPropertyChanging();
+					this._DateOmonth = value;
+					this.SendPropertyChanged("DateOmonth");
+					this.OnDateOmonthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Salary", Storage="_Employee", ThisKey="IdEmp", OtherKey="IdEmp", IsForeignKey=true)]
+		public Employee Employee
+		{
+			get
+			{
+				return this._Employee.Entity;
+			}
+			set
+			{
+				Employee previousValue = this._Employee.Entity;
+				if (((previousValue != value) 
+							|| (this._Employee.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Employee.Entity = null;
+						previousValue.Salaries.Remove(this);
+					}
+					this._Employee.Entity = value;
+					if ((value != null))
+					{
+						value.Salaries.Add(this);
+						this._IdEmp = value.IdEmp;
+					}
+					else
+					{
+						this._IdEmp = default(string);
+					}
+					this.SendPropertyChanged("Employee");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Employee")]
 	public partial class Employee : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -668,9 +1046,13 @@ namespace API_Database
 		
 		private string _PictureEmp;
 		
+		private System.Nullable<int> _SNPT;
+		
 		private string _Email;
 		
 		private EntitySet<WorkSheet> _WorkSheets;
+		
+		private EntitySet<Salary> _Salaries;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -702,6 +1084,8 @@ namespace API_Database
     partial void OnIsActiveChanged();
     partial void OnPictureEmpChanging(string value);
     partial void OnPictureEmpChanged();
+    partial void OnSNPTChanging(System.Nullable<int> value);
+    partial void OnSNPTChanged();
     partial void OnEmailChanging(string value);
     partial void OnEmailChanged();
     #endregion
@@ -709,6 +1093,7 @@ namespace API_Database
 		public Employee()
 		{
 			this._WorkSheets = new EntitySet<WorkSheet>(new Action<WorkSheet>(this.attach_WorkSheets), new Action<WorkSheet>(this.detach_WorkSheets));
+			this._Salaries = new EntitySet<Salary>(new Action<Salary>(this.attach_Salaries), new Action<Salary>(this.detach_Salaries));
 			OnCreated();
 		}
 		
@@ -972,7 +1357,27 @@ namespace API_Database
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(50)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SNPT", DbType="Int")]
+		public System.Nullable<int> SNPT
+		{
+			get
+			{
+				return this._SNPT;
+			}
+			set
+			{
+				if ((this._SNPT != value))
+				{
+					this.OnSNPTChanging(value);
+					this.SendPropertyChanging();
+					this._SNPT = value;
+					this.SendPropertyChanged("SNPT");
+					this.OnSNPTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="NVarChar(50)")]
 		public string Email
 		{
 			get
@@ -1005,6 +1410,19 @@ namespace API_Database
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_Salary", Storage="_Salaries", ThisKey="IdEmp", OtherKey="IdEmp")]
+		public EntitySet<Salary> Salaries
+		{
+			get
+			{
+				return this._Salaries;
+			}
+			set
+			{
+				this._Salaries.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1032,6 +1450,18 @@ namespace API_Database
 		}
 		
 		private void detach_WorkSheets(WorkSheet entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employee = null;
+		}
+		
+		private void attach_Salaries(Salary entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employee = this;
+		}
+		
+		private void detach_Salaries(Salary entity)
 		{
 			this.SendPropertyChanging();
 			entity.Employee = null;

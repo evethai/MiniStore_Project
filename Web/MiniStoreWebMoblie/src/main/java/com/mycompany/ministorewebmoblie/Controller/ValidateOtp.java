@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.Objects;
 
 public class ValidateOtp extends HttpServlet {
 
@@ -19,7 +20,7 @@ public class ValidateOtp extends HttpServlet {
         HttpSession session = request.getSession();
         int otp = (int) session.getAttribute("otp");
         String email = (String) session.getAttribute("email");
-        if (email == null || email.equals("")) {
+        if (email == null || email.equals("") || Objects.isNull(otp)) {
             request.setAttribute("errorMessage", "otp đã hết hạn");
             request.getRequestDispatcher("forgot-password.jsp").forward(request, response);
             return;

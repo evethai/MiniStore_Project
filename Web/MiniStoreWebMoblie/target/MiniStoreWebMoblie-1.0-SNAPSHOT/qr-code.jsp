@@ -10,6 +10,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script src="https://unpkg.com/qrcodescanner/dist/qrcodescanner.min.js"></script>
         <link rel="stylesheet" href="CSS/qrcss.css"/>
         <title>QR-page</title>
         <style>
@@ -125,7 +126,7 @@
             <section class="d-flex justify-content-center align-items-center min-vh-100 bg-cover bg-center">
                 <div class="container">
                     <div class="row justify-content-center">
-                        <div class="col-md-5 col-sm-10 col-xs-10">
+                        <div class="col-md-7 col-sm-10 col-xs-10">
                             <br>
                             <h2 name="welcome">Welcome ${fullnameemapi}</h2>
                             <div class="row justify-content-center">
@@ -136,13 +137,20 @@
                                     <input type="submit" id="logoutButton" value="Đăng xuất" style="display: none;">
                                 </form>
                             </div>
-
                             <div class="row justify-content-center">
                                 <form class="col-md-6" style="width: auto !important;" action="Login" method="POST" id="logoutForm">
                                     <input type="button" value="Đăng xuất" class="btn btn-danger loginButton" style="background-color: #dc3545; color: #000000;"  onclick="showLogoutConfirmation()">
                                 </form>
                             </div>
                             <br>
+                            <c:if test="${empty TimeCheckOutapi}">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6 col-sm-6 col-xs-6 card border-2 border-white rounded-3 shadow-lg bg-transparent align-items-center" style="width: auto !important;">
+                                        <p style="color: white">Hôm nay bạn làm ca từ ${startTime}  đến  ${endTime} </p>
+                                    </div>
+                                </div>
+                                <br>
+                            </c:if>
                             <div class="row justify-content-center">
                                 <div class="col-md-6 col-sm-6 col-xs-6 card border-2 border-white rounded-3 shadow-lg bg-transparent align-items-center" style="width: auto !important;">
 
@@ -166,12 +174,19 @@
                                             </c:if>
                                             <c:if test="${not empty TimeCheckOutapi && not empty TimeCheckInapi && empty qrCodeURL}">
                                                 <p style="color: white">Đã hoàn thành ca làm</p>
+
+                                            </c:if>
+                                            <c:if test="${not empty TotalApi}">
+                                                <p style="color: white">Tổng thời gian làm việc hôm nay ${TotalApi}</p>
                                             </c:if>
                                         </c:otherwise>
                                     </c:choose>
 
                                 </div>
                             </div>
+                            <br>
+                            
+
                             <br>
                             <c:if test="${not empty qrCodeURL}">
                                 <div class="row justify-content-center">
@@ -180,8 +195,10 @@
                                     </div>
                                 </div>
                                 <br>
+                                
                             </c:if>
                             <br>
+
                             <h3 name="welcome" style="color: white">Bảng công việc</h3>
                             <!-- Trường nhập liệu ngày bắt đầu -->
                             <form action="ShowList" method="post" onsubmit="return validateDates()">
@@ -225,6 +242,7 @@
                                                 <th scope="col">Date</th>
                                                 <th scope="col">Time Check in</th>
                                                 <th scope="col">Time Check out</th>
+                                                <th scope="col">Total Time</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -233,10 +251,16 @@
                                                     <th scope="row" class="table-light">${status.index + 1}</th>
                                                     <td class="table-info">${worksheet.date}</td>
                                                     <td>${worksheet.timeCheckIn}</td>
-                                                    <c:if test="${worksheet.timeCheckOut != '00:00:00'}">
+                                                    <c:if test="${not empty worksheet.timeCheckOut}">
                                                         <td>${worksheet.timeCheckOut}</td>
                                                     </c:if>
-                                                    <c:if test="${worksheet.timeCheckOut == '00:00:00'}">
+                                                    <c:if test="${empty worksheet.timeCheckOut}">
+                                                        <td class="table-warning">__-__-__</td>
+                                                    </c:if>
+                                                    <c:if test="${not empty worksheet.total}">
+                                                        <td>${worksheet.total}</td>
+                                                    </c:if>
+                                                    <c:if test="${empty worksheet.total}">
                                                         <td class="table-warning">__-__-__</td>
                                                     </c:if>
                                                 </tr>
@@ -245,8 +269,17 @@
                                     </table>
                                 </div>
                             </c:if>
+                            <c:if test="${not empty totalTime }">
+                                <div class="row justify-content-center">
+                                    <div class="col-md-6 col-sm-6 col-xs-6 card border-2 border-white rounded-3 shadow-lg bg-transparent align-items-center" style="width: auto !important; margin-top: 20px">
+                                        <p style="color: white">Tổng thời gian làm là ${totalTime}</p>
+                                    </div>
+                                </div>
+                                <br>
+                            </c:if>
+                            <br>
                             <c:if test="${empty worksheetList}">
-                                <div class="col-md-6 col-sm-6 col-xs-6 card border-2 border-white rounded-3 shadow-lg bg-transparent align-items-center" style="width: auto !important; background-color: #ccc !important">
+                                <div class="col-md-6 col-sm-6 col-xs-6 card border-2 border-white rounded-3 shadow-lg bg-transparent align-items-center" style="width: auto !important; background-color: rgba(255, 255, 255, 0.8) !important">
                                     <h3 style="color: #ff3333">Hiện chưa có dữ liệu của khoảng thời gian này</h3>
                                 </div>
                             </c:if>
@@ -362,6 +395,7 @@
 
                 return true; // Cho phép form được gửi đi
             }
+
         </script>
 
 

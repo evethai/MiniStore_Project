@@ -60,6 +60,8 @@ namespace API_Database.Controllers
                     new Claim("FullNameEmp", empdto.FullNameEmp),
                     new Claim("Roles", empdto.Roles),
                     new Claim("IsActive", empdto.IsActive.ToString()),
+                    new Claim("Sheet", empdto.Sheet.ToString()),
+                    new Claim("Date", empdto.Date.ToString()),
                     new Claim("Total_working_hours", empdto.Total_working_hours),
                     new Claim("TimeCheckIn", empdto.TimeCheckIn),
                     new Claim("TimeCheckOut", empdto.TimeCheckOut)
@@ -109,7 +111,8 @@ namespace API_Database.Controllers
             new Claim("Sheet", wsdto.Sheet.ToString()),
             new Claim("TimeCheckIn", wsdto.TimeCheckIn.ToString()),
             new Claim("TimeCheckOut", wsdto.TimeCheckOut.ToString()),
-            new Claim("Status", wsdto.Status.ToString())
+            new Claim("Status", wsdto.Status.ToString()),
+            new Claim("Total_working_hours", wsdto.Total_working_hours.ToString())
         }),
                 Expires = DateTime.UtcNow.AddHours(1), // Thời gian hết hạn của JWT: 1 giờ
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -130,6 +133,8 @@ namespace API_Database.Controllers
                 claims.Add(new Claim("Sheet", dto.Sheet.ToString()));
                 claims.Add(new Claim("ShiftStartTime", dto.ShiftStartTime.ToString()));
                 claims.Add(new Claim("ShiftEndTime", dto.ShiftEndTime.ToString()));
+                claims.Add(new Claim("CheckNight", dto.CheckNight.ToString()));
+                claims.Add(new Claim("CoefficientsSalary", dto.CoefficientsSalary.ToString()));
             }
 
             var tokenDescriptor = new SecurityTokenDescriptor
@@ -155,6 +160,7 @@ namespace API_Database.Controllers
                 claims.Add(new Claim("Date", dto.Date.ToString()));
                 claims.Add(new Claim("TimeCheckIn", dto.TimeCheckIn.ToString()));
                 claims.Add(new Claim("TimeCheckOut", dto.TimeCheckOut.ToString()));
+                claims.Add(new Claim("Total_working_hours", dto.Total_working_hours.ToString()));
 
             }
 

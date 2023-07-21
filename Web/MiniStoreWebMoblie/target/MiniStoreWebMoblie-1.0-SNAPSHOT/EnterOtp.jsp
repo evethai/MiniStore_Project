@@ -85,11 +85,11 @@
                                             </c:if>
 
                                             <div class="panel-body">
-                                                <form id="register-form" action="ValiOtp" role="form" autocomplete="off" class="form" method="post">
+                                                <form id="register-form" action="ValiOtp" role="form" autocomplete="off" class="form" method="post" onsubmit="return validateForm()">
                                                     <div class="form-group">
                                                         <div class="input-group">
                                                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                                            <input id="opt" name="otp" placeholder="Enter OTP" class="form-control" type="text" required="" value="${param.otp}">
+                                                            <input id="otp" name="otp" placeholder="Enter OTP" class="form-control" type="text" required="" value="${param.otp}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -139,12 +139,48 @@
 
             </c:otherwise>
         </c:choose>
+        <!-- Modal -->
+        <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="alertModalLabel">Thông báo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="alertModalBody">
+                        <!-- Nội dung thông báo sẽ được hiển thị ở đây -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <button type="button" class="btn btn-secondary position-fixed top-0 end-0 m-3" onclick="toggleTheme()">
             <ion-icon name="contrast-outline"></ion-icon>
         </button>
         <script>
             function goBack() {
                 window.location.href = "forgot-password.jsp";
+            }
+
+            function validateForm() {
+                var otpInput = document.getElementById('otp');
+                var otpValue = otpInput.value;
+
+                // Kiểm tra nếu giá trị nhập liệu không chỉ chứa số
+                if (!/^[0-9]+$/.test(otpValue)) {
+                    var alertModalBody = document.getElementById('alertModalBody');
+                    alertModalBody.textContent = 'Vui lòng chỉ nhập số.';
+
+                    var alertModal = new bootstrap.Modal(document.getElementById('alertModal'));
+                    alertModal.show();
+
+                    return false; // Ngăn không cho gửi form
+                }
+
+                return true; // Cho phép gửi form
             }
         </script>
         <script src="JavaScript/changetheme.js"></script>

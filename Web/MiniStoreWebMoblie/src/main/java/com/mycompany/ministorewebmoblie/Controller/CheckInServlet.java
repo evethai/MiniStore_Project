@@ -24,17 +24,14 @@ public class CheckInServlet extends HttpServlet {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         String idemp = (String) session.getAttribute("IdEmpapi");
-        String date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//        String date = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String dateapi = (String) session.getAttribute("DateApi");
+        String sheetapi = (String) session.getAttribute("sheetApi");
         String checkinTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         LocalTime checkTime = LocalTime.now();
         String check = "checkin";
-//        if (checkTime.isAfter(LocalTime.MIDNIGHT.minusMinutes(5)) && checkTime.isBefore(LocalTime.MAX)) {
-//            LocalDate nextDate = LocalDate.parse(date).plusDays(1);
-//            date = nextDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-////            checkOutTime = LocalDateTime.of(previousDate, LocalTime.MAX).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-//        }
         // Check if employee already checked in
-        String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/fws?idemp=" + idemp + "&date=" + date);
+        String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/fws?idemp=" + idemp + "&date=" + dateapi);
         JSONObject json = null;
         try {
             json = new JSONObject(jsonResponse);
@@ -61,10 +58,9 @@ public class CheckInServlet extends HttpServlet {
         }
 
         Claims claims = JWTUtils.parseJWT(jwt);
-        String checkInTimeapi = claims.get("TimeCheckIn", String.class);
-        String sheet = claims.get("Sheet", String.class);
+//        String checkInTimeapi = claims.get("TimeCheckIn", String.class);
         boolean isValidCheckInTime = false;
-
+        String coeffi ="";
         // Lấy danh sách SheetTimeSlotDTO từ API
         List<SheetTimeSlotDTO> sheetTimeSlots = MyUtils.getSheetTimeSlots(true);
 
@@ -73,15 +69,15 @@ public class CheckInServlet extends HttpServlet {
                 LocalTime startTime = slot.getStartTime();
                 LocalTime endTime = slot.getEndTime();
                 LocalTime shiftStartTime = slot.getShiftStartTime();
-                if (sheet.equals(slot.getSheet())) {
+                coeffi = slot.getCoefficientsSalary();
+                if (sheetapi.equals(slot.getSheet())) {
                     if (endTime.isBefore(startTime)) {
                         if (checkTime.isAfter(startTime) || checkTime.isBefore(endTime)) {
                             isValidCheckInTime = true;
                             if (checkTime.isAfter(startTime) && checkTime.isBefore(LocalTime.MAX)) {
-//                                LocalDate nextDate = LocalDate.parse(date).plusDays(1);
-//                                date = nextDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                                LocalDate dateLD = LocalDate.parse(date);
+                                LocalDate dateLD = LocalDate.parse(dateapi);
                                 checkinTime = LocalDateTime.of(dateLD, shiftStartTime).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                                
                             }
                             break;
                         }
@@ -89,7 +85,7 @@ public class CheckInServlet extends HttpServlet {
                         if (checkTime.isAfter(startTime) && checkTime.isBefore(endTime)) {
                             isValidCheckInTime = true;
                             if (checkTime.isAfter(startTime) && checkTime.isBefore(shiftStartTime)) {
-                                LocalDate localDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                                LocalDate localDate = LocalDate.parse(dateapi, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                                 LocalDateTime checkinDateTime = LocalDateTime.of(localDate, shiftStartTime);
                                 checkinTime = checkinDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
                             }
@@ -110,7 +106,7 @@ public class CheckInServlet extends HttpServlet {
         }
 
         if (isValidCheckInTime) {
-            jwt = MyUtils.updateWorksheetQR(idemp, date, checkinTime, check);
+            jwt = MyUtils.updateWorksheetQR(idemp, dateapi, checkinTime, check, coeffi);
             if (jwt!=null) {
                 String qrCodeURL = MyUtils.generateQRCodeURLG(jwt);
                 session.setAttribute("TimeCheckInapi", checkinTime);

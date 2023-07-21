@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -24,16 +26,17 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MyUtils {
 
-    private static final int checkInStart = 0;  //minus Minutes
+    private static final int checkInStart = 15;  //minus Minutes
     private static final int checkInEnd = 0;    //minus Minutes
     private static final int checkOutStart = 0; //hours minus
-    private static final int checkOutEnd = 0;   //minus plus
+    private static final int checkOutEnd = 30;   //minus plus
 
     // Gửi yêu cầu GET và trả về phản hồi dạng chuỗi JSON
     public static String sendGetRequest(String apiUrl) throws IOException {
@@ -57,6 +60,39 @@ public class MyUtils {
             conn.disconnect();
         }
 
+    }
+
+    // tổng total time 
+    public static String sumTotalTime(List<WorksheetDTO> ListWS) throws IOException {
+        try {
+            int totalHours = 0;
+            int totalMinutes = 0;
+            int totalSeconds = 0;
+
+            for (WorksheetDTO worksheet : ListWS) {
+                String total = worksheet.getTotal();
+                if (total != null && total.matches("\\d{2}:\\d{2}:\\d{2}")) {
+                    String[] parts = total.split(":");
+                    int hours = Integer.parseInt(parts[0]);
+                    int minutes = Integer.parseInt(parts[1]);
+                    int seconds = Integer.parseInt(parts[2]);
+
+                    totalHours += hours;
+                    totalMinutes += minutes;
+                    totalSeconds += seconds;
+                }
+            }
+
+            totalMinutes += totalSeconds / 60;
+            totalSeconds = totalSeconds % 60;
+
+            totalHours += totalMinutes / 60;
+            totalMinutes = totalMinutes % 60;
+
+            return String.format("%02d:%02d:%02d", totalHours, totalMinutes, totalSeconds);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     //kiểm tra email có tồn tại trong data base hay không
@@ -130,6 +166,37 @@ public class MyUtils {
         }
     }
 
+    public static String getTotalTime(String idemp, String date) throws IOException {
+        try {
+            // Lấy danh sách Sheet từ API
+            String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/fws?idemp="+idemp.trim()+"&date="+ date.trim());
+            JSONObject json = new JSONObject(jsonResponse);
+
+            String jwt = json.optString("jwt");
+
+            // Check JWT
+            if (jwt.isEmpty() || jwt.equals("Unauthorized")) {
+                // Invalid user
+                System.out.println("Invalid JWT");
+                return "null";
+            }
+
+            Claims claims = JWTUtils.parseJWT(jwt);
+            // Convert the claim value to a string manually
+            String Total = claims.get("Total_working_hours", String.class);
+            
+            if (Total == null) {
+                return "null";
+            }
+
+            return Total;
+        } catch (Exception e) {
+            // Handle error
+            e.printStackTrace();
+            return "null";
+        }
+    }
+
     //kiểm tra email có tồn tại trong data base hay không
     public static String checkEmail(String Email) throws IOException {
         try {
@@ -184,6 +251,7 @@ public class MyUtils {
             List<String> Datejwt = claims.get("Date", List.class);
             List<String> TimeCheckInjwt = claims.get("TimeCheckIn", List.class);
             List<String> TimeCheckOutjwt = claims.get("TimeCheckOut", List.class);
+            List<String> Totaljwt = claims.get("Total_working_hours", List.class);
 
             List<WorksheetDTO> sheetTimeSlots = new ArrayList<>();
 
@@ -191,8 +259,9 @@ public class MyUtils {
                 String date = Datejwt.get(i);
                 String timeCheckIn = TimeCheckInjwt.get(i);
                 String timeCheckOut = TimeCheckOutjwt.get(i);
+                String total = Totaljwt.get(i);
 
-                WorksheetDTO sheetTimeSlot = new WorksheetDTO(date, timeCheckIn, timeCheckOut);
+                WorksheetDTO sheetTimeSlot = new WorksheetDTO(date, timeCheckIn, timeCheckOut, total);
                 sheetTimeSlots.add(sheetTimeSlot);
             }
             if (!type) {
@@ -234,6 +303,8 @@ public class MyUtils {
         List<String> sheetNumbers = claims.get("Sheet", List.class);
         List<String> shiftStartTimes = claims.get("ShiftStartTime", List.class);
         List<String> shiftEndTimes = claims.get("ShiftEndTime", List.class);
+        List<String> CheckNights = claims.get("CheckNight", List.class);
+        List<String> CoefficientsSalarys = claims.get("CoefficientsSalary", List.class);
 
         List<SheetTimeSlotDTO> sheetTimeSlots = new ArrayList<>();
 
@@ -241,11 +312,13 @@ public class MyUtils {
             String sheetNumber = sheetNumbers.get(i);
             String shiftStartTime = shiftStartTimes.get(i);
             String shiftEndTime = shiftEndTimes.get(i);
+            String CheckNight = CheckNights.get(i);
+            String CoefficientsSalary = CoefficientsSalarys.get(i);
             SheetTimeSlotDTO sheetTimeSlot;
             if (check) {
-                sheetTimeSlot = createSheetTimeSlotCheckin(sheetNumber, shiftStartTime, shiftEndTime);
+                sheetTimeSlot = createSheetTimeSlotCheckin(sheetNumber, shiftStartTime, shiftEndTime, CheckNight, CoefficientsSalary);
             } else {
-                sheetTimeSlot = createSheetTimeSlotCheckOut(sheetNumber, shiftStartTime, shiftEndTime);
+                sheetTimeSlot = createSheetTimeSlotCheckOut(sheetNumber, shiftStartTime, shiftEndTime, CheckNight, CoefficientsSalary);
             }
 
             sheetTimeSlots.add(sheetTimeSlot);
@@ -255,28 +328,27 @@ public class MyUtils {
     }
 
     // Tạo đối tượng SheetTimeSlotDTO từ thông tin phiếu và chuỗi thời gian
-    private static SheetTimeSlotDTO createSheetTimeSlotCheckin(String sheetNumber, String shiftStartTime, String shiftEndTime) {
+    private static SheetTimeSlotDTO createSheetTimeSlotCheckin(String sheetNumber, String shiftStartTime, String shiftEndTime, String checkNoght, String CoefficientsSalary) {
         LocalTime startTime;
         LocalTime endTime;
         LocalTime shiftStartTimeLC;
-//        LocalTime shiftEndTimeLC;
-
+        LocalTime shiftEndTimeLC;
         try {
             startTime = LocalTime.parse(shiftStartTime).minusMinutes(checkInStart);
             endTime = LocalTime.parse(shiftEndTime).minusMinutes(checkInEnd);
             shiftStartTimeLC = LocalTime.parse(shiftStartTime);
-//            shiftEndTimeLC = LocalTime.parse(shiftEndTime);
+            shiftEndTimeLC = LocalTime.parse(shiftEndTime);
         } catch (DateTimeParseException e) {
             // Xử lý lỗi khi phân tích chuỗi thời gian
             e.printStackTrace();
             return null;
         }
 
-        return new SheetTimeSlotDTO(sheetNumber, startTime, endTime, shiftStartTimeLC, null);
+        return new SheetTimeSlotDTO(sheetNumber, startTime, endTime, shiftStartTimeLC, shiftEndTimeLC, checkNoght, CoefficientsSalary);
     }
 
-    // Tạo đối tượng SheetTimeSlotDTO từ thông tin phiếu và chuỗi thời gian
-    private static SheetTimeSlotDTO createSheetTimeSlotCheckOut(String sheetNumber, String shiftStartTime, String shiftEndTime) {
+    // Tạo đối tượng SheetTimeSlotDTO từ thông tin phiếu và chuỗi thời gia
+    private static SheetTimeSlotDTO createSheetTimeSlotCheckOut(String sheetNumber, String shiftStartTime, String shiftEndTime, String checkNoght, String CoefficientsSalary) {
         LocalTime startTime;
         LocalTime endTime;
 //        LocalTime shiftStartTimeLC;
@@ -293,22 +365,17 @@ public class MyUtils {
             return null;
         }
 
-        return new SheetTimeSlotDTO(sheetNumber, startTime, endTime, null, shiftEndTimeLC);
+        return new SheetTimeSlotDTO(sheetNumber, startTime, endTime, null, shiftEndTimeLC, checkNoght, CoefficientsSalary);
     }
 
     //update worksheet
-    public static String updateWorksheetQR(String idemp, String date, String update, String check) throws IOException {
-//        String url = "http://localhost/swp/api/ms/ucoqr";
-//        URL urlObj = new URL(url);
-//        HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
-//        conn.setRequestMethod("PUT");
-//        conn.setRequestProperty("Content-Type", "application/json");
-//        conn.setDoOutput(true);
+    public static String updateWorksheetQR(String idemp, String date, String update, String check, String coeffi) throws IOException {
         String jwt = "";
+        String sunday = "";
         if (check.equals("checkin")) {
-            jwt = JWTUtils.generateJWTUWS(idemp, date, update, "TimeCheckIn");
+            jwt = JWTUtils.generateJWTUWS(idemp, date, update, "TimeCheckIn", coeffi, sunday);
         } else {
-            jwt = JWTUtils.generateJWTUWS(idemp, date, update, "TimeCheckOut");
+            jwt = JWTUtils.generateJWTUWS(idemp, date, update, "TimeCheckOut", coeffi, sunday);
         }
 
         if (jwt == null || jwt.isEmpty()) {
@@ -318,110 +385,28 @@ public class MyUtils {
         return jwt;
     }
 
-    //update worksheet
-    public static boolean updateWorksheet(String idemp, String date, String update, String check) throws IOException {
-        String url = "http://localhost/swp/api/ms/uco";
-        URL urlObj = new URL(url);
-        HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
-        conn.setRequestMethod("PUT");
-        conn.setRequestProperty("Content-Type", "application/json");
-        conn.setDoOutput(true);
-        String jwt = "";
-        if (check.equals("checkin")) {
-            jwt = JWTUtils.generateJWTUWS(idemp, date, update, "TimeCheckIn");
-        } else {
-            jwt = JWTUtils.generateJWTUWS(idemp, date, update, "TimeCheckOut");
+    //kiem tra xem co phai chu nhat hay khong
+    private String isSunday(String date) {
+        String sunday = "";
+
+        // Chuyển đổi chuỗi thành LocalDate
+        LocalDate localDate = LocalDate.parse(date);
+
+        // Kiểm tra xem ngày đó có phải là Chủ nhật hay không
+        boolean isSunday = localDate.getDayOfWeek() == DayOfWeek.SUNDAY;
+        if (isSunday) {
+            sunday = "true";
         }
 
-        if (jwt == null || jwt.isEmpty()) {
-            return false;
-        }
-
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("jwt", jwt);
-        String jsonString = jsonObject.toString();
-        DataOutputStream outputStream = new DataOutputStream(conn.getOutputStream());
-        outputStream.writeBytes(jsonString);
-        outputStream.flush();
-        outputStream.close();
-
-        int responseCode = conn.getResponseCode();
-        if (responseCode == HttpURLConnection.HTTP_OK) {
-            // Dữ liệu đã được đưa vào database thành công.
-            return true;
-        } else {
-            // Lỗi HTTP
-            return false;
-        }
+        return sunday;
     }
 
-    //add worksheet
-    public static boolean AddWorksheet(String idemp, String date, String sheet, String timecheckin) throws IOException {
-        String url = "http://localhost/swp/api/ms/addws";
-        URL urlObj = new URL(url);
-        HttpURLConnection conn = (HttpURLConnection) urlObj.openConnection();
-        conn.setRequestMethod("POST");
-        conn.setRequestProperty("Content-Type", "application/json");
-        conn.setDoOutput(true);
-        String jwt = "";
-        jwt = JWTUtils.generateJWTAWS(idemp, date, sheet, timecheckin);
-
-        if (jwt == null || jwt.isEmpty()) {
-            return false;
-        }
-
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("jwt", jwt);
-        String jsonString = jsonObject.toString();
-        DataOutputStream outputStream = new DataOutputStream(conn.getOutputStream());
-        outputStream.writeBytes(jsonString);
-        outputStream.flush();
-        outputStream.close();
-
-        int responseCode = conn.getResponseCode();
-        if (responseCode == HttpURLConnection.HTTP_OK) {
-            // Dữ liệu đã được đưa vào database thành công.
-            return true;
-        } else {
-            // Lỗi HTTP
-            return false;
-        }
-    }
-
+    // tạo qr code chứa api jwt để update
     public static String generateQRCodeURLG(String jwt) throws ServletException {
         String qrCodeData = "http://localhost/swp/api/ms/uco/ucoqrG?token=" + jwt;
 
-        int width = 200;
-        int height = 200;
-        String imageFormat = "png";
-
-        BitMatrix bitMatrix;
-        try {
-            bitMatrix = new MultiFormatWriter().encode(qrCodeData, BarcodeFormat.QR_CODE, width, height);
-        } catch (WriterException e) {
-            throw new ServletException("Error generating QR code", e);
-        }
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try {
-            MatrixToImageWriter.writeToStream(bitMatrix, imageFormat, baos);
-        } catch (IOException e) {
-            throw new ServletException("Error writing QR code to stream", e);
-        }
-
-        byte[] qrCodeBytes = baos.toByteArray();
-        String base64Image = Base64.getEncoder().encodeToString(qrCodeBytes);
-
-        return "data:image/" + imageFormat + ";base64," + base64Image;
-    }
-
-    // tạo qrcode url
-    public static String generateQRCodeURL(String idemp, String Time) throws ServletException {
-        String qrCodeData = "IDEMP: " + idemp + "\n"
-                + "Login Time: " + Time;
-
-        int width = 200;
-        int height = 200;
+        int width = 300;
+        int height = 300;
         String imageFormat = "png";
 
         BitMatrix bitMatrix;

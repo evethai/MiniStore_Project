@@ -24,16 +24,20 @@ public class CheckOutServlet extends HttpServlet {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         String idemp = (String) session.getAttribute("IdEmpapi");
-        String checkDay = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//        String checkDay = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String dateapi = (String) session.getAttribute("DateApi");
+        String sheetapi = (String) session.getAttribute("sheetApi");
         String checkOutTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         LocalTime checkTime = LocalTime.now();
+        String timeCOut = null;
+
         String check = "checkout";
 //        if (checkTime.isAfter(LocalTime.MIDNIGHT) && checkTime.isBefore(LocalTime.MIDNIGHT.plusMinutes(30))) {
 //            LocalDate previousDate = LocalDate.parse(checkDay).minusDays(1);
 //            checkDay = previousDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 ////            checkOutTime = LocalDateTime.of(previousDate, LocalTime.MAX).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 //        }
-        String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/fws?idemp=" + idemp + "&date=" + checkDay);
+        String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/fws?idemp=" + idemp + "&date=" + dateapi);
         JSONObject json = null;
         try {
             json = new JSONObject(jsonResponse);
@@ -60,12 +64,11 @@ public class CheckOutServlet extends HttpServlet {
         }
 
         Claims claims = JWTUtils.parseJWT(jwt);
-        String checkoutTimeapi = claims.get("TimeCheckOut", String.class);
-        String sheet = claims.get("Sheet", String.class);
-        String Status = claims.get("Status", String.class);
+//        String checkoutTimeapi = claims.get("TimeCheckOut", String.class);
+//        String sheet = claims.get("Sheet", String.class);
 
         boolean isCheckOutTimeValid = false;
-
+        String coeffi = "";
         // Lấy danh sách SheetTimeSlotDTO từ API
         List<SheetTimeSlotDTO> sheetTimeSlots = MyUtils.getSheetTimeSlots(false);
 
@@ -75,8 +78,8 @@ public class CheckOutServlet extends HttpServlet {
                 LocalTime startTime = slot.getStartTime();
                 LocalTime endTime = slot.getEndTime();
                 LocalTime shiftEndTime = slot.getShiftEndTime();
-
-                if (sheet.equals(slot.getSheet())) {
+                coeffi = slot.getCoefficientsSalary();
+                if (sheetapi.equals(slot.getSheet())) {
                     // Check if the end time is on the next day
                     if (startTime.isAfter(endTime)) {
                         // Check if the check time is after the start time or before the end of the day
@@ -85,8 +88,9 @@ public class CheckOutServlet extends HttpServlet {
                             if (checkTime.isBefore(endTime) && checkTime.isAfter(LocalTime.MIN)) {
 //                                LocalDate nextDate = LocalDate.parse(checkDay).minusDays(1);
 //                                checkDay = nextDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                                LocalDate date = LocalDate.parse(checkDay);
+                                LocalDate date = LocalDate.parse(dateapi);
                                 checkOutTime = LocalDateTime.of(date, shiftEndTime).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                                timeCOut = LocalDateTime.of(date, shiftEndTime).format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss a"));
                             }
                             break;
                         }
@@ -95,9 +99,11 @@ public class CheckOutServlet extends HttpServlet {
                         if (checkTime.isAfter(startTime) && checkTime.isBefore(endTime)) {
                             isCheckOutTimeValid = true;
                             if (checkTime.isAfter(shiftEndTime) && checkTime.isBefore(endTime)) {
-                                LocalDate localDate = LocalDate.parse(checkDay, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+                                LocalDate localDate = LocalDate.parse(dateapi, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                                 LocalDateTime checkoutDateTime = LocalDateTime.of(localDate, shiftEndTime);
                                 checkOutTime = checkoutDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss a");
+                                String formattedDateTime = checkoutDateTime.format(formatter);
                             }
                             break;
                         }
@@ -115,15 +121,14 @@ public class CheckOutServlet extends HttpServlet {
             return;
         }
         // Check if the check-in time is valid
-
+        String Status = claims.get("Status", String.class);
         if (Status.equals("False")) {
             request.setAttribute("errorMessage", "Chưa check in vui lòng check in trước");
             request.getRequestDispatcher("qr-code.jsp").forward(request, response);
             return;
         }
-
         if (isCheckOutTimeValid) {
-            jwt = MyUtils.updateWorksheetQR(idemp, checkDay, checkOutTime, check);
+            jwt = MyUtils.updateWorksheetQR(idemp, dateapi, checkOutTime, check, coeffi);
             if (jwt != null) {
                 String qrCodeURL = MyUtils.generateQRCodeURLG(jwt);
                 session.setAttribute("TimeCheckOutapi", checkOutTime);

@@ -19,6 +19,8 @@ namespace API_Database.Controllers
         public string password { get; set; }
         public string Picture { get; set; }
         public string Email { get; set; }
+        public string Sheet { get; set; }
+        public string Date { get; set; }
         public String TimeCheckIn { get; set; }
         public String TimeCheckOut { get; set; }
         public String Total_working_hours { get; set; }
