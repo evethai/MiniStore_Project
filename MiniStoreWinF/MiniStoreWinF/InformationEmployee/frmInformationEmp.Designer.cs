@@ -119,7 +119,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1235, 463);
+            panel1.Size = new Size(799, 417);
             panel1.TabIndex = 6;
             panel1.Paint += panel1_Paint;
             // 
@@ -132,6 +132,7 @@
             panel2.Controls.Add(txtPhonee);
             panel2.Controls.Add(label9);
             panel2.Controls.Add(txtId);
+            panel2.Controls.Add(txtConfirmNewPassword);
             panel2.Controls.Add(label10);
             panel2.Controls.Add(txtAddresss);
             panel2.Controls.Add(txtBirth);
@@ -149,24 +150,27 @@
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1235, 463);
+            panel2.Size = new Size(799, 417);
             panel2.TabIndex = 28;
+            panel2.Paint += panel2_Paint;
             // 
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(222, 320);
+            label15.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label15.Location = new Point(157, 261);
             label15.Name = "label15";
-            label15.Size = new Size(113, 25);
+            label15.Size = new Size(89, 20);
             label15.TabIndex = 28;
             label15.Text = "Dependents";
             // 
             // txtDepen
             // 
-            txtDepen.Location = new Point(368, 320);
+            txtDepen.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtDepen.Location = new Point(265, 261);
             txtDepen.Name = "txtDepen";
             txtDepen.ReadOnly = true;
-            txtDepen.Size = new Size(164, 32);
+            txtDepen.Size = new Size(164, 27);
             txtDepen.TabIndex = 27;
             // 
             // pnShowReset
@@ -181,10 +185,11 @@
             pnShowReset.Controls.Add(txtConfirmm);
             pnShowReset.Controls.Add(label8);
             pnShowReset.Enabled = false;
-            pnShowReset.Location = new Point(691, 166);
+            pnShowReset.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            pnShowReset.Location = new Point(451, 53);
             pnShowReset.Margin = new Padding(3, 2, 3, 2);
             pnShowReset.Name = "pnShowReset";
-            pnShowReset.Size = new Size(472, 278);
+            pnShowReset.Size = new Size(338, 233);
             pnShowReset.TabIndex = 26;
             pnShowReset.Visible = false;
             // 
@@ -192,7 +197,7 @@
             // 
             cbCheck2.AutoSize = true;
             cbCheck2.Enabled = false;
-            cbCheck2.Location = new Point(365, 154);
+            cbCheck2.Location = new Point(309, 136);
             cbCheck2.Margin = new Padding(3, 2, 3, 2);
             cbCheck2.Name = "cbCheck2";
             cbCheck2.Size = new Size(15, 14);
@@ -203,7 +208,7 @@
             // 
             cbCheck.AutoSize = true;
             cbCheck.Enabled = false;
-            cbCheck.Location = new Point(365, 44);
+            cbCheck.Location = new Point(309, 27);
             cbCheck.Margin = new Padding(3, 2, 3, 2);
             cbCheck.Name = "cbCheck";
             cbCheck.Size = new Size(15, 14);
@@ -212,7 +217,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(244, 188);
+            button1.Location = new Point(190, 180);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
             button1.Size = new Size(110, 29);
@@ -223,64 +228,65 @@
             // 
             // txtNewPass
             // 
-            txtNewPass.Location = new Point(193, 85);
+            txtNewPass.Location = new Point(139, 77);
             txtNewPass.Margin = new Padding(3, 2, 3, 2);
             txtNewPass.Name = "txtNewPass";
             txtNewPass.PasswordChar = '*';
-            txtNewPass.Size = new Size(164, 32);
+            txtNewPass.Size = new Size(164, 27);
             txtNewPass.TabIndex = 29;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(30, 90);
+            label6.Location = new Point(29, 77);
             label6.Name = "label6";
-            label6.Size = new Size(134, 25);
+            label6.Size = new Size(104, 20);
             label6.TabIndex = 28;
             label6.Text = "New Password";
             // 
             // txtCurrent
             // 
-            txtCurrent.Location = new Point(193, 28);
+            txtCurrent.Location = new Point(139, 20);
             txtCurrent.Margin = new Padding(3, 2, 3, 2);
             txtCurrent.Name = "txtCurrent";
             txtCurrent.PasswordChar = '*';
-            txtCurrent.Size = new Size(164, 32);
+            txtCurrent.Size = new Size(164, 27);
             txtCurrent.TabIndex = 27;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(5, 36);
+            label7.Location = new Point(11, 20);
             label7.Name = "label7";
-            label7.Size = new Size(160, 25);
+            label7.Size = new Size(122, 20);
             label7.TabIndex = 26;
             label7.Text = "Current Password";
             // 
             // txtConfirmm
             // 
-            txtConfirmm.Location = new Point(193, 138);
+            txtConfirmm.Location = new Point(139, 130);
             txtConfirmm.Margin = new Padding(3, 2, 3, 2);
             txtConfirmm.Name = "txtConfirmm";
             txtConfirmm.PasswordChar = '*';
-            txtConfirmm.Size = new Size(164, 32);
+            txtConfirmm.Size = new Size(164, 27);
             txtConfirmm.TabIndex = 25;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(88, 143);
+            label8.Location = new Point(71, 130);
             label8.Name = "label8";
-            label8.Size = new Size(80, 25);
+            label8.Size = new Size(62, 20);
             label8.TabIndex = 24;
             label8.Text = "Confirm";
             // 
             // button2
             // 
-            button2.Location = new Point(816, 133);
+            button2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Location = new Point(451, 10);
             button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(188, 29);
+            button2.Size = new Size(164, 29);
             button2.TabIndex = 23;
             button2.Text = "Change Password";
             button2.UseVisualStyleBackColor = true;
@@ -288,138 +294,154 @@
             // 
             // txtPhonee
             // 
-            txtPhonee.Location = new Point(794, 90);
+            txtPhonee.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPhonee.Location = new Point(265, 365);
             txtPhonee.Margin = new Padding(3, 2, 3, 2);
             txtPhonee.Name = "txtPhonee";
             txtPhonee.ReadOnly = true;
-            txtPhonee.Size = new Size(243, 32);
+            txtPhonee.Size = new Size(164, 27);
             txtPhonee.TabIndex = 19;
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(718, 92);
+            label9.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.Location = new Point(189, 367);
             label9.Name = "label9";
-            label9.Size = new Size(66, 25);
+            label9.Size = new Size(50, 20);
             label9.TabIndex = 17;
             label9.Text = "Phone";
             // 
             // txtId
             // 
-            txtId.Location = new Point(368, 17);
+            txtId.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtId.Location = new Point(265, 11);
             txtId.Margin = new Padding(3, 2, 3, 2);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
-            txtId.Size = new Size(164, 32);
+            txtId.Size = new Size(164, 27);
             txtId.TabIndex = 16;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(276, 17);
+            label10.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(184, 15);
             label10.Name = "label10";
-            label10.Size = new Size(72, 25);
+            label10.Size = new Size(58, 20);
             label10.TabIndex = 15;
             label10.Text = "ID Emp";
             // 
             // txtAddresss
             // 
-            txtAddresss.Location = new Point(794, 17);
+            txtAddresss.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtAddresss.Location = new Point(265, 318);
             txtAddresss.Margin = new Padding(3, 2, 3, 2);
             txtAddresss.Name = "txtAddresss";
             txtAddresss.ReadOnly = true;
-            txtAddresss.Size = new Size(243, 32);
+            txtAddresss.Size = new Size(164, 27);
             txtAddresss.TabIndex = 14;
             // 
             // txtBirth
             // 
-            txtBirth.Location = new Point(368, 256);
+            txtBirth.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtBirth.Location = new Point(265, 202);
             txtBirth.Margin = new Padding(3, 2, 3, 2);
             txtBirth.Name = "txtBirth";
             txtBirth.ReadOnly = true;
-            txtBirth.Size = new Size(164, 32);
+            txtBirth.Size = new Size(164, 27);
             txtBirth.TabIndex = 13;
+            txtBirth.TextChanged += txtBirth_TextChanged;
             // 
             // txtCI
             // 
-            txtCI.Location = new Point(368, 195);
+            txtCI.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtCI.Location = new Point(265, 154);
             txtCI.Margin = new Padding(3, 2, 3, 2);
             txtCI.Name = "txtCI";
             txtCI.ReadOnly = true;
-            txtCI.Size = new Size(164, 32);
+            txtCI.Size = new Size(164, 27);
             txtCI.TabIndex = 12;
             // 
             // txtGender
             // 
-            txtGender.Location = new Point(368, 133);
+            txtGender.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtGender.Location = new Point(265, 108);
             txtGender.Margin = new Padding(3, 2, 3, 2);
             txtGender.Name = "txtGender";
             txtGender.ReadOnly = true;
-            txtGender.Size = new Size(164, 32);
+            txtGender.Size = new Size(164, 27);
             txtGender.TabIndex = 11;
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(694, 17);
+            label11.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.Location = new Point(184, 321);
             label11.Name = "label11";
-            label11.Size = new Size(79, 25);
+            label11.Size = new Size(62, 20);
             label11.TabIndex = 10;
             label11.Text = "Address";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(253, 263);
+            label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(178, 205);
             label1.Name = "label1";
-            label1.Size = new Size(82, 25);
+            label1.Size = new Size(64, 20);
             label1.TabIndex = 9;
             label1.Text = "Birthday";
+            label1.Click += label1_Click;
             // 
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(276, 195);
+            label12.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Location = new Point(195, 160);
             label12.Name = "label12";
-            label12.Size = new Size(59, 25);
+            label12.Size = new Size(47, 20);
             label12.TabIndex = 8;
             label12.Text = "CCCD";
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(274, 133);
+            label13.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.Location = new Point(182, 109);
             label13.Name = "label13";
-            label13.Size = new Size(74, 25);
+            label13.Size = new Size(57, 20);
             label13.TabIndex = 7;
             label13.Text = "Gender";
             // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(249, 77);
+            label14.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.Location = new Point(163, 64);
             label14.Name = "label14";
-            label14.Size = new Size(97, 25);
+            label14.Size = new Size(76, 20);
             label14.TabIndex = 6;
             label14.Text = "Full Name";
             // 
             // pbEmployee
             // 
-            pbEmployee.Location = new Point(43, 17);
+            pbEmployee.Location = new Point(12, 11);
             pbEmployee.Margin = new Padding(3, 2, 3, 2);
             pbEmployee.Name = "pbEmployee";
-            pbEmployee.Size = new Size(177, 124);
+            pbEmployee.Size = new Size(139, 111);
             pbEmployee.SizeMode = PictureBoxSizeMode.Zoom;
             pbEmployee.TabIndex = 0;
             pbEmployee.TabStop = false;
             // 
             // txtName
             // 
-            txtName.Location = new Point(368, 75);
+            txtName.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtName.Location = new Point(265, 61);
             txtName.Margin = new Padding(3, 2, 3, 2);
             txtName.Name = "txtName";
             txtName.ReadOnly = true;
-            txtName.Size = new Size(164, 32);
+            txtName.Size = new Size(164, 27);
             txtName.TabIndex = 1;
             // 
             // textBox1
@@ -439,7 +461,6 @@
             pnlShowResetPassword.Controls.Add(label5);
             pnlShowResetPassword.Controls.Add(txtCurrentPassword);
             pnlShowResetPassword.Controls.Add(label3);
-            pnlShowResetPassword.Controls.Add(txtConfirmNewPassword);
             pnlShowResetPassword.Controls.Add(label2);
             pnlShowResetPassword.Enabled = false;
             pnlShowResetPassword.Location = new Point(694, 166);
@@ -520,7 +541,7 @@
             // 
             // txtConfirmNewPassword
             // 
-            txtConfirmNewPassword.Location = new Point(193, 138);
+            txtConfirmNewPassword.Location = new Point(451, 290);
             txtConfirmNewPassword.Margin = new Padding(3, 2, 3, 2);
             txtConfirmNewPassword.Name = "txtConfirmNewPassword";
             txtConfirmNewPassword.PasswordChar = '*';
@@ -688,7 +709,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1235, 463);
+            ClientSize = new Size(799, 417);
             Controls.Add(panel1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "frmInformationEmp";

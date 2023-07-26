@@ -43,13 +43,6 @@
             pnButton = new Panel();
             btSearchButton = new Button();
             dgvEmployee = new DataGridView();
-            fullNameEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            sexDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            cccdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            doBDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            addressEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            phoneEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            dateJoinDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             tbMain = new TableLayoutPanel();
             pnInfor = new Panel();
             label1 = new Label();
@@ -77,6 +70,13 @@
             txtName = new TextBox();
             txtId = new TextBox();
             tableLayoutPanel2 = new TableLayoutPanel();
+            fullNameEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            sexDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            cccdDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            doBDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            addressEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            phoneEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dateJoinDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).BeginInit();
             pnButton.SuspendLayout();
@@ -122,7 +122,7 @@
             txtUrl.Location = new Point(932, 17);
             txtUrl.Margin = new Padding(4, 5, 4, 5);
             txtUrl.Name = "txtUrl";
-            txtUrl.Size = new Size(326, 29);
+            txtUrl.Size = new Size(326, 34);
             txtUrl.TabIndex = 19;
             txtUrl.Visible = false;
             // 
@@ -145,7 +145,7 @@
             txtSearch.Location = new Point(13, 8);
             txtSearch.Margin = new Padding(4, 5, 4, 5);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(229, 29);
+            txtSearch.Size = new Size(229, 34);
             txtSearch.TabIndex = 21;
             // 
             // rd1
@@ -154,7 +154,7 @@
             rd1.Location = new Point(368, 9);
             rd1.Margin = new Padding(4, 5, 4, 5);
             rd1.Name = "rd1";
-            rd1.Size = new Size(70, 25);
+            rd1.Size = new Size(87, 32);
             rd1.TabIndex = 22;
             rd1.TabStop = true;
             rd1.Text = "Active";
@@ -167,7 +167,7 @@
             rd2.Location = new Point(463, 9);
             rd2.Margin = new Padding(4, 5, 4, 5);
             rd2.Name = "rd2";
-            rd2.Size = new Size(79, 25);
+            rd2.Size = new Size(97, 32);
             rd2.TabIndex = 23;
             rd2.TabStop = true;
             rd2.Text = "Disable";
@@ -234,69 +234,6 @@
             dgvEmployee.CellDoubleClick += dgvEmployee_CellDoubleClick;
             dgvEmployee.CellFormatting += dgvEmployee_CellFormatting;
             // 
-            // fullNameEmpDataGridViewTextBoxColumn
-            // 
-            fullNameEmpDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            fullNameEmpDataGridViewTextBoxColumn.DataPropertyName = "FullNameEmp";
-            fullNameEmpDataGridViewTextBoxColumn.HeaderText = "FullNameEmp";
-            fullNameEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
-            fullNameEmpDataGridViewTextBoxColumn.Name = "fullNameEmpDataGridViewTextBoxColumn";
-            fullNameEmpDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sexDataGridViewTextBoxColumn
-            // 
-            sexDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            sexDataGridViewTextBoxColumn.DataPropertyName = "Sex";
-            sexDataGridViewTextBoxColumn.HeaderText = "Sex";
-            sexDataGridViewTextBoxColumn.MinimumWidth = 6;
-            sexDataGridViewTextBoxColumn.Name = "sexDataGridViewTextBoxColumn";
-            sexDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cccdDataGridViewTextBoxColumn
-            // 
-            cccdDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            cccdDataGridViewTextBoxColumn.DataPropertyName = "Cccd";
-            cccdDataGridViewTextBoxColumn.HeaderText = "Cccd";
-            cccdDataGridViewTextBoxColumn.MinimumWidth = 6;
-            cccdDataGridViewTextBoxColumn.Name = "cccdDataGridViewTextBoxColumn";
-            cccdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // doBDataGridViewTextBoxColumn
-            // 
-            doBDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            doBDataGridViewTextBoxColumn.DataPropertyName = "DoB";
-            doBDataGridViewTextBoxColumn.HeaderText = "DoB";
-            doBDataGridViewTextBoxColumn.MinimumWidth = 6;
-            doBDataGridViewTextBoxColumn.Name = "doBDataGridViewTextBoxColumn";
-            doBDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // addressEmpDataGridViewTextBoxColumn
-            // 
-            addressEmpDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            addressEmpDataGridViewTextBoxColumn.DataPropertyName = "AddressEmp";
-            addressEmpDataGridViewTextBoxColumn.HeaderText = "AddressEmp";
-            addressEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
-            addressEmpDataGridViewTextBoxColumn.Name = "addressEmpDataGridViewTextBoxColumn";
-            addressEmpDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // phoneEmpDataGridViewTextBoxColumn
-            // 
-            phoneEmpDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            phoneEmpDataGridViewTextBoxColumn.DataPropertyName = "PhoneEmp";
-            phoneEmpDataGridViewTextBoxColumn.HeaderText = "PhoneEmp";
-            phoneEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
-            phoneEmpDataGridViewTextBoxColumn.Name = "phoneEmpDataGridViewTextBoxColumn";
-            phoneEmpDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dateJoinDataGridViewTextBoxColumn
-            // 
-            dateJoinDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dateJoinDataGridViewTextBoxColumn.DataPropertyName = "DateJoin";
-            dateJoinDataGridViewTextBoxColumn.HeaderText = "DateJoin";
-            dateJoinDataGridViewTextBoxColumn.MinimumWidth = 6;
-            dateJoinDataGridViewTextBoxColumn.Name = "dateJoinDataGridViewTextBoxColumn";
-            dateJoinDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // tbMain
             // 
             tbMain.ColumnCount = 1;
@@ -357,7 +294,7 @@
             label1.Location = new Point(319, 328);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(207, 25);
+            label1.Size = new Size(252, 31);
             label1.TabIndex = 58;
             label1.Text = "Number of dependents";
             // 
@@ -365,7 +302,7 @@
             // 
             txtDependent.Location = new Point(538, 327);
             txtDependent.Name = "txtDependent";
-            txtDependent.Size = new Size(100, 29);
+            txtDependent.Size = new Size(100, 34);
             txtDependent.TabIndex = 57;
             txtDependent.KeyPress += txtDependent_KeyPress;
             // 
@@ -387,7 +324,7 @@
             cbRole.FormattingEnabled = true;
             cbRole.Location = new Point(844, 265);
             cbRole.Name = "cbRole";
-            cbRole.Size = new Size(195, 29);
+            cbRole.Size = new Size(195, 36);
             cbRole.TabIndex = 55;
             // 
             // pbImport
@@ -409,7 +346,7 @@
             dtDoB.Location = new Point(844, 321);
             dtDoB.Margin = new Padding(4, 5, 4, 5);
             dtDoB.Name = "dtDoB";
-            dtDoB.Size = new Size(279, 32);
+            dtDoB.Size = new Size(279, 38);
             dtDoB.TabIndex = 47;
             // 
             // label9
@@ -419,7 +356,7 @@
             label9.Location = new Point(723, 50);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(74, 25);
+            label9.Size = new Size(89, 31);
             label9.TabIndex = 52;
             label9.Text = "Gender";
             // 
@@ -433,7 +370,7 @@
             cbGender.Location = new Point(844, 47);
             cbGender.Margin = new Padding(4, 5, 4, 5);
             cbGender.Name = "cbGender";
-            cbGender.Size = new Size(195, 33);
+            cbGender.Size = new Size(195, 39);
             cbGender.TabIndex = 51;
             // 
             // Status
@@ -443,7 +380,7 @@
             Status.Location = new Point(736, 191);
             Status.Margin = new Padding(4, 0, 4, 0);
             Status.Name = "Status";
-            Status.Size = new Size(62, 25);
+            Status.Size = new Size(76, 31);
             Status.TabIndex = 50;
             Status.Text = "Status";
             // 
@@ -455,7 +392,7 @@
             cBStatus.Location = new Point(844, 183);
             cBStatus.Margin = new Padding(4, 5, 4, 5);
             cBStatus.Name = "cBStatus";
-            cBStatus.Size = new Size(195, 33);
+            cBStatus.Size = new Size(195, 39);
             cBStatus.TabIndex = 49;
             // 
             // lb
@@ -465,7 +402,7 @@
             lb.Location = new Point(778, 117);
             lb.Margin = new Padding(4, 0, 4, 0);
             lb.Name = "lb";
-            lb.Size = new Size(29, 25);
+            lb.Size = new Size(34, 31);
             lb.TabIndex = 48;
             lb.Text = "CI";
             // 
@@ -475,7 +412,7 @@
             txtCccd.Location = new Point(844, 110);
             txtCccd.Margin = new Padding(4, 5, 4, 5);
             txtCccd.Name = "txtCccd";
-            txtCccd.Size = new Size(195, 32);
+            txtCccd.Size = new Size(195, 38);
             txtCccd.TabIndex = 46;
             txtCccd.KeyPress += txtCCCD_KeyPress;
             // 
@@ -486,7 +423,7 @@
             label10.Location = new Point(754, 265);
             label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
-            label10.Size = new Size(48, 25);
+            label10.Size = new Size(58, 31);
             label10.TabIndex = 45;
             label10.Text = "Role";
             // 
@@ -497,7 +434,7 @@
             label8.Location = new Point(357, 186);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(66, 25);
+            label8.Size = new Size(78, 31);
             label8.TabIndex = 44;
             label8.Text = "Phone";
             label8.TextAlign = ContentAlignment.MiddleCenter;
@@ -509,7 +446,7 @@
             label7.Location = new Point(338, 260);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(79, 25);
+            label7.Size = new Size(97, 31);
             label7.TabIndex = 43;
             label7.Text = "Address";
             // 
@@ -520,7 +457,7 @@
             label4.Location = new Point(750, 328);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(52, 25);
+            label4.Size = new Size(62, 31);
             label4.TabIndex = 42;
             label4.Text = "Birth";
             // 
@@ -541,7 +478,7 @@
             label2.Location = new Point(403, 54);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(28, 25);
+            label2.Size = new Size(34, 31);
             label2.TabIndex = 40;
             label2.Text = "Id";
             // 
@@ -573,7 +510,7 @@
             txtAddress.Location = new Point(443, 253);
             txtAddress.Margin = new Padding(4, 5, 4, 5);
             txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(195, 32);
+            txtAddress.Size = new Size(195, 38);
             txtAddress.TabIndex = 37;
             // 
             // txtPhone
@@ -582,7 +519,7 @@
             txtPhone.Location = new Point(443, 185);
             txtPhone.Margin = new Padding(4, 5, 4, 5);
             txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(195, 32);
+            txtPhone.Size = new Size(195, 38);
             txtPhone.TabIndex = 36;
             txtPhone.KeyPress += txtPhone_KeyPress;
             // 
@@ -592,7 +529,7 @@
             txtName.Location = new Point(443, 110);
             txtName.Margin = new Padding(4, 5, 4, 5);
             txtName.Name = "txtName";
-            txtName.Size = new Size(195, 32);
+            txtName.Size = new Size(195, 38);
             txtName.TabIndex = 35;
             // 
             // txtId
@@ -623,9 +560,72 @@
             tableLayoutPanel2.Size = new Size(1541, 411);
             tableLayoutPanel2.TabIndex = 28;
             // 
+            // fullNameEmpDataGridViewTextBoxColumn
+            // 
+            fullNameEmpDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            fullNameEmpDataGridViewTextBoxColumn.DataPropertyName = "FullNameEmp";
+            fullNameEmpDataGridViewTextBoxColumn.HeaderText = "Full Name";
+            fullNameEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
+            fullNameEmpDataGridViewTextBoxColumn.Name = "fullNameEmpDataGridViewTextBoxColumn";
+            fullNameEmpDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sexDataGridViewTextBoxColumn
+            // 
+            sexDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            sexDataGridViewTextBoxColumn.DataPropertyName = "Sex";
+            sexDataGridViewTextBoxColumn.HeaderText = "Sex";
+            sexDataGridViewTextBoxColumn.MinimumWidth = 6;
+            sexDataGridViewTextBoxColumn.Name = "sexDataGridViewTextBoxColumn";
+            sexDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cccdDataGridViewTextBoxColumn
+            // 
+            cccdDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            cccdDataGridViewTextBoxColumn.DataPropertyName = "Cccd";
+            cccdDataGridViewTextBoxColumn.HeaderText = "Cccd";
+            cccdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            cccdDataGridViewTextBoxColumn.Name = "cccdDataGridViewTextBoxColumn";
+            cccdDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // doBDataGridViewTextBoxColumn
+            // 
+            doBDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            doBDataGridViewTextBoxColumn.DataPropertyName = "DoB";
+            doBDataGridViewTextBoxColumn.HeaderText = "DoB";
+            doBDataGridViewTextBoxColumn.MinimumWidth = 6;
+            doBDataGridViewTextBoxColumn.Name = "doBDataGridViewTextBoxColumn";
+            doBDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // addressEmpDataGridViewTextBoxColumn
+            // 
+            addressEmpDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            addressEmpDataGridViewTextBoxColumn.DataPropertyName = "AddressEmp";
+            addressEmpDataGridViewTextBoxColumn.HeaderText = "Address";
+            addressEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
+            addressEmpDataGridViewTextBoxColumn.Name = "addressEmpDataGridViewTextBoxColumn";
+            addressEmpDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // phoneEmpDataGridViewTextBoxColumn
+            // 
+            phoneEmpDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            phoneEmpDataGridViewTextBoxColumn.DataPropertyName = "PhoneEmp";
+            phoneEmpDataGridViewTextBoxColumn.HeaderText = "Phone";
+            phoneEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
+            phoneEmpDataGridViewTextBoxColumn.Name = "phoneEmpDataGridViewTextBoxColumn";
+            phoneEmpDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dateJoinDataGridViewTextBoxColumn
+            // 
+            dateJoinDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dateJoinDataGridViewTextBoxColumn.DataPropertyName = "DateJoin";
+            dateJoinDataGridViewTextBoxColumn.HeaderText = "Join";
+            dateJoinDataGridViewTextBoxColumn.MinimumWidth = 6;
+            dateJoinDataGridViewTextBoxColumn.Name = "dateJoinDataGridViewTextBoxColumn";
+            dateJoinDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // frmShowEmployee
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1547, 837);
@@ -686,6 +686,12 @@
         private TextBox txtName;
         private TextBox txtId;
         private TableLayoutPanel tableLayoutPanel2;
+        private PictureBox pbImport;
+        private ComboBox cbRole;
+        private Button btSearchButton;
+        private Button btShowSubSalary;
+        private Label label1;
+        private TextBox txtDependent;
         private DataGridViewTextBoxColumn fullNameEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn sexDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn cccdDataGridViewTextBoxColumn;
@@ -693,11 +699,5 @@
         private DataGridViewTextBoxColumn addressEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn phoneEmpDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dateJoinDataGridViewTextBoxColumn;
-        private PictureBox pbImport;
-        private ComboBox cbRole;
-        private Button btSearchButton;
-        private Button btShowSubSalary;
-        private Label label1;
-        private TextBox txtDependent;
     }
 }
