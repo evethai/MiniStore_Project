@@ -19,32 +19,6 @@ namespace MiniStoreWinF
         }
         private void btLogin_Click(object sender, EventArgs e)
         {
-            //    string userName = txtUserName.Text;
-            //    string password = txtPassword.Text;
-            //    if (userName.Length <= 0 || password.Length <= 0)
-            //    {
-            //        MessageBox.Show("Username and Password cannot be left blank !!", "Notification", MessageBoxButtons.OK);
-            //    }
-            //    else
-            //    {
-            //        var login = _employeeService.GetAll()
-            //            .Where(entity => entity.Username == userName
-            //            && entity.Password == password
-            //            && entity.IsActive == true)
-            //            .FirstOrDefault();
-            //        if (login != null)
-            //        {
-            //            ContextScope.currentEmployee = login;
-            //            frmMainScreen form = new frmMainScreen();
-            //            this.Hide();
-            //            form.ShowDialog();
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Invalid username or password !!", "Notification", MessageBoxButtons.OK);
-            //            return;
-            //        }
-            //    }
             TestLogin(txtUserName.Text, txtPassword.Text);
 
         }

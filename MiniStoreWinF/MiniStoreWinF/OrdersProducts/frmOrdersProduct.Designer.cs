@@ -263,6 +263,7 @@
             // btSearch
             // 
             btSearch.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btSearch.Image = Properties.Resources.icons8_search_products_781;
             btSearch.ImageAlign = ContentAlignment.MiddleLeft;
             btSearch.Location = new Point(437, 15);
             btSearch.Margin = new Padding(4);
@@ -440,7 +441,7 @@
             // 
             // txtScanVoucher
             // 
-            txtScanVoucher.Location = new Point(187, 24);
+            txtScanVoucher.Location = new Point(141, 41);
             txtScanVoucher.Margin = new Padding(4);
             txtScanVoucher.Name = "txtScanVoucher";
             txtScanVoucher.Size = new Size(206, 29);
@@ -503,6 +504,7 @@
             // rdCashpayment
             // 
             rdCashpayment.AutoSize = true;
+            rdCashpayment.Checked = true;
             rdCashpayment.Location = new Point(370, 21);
             rdCashpayment.Margin = new Padding(4);
             rdCashpayment.Name = "rdCashpayment";
@@ -511,6 +513,7 @@
             rdCashpayment.TabStop = true;
             rdCashpayment.Text = "Cash payment";
             rdCashpayment.UseVisualStyleBackColor = true;
+            rdCashpayment.Click += rdCashpayment_Click;
             // 
             // rdMomopayment
             // 
@@ -520,7 +523,6 @@
             rdMomopayment.Name = "rdMomopayment";
             rdMomopayment.Size = new Size(139, 25);
             rdMomopayment.TabIndex = 0;
-            rdMomopayment.TabStop = true;
             rdMomopayment.Text = "Momo payment";
             rdMomopayment.UseVisualStyleBackColor = true;
             rdMomopayment.MouseClick += rdMomopayment_Click;
@@ -780,6 +782,7 @@
             btShowBill.Text = "Bill";
             btShowBill.TextAlign = ContentAlignment.BottomCenter;
             btShowBill.UseVisualStyleBackColor = true;
+            btShowBill.Visible = false;
             btShowBill.Click += btShowBill_Click;
             // 
             // btReturnMoney
@@ -850,7 +853,6 @@
             txtDiscount.ReadOnly = true;
             txtDiscount.Size = new Size(238, 29);
             txtDiscount.TabIndex = 28;
-            txtDiscount.Text = "0";
             // 
             // label4
             // 

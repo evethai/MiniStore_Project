@@ -48,6 +48,7 @@ namespace MiniStoreWinF.OrdersProducts
             cbTypeProducts.DisplayMember = "ProductType";
             cbSort.Items.Add("Ascending");
             cbSort.Items.Add("Decreasing");
+            rdCashpayment.Checked = true;
         }
         private void OrderProducts_Load(object sender, EventArgs e)
         {
@@ -100,6 +101,8 @@ namespace MiniStoreWinF.OrdersProducts
             rdCashpayment.Checked = false;
             rdMomopayment.Checked = false;
             btUsingVoucher.Enabled = true;
+            txtDiscount.Text = "0";
+            rdCashpayment.Checked = true;
         }
         private void cbTypeProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -127,6 +130,10 @@ namespace MiniStoreWinF.OrdersProducts
                 cbUnitQuantity.DataSource = checkUnit;
                 cbUnitQuantity.DisplayMember = "UnitName";
             }
+        }
+        public string formatDouble(double? d)
+        {
+            return d?.ToString("#,###,###");
         }
         private void cbUnitQuantity_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -224,6 +231,7 @@ namespace MiniStoreWinF.OrdersProducts
                         total += value;
                     }
                     txtTotalAllOrders.Text = total.ToString();
+                    txtTotalAllOrders.Text = formatDouble(Convert.ToDouble(txtTotalAllOrders.Text));
                     TotalBill = total;
                 }
             }
@@ -591,19 +599,19 @@ namespace MiniStoreWinF.OrdersProducts
             double total = 0;
             MoMoService _moService = new MoMoService();
             var list = _moService.GetAll().Where(p => p.Active == true).FirstOrDefault();
-            if ((txtTotalAllOrders.Text != "" || list != null || txtDiscount.Text != ""))
-            {
-                ContextScope.currentMoMo = list;
-                frmQRCode form = new frmQRCode();
-                form.total = Double.Parse(txtTotalAllOrders.Text) - double.Parse(txtDiscount.Text);
-                form.ShowDialog();
-                btShowBill.Visible = true;
-            }
-            else
+            if (txtTotalAllOrders.Text == "" || list == null)
             {
                 MessageBox.Show("Not find a ORDER ", "Messages");
                 rdMomopayment.Checked = false;
                 btShowBill.Visible = false;
+            }
+            else
+            {
+                ContextScope.currentMoMo = list;
+                frmQRCode form = new frmQRCode();
+                form.total = Double.Parse(txtTotalAllOrders.Text);
+                form.ShowDialog();
+                btShowBill.Visible = true;
             }
         }
     }

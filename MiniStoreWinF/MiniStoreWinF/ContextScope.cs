@@ -22,5 +22,6 @@ namespace MiniStoreWinF
         
         public static Salary currentSalary { get; set; }
         public static WorkSheet currentWs { get; set; }
+        public static string current { get; set; }
     }
 }

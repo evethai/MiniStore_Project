@@ -38,8 +38,9 @@
             nbrPagination = new NumericUpDown();
             panel3 = new Panel();
             dgvShowWorkSheet = new DataGridView();
+            workSheetBindingSource = new BindingSource(components);
             idWorkSheetDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            idEmpDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            IdEmp = new DataGridViewTextBoxColumn();
             dateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             sheetDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             timeCheckInDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -48,7 +49,6 @@
             totalWorkingHoursDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             defaultCoefficientDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             sundayCoefficientDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            workSheetBindingSource = new BindingSource(components);
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             panel1.SuspendLayout();
@@ -148,7 +148,7 @@
             dgvShowWorkSheet.AutoGenerateColumns = false;
             dgvShowWorkSheet.BackgroundColor = SystemColors.Control;
             dgvShowWorkSheet.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvShowWorkSheet.Columns.AddRange(new DataGridViewColumn[] { idWorkSheetDataGridViewTextBoxColumn, idEmpDataGridViewTextBoxColumn, dateDataGridViewTextBoxColumn, sheetDataGridViewTextBoxColumn, timeCheckInDataGridViewTextBoxColumn, timeCheckOutDataGridViewTextBoxColumn, statusDataGridViewTextBoxColumn, totalWorkingHoursDataGridViewTextBoxColumn, defaultCoefficientDataGridViewTextBoxColumn, sundayCoefficientDataGridViewTextBoxColumn });
+            dgvShowWorkSheet.Columns.AddRange(new DataGridViewColumn[] { idWorkSheetDataGridViewTextBoxColumn, IdEmp, dateDataGridViewTextBoxColumn, sheetDataGridViewTextBoxColumn, timeCheckInDataGridViewTextBoxColumn, timeCheckOutDataGridViewTextBoxColumn, statusDataGridViewTextBoxColumn, totalWorkingHoursDataGridViewTextBoxColumn, defaultCoefficientDataGridViewTextBoxColumn, sundayCoefficientDataGridViewTextBoxColumn });
             dgvShowWorkSheet.DataSource = workSheetBindingSource;
             dgvShowWorkSheet.Dock = DockStyle.Fill;
             dgvShowWorkSheet.GridColor = SystemColors.Control;
@@ -161,6 +161,10 @@
             dgvShowWorkSheet.TabIndex = 42;
             dgvShowWorkSheet.CellFormatting += dgvShowWorkSheet_CellFormatting;
             // 
+            // workSheetBindingSource
+            // 
+            workSheetBindingSource.DataSource = typeof(Repository.Models.WorkSheet);
+            // 
             // idWorkSheetDataGridViewTextBoxColumn
             // 
             idWorkSheetDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -169,13 +173,13 @@
             idWorkSheetDataGridViewTextBoxColumn.MinimumWidth = 6;
             idWorkSheetDataGridViewTextBoxColumn.Name = "idWorkSheetDataGridViewTextBoxColumn";
             // 
-            // idEmpDataGridViewTextBoxColumn
+            // IdEmp
             // 
-            idEmpDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            idEmpDataGridViewTextBoxColumn.DataPropertyName = "IdEmp";
-            idEmpDataGridViewTextBoxColumn.HeaderText = "Id Employee";
-            idEmpDataGridViewTextBoxColumn.MinimumWidth = 6;
-            idEmpDataGridViewTextBoxColumn.Name = "idEmpDataGridViewTextBoxColumn";
+            IdEmp.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            IdEmp.DataPropertyName = "IdEmp";
+            IdEmp.HeaderText = "Id Employee";
+            IdEmp.MinimumWidth = 6;
+            IdEmp.Name = "IdEmp";
             // 
             // dateDataGridViewTextBoxColumn
             // 
@@ -241,10 +245,6 @@
             sundayCoefficientDataGridViewTextBoxColumn.MinimumWidth = 6;
             sundayCoefficientDataGridViewTextBoxColumn.Name = "sundayCoefficientDataGridViewTextBoxColumn";
             // 
-            // workSheetBindingSource
-            // 
-            workSheetBindingSource.DataSource = typeof(Repository.Models.WorkSheet);
-            // 
             // frmHistoryWorksheet
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -279,7 +279,7 @@
         private NumericUpDown nbrPagination;
         private BindingSource workSheetBindingSource;
         private DataGridViewTextBoxColumn idWorkSheetDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn idEmpDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn IdEmp;
         private DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn sheetDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn timeCheckInDataGridViewTextBoxColumn;

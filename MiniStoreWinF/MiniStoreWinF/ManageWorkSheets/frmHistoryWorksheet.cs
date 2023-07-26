@@ -101,6 +101,20 @@ namespace MiniStoreWinF.ManageWorkSheets
                     e.FormattingApplied = true;
                 }
             }
+            EmployeeService groupService = new EmployeeService();
+            if (dgvShowWorkSheet.Columns[e.ColumnIndex].Name == "IdEmp")// key nay o columdata change in Name
+            {
+                if (e.Value != null)
+                {
+                    string idGroup = e.Value.ToString();
+                    var nameGroup = _employeeService.GetAll().Where(p => p.IdEmp.Equals(idGroup)).FirstOrDefault();
+                    string name = nameGroup.FullNameEmp;
+                    e.Value = name;
+                    e.FormattingApplied = true;
+                }
+            }
+
         }
+        
     }
 }

@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZXing;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MiniStoreWinF.ManageWorkSheets
@@ -22,50 +23,16 @@ namespace MiniStoreWinF.ManageWorkSheets
         SheetDetailService _sheetDetailService = new SheetDetailService();
         EmployeeService _employeeService = new EmployeeService();
         PermissionService _permissionService = new PermissionService();
-        public DateTime dateTime { get; set; }
-        public frmTableWork(int Date, DateTime timer)
+        public frmTableWork()
         {
             InitializeComponent();
-            int DateButton = Date;
-            string Year = timer.Year.ToString();
-            string Month = timer.Month.ToString();
-            var OneDay = (DateButton + "/" + Month + "/" + Year).ToString();
-            dtpkDate.Value = Convert.ToDateTime(OneDay);
-            dateTime = dtpkDate.Value;
-            loadData(dateTime);
-            LoadCombobox();
-
-        }
-        public void loadData(DateTime dateTime)
-        {
-            using (MiniStoreContext dt = new MiniStoreContext())
-            {
-                DateTime desiredDate = dateTime;
-                var query = dt.WorkSheets
-                    .Join(dt.Employees,
-                        ws => ws.IdEmp,
-                        e => e.IdEmp,
-                        (ws, e) => new { WorkSheet = ws, Employee = e })
-                    .Where(result => result.WorkSheet.Date == desiredDate)
-                    .Select(result => new
-                    {
-                        result.WorkSheet.IdWorkSheet,
-                        result.Employee.FullNameEmp,
-                        result.WorkSheet.Sheet,
-                    });
-                var results = query.ToList();
-                dtgvListWorkDate.DataSource = new BindingSource { DataSource = results };
-                dtgvListWorkDate.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            }
-
-        }
-        public void LoadCombobox()
-        {
+            reset();
             cbSheetWork.DataSource = _sheetDetailService.GetAll().Where(p => p.Sheet >= 1).ToList();
             cbSheetWork.DisplayMember = "Sheet";
             cbSheetWork.SelectedIndex = -1;
             cbFullNameEmp.DataSource = _employeeService.GetAll().Where(p => p.Roles >= 2).ToList();
             cbFullNameEmp.DisplayMember = "FullNameEmp";
+            cbFullNameEmp.ValueMember = "IdEmp";
             cbFullNameEmp.SelectedIndex = -1;
         }
         private void dtgvListWorkDate_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -76,8 +43,7 @@ namespace MiniStoreWinF.ManageWorkSheets
                 var ListChoise = _workSheetService.GetAll().Where(entity => entity.IdWorkSheet.Equals(RowOrder)).FirstOrDefault();
                 if (ListChoise != null)
                 {
-                    var checkemp = _employeeService.GetAll().Where(_emp => _emp.IdEmp.Equals(ListChoise.IdEmp)).FirstOrDefault();
-                    cbFullNameEmp.Text = checkemp.FullNameEmp;
+                    cbFullNameEmp.SelectedValue = ListChoise.IdEmp;
                     cbSheetWork.Text = ListChoise.Sheet.ToString();
                     txtIdWsheet.Text = ListChoise.IdWorkSheet;
                 }
@@ -86,46 +52,42 @@ namespace MiniStoreWinF.ManageWorkSheets
             {
                 return;
             }
-
-
         }
-        private void dtpkDate_ValueChanged(object sender, EventArgs e)
+        public string GenerateAutoId(int currentCount, string headId)
         {
-            loadData((sender as DateTimePicker).Value);
-        }
-
-        private void btLastday_Click(object sender, EventArgs e)
-        {
-            dtpkDate.Value = dtpkDate.Value.AddDays(-1);
-        }
-        private void btNextday_Click(object sender, EventArgs e)
-        {
-            dtpkDate.Value = dtpkDate.Value.AddDays(1);
+            int nextCount = currentCount + 1;
+            string id = headId + nextCount.ToString("D4");
+            return id;
         }
         private void btCreate_Click(object sender, EventArgs e)
         {
-            var checkEmp = _employeeService.GetAll().Where(p => p.FullNameEmp.Equals(cbFullNameEmp.Text) && p.Roles >= 2).FirstOrDefault();
+            var checkEmp = _employeeService.GetAll().Where(p => p.IdEmp.Equals(cbFullNameEmp.SelectedValue) && p.Roles >= 2).FirstOrDefault();
+            var worksheetOfNows = _workSheetService.GetAll().Count();
             if (checkEmp != null)
             {
-                
-                AutoWorkSheetID news = new AutoWorkSheetID();
                 var worksheetOfNow = _workSheetService.GetAll().FirstOrDefault();
+                worksheetOfNow.IdWorkSheet = GenerateAutoId(worksheetOfNows, "Ws");
                 worksheetOfNow.Sheet = Convert.ToInt32(cbSheetWork.Text);
                 worksheetOfNow.IdEmp = checkEmp.IdEmp;
-                worksheetOfNow.Date = dtpkDate.Value;
+                worksheetOfNow.Date = Convert.ToDateTime(ContextScope.current);
                 var checksheet = _sheetDetailService.GetAll().Where(p => p.Sheet == worksheetOfNow.Sheet).FirstOrDefault();
                 worksheetOfNow.DefaultCoefficient = checksheet.CoefficientsSalary;
                 worksheetOfNow.TimeCheckIn = null;
                 worksheetOfNow.TimeCheckOut = null;
                 worksheetOfNow.Status = false;
-                news.AddID(worksheetOfNow);
+                _workSheetService.Create(worksheetOfNow);
                 MessageBox.Show("Create Successful!");
-                loadData(dtpkDate.Value);
+                reset();
             }
             else
             {
                 MessageBox.Show("Insufficient information to Create");
             }
+        }
+        public void reset()
+        {
+            var checkWs = _workSheetService.GetAll().Where(p => p.Date == Convert.ToDateTime(ContextScope.current)).ToList();
+            dtgvListWorkDate.DataSource = new BindingSource { DataSource = checkWs };
         }
 
         private void btRemove_Click_1(object sender, EventArgs e)
@@ -139,18 +101,18 @@ namespace MiniStoreWinF.ManageWorkSheets
                     txtIdWsheet.Text = "";
                     cbFullNameEmp.SelectedIndex = 0;
                     cbSheetWork.SelectedIndex = 0;
-                    loadData(dtpkDate.Value);
+                    reset();
                 }
                 else
                 {
                     MessageBox.Show("Can not Remove Insufficient information ");
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("Can not Remove when news create");
             }
-                
+
         }
 
         private void cbFullNameEmp_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -182,7 +144,7 @@ namespace MiniStoreWinF.ManageWorkSheets
                     txtIdWsheet.Text = "";
                     cbFullNameEmp.SelectedIndex = 0;
                     cbSheetWork.SelectedIndex = 0;
-                    loadData(dtpkDate.Value);
+                    reset();
                 }
                 else
                 {
@@ -193,6 +155,25 @@ namespace MiniStoreWinF.ManageWorkSheets
             {
                 MessageBox.Show("Can not Update when you new create");
             }
+        }
+
+        private void dtgvListWorkDate_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+            EmployeeService groupService = new EmployeeService();
+            if (dtgvListWorkDate.Columns[e.ColumnIndex].Name == "IdEmp")// key nay o columdata change in Name
+            {
+
+                if (e.Value != null)
+                {
+                    string idGroup = e.Value.ToString();
+                    var nameGroup = _employeeService.GetAll().Where(p => p.IdEmp.Equals(idGroup)).FirstOrDefault();
+                    string name = nameGroup.FullNameEmp;
+                    e.Value = name;
+                    e.FormattingApplied = true;
+                }
+            }
+
         }
     }
 }
