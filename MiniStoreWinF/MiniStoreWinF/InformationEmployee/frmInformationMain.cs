@@ -33,6 +33,20 @@ namespace MiniStoreWinF.InformationEmployee
             u.openChildForm(frmLastMonthSalary, tlMain);
         }
 
-        
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btworksheet_Click(object sender, EventArgs e)
+        {
+            frmLastMonthWorksheet frmLastMonthWorksheet = new frmLastMonthWorksheet();
+            u.openChildForm(frmLastMonthWorksheet, tlMain);
+        }
+
+        private void frmInformationMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
