@@ -433,6 +433,7 @@ namespace MiniStoreWinF.ManageProducts
                         
                         double temp = Convert.ToDouble(supplierunit.textBoxUnitData4.Text);
                         double temp1 = Convert.ToDouble(supplierunit.textBoxUnitData3.Text);
+                        
                         if (supplierunit.textBoxUnitData4.Text == "" ||
                            supplierunit.textBoxUnitData3.Text == "" ||
                            !double.TryParse(supplierunit.textBoxUnitData4.Text = temp.ToString("#,###"), out double price) ||
@@ -447,8 +448,8 @@ namespace MiniStoreWinF.ManageProducts
                         {
                             MessageBox.Show("EXP must be greater than MFG");
                         }
-                        else if (FormDataStorage.CreateProductData.Path == "" || FormDataStorage.CreateProductData.Type == "" ||
-                             FormDataStorage.CreateProductData.ProductData=="")
+                        else if (FormDataStorage.CreateProductData.Path == "" || FormDataStorage.CreateProductData.Type == ""  ||
+                            FormDataStorage.CreateProductData.ProductData=="")
                         {
                             MessageBox.Show("Not Blank");
                         }
@@ -580,7 +581,7 @@ namespace MiniStoreWinF.ManageProducts
                             MessageBox.Show("EXP must be greater than MFG");
                         }
                         else if (FormDataStorage.CreateProductData.Path == "" || FormDataStorage.CreateProductData.Type == "" ||
-                             FormDataStorage.CreateProductData.ProductData == "")
+                            FormDataStorage.CreateProductData.ProductData=="")
                         {
                             MessageBox.Show("Not Blank");
                         }
@@ -595,9 +596,10 @@ namespace MiniStoreWinF.ManageProducts
                             newUnit.PriceExport = price;
                             newUnit.PriceImport = price1;
                             _AddSup.Create(newSupplier);
+                            _AddPro.Create(newProduct);
                             var lastSKU = _SKULast.GetAll().ToList().Select(c => c.Sku).Max();
                             newUnit.Sku = lastSKU;
-                            _AddPro.Create(newProduct);
+                            
                             _AddUnit.Create(newUnit);
                             MessageBox.Show("Data added successfully!");
                             button2_Click(sender, e);

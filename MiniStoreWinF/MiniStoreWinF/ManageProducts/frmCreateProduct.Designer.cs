@@ -176,6 +176,7 @@
             // 
             // dateDateImport
             // 
+            dateDateImport.Enabled = false;
             dateDateImport.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             dateDateImport.Location = new Point(226, 280);
             dateDateImport.Margin = new Padding(5, 4, 5, 4);
