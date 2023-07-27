@@ -373,6 +373,7 @@
             // dataGridView1
             // 
             dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.BackgroundColor = SystemColors.Window;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { skuDataGridViewTextBoxColumn, dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, mfgDataGridViewTextBoxColumn, expDataGridViewTextBoxColumn, dataGridViewTextBoxColumn11 });
             dataGridView1.DataSource = productBindingSource;
@@ -517,7 +518,7 @@
             rd1.AutoSize = true;
             rd1.Checked = true;
             rd1.Location = new Point(32, 26);
-            rd1.Margin = new Padding(4, 4, 4, 4);
+            rd1.Margin = new Padding(4);
             rd1.Name = "rd1";
             rd1.Size = new Size(87, 21);
             rd1.TabIndex = 23;
@@ -530,7 +531,7 @@
             // 
             rd2.AutoSize = true;
             rd2.Location = new Point(32, 55);
-            rd2.Margin = new Padding(4, 4, 4, 4);
+            rd2.Margin = new Padding(4);
             rd2.Name = "rd2";
             rd2.Size = new Size(77, 21);
             rd2.TabIndex = 24;
@@ -638,6 +639,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Window;
             ClientSize = new Size(1221, 548);
             Controls.Add(tableLayoutPanel1);
             Name = "ManageAllProducs";

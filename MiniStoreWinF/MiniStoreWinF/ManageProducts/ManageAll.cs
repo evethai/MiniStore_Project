@@ -19,23 +19,44 @@ namespace MiniStoreWinF.ManageProducts
         public ManageAll()
         {
             InitializeComponent();
-            u.openChildForm(new ManageProducts.ManageAllProducs(), pnProduct);
-
+            CheckColor(P);
+            u.openChildForm(new ManageProducts.ManageAllProducs(), pnMain);
         }
 
-        private void AUTHORIZATION_Click(object sender, EventArgs e)
+        private void CheckColor(Button button)
         {
-            u.openChildForm(new ManageProducts.ManageAllProducs(), pnProduct);
+            foreach (Control control in flowPanel.Controls)
+            {
+                if (control is Button)
+                {
+                    if (control == button)
+                    {
+                        control.BackColor = Color.PowderBlue;
+                    }
+                    else
+                    {
+                        control.BackColor = Color.White;
+                    }
+                }
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void P_Click(object sender, EventArgs e)
         {
-            u.openChildForm(new ManageProducts.ManageUnitProduct(), pnProduct);
+            CheckColor(P);
+            u.openChildForm(new ManageProducts.ManageAllProducs(), pnMain);
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void U_Click(object sender, EventArgs e)
         {
-            u.openChildForm(new ManageProducts.ManageSupplier(), pnProduct);
+            CheckColor(U);
+            u.openChildForm(new ManageProducts.ManageUnitProduct(), pnMain);
+        }
+
+        private void S_Click(object sender, EventArgs e)
+        {
+            CheckColor(S);
+            u.openChildForm(new ManageProducts.ManageSupplier(), pnMain);
         }
     }
 }

@@ -49,11 +49,13 @@ namespace MiniStoreWinF.DashBoard
             txtUser.Text = ContextScope.currentEmployee.FullNameEmp;
             if (ContextScope.currentEmployee.Roles <= 1)
             {
+                CheckColor(HOME);
                 u.openChildForm(new frmDashBoard(), pnMain);
 
             }
             else
             {
+                CheckColor(HOME);
                 u.openChildForm(new OrdersProducts.OrderProducts(), pnMain);
                 btCheckIn.Enabled = true;
             }
@@ -83,44 +85,70 @@ namespace MiniStoreWinF.DashBoard
             form.ShowDialog();
         }
 
+        private void CheckColor(Panel panel)
+        {
+            foreach (Control control in flowPanel.Controls)
+            {
+                if (control is Panel)
+                {
+                    if (control == panel)
+                    {
+                        control.BackColor = Color.PowderBlue;
+                    }
+                    else
+                    {
+                        control.BackColor = Color.White;
+                    }
+                }
+            }
+        }
+
         private void SALARY_Click(object sender, EventArgs e)
         {
+            CheckColor(SALARY);
             u.openChildForm(new frmSalary(), pnMain);
         }
 
         private void REVENUE_Click(object sender, EventArgs e)
         {
+            CheckColor(REVENUE);
             u.openChildForm(new ManageRevenue.frmRevenues(), pnMain);
         }
 
         private void ORDER_Click(object sender, EventArgs e)
         {
+            CheckColor(ORDER);
             u.openChildForm(new OrdersProducts.OrderProducts(), pnMain);
         }
 
         private void PRODUCT_Click(object sender, EventArgs e)
         {
+            CheckColor(PRODUCT);
             u.openChildForm(new ManageProducts.ManageAll(), pnMain);
         }
 
         private void EMPLOYEE_Click(object sender, EventArgs e)
         {
+            CheckColor(EMPLOYEE);
             u.openChildForm(new ManageEmployees.frmShowEmployee(), pnMain);
         }
 
         private void SHEET_Click(object sender, EventArgs e)
         {
+            CheckColor(SHEET);
             u.openChildForm(new ManageWorkSheet.frmManageWorkSheetPage(), pnMain);
         }
 
         private void VOUCHER_Click(object sender, EventArgs e)
         {
+            CheckColor(VOUCHER);
             u.openChildForm(new Manage_Voucher.frmMemberVVoucher(), pnMain);
 
         }
 
         private void AUTHORIZATION_Click(object sender, EventArgs e)
         {
+            CheckColor(AUTHORIZATION);
             u.openChildForm(new frmAdmin(), pnMain);
         }
 
@@ -204,8 +232,6 @@ namespace MiniStoreWinF.DashBoard
         }
         private void pbSetting_Click(object sender, EventArgs e)
         {
-            Form setting = new frmSettingScreen();
-            setting.Show();
         }
     }
 }

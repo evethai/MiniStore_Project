@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MiniStoreWinF", "MiniStoreW
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{CE7D2754-5EBF-41A1-8BAA-D38317153314}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{59145E08-2800-4A72-9CD9-9C1DFB825981}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,8 @@ Global
 		{CE7D2754-5EBF-41A1-8BAA-D38317153314}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE7D2754-5EBF-41A1-8BAA-D38317153314}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE7D2754-5EBF-41A1-8BAA-D38317153314}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59145E08-2800-4A72-9CD9-9C1DFB825981}.Debug|Any CPU.ActiveCfg = Debug
+		{59145E08-2800-4A72-9CD9-9C1DFB825981}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

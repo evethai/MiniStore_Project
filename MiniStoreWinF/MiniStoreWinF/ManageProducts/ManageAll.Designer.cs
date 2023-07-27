@@ -28,172 +28,94 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox4 = new GroupBox();
-            button2 = new Button();
-            groupBox3 = new GroupBox();
-            button1 = new Button();
-            groupBox1 = new GroupBox();
-            AUTHORIZATION = new Button();
-            label1 = new Label();
-            pnProduct = new TableLayoutPanel();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            groupBox4.SuspendLayout();
-            groupBox3.SuspendLayout();
-            groupBox1.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
+            P = new Button();
+            U = new Button();
+            S = new Button();
+            flowPanel = new FlowLayoutPanel();
+            pnMain = new Panel();
+            flowPanel.SuspendLayout();
             SuspendLayout();
             // 
-            // groupBox4
+            // P
             // 
-            groupBox4.Controls.Add(button2);
-            groupBox4.Dock = DockStyle.Fill;
-            groupBox4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox4.ForeColor = Color.Navy;
-            groupBox4.Location = new Point(4, 168);
-            groupBox4.Margin = new Padding(4, 4, 4, 4);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Padding = new Padding(4, 4, 4, 4);
-            groupBox4.Size = new Size(310, 75);
-            groupBox4.TabIndex = 2;
-            groupBox4.TabStop = false;
+            P.Location = new Point(4, 4);
+            P.Margin = new Padding(4, 4, 4, 4);
+            P.Name = "P";
+            P.Size = new Size(309, 77);
+            P.TabIndex = 0;
+            P.Text = "Product";
+            P.UseVisualStyleBackColor = true;
+            P.Click += P_Click;
             // 
-            // button2
+            // U
             // 
-            button2.Dock = DockStyle.Fill;
-            button2.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(4, 20);
-            button2.Margin = new Padding(5, 4, 5, 4);
-            button2.Name = "button2";
-            button2.Size = new Size(302, 51);
-            button2.TabIndex = 1;
-            button2.Text = "Supplier";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            U.Location = new Point(4, 89);
+            U.Margin = new Padding(4, 4, 4, 4);
+            U.Name = "U";
+            U.Size = new Size(309, 77);
+            U.TabIndex = 0;
+            U.Text = "Unit";
+            U.UseVisualStyleBackColor = true;
+            U.Click += U_Click;
             // 
-            // groupBox3
+            // S
             // 
-            groupBox3.Controls.Add(button1);
-            groupBox3.Dock = DockStyle.Fill;
-            groupBox3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox3.ForeColor = Color.Navy;
-            groupBox3.Location = new Point(4, 86);
-            groupBox3.Margin = new Padding(4, 4, 4, 4);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(4, 4, 4, 4);
-            groupBox3.Size = new Size(310, 74);
-            groupBox3.TabIndex = 2;
-            groupBox3.TabStop = false;
+            S.Location = new Point(4, 174);
+            S.Margin = new Padding(4, 4, 4, 4);
+            S.Name = "S";
+            S.Size = new Size(309, 77);
+            S.TabIndex = 0;
+            S.Text = "Supplier";
+            S.UseVisualStyleBackColor = true;
+            S.Click += S_Click;
             // 
-            // button1
+            // flowPanel
             // 
-            button1.Dock = DockStyle.Fill;
-            button1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ImageAlign = ContentAlignment.MiddleLeft;
-            button1.Location = new Point(4, 23);
-            button1.Margin = new Padding(5, 4, 5, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(302, 47);
-            button1.TabIndex = 1;
-            button1.Text = "Unit";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            flowPanel.Controls.Add(P);
+            flowPanel.Controls.Add(U);
+            flowPanel.Controls.Add(S);
+            flowPanel.Dock = DockStyle.Left;
+            flowPanel.Location = new Point(0, 0);
+            flowPanel.Margin = new Padding(4, 4, 4, 4);
+            flowPanel.Name = "flowPanel";
+            flowPanel.Size = new Size(326, 955);
+            flowPanel.TabIndex = 1;
             // 
-            // groupBox1
+            // pnMain
             // 
-            groupBox1.Controls.Add(AUTHORIZATION);
-            groupBox1.Dock = DockStyle.Fill;
-            groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox1.ForeColor = Color.Navy;
-            groupBox1.Location = new Point(4, 4);
-            groupBox1.Margin = new Padding(4, 4, 4, 4);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4, 4, 4, 4);
-            groupBox1.Size = new Size(310, 74);
-            groupBox1.TabIndex = 2;
-            groupBox1.TabStop = false;
-            // 
-            // AUTHORIZATION
-            // 
-            AUTHORIZATION.Dock = DockStyle.Fill;
-            AUTHORIZATION.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            AUTHORIZATION.ImageAlign = ContentAlignment.MiddleLeft;
-            AUTHORIZATION.Location = new Point(4, 23);
-            AUTHORIZATION.Margin = new Padding(5, 4, 5, 4);
-            AUTHORIZATION.Name = "AUTHORIZATION";
-            AUTHORIZATION.Size = new Size(302, 47);
-            AUTHORIZATION.TabIndex = 1;
-            AUTHORIZATION.Text = "Product";
-            AUTHORIZATION.UseVisualStyleBackColor = true;
-            AUTHORIZATION.Click += AUTHORIZATION_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(462, 135);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(0, 21);
-            label1.TabIndex = 1;
-            // 
-            // pnProduct
-            // 
-            pnProduct.ColumnCount = 1;
-            pnProduct.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            pnProduct.Location = new Point(327, 0);
-            pnProduct.Margin = new Padding(4, 4, 4, 4);
-            pnProduct.Name = "pnProduct";
-            pnProduct.RowCount = 1;
-            pnProduct.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            pnProduct.Size = new Size(1218, 802);
-            pnProduct.TabIndex = 2;
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 1;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Controls.Add(groupBox4, 0, 2);
-            tableLayoutPanel1.Controls.Add(groupBox1, 0, 0);
-            tableLayoutPanel1.Controls.Add(groupBox3, 0, 1);
-            tableLayoutPanel1.Location = new Point(3, 12);
-            tableLayoutPanel1.Margin = new Padding(4, 4, 4, 4);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel1.Size = new Size(318, 247);
-            tableLayoutPanel1.TabIndex = 3;
+            pnMain.Dock = DockStyle.Fill;
+            pnMain.Location = new Point(326, 0);
+            pnMain.Margin = new Padding(4, 4, 4, 4);
+            pnMain.Name = "pnMain";
+            pnMain.Size = new Size(1560, 955);
+            pnMain.TabIndex = 2;
             // 
             // ManageAll
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1543, 802);
-            Controls.Add(tableLayoutPanel1);
-            Controls.Add(pnProduct);
-            Controls.Add(label1);
-            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(4, 4, 4, 4);
+            BackColor = SystemColors.Window;
+            ClientSize = new Size(1886, 955);
+            Controls.Add(pnMain);
+            Controls.Add(flowPanel);
+            Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(5, 5, 5, 5);
             Name = "ManageAll";
             Text = "ManageAll";
-            groupBox4.ResumeLayout(false);
-            groupBox3.ResumeLayout(false);
-            groupBox1.ResumeLayout(false);
-            tableLayoutPanel1.ResumeLayout(false);
+            flowPanel.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-        private GroupBox groupBox4;
-        private GroupBox groupBox3;
-        private GroupBox groupBox1;
         private Label label1;
         private TableLayoutPanel pnProduct;
-        private TableLayoutPanel tableLayoutPanel1;
-        private Button button2;
-        private Button button1;
+        private Button U;
+        private Button P;
         private Button AUTHORIZATION;
+        private FlowLayoutPanel flowPanel;
+        private Button S;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Panel pnMain;
+        private Panel panel2;
     }
 }

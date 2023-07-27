@@ -27,21 +27,43 @@ namespace MiniStoreWinF.ManageWorkSheet
         public frmManageWorkSheetPage()
         {
             InitializeComponent();
+            CheckColor(btSheetDetails);
             u.openChildForm(new frmTimeKeepingDetails(), pnlManageWorksheet);
+        }
+
+        private void CheckColor(Button button)
+        {
+            foreach (Control control in flowPanel.Controls)
+            {
+                if (control is Button)
+                {
+                    if (control == button)
+                    {
+                        control.BackColor = Color.PowderBlue;
+                    }
+                    else
+                    {
+                        control.BackColor = Color.White;
+                    }
+                }
+            }
         }
 
         private void btHistory_Click(object sender, EventArgs e)
         {
+            CheckColor(btHistory);
             u.openChildForm(new frmTimeKeepingDetails(), pnlManageWorksheet);
         }
 
         private void btSheetDetails_Click(object sender, EventArgs e)
         {
+            CheckColor(btSheetDetails);
             u.openChildForm(new frmSheetDetails(), pnlManageWorksheet);
         }
 
         private void btRegisterWorksheet_Click(object sender, EventArgs e)
         {
+            CheckColor(btRegisterWorksheet);
             u.openChildForm(new frmRegisterWorksheet(), pnlManageWorksheet);
         }
     }

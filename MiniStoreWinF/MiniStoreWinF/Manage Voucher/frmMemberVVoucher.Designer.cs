@@ -29,54 +29,54 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMemberVVoucher));
-            btMember = new Button();
-            btVoucher = new Button();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            M = new Button();
+            V = new Button();
+            flowPanel = new FlowLayoutPanel();
             pnMain = new Panel();
-            flowLayoutPanel1.SuspendLayout();
+            flowPanel.SuspendLayout();
             SuspendLayout();
             // 
-            // btMember
+            // M
             // 
-            btMember.Image = (Image)resources.GetObject("btMember.Image");
-            btMember.ImageAlign = ContentAlignment.MiddleLeft;
-            btMember.Location = new Point(5, 4);
-            btMember.Margin = new Padding(5, 4, 5, 4);
-            btMember.Name = "btMember";
-            btMember.Size = new Size(253, 65);
-            btMember.TabIndex = 1;
-            btMember.Text = "Member";
-            btMember.TextAlign = ContentAlignment.MiddleRight;
-            btMember.UseVisualStyleBackColor = true;
-            btMember.Click += btMember_Click;
+            M.Image = (Image)resources.GetObject("M.Image");
+            M.ImageAlign = ContentAlignment.MiddleLeft;
+            M.Location = new Point(5, 4);
+            M.Margin = new Padding(5, 4, 5, 4);
+            M.Name = "M";
+            M.Size = new Size(253, 65);
+            M.TabIndex = 1;
+            M.Text = "Member";
+            M.TextAlign = ContentAlignment.MiddleRight;
+            M.UseVisualStyleBackColor = true;
+            M.Click += btMember_Click;
             // 
-            // btVoucher
+            // V
             // 
-            btVoucher.Image = (Image)resources.GetObject("btVoucher.Image");
-            btVoucher.ImageAlign = ContentAlignment.MiddleLeft;
-            btVoucher.Location = new Point(5, 77);
-            btVoucher.Margin = new Padding(5, 4, 5, 4);
-            btVoucher.Name = "btVoucher";
-            btVoucher.Size = new Size(253, 65);
-            btVoucher.TabIndex = 0;
-            btVoucher.Text = "Voucher";
-            btVoucher.TextAlign = ContentAlignment.MiddleRight;
-            btVoucher.UseVisualStyleBackColor = true;
-            btVoucher.Click += btVoucher_Click;
+            V.Image = (Image)resources.GetObject("V.Image");
+            V.ImageAlign = ContentAlignment.MiddleLeft;
+            V.Location = new Point(5, 77);
+            V.Margin = new Padding(5, 4, 5, 4);
+            V.Name = "V";
+            V.Size = new Size(253, 65);
+            V.TabIndex = 0;
+            V.Text = "Voucher";
+            V.TextAlign = ContentAlignment.MiddleRight;
+            V.UseVisualStyleBackColor = true;
+            V.Click += btVoucher_Click;
             // 
-            // flowLayoutPanel1
+            // flowPanel
             // 
-            flowLayoutPanel1.BorderStyle = BorderStyle.Fixed3D;
-            flowLayoutPanel1.Controls.Add(btMember);
-            flowLayoutPanel1.Controls.Add(btVoucher);
-            flowLayoutPanel1.Dock = DockStyle.Left;
-            flowLayoutPanel1.Location = new Point(0, 0);
-            flowLayoutPanel1.Margin = new Padding(5, 4, 5, 4);
-            flowLayoutPanel1.MaximumSize = new Size(267, 0);
-            flowLayoutPanel1.MinimumSize = new Size(267, 0);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(267, 887);
-            flowLayoutPanel1.TabIndex = 2;
+            flowPanel.BorderStyle = BorderStyle.Fixed3D;
+            flowPanel.Controls.Add(M);
+            flowPanel.Controls.Add(V);
+            flowPanel.Dock = DockStyle.Left;
+            flowPanel.Location = new Point(0, 0);
+            flowPanel.Margin = new Padding(5, 4, 5, 4);
+            flowPanel.MaximumSize = new Size(267, 0);
+            flowPanel.MinimumSize = new Size(267, 0);
+            flowPanel.Name = "flowPanel";
+            flowPanel.Size = new Size(267, 887);
+            flowPanel.TabIndex = 2;
             // 
             // pnMain
             // 
@@ -94,19 +94,19 @@
             BackColor = Color.White;
             ClientSize = new Size(1924, 887);
             Controls.Add(pnMain);
-            Controls.Add(flowLayoutPanel1);
+            Controls.Add(flowPanel);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(5, 4, 5, 4);
             Name = "frmMemberVVoucher";
             Text = "frmMemberVVoucher";
-            flowLayoutPanel1.ResumeLayout(false);
+            flowPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-        private Button btMember;
-        private Button btVoucher;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private Button M;
+        private Button V;
+        private FlowLayoutPanel flowPanel;
         private Panel pnMain;
     }
 }

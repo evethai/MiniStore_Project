@@ -110,6 +110,7 @@
             // 
             // txtHour
             // 
+            txtHour.AutoCompleteSource = AutoCompleteSource.CustomSource;
             txtHour.Enabled = false;
             txtHour.Location = new Point(123, 75);
             txtHour.Margin = new Padding(4);
@@ -139,6 +140,7 @@
             // 
             // txtOrder
             // 
+            txtOrder.AutoCompleteSource = AutoCompleteSource.CustomSource;
             txtOrder.Enabled = false;
             txtOrder.Location = new Point(123, 130);
             txtOrder.Margin = new Padding(4);
@@ -148,6 +150,7 @@
             // 
             // txtRevenus
             // 
+            txtRevenus.AutoCompleteSource = AutoCompleteSource.CustomSource;
             txtRevenus.Enabled = false;
             txtRevenus.Location = new Point(125, 190);
             txtRevenus.Margin = new Padding(4);
@@ -300,6 +303,7 @@
             // 
             // luongcb
             // 
+            luongcb.BorderStyle = BorderStyle.FixedSingle;
             luongcb.Dock = DockStyle.Fill;
             luongcb.Location = new Point(3, 0);
             luongcb.Name = "luongcb";
@@ -310,6 +314,7 @@
             // 
             // _luongcb
             // 
+            _luongcb.BorderStyle = BorderStyle.FixedSingle;
             _luongcb.Dock = DockStyle.Fill;
             _luongcb.Location = new Point(311, 0);
             _luongcb.Name = "_luongcb";
@@ -320,6 +325,7 @@
             // 
             // _bhxh
             // 
+            _bhxh.BorderStyle = BorderStyle.FixedSingle;
             _bhxh.Dock = DockStyle.Fill;
             _bhxh.Location = new Point(311, 51);
             _bhxh.Name = "_bhxh";
@@ -330,6 +336,7 @@
             // 
             // _bhtn
             // 
+            _bhtn.BorderStyle = BorderStyle.FixedSingle;
             _bhtn.Dock = DockStyle.Fill;
             _bhtn.Location = new Point(311, 153);
             _bhtn.Name = "_bhtn";
@@ -340,6 +347,7 @@
             // 
             // _bhyt
             // 
+            _bhyt.BorderStyle = BorderStyle.FixedSingle;
             _bhyt.Dock = DockStyle.Fill;
             _bhyt.Location = new Point(311, 102);
             _bhyt.Name = "_bhyt";
@@ -350,6 +358,7 @@
             // 
             // bhxh
             // 
+            bhxh.BorderStyle = BorderStyle.FixedSingle;
             bhxh.Dock = DockStyle.Fill;
             bhxh.Location = new Point(3, 51);
             bhxh.Name = "bhxh";
@@ -360,6 +369,7 @@
             // 
             // bhyt
             // 
+            bhyt.BorderStyle = BorderStyle.FixedSingle;
             bhyt.Dock = DockStyle.Fill;
             bhyt.Location = new Point(3, 102);
             bhyt.Name = "bhyt";
@@ -370,6 +380,7 @@
             // 
             // bhtn
             // 
+            bhtn.BorderStyle = BorderStyle.FixedSingle;
             bhtn.Dock = DockStyle.Fill;
             bhtn.Location = new Point(3, 153);
             bhtn.Name = "bhtn";
@@ -380,6 +391,7 @@
             // 
             // tntt
             // 
+            tntt.BorderStyle = BorderStyle.FixedSingle;
             tntt.Dock = DockStyle.Fill;
             tntt.Location = new Point(3, 204);
             tntt.Name = "tntt";
@@ -390,6 +402,7 @@
             // 
             // gtgccn
             // 
+            gtgccn.BorderStyle = BorderStyle.FixedSingle;
             gtgccn.Dock = DockStyle.Fill;
             gtgccn.Location = new Point(3, 255);
             gtgccn.Name = "gtgccn";
@@ -400,6 +413,7 @@
             // 
             // gtgcnpt
             // 
+            gtgcnpt.BorderStyle = BorderStyle.FixedSingle;
             gtgcnpt.Dock = DockStyle.Fill;
             gtgcnpt.Location = new Point(3, 306);
             gtgcnpt.Name = "gtgcnpt";
@@ -410,6 +424,7 @@
             // 
             // tnct
             // 
+            tnct.BorderStyle = BorderStyle.FixedSingle;
             tnct.Dock = DockStyle.Fill;
             tnct.Location = new Point(3, 357);
             tnct.Name = "tnct";
@@ -420,6 +435,7 @@
             // 
             // ttncn
             // 
+            ttncn.BorderStyle = BorderStyle.FixedSingle;
             ttncn.Dock = DockStyle.Fill;
             ttncn.Location = new Point(3, 408);
             ttncn.Name = "ttncn";
@@ -430,6 +446,7 @@
             // 
             // luong
             // 
+            luong.BorderStyle = BorderStyle.FixedSingle;
             luong.Dock = DockStyle.Fill;
             luong.Location = new Point(3, 459);
             luong.Name = "luong";
@@ -440,6 +457,7 @@
             // 
             // _tntt
             // 
+            _tntt.BorderStyle = BorderStyle.FixedSingle;
             _tntt.Dock = DockStyle.Fill;
             _tntt.Location = new Point(311, 204);
             _tntt.Name = "_tntt";
@@ -450,6 +468,7 @@
             // 
             // _gtgccn
             // 
+            _gtgccn.BorderStyle = BorderStyle.FixedSingle;
             _gtgccn.Dock = DockStyle.Fill;
             _gtgccn.Location = new Point(311, 255);
             _gtgccn.Name = "_gtgccn";
@@ -460,6 +479,7 @@
             // 
             // _gtgcnpt
             // 
+            _gtgcnpt.BorderStyle = BorderStyle.FixedSingle;
             _gtgcnpt.Dock = DockStyle.Fill;
             _gtgcnpt.Location = new Point(311, 306);
             _gtgcnpt.Name = "_gtgcnpt";
@@ -470,6 +490,7 @@
             // 
             // _tnct
             // 
+            _tnct.BorderStyle = BorderStyle.FixedSingle;
             _tnct.Dock = DockStyle.Fill;
             _tnct.Location = new Point(311, 357);
             _tnct.Name = "_tnct";
@@ -480,6 +501,7 @@
             // 
             // _ttncn
             // 
+            _ttncn.BorderStyle = BorderStyle.FixedSingle;
             _ttncn.Dock = DockStyle.Fill;
             _ttncn.Location = new Point(311, 408);
             _ttncn.Name = "_ttncn";
@@ -490,6 +512,7 @@
             // 
             // _luong
             // 
+            _luong.BorderStyle = BorderStyle.FixedSingle;
             _luong.Dock = DockStyle.Fill;
             _luong.Location = new Point(311, 459);
             _luong.Name = "_luong";

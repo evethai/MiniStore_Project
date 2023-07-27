@@ -35,8 +35,8 @@ namespace MiniStoreWinF.ManageSalary
             string id = ContextScope.currentSalary.IdEmp;
             DateTime time = ContextScope.currentSalary.DateImonth;
             txtTime.Text = time.Month + "/" + time.Year;
-            txtHour.Text = sumHourinMonth(time, id).ToString();
-            txtRevenus.Text = sumOrdersInMonth(time, id).ToString();
+            txtHour.Text = u.formatDouble(sumHourinMonth(time, id));
+            txtRevenus.Text = u.formatDouble(sumOrdersInMonth(time, id));
             txtOrder.Text = countTotal(time, id).ToString();
             txtName.Text = name(id);
             Info_DeTail_Salary(id, time);
@@ -102,13 +102,13 @@ namespace MiniStoreWinF.ManageSalary
             _luongcb.Text = u.formatDouble(salary.BasicSalary);
             if (salary.BasicSalary >= hstl.MucBhToiDa)
             {
-                _bhxh.Text = "- " + u.formatDouble(hstl.MucBhToiDa * hstl.Bhxh);
-                _bhyt.Text = "- " + u.formatDouble(hstl.MucBhToiDa * hstl.Bhyt);
-                _bhtn.Text = "- " + u.formatDouble(salary.BasicSalary * hstl.Bhtn);
+                _bhxh.Text = "(deduct) " + u.formatDouble(hstl.MucBhToiDa * hstl.Bhxh);
+                _bhyt.Text = "(deduct) " + u.formatDouble(hstl.MucBhToiDa * hstl.Bhyt);
+                _bhtn.Text = "(deduct) " + u.formatDouble(salary.BasicSalary * hstl.Bhtn);
                 _tntt.Text = u.formatDouble(salary.BasicSalary - (hstl.MucBhToiDa * hstl.Bhxh) - (hstl.MucBhToiDa * hstl.Bhyt) - (salary.BasicSalary * hstl.Bhtn));
-                _gtgccn.Text = "- " + u.formatDouble(hstl.GtgcBanthan);
+                _gtgccn.Text = "(deduct) " + u.formatDouble(hstl.GtgcBanthan);
 
-                _gtgcnpt.Text = "- " + (emp.Snpt * hstl.GtgcNpt).ToString();
+                _gtgcnpt.Text = "(deduct) " + (emp.Snpt * hstl.GtgcNpt).ToString();
 
                 if (salary.SalaryBeforTax - hstl.GtgcBanthan - (emp.Snpt * hstl.GtgcNpt) < 0)
                 {
@@ -119,18 +119,18 @@ namespace MiniStoreWinF.ManageSalary
                     _tnct.Text = u.formatDouble(salary.SalaryBeforTax - hstl.GtgcBanthan - (emp.Snpt * hstl.GtgcNpt));
                 }
 
-                _ttncn.Text = "- " + (salary.Tax).ToString();
+                _ttncn.Text = "(deduct) " + (salary.Tax).ToString();
                 _luong.Text = u.formatDouble(salary.FinalSalary);
             }
             else
             {
-                _bhxh.Text = "- " + u.formatDouble(salary.BasicSalary * hstl.Bhxh);
-                _bhyt.Text = "- " + u.formatDouble(salary.BasicSalary * hstl.Bhyt);
-                _bhtn.Text = "- " + u.formatDouble(salary.BasicSalary * hstl.Bhtn);
+                _bhxh.Text = "(deduct) " + u.formatDouble(salary.BasicSalary * hstl.Bhxh);
+                _bhyt.Text = "(deduct) " + u.formatDouble(salary.BasicSalary * hstl.Bhyt);
+                _bhtn.Text = "(deduct) " + u.formatDouble(salary.BasicSalary * hstl.Bhtn);
                 _tntt.Text = u.formatDouble(salary.BasicSalary - (salary.BasicSalary * hstl.Bhxh) - (salary.BasicSalary * hstl.Bhyt) - (salary.BasicSalary * hstl.Bhtn));
-                _gtgccn.Text = "- " + u.formatDouble(hstl.GtgcBanthan);
+                _gtgccn.Text = "(deduct) " + u.formatDouble(hstl.GtgcBanthan);
 
-                _gtgcnpt.Text = "- " + (emp.Snpt * hstl.GtgcNpt).ToString();
+                _gtgcnpt.Text = "(deduct) " + (emp.Snpt * hstl.GtgcNpt).ToString();
 
                 if (salary.SalaryBeforTax - hstl.GtgcBanthan - (emp.Snpt * hstl.GtgcNpt) < 0)
                 {
@@ -141,7 +141,7 @@ namespace MiniStoreWinF.ManageSalary
                     _tnct.Text = u.formatDouble(salary.SalaryBeforTax - hstl.GtgcBanthan - (emp.Snpt * hstl.GtgcNpt));
                 }
 
-                _ttncn.Text = "- " + (salary.Tax).ToString();
+                _ttncn.Text = "(deduct) " + (salary.Tax).ToString();
                 _luong.Text = u.formatDouble(salary.FinalSalary);
             }
             double? thu_nhap_chiu_thue = salary.SalaryBeforTax - hstl.GtgcBanthan - (emp.Snpt * hstl.GtgcNpt);
@@ -213,10 +213,10 @@ namespace MiniStoreWinF.ManageSalary
                     string id = ContextScope.currentSalary.IdEmp;
                     double salary = ca.HourSalary(id);
                     DateTime time = ContextScope.currentSalary.DateImonth;
-                    double hour  = sumHourinMonth(time, id);
+                    double hour = sumHourinMonth(time, id);
 
                     _salaryService = new SalaryService();
-                    var sa = _salaryService.GetAll().Where(p=>p.IdEmp.Equals(id)).FirstOrDefault();
+                    var sa = _salaryService.GetAll().Where(p => p.IdEmp.Equals(id)).FirstOrDefault();
                     Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
                     excel.Visible = true;
                     Microsoft.Office.Interop.Excel.Workbook xlWbook;

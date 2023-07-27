@@ -35,11 +35,11 @@
             btRegisterWorksheet = new Button();
             btSheetDetails = new Button();
             btHistory = new Button();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            flowPanel = new FlowLayoutPanel();
             pnlManageWorksheet = new Panel();
             ((System.ComponentModel.ISupportInitialize)workSheetBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)sheetDetailBindingSource).BeginInit();
-            flowLayoutPanel1.SuspendLayout();
+            flowPanel.SuspendLayout();
             SuspendLayout();
             // 
             // workSheetBindingSource
@@ -95,20 +95,20 @@
             btHistory.UseVisualStyleBackColor = true;
             btHistory.Click += btHistory_Click;
             // 
-            // flowLayoutPanel1
+            // flowPanel
             // 
-            flowLayoutPanel1.BorderStyle = BorderStyle.Fixed3D;
-            flowLayoutPanel1.Controls.Add(btHistory);
-            flowLayoutPanel1.Controls.Add(btSheetDetails);
-            flowLayoutPanel1.Controls.Add(btRegisterWorksheet);
-            flowLayoutPanel1.Dock = DockStyle.Left;
-            flowLayoutPanel1.Location = new Point(0, 0);
-            flowLayoutPanel1.Margin = new Padding(5, 4, 5, 4);
-            flowLayoutPanel1.MaximumSize = new Size(267, 0);
-            flowLayoutPanel1.MinimumSize = new Size(267, 0);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(267, 835);
-            flowLayoutPanel1.TabIndex = 1;
+            flowPanel.BorderStyle = BorderStyle.Fixed3D;
+            flowPanel.Controls.Add(btHistory);
+            flowPanel.Controls.Add(btSheetDetails);
+            flowPanel.Controls.Add(btRegisterWorksheet);
+            flowPanel.Dock = DockStyle.Left;
+            flowPanel.Location = new Point(0, 0);
+            flowPanel.Margin = new Padding(5, 4, 5, 4);
+            flowPanel.MaximumSize = new Size(267, 0);
+            flowPanel.MinimumSize = new Size(267, 0);
+            flowPanel.Name = "flowPanel";
+            flowPanel.Size = new Size(267, 835);
+            flowPanel.TabIndex = 1;
             // 
             // pnlManageWorksheet
             // 
@@ -122,11 +122,11 @@
             // 
             // frmManageWorkSheetPage
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1920, 835);
             Controls.Add(pnlManageWorksheet);
-            Controls.Add(flowLayoutPanel1);
+            Controls.Add(flowPanel);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(5, 4, 5, 4);
@@ -134,7 +134,7 @@
             Text = "Manage WorkSheet Page";
             ((System.ComponentModel.ISupportInitialize)workSheetBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)sheetDetailBindingSource).EndInit();
-            flowLayoutPanel1.ResumeLayout(false);
+            flowPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -145,7 +145,7 @@
         private Button btHistory;
         private Button btRegisterWorksheet;
         private Button btSheetDetails;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel flowPanel;
         private Panel pnlManageWorksheet;
     }
 }

@@ -27,6 +27,7 @@ namespace MiniStoreWinF.ManageSalary
             //auto calculaotor salary
             AutoSalary();
             //begin page
+            CheckColor(btSalary);
             openChildForm(new frmSalaryDetail());
             //
             foreach (Control control in flplow.Controls)
@@ -91,19 +92,39 @@ namespace MiniStoreWinF.ManageSalary
             childForm.Show();//hiện thị nó 
         }
 
+        private void CheckColor(Button button)
+        {
+            foreach (Control control in flplow.Controls)
+            {
+                if (control is Button)
+                {
+                    if (control == button)
+                    {
+                        control.BackColor = Color.PowderBlue;
+                    }
+                    else
+                    {
+                        control.BackColor = Color.White;
+                    }
+                }
+            }
+        }
+
         private void btManage_Click(object sender, EventArgs e)
         {
+            CheckColor(AUTHORIZATION);
             openChildForm(new frmSalarySetup());
-
         }
 
         private void btSalary_Click(object sender, EventArgs e)
         {
+            CheckColor(btSalary);
             openChildForm(new frmSalaryDetail());
         }
 
         private void btSub_Click(object sender, EventArgs e)
         {
+            CheckColor(btSub);
             openChildForm(new frmSubSalary());
         }
 

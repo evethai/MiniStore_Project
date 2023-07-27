@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmShowSubSalary));
             cbListEmployee = new ComboBox();
             btSearch = new Button();
             btAddSub = new Button();
@@ -50,17 +51,19 @@
             // cbListEmployee
             // 
             cbListEmployee.FormattingEnabled = true;
-            cbListEmployee.Location = new Point(3, 12);
+            cbListEmployee.Location = new Point(5, 21);
+            cbListEmployee.Margin = new Padding(5, 4, 5, 4);
             cbListEmployee.Name = "cbListEmployee";
-            cbListEmployee.Size = new Size(121, 23);
+            cbListEmployee.Size = new Size(188, 33);
             cbListEmployee.TabIndex = 0;
             cbListEmployee.SelectedIndexChanged += cbListEmployee_SelectedIndexChanged;
             // 
             // btSearch
             // 
-            btSearch.Location = new Point(141, 11);
+            btSearch.Location = new Point(222, 18);
+            btSearch.Margin = new Padding(5, 4, 5, 4);
             btSearch.Name = "btSearch";
-            btSearch.Size = new Size(75, 23);
+            btSearch.Size = new Size(118, 38);
             btSearch.TabIndex = 1;
             btSearch.Text = "Search";
             btSearch.UseVisualStyleBackColor = true;
@@ -68,25 +71,28 @@
             // 
             // btAddSub
             // 
-            btAddSub.Location = new Point(222, 11);
+            btAddSub.Location = new Point(349, 18);
+            btAddSub.Margin = new Padding(5, 4, 5, 4);
             btAddSub.Name = "btAddSub";
-            btAddSub.Size = new Size(221, 23);
+            btAddSub.Size = new Size(347, 38);
             btAddSub.TabIndex = 2;
-            btAddSub.Text = "Add new Sub Salart For Employee";
+            btAddSub.Text = "Add new Sub Salary For Employee";
             btAddSub.UseVisualStyleBackColor = true;
             btAddSub.Click += btAddSub_Click;
             // 
             // dgvSubDetail
             // 
             dgvSubDetail.AutoGenerateColumns = false;
+            dgvSubDetail.BackgroundColor = SystemColors.Window;
             dgvSubDetail.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSubDetail.Columns.AddRange(new DataGridViewColumn[] { idDetailDataGridViewTextBoxColumn, idEmpDataGridViewTextBoxColumn, idSubDataGridViewTextBoxColumn, checkDataGridViewTextBoxColumn });
             dgvSubDetail.DataSource = subDetailBindingSource1;
-            dgvSubDetail.Location = new Point(3, 51);
+            dgvSubDetail.Location = new Point(5, 85);
+            dgvSubDetail.Margin = new Padding(5, 4, 5, 4);
             dgvSubDetail.Name = "dgvSubDetail";
             dgvSubDetail.ReadOnly = true;
             dgvSubDetail.RowTemplate.Height = 25;
-            dgvSubDetail.Size = new Size(797, 284);
+            dgvSubDetail.Size = new Size(1252, 474);
             dgvSubDetail.TabIndex = 3;
             dgvSubDetail.CellClick += dgvSubDetail_CellClick;
             // 
@@ -134,9 +140,10 @@
             // 
             // btUpdate
             // 
-            btUpdate.Location = new Point(449, 11);
+            btUpdate.Location = new Point(706, 18);
+            btUpdate.Margin = new Padding(5, 4, 5, 4);
             btUpdate.Name = "btUpdate";
-            btUpdate.Size = new Size(75, 23);
+            btUpdate.Size = new Size(118, 38);
             btUpdate.TabIndex = 4;
             btUpdate.Text = "Update";
             btUpdate.UseVisualStyleBackColor = true;
@@ -146,24 +153,27 @@
             // 
             cbCheck.FormattingEnabled = true;
             cbCheck.Items.AddRange(new object[] { "True", "False" });
-            cbCheck.Location = new Point(667, 12);
+            cbCheck.Location = new Point(1048, 21);
+            cbCheck.Margin = new Padding(5, 4, 5, 4);
             cbCheck.Name = "cbCheck";
-            cbCheck.Size = new Size(121, 23);
+            cbCheck.Size = new Size(188, 33);
             cbCheck.TabIndex = 5;
             // 
             // txtId
             // 
-            txtId.Location = new Point(539, 11);
+            txtId.Location = new Point(847, 18);
+            txtId.Margin = new Padding(5, 4, 5, 4);
             txtId.Name = "txtId";
-            txtId.Size = new Size(28, 23);
+            txtId.Size = new Size(42, 33);
             txtId.TabIndex = 6;
             txtId.Visible = false;
             // 
             // frmShowSubSalary
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 337);
+            BackColor = SystemColors.Window;
+            ClientSize = new Size(1257, 562);
             Controls.Add(txtId);
             Controls.Add(cbCheck);
             Controls.Add(btUpdate);
@@ -171,9 +181,12 @@
             Controls.Add(btAddSub);
             Controls.Add(btSearch);
             Controls.Add(cbListEmployee);
+            Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(5, 4, 5, 4);
             MaximizeBox = false;
             Name = "frmShowSubSalary";
-            Text = "frmShowSubSalary";
+            Text = "Allowance";
             Load += frmShowSubSalary_Load;
             ((System.ComponentModel.ISupportInitialize)dgvSubDetail).EndInit();
             ((System.ComponentModel.ISupportInitialize)subDetailBindingSource1).EndInit();

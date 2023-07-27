@@ -53,12 +53,12 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34.720993F));
             tableLayoutPanel1.Controls.Add(groupBox2, 0, 1);
             tableLayoutPanel1.Controls.Add(groupBox1, 0, 0);
-            tableLayoutPanel1.Location = new Point(1, 43);
+            tableLayoutPanel1.Location = new Point(1, 37);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 520F));
-            tableLayoutPanel1.Size = new Size(1074, 595);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 442F));
+            tableLayoutPanel1.Size = new Size(940, 506);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // groupBox2
@@ -66,9 +66,9 @@
             groupBox2.Controls.Add(dataGridView1);
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.ForeColor = Color.Navy;
-            groupBox2.Location = new Point(3, 78);
+            groupBox2.Location = new Point(3, 67);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1068, 514);
+            groupBox2.Size = new Size(934, 436);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "List Of Supplier";
@@ -76,15 +76,16 @@
             // dataGridView1
             // 
             dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.BackgroundColor = SystemColors.Window;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idSupplierDataGridViewTextBoxColumn, nameSupplierDataGridViewTextBoxColumn, addressSupplierDataGridViewTextBoxColumn, noteDataGridViewTextBoxColumn });
             dataGridView1.DataSource = supplierBindingSource;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 23);
+            dataGridView1.Location = new Point(3, 21);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1062, 488);
+            dataGridView1.Size = new Size(928, 412);
             dataGridView1.TabIndex = 1;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
@@ -131,25 +132,25 @@
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(3, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1068, 69);
+            groupBox1.Size = new Size(934, 58);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Operation";
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(90, 28);
+            txtSearch.Location = new Point(79, 24);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(125, 27);
+            txtSearch.Size = new Size(110, 25);
             txtSearch.TabIndex = 37;
             // 
             // btSearch
             // 
             btSearch.BackColor = SystemColors.ButtonShadow;
             btSearch.ForeColor = SystemColors.ActiveCaptionText;
-            btSearch.Location = new Point(239, 28);
+            btSearch.Location = new Point(209, 24);
             btSearch.Name = "btSearch";
-            btSearch.Size = new Size(96, 29);
+            btSearch.Size = new Size(84, 25);
             btSearch.TabIndex = 36;
             btSearch.Text = "Search";
             btSearch.UseVisualStyleBackColor = false;
@@ -157,9 +158,10 @@
             // 
             // ManageSupplier
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1089, 636);
+            BackColor = SystemColors.Window;
+            ClientSize = new Size(953, 541);
             Controls.Add(tableLayoutPanel1);
             Name = "ManageSupplier";
             Text = "ManageSupplier";

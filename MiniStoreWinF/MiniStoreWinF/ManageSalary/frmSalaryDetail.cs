@@ -27,6 +27,7 @@ namespace MiniStoreWinF.ManageSalary
             ShowListSalary(DateTime.Now.AddMonths(-1));
             dtpTime.Value = DateTime.Now.AddMonths(-1);
             u.showListEmp_ALL(cbName);
+            totalSalaryThisMonth();
 
         }
 
@@ -51,6 +52,7 @@ namespace MiniStoreWinF.ManageSalary
             _salaryService = new SalaryService();
             string id = cbName.SelectedValue.ToString();
             DateTime time = dtpTime.Value;
+            totalSalaryThisMonth();
             if (cbOrderby.Text == "Descending" && id == "-1")
             {
                 var list = u.listSalaryByTime(time).OrderByDescending(p => p.FinalSalary).ToList();
@@ -183,6 +185,27 @@ namespace MiniStoreWinF.ManageSalary
                     e.Value = name;
                     e.FormattingApplied = true;
                 }
+            }
+        }
+
+        private void totalSalaryThisMonth()
+        {
+            double? total = 0;
+            _salaryService = new SalaryService();
+            var list = _salaryService.GetAll().Where(p => p.DateImonth.Month.Equals(dtpTime.Value.Month) &&
+            p.DateImonth.Year.Equals(dtpTime.Value.Year)).ToList();
+            foreach (var item in list)
+            {
+                total += item.FinalSalary;
+            }
+            if (total == 0)
+            {
+                lblTotal.Text = "Salary to be paid this month for employees" + " : " + "0 VND";
+
+            }
+            else
+            {
+                lblTotal.Text = "Salary to be paid this month for employees" + " : " + u.formatDouble(total) + " VND";
             }
         }
     }
