@@ -88,57 +88,82 @@ namespace MiniStoreWinF.ManageWorkSheets
 
         private void btUpdateDetailsWorkSheet_Click(object sender, EventArgs e)
         {
-            string Empty = "";
-            if (txtSheetDetail.Text == Empty || txtStartDetails.Text == Empty ||
-                txtEndDetails.Text == Empty || txtCoefficientsSalaryDetails.Text == Empty)
+            try
             {
-                MessageBox.Show("Cant Not Update when you dont choise !! ", "Fails", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string Empty = "";
+                if (txtSheetDetail.Text == Empty || txtStartDetails.Text == Empty ||
+                    txtEndDetails.Text == Empty || txtCoefficientsSalaryDetails.Text == Empty)
+                {
+                    MessageBox.Show("Cant Not Update when you dont choise !! ", "Fails", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    var updateDetailsSheet = _sheetDetailService.GetAll();
+                    updateDetailsSheet[rowIndex].Sheet = Int32.Parse(txtSheetDetail.Text);
+                    updateDetailsSheet[rowIndex].ShiftStartTime = TimeSpan.Parse(txtStartDetails.Text);
+                    updateDetailsSheet[rowIndex].ShiftEndTime = TimeSpan.Parse(txtEndDetails.Text);
+                    //updateDetailsSheet[rowIndex].DescriptionS = txtDescriptionsDetails.Text;
+                    updateDetailsSheet[rowIndex].CoefficientsSalary = float.Parse(txtCoefficientsSalaryDetails.Text);
+                    var listUpdate = updateDetailsSheet[rowIndex];
+                    _sheetDetailService.Update(listUpdate);
+                    MessageBox.Show("Successfully Update Worksheet Detail", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    loadData();
+                    ResetData();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                var updateDetailsSheet = _sheetDetailService.GetAll();
-                updateDetailsSheet[rowIndex].Sheet = Int32.Parse(txtSheetDetail.Text);
-                updateDetailsSheet[rowIndex].ShiftStartTime = TimeSpan.Parse(txtStartDetails.Text);
-                updateDetailsSheet[rowIndex].ShiftEndTime = TimeSpan.Parse(txtEndDetails.Text);
-                //updateDetailsSheet[rowIndex].DescriptionS = txtDescriptionsDetails.Text;
-                updateDetailsSheet[rowIndex].CoefficientsSalary = float.Parse(txtCoefficientsSalaryDetails.Text);
-                var listUpdate = updateDetailsSheet[rowIndex];
-                _sheetDetailService.Update(listUpdate);
-                MessageBox.Show("Successfully Update Worksheet Detail", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                loadData();
-                ResetData();
+                return;
             }
+
 
         }
 
         private void btCreate_Click(object sender, EventArgs e)
         {
-            string Empty = "";
-            if (txtSheetDetail.Text == Empty ||
-                txtStartDetails.Text == Empty || txtEndDetails.Text == Empty
-                || txtCoefficientsSalaryDetails.Text == Empty)
+            try
             {
-                MessageBox.Show("Can't Create when empty ", "Fails", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = MessageBox.Show("Do you want to create ?", "Notification", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (DialogResult == DialogResult.Yes)
+                {
+                    string Empty = "";
+                    if (txtSheetDetail.Text == Empty ||
+                        txtStartDetails.Text == Empty || txtEndDetails.Text == Empty
+                        || txtCoefficientsSalaryDetails.Text == Empty)
+                    {
+                        MessageBox.Show("Can't Create when empty ", "Fails", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else if (txtCoefficientsSalaryDetails.Value <= 0)
+                    {
+                        MessageBox.Show("Coefficients Salary can't 0 !! ", "Fails", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        var Count = _sheetDetailService.GetAll().Count();
+                        var CreateNewSheet = _sheetDetailService.GetAll().FirstOrDefault();
+                        CreateNewSheet.Sheet = GenerateAutoId(Count);
+                        CreateNewSheet.ShiftStartTime = TimeSpan.Parse(txtStartDetails.Text);
+                        CreateNewSheet.ShiftEndTime = TimeSpan.Parse(txtEndDetails.Text);
+                        CreateNewSheet.CoefficientsSalary = float.Parse(txtCoefficientsSalaryDetails.Text);
+                        //CreateNewSheet.DescriptionS = txtDescriptionsDetails.Text;
+                        CreateNewSheet.CheckNight = chbWorkNight.Checked;
+                        _sheetDetailService.Create(CreateNewSheet);
+                        MessageBox.Show("Successfully Create Sheet", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadData();
+                        ResetData();
+                    }
+                }
+                else
+                {
+                    return;
+                }
             }
-            else if (txtCoefficientsSalaryDetails.Value <= 0)
+
+            catch
             {
-                MessageBox.Show("Coefficients Salary can't 0 !! ", "Fails", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
-            {
-                var Count = _sheetDetailService.GetAll().Count();
-                var CreateNewSheet = _sheetDetailService.GetAll().FirstOrDefault();
-                CreateNewSheet.Sheet = GenerateAutoId(Count);
-                CreateNewSheet.ShiftStartTime = TimeSpan.Parse(txtStartDetails.Text);
-                CreateNewSheet.ShiftEndTime = TimeSpan.Parse(txtEndDetails.Text);
-                CreateNewSheet.CoefficientsSalary = float.Parse(txtCoefficientsSalaryDetails.Text);
-                //CreateNewSheet.DescriptionS = txtDescriptionsDetails.Text;
-                CreateNewSheet.CheckNight = chbWorkNight.Checked;
-                _sheetDetailService.Create(CreateNewSheet);
-                MessageBox.Show("Successfully Create Sheet", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                loadData();
-                ResetData();
-            }
+
         }
 
         public void ResetData()
@@ -185,31 +210,75 @@ namespace MiniStoreWinF.ManageWorkSheets
 
         private void txtStartDetails_TextChanged(object sender, EventArgs e)
         {
-            if (txtStartDetails.Text.Length >= 6)
+            try
             {
-                // Extract the hour, minute, and second parts from the TextBox text
-                string hourPart = txtStartDetails.Text.Substring(0, 2);
-                string minutePart = txtStartDetails.Text.Substring(2, 2);
-                string secondPart = txtStartDetails.Text.Substring(4, 2);
-
-                // Combine the parts into a time string
-                string timeString = $"{hourPart}:{minutePart}:{secondPart}";
-
-                // Parse the time string into a TimeSpan
-                if (TimeSpan.TryParse(timeString, out TimeSpan parsedTime))
+                if (txtStartDetails.Text.Length >= 6)
                 {
-                    // Ensure that the hour value does not exceed 24
-                    if (parsedTime.Hours >= 24)
+                    // Extract the hour, minute, and second parts from the TextBox text
+                    string hourPart = txtStartDetails.Text.Substring(0, 2);
+                    string minutePart = txtStartDetails.Text.Substring(2, 2);
+                    string secondPart = txtStartDetails.Text.Substring(4, 2);
+
+                    // Combine the parts into a time string
+                    string timeString = $"{hourPart}:{minutePart}:{secondPart}";
+
+                    // Parse the time string into a TimeSpan
+                    if (TimeSpan.TryParse(timeString, out TimeSpan parsedTime))
                     {
-                        parsedTime = new TimeSpan(23, parsedTime.Minutes, parsedTime.Seconds);
+                        // Ensure that the hour value does not exceed 24
+                        if (parsedTime.Hours >= 24)
+                        {
+                            parsedTime = new TimeSpan(23, parsedTime.Minutes, parsedTime.Seconds);
+                        }
+
+                        // Format the TimeSpan in the desired format
+                        string formattedTime = parsedTime.ToString(@"hh\:mm\:ss"); // e.g., 05:30:00
+
+                        // Update the TextBox text with the formatted time
+                        txtStartDetails.Text = formattedTime;
                     }
-
-                    // Format the TimeSpan in the desired format
-                    string formattedTime = parsedTime.ToString(@"hh\:mm\:ss"); // e.g., 05:30:00
-
-                    // Update the TextBox text with the formatted time
-                    txtStartDetails.Text = formattedTime;
                 }
+            }
+            catch
+            {
+                return;
+            }
+        }
+
+        private void txtEndDetails_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtEndDetails.Text.Length >= 6)
+                {
+                    // Extract the hour, minute, and second parts from the TextBox text
+                    string hourPart = txtEndDetails.Text.Substring(0, 2);
+                    string minutePart = txtEndDetails.Text.Substring(2, 2);
+                    string secondPart = txtEndDetails.Text.Substring(4, 2);
+
+                    // Combine the parts into a time string
+                    string timeString = $"{hourPart}:{minutePart}:{secondPart}";
+
+                    // Parse the time string into a TimeSpan
+                    if (TimeSpan.TryParse(timeString, out TimeSpan parsedTime))
+                    {
+                        // Ensure that the hour value does not exceed 24
+                        if (parsedTime.Hours >= 24)
+                        {
+                            parsedTime = new TimeSpan(23, parsedTime.Minutes, parsedTime.Seconds);
+                        }
+
+                        // Format the TimeSpan in the desired format
+                        string formattedTime = parsedTime.ToString(@"hh\:mm\:ss"); // e.g., 05:30:00
+
+                        // Update the TextBox text with the formatted time
+                        txtEndDetails.Text = formattedTime;
+                    }
+                }
+            }
+            catch
+            {
+                return;
             }
         }
     }

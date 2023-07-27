@@ -173,21 +173,36 @@ namespace MiniStoreWinF.ManageSalary
         //filter
         private void btFilter_Click(object sender, EventArgs e)
         {
-            string id = cbName.SelectedValue.ToString();
-            if (cbOrderby.Text == "Descending" && id == "-1")
+            try
             {
-                showListEmployeHasSubSalary();
-                dgvAdv.DataSource = showAdvanceSalary(dtpList.Value).OrderByDescending(p => p.AdvanceSalary).ToList();
+                if (cbName.SelectedValue == null)
+                {
+                    MessageBox.Show("Not match data name employee");
+                }
+                else
+                {
+                    string id = cbName.SelectedValue.ToString();
+                    if (cbOrderby.Text == "Descending" && id == "-1")
+                    {
+                        showListEmployeHasSubSalary();
+                        dgvAdv.DataSource = showAdvanceSalary(dtpList.Value).OrderByDescending(p => p.AdvanceSalary).ToList();
+                    }
+                    else if (cbOrderby.Text != "Descending" && id == "-1")
+                    {
+                        showListEmployeHasSubSalary();
+                        dgvAdv.DataSource = showAdvanceSalary(dtpList.Value).OrderBy(p => p.AdvanceSalary).ToList();
+                    }
+                    else
+                    {
+                        searchAdvByName(id);
+                        searchSubByName(id);
+                    }
+                }
+
             }
-            else if (cbOrderby.Text != "Descending" && id == "-1")
+            catch (Exception ex)
             {
-                showListEmployeHasSubSalary();
-                dgvAdv.DataSource = showAdvanceSalary(dtpList.Value).OrderBy(p => p.AdvanceSalary).ToList();
-            }
-            else
-            {
-                searchAdvByName(id);
-                searchSubByName(id);
+                MessageBox.Show("Not match data name employee" + ex.Message, "Messages", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

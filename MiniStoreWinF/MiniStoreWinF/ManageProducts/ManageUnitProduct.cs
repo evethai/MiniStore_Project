@@ -373,43 +373,49 @@ namespace MiniStoreWinF.ManageProducts
 
         private void btUpdate_Click(object sender, EventArgs e)
         {
-            double temp = Convert.ToDouble(txtPriceImport.Text);
-            //txtPriceImport.Text = temp.ToString("#,###");
-            double temp2 = Convert.ToDouble(txtPriceExport.Text);
-            //txtPriceExport.Text = temp2.ToString("#,###");
-            _showListUnit = new UnitServices();
-            var AddPro = _showListUnit.GetAll().ToList().Where(e => e.IdUnit.ToUpper()
-            .Equals(txtIDUnit.Text.ToUpper()))
-                .FirstOrDefault();
-            if (txtNameUnit.Text == "" ||
-                txtPriceImport.Text == "" ||
-                txtPriceExport.Text == "" ||
-                !float.TryParse(txtPriceImport.Text = temp.ToString("#,###"), out float price) ||
-                price < 0 ||
-                !float.TryParse(txtPriceExport.Text = temp2.ToString("#,###"), out float price1) ||
-                price1 < 0
-                )
+            try
             {
-                MessageBox.Show("Not Be Empty or Invalid Value");
-            }
-            else
-            {
-
-                AddPro.IdUnit = txtIDUnit.Text;
-
-                AddPro.QuantityUnit = Int32.Parse(numericQuantity.Text);
-
-                AddPro.PriceExport = price1;
-
-                DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.OK)
+                double temp = Convert.ToDouble(txtPriceImport.Text);
+                //txtPriceImport.Text = temp.ToString("#,###");
+                double temp2 = Convert.ToDouble(txtPriceExport.Text);
+                //txtPriceExport.Text = temp2.ToString("#,###");
+                _showListUnit = new UnitServices();
+                var AddPro = _showListUnit.GetAll().ToList().Where(e => e.IdUnit.ToUpper()
+                .Equals(txtIDUnit.Text.ToUpper()))
+                    .FirstOrDefault();
+                if (txtNameUnit.Text == "" ||
+                    txtPriceImport.Text == "" ||
+                    txtPriceExport.Text == "" ||
+                    !float.TryParse(txtPriceImport.Text = temp.ToString("#,###"), out float price) ||
+                    price < 0 ||
+                    !float.TryParse(txtPriceExport.Text = temp2.ToString("#,###"), out float price1) ||
+                    price1 < 0
+                    )
                 {
-                    _showListUnit.Update(AddPro);
-                    btload_click(sender, e);
-                    btClear_Click(sender, e);
+                    MessageBox.Show("Not Be Empty or Invalid Value");
+                }
+                else
+                {
+
+                    AddPro.IdUnit = txtIDUnit.Text;
+
+                    AddPro.QuantityUnit = Int32.Parse(numericQuantity.Text);
+
+                    AddPro.PriceExport = price1;
+
+                    DialogResult result = MessageBox.Show("Have you checked all the information?", "Confirm", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (result == DialogResult.OK)
+                    {
+                        _showListUnit.Update(AddPro);
+                        btload_click(sender, e);
+                        btClear_Click(sender, e);
+
+                    }
 
                 }
-
+            } catch 
+            {
+                MessageBox.Show("Do Not Leave Blank");
             }
         }
 

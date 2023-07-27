@@ -150,6 +150,7 @@
             skuDataGridViewTextBoxColumn.HeaderText = "Sku";
             skuDataGridViewTextBoxColumn.MinimumWidth = 6;
             skuDataGridViewTextBoxColumn.Name = "skuDataGridViewTextBoxColumn";
+            skuDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // nameProductDataGridViewTextBoxColumn
             // 
@@ -158,6 +159,7 @@
             nameProductDataGridViewTextBoxColumn.HeaderText = "Name";
             nameProductDataGridViewTextBoxColumn.MinimumWidth = 6;
             nameProductDataGridViewTextBoxColumn.Name = "nameProductDataGridViewTextBoxColumn";
+            nameProductDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // mfgDataGridViewTextBoxColumn
             // 
@@ -166,6 +168,7 @@
             mfgDataGridViewTextBoxColumn.HeaderText = "MFG";
             mfgDataGridViewTextBoxColumn.MinimumWidth = 6;
             mfgDataGridViewTextBoxColumn.Name = "mfgDataGridViewTextBoxColumn";
+            mfgDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // expDataGridViewTextBoxColumn
             // 
@@ -174,6 +177,7 @@
             expDataGridViewTextBoxColumn.HeaderText = "EXP";
             expDataGridViewTextBoxColumn.MinimumWidth = 6;
             expDataGridViewTextBoxColumn.Name = "expDataGridViewTextBoxColumn";
+            expDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // productBindingSource
             // 
@@ -263,6 +267,7 @@
             // btSearch
             // 
             btSearch.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btSearch.Image = Properties.Resources.icons8_search_products_781;
             btSearch.ImageAlign = ContentAlignment.MiddleLeft;
             btSearch.Location = new Point(437, 15);
             btSearch.Margin = new Padding(4);
@@ -502,7 +507,7 @@
             // btMomoPayment
             // 
             btMomoPayment.Anchor = AnchorStyles.Right;
-            btMomoPayment.BackgroundImage = Properties.Resources.MoMo2;
+            btMomoPayment.BackgroundImage = Properties.Resources.MoMo;
             btMomoPayment.BackgroundImageLayout = ImageLayout.Zoom;
             btMomoPayment.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btMomoPayment.ImageAlign = ContentAlignment.TopCenter;
@@ -873,7 +878,6 @@
             txtTotalAllOrders.ReadOnly = true;
             txtTotalAllOrders.Size = new Size(238, 29);
             txtTotalAllOrders.TabIndex = 14;
-            txtTotalAllOrders.Text = "0";
             // 
             // lblTotal
             // 

@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.Configuration;
 
 #nullable disable
 
@@ -46,27 +45,18 @@ namespace Repository.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer(GetConnectionString());
+                optionsBuilder.UseSqlServer("Server=MSI;uid=sa;pwd=12345;database=MiniStore;TrustServerCertificate=True");
             }
-        }
-        private string GetConnectionString()
-        {
-            IConfiguration config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", true, true)
-                .Build();
-            var strConn = config["ConnectionStrings:MiniStore"];
-            return strConn;
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+            modelBuilder.HasAnnotation("Relational:Collation", "Vietnamese_CI_AS");
 
             modelBuilder.Entity<BillOrder>(entity =>
             {
                 entity.HasKey(e => e.IdBillOrder)
-                    .HasName("PK__BillOrde__58724C24D89184B5");
+                    .HasName("PK__BillOrde__58724C24C0246F43");
 
                 entity.Property(e => e.IdBillOrder)
                     .HasMaxLength(20)
@@ -132,7 +122,7 @@ namespace Repository.Models
             modelBuilder.Entity<DetailAdvanceSalary>(entity =>
             {
                 entity.HasKey(e => e.IdAdvanceSalary)
-                    .HasName("PK__DetailAd__8FF8B63612EB304D");
+                    .HasName("PK__DetailAd__8FF8B636EF45CA0E");
 
                 entity.ToTable("DetailAdvanceSalary");
 
@@ -221,7 +211,7 @@ namespace Repository.Models
             modelBuilder.Entity<Member>(entity =>
             {
                 entity.HasKey(e => e.PhoneMember)
-                    .HasName("PK__Member__57790E250FFE4B4F");
+                    .HasName("PK__Member__57790E25A50006F2");
 
                 entity.ToTable("Member");
 
@@ -275,7 +265,7 @@ namespace Repository.Models
             modelBuilder.Entity<Order>(entity =>
             {
                 entity.HasKey(e => e.IdOrder)
-                    .HasName("PK__Orders__C38F30097E384BBD");
+                    .HasName("PK__Orders__C38F3009CCEF65E8");
 
                 entity.Property(e => e.IdOrder).HasMaxLength(20);
 
@@ -396,7 +386,7 @@ namespace Repository.Models
             modelBuilder.Entity<RatePoint>(entity =>
             {
                 entity.HasKey(e => e.IdRate)
-                    .HasName("PK__RatePoin__36C784F68E60208F");
+                    .HasName("PK__RatePoin__36C784F6E3A45F5E");
 
                 entity.ToTable("RatePoint");
 
@@ -415,7 +405,7 @@ namespace Repository.Models
             modelBuilder.Entity<Revenue>(entity =>
             {
                 entity.HasKey(e => e.DateRevenue)
-                    .HasName("PK__Revenue__D0CEC0D9F72A7C00");
+                    .HasName("PK__Revenue__D0CEC0D9C61EF1A4");
 
                 entity.ToTable("Revenue");
 
@@ -468,7 +458,7 @@ namespace Repository.Models
             modelBuilder.Entity<SubDetail>(entity =>
             {
                 entity.HasKey(e => e.IdDetail)
-                    .HasName("PK__SubDetai__75EC3C0652EAB9C6");
+                    .HasName("PK__SubDetai__75EC3C069A03D5E8");
 
                 entity.ToTable("SubDetail");
 
@@ -531,7 +521,7 @@ namespace Repository.Models
             modelBuilder.Entity<Supplier>(entity =>
             {
                 entity.HasKey(e => e.IdSupplier)
-                    .HasName("PK__Supplier__3A342CE38829EEB4");
+                    .HasName("PK__Supplier__3A342CE3340EE67F");
 
                 entity.ToTable("Supplier");
 
@@ -574,13 +564,13 @@ namespace Repository.Models
                 entity.HasOne(d => d.SkuNavigation)
                     .WithMany(p => p.Units)
                     .HasForeignKey(d => d.Sku)
-                    .HasConstraintName("FK__unit__SKU__5FB337D6");
+                    .HasConstraintName("FK__unit__SKU__5EBF139D");
             });
 
             modelBuilder.Entity<Voucher>(entity =>
             {
                 entity.HasKey(e => e.IdVoucher)
-                    .HasName("PK__Voucher__329D557E50D38E4F");
+                    .HasName("PK__Voucher__329D557E079C1571");
 
                 entity.ToTable("Voucher");
 
@@ -602,7 +592,7 @@ namespace Repository.Models
             modelBuilder.Entity<WorkSheet>(entity =>
             {
                 entity.HasKey(e => e.IdWorkSheet)
-                    .HasName("PK__WorkShee__AB7595E8D5029B71");
+                    .HasName("PK__WorkShee__AB7595E84B3EC18B");
 
                 entity.ToTable("WorkSheet");
 

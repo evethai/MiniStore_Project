@@ -265,6 +265,7 @@
             cbName.Size = new Size(277, 33);
             cbName.TabIndex = 10;
             cbName.Text = "ALL";
+            cbName.KeyPress += cbName_KeyPress;
             // 
             // panel2
             // 

@@ -49,27 +49,40 @@ namespace MiniStoreWinF.ManageSalary
 
         private void btFilter_Click(object sender, EventArgs e)
         {
-            _salaryService = new SalaryService();
-            string id = cbName.SelectedValue.ToString();
-            DateTime time = dtpTime.Value;
-            totalSalaryThisMonth();
-            if (cbOrderby.Text == "Descending" && id == "-1")
+            try
             {
-                var list = u.listSalaryByTime(time).OrderByDescending(p => p.FinalSalary).ToList();
-                dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
-                listSa = list;
+                _salaryService = new SalaryService();
+                DateTime time = dtpTime.Value;
+                if(cbName.SelectedValue == null)
+                {
+                    MessageBox.Show("Not match data name employee");
+                }
+                else
+                {
+                    string id = cbName.SelectedValue.ToString();
+                    totalSalaryThisMonth();
+                    if (cbOrderby.Text == "Descending" && id == "-1")
+                    {
+                        var list = u.listSalaryByTime(time).OrderByDescending(p => p.FinalSalary).ToList();
+                        dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
+                        listSa = list;
+                    }
+                    else if (cbOrderby.Text != "Descending" && id == "-1")
+                    {
+                        var list = u.listSalaryByTime(time).OrderBy(p => p.FinalSalary).ToList();
+                        dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
+                        listSa = list;
+                    }
+                    else
+                    {
+                        var list = _salaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.DateImonth.Month.Equals(time.Month) && p.DateImonth.Year.Equals(time.Year)).ToList();
+                        dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
+                        listSa = list;
+                    }
+                }
             }
-            else if (cbOrderby.Text != "Descending" && id == "-1")
-            {
-                var list = u.listSalaryByTime(time).OrderBy(p => p.FinalSalary).ToList();
-                dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
-                listSa = list;
-            }
-            else
-            {
-                var list = _salaryService.GetAll().Where(p => p.IdEmp.Equals(id) && p.DateImonth.Month.Equals(time.Month) && p.DateImonth.Year.Equals(time.Year)).ToList();
-                dgvSalary.DataSource = LoadRecord(pageNumber, numberRecord, list);
-                listSa = list;
+            catch(Exception ex){
+                MessageBox.Show("Not match data name employee"+ex.Message, "Messages", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -207,6 +220,11 @@ namespace MiniStoreWinF.ManageSalary
             {
                 lblTotal.Text = "Salary to be paid this month for employees" + " : " + u.formatDouble(total) + " VND";
             }
+        }
+
+        private void cbName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }

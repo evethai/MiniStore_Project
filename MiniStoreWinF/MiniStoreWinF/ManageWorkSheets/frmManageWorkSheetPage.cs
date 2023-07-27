@@ -27,7 +27,7 @@ namespace MiniStoreWinF.ManageWorkSheet
         public frmManageWorkSheetPage()
         {
             InitializeComponent();
-            CheckColor(btSheetDetails);
+            CheckColor(btHistory);
             u.openChildForm(new frmTimeKeepingDetails(), pnlManageWorksheet);
         }
 

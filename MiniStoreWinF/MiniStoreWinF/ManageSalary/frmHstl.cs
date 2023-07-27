@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MiniStoreWinF.ManageSalary
 {
@@ -32,41 +33,59 @@ namespace MiniStoreWinF.ManageSalary
 
         private void btSave_Click(object sender, EventArgs e)
         {
-            _heSoTinhLuongService = new HeSoTinhLuongService();
-            HeSoTinhLuong hstl = new HeSoTinhLuong();
-            hstl.Id = "1";
-            hstl.Bhxh = double.Parse(bhxh.Text);
-            hstl.Bhyt = double.Parse(bhyt.Text);
-            hstl.Bhtn = double.Parse(bhtn.Text);
-            hstl.GtgcBanthan = double.Parse(gtgccn.Text);
-            hstl.GtgcNpt = double.Parse(gtgcnpt.Text);
-            hstl.LuongToiThieu = double.Parse(mini.Text);
-            hstl.MucBhToiDa = double.Parse(max.Text);
-            _heSoTinhLuongService.Update(hstl);
+            if (bhxh.Text == "" || bhyt.Text =="" || bhtn.Text =="" || gtgccn.Text =="" || gtgcnpt.Text =="" || mini.Text == "" || max.Text =="" )
+            {
+                MessageBox.Show("Not null data");
+            }
+            else
+            {
+                _heSoTinhLuongService = new HeSoTinhLuongService();
+                HeSoTinhLuong hstl = new HeSoTinhLuong();
+                hstl.Id = "1";
+                hstl.Bhxh = double.Parse(bhxh.Text);
+                hstl.Bhyt = double.Parse(bhyt.Text);
+                hstl.Bhtn = double.Parse(bhtn.Text);
+                hstl.GtgcBanthan = double.Parse(gtgccn.Text);
+                hstl.GtgcNpt = double.Parse(gtgcnpt.Text);
+                hstl.LuongToiThieu = double.Parse(mini.Text);
+                hstl.MucBhToiDa = double.Parse(max.Text);
+                _heSoTinhLuongService.Update(hstl);
 
-            notiSave.BalloonTipText = "Save Successfull";
-            notiSave.BalloonTipTitle = "Change Success";
-            notiSave.Icon = SystemIcons.Exclamation;
-            notiSave.ShowBalloonTip(1000);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-
+                notiSave.BalloonTipText = "Save Successfull";
+                notiSave.BalloonTipTitle = "Change Success";
+                notiSave.Icon = SystemIcons.Exclamation;
+                notiSave.ShowBalloonTip(1000);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
 
         private void bhxh_KeyPress(object sender, KeyPressEventArgs e)
         {
-            u.numberOnly(e, bhxh.Text, 5);
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b' && e.KeyChar != '.')
+            {
+                // Loại bỏ ký tự không hợp lệ
+                e.Handled = true;
+            }
         }
 
         private void bhyt_KeyPress(object sender, KeyPressEventArgs e)
         {
-            u.numberOnly(e, bhyt.Text, 5);
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b' && e.KeyChar != '.')
+            {
+                // Loại bỏ ký tự không hợp lệ
+                e.Handled = true;
+            }
 
         }
 
         private void bhtn_KeyPress(object sender, KeyPressEventArgs e)
         {
-            u.numberOnly(e, bhtn.Text, 5);
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '\b' && e.KeyChar != '.')
+            {
+                // Loại bỏ ký tự không hợp lệ
+                e.Handled = true;
+            }
 
         }
 
