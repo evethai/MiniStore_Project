@@ -324,7 +324,7 @@ namespace MiniStoreWinF.ManageProducts
                         var supplierunit = (ManageProducts.frmCreateUnit)currentForm;
                         var lastSKU = _SKULast.GetAll().Where(p => p.NameProduct == supplierunit.textBoxUnitData1.Text).FirstOrDefault();
                         newUnit.Sku = lastSKU.Sku;
-                        newUnit.UnitName = supplierunit.textBoxUnitData.Text;
+                        
                         double temp = Convert.ToDouble(supplierunit.textBoxUnitData4.Text);
                         double temp1 = Convert.ToDouble(supplierunit.textBoxUnitData3.Text);
                         if (supplierunit.textBoxUnitData4.Text == "" ||
@@ -332,13 +332,14 @@ namespace MiniStoreWinF.ManageProducts
                             !double.TryParse(supplierunit.textBoxUnitData4.Text = temp.ToString("#,###"), out double price) ||
                             price < 0 ||
                             !double.TryParse(supplierunit.textBoxUnitData3.Text = temp1.ToString("#,###"), out double price1) ||
-                            price1 < 0
-                                 )
+                            price1 < 0 ||
+                            supplierunit.textBoxUnitData.Text == "")
                         {
                             MessageBox.Show("Not Be Empty or Invalid Value");
                         }
                         else
                         {
+                            newUnit.UnitName = supplierunit.textBoxUnitData.Text;
                             newUnit.QuantityUnit = Convert.ToInt32(supplierunit.textBoxUnitData2.Value);
                             newUnit.PriceExport = price;
                             newUnit.PriceImport = price1;
@@ -381,8 +382,7 @@ namespace MiniStoreWinF.ManageProducts
                 var _autoID1 = _SKU.GetAll().ToList().Select(c => c.Sku).Max();
                 string nextID1 = autoSKU(_autoID1);
                 newProduct.Sku = nextID1;
-                newProduct.ProductType = FormDataStorage.CreateProductData.Type;
-                newProduct.NameProduct = FormDataStorage.CreateProductData.ProductData;
+                
                 if (FormDataStorage.CreateProductData.Status == "Availability")
                 {
                     newProduct.StatusP = true;
@@ -403,7 +403,7 @@ namespace MiniStoreWinF.ManageProducts
                 //{
                 //    MessageBox.Show("EXP must be greater than MFG");
                 //}
-                //newProduct.DateImport = FormDataStorage.CreateProductData.DateImport;
+                newProduct.DateImport = FormDataStorage.CreateProductData.DateImport;
                 //if (FormDataStorage.CreateProductData.Path == "")
                 //{
                 //    MessageBox.Show("Not Blank");
@@ -412,6 +412,7 @@ namespace MiniStoreWinF.ManageProducts
                 //{
                 //    newProduct.PictureProduct = ImageToBase64(FormDataStorage.CreateProductData.Path);
                 //}
+
                 // Thực hiện thêm dữ liệu vào bảng Product
 
                 // Thêm dữ liệu vào bảng Unit
@@ -429,7 +430,7 @@ namespace MiniStoreWinF.ManageProducts
                     if (currentForm is ManageProducts.frmCreateUnit)
                     {
                         var supplierunit = (ManageProducts.frmCreateUnit)currentForm;
-                        newUnit.UnitName = supplierunit.textBoxUnitData.Text;
+                        
                         double temp = Convert.ToDouble(supplierunit.textBoxUnitData4.Text);
                         double temp1 = Convert.ToDouble(supplierunit.textBoxUnitData3.Text);
                         if (supplierunit.textBoxUnitData4.Text == "" ||
@@ -437,8 +438,8 @@ namespace MiniStoreWinF.ManageProducts
                            !double.TryParse(supplierunit.textBoxUnitData4.Text = temp.ToString("#,###"), out double price) ||
                            price < 0 ||
                            !double.TryParse(supplierunit.textBoxUnitData3.Text = temp1.ToString("#,###"), out double price1) ||
-                           price1 < 0
-                                )
+                           price1 < 0 ||
+                            supplierunit.textBoxUnitData.Text == "")
                         {
                             MessageBox.Show("Not Be Empty or Invalid Value");
                         }
@@ -446,12 +447,16 @@ namespace MiniStoreWinF.ManageProducts
                         {
                             MessageBox.Show("EXP must be greater than MFG");
                         }
-                        else if (FormDataStorage.CreateProductData.Path == "")
+                        else if (FormDataStorage.CreateProductData.Path == "" || FormDataStorage.CreateProductData.Type == "" ||
+                             FormDataStorage.CreateProductData.ProductData=="")
                         {
                             MessageBox.Show("Not Blank");
                         }
                         else
                         {
+                            newUnit.UnitName = supplierunit.textBoxUnitData.Text;
+                            newProduct.ProductType = FormDataStorage.CreateProductData.Type;
+                            newProduct.NameProduct = FormDataStorage.CreateProductData.ProductData;
                             newProduct.PictureProduct = ImageToBase64(FormDataStorage.CreateProductData.Path);
                             newProduct.Exp = FormDataStorage.CreateProductData.EXP;
                             newUnit.QuantityUnit = Convert.ToInt32(supplierunit.textBoxUnitData2.Value);
@@ -510,8 +515,8 @@ namespace MiniStoreWinF.ManageProducts
                 var _autoID1 = _SKU.GetAll().ToList().Select(c => c.Sku).Max();
                 string nextID1 = autoSKU(_autoID1);
                 newProduct.Sku = nextID1;
-                newProduct.ProductType = FormDataStorage.CreateProductData.Type;
-                newProduct.NameProduct = FormDataStorage.CreateProductData.ProductData;
+                //newProduct.ProductType = FormDataStorage.CreateProductData.Type;
+                //newProduct.NameProduct = FormDataStorage.CreateProductData.ProductData;
                 if (FormDataStorage.CreateProductData.Status == "Availability")
                 {
                     newProduct.StatusP = true;
@@ -531,7 +536,7 @@ namespace MiniStoreWinF.ManageProducts
                 //{
                 //    MessageBox.Show("EXP must be greater than MFG");
                 //}
-                //newProduct.DateImport = FormDataStorage.CreateProductData.DateImport;
+                newProduct.DateImport = FormDataStorage.CreateProductData.DateImport;
                 //if (FormDataStorage.CreateProductData.Path == "")
                 //{
                 //    MessageBox.Show("Not Blank");
@@ -557,7 +562,7 @@ namespace MiniStoreWinF.ManageProducts
                     if (currentForm is ManageProducts.frmCreateUnit)
                     {
                         var supplierunit = (ManageProducts.frmCreateUnit)currentForm;
-                        newUnit.UnitName = supplierunit.textBoxUnitData.Text;
+                        //newUnit.UnitName = supplierunit.textBoxUnitData.Text;
                         double temp = Convert.ToDouble(supplierunit.textBoxUnitData4.Text);
                         double temp1 = Convert.ToDouble(supplierunit.textBoxUnitData3.Text);
                         if (supplierunit.textBoxUnitData4.Text == "" ||
@@ -565,8 +570,8 @@ namespace MiniStoreWinF.ManageProducts
                            !double.TryParse(supplierunit.textBoxUnitData4.Text = temp.ToString("#,###"), out double price) ||
                            price < 0 ||
                            !double.TryParse(supplierunit.textBoxUnitData3.Text = temp1.ToString("#,###"), out double price1) ||
-                           price1 < 0
-                                )
+                           price1 < 0 ||
+                               supplierunit.textBoxUnitData.Text =="")
                         {
                             MessageBox.Show("Not Be Empty or Invalid Value");
                         }
@@ -574,12 +579,16 @@ namespace MiniStoreWinF.ManageProducts
                         {
                             MessageBox.Show("EXP must be greater than MFG");
                         }
-                        else if (FormDataStorage.CreateProductData.Path == "")
+                        else if (FormDataStorage.CreateProductData.Path == "" || FormDataStorage.CreateProductData.Type == "" ||
+                             FormDataStorage.CreateProductData.ProductData == "")
                         {
                             MessageBox.Show("Not Blank");
                         }
                         else
                         {
+                            newProduct.ProductType = FormDataStorage.CreateProductData.Type;
+                            newProduct.NameProduct = FormDataStorage.CreateProductData.ProductData;
+                            newUnit.UnitName = supplierunit.textBoxUnitData.Text;
                             newProduct.PictureProduct = ImageToBase64(FormDataStorage.CreateProductData.Path);
                             newProduct.Exp = FormDataStorage.CreateProductData.EXP;
                             newUnit.QuantityUnit = Convert.ToInt32(supplierunit.textBoxUnitData2.Value);
