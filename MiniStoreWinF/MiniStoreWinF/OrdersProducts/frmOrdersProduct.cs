@@ -609,11 +609,13 @@ namespace MiniStoreWinF.OrdersProducts
             {
                 ContextScope.currentMoMo = list;
                 frmQRCode form = new frmQRCode();
-                form.total = Double.Parse(txtTotalAllOrders.Text);
+                form.total = Double.Parse(txtTotalAllOrders.Text) - Double.Parse(txtDiscount.Text);
                 form.ShowDialog();
                 btShowBill.Visible = true;
             }
         }
+
+
     }
 }
 

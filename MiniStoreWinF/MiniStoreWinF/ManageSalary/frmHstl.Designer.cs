@@ -111,7 +111,7 @@
             // bhxh
             // 
             bhxh.Location = new Point(412, 36);
-            bhxh.Margin = new Padding(5, 5, 5, 5);
+            bhxh.Margin = new Padding(5);
             bhxh.Name = "bhxh";
             bhxh.Size = new Size(280, 33);
             bhxh.TabIndex = 1;
@@ -120,7 +120,7 @@
             // bhyt
             // 
             bhyt.Location = new Point(412, 82);
-            bhyt.Margin = new Padding(5, 5, 5, 5);
+            bhyt.Margin = new Padding(5);
             bhyt.Name = "bhyt";
             bhyt.Size = new Size(280, 33);
             bhyt.TabIndex = 1;
@@ -129,7 +129,7 @@
             // bhtn
             // 
             bhtn.Location = new Point(412, 131);
-            bhtn.Margin = new Padding(5, 5, 5, 5);
+            bhtn.Margin = new Padding(5);
             bhtn.Name = "bhtn";
             bhtn.Size = new Size(280, 33);
             bhtn.TabIndex = 1;
@@ -138,7 +138,7 @@
             // gtgccn
             // 
             gtgccn.Location = new Point(412, 176);
-            gtgccn.Margin = new Padding(5, 5, 5, 5);
+            gtgccn.Margin = new Padding(5);
             gtgccn.Name = "gtgccn";
             gtgccn.Size = new Size(280, 33);
             gtgccn.TabIndex = 1;
@@ -147,7 +147,7 @@
             // gtgcnpt
             // 
             gtgcnpt.Location = new Point(412, 223);
-            gtgcnpt.Margin = new Padding(5, 5, 5, 5);
+            gtgcnpt.Margin = new Padding(5);
             gtgcnpt.Name = "gtgcnpt";
             gtgcnpt.Size = new Size(280, 33);
             gtgcnpt.TabIndex = 1;
@@ -156,7 +156,7 @@
             // mini
             // 
             mini.Location = new Point(412, 268);
-            mini.Margin = new Padding(5, 5, 5, 5);
+            mini.Margin = new Padding(5);
             mini.Name = "mini";
             mini.Size = new Size(280, 33);
             mini.TabIndex = 1;
@@ -165,7 +165,7 @@
             // max
             // 
             max.Location = new Point(412, 313);
-            max.Margin = new Padding(5, 5, 5, 5);
+            max.Margin = new Padding(5);
             max.Name = "max";
             max.Size = new Size(280, 33);
             max.TabIndex = 1;
@@ -184,7 +184,7 @@
             // btSave
             // 
             btSave.Location = new Point(601, 383);
-            btSave.Margin = new Padding(4, 4, 4, 4);
+            btSave.Margin = new Padding(4);
             btSave.Name = "btSave";
             btSave.Size = new Size(92, 39);
             btSave.TabIndex = 2;
@@ -219,12 +219,12 @@
             Controls.Add(label1);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             MaximizeBox = false;
             MaximumSize = new Size(764, 483);
             MinimumSize = new Size(764, 483);
             Name = "frmHstl";
-            Text = "Data";
+            Text = "Data salary ";
             ResumeLayout(false);
             PerformLayout();
         }

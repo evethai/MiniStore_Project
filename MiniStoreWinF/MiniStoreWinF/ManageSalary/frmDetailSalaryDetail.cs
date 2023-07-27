@@ -38,7 +38,7 @@ namespace MiniStoreWinF.ManageSalary
             txtHour.Text = u.formatDouble(sumHourinMonth(time, id));
             txtRevenus.Text = u.formatDouble(sumOrdersInMonth(time, id));
             txtOrder.Text = countTotal(time, id).ToString();
-            txtName.Text = name(id);
+            txtName.Text = name(id)+"  ("+role(id)+")";
             Info_DeTail_Salary(id, time);
         }
 
@@ -78,6 +78,16 @@ namespace MiniStoreWinF.ManageSalary
                 emp = list.FullNameEmp;
             }
             return emp;
+        }
+
+        public string role(string id)
+        {
+            PermissionService _permissionService = new PermissionService();
+            string role = "";
+            var emp = _employeeService.GetAll().Where(p => p.IdEmp.Equals(id)).FirstOrDefault();
+            var nameRole = _permissionService.GetAll().Where(p=>p.Roles == emp.Roles).FirstOrDefault();
+            role = nameRole.Permission1.ToLowerInvariant();
+            return role;
         }
 
         ////////////////////////////

@@ -109,6 +109,7 @@
             dgvSalary.Location = new Point(0, 0);
             dgvSalary.Margin = new Padding(4);
             dgvSalary.Name = "dgvSalary";
+            dgvSalary.ReadOnly = true;
             dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle13.Padding = new Padding(0, 0, 0, 50);
             dgvSalary.RowsDefaultCellStyle = dataGridViewCellStyle13;
@@ -124,6 +125,7 @@
             dataGridViewTextBoxColumn1.DataPropertyName = "IdSalary";
             dataGridViewTextBoxColumn1.HeaderText = "Id";
             dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // idEmp
             // 
@@ -131,6 +133,7 @@
             idEmp.DataPropertyName = "IdEmp";
             idEmp.HeaderText = "Employee";
             idEmp.Name = "idEmp";
+            idEmp.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -140,6 +143,7 @@
             dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewTextBoxColumn3.HeaderText = "Salary by hour";
             dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -149,6 +153,7 @@
             dataGridViewTextBoxColumn4.DefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewTextBoxColumn4.HeaderText = "Sub salary";
             dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -158,6 +163,7 @@
             dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle5;
             dataGridViewTextBoxColumn5.HeaderText = "Basic salary";
             dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -167,6 +173,7 @@
             dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle6;
             dataGridViewTextBoxColumn6.HeaderText = "Salary befor tax";
             dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -176,6 +183,7 @@
             dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewTextBoxColumn7.HeaderText = "Personal income tax";
             dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn8
             // 
@@ -185,6 +193,7 @@
             dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle8;
             dataGridViewTextBoxColumn8.HeaderText = "Advance salary";
             dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
             // finalSalaryDataGridViewTextBoxColumn
             // 
@@ -194,6 +203,7 @@
             finalSalaryDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
             finalSalaryDataGridViewTextBoxColumn.HeaderText = "Final salary";
             finalSalaryDataGridViewTextBoxColumn.Name = "finalSalaryDataGridViewTextBoxColumn";
+            finalSalaryDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dateImonthDataGridViewTextBoxColumn
             // 
@@ -204,6 +214,7 @@
             dateImonthDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
             dateImonthDataGridViewTextBoxColumn.HeaderText = "Date in month";
             dateImonthDataGridViewTextBoxColumn.Name = "dateImonthDataGridViewTextBoxColumn";
+            dateImonthDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dateOmonthDataGridViewTextBoxColumn
             // 
@@ -214,6 +225,7 @@
             dateOmonthDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle11;
             dateOmonthDataGridViewTextBoxColumn.HeaderText = "Date out month";
             dateOmonthDataGridViewTextBoxColumn.Name = "dateOmonthDataGridViewTextBoxColumn";
+            dateOmonthDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // salaryBindingSource
             // 

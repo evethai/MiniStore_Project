@@ -143,6 +143,7 @@
             MinimizeBox = false;
             Name = "frmDetailSetup";
             StartPosition = FormStartPosition.CenterScreen;
+            Text = "Number of Employee";
             Load += frmDetailSetup_Load;
             ((System.ComponentModel.ISupportInitialize)dgvEmp).EndInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).EndInit();

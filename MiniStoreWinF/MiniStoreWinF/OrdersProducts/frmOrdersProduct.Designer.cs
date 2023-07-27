@@ -263,7 +263,6 @@
             // btSearch
             // 
             btSearch.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btSearch.Image = Properties.Resources.icons8_search_products_781;
             btSearch.ImageAlign = ContentAlignment.MiddleLeft;
             btSearch.Location = new Point(437, 15);
             btSearch.Margin = new Padding(4);
@@ -853,6 +852,7 @@
             txtDiscount.ReadOnly = true;
             txtDiscount.Size = new Size(238, 29);
             txtDiscount.TabIndex = 28;
+            txtDiscount.Text = "0";
             // 
             // label4
             // 
@@ -885,6 +885,7 @@
             txtTotalAllOrders.ReadOnly = true;
             txtTotalAllOrders.Size = new Size(238, 29);
             txtTotalAllOrders.TabIndex = 14;
+            txtTotalAllOrders.Text = "0";
             // 
             // lblTotal
             // 
