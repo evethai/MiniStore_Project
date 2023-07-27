@@ -512,7 +512,7 @@ namespace MiniStoreWinF.ManageProducts
                 Product newProduct = new Product();
                 _SKU = new ProductService();
                 _idSuplast = new SupplierServices();
-                var _lastSupId = _idSup.GetAll().ToList().Select(c => c.IdSupplier).Max();
+               
                 var _autoID1 = _SKU.GetAll().ToList().Select(c => c.Sku).Max();
                 string nextID1 = autoSKU(_autoID1);
                 newProduct.Sku = nextID1;
@@ -526,7 +526,7 @@ namespace MiniStoreWinF.ManageProducts
                 {
                     newProduct.StatusP = false;
                 }
-                newProduct.IdSupplier = _lastSupId;
+                
                 newProduct.Mfg = FormDataStorage.CreateProductData.MFG;
                 //newProduct.Exp = FormDataStorage.CreateProductData.EXP;
                 //if (FormDataStorage.CreateProductData.MFG < FormDataStorage.CreateProductData.EXP)
@@ -596,6 +596,8 @@ namespace MiniStoreWinF.ManageProducts
                             newUnit.PriceExport = price;
                             newUnit.PriceImport = price1;
                             _AddSup.Create(newSupplier);
+                            var _lastSupId = _idSup.GetAll().ToList().Select(c => c.IdSupplier).Max();
+                            newProduct.IdSupplier = _lastSupId;
                             _AddPro.Create(newProduct);
                             var lastSKU = _SKULast.GetAll().ToList().Select(c => c.Sku).Max();
                             newUnit.Sku = lastSKU;
