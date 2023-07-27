@@ -68,7 +68,7 @@
             // txtPhone
             // 
             txtPhone.Location = new Point(112, 20);
-            txtPhone.Margin = new Padding(4, 4, 4, 4);
+            txtPhone.Margin = new Padding(4);
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(219, 29);
             txtPhone.TabIndex = 6;
@@ -126,7 +126,7 @@
             // txtPoint
             // 
             txtPoint.Location = new Point(112, 76);
-            txtPoint.Margin = new Padding(4, 4, 4, 4);
+            txtPoint.Margin = new Padding(4);
             txtPoint.Name = "txtPoint";
             txtPoint.Size = new Size(219, 29);
             txtPoint.TabIndex = 7;
@@ -134,7 +134,7 @@
             // txtName
             // 
             txtName.Location = new Point(112, 134);
-            txtName.Margin = new Padding(4, 4, 4, 4);
+            txtName.Margin = new Padding(4);
             txtName.Name = "txtName";
             txtName.Size = new Size(219, 29);
             txtName.TabIndex = 8;
@@ -142,7 +142,7 @@
             // dtDoB
             // 
             dtDoB.Location = new Point(112, 252);
-            dtDoB.Margin = new Padding(4, 4, 4, 4);
+            dtDoB.Margin = new Padding(4);
             dtDoB.Name = "dtDoB";
             dtDoB.Size = new Size(320, 29);
             dtDoB.TabIndex = 10;
@@ -150,7 +150,7 @@
             // btAdd
             // 
             btAdd.Location = new Point(323, 305);
-            btAdd.Margin = new Padding(4, 4, 4, 4);
+            btAdd.Margin = new Padding(4);
             btAdd.Name = "btAdd";
             btAdd.Size = new Size(96, 32);
             btAdd.TabIndex = 18;
@@ -160,6 +160,7 @@
             // 
             // cbGender
             // 
+            cbGender.DropDownStyle = ComboBoxStyle.DropDownList;
             cbGender.FormattingEnabled = true;
             cbGender.Items.AddRange(new object[] { "Male", "Female" });
             cbGender.Location = new Point(112, 190);

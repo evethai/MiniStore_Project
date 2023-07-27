@@ -68,9 +68,10 @@
             // 
             Logo.Controls.Add(label1);
             Logo.Dock = DockStyle.Fill;
-            Logo.Location = new Point(3, 3);
+            Logo.Location = new Point(3, 2);
+            Logo.Margin = new Padding(3, 2, 3, 2);
             Logo.Name = "Logo";
-            Logo.Size = new Size(473, 93);
+            Logo.Size = new Size(386, 75);
             Logo.TabIndex = 0;
             // 
             // label1
@@ -78,9 +79,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.DimGray;
-            label1.Location = new Point(169, 20);
+            label1.Location = new Point(122, 19);
             label1.Name = "label1";
-            label1.Size = new Size(157, 41);
+            label1.Size = new Size(125, 32);
             label1.TabIndex = 0;
             label1.Text = "MiniStore";
             // 
@@ -88,9 +89,9 @@
             // 
             txtPhoneMember.AutoSize = true;
             txtPhoneMember.BackColor = Color.White;
-            txtPhoneMember.Location = new Point(109, 58);
+            txtPhoneMember.Location = new Point(95, 44);
             txtPhoneMember.Name = "txtPhoneMember";
-            txtPhoneMember.Size = new Size(50, 20);
+            txtPhoneMember.Size = new Size(41, 15);
             txtPhoneMember.TabIndex = 4;
             txtPhoneMember.Text = "Phone";
             // 
@@ -101,10 +102,12 @@
             dtgvListProduct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvListProduct.Dock = DockStyle.Fill;
             dtgvListProduct.Location = new Point(0, 0);
+            dtgvListProduct.Margin = new Padding(3, 2, 3, 2);
             dtgvListProduct.Name = "dtgvListProduct";
+            dtgvListProduct.ReadOnly = true;
             dtgvListProduct.RowHeadersWidth = 51;
             dtgvListProduct.RowTemplate.Height = 29;
-            dtgvListProduct.Size = new Size(467, 334);
+            dtgvListProduct.Size = new Size(380, 268);
             dtgvListProduct.TabIndex = 8;
             // 
             // orderBindingSource
@@ -119,9 +122,9 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(10, 68);
+            label5.Location = new Point(9, 51);
             label5.Name = "label5";
-            label5.Size = new Size(73, 20);
+            label5.Size = new Size(57, 15);
             label5.TabIndex = 9;
             label5.Text = "Payment:";
             // 
@@ -129,9 +132,9 @@
             // 
             txtPayMent.AutoSize = true;
             txtPayMent.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtPayMent.Location = new Point(89, 68);
+            txtPayMent.Location = new Point(78, 51);
             txtPayMent.Name = "txtPayMent";
-            txtPayMent.Size = new Size(43, 20);
+            txtPayMent.Size = new Size(33, 15);
             txtPayMent.TabIndex = 10;
             txtPayMent.Text = "price";
             // 
@@ -139,9 +142,9 @@
             // 
             txtDiscount.AutoSize = true;
             txtDiscount.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtDiscount.Location = new Point(89, 36);
+            txtDiscount.Location = new Point(78, 27);
             txtDiscount.Name = "txtDiscount";
-            txtDiscount.Size = new Size(69, 20);
+            txtDiscount.Size = new Size(55, 15);
             txtDiscount.TabIndex = 12;
             txtDiscount.Text = "Discount";
             // 
@@ -149,9 +152,9 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(10, 36);
+            label8.Location = new Point(9, 27);
             label8.Name = "label8";
-            label8.Size = new Size(73, 20);
+            label8.Size = new Size(58, 15);
             label8.TabIndex = 11;
             label8.Text = "Discount:";
             // 
@@ -159,9 +162,9 @@
             // 
             txtLoyaltyPoint.AutoSize = true;
             txtLoyaltyPoint.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtLoyaltyPoint.Location = new Point(124, 100);
+            txtLoyaltyPoint.Location = new Point(108, 75);
             txtLoyaltyPoint.Name = "txtLoyaltyPoint";
-            txtLoyaltyPoint.Size = new Size(44, 20);
+            txtLoyaltyPoint.Size = new Size(35, 15);
             txtLoyaltyPoint.TabIndex = 14;
             txtLoyaltyPoint.Text = "Point";
             // 
@@ -169,9 +172,9 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.Location = new Point(10, 100);
+            label10.Location = new Point(9, 75);
             label10.Name = "label10";
-            label10.Size = new Size(108, 20);
+            label10.Size = new Size(84, 15);
             label10.TabIndex = 13;
             label10.Text = "Loyalty points:";
             // 
@@ -179,9 +182,9 @@
             // 
             txtTotalBill.AutoSize = true;
             txtTotalBill.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            txtTotalBill.Location = new Point(75, 4);
+            txtTotalBill.Location = new Point(66, 3);
             txtTotalBill.Name = "txtTotalBill";
-            txtTotalBill.Size = new Size(63, 20);
+            txtTotalBill.Size = new Size(49, 15);
             txtTotalBill.TabIndex = 16;
             txtTotalBill.Text = "TotalBill";
             // 
@@ -189,9 +192,9 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.Location = new Point(10, 4);
+            label12.Location = new Point(9, 3);
             label12.Name = "label12";
-            label12.Size = new Size(46, 20);
+            label12.Size = new Size(36, 15);
             label12.TabIndex = 15;
             label12.Text = "Total:";
             // 
@@ -204,12 +207,13 @@
             tlopBill.Controls.Add(tableLayoutPanel1, 0, 1);
             tlopBill.Dock = DockStyle.Fill;
             tlopBill.Location = new Point(0, 0);
+            tlopBill.Margin = new Padding(3, 2, 3, 2);
             tlopBill.Name = "tlopBill";
             tlopBill.RowCount = 3;
             tlopBill.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
             tlopBill.RowStyles.Add(new RowStyle(SizeType.Percent, 65F));
             tlopBill.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tlopBill.Size = new Size(479, 663);
+            tlopBill.Size = new Size(392, 528);
             tlopBill.TabIndex = 18;
             // 
             // panel1
@@ -223,9 +227,10 @@
             panel1.Controls.Add(txtDiscount);
             panel1.Controls.Add(label10);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 532);
+            panel1.Location = new Point(3, 424);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(473, 128);
+            panel1.Size = new Size(386, 102);
             panel1.TabIndex = 19;
             // 
             // tableLayoutPanel1
@@ -235,21 +240,23 @@
             tableLayoutPanel1.Controls.Add(panel2, 0, 1);
             tableLayoutPanel1.Controls.Add(panel3, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(3, 102);
+            tableLayoutPanel1.Location = new Point(3, 81);
+            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 80F));
-            tableLayoutPanel1.Size = new Size(473, 424);
+            tableLayoutPanel1.Size = new Size(386, 339);
             tableLayoutPanel1.TabIndex = 20;
             // 
             // panel2
             // 
             panel2.Controls.Add(dtgvListProduct);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(3, 87);
+            panel2.Location = new Point(3, 69);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(467, 334);
+            panel2.Size = new Size(380, 268);
             panel2.TabIndex = 0;
             // 
             // panel3
@@ -261,27 +268,28 @@
             panel3.Controls.Add(txtPhoneMember);
             panel3.Controls.Add(label13);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(3, 3);
+            panel3.Location = new Point(3, 2);
+            panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(467, 78);
+            panel3.Size = new Size(380, 63);
             panel3.TabIndex = 1;
             // 
             // txtIdBill
             // 
             txtIdBill.AutoSize = true;
             txtIdBill.BackColor = Color.White;
-            txtIdBill.Location = new Point(239, 0);
+            txtIdBill.Location = new Point(209, 0);
             txtIdBill.Name = "txtIdBill";
-            txtIdBill.Size = new Size(24, 20);
+            txtIdBill.Size = new Size(18, 15);
             txtIdBill.TabIndex = 8;
             txtIdBill.Text = "ID";
             // 
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(168, 0);
+            label17.Location = new Point(147, 0);
             label17.Name = "label17";
-            label17.Size = new Size(56, 20);
+            label17.Size = new Size(43, 15);
             label17.TabIndex = 7;
             label17.Text = "ID Bill :";
             // 
@@ -289,37 +297,38 @@
             // 
             txtTimeCheckOut.AutoSize = true;
             txtTimeCheckOut.BackColor = Color.White;
-            txtTimeCheckOut.Location = new Point(153, 30);
+            txtTimeCheckOut.Location = new Point(134, 22);
             txtTimeCheckOut.Name = "txtTimeCheckOut";
-            txtTimeCheckOut.Size = new Size(71, 20);
+            txtTimeCheckOut.Size = new Size(55, 15);
             txtTimeCheckOut.TabIndex = 6;
             txtTimeCheckOut.Text = "Datetime";
             // 
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(15, 58);
+            label14.Location = new Point(13, 44);
             label14.Name = "label14";
-            label14.Size = new Size(79, 20);
+            label14.Size = new Size(65, 15);
             label14.TabIndex = 5;
             label14.Text = "Customer :";
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(15, 30);
+            label13.Location = new Point(13, 22);
             label13.Name = "label13";
-            label13.Size = new Size(120, 20);
+            label13.Size = new Size(98, 15);
             label13.TabIndex = 0;
             label13.Text = "Time Check Out :";
             // 
             // frmBill
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(479, 663);
+            ClientSize = new Size(392, 528);
             Controls.Add(tlopBill);
+            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "frmBill";

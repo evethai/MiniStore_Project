@@ -403,15 +403,15 @@ namespace MiniStoreWinF.ManageProducts
                 //{
                 //    MessageBox.Show("EXP must be greater than MFG");
                 //}
-                newProduct.DateImport = FormDataStorage.CreateProductData.DateImport;
-                if (FormDataStorage.CreateProductData.Path == "")
-                {
-                    MessageBox.Show("Not Blank");
-                }
-                else
-                {
-                    newProduct.PictureProduct = ImageToBase64(FormDataStorage.CreateProductData.Path);
-                }
+                //newProduct.DateImport = FormDataStorage.CreateProductData.DateImport;
+                //if (FormDataStorage.CreateProductData.Path == "")
+                //{
+                //    MessageBox.Show("Not Blank");
+                //}
+                //else
+                //{
+                //    newProduct.PictureProduct = ImageToBase64(FormDataStorage.CreateProductData.Path);
+                //}
                 // Thực hiện thêm dữ liệu vào bảng Product
 
                 // Thêm dữ liệu vào bảng Unit
@@ -446,8 +446,13 @@ namespace MiniStoreWinF.ManageProducts
                         {
                             MessageBox.Show("EXP must be greater than MFG");
                         }
+                        else if (FormDataStorage.CreateProductData.Path == "")
+                        {
+                            MessageBox.Show("Not Blank");
+                        }
                         else
                         {
+                            newProduct.PictureProduct = ImageToBase64(FormDataStorage.CreateProductData.Path);
                             newProduct.Exp = FormDataStorage.CreateProductData.EXP;
                             newUnit.QuantityUnit = Convert.ToInt32(supplierunit.textBoxUnitData2.Value);
                             newUnit.PriceExport = price;
@@ -526,15 +531,15 @@ namespace MiniStoreWinF.ManageProducts
                 //{
                 //    MessageBox.Show("EXP must be greater than MFG");
                 //}
-                newProduct.DateImport = FormDataStorage.CreateProductData.DateImport;
-                if (FormDataStorage.CreateProductData.Path == "")
-                {
-                    MessageBox.Show("Not Blank");
-                }
-                else
-                {
-                    newProduct.PictureProduct = ImageToBase64(FormDataStorage.CreateProductData.Path);
-                }
+                //newProduct.DateImport = FormDataStorage.CreateProductData.DateImport;
+                //if (FormDataStorage.CreateProductData.Path == "")
+                //{
+                //    MessageBox.Show("Not Blank");
+                //}
+                //else
+                //{
+                //    newProduct.PictureProduct = ImageToBase64(FormDataStorage.CreateProductData.Path);
+                //}
                 // Thực hiện thêm dữ liệu vào bảng Product
 
                 // Thêm dữ liệu vào bảng Unit
@@ -569,8 +574,13 @@ namespace MiniStoreWinF.ManageProducts
                         {
                             MessageBox.Show("EXP must be greater than MFG");
                         }
+                        else if (FormDataStorage.CreateProductData.Path == "")
+                        {
+                            MessageBox.Show("Not Blank");
+                        }
                         else
                         {
+                            newProduct.PictureProduct = ImageToBase64(FormDataStorage.CreateProductData.Path);
                             newProduct.Exp = FormDataStorage.CreateProductData.EXP;
                             newUnit.QuantityUnit = Convert.ToInt32(supplierunit.textBoxUnitData2.Value);
                             newUnit.PriceExport = price;

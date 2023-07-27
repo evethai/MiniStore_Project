@@ -134,6 +134,7 @@
             nmbrNotification.Location = new Point(217, 24);
             nmbrNotification.Margin = new Padding(3, 4, 3, 4);
             nmbrNotification.Name = "nmbrNotification";
+            nmbrNotification.ReadOnly = true;
             nmbrNotification.Size = new Size(67, 23);
             nmbrNotification.TabIndex = 8;
             // 

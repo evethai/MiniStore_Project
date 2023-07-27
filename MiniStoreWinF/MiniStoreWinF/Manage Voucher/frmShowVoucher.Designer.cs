@@ -674,6 +674,7 @@
             dgvVoucher.Dock = DockStyle.Fill;
             dgvVoucher.Location = new Point(3, 129);
             dgvVoucher.Name = "dgvVoucher";
+            dgvVoucher.ReadOnly = true;
             dgvVoucher.RowHeadersWidth = 51;
             dgvVoucher.RowTemplate.Height = 29;
             dgvVoucher.Size = new Size(328, 498);
@@ -687,6 +688,7 @@
             dataGridViewTextBoxColumn1.HeaderText = "Name";
             dataGridViewTextBoxColumn1.MinimumWidth = 6;
             dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // panel2
             // 
