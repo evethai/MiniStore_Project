@@ -34,13 +34,13 @@
             dtpWorksheet = new DateTimePicker();
             gbWorksheet = new GroupBox();
             dgvWorksheet = new DataGridView();
-            workSheetBindingSource = new BindingSource(components);
-            label1 = new Label();
             dateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             Status = new DataGridViewTextBoxColumn();
             sheetDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             timeCheckInDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             timeCheckOutDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            workSheetBindingSource = new BindingSource(components);
+            label1 = new Label();
             panel1.SuspendLayout();
             gbWorksheet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvWorksheet).BeginInit();
@@ -56,7 +56,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(721, 563);
+            panel1.Size = new Size(889, 563);
             panel1.TabIndex = 29;
             // 
             // btSearchSheet
@@ -76,7 +76,7 @@
             dtpWorksheet.Location = new Point(474, 55);
             dtpWorksheet.Margin = new Padding(4);
             dtpWorksheet.Name = "dtpWorksheet";
-            dtpWorksheet.Size = new Size(342, 34);
+            dtpWorksheet.Size = new Size(342, 29);
             dtpWorksheet.TabIndex = 34;
             // 
             // gbWorksheet
@@ -96,27 +96,13 @@
             dgvWorksheet.Columns.AddRange(new DataGridViewColumn[] { dateDataGridViewTextBoxColumn, Status, sheetDataGridViewTextBoxColumn, timeCheckInDataGridViewTextBoxColumn, timeCheckOutDataGridViewTextBoxColumn });
             dgvWorksheet.DataSource = workSheetBindingSource;
             dgvWorksheet.Dock = DockStyle.Fill;
-            dgvWorksheet.Location = new Point(3, 30);
+            dgvWorksheet.Location = new Point(3, 25);
             dgvWorksheet.Name = "dgvWorksheet";
             dgvWorksheet.RowHeadersWidth = 51;
             dgvWorksheet.RowTemplate.Height = 29;
-            dgvWorksheet.Size = new Size(809, 337);
+            dgvWorksheet.Size = new Size(809, 342);
             dgvWorksheet.TabIndex = 21;
             dgvWorksheet.CellFormatting += dgvWorksheet_CellFormatting;
-            // 
-            // workSheetBindingSource
-            // 
-            workSheetBindingSource.DataSource = typeof(Repository.Models.WorkSheet);
-            // 
-            // label1
-            // 
-            label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(287, 80);
-            label1.TabIndex = 32;
-            label1.Text = "label1";
-            label1.Click += label1_Click;
             // 
             // dateDataGridViewTextBoxColumn
             // 
@@ -158,12 +144,26 @@
             timeCheckOutDataGridViewTextBoxColumn.MinimumWidth = 6;
             timeCheckOutDataGridViewTextBoxColumn.Name = "timeCheckOutDataGridViewTextBoxColumn";
             // 
+            // workSheetBindingSource
+            // 
+            workSheetBindingSource.DataSource = typeof(Repository.Models.WorkSheet);
+            // 
+            // label1
+            // 
+            label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(287, 80);
+            label1.TabIndex = 32;
+            label1.Text = "label1";
+            label1.Click += label1_Click;
+            // 
             // frmLastMonthWorksheet
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(721, 563);
+            ClientSize = new Size(889, 563);
             Controls.Add(panel1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);

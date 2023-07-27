@@ -56,26 +56,25 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(131, 531);
+            panel1.Size = new Size(142, 602);
             panel1.TabIndex = 0;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(-2, 256);
+            label3.Location = new Point(-2, 290);
             label3.Name = "label3";
-            label3.Size = new Size(127, 15);
+            label3.Size = new Size(138, 17);
             label3.TabIndex = 6;
             label3.Text = "Last Month Workshhet";
-            label3.Click += label3_Click;
             // 
             // btworksheet
             // 
             btworksheet.Image = (Image)resources.GetObject("btworksheet.Image");
-            btworksheet.Location = new Point(19, 206);
+            btworksheet.Location = new Point(19, 233);
             btworksheet.Margin = new Padding(3, 2, 3, 2);
             btworksheet.Name = "btworksheet";
-            btworksheet.Size = new Size(91, 48);
+            btworksheet.Size = new Size(91, 54);
             btworksheet.SizeMode = PictureBoxSizeMode.Zoom;
             btworksheet.TabIndex = 5;
             btworksheet.TabStop = false;
@@ -84,28 +83,28 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(9, 172);
+            label2.Location = new Point(9, 195);
             label2.Name = "label2";
-            label2.Size = new Size(101, 15);
+            label2.Size = new Size(112, 17);
             label2.TabIndex = 4;
             label2.Text = "Last Month Salary";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(-2, 97);
+            label1.Location = new Point(-2, 110);
             label1.Name = "label1";
-            label1.Size = new Size(118, 15);
+            label1.Size = new Size(129, 17);
             label1.TabIndex = 3;
             label1.Text = "Personal Information";
             // 
             // pbSalary
             // 
             pbSalary.Image = (Image)resources.GetObject("pbSalary.Image");
-            pbSalary.Location = new Point(19, 122);
+            pbSalary.Location = new Point(19, 138);
             pbSalary.Margin = new Padding(3, 2, 3, 2);
             pbSalary.Name = "pbSalary";
-            pbSalary.Size = new Size(91, 48);
+            pbSalary.Size = new Size(91, 54);
             pbSalary.SizeMode = PictureBoxSizeMode.Zoom;
             pbSalary.TabIndex = 1;
             pbSalary.TabStop = false;
@@ -114,10 +113,10 @@
             // pbInformation
             // 
             pbInformation.Image = (Image)resources.GetObject("pbInformation.Image");
-            pbInformation.Location = new Point(19, 46);
+            pbInformation.Location = new Point(19, 52);
             pbInformation.Margin = new Padding(3, 2, 3, 2);
             pbInformation.Name = "pbInformation";
-            pbInformation.Size = new Size(91, 48);
+            pbInformation.Size = new Size(91, 54);
             pbInformation.SizeMode = PictureBoxSizeMode.Zoom;
             pbInformation.TabIndex = 0;
             pbInformation.TabStop = false;
@@ -128,27 +127,28 @@
             tlMain.ColumnCount = 1;
             tlMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tlMain.Dock = DockStyle.Fill;
-            tlMain.Location = new Point(131, 0);
+            tlMain.Location = new Point(142, 0);
             tlMain.Margin = new Padding(3, 2, 3, 2);
             tlMain.Name = "tlMain";
             tlMain.RowCount = 1;
             tlMain.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tlMain.Size = new Size(798, 531);
+            tlMain.Size = new Size(921, 602);
             tlMain.TabIndex = 1;
             // 
             // frmInformationMain
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(929, 531);
+            ClientSize = new Size(1063, 602);
             Controls.Add(tlMain);
             Controls.Add(panel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             Name = "frmInformationMain";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Employee's information";
-            Load += frmInformationMain_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)btworksheet).EndInit();
