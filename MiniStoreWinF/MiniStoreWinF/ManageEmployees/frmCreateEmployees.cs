@@ -65,6 +65,7 @@ namespace MiniStoreWinF.ManageEmployees
             var duplicatedUsername = employeeService.GetAll().Where(entity => entity.Username.Equals(txtUsername.Text)).FirstOrDefault();
             var duplicatedCI = employeeService.GetAll().Where(e => e.Cccd.Equals(txtAddCCCD.Text)).FirstOrDefault();
             var duplicatedPhone = employeeService.GetAll().Where(e => e.PhoneEmp.Equals(txtAddPhone.Text)).FirstOrDefault();
+            var duplicatedEmail = employeeService.GetAll().Where(e => e.Email.Equals(txtEmail.Text)).FirstOrDefault();
             if (txtAddName.Text == "" ||
                 txtAddPhone.Text == "" ||
                 txtAddAddress.Text == "" ||
@@ -72,7 +73,8 @@ namespace MiniStoreWinF.ManageEmployees
                 txtUsername.Text == "" ||
                 txtPassword.Text == "" ||
                 txtConfirm.Text == "" ||
-                txtSub.Text == ""
+                txtSub.Text == "" ||
+                txtEmail.Text == ""
 
                 )
             {
@@ -88,6 +90,21 @@ namespace MiniStoreWinF.ManageEmployees
                 txtConfirm.Focus();
                 txtConfirm.SelectAll();
                 txtConfirm.Text = "";
+
+            }
+            else if (!txtEmail.Text.Contains("@gmail.com"))
+            {
+                MessageBox.Show("Email is invalid!");
+                txtEmail.Focus();
+                txtEmail.SelectAll();
+
+            }
+            else if (duplicatedEmail != null)
+            {
+
+                MessageBox.Show("Email is duplicated!");
+                txtEmail.Focus();
+                txtEmail.SelectAll();
 
             }
 
@@ -142,7 +159,7 @@ namespace MiniStoreWinF.ManageEmployees
                 Permission permission = cbRole.SelectedItem as Permission;
                 employee.Roles = permission.Roles;
                 employee.PictureEmp = (txtImport.Text = ImageToBase64(url));
-
+                employee.Email = txtEmail.Text.Trim();
                 employee.IsActive = true;
                 if (cbGender.SelectedItem.Equals("Man"))
                 {

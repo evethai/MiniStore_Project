@@ -175,6 +175,7 @@ namespace MiniStoreWinF.ManageEmployees
                     txtUrl.Text = employeeInfo.PictureEmp.ToString();
                     cbRole.Text = employeeInfo.Roles.ToString();
                     txtDependent.Text = employeeInfo.Snpt.ToString();
+                    txtEmail.Text = employeeInfo.Email.ToString();
                     if (employeeInfo.Sex == false)
                     {
                         cbGender.Text = "Man";
@@ -226,6 +227,7 @@ namespace MiniStoreWinF.ManageEmployees
             var duplicatedPhone = _employeeService.GetAll().Where(e => e.PhoneEmp.Equals(txtPhone.Text)).FirstOrDefault();
 
             var employeeService = _employeeService.GetAll().Where(e => e.IdEmp == txtId.Text).FirstOrDefault();
+            var duplicatedEmail = _employeeService.GetAll().Where(e => e.Email.Equals(txtEmail.Text)).FirstOrDefault();
             if (txtName.Text == "" ||
                 txtPhone.Text == "" ||
                 txtAddress.Text == "")
@@ -241,6 +243,20 @@ namespace MiniStoreWinF.ManageEmployees
                 txtPhone.SelectAll();
                 txtPhone.Text = "";
             }
+            else if (duplicatedEmail != null || txtEmail.Text != txtEmail.Text)
+            {
+                MessageBox.Show("Email is duplucated!");
+                txtEmail.Focus();
+                txtEmail.SelectAll();
+
+            }
+            else if (!txtEmail.Text.Contains("@gmail.com"))
+            {
+                MessageBox.Show("Email is invalid!");
+                txtEmail.Focus();
+                txtEmail.SelectAll();
+
+            }
             else if (duplicatedCI != null && txtCccd.Text != txtCccd.Text)
             {
                 MessageBox.Show("CI already exist!");
@@ -255,6 +271,7 @@ namespace MiniStoreWinF.ManageEmployees
                 dtDoB.Focus();
 
             }
+
             else if (int.Parse(txtDependent.Text) < 0 || int.Parse(txtDependent.Text) > 100)
             {
                 MessageBox.Show("Number of dependents is invalid");
@@ -269,6 +286,7 @@ namespace MiniStoreWinF.ManageEmployees
                     employeeService.AddressEmp = txtAddress.Text;
                     employeeService.Snpt = int.Parse(txtDependent.Text);
                     employeeService.Cccd = txtCccd.Text;
+                    employeeService.Email = txtEmail.Text;
                     if (cbGender.SelectedItem.Equals("Man"))
                     {
                         employeeService.Sex = false;
@@ -300,7 +318,7 @@ namespace MiniStoreWinF.ManageEmployees
                     employeeService.FullNameEmp = txtName.Text;
                     employeeService.PhoneEmp = txtPhone.Text;
                     employeeService.AddressEmp = txtAddress.Text;
-
+                    employeeService.Email = txtEmail.Text;
                     employeeService.PictureEmp = txtUrl.Text;
                     employeeService.DoB = dtDoB.Value;
                     if (cbGender.SelectedIndex.Equals("Man"))

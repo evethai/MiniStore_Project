@@ -79,6 +79,7 @@ namespace MiniStoreWinF.InformationEmployee
                 txtCI.Text = infoEmployee.Cccd;
                 txtAddresss.Text = infoEmployee.AddressEmp;
                 txtDepen.Text = infoEmployee.Snpt.ToString();
+                txtEmail.Text = infoEmployee.Email.ToString();
                 if (infoEmployee.Sex == true)
                 {
                     txtGender.Text = "Female";

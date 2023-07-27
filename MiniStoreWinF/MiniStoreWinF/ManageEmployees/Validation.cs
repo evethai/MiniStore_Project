@@ -27,11 +27,11 @@ namespace MiniStoreWinF.ManageEmployees
             var lastRecord = _employees.OrderByDescending(record => record.IdEmp).FirstOrDefault();
             if (lastRecord != null)
             {
-                employee.IdEmp = autoID(lastRecord.IdEmp, prefix);
+                employee.IdEmp = autoID(lastRecord.IdEmp);
             }
             else
             {
-                employee.IdEmp = autoID(prefix+"00", prefix);
+                employee.IdEmp = autoID("SE00");
             }
 
             _employees.Add(employee);
@@ -52,14 +52,14 @@ namespace MiniStoreWinF.ManageEmployees
             _subDetail.Add(subDetail);
             _context.SaveChanges();
         }
-        public string autoID(string id, string prefix)
+        public string autoID(string id)
         {
             //(prefix)XX
             string result = "";
             int cutID = int.Parse(id.Substring(2, 2));
             cutID++;
             int digits = 2;
-            
+            string prefix = "SE";
 
             // Convert the current ID to string with leading zeros
             string idString = cutID.ToString().PadLeft(digits, '0');

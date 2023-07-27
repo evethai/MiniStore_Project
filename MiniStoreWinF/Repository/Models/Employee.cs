@@ -30,6 +30,7 @@ namespace Repository.Models
         public bool? IsActive { get; set; }
         public string PictureEmp { get; set; }
         public int? Snpt { get; set; }
+        public string Email { get; set; }
 
         public virtual Permission RolesNavigation { get; set; }
         public virtual ICollection<DetailAdvanceSalary> DetailAdvanceSalaries { get; set; }

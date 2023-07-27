@@ -30,6 +30,8 @@
         {
             panel1 = new Panel();
             panel2 = new Panel();
+            txtEmail = new TextBox();
+            label16 = new Label();
             label15 = new Label();
             txtDepen = new TextBox();
             pnShowReset = new Panel();
@@ -46,6 +48,7 @@
             txtPhonee = new TextBox();
             label9 = new Label();
             txtId = new TextBox();
+            txtConfirmNewPassword = new TextBox();
             label10 = new Label();
             txtAddresss = new TextBox();
             txtBirth = new TextBox();
@@ -67,7 +70,6 @@
             label5 = new Label();
             txtCurrentPassword = new TextBox();
             label3 = new Label();
-            txtConfirmNewPassword = new TextBox();
             label2 = new Label();
             btResetPassword = new Button();
             txtPhone = new TextBox();
@@ -119,12 +121,14 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(799, 417);
+            panel1.Size = new Size(799, 442);
             panel1.TabIndex = 6;
             panel1.Paint += panel1_Paint;
             // 
             // panel2
             // 
+            panel2.Controls.Add(txtEmail);
+            panel2.Controls.Add(label16);
             panel2.Controls.Add(label15);
             panel2.Controls.Add(txtDepen);
             panel2.Controls.Add(pnShowReset);
@@ -150,9 +154,29 @@
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(799, 417);
+            panel2.Size = new Size(799, 442);
             panel2.TabIndex = 28;
             panel2.Paint += panel2_Paint;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            txtEmail.Location = new Point(265, 413);
+            txtEmail.Margin = new Padding(3, 2, 3, 2);
+            txtEmail.Name = "txtEmail";
+            txtEmail.ReadOnly = true;
+            txtEmail.Size = new Size(164, 27);
+            txtEmail.TabIndex = 30;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label16.Location = new Point(189, 415);
+            label16.Name = "label16";
+            label16.Size = new Size(46, 20);
+            label16.TabIndex = 29;
+            label16.Text = "Email";
             // 
             // label15
             // 
@@ -283,7 +307,7 @@
             // button2
             // 
             button2.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(451, 10);
+            button2.Location = new Point(590, 11);
             button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
             button2.Size = new Size(164, 29);
@@ -295,7 +319,7 @@
             // txtPhonee
             // 
             txtPhonee.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtPhonee.Location = new Point(265, 365);
+            txtPhonee.Location = new Point(265, 367);
             txtPhonee.Margin = new Padding(3, 2, 3, 2);
             txtPhonee.Name = "txtPhonee";
             txtPhonee.ReadOnly = true;
@@ -306,7 +330,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(189, 367);
+            label9.Location = new Point(189, 369);
             label9.Name = "label9";
             label9.Size = new Size(50, 20);
             label9.TabIndex = 17;
@@ -322,6 +346,15 @@
             txtId.Size = new Size(164, 27);
             txtId.TabIndex = 16;
             // 
+            // txtConfirmNewPassword
+            // 
+            txtConfirmNewPassword.Location = new Point(451, 290);
+            txtConfirmNewPassword.Margin = new Padding(3, 2, 3, 2);
+            txtConfirmNewPassword.Name = "txtConfirmNewPassword";
+            txtConfirmNewPassword.PasswordChar = '*';
+            txtConfirmNewPassword.Size = new Size(164, 32);
+            txtConfirmNewPassword.TabIndex = 25;
+            // 
             // label10
             // 
             label10.AutoSize = true;
@@ -335,7 +368,7 @@
             // txtAddresss
             // 
             txtAddresss.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            txtAddresss.Location = new Point(265, 318);
+            txtAddresss.Location = new Point(265, 320);
             txtAddresss.Margin = new Padding(3, 2, 3, 2);
             txtAddresss.Name = "txtAddresss";
             txtAddresss.ReadOnly = true;
@@ -377,7 +410,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.Location = new Point(184, 321);
+            label11.Location = new Point(184, 323);
             label11.Name = "label11";
             label11.Size = new Size(62, 20);
             label11.TabIndex = 10;
@@ -538,15 +571,6 @@
             label3.Size = new Size(160, 25);
             label3.TabIndex = 26;
             label3.Text = "Current Password";
-            // 
-            // txtConfirmNewPassword
-            // 
-            txtConfirmNewPassword.Location = new Point(451, 290);
-            txtConfirmNewPassword.Margin = new Padding(3, 2, 3, 2);
-            txtConfirmNewPassword.Name = "txtConfirmNewPassword";
-            txtConfirmNewPassword.PasswordChar = '*';
-            txtConfirmNewPassword.Size = new Size(164, 32);
-            txtConfirmNewPassword.TabIndex = 25;
             // 
             // label2
             // 
@@ -709,7 +733,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(799, 417);
+            ClientSize = new Size(799, 442);
             Controls.Add(panel1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "frmInformationEmp";
@@ -787,5 +811,7 @@
         private PictureBox pbEmployee;
         private TextBox txtName;
         private TextBox textBox1;
+        private TextBox txtEmail;
+        private Label label16;
     }
 }
