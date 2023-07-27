@@ -62,8 +62,7 @@
             btUsingPoint = new Button();
             btCheckMember = new Button();
             panel2 = new Panel();
-            rdCashpayment = new RadioButton();
-            rdMomopayment = new RadioButton();
+            btMomoPayment = new Button();
             panel6 = new Panel();
             cbUnitQuantity = new ComboBox();
             label1 = new Label();
@@ -137,6 +136,7 @@
             dgvShowListProducts.Location = new Point(4, 159);
             dgvShowListProducts.Margin = new Padding(4);
             dgvShowListProducts.Name = "dgvShowListProducts";
+            dgvShowListProducts.ReadOnly = true;
             dgvShowListProducts.RowHeadersWidth = 51;
             dgvShowListProducts.RowTemplate.Height = 29;
             dgvShowListProducts.Size = new Size(625, 873);
@@ -240,8 +240,8 @@
             // 
             // cbSort
             // 
-            cbSort.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cbSort.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            cbSort.DropDownStyle = ComboBoxStyle.DropDownList;
             cbSort.Location = new Point(317, 84);
             cbSort.Margin = new Padding(4);
             cbSort.Name = "cbSort";
@@ -275,8 +275,8 @@
             // 
             // cbTypeProducts
             // 
-            cbTypeProducts.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cbTypeProducts.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            cbTypeProducts.DropDownStyle = ComboBoxStyle.DropDownList;
             cbTypeProducts.Location = new Point(81, 84);
             cbTypeProducts.Margin = new Padding(4);
             cbTypeProducts.Name = "cbTypeProducts";
@@ -491,8 +491,7 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(rdCashpayment);
-            panel2.Controls.Add(rdMomopayment);
+            panel2.Controls.Add(btMomoPayment);
             panel2.Dock = DockStyle.Bottom;
             panel2.Location = new Point(0, 272);
             panel2.Margin = new Padding(4);
@@ -500,31 +499,21 @@
             panel2.Size = new Size(625, 83);
             panel2.TabIndex = 21;
             // 
-            // rdCashpayment
+            // btMomoPayment
             // 
-            rdCashpayment.AutoSize = true;
-            rdCashpayment.Checked = true;
-            rdCashpayment.Location = new Point(370, 21);
-            rdCashpayment.Margin = new Padding(4);
-            rdCashpayment.Name = "rdCashpayment";
-            rdCashpayment.Size = new Size(127, 25);
-            rdCashpayment.TabIndex = 1;
-            rdCashpayment.TabStop = true;
-            rdCashpayment.Text = "Cash payment";
-            rdCashpayment.UseVisualStyleBackColor = true;
-            rdCashpayment.Click += rdCashpayment_Click;
-            // 
-            // rdMomopayment
-            // 
-            rdMomopayment.AutoSize = true;
-            rdMomopayment.Location = new Point(26, 21);
-            rdMomopayment.Margin = new Padding(4);
-            rdMomopayment.Name = "rdMomopayment";
-            rdMomopayment.Size = new Size(139, 25);
-            rdMomopayment.TabIndex = 0;
-            rdMomopayment.Text = "Momo payment";
-            rdMomopayment.UseVisualStyleBackColor = true;
-            rdMomopayment.MouseClick += rdMomopayment_Click;
+            btMomoPayment.Anchor = AnchorStyles.Right;
+            btMomoPayment.BackgroundImage = Properties.Resources.MoMo2;
+            btMomoPayment.BackgroundImageLayout = ImageLayout.Zoom;
+            btMomoPayment.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btMomoPayment.ImageAlign = ContentAlignment.TopCenter;
+            btMomoPayment.Location = new Point(507, 7);
+            btMomoPayment.Margin = new Padding(4);
+            btMomoPayment.Name = "btMomoPayment";
+            btMomoPayment.Size = new Size(114, 67);
+            btMomoPayment.TabIndex = 29;
+            btMomoPayment.TextAlign = ContentAlignment.BottomCenter;
+            btMomoPayment.UseVisualStyleBackColor = true;
+            btMomoPayment.Click += rd;
             // 
             // panel6
             // 
@@ -548,8 +537,8 @@
             // 
             // cbUnitQuantity
             // 
-            cbUnitQuantity.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cbUnitQuantity.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            cbUnitQuantity.DropDownStyle = ComboBoxStyle.DropDownList;
             cbUnitQuantity.Location = new Point(187, 118);
             cbUnitQuantity.Margin = new Padding(4);
             cbUnitQuantity.Name = "cbUnitQuantity";
@@ -781,7 +770,6 @@
             btShowBill.Text = "Bill";
             btShowBill.TextAlign = ContentAlignment.BottomCenter;
             btShowBill.UseVisualStyleBackColor = true;
-            btShowBill.Visible = false;
             btShowBill.Click += btShowBill_Click;
             // 
             // btReturnMoney
@@ -921,32 +909,32 @@
             // clmSKU
             // 
             clmSKU.Text = "SKU";
-            clmSKU.Width = 100;
+            clmSKU.Width = 200;
             // 
             // clmName
             // 
             clmName.Text = "Name";
-            clmName.Width = 150;
+            clmName.Width = 300;
             // 
             // clmQuantity
             // 
             clmQuantity.Text = "Quantity";
-            clmQuantity.Width = 100;
+            clmQuantity.Width = 300;
             // 
             // clmUnit
             // 
             clmUnit.Text = "Unit";
-            clmUnit.Width = 100;
+            clmUnit.Width = 300;
             // 
             // clmPrice
             // 
             clmPrice.Text = "Price";
-            clmPrice.Width = 100;
+            clmPrice.Width = 300;
             // 
             // clmTotal
             // 
             clmTotal.Text = "Total";
-            clmTotal.Width = 100;
+            clmTotal.Width = 400;
             // 
             // OrderProducts
             // 
@@ -977,7 +965,6 @@
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
             panel2.ResumeLayout(false);
-            panel2.PerformLayout();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pcPictureOrders).EndInit();
@@ -1032,7 +1019,6 @@
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tableLayoutPanel3;
         private Panel panel2;
-        private RadioButton rdCashpayment;
         private RadioButton rdMomopayment;
         private TableLayoutPanel tableLayoutPanel4;
         private ListView listViewOrders;
@@ -1070,5 +1056,7 @@
         private Panel panel11;
         private Panel panel10;
         private Panel panel12;
+        private Button button1;
+        private Button btMomoPayment;
     }
 }

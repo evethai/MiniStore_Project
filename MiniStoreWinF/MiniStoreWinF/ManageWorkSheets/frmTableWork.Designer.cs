@@ -61,8 +61,9 @@
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(860, 474);
+            panel1.Size = new Size(752, 356);
             panel1.TabIndex = 0;
             // 
             // panel2
@@ -70,8 +71,9 @@
             panel2.Controls.Add(pnlJobSheet);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 0);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(860, 474);
+            panel2.Size = new Size(752, 356);
             panel2.TabIndex = 0;
             // 
             // pnlJobSheet
@@ -80,8 +82,9 @@
             pnlJobSheet.Controls.Add(dtgvListWorkDate);
             pnlJobSheet.Dock = DockStyle.Fill;
             pnlJobSheet.Location = new Point(0, 0);
+            pnlJobSheet.Margin = new Padding(3, 2, 3, 2);
             pnlJobSheet.Name = "pnlJobSheet";
-            pnlJobSheet.Size = new Size(860, 474);
+            pnlJobSheet.Size = new Size(752, 356);
             pnlJobSheet.TabIndex = 3;
             // 
             // panel5
@@ -96,9 +99,10 @@
             panel5.Controls.Add(cbFullNameEmp);
             panel5.Controls.Add(label6);
             panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(0, 319);
+            panel5.Location = new Point(0, 239);
+            panel5.Margin = new Padding(3, 2, 3, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(860, 155);
+            panel5.Size = new Size(752, 117);
             panel5.TabIndex = 7;
             // 
             // btUpdate
@@ -106,9 +110,10 @@
             btUpdate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btUpdate.Image = (Image)resources.GetObject("btUpdate.Image");
             btUpdate.ImageAlign = ContentAlignment.TopCenter;
-            btUpdate.Location = new Point(738, 64);
+            btUpdate.Location = new Point(646, 48);
+            btUpdate.Margin = new Padding(3, 2, 3, 2);
             btUpdate.Name = "btUpdate";
-            btUpdate.Size = new Size(94, 67);
+            btUpdate.Size = new Size(82, 50);
             btUpdate.TabIndex = 9;
             btUpdate.Text = "Update";
             btUpdate.TextAlign = ContentAlignment.BottomCenter;
@@ -117,19 +122,20 @@
             // 
             // txtIdWsheet
             // 
-            txtIdWsheet.Location = new Point(137, 18);
+            txtIdWsheet.Location = new Point(120, 14);
+            txtIdWsheet.Margin = new Padding(3, 2, 3, 2);
             txtIdWsheet.Name = "txtIdWsheet";
             txtIdWsheet.ReadOnly = true;
-            txtIdWsheet.Size = new Size(125, 27);
+            txtIdWsheet.Size = new Size(110, 23);
             txtIdWsheet.TabIndex = 8;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(27, 22);
+            label7.Location = new Point(24, 16);
             label7.Name = "label7";
-            label7.Size = new Size(104, 20);
+            label7.Size = new Size(85, 15);
             label7.TabIndex = 7;
             label7.Text = "Id WorkSheet";
             // 
@@ -137,9 +143,10 @@
             // 
             btRemove.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btRemove.Image = (Image)resources.GetObject("btRemove.Image");
-            btRemove.Location = new Point(623, 64);
+            btRemove.Location = new Point(545, 48);
+            btRemove.Margin = new Padding(3, 2, 3, 2);
             btRemove.Name = "btRemove";
-            btRemove.Size = new Size(94, 67);
+            btRemove.Size = new Size(82, 50);
             btRemove.TabIndex = 6;
             btRemove.Text = "Remove";
             btRemove.TextAlign = ContentAlignment.BottomCenter;
@@ -151,9 +158,10 @@
             btCreate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btCreate.Image = (Image)resources.GetObject("btCreate.Image");
             btCreate.ImageAlign = ContentAlignment.TopCenter;
-            btCreate.Location = new Point(514, 64);
+            btCreate.Location = new Point(450, 48);
+            btCreate.Margin = new Padding(3, 2, 3, 2);
             btCreate.Name = "btCreate";
-            btCreate.Size = new Size(94, 67);
+            btCreate.Size = new Size(82, 50);
             btCreate.TabIndex = 4;
             btCreate.Text = "Create";
             btCreate.TextAlign = ContentAlignment.BottomCenter;
@@ -162,28 +170,32 @@
             // 
             // cbSheetWork
             // 
+            cbSheetWork.DropDownStyle = ComboBoxStyle.DropDownList;
             cbSheetWork.FormattingEnabled = true;
-            cbSheetWork.Location = new Point(721, 22);
+            cbSheetWork.Location = new Point(631, 16);
+            cbSheetWork.Margin = new Padding(3, 2, 3, 2);
             cbSheetWork.Name = "cbSheetWork";
-            cbSheetWork.Size = new Size(111, 28);
+            cbSheetWork.Size = new Size(98, 23);
             cbSheetWork.TabIndex = 3;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(655, 25);
+            label5.Location = new Point(573, 19);
             label5.Name = "label5";
-            label5.Size = new Size(48, 20);
+            label5.Size = new Size(40, 15);
             label5.TabIndex = 2;
             label5.Text = "Sheet";
             // 
             // cbFullNameEmp
             // 
+            cbFullNameEmp.DropDownStyle = ComboBoxStyle.DropDownList;
             cbFullNameEmp.FormattingEnabled = true;
-            cbFullNameEmp.Location = new Point(430, 22);
+            cbFullNameEmp.Location = new Point(376, 16);
+            cbFullNameEmp.Margin = new Padding(3, 2, 3, 2);
             cbFullNameEmp.Name = "cbFullNameEmp";
-            cbFullNameEmp.Size = new Size(206, 28);
+            cbFullNameEmp.Size = new Size(181, 23);
             cbFullNameEmp.TabIndex = 1;
             cbFullNameEmp.SelectedIndexChanged += cbFullNameEmp_SelectedIndexChanged_1;
             // 
@@ -191,9 +203,9 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(301, 25);
+            label6.Location = new Point(263, 19);
             label6.Name = "label6";
-            label6.Size = new Size(123, 20);
+            label6.Size = new Size(97, 15);
             label6.TabIndex = 0;
             label6.Text = "Name Employee";
             // 
@@ -206,9 +218,11 @@
             dtgvListWorkDate.DataSource = workSheetBindingSource;
             dtgvListWorkDate.Dock = DockStyle.Top;
             dtgvListWorkDate.Location = new Point(0, 0);
+            dtgvListWorkDate.Margin = new Padding(3, 2, 3, 2);
             dtgvListWorkDate.Name = "dtgvListWorkDate";
+            dtgvListWorkDate.ReadOnly = true;
             dtgvListWorkDate.RowHeadersWidth = 51;
-            dtgvListWorkDate.Size = new Size(860, 319);
+            dtgvListWorkDate.Size = new Size(752, 239);
             dtgvListWorkDate.TabIndex = 0;
             dtgvListWorkDate.CellFormatting += dtgvListWorkDate_CellFormatting;
             dtgvListWorkDate.CellMouseDoubleClick += dtgvListWorkDate_CellMouseDoubleClick;
@@ -220,6 +234,7 @@
             IdWorkSheet.HeaderText = "ID Sheet";
             IdWorkSheet.MinimumWidth = 6;
             IdWorkSheet.Name = "IdWorkSheet";
+            IdWorkSheet.ReadOnly = true;
             // 
             // IdEmp
             // 
@@ -228,6 +243,7 @@
             IdEmp.HeaderText = "Id Emp";
             IdEmp.MinimumWidth = 6;
             IdEmp.Name = "IdEmp";
+            IdEmp.ReadOnly = true;
             // 
             // sheetDataGridViewTextBoxColumn
             // 
@@ -236,6 +252,7 @@
             sheetDataGridViewTextBoxColumn.HeaderText = "Sheet";
             sheetDataGridViewTextBoxColumn.MinimumWidth = 6;
             sheetDataGridViewTextBoxColumn.Name = "sheetDataGridViewTextBoxColumn";
+            sheetDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // workSheetBindingSource
             // 
@@ -243,12 +260,13 @@
             // 
             // frmTableWork
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(860, 474);
+            ClientSize = new Size(752, 356);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "frmTableWork";

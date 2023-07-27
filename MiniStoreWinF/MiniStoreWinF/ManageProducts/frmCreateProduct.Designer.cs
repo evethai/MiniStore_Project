@@ -97,6 +97,7 @@
             // 
             // cbIdSupplier
             // 
+            cbIdSupplier.DropDownStyle = ComboBoxStyle.DropDownList;
             cbIdSupplier.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             cbIdSupplier.FormattingEnabled = true;
             cbIdSupplier.Location = new Point(226, 117);
@@ -175,6 +176,7 @@
             // 
             // dateDateImport
             // 
+            dateDateImport.Enabled = false;
             dateDateImport.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             dateDateImport.Location = new Point(226, 280);
             dateDateImport.Margin = new Padding(5, 4, 5, 4);
@@ -204,6 +206,7 @@
             // 
             // cbStatus
             // 
+            cbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             cbStatus.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             cbStatus.FormattingEnabled = true;
             cbStatus.Items.AddRange(new object[] { "Availability", "Sold Out" });
@@ -246,6 +249,7 @@
             // 
             // cbTypeProduct
             // 
+            cbTypeProduct.DropDownStyle = ComboBoxStyle.DropDownList;
             cbTypeProduct.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             cbTypeProduct.FormattingEnabled = true;
             cbTypeProduct.Location = new Point(226, 16);

@@ -53,12 +53,12 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34.720993F));
             tableLayoutPanel1.Controls.Add(groupBox2, 0, 1);
             tableLayoutPanel1.Controls.Add(groupBox1, 0, 0);
-            tableLayoutPanel1.Location = new Point(1, 37);
+            tableLayoutPanel1.Location = new Point(1, 33);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 442F));
-            tableLayoutPanel1.Size = new Size(940, 506);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 390F));
+            tableLayoutPanel1.Size = new Size(940, 446);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // groupBox2
@@ -66,9 +66,9 @@
             groupBox2.Controls.Add(dataGridView1);
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.ForeColor = Color.Navy;
-            groupBox2.Location = new Point(3, 67);
+            groupBox2.Location = new Point(3, 59);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(934, 436);
+            groupBox2.Size = new Size(934, 384);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "List Of Supplier";
@@ -81,11 +81,12 @@
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idSupplierDataGridViewTextBoxColumn, nameSupplierDataGridViewTextBoxColumn, addressSupplierDataGridViewTextBoxColumn, noteDataGridViewTextBoxColumn });
             dataGridView1.DataSource = supplierBindingSource;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 21);
+            dataGridView1.Location = new Point(3, 19);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(928, 412);
+            dataGridView1.Size = new Size(928, 362);
             dataGridView1.TabIndex = 1;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
@@ -96,6 +97,7 @@
             idSupplierDataGridViewTextBoxColumn.HeaderText = "IdSupplier";
             idSupplierDataGridViewTextBoxColumn.MinimumWidth = 6;
             idSupplierDataGridViewTextBoxColumn.Name = "idSupplierDataGridViewTextBoxColumn";
+            idSupplierDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // nameSupplierDataGridViewTextBoxColumn
             // 
@@ -104,6 +106,7 @@
             nameSupplierDataGridViewTextBoxColumn.HeaderText = "NameSupplier";
             nameSupplierDataGridViewTextBoxColumn.MinimumWidth = 6;
             nameSupplierDataGridViewTextBoxColumn.Name = "nameSupplierDataGridViewTextBoxColumn";
+            nameSupplierDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // addressSupplierDataGridViewTextBoxColumn
             // 
@@ -112,6 +115,7 @@
             addressSupplierDataGridViewTextBoxColumn.HeaderText = "AddressSupplier";
             addressSupplierDataGridViewTextBoxColumn.MinimumWidth = 6;
             addressSupplierDataGridViewTextBoxColumn.Name = "addressSupplierDataGridViewTextBoxColumn";
+            addressSupplierDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // noteDataGridViewTextBoxColumn
             // 
@@ -120,6 +124,7 @@
             noteDataGridViewTextBoxColumn.HeaderText = "Note";
             noteDataGridViewTextBoxColumn.MinimumWidth = 6;
             noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
+            noteDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // supplierBindingSource
             // 
@@ -132,25 +137,25 @@
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.Location = new Point(3, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(934, 58);
+            groupBox1.Size = new Size(934, 50);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Operation";
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(79, 24);
+            txtSearch.Location = new Point(79, 21);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(110, 25);
+            txtSearch.Size = new Size(110, 23);
             txtSearch.TabIndex = 37;
             // 
             // btSearch
             // 
             btSearch.BackColor = SystemColors.ButtonShadow;
             btSearch.ForeColor = SystemColors.ActiveCaptionText;
-            btSearch.Location = new Point(209, 24);
+            btSearch.Location = new Point(209, 21);
             btSearch.Name = "btSearch";
-            btSearch.Size = new Size(84, 25);
+            btSearch.Size = new Size(84, 22);
             btSearch.TabIndex = 36;
             btSearch.Text = "Search";
             btSearch.UseVisualStyleBackColor = false;
@@ -158,10 +163,10 @@
             // 
             // ManageSupplier
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Window;
-            ClientSize = new Size(953, 541);
+            ClientSize = new Size(953, 477);
             Controls.Add(tableLayoutPanel1);
             Name = "ManageSupplier";
             Text = "ManageSupplier";

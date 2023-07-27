@@ -105,9 +105,9 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 93F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 268F));
-            tableLayoutPanel1.Size = new Size(1221, 548);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 82F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 236F));
+            tableLayoutPanel1.Size = new Size(1221, 484);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -124,7 +124,7 @@
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(1215, 181);
+            tableLayoutPanel2.Size = new Size(1215, 160);
             tableLayoutPanel2.TabIndex = 1;
             // 
             // groupBox3
@@ -140,7 +140,7 @@
             groupBox3.Dock = DockStyle.Fill;
             groupBox3.Location = new Point(3, 3);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(404, 175);
+            groupBox3.Size = new Size(404, 154);
             groupBox3.TabIndex = 1;
             groupBox3.TabStop = false;
             groupBox3.Text = "Information Of Product";
@@ -149,7 +149,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(14, 85);
+            label3.Location = new Point(14, 75);
             label3.Name = "label3";
             label3.Size = new Size(40, 20);
             label3.TabIndex = 5;
@@ -159,7 +159,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(14, 153);
+            label4.Location = new Point(14, 135);
             label4.Name = "label4";
             label4.Size = new Size(83, 20);
             label4.TabIndex = 7;
@@ -167,18 +167,20 @@
             // 
             // cbTypeProduct
             // 
+            cbTypeProduct.DropDownStyle = ComboBoxStyle.DropDownList;
             cbTypeProduct.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             cbTypeProduct.FormattingEnabled = true;
-            cbTypeProduct.Location = new Point(116, 78);
+            cbTypeProduct.Location = new Point(116, 69);
             cbTypeProduct.Name = "cbTypeProduct";
             cbTypeProduct.Size = new Size(102, 27);
             cbTypeProduct.TabIndex = 4;
             // 
             // cbIdSupplier
             // 
+            cbIdSupplier.DropDownStyle = ComboBoxStyle.DropDownList;
             cbIdSupplier.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             cbIdSupplier.FormattingEnabled = true;
-            cbIdSupplier.Location = new Point(116, 146);
+            cbIdSupplier.Location = new Point(116, 129);
             cbIdSupplier.Name = "cbIdSupplier";
             cbIdSupplier.Size = new Size(102, 27);
             cbIdSupplier.TabIndex = 6;
@@ -187,7 +189,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(14, 119);
+            label2.Location = new Point(14, 105);
             label2.Name = "label2";
             label2.Size = new Size(49, 20);
             label2.TabIndex = 3;
@@ -196,7 +198,7 @@
             // txtNameProduct
             // 
             txtNameProduct.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtNameProduct.Location = new Point(116, 112);
+            txtNameProduct.Location = new Point(116, 99);
             txtNameProduct.Name = "txtNameProduct";
             txtNameProduct.Size = new Size(168, 27);
             txtNameProduct.TabIndex = 2;
@@ -205,7 +207,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(14, 51);
+            label1.Location = new Point(14, 45);
             label1.Name = "label1";
             label1.Size = new Size(79, 20);
             label1.TabIndex = 1;
@@ -215,7 +217,7 @@
             // 
             txtIDProduct.BackColor = SystemColors.ScrollBar;
             txtIDProduct.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtIDProduct.Location = new Point(116, 46);
+            txtIDProduct.Location = new Point(116, 41);
             txtIDProduct.Name = "txtIDProduct";
             txtIDProduct.ReadOnly = true;
             txtIDProduct.Size = new Size(168, 27);
@@ -234,7 +236,7 @@
             groupBox5.Dock = DockStyle.Fill;
             groupBox5.Location = new Point(413, 3);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(440, 175);
+            groupBox5.Size = new Size(440, 154);
             groupBox5.TabIndex = 3;
             groupBox5.TabStop = false;
             groupBox5.Text = "Date Import/MFG/EXP";
@@ -243,7 +245,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(21, 149);
+            label12.Location = new Point(21, 131);
             label12.Name = "label12";
             label12.Size = new Size(49, 20);
             label12.TabIndex = 25;
@@ -253,7 +255,7 @@
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.Location = new Point(21, 115);
+            label11.Location = new Point(21, 101);
             label11.Name = "label11";
             label11.Size = new Size(90, 20);
             label11.TabIndex = 23;
@@ -263,7 +265,7 @@
             // 
             dateDateImport.Enabled = false;
             dateDateImport.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dateDateImport.Location = new Point(127, 110);
+            dateDateImport.Location = new Point(127, 97);
             dateDateImport.Name = "dateDateImport";
             dateDateImport.Size = new Size(200, 27);
             dateDateImport.TabIndex = 22;
@@ -272,7 +274,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(21, 81);
+            label10.Location = new Point(21, 71);
             label10.Name = "label10";
             label10.Size = new Size(34, 20);
             label10.TabIndex = 21;
@@ -282,17 +284,18 @@
             // 
             dateEXP.Enabled = false;
             dateEXP.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dateEXP.Location = new Point(127, 76);
+            dateEXP.Location = new Point(127, 67);
             dateEXP.Name = "dateEXP";
             dateEXP.Size = new Size(200, 27);
             dateEXP.TabIndex = 20;
             // 
             // cbStatus
             // 
+            cbStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             cbStatus.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
             cbStatus.FormattingEnabled = true;
             cbStatus.Items.AddRange(new object[] { "Availability", "Sold Out" });
-            cbStatus.Location = new Point(127, 146);
+            cbStatus.Location = new Point(127, 129);
             cbStatus.Name = "cbStatus";
             cbStatus.Size = new Size(118, 27);
             cbStatus.TabIndex = 24;
@@ -301,7 +304,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(21, 47);
+            label9.Location = new Point(21, 41);
             label9.Name = "label9";
             label9.Size = new Size(39, 20);
             label9.TabIndex = 19;
@@ -311,7 +314,7 @@
             // 
             dateMFG.Enabled = false;
             dateMFG.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point);
-            dateMFG.Location = new Point(127, 42);
+            dateMFG.Location = new Point(127, 37);
             dateMFG.Name = "dateMFG";
             dateMFG.Size = new Size(200, 27);
             dateMFG.TabIndex = 17;
@@ -324,16 +327,16 @@
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.Location = new Point(859, 3);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(353, 175);
+            groupBox2.Size = new Size(353, 154);
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             groupBox2.Text = "Picture Product";
             // 
             // txtPathPicture
             // 
-            txtPathPicture.Location = new Point(120, 209);
+            txtPathPicture.Location = new Point(120, 184);
             txtPathPicture.Name = "txtPathPicture";
-            txtPathPicture.Size = new Size(110, 25);
+            txtPathPicture.Size = new Size(110, 23);
             txtPathPicture.TabIndex = 1;
             txtPathPicture.Visible = false;
             // 
@@ -341,9 +344,9 @@
             // 
             btImportPictureProduct.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             btImportPictureProduct.ForeColor = SystemColors.ActiveCaptionText;
-            btImportPictureProduct.Location = new Point(93, 169);
+            btImportPictureProduct.Location = new Point(93, 149);
             btImportPictureProduct.Name = "btImportPictureProduct";
-            btImportPictureProduct.Size = new Size(82, 26);
+            btImportPictureProduct.Size = new Size(82, 23);
             btImportPictureProduct.TabIndex = 6;
             btImportPictureProduct.Text = "Select";
             btImportPictureProduct.UseVisualStyleBackColor = true;
@@ -352,9 +355,9 @@
             // PictureProduct
             // 
             PictureProduct.BackColor = SystemColors.Info;
-            PictureProduct.Location = new Point(45, 42);
+            PictureProduct.Location = new Point(45, 37);
             PictureProduct.Name = "PictureProduct";
-            PictureProduct.Size = new Size(170, 122);
+            PictureProduct.Size = new Size(170, 108);
             PictureProduct.SizeMode = PictureBoxSizeMode.StretchImage;
             PictureProduct.TabIndex = 0;
             PictureProduct.TabStop = false;
@@ -363,9 +366,9 @@
             // 
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.Dock = DockStyle.Fill;
-            groupBox1.Location = new Point(3, 283);
+            groupBox1.Location = new Point(3, 251);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1215, 262);
+            groupBox1.Size = new Size(1215, 230);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "List Of Product";
@@ -378,11 +381,12 @@
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { skuDataGridViewTextBoxColumn, dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, mfgDataGridViewTextBoxColumn, expDataGridViewTextBoxColumn, dataGridViewTextBoxColumn11 });
             dataGridView1.DataSource = productBindingSource;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 21);
+            dataGridView1.Location = new Point(3, 19);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(1209, 238);
+            dataGridView1.Size = new Size(1209, 208);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
@@ -393,6 +397,7 @@
             skuDataGridViewTextBoxColumn.HeaderText = "Sku";
             skuDataGridViewTextBoxColumn.MinimumWidth = 6;
             skuDataGridViewTextBoxColumn.Name = "skuDataGridViewTextBoxColumn";
+            skuDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -401,6 +406,7 @@
             dataGridViewTextBoxColumn1.HeaderText = "Type";
             dataGridViewTextBoxColumn1.MinimumWidth = 6;
             dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -409,6 +415,7 @@
             dataGridViewTextBoxColumn2.HeaderText = "Name Product";
             dataGridViewTextBoxColumn2.MinimumWidth = 6;
             dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -417,6 +424,7 @@
             dataGridViewTextBoxColumn3.HeaderText = "Id Supplier";
             dataGridViewTextBoxColumn3.MinimumWidth = 6;
             dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
             // mfgDataGridViewTextBoxColumn
             // 
@@ -425,6 +433,7 @@
             mfgDataGridViewTextBoxColumn.HeaderText = "Mfg";
             mfgDataGridViewTextBoxColumn.MinimumWidth = 6;
             mfgDataGridViewTextBoxColumn.Name = "mfgDataGridViewTextBoxColumn";
+            mfgDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // expDataGridViewTextBoxColumn
             // 
@@ -433,6 +442,7 @@
             expDataGridViewTextBoxColumn.HeaderText = "Exp";
             expDataGridViewTextBoxColumn.MinimumWidth = 6;
             expDataGridViewTextBoxColumn.Name = "expDataGridViewTextBoxColumn";
+            expDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn11
             // 
@@ -441,6 +451,7 @@
             dataGridViewTextBoxColumn11.HeaderText = "DateImport";
             dataGridViewTextBoxColumn11.MinimumWidth = 6;
             dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            dataGridViewTextBoxColumn11.ReadOnly = true;
             // 
             // productBindingSource
             // 
@@ -454,11 +465,11 @@
             tableLayoutPanel3.Controls.Add(groupBox4, 0, 0);
             tableLayoutPanel3.Controls.Add(groupBox6, 1, 0);
             tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(3, 190);
+            tableLayoutPanel3.Location = new Point(3, 169);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Size = new Size(1215, 87);
+            tableLayoutPanel3.Size = new Size(1215, 76);
             tableLayoutPanel3.TabIndex = 2;
             // 
             // groupBox4
@@ -472,7 +483,7 @@
             groupBox4.Dock = DockStyle.Fill;
             groupBox4.Location = new Point(3, 3);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(601, 81);
+            groupBox4.Size = new Size(601, 70);
             groupBox4.TabIndex = 0;
             groupBox4.TabStop = false;
             groupBox4.Text = "Operation";
@@ -481,9 +492,9 @@
             // 
             btImportProduct.BackColor = SystemColors.ButtonShadow;
             btImportProduct.ForeColor = SystemColors.ActiveCaptionText;
-            btImportProduct.Location = new Point(335, 19);
+            btImportProduct.Location = new Point(335, 17);
             btImportProduct.Name = "btImportProduct";
-            btImportProduct.Size = new Size(84, 57);
+            btImportProduct.Size = new Size(84, 50);
             btImportProduct.TabIndex = 29;
             btImportProduct.Text = "Import Products";
             btImportProduct.UseVisualStyleBackColor = false;
@@ -493,9 +504,9 @@
             // 
             txtExpProduct.BackColor = SystemColors.ButtonShadow;
             txtExpProduct.ForeColor = SystemColors.ActiveCaptionText;
-            txtExpProduct.Location = new Point(233, 19);
+            txtExpProduct.Location = new Point(233, 17);
             txtExpProduct.Name = "txtExpProduct";
-            txtExpProduct.Size = new Size(84, 57);
+            txtExpProduct.Size = new Size(84, 50);
             txtExpProduct.TabIndex = 28;
             txtExpProduct.Text = "Expired Products";
             txtExpProduct.UseVisualStyleBackColor = false;
@@ -505,9 +516,9 @@
             // 
             btUpdate.BackColor = SystemColors.ButtonShadow;
             btUpdate.ForeColor = SystemColors.ActiveCaptionText;
-            btUpdate.Location = new Point(133, 48);
+            btUpdate.Location = new Point(133, 42);
             btUpdate.Name = "btUpdate";
-            btUpdate.Size = new Size(84, 27);
+            btUpdate.Size = new Size(84, 24);
             btUpdate.TabIndex = 25;
             btUpdate.Text = "Update";
             btUpdate.UseVisualStyleBackColor = false;
@@ -517,10 +528,10 @@
             // 
             rd1.AutoSize = true;
             rd1.Checked = true;
-            rd1.Location = new Point(32, 26);
+            rd1.Location = new Point(32, 23);
             rd1.Margin = new Padding(4);
             rd1.Name = "rd1";
-            rd1.Size = new Size(87, 21);
+            rd1.Size = new Size(83, 19);
             rd1.TabIndex = 23;
             rd1.TabStop = true;
             rd1.Text = "Availability";
@@ -530,10 +541,10 @@
             // rd2
             // 
             rd2.AutoSize = true;
-            rd2.Location = new Point(32, 55);
+            rd2.Location = new Point(32, 49);
             rd2.Margin = new Padding(4);
             rd2.Name = "rd2";
-            rd2.Size = new Size(77, 21);
+            rd2.Size = new Size(71, 19);
             rd2.TabIndex = 24;
             rd2.Text = "Sold Out";
             rd2.UseVisualStyleBackColor = true;
@@ -543,9 +554,9 @@
             // 
             button1.BackColor = SystemColors.ButtonShadow;
             button1.ForeColor = SystemColors.ActiveCaptionText;
-            button1.Location = new Point(133, 19);
+            button1.Location = new Point(133, 17);
             button1.Name = "button1";
-            button1.Size = new Size(84, 27);
+            button1.Size = new Size(84, 24);
             button1.TabIndex = 26;
             button1.Text = "Create";
             button1.UseVisualStyleBackColor = false;
@@ -562,7 +573,7 @@
             groupBox6.Dock = DockStyle.Fill;
             groupBox6.Location = new Point(610, 3);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(602, 81);
+            groupBox6.Size = new Size(602, 70);
             groupBox6.TabIndex = 1;
             groupBox6.TabStop = false;
             groupBox6.Text = "Filter Products";
@@ -573,9 +584,9 @@
             txtArrange.DropDownStyle = ComboBoxStyle.DropDownList;
             txtArrange.FormattingEnabled = true;
             txtArrange.Items.AddRange(new object[] { "ALL", "Name Ascending", "Name Decrease" });
-            txtArrange.Location = new Point(229, 52);
+            txtArrange.Location = new Point(229, 46);
             txtArrange.Name = "txtArrange";
-            txtArrange.Size = new Size(109, 25);
+            txtArrange.Size = new Size(109, 23);
             txtArrange.TabIndex = 35;
             txtArrange.SelectedIndexChanged += txtArrange_SelectedIndexChanged;
             // 
@@ -583,9 +594,9 @@
             // 
             txtCheckName.AutoSize = true;
             txtCheckName.ForeColor = SystemColors.ActiveCaptionText;
-            txtCheckName.Location = new Point(27, 25);
+            txtCheckName.Location = new Point(27, 22);
             txtCheckName.Name = "txtCheckName";
-            txtCheckName.Size = new Size(111, 21);
+            txtCheckName.Size = new Size(103, 19);
             txtCheckName.TabIndex = 30;
             txtCheckName.Text = "Name Product";
             txtCheckName.UseVisualStyleBackColor = true;
@@ -594,36 +605,36 @@
             // 
             txtCheckType.AutoSize = true;
             txtCheckType.ForeColor = SystemColors.ActiveCaptionText;
-            txtCheckType.Location = new Point(27, 56);
+            txtCheckType.Location = new Point(27, 49);
             txtCheckType.Name = "txtCheckType";
-            txtCheckType.Size = new Size(103, 21);
+            txtCheckType.Size = new Size(95, 19);
             txtCheckType.TabIndex = 31;
             txtCheckType.Text = "Type Product";
             txtCheckType.UseVisualStyleBackColor = true;
             // 
             // txtName
             // 
-            txtName.Location = new Point(143, 22);
+            txtName.Location = new Point(143, 19);
             txtName.Name = "txtName";
-            txtName.Size = new Size(70, 25);
+            txtName.Size = new Size(70, 23);
             txtName.TabIndex = 32;
             // 
             // txtComboType
             // 
             txtComboType.DropDownStyle = ComboBoxStyle.DropDownList;
             txtComboType.FormattingEnabled = true;
-            txtComboType.Location = new Point(143, 52);
+            txtComboType.Location = new Point(143, 46);
             txtComboType.Name = "txtComboType";
-            txtComboType.Size = new Size(70, 25);
+            txtComboType.Size = new Size(70, 23);
             txtComboType.TabIndex = 33;
             // 
             // btSearch
             // 
             btSearch.BackColor = SystemColors.ButtonShadow;
             btSearch.ForeColor = SystemColors.ActiveCaptionText;
-            btSearch.Location = new Point(229, 22);
+            btSearch.Location = new Point(229, 19);
             btSearch.Name = "btSearch";
-            btSearch.Size = new Size(108, 27);
+            btSearch.Size = new Size(108, 24);
             btSearch.TabIndex = 34;
             btSearch.Text = "Search";
             btSearch.UseVisualStyleBackColor = false;
@@ -637,10 +648,10 @@
             // 
             // ManageAllProducs
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Window;
-            ClientSize = new Size(1221, 548);
+            ClientSize = new Size(1221, 484);
             Controls.Add(tableLayoutPanel1);
             Name = "ManageAllProducs";
             tableLayoutPanel1.ResumeLayout(false);

@@ -152,7 +152,7 @@
             // btAdd
             // 
             btAdd.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            btAdd.Location = new Point(477, 269);
+            btAdd.Location = new Point(477, 272);
             btAdd.Name = "btAdd";
             btAdd.Size = new Size(97, 33);
             btAdd.TabIndex = 18;
@@ -182,7 +182,7 @@
             // btUpdate
             // 
             btUpdate.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            btUpdate.Location = new Point(373, 270);
+            btUpdate.Location = new Point(373, 272);
             btUpdate.Name = "btUpdate";
             btUpdate.Size = new Size(97, 33);
             btUpdate.TabIndex = 21;
@@ -204,7 +204,7 @@
             // txtSearch
             // 
             txtSearch.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            txtSearch.Location = new Point(42, 274);
+            txtSearch.Location = new Point(42, 272);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(220, 32);
             txtSearch.TabIndex = 23;
@@ -227,6 +227,7 @@
             dgvMember.Dock = DockStyle.Fill;
             dgvMember.Location = new Point(3, 325);
             dgvMember.Name = "dgvMember";
+            dgvMember.ReadOnly = true;
             dgvMember.RowHeadersWidth = 51;
             dgvMember.RowTemplate.Height = 25;
             dgvMember.Size = new Size(1152, 174);
@@ -240,6 +241,7 @@
             phoneMemberDataGridViewTextBoxColumn.HeaderText = "PhoneMember";
             phoneMemberDataGridViewTextBoxColumn.MinimumWidth = 6;
             phoneMemberDataGridViewTextBoxColumn.Name = "phoneMemberDataGridViewTextBoxColumn";
+            phoneMemberDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -248,6 +250,7 @@
             nameDataGridViewTextBoxColumn.HeaderText = "Name";
             nameDataGridViewTextBoxColumn.MinimumWidth = 6;
             nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            nameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // panel1
             // 
@@ -275,11 +278,12 @@
             // 
             // cbGender
             // 
+            cbGender.DropDownStyle = ComboBoxStyle.DropDownList;
             cbGender.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
             cbGender.FormattingEnabled = true;
             cbGender.Items.AddRange(new object[] { "Male", "Female" });
             cbGender.Location = new Point(562, 120);
-            cbGender.Margin = new Padding(2, 2, 2, 2);
+            cbGender.Margin = new Padding(2);
             cbGender.Name = "cbGender";
             cbGender.Size = new Size(94, 33);
             cbGender.TabIndex = 17;

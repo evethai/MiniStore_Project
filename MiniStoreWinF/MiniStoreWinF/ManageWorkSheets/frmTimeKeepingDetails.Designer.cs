@@ -76,7 +76,7 @@
             dtpkMothTimeKeeping.Location = new Point(570, 9);
             dtpkMothTimeKeeping.Margin = new Padding(5);
             dtpkMothTimeKeeping.Name = "dtpkMothTimeKeeping";
-            dtpkMothTimeKeeping.Size = new Size(210, 38);
+            dtpkMothTimeKeeping.Size = new Size(210, 32);
             dtpkMothTimeKeeping.TabIndex = 0;
             dtpkMothTimeKeeping.ValueChanged += dtpkMothTimeKeeping_ValueChanged;
             // 
@@ -98,6 +98,7 @@
             dgvTimekeeping.Location = new Point(0, 0);
             dgvTimekeeping.Margin = new Padding(5);
             dgvTimekeeping.Name = "dgvTimekeeping";
+            dgvTimekeeping.ReadOnly = true;
             dgvTimekeeping.RowHeadersWidth = 51;
             dgvTimekeeping.RowTemplate.Height = 29;
             dgvTimekeeping.Size = new Size(1355, 423);
@@ -110,7 +111,7 @@
             // 
             // frmTimeKeepingDetails
             // 
-            AutoScaleDimensions = new SizeF(14F, 31F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1365, 509);
             Controls.Add(tableLayoutPanel1);

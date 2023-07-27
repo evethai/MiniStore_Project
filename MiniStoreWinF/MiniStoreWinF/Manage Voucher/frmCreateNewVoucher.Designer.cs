@@ -97,7 +97,7 @@
             // 
             // numAddCondition
             // 
-            numAddCondition.Location = new Point(121, 150);
+            numAddCondition.Location = new Point(121, 166);
             numAddCondition.Margin = new Padding(4, 3, 4, 3);
             numAddCondition.Name = "numAddCondition";
             numAddCondition.Size = new Size(116, 29);
@@ -106,16 +106,16 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(23, 153);
+            label3.Location = new Point(33, 169);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(78, 21);
+            label3.Size = new Size(81, 21);
             label3.TabIndex = 14;
-            label3.Text = "Condition";
+            label3.Text = "Condition:";
             // 
             // dpkNewDate
             // 
-            dpkNewDate.Location = new Point(131, 277);
+            dpkNewDate.Location = new Point(121, 309);
             dpkNewDate.Margin = new Padding(4, 3, 4, 3);
             dpkNewDate.Name = "dpkNewDate";
             dpkNewDate.Size = new Size(228, 29);
@@ -137,7 +137,7 @@
             // 
             // txtNewQuantity
             // 
-            txtNewQuantity.Location = new Point(131, 220);
+            txtNewQuantity.Location = new Point(121, 236);
             txtNewQuantity.Margin = new Padding(4, 3, 4, 3);
             txtNewQuantity.Name = "txtNewQuantity";
             txtNewQuantity.Size = new Size(97, 29);
@@ -145,7 +145,7 @@
             // 
             // txtNewPrice
             // 
-            txtNewPrice.Location = new Point(121, 95);
+            txtNewPrice.Location = new Point(121, 103);
             txtNewPrice.Margin = new Padding(4, 3, 4, 3);
             txtNewPrice.Name = "txtNewPrice";
             txtNewPrice.Size = new Size(140, 29);
@@ -162,32 +162,32 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(32, 280);
+            label7.Location = new Point(39, 312);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(72, 21);
+            label7.Size = new Size(75, 21);
             label7.TabIndex = 5;
-            label7.Text = "EXP Date";
+            label7.Text = "EXP Date:";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(39, 220);
+            label8.Location = new Point(41, 239);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(70, 21);
+            label8.Size = new Size(73, 21);
             label8.TabIndex = 4;
-            label8.Text = "Quantity";
+            label8.Text = "Quantity:";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(67, 95);
+            label9.Location = new Point(67, 103);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(44, 21);
+            label9.Size = new Size(47, 21);
             label9.TabIndex = 3;
-            label9.Text = "Price";
+            label9.Text = "Price:";
             // 
             // label11
             // 
@@ -195,9 +195,9 @@
             label11.Location = new Point(59, 42);
             label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
-            label11.Size = new Size(52, 21);
+            label11.Size = new Size(55, 21);
             label11.TabIndex = 1;
-            label11.Text = "Name";
+            label11.Text = "Name:";
             // 
             // label1
             // 

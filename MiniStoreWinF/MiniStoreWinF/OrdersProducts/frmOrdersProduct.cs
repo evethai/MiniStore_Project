@@ -48,7 +48,6 @@ namespace MiniStoreWinF.OrdersProducts
             cbTypeProducts.DisplayMember = "ProductType";
             cbSort.Items.Add("Ascending");
             cbSort.Items.Add("Decreasing");
-            rdCashpayment.Checked = true;
         }
         private void OrderProducts_Load(object sender, EventArgs e)
         {
@@ -96,13 +95,9 @@ namespace MiniStoreWinF.OrdersProducts
             txtDiscount.Text = "";
             txtLoyaltyPoint.Text = "";
             txtPointUsing.Text = "";
-            btShowBill.Visible = false;
             txtPointUsing.Enabled = false;
-            rdCashpayment.Checked = false;
-            rdMomopayment.Checked = false;
             btUsingVoucher.Enabled = true;
             txtDiscount.Text = "0";
-            rdCashpayment.Checked = true;
         }
         private void cbTypeProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -130,10 +125,6 @@ namespace MiniStoreWinF.OrdersProducts
                 cbUnitQuantity.DataSource = checkUnit;
                 cbUnitQuantity.DisplayMember = "UnitName";
             }
-        }
-        public string formatDouble(double? d)
-        {
-            return d?.ToString("#,###,###");
         }
         private void cbUnitQuantity_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -231,7 +222,6 @@ namespace MiniStoreWinF.OrdersProducts
                         total += value;
                     }
                     txtTotalAllOrders.Text = total.ToString();
-                    txtTotalAllOrders.Text = formatDouble(Convert.ToDouble(txtTotalAllOrders.Text));
                     TotalBill = total;
                 }
             }
@@ -315,7 +305,7 @@ namespace MiniStoreWinF.OrdersProducts
             }
             else if (txtDiscount.TextLength > 0)
             {
-                if ((Convert.ToInt32(txtDiscount.Text) + (Convert.ToDouble(txtPointUsing.Text) * checkusingPoint.RateUsing)) >= Convert.ToInt32(txtTotalAllOrders.Text))
+                if ((Convert.ToInt32(txtDiscount.Text) + (Convert.ToDouble(txtPointUsing.Text) * checkusingPoint.RateUsing)) >= TotalBill)
                 {
                     MessageBox.Show("Point Using is more than price Bill");
                 }
@@ -325,7 +315,7 @@ namespace MiniStoreWinF.OrdersProducts
                     txtLoyaltyPoint.Text = (Convert.ToInt32(txtLoyaltyPoint.Text) - Convert.ToInt32(txtPointUsing.Text)).ToString();
                 }
             }
-            else if (txtDiscount.TextLength <= 0 && (Convert.ToDouble(txtPointUsing.Text) * checkusingPoint.RateUsing) <= Convert.ToDouble(txtTotalAllOrders.Text))
+            else if (txtDiscount.TextLength <= 0 && (Convert.ToDouble(txtPointUsing.Text) * checkusingPoint.RateUsing) <= TotalBill)
             {
                 txtDiscount.Text = (Convert.ToDouble(txtPointUsing.Text) * checkusingPoint.RateUsing).ToString();
                 txtLoyaltyPoint.Text = (Convert.ToInt32(txtLoyaltyPoint.Text) - Convert.ToInt32(txtPointUsing.Text)).ToString();
@@ -396,7 +386,7 @@ namespace MiniStoreWinF.OrdersProducts
             {
                 BillOrder billOrder = new BillOrder();
                 AutoBillsID checkBill = new AutoBillsID();
-                if (txtTotalAllOrders == null)
+                if (txtTotalAllOrders.TextLength <= 0)
                 {
                     MessageBox.Show("Order Bill is not items", "Notification", MessageBoxButtons.OK, MessageBoxIcon.None);
                 }
@@ -498,8 +488,7 @@ namespace MiniStoreWinF.OrdersProducts
                     var PointTaking = _ratePointService.GetAll().Where(p => p.StatusRp == true).FirstOrDefault();
                     if (checkPhoneMemb != null)
                     {
-                        double TotalPointReceive = Convert.ToInt32(txtTotalAllOrders.Text) / PointTaking.RateTaking.Value;
-
+                        double TotalPointReceive = TotalBill / PointTaking.RateTaking.Value;
                         checkPhoneMemb.Point = checkPhoneMemb.Point + RoundToInteger(TotalPointReceive);
                         _memberService.Update(checkPhoneMemb);
                     }
@@ -560,7 +549,6 @@ namespace MiniStoreWinF.OrdersProducts
                 return;
             }
         }
-
         private void cbSort_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbSort.SelectedIndex == 0)
@@ -580,21 +568,7 @@ namespace MiniStoreWinF.OrdersProducts
                 };
             }
         }
-
-        private void rdCashpayment_Click(object sender, EventArgs e)
-        {
-            if (txtTotalAllOrders.Text == "")
-            {
-                MessageBox.Show("Not find a ORDER ");
-                rdCashpayment.Checked = false;
-            }
-            else
-            {
-                rdCashpayment.Checked = true;
-                btShowBill.Visible = true;
-            }
-        }
-        private void rdMomopayment_Click(object sender, MouseEventArgs e)
+        private void rd(object sender, EventArgs e)
         {
             double total = 0;
             MoMoService _moService = new MoMoService();
@@ -602,8 +576,6 @@ namespace MiniStoreWinF.OrdersProducts
             if (txtTotalAllOrders.Text == "" || list == null)
             {
                 MessageBox.Show("Not find a ORDER ", "Messages");
-                rdMomopayment.Checked = false;
-                btShowBill.Visible = false;
             }
             else
             {
@@ -611,7 +583,6 @@ namespace MiniStoreWinF.OrdersProducts
                 frmQRCode form = new frmQRCode();
                 form.total = Double.Parse(txtTotalAllOrders.Text) - Double.Parse(txtDiscount.Text);
                 form.ShowDialog();
-                btShowBill.Visible = true;
             }
         }
 

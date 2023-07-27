@@ -71,6 +71,7 @@
             // 
             // cbNameUnit
             // 
+            cbNameUnit.DropDownStyle = ComboBoxStyle.DropDownList;
             cbNameUnit.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             cbNameUnit.FormattingEnabled = true;
             cbNameUnit.Location = new Point(221, 162);
@@ -81,6 +82,7 @@
             // 
             // cbNameProduct
             // 
+            cbNameProduct.DropDownStyle = ComboBoxStyle.DropDownList;
             cbNameProduct.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             cbNameProduct.FormattingEnabled = true;
             cbNameProduct.Location = new Point(221, 95);
@@ -108,6 +110,7 @@
             txtPriceEx.Name = "txtPriceEx";
             txtPriceEx.Size = new Size(328, 33);
             txtPriceEx.TabIndex = 17;
+            txtPriceEx.KeyPress += txtPriceIm_KeyPress;
             // 
             // txtPriceIm
             // 
@@ -117,6 +120,7 @@
             txtPriceIm.Name = "txtPriceIm";
             txtPriceIm.Size = new Size(328, 33);
             txtPriceIm.TabIndex = 16;
+            txtPriceIm.KeyPress += txtPriceIm_KeyPress;
             // 
             // label13
             // 
