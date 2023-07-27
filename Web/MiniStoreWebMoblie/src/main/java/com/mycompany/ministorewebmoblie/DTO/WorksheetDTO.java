@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.mycompany.ministorewebmoblie.DTO;
 
 
@@ -13,8 +10,24 @@ public class WorksheetDTO {
     private String date;
     private String timeCheckIn;
     private String timeCheckOut;
-
+    private String total;
+  
     public WorksheetDTO() {
+    }
+
+    public WorksheetDTO(String date, String timeCheckIn, String timeCheckOut, String total) {
+        this.date = date;
+        this.timeCheckIn = timeCheckIn;
+        this.timeCheckOut = timeCheckOut;
+        this.total = total;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getTimeCheckIn() {
@@ -33,20 +46,14 @@ public class WorksheetDTO {
         this.timeCheckOut = timeCheckOut;
     }
 
-    public WorksheetDTO(String date, String timeCheckIn, String timeCheckOut) {
-        this.date = date;
-        this.timeCheckIn = timeCheckIn;
-        this.timeCheckOut = timeCheckOut;
+    public String getTotal() {
+        return total;
     }
 
-    public String getDate() {
-        return date;
+    public void setTotal(String total) {
+        this.total = total;
     }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
+    
    
 
     

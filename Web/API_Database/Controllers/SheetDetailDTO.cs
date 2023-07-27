@@ -10,5 +10,7 @@ namespace API_Database.Controllers
         public int Sheet { get; set; }
         public string  ShiftStartTime { get; set; }
         public string ShiftEndTime { get; set; }
+        public string CheckNight { get; set; }
+        public string CoefficientsSalary { get; set; }
     }
 }

@@ -64,12 +64,13 @@
             tableLayoutPanel1.Controls.Add(tableLayoutPanel3, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(1182, 627);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
+            tableLayoutPanel1.Size = new Size(1287, 748);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -77,27 +78,30 @@
             panel1.Controls.Add(panel3);
             panel1.Controls.Add(panel2);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 3);
+            panel1.Location = new Point(3, 2);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1176, 56);
+            panel1.Size = new Size(1281, 70);
             panel1.TabIndex = 0;
             // 
             // panel3
             // 
             panel3.Controls.Add(dtpkDate);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(328, 0);
+            panel3.Location = new Point(287, 0);
+            panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(848, 56);
+            panel3.Size = new Size(994, 70);
             panel3.TabIndex = 1;
             // 
             // dtpkDate
             // 
-            dtpkDate.Location = new Point(240, 14);
-            dtpkDate.Margin = new Padding(3, 4, 3, 4);
+            dtpkDate.Format = DateTimePickerFormat.Custom;
+            dtpkDate.Location = new Point(339, 22);
             dtpkDate.Name = "dtpkDate";
-            dtpkDate.Size = new Size(290, 27);
+            dtpkDate.Size = new Size(254, 23);
             dtpkDate.TabIndex = 5;
+            dtpkDate.Value = new DateTime(2023, 7, 26, 0, 0, 0, 0);
             dtpkDate.ValueChanged += dtpkDate_ValueChanged_1;
             // 
             // panel2
@@ -106,8 +110,9 @@
             panel2.Controls.Add(nmbrNotification);
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(0, 0);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(328, 56);
+            panel2.Size = new Size(287, 70);
             panel2.TabIndex = 0;
             // 
             // lbNotification
@@ -118,7 +123,7 @@
             lbNotification.ImageAlign = ContentAlignment.MiddleLeft;
             lbNotification.Location = new Point(0, 0);
             lbNotification.Name = "lbNotification";
-            lbNotification.Size = new Size(210, 56);
+            lbNotification.Size = new Size(184, 70);
             lbNotification.TabIndex = 9;
             lbNotification.Text = "Quantity Absent :";
             lbNotification.TextAlign = ContentAlignment.MiddleRight;
@@ -126,10 +131,10 @@
             // nmbrNotification
             // 
             nmbrNotification.Anchor = AnchorStyles.Left;
-            nmbrNotification.Location = new Point(248, 14);
-            nmbrNotification.Margin = new Padding(3, 5, 3, 5);
+            nmbrNotification.Location = new Point(217, 24);
+            nmbrNotification.Margin = new Padding(3, 4, 3, 4);
             nmbrNotification.Name = "nmbrNotification";
-            nmbrNotification.Size = new Size(77, 27);
+            nmbrNotification.Size = new Size(67, 23);
             nmbrNotification.TabIndex = 8;
             // 
             // tableLayoutPanel3
@@ -143,12 +148,13 @@
             tableLayoutPanel3.Controls.Add(btnMonthBack, 0, 0);
             tableLayoutPanel3.Controls.Add(pnlMatrix, 1, 1);
             tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(3, 65);
+            tableLayoutPanel3.Location = new Point(3, 76);
+            tableLayoutPanel3.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 15F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 85F));
-            tableLayoutPanel3.Size = new Size(1176, 559);
+            tableLayoutPanel3.Size = new Size(1281, 670);
             tableLayoutPanel3.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -169,20 +175,20 @@
             tableLayoutPanel2.Controls.Add(btnSaturday, 5, 0);
             tableLayoutPanel2.Controls.Add(btnSunday, 6, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(120, 3);
+            tableLayoutPanel2.Location = new Point(131, 2);
+            tableLayoutPanel2.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(934, 77);
+            tableLayoutPanel2.Size = new Size(1018, 96);
             tableLayoutPanel2.TabIndex = 1;
             // 
             // btnTuesday
             // 
             btnTuesday.Dock = DockStyle.Fill;
-            btnTuesday.Location = new Point(136, 4);
-            btnTuesday.Margin = new Padding(3, 4, 3, 4);
+            btnTuesday.Location = new Point(148, 3);
             btnTuesday.Name = "btnTuesday";
-            btnTuesday.Size = new Size(127, 69);
+            btnTuesday.Size = new Size(139, 90);
             btnTuesday.TabIndex = 13;
             btnTuesday.Text = "Tuesday";
             btnTuesday.UseVisualStyleBackColor = true;
@@ -191,10 +197,9 @@
             // 
             btMonday.AutoSize = true;
             btMonday.Dock = DockStyle.Fill;
-            btMonday.Location = new Point(3, 4);
-            btMonday.Margin = new Padding(3, 4, 3, 4);
+            btMonday.Location = new Point(3, 3);
             btMonday.Name = "btMonday";
-            btMonday.Size = new Size(127, 69);
+            btMonday.Size = new Size(139, 90);
             btMonday.TabIndex = 12;
             btMonday.Text = "Monday";
             btMonday.UseVisualStyleBackColor = true;
@@ -202,10 +207,9 @@
             // btWednesday
             // 
             btWednesday.Dock = DockStyle.Fill;
-            btWednesday.Location = new Point(269, 4);
-            btWednesday.Margin = new Padding(3, 4, 3, 4);
+            btWednesday.Location = new Point(293, 3);
             btWednesday.Name = "btWednesday";
-            btWednesday.Size = new Size(127, 69);
+            btWednesday.Size = new Size(139, 90);
             btWednesday.TabIndex = 16;
             btWednesday.Text = "Wednesday ";
             btWednesday.UseVisualStyleBackColor = true;
@@ -213,10 +217,9 @@
             // btnThursday
             // 
             btnThursday.Dock = DockStyle.Fill;
-            btnThursday.Location = new Point(402, 4);
-            btnThursday.Margin = new Padding(3, 4, 3, 4);
+            btnThursday.Location = new Point(438, 3);
             btnThursday.Name = "btnThursday";
-            btnThursday.Size = new Size(127, 69);
+            btnThursday.Size = new Size(139, 90);
             btnThursday.TabIndex = 17;
             btnThursday.Text = "Thursday ";
             btnThursday.UseVisualStyleBackColor = true;
@@ -224,10 +227,9 @@
             // btnFriday
             // 
             btnFriday.Dock = DockStyle.Fill;
-            btnFriday.Location = new Point(535, 4);
-            btnFriday.Margin = new Padding(3, 4, 3, 4);
+            btnFriday.Location = new Point(583, 3);
             btnFriday.Name = "btnFriday";
-            btnFriday.Size = new Size(127, 69);
+            btnFriday.Size = new Size(139, 90);
             btnFriday.TabIndex = 18;
             btnFriday.Text = "Friday";
             btnFriday.UseVisualStyleBackColor = true;
@@ -235,10 +237,9 @@
             // btnSaturday
             // 
             btnSaturday.Dock = DockStyle.Fill;
-            btnSaturday.Location = new Point(668, 4);
-            btnSaturday.Margin = new Padding(3, 4, 3, 4);
+            btnSaturday.Location = new Point(728, 3);
             btnSaturday.Name = "btnSaturday";
-            btnSaturday.Size = new Size(127, 69);
+            btnSaturday.Size = new Size(139, 90);
             btnSaturday.TabIndex = 19;
             btnSaturday.Text = "Saturday";
             btnSaturday.UseVisualStyleBackColor = true;
@@ -246,10 +247,9 @@
             // btnSunday
             // 
             btnSunday.Dock = DockStyle.Fill;
-            btnSunday.Location = new Point(801, 4);
-            btnSunday.Margin = new Padding(3, 4, 3, 4);
+            btnSunday.Location = new Point(873, 3);
             btnSunday.Name = "btnSunday";
-            btnSunday.Size = new Size(130, 69);
+            btnSunday.Size = new Size(142, 90);
             btnSunday.TabIndex = 20;
             btnSunday.Text = "Sunday";
             btnSunday.UseVisualStyleBackColor = true;
@@ -257,10 +257,9 @@
             // btnNextMonth
             // 
             btnNextMonth.Dock = DockStyle.Fill;
-            btnNextMonth.Location = new Point(1060, 4);
-            btnNextMonth.Margin = new Padding(3, 4, 3, 4);
+            btnNextMonth.Location = new Point(1155, 3);
             btnNextMonth.Name = "btnNextMonth";
-            btnNextMonth.Size = new Size(113, 75);
+            btnNextMonth.Size = new Size(123, 94);
             btnNextMonth.TabIndex = 10;
             btnNextMonth.Text = "Next month";
             btnNextMonth.UseVisualStyleBackColor = true;
@@ -269,10 +268,9 @@
             // btnMonthBack
             // 
             btnMonthBack.Dock = DockStyle.Fill;
-            btnMonthBack.Location = new Point(3, 4);
-            btnMonthBack.Margin = new Padding(3, 4, 3, 4);
+            btnMonthBack.Location = new Point(3, 3);
             btnMonthBack.Name = "btnMonthBack";
-            btnMonthBack.Size = new Size(111, 75);
+            btnMonthBack.Size = new Size(122, 94);
             btnMonthBack.TabIndex = 11;
             btnMonthBack.Text = "Last month";
             btnMonthBack.UseVisualStyleBackColor = true;
@@ -281,17 +279,19 @@
             // pnlMatrix
             // 
             pnlMatrix.Dock = DockStyle.Fill;
-            pnlMatrix.Location = new Point(120, 86);
+            pnlMatrix.Location = new Point(131, 102);
+            pnlMatrix.Margin = new Padding(3, 2, 3, 2);
             pnlMatrix.Name = "pnlMatrix";
-            pnlMatrix.Size = new Size(934, 470);
+            pnlMatrix.Size = new Size(1018, 566);
             pnlMatrix.TabIndex = 12;
             // 
             // frmRegisterWorksheet
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1182, 627);
+            ClientSize = new Size(1287, 748);
             Controls.Add(tableLayoutPanel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmRegisterWorksheet";
             Text = "frmRegisterWorksheet";
             tableLayoutPanel1.ResumeLayout(false);

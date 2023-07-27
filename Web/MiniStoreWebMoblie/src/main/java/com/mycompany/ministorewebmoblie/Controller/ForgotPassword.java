@@ -25,11 +25,11 @@ public class ForgotPassword extends HttpServlet {
             throws ServletException, IOException {
 
         String email = request.getParameter("email");
-        String action = (String)request.getParameter("actionform");
+        String action = (String) request.getParameter("actionform");
         RequestDispatcher dispatcher = null;
         int otpvalue = 0;
         HttpSession mySession = request.getSession();
-        
+
         if (action.equals("back")) {
             dispatcher = request.getRequestDispatcher("Login");
             dispatcher.forward(request, response);
@@ -45,11 +45,12 @@ public class ForgotPassword extends HttpServlet {
         if (email != null && !email.isEmpty()) {
             // Sending OTP
             Random rand = new Random();
-            otpvalue = rand.nextInt(999999);
+            int otpLength = 6; // Độ dài của OTP
+            int otpValue = rand.nextInt((int) Math.pow(10, otpLength));
 
             String to = email;
             final String from = "quangbmse160878@fpt.edu.vn"; // Update with your email address
-            final String password = "phrprukcqrazsgla"; // Update with your email password
+            final String password = "abfqzeoeefkkqbpe"; // Update with your email password
 
             Properties props = new Properties();
             props.put("mail.smtp.host", "smtp.gmail.com");
@@ -67,8 +68,18 @@ public class ForgotPassword extends HttpServlet {
                 Message message = new MimeMessage(session);
                 message.setFrom(new InternetAddress(from));
                 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-                message.setSubject("Password Reset OTP");
-                message.setText("Your OTP is: " + otpvalue);
+                StringBuilder emailContent = new StringBuilder();
+                emailContent.append("Chào bạn,\n\n");
+                emailContent.append("Bạn đã yêu cầu đặt lại mật khẩu cho tài khoản của mình.\n");
+                emailContent.append("Dưới đây là mã OTP để xác nhận:\n\n");
+                emailContent.append("Mã OTP: " + otpValue + "\n\n");
+                emailContent.append("Mã OTP này sẽ chỉ có hiệu lực trong vòng 30 phút.\n");
+                emailContent.append("Vui lòng đặt lại mật khẩu của bạn trước khi thời gian này kết thúc.\n");
+                emailContent.append("Nếu bạn không yêu cầu đặt lại mật khẩu, xin vui lòng bỏ qua email này.\n\n");
+                emailContent.append("Trân trọng,\nMini Store.");
+
+                message.setSubject("Đặt lại mật khẩu - Mã OTP");
+                message.setText(emailContent.toString());
 
                 Transport.send(message);
                 System.out.println("Message sent successfully");
@@ -81,7 +92,7 @@ public class ForgotPassword extends HttpServlet {
 
             dispatcher = request.getRequestDispatcher("EnterOtp.jsp");
             request.setAttribute("message", "OTP đã được gửi đến email của bạn");
-            mySession.setAttribute("otp", otpvalue);
+            mySession.setAttribute("otp", otpValue);
             mySession.setAttribute("email", email);
             mySession.setAttribute("oldpassword", oldpassword);
             dispatcher.forward(request, response);

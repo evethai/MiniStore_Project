@@ -24,7 +24,7 @@ public class JWTUtils {
         return builder.compact();
     }
 
-    public static String generateJWTUWS(String idEmp, String date, String update,String check) {
+    public static String generateJWTUWS(String idEmp, String date, String update, String check, String coeffi, String sunday) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + 3600000); // Thời gian hết hạn của JWT: 1 giờ
 
@@ -32,6 +32,8 @@ public class JWTUtils {
                 .claim("IdEmp", idEmp)
                 .claim("Date", date)
                 .claim(check, update)
+                .claim("default_coefficient", coeffi)
+                .claim("sunday", sunday)
                 .setIssuedAt(now)
                 .setExpiration(expiryDate)
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY.getBytes());

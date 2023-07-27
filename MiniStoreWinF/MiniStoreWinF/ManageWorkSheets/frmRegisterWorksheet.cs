@@ -30,13 +30,6 @@ namespace MiniStoreWinF.ManageWorkSheets
             LoadDataManage();
             ShowNotification();
         }
-        private int buttonValue;
-
-        public void SetData(int value)
-        {
-            buttonValue = value;
-            // Thực hiện các tác vụ khác liên quan đến dữ liệu truyền vào
-        }
         public void LoadDataManage()
         {
             Matrix = new List<List<Button>>();
@@ -46,8 +39,6 @@ namespace MiniStoreWinF.ManageWorkSheets
                 Matrix.Add(new List<Button>());
                 for (int j = 0; j < TableSheet.DayOfWeek; j++)
                 {
-                    btMonday.Dock = DockStyle.Fill;
-
                     Button btn = new Button() { Width = btMonday.Width, Height = btMonday.Height };
                     btn.Location = new Point(oldBtn.Location.X + oldBtn.Width + TableSheet.DateButtonMagin, oldBtn.Location.Y);
                     btn.Click += bnt_Click;
@@ -57,7 +48,7 @@ namespace MiniStoreWinF.ManageWorkSheets
                     oldBtn = btn;
 
                 }
-                oldBtn = new Button() { Width = 0, Height = 0, Location = new Point(-TableSheet.DateButtonMagin, oldBtn.Location.Y + TableSheet.DateButtonHeight) };
+                oldBtn = new Button() { Width = 0, Height = 0, Location = new Point(-TableSheet.DateButtonMagin, oldBtn.Location.Y + btMonday.Height) };
             }
             setDefaultDate();
         }
@@ -115,11 +106,11 @@ namespace MiniStoreWinF.ManageWorkSheets
             }
             else
             {
-                buttonValue = Convert.ToInt32((sender as Button).Text);
-                frmTableWork daily = new frmTableWork(buttonValue, dtpkDate.Value);
+                string timeButtonValue = (sender as Button).Text + "/" + dtpkDate.Value.Month + "/" + dtpkDate.Value.Year;
+                ContextScope.current = timeButtonValue;
+                frmTableWork daily = new frmTableWork();
                 daily.ShowDialog();
             }
-
         }
         public int DayOfMonth(DateTime date)
         {

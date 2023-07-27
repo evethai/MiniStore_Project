@@ -13,5 +13,7 @@ namespace API_Database.Controllers
 
         public string TimeCheckIn { get; set; }
         public string TimeCheckOut { get; set; }
+        public string Total_working_hours { get; set; }
+
     }
 }
