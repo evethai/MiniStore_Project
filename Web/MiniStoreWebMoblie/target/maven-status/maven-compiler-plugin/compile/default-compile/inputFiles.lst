@@ -1,15 +1,64 @@
-D:\CODE\API\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\ValidateOtp.java
-D:\CODE\API\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\DTO\SheetTimeSlotDTO.java
-D:\CODE\API\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\DTO\WorksheetDTO.java
-D:\CODE\API\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\CheckInServlet.java
-D:\CODE\API\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\CheckOutServlet.java
-D:\CODE\API\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\ShowInformation.java
-D:\CODE\API\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\LogoutServlet.java
-D:\CODE\API\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\ForgotPassword.java
-D:\CODE\API\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\LoginServlet.java
-D:\CODE\API\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\ShowListWSServlet.java
-D:\CODE\API\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Utils\MyUtils.java
-D:\CODE\API\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Utils\JWTUtils.java
-D:\CODE\API\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\DTO\EmployeeDTO.java
-D:\CODE\API\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\newPassword.java
-D:\CODE\API\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\ChangePassword.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\Controller\CreateSupplierServlet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\ChangePassword.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Utils\DBUtil.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\Controller\Main.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\DTO\ProductDTO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\DTO\OrderDTO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DAO\SalaryDAO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\DTO\VoucherDTO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DAO\MemberDAO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\Controller\DispathController.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\Controller\UpdateSupplierServlet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\DTO\MemberDTO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\DTO\RevenueDTO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DAO\OrderDAO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\DTO\EmployeeDTO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DTO\EmployeeDTO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\DTO\UnitDTO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DAO\UnitDAO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\Controller\UpdateProServlet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\DTO\SalariesDTO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DAO\ErrorManageProduct.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\LogoutServlet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Utils\MyUtils.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\Controller\DashboardController.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\ShowListWSServlet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\DTO\SalaryDTO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DAO\TopSellerDAO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\Controller\ShowProductServelet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\Controller\SalaryController.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\CheckOutServlet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\DTO\SheetTimeSlotDTO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DTO\TimekeepingDTO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DAO\RevenueDAO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DTO\SupplierDTO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DAO\SheetDetailsDAO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\Controller\ShowUnitServelet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\Controller\UpdateProductsServlet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DAO\EmployeeDAO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DTO\UnitDTO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Utils\JWTUtils.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DTO\SheetDetailsDTO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\Controller\CrearteProductServlet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DAO\CatalogyDAO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DAO\WorkSheetDAO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DAO\SupplierDAO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\CheckInServlet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\ShowInformation.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\Controller\ShowEmployeeServlet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\Controller\WorksheetManagementServlet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\Controller\WorksheetUpdateServlet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\DTO\TopSellerDTO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\Controller\CreateUnitServlet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\DTO\WorksheetDTO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\Controller\ShowSupplierServlet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\Controller\SheetDetailsManagementServlet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DAO\ProductDAO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\LoginServlet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\newPassword.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\Controller\UpdateUnitServlet.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\GetSalary.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\ministore\web\DTO\ProductDTO.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\ForgotPassword.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\Controller\ValidateOtp.java
+C:\Users\nanat\OneDrive\Máy tính\CN5\SWP391\MiniStoreWebMoblie\src\main\java\com\mycompany\ministorewebmoblie\DTO\CatalogyDTO.java

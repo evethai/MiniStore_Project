@@ -50,7 +50,6 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-info" data-dismiss="modal" onclick="goBack()">Trở lại</button>
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đóng</button>
-
                         </div>
                     </div>
                 </div>
@@ -116,7 +115,7 @@
                                 <h5 class="modal-title text-danger" id="loginModalLabel">Thông báo</h5>
                             </div>
                             <div class="modal-body text-center text-danger">
-                                chưa hoàn thành xác nhận otp 
+                                chưa hoàn thành lấy otp
                             </div>
                             <div class="modal-footer justify-content-center">
                                 <button type="button" class="btn btn-danger" onclick="goBack()">Lấy otp</button>

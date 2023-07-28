@@ -1,5 +1,6 @@
 package com.mycompany.ministorewebmoblie.Controller;
 
+import com.mycompany.ministorewebmoblie.DTO.SalariesDTO;
 import com.mycompany.ministorewebmoblie.DTO.SheetTimeSlotDTO;
 import com.mycompany.ministorewebmoblie.DTO.WorksheetDTO;
 import com.mycompany.ministorewebmoblie.Utils.MyUtils;
@@ -10,7 +11,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -71,7 +71,9 @@ public class ShowListWSServlet extends HttpServlet {
             return;
         }
         String TotalApi = MyUtils.getTotalTime(idemp, date);
-                
+        String mothpre = MyUtils.getPreviousMonthString();
+        SalariesDTO salaries = MyUtils.getsalary(mothpre, idemp);
+        
         session.setAttribute("dateStarS", dateStar);
         session.setAttribute("dateEndS", dateEnd);
         session.setAttribute("sortOrder", sortOrder);
@@ -79,10 +81,13 @@ public class ShowListWSServlet extends HttpServlet {
         session.setAttribute("endTime", endTime);
         if (!TotalApi.equals("null")) {
             session.setAttribute("TotalApi", TotalApi);
+
         }
         if (totalTime != null) {
             session.setAttribute("totalTime", totalTime);
         }
+        session.setAttribute("mothpre", mothpre);
+        session.setAttribute("salaries", salaries);
         session.setAttribute("worksheetList", ListWS);
 //        response.sendRedirect("qr-code.jsp");
         request.getRequestDispatcher("qr-code.jsp").forward(request, response);

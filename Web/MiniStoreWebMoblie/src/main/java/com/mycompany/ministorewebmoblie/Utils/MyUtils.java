@@ -6,28 +6,34 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.mycompany.ministorewebmoblie.DTO.EmployeeDTO;
+import com.mycompany.ministorewebmoblie.DTO.SalariesDTO;
 import com.mycompany.ministorewebmoblie.DTO.SheetTimeSlotDTO;
 import com.mycompany.ministorewebmoblie.DTO.WorksheetDTO;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.ServletException;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.SimpleDateFormat;
+import java.text.DecimalFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -60,6 +66,174 @@ public class MyUtils {
             conn.disconnect();
         }
 
+    }
+
+    //send email
+    public static void sendEmail(String to, String subject, String content) throws MessagingException {
+        final String fromEmail = "quangbmse160878@fpt.edu.vn"; // Update with your email address
+        final String password = "abfqzeoeefkkqbpe"; // Update with your email password
+
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+
+        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(fromEmail, password);
+            }
+        });
+        
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(fromEmail));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+            message.setSubject(subject);
+            message.setContent(content, "text/html; charset=UTF-8");
+//            message.setText(content);
+            Transport.send(message);
+            
+        } catch (MessagingException e) {
+            // Xử lý lỗi nếu cần thiết
+            throw e;
+        }
+    }
+
+    //lấy lương
+    public static List<SalariesDTO> getSalaries(String idemp) throws IOException {
+        try {
+            String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/gSa?idemp=" + idemp);
+            JSONObject json;
+
+            try {
+                json = new JSONObject(jsonResponse);
+            } catch (JSONException e) {
+                // Xử lý lỗi khi phân tích phản hồi JSON
+                e.printStackTrace();
+                return Collections.emptyList();
+            }
+
+            String jwt = json.optString("jwt");
+
+            // Kiểm tra JWT
+            if (jwt.isEmpty() || jwt.equals("Unauthorized")) {
+                // Người dùng không hợp lệ
+                System.out.println("Invalid JWT");
+                return Collections.emptyList();
+            }
+
+            Claims claims = JWTUtils.parseJWT(jwt);
+
+            List<String> FullNames = claims.get("FullName", List.class);
+            List<String> SalaryByHours = claims.get("SalaryByHour", List.class);
+            List<String> SubSalaries = claims.get("SubSalary", List.class);
+            List<String> BasicSalaries = claims.get("BasicSalary", List.class);
+            List<String> SalaryBeforTaxs = claims.get("SalaryBeforTax", List.class);
+            List<String> AdvSalaries = claims.get("AdvSalary", List.class);
+            List<String> FinalSalaries = claims.get("FinalSalary", List.class);
+            List<String> Months = claims.get("Month", List.class);
+
+            List<SalariesDTO> salaries = new ArrayList<>();
+
+            for (int i = 0; i < FullNames.size(); i++) {
+                String fullname = FullNames.get(i);
+                String salarybyhours = SalaryByHours.get(i);
+                String subSalary = SubSalaries.get(i);
+                String basicSalary = BasicSalaries.get(i);
+                String SalaryBeforTax = SalaryBeforTaxs.get(i);
+                String AdvSalary = AdvSalaries.get(i);
+                String FinalSalary = FinalSalaries.get(i);
+                String Month = Months.get(i);
+
+                salaries.add(new SalariesDTO(fullname, formatCurrency(salarybyhours), formatCurrency(subSalary), formatCurrency(basicSalary), formatCurrency(SalaryBeforTax), formatCurrency(AdvSalary), formatCurrency(FinalSalary), Month));
+            }
+
+            return salaries;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
+    }
+
+    //format số
+    public static String formatCurrency(String amount) {
+        try {
+            double value = Double.parseDouble(amount);
+            DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+            return decimalFormat.format(value);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            return amount; // Return the original value if parsing fails
+        }
+    }
+
+//    // lấy lương tháng trước 
+//    public static String getsalary(String month, String idemp) throws IOException {
+//        try {
+//            List<SalariesDTO> salaries = getSalaries(idemp);
+//            String finalSalary = null;
+//
+//            for (SalariesDTO salary : salaries) {
+//                if (salary.getMonth().equals(month)) {
+//                    finalSalary = salary.getFinalSalary();
+//                    break; // dừng lại khi timf thay
+//                }
+//            }
+//            return finalSalary;
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
+    public static SalariesDTO getsalary(String month, String idemp) throws IOException {
+        try {
+            List<SalariesDTO> salaries = getSalaries(idemp);
+            String fullname = null;
+            String salarybyhours = null;
+            String subSalary = null;
+            String basicSalary = null;
+            String SalaryBeforTax = null;
+            String AdvSalary = null;
+            String FinalSalary = null;
+            String Month = null;
+            for (SalariesDTO salary : salaries) {
+                if (salary.getMonth().equals(month)) {
+                    fullname = salary.getFullName();
+                    salarybyhours = salary.getSalaryByHour();
+                    subSalary = salary.getSubSalary();
+                    basicSalary = salary.getBasicSalary();
+                    SalaryBeforTax = salary.getSalaryBeforTax();
+                    AdvSalary = salary.getAdvSalary();
+                    FinalSalary = salary.getFinalSalary();
+                    Month = salary.getMonth();
+                    break; // dừng lại khi timf thay
+                }
+            }
+            return new SalariesDTO(fullname, salarybyhours, subSalary, basicSalary, SalaryBeforTax, AdvSalary, FinalSalary, Month);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    //lấy tháng trước
+    public static String getPreviousMonthString() {
+        LocalDate today = LocalDate.now();
+        int month = today.getMonthValue();
+        int previousMonth = month - 1;
+        if (previousMonth == 0) {
+            previousMonth = 12;
+        }
+        String previousMonthString = String.valueOf(previousMonth);
+        if (previousMonth < 10) {
+            previousMonthString = "0" + previousMonthString;
+        }
+        return previousMonthString;
     }
 
     // tổng total time 
@@ -166,10 +340,11 @@ public class MyUtils {
         }
     }
 
+    // lấy thời gian tổng
     public static String getTotalTime(String idemp, String date) throws IOException {
         try {
             // Lấy danh sách Sheet từ API
-            String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/fws?idemp="+idemp.trim()+"&date="+ date.trim());
+            String jsonResponse = MyUtils.sendGetRequest("http://localhost/swp/api/ms/fws?idemp=" + idemp.trim() + "&date=" + date.trim());
             JSONObject json = new JSONObject(jsonResponse);
 
             String jwt = json.optString("jwt");
@@ -184,7 +359,7 @@ public class MyUtils {
             Claims claims = JWTUtils.parseJWT(jwt);
             // Convert the claim value to a string manually
             String Total = claims.get("Total_working_hours", String.class);
-            
+
             if (Total == null) {
                 return "null";
             }

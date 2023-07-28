@@ -34,6 +34,10 @@ public class LoginServlet extends HttpServlet {
             String fullnameemapi = claims.get("FullNameEmp", String.class);
             String IdEmpapi = claims.get("IdEmp", String.class);
             String rolesapi = claims.get("Roles", String.class);
+            if (rolesapi.equals("0") || rolesapi.equals("1")) {
+                request.getRequestDispatcher("DispathController").forward(request, response);
+                return;
+            }
             String IsActiveapi = claims.get("IsActive", String.class);
             String TimeCheckinapi = claims.get("TimeCheckIn", String.class);
             String TimeCheckoutapi = claims.get("TimeCheckOut", String.class);
@@ -47,7 +51,7 @@ public class LoginServlet extends HttpServlet {
                 return;
             }
 
-            if (!rolesapi.equals("3")) {
+            if (!rolesapi.equals("3") && !rolesapi.equals("0") && !rolesapi.equals("1") ) {
                 request.setAttribute("errorMessage", "Chỉ có bảo vệ mới vào được trang này!!!");
                 request.getRequestDispatcher("Login.jsp").forward(request, response);
                 return;

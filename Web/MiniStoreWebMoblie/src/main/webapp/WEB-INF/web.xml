@@ -9,6 +9,34 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>UpdateProductsServlet</servlet-name>
+        <servlet-class>com.ministore.web.Controller.UpdateProductsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CrearteProductServlet</servlet-name>
+        <servlet-class>com.ministore.web.Controller.CrearteProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateUnitServlet</servlet-name>
+        <servlet-class>com.ministore.web.Controller.UpdateUnitServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateUnitServlet</servlet-name>
+        <servlet-class>com.ministore.web.Controller.CreateUnitServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateSupplierServlet</servlet-name>
+        <servlet-class>com.ministore.web.Controller.UpdateSupplierServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateSupplierServlet</servlet-name>
+        <servlet-class>com.ministore.web.Controller.CreateSupplierServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ShowEmployeeServlet</servlet-name>
+        <servlet-class>com.ministore.web.Controller.ShowEmployeeServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ShowListWSServlet</servlet-name>
         <servlet-class>com.mycompany.ministorewebmoblie.Controller.ShowListWSServlet</servlet-class>
     </servlet>
@@ -80,6 +108,42 @@
         <servlet-name>ChangePassword</servlet-name>
         <url-pattern>/changePass</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProductsServlet</servlet-name>
+        <url-pattern>/UpdateProductsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrearteProductServlet</servlet-name>
+        <url-pattern>/CrearteProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUnitServlet</servlet-name>
+        <url-pattern>/UpdateUnitServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateUnitServlet</servlet-name>
+        <url-pattern>/CreateUnitServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateSupplierServlet</servlet-name>
+        <url-pattern>/UpdateSupplierServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateSupplierServlet</servlet-name>
+        <url-pattern>/CreateSupplierServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ShowEmployeeServlet</servlet-name>
+        <url-pattern>/ShowEmployeeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>GetSalary</servlet-name>
+        <servlet-class>com.mycompany.ministorewebmoblie.Controller.GetSalary</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetSalary</servlet-name>
+        <url-pattern>/GSalary</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -87,5 +151,6 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>Login.jsp</welcome-file>
+        <!--<welcome-file>DispathController</welcome-file>-->
     </welcome-file-list>
 </web-app>

@@ -19,5 +19,16 @@ public class LogoutServlet extends HttpServlet {
         // Chuyển hướng về trang đăng nhập
         request.getRequestDispatcher("Login.jsp").forward(request, response);
     }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Hủy bỏ phiên làm việc của người dùng
+        HttpSession session = request.getSession();
+        session.invalidate();
+
+        // Chuyển hướng về trang đăng nhập
+        request.getRequestDispatcher("Login.jsp").forward(request, response);
+    }
 
 }

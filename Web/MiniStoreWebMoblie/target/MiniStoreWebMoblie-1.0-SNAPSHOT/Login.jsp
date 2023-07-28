@@ -8,6 +8,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="CSS/logincss.css"/>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+        <script src="JavaScript/changetheme.js"></script>
+
         <title>Login Page</title>
         <style>
             section {
@@ -153,7 +155,9 @@
                 }
             }
             
-            
+            document.addEventListener('DOMContentLoaded', function () {
+                setDefaultTheme();
+            });
         </script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
